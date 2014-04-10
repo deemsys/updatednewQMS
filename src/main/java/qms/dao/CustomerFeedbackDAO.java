@@ -215,9 +215,10 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_update = "update tbl_customerfeedback set date_of_feedback='"+customerFeedback.getDate_of_feedback()+"',type_of_feedback='"+customerFeedback.getType_of_feedback()+"',feedback_recorded_by='"+customerFeedback.getFeedback_recorded_by()+"',feedback_details='"+customerFeedback.getFeedback_details()+"',attachment_name='"+customerFeedback.getAttachments()+"' where feedback_id='"+customerFeedback.getFeedback_id()+"'";
+			String cmd_update = "update tbl_customerfeedback set date_of_feedback='"+customerFeedback.getDate_of_feedback()+"',type_of_feedback='"+customerFeedback.getType_of_feedback()+"',feedback_recorded_by='"+customerFeedback.getFeedback_recorded_by()+"',feedback_details='"+customerFeedback.getFeedback_details()+"',attachment_name='"+customerFeedback.getAttachment_name()+"', attachement_type='"+customerFeedback.getAttachment_type()+"', attachment_referrence='"+customerFeedback.getAttachment_referrence()+"' where feedback_id='"+customerFeedback.getFeedback_id()+"'";
 			System.out.println(statement.execute(cmd_update));
-			
+			System.out.println("update feedback="+status);
+			System.out.println("feed back id= "+customerFeedback.getFeedback_id());
 			statement.execute(cmd_update);
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -230,6 +231,7 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 			releaseConnection(con);
 		}
 		return status;
+		
 
 	}
 	

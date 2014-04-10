@@ -33,6 +33,7 @@ public class CustomersDAO {
 		  try{
 			  String cmd_select="select max(auto_id) as id from tbl_customer";
 			resultSet = statement.executeQuery(cmd_select);
+			
 			if(resultSet.next())
 			{
 				if(!resultSet.getString("id").equals("null"))
