@@ -1,7 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="header.jsp"></jsp:include>
-
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 <form method="post" action="updatefeedback">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -64,7 +66,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Add Customer</h2>
+              <h2>Update Customer Feedback</h2>
             </div>
             <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -73,7 +75,7 @@
              
                  <td valign="middle" align="right" class="input_txt" width="30%">    <input type="hidden" name="feedback_id" value="${customerfeedbacks.feedback_id }"/>
                Date of Feedback :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="inp_date_of_feedback" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.date_of_feedback}"></c:out>' /></br><span class="err"><form:errors path="CustomerFeedback.date_of_feedback"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.date_of_feedback}"></c:out>' /></br><span class="err"><form:errors path="CustomerFeedback.date_of_feedback"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Type of Feedback :</td>
@@ -104,9 +106,10 @@
                   <br/><span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
                   </tr>
                   <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Attachments :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="attachments" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.attachments}"></c:out>'></br><span class="err"></span></td>
-                  </tr>
+                 <td valign="middle" align="right" class="input_txt" width="30%"> Attachment choosen:</td>
+                 <td valign="middle" align="left">${customerfeedbacks.attachment_name}
+                 <input type="file" name="attachment_name" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.attachments}"></c:out>'></br><span class="err"></span></td>
+                 </tr> 
                   
                     <tr class="row1">
                  <td valign="middle" align="right" class="input_txt" width="30%"></td>
@@ -123,4 +126,10 @@
       </div>
       
 </form>
+ <script>
+ $(function() {
+           $( "#datepicker" ).datepicker();
+         });
+ 
+</script>
 <jsp:include page="footer.jsp"></jsp:include>

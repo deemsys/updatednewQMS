@@ -100,7 +100,7 @@
 						
 						<% int i=1; %>
 							       		
-									<c:forEach items="${customerForm.customers}" var="customers" varStatus="status">
+									<c:forEach items="${customersForm.customers}" var="customers" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
 							       			else

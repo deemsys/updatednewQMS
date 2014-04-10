@@ -185,10 +185,13 @@ function CreateGroup()
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="resources/js/jquery-ui.js"></script>
-<script src="resources/js/jquery.min.js"></script>
+
 <jsp:include page="header.jsp"></jsp:include>
 <script src="resources/js/jquery-1.7.2.min.js"></script>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
+
  <script>
  $(function() {
            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
@@ -202,6 +205,7 @@ function CreateGroup()
          });
  
 </script>
+
 <div id="right_content">
 <form action="update_nonconformance" method="POST" name="update" id="update">
 
@@ -367,4 +371,15 @@ function CreateGroup()
 	document.update.submit();
 }
 </script>
+<script>
+ $(function() {
+	 var format="yy-mm-dd";
+           $( "#datepicker" ).datepicker();
+           
+         });
+ 
+ $(function() {
+           $( "#datepicker1" ).datepicker();
+         });
+</script> 
 <jsp:include page="footer.jsp"></jsp:include>
