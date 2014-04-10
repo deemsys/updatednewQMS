@@ -41,7 +41,7 @@ public class CustomersController
     model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
-    model.addAttribute("customerForm",customersForm);
+    model.addAttribute("customersForm",customersForm);
     
 	return "view_customers";
  	}
@@ -55,7 +55,7 @@ public class CustomersController
 		CustomersForm customersForm=new CustomersForm();
 		customersForm.setCustomers(customersDAO.getlimitedcustomerreport(page));
 	 	model.addAttribute("noofpages",(int) Math.ceil(customersDAO.getnoofcustomerreport() * 1.0 / 5));
-	 	model.addAttribute("customerForm",customersForm);	
+	 	model.addAttribute("customersForm",customersForm);	
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","customer");
@@ -71,7 +71,7 @@ public class CustomersController
 	public String viewallcustomerreport(HttpServletRequest request,ModelMap model, Principal principal ) {
 		CustomersForm customersForm=new CustomersForm();
 		customersForm.setCustomers(customersDAO.getCustomers());
-		model.addAttribute("customerForm",customersForm);
+		model.addAttribute("customersForm",customersForm);
 
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
@@ -113,7 +113,7 @@ public class CustomersController
 			}
     // model.addAttribute("id",customersDAO.getMax_customerID());
     customersDAO.insert_customer(customers);
-    CustomersForm customersForm=new CustomersForm();
+    CustomersForm customersForm = new CustomersForm();
 	customersForm.setCustomers(customersDAO.getCustomers());
 	model.addAttribute("customersForm",customersForm);
 	model.addAttribute("id", customersDAO.getMax_customerID());
@@ -142,7 +142,7 @@ public class CustomersController
 
     CustomersForm customersForm=new CustomersForm();
     customersForm.setCustomers(customersDAO.getCustomers());
-    model.addAttribute("customerForm",customersForm);
+    model.addAttribute("customersForm",customersForm);
     model.addAttribute("success","true");
     model.addAttribute("menu","customer");
 	return "view_customers";
@@ -184,7 +184,7 @@ public class CustomersController
 		System.out.println("find");
 		session.setAttribute("id", id);
 		session.setAttribute("name", name);
-		session.setAttribute("address",address);
+		session.setAttribute("address", address);
 
 		if(id=="" && name=="" && address=="")
 		{

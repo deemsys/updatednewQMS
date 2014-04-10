@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import qms.dao.CustomerFeedbackDAO;
 import qms.model.CustomerFeedback;
@@ -70,7 +71,61 @@ public class CustomerFeedbackController
 	
 	//update a record
 	@RequestMapping(value={"/updatefeedback"}, method = RequestMethod.POST)
-	public String update_customerfeedback(CustomerFeedback customerFeedback,ModelMap model, Principal principal,BindingResult result ) {
+	public String update_customerfeedback(ModelMap model,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result ) throws IOException
+	{
+		byte[] buffer=null;// = new byte[10000];
+		try {
+			
+			MultipartFile file = customerFeedback.getAttachments();
+			
+			String orginal_fileName = null;
+			String duplicate_fileName=null;
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+			    if (file.getSize() > 0) {
+				inputStream = file.getInputStream();
+				if (file.getSize() > 100000) 
+				{
+					System.out.println("File Size:::" + file.getSize());
+					return "/login";
+				}				
+			    orginal_fileName ="C:/projects/"+file.getOriginalFilename();
+			    duplicate_fileName=orginal_fileName;
+			    File create_file=new File(orginal_fileName);
+			    int i=1;			    
+			    while(create_file.exists())
+			    {
+			    	duplicate_fileName="C:/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+			    	create_file=new File(duplicate_fileName);
+			    	i++;
+			    }
+			    outputStream = new FileOutputStream(duplicate_fileName);
+			    System.out.println("fileName:" + file.getOriginalFilename());
+         
+			    
+			    //------Lines to changes------//
+			    
+			    customerFeedback.setAttachments_type(file.getContentType());
+                customerFeedback.setAttachment_name(file.getOriginalFilename());
+                customerFeedback.setAttachment_referrence(duplicate_fileName);
+                
+                //----End Lines to changed----//
+              
+                int readBytes = 0;
+				buffer=new byte[(int)file.getSize()];
+				while ((readBytes = inputStream.read(buffer, 0,(int) file.getSize())) != -1) {
+				outputStream.write(buffer, 0, readBytes);			
+				}
+				outputStream.close();
+				inputStream.close();
+				/*customerFeedbackDAO.insert_customerfeedback(customerFeedback);*/
+				customerFeedbackDAO.update_customerfeedback(customerFeedback);
+			}
+	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			e.printStackTrace();
+		}
 		
 		/*if (result.hasErrors())
 		{
@@ -80,7 +135,10 @@ public class CustomerFeedbackController
 	
 		        return "edit_customerfeedback";
 		}*/
-		customerFeedbackDAO.update_customerfeedback(customerFeedback);
+		/*customerFeedbackDAO.update_customerfeedback(customerFeedback);*/
+		CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
+		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
+		model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
 		model.addAttribute("menu","customer");
 		return "view_customerfeedback";
 	}
@@ -185,13 +243,13 @@ public class CustomerFeedbackController
 					System.out.println("File Size:::" + file.getSize());
 					return "/login";
 				}				
-			    orginal_fileName ="E:/Projects/"+file.getOriginalFilename();
+			    orginal_fileName ="C:/projects/"+file.getOriginalFilename();
 			    duplicate_fileName=orginal_fileName;
 			    File create_file=new File(orginal_fileName);
 			    int i=1;			    
 			    while(create_file.exists())
 			    {
-			    	duplicate_fileName="E:/Projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+			    	duplicate_fileName="C:/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
 			    	create_file=new File(duplicate_fileName);
 			    	i++;
 			    }
