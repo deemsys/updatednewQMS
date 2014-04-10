@@ -189,17 +189,19 @@ function CreateGroup()
 <script src="resources/js/jquery.min.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 <script src="resources/js/jquery-1.7.2.min.js"></script>
-<script>
+ <script>
  $(function() {
-	 var format="yy-mm-dd";
-           $( "#datepicker" ).datepicker();
-           
+           $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
          });
  
+</script>
+   <script>
  $(function() {
-           $( "#datepicker1" ).datepicker();
+	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
+     
          });
-</script> 
+ 
+</script>
 <div id="right_content">
 <form action="update_nonconformance" method="POST" name="update" id="update">
 
@@ -322,7 +324,7 @@ function CreateGroup()
 				                	<td valign="top" align="left" class="input_txt"><span class="err">*</span> Reported By </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.reported_by}"  class="input_txtbx1" id="inp_reported_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="reported_by" /><br><span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
 				                  	<td valign="top" align="left" class="input_txt"><span class="err">*</span> Disposition Complete Date:</td>
-			                                	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span class="err"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
+			                                	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span class="err"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
 				      
 			          
 				       	</tr>

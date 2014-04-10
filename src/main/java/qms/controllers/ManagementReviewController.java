@@ -124,6 +124,7 @@ public String viewmanagementreport_page(HttpServletRequest request,@RequestParam
     model.addAttribute("currentpage",page);
     model.addAttribute("menu","managementreview");
     model.addAttribute("button","viewall");
+    System.out.println("request passing");
     
     return "view_managementreview";
     
@@ -137,14 +138,15 @@ public String viewallmanagementreport(HttpServletRequest request,ModelMap model,
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 	model.addAttribute("managementreviewform", managementreviewform);
 
-  	model.addAttribute("noofrows",5);    
-   //narrativereportForm.getNarrativereport().size()
-    model.addAttribute("menu","managementreview");
-    model.addAttribute("button","close");
+  	    model.addAttribute("noofrows",5);    
+        //narrativereportForm.getNarrativereport().size()
+        model.addAttribute("menu","managementreview");
+        model.addAttribute("button","close");
       
     	model.addAttribute("menu","managementreview");
         model.addAttribute("success","false");
         model.addAttribute("button","close");
+        
         return "view_managementreview";
 
 }
@@ -208,7 +210,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 			"action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};	
 			String title = null;
 			java.util.List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
-		
+		System.out.println("before the switch case in controller");
 		 switch(Integer.parseInt(request.getParameter("management_report_type")))
 				  {
 					  case 0:
@@ -297,6 +299,7 @@ public String searchmanagementreviews(@RequestParam("review_id") String review_i
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
 	model.addAttribute("managementreviewform", managementreviewform);
+	
 	return "view_managementreview";
 
 }

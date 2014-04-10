@@ -430,9 +430,10 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	} catch (SQLException e1) {
 		e1.printStackTrace();
 	}
+	System.out.println("no problem in select query in DAO");
 	try {
 		String cmd_select = "select * from tbl_managementreview";
-		
+		System.out.println("no problem in select query in DAO");
 		if(type.equals("management_review_minutes"))
 			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";			
 		

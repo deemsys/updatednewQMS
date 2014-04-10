@@ -55,10 +55,37 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%"> Type&nbsp;</td>
-							    <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
-							    <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
+							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
+							     -->
+							     <td valign="top" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+                 	<option value="">--Select--</option>
+				                  									
+                  										<option
+															<c:if test="${Employee.type_of_training eq 'Classroom'}"><c:out value="Selected"/></c:if>
+															value="Classroom">Classroom</option>
+														<option
+															<c:if test="${Employee.type_of_training eq 'Hands on'}"><c:out value="Selected"/></c:if>
+															value="Hands on">Hands on</option>
+														</select></td>
+                
+							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
+							    <td valign="top" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+                  											<option value="">--Select--</option>
+				                  									
+                  										<option
+															<c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
+															value="Education">Education</option>
+														<option
+															<c:if test="${Employee.qualified_by eq 'Experience'}"><c:out value="Selected"/></c:if>
+															value="Experience">Experience</option>
+														<option
+															<c:if test="${Employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if>
+															value="Training">Training</option>
+														
+															</select><span class="err"><form:errors path="Employee.qualified_by"></form:errors></span></td>
+                <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
-								<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
+				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer"></td>
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
@@ -96,8 +123,9 @@
 							<tr class="title">
 								<td valign="top" align="left" width="10%">Employee&nbsp;ID</td>
 					         	<td valign="top" align="left" width="15%">Name</td>
-					         	<td valign="top" align="left" width="10%">Job Title</td>
-								<td valign="top" align="left" width="10%">Date Hired</td>
+					         	<td valign="top" align="left" width="10%">Type</td>
+								<td valign="top" align="left" width="10%">Qualified By</td>
+								<td valign="top" align="left" width="10%">Trainer</td>
           						<td valign="top" align="left" width="15%">Attachments</td>
           						<td valign="top" align="left" width="15%">Actions</td>
           					</tr>
@@ -113,8 +141,9 @@
 							       		<tr class="row<%=i%>" ">
 								           	<td valign="top" align="left"  width="10%"><a href="list_employee?id=${employees.employee_id}">${employees.employee_id}</td>
 											<td valign="top" align="left" width="15%">${employees.name}</td>
-											<td valign="top" align="left" width="10%">${employees.job_title}</td>
-											<td valign="top" align="left" width="10%">${employees.date_hired}</td>
+											<td valign="top" align="left" width="10%">${employees.type_of_training}</td>											
+											<td valign="top" align="left" width="20%">${employees.qualified_by}</td>											
+											<td valign="top" align="left" width="10%">${employees.trainer}</td>
 											<td valign="top" align="left" width="15%">${employees.attachments}</td>
 												<td valign="top" align="left" width="15%">
 												

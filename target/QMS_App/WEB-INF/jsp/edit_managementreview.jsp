@@ -86,7 +86,24 @@
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Category :</td>
-                  <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="category" class="input_txtbx" id="id_category" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.category}"></c:out>'><span class="err"><form:errors path="ManagementReview.category"></form:errors></span></td>
+                 <%--  <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="category" class="input_txtbx" id="id_category" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.category}"></c:out>'><span class="err"><form:errors path="ManagementReview.category"></form:errors></span></td>
+                  --%> <td valign="middle" align="left" class="input_txt">
+				                  		<select name="category" class="input_cmbbx1">
+				                  		<option value="">--Select--</option>
+						                      
+						                  <option <c:if test="${managementreviewdetails.category eq 'audits'}"><c:out value="Selected"/></c:if> value="audits" >audits</option>
+						                  <option <c:if test="${managementreviewdetails.category eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >corrective and prev actions</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >cost of non conformance</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'customer satisfaction'}"><c:out value="Selected"/></c:if> value="customer satisfaction" >customer satisfaction</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'suppliers'}"><c:out value="Selected"/></c:if> value="suppliers" >suppliers</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'human resources'}"><c:out value="Selected"/></c:if> value="human resources" >human resources</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'product/service conformity'}"><c:out value="Selected"/></c:if> value="product/service conformity" >product/service conformity</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'previous items'}"><c:out value="Selected"/></c:if> value="previous items" >previous items</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'recommendations for improvement'}"><c:out value="Selected"/></c:if> value="recommendations for improvement" >recommendations for improvement</option>
+										  <option <c:if test="${managementreviewdetails.category eq 'significant cchanges to the QMS'}"><c:out value="Selected"/></c:if> value="significant changes to the QMS" >significant changes to the QMS</option>	
+				                   	</select>
+						           		<br/><span class="err"><form:errors path="ManagementReview.category"></form:errors></span>
+				                   	</td>
                   <td valign="middle" align="right" class="input_txt" width="30%">
              	  <td valign="middle" align="left" class="input_txt" width="70%"> </tr>
                    <tr class="row1">

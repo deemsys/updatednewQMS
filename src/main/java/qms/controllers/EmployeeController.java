@@ -189,7 +189,9 @@ public class EmployeeController
 		{
 			EmployeeForm employeeForm = new EmployeeForm();
 			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
-
+			System.out.println(type);
+			System.out.println(qualifiedby);
+			System.out.println(trainer);
 			model.addAttribute("employeeForm",employeeForm);
 			model.addAttribute("menu", "employee");
 			System.out.println("finding....");
