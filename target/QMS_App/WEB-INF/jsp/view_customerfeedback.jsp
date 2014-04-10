@@ -1,6 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
-
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 <div id="right_content">
 	<!-- <form name="grid" onSubmit="return validate(this)" action="" method="POST">
      -->	<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -69,7 +71,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="25%">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="date"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="datepicker"></td>
 							    <td align="left" valign="middle" width="25%">&nbsp;Type of Feedback: </td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="type_of_feedback" id="type" class="input_txtbx1"></td>
 							    <!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>
@@ -233,5 +235,10 @@ function findpart()
 window.location="?do=viewparticipants&id="+document.getElementById("id").value+"&date="+document.getElementById("date").value+"&type="+document.getElementById("type").value;
 }
 </script>
-
+<script>
+ $(function() {
+           $( "#datepicker" ).datepicker();
+         });
+ 
+</script>
 <jsp:include page="footer.jsp"></jsp:include>
