@@ -174,13 +174,13 @@ public class DocumentController {
 							System.out.println("File Size:::" + file.getSize());
 							return "/add_document";
 						}
-						orginal_fileName = "G:/Projects/Upload/DocumentControl/"
+						orginal_fileName = "D:/Projects/Upload/DocumentControl/"
 								+ file.getOriginalFilename();
 						duplicate_fileName = orginal_fileName;
 						File create_file = new File(orginal_fileName);
 						int i = 1;
 						while (create_file.exists()) {
-							duplicate_fileName = "G:/Projects/Upload/DocumentControl/"
+							duplicate_fileName = "D:/Projects/Upload/DocumentControl/"
 									+ file.getOriginalFilename().substring(
 											0,
 											file.getOriginalFilename().lastIndexOf(
@@ -284,13 +284,13 @@ public class DocumentController {
 						System.out.println("File Size:::" + file.getSize());
 						return "/add_document";
 					}
-					orginal_fileName = "/usr/share/tomcat6/temp/Upload/Document"
+					orginal_fileName = "D:/customerfeedback"
 							+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
-						duplicate_fileName = "/usr/share/tomcat6/temp/Upload/Document"
+						duplicate_fileName = "D:/customerfeedback"
 								+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(

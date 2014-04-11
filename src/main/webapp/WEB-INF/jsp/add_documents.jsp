@@ -56,7 +56,9 @@
 									
 								</a>
 							</li>
-				             --%></ul>
+				             --%>
+				             
+				             </ul>
   </div>
         </td>
       </tr>
@@ -80,7 +82,8 @@
     
              <tr class="row1">
              
-               <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">Document ID:<input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/></td>
+               <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">Document ID:
+               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/></td>
               
                <td valign="top" align="left" class="input_txt1" width="15%" id="lable_td" style="display:none;">
                <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
