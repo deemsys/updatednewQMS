@@ -71,9 +71,9 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="review_id" class="input_txtbox" id="id"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="review_id" class="input_txtbx1" id="id"></td>
 							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx2" id="datepicker"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx1" id="datepicker"></td>
 							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
 							    <td align="left" valign="middle" width="10%">
 				                  
@@ -92,10 +92,7 @@
 										  <option  value="significant changes to the QMS" >significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							   <!--  <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="Clear" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							   -->
+							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 							</table>
 						</div>
@@ -108,8 +105,8 @@
 									<td valign="top" align="left" width="5%">Review id</td>
 									<td valign="top" align="left" width="20%">Management Review Date</td>
 									<td valign="top" align="left" width="10%">Category</td>
-									<td valign="top" align="left" width="15%">Completion date</td><!-- 
-									<td valign="top" align="left" width="15%">Continuous Improvement project</td> -->				
+									<td valign="top" align="left" width="15%">Completion date</td>
+									<td valign="top" align="left" width="15%">Continuous Improvement project</td>				
 									<td valign="top" align="left" width="15%">Actions</td>						
 									</tr>
 
@@ -127,8 +124,8 @@
 											
 											<td valign="top" align="left" width="10%">${managementreviewdetails.management_review_date}</td>
 											<td valign="top" align="left" width="15%">${managementreviewdetails.category}</td>
-											<td valign="top" align="left" width="15%">${managementreviewdetails.completion_date}</td><%-- 
-											<td valign="top" align="left" width="15%">${managementreviewdetails.continuous_improvement_project}</td> --%>
+											<td valign="top" align="left" width="15%">${managementreviewdetails.completion_date}</td>
+											<td valign="top" align="left" width="15%">${managementreviewdetails.continuous_improvement_project}</td>
 											
 											<td valign="top" align="left" width="15%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_managementreview?review_id=${managementreviewdetails.review_id}"/>" style="padding-right:10px;">Edit</a>
@@ -137,10 +134,14 @@
 											
 										</tr>
 							    </c:forEach>			
-						    		
+						    		<tr><td colspan="7">  <div class="extrabottom">
+              						<ul class="pagination">
+                						<li class="text"><input type="submit" name="view" value="View All" class="submit_btn"></li>
+                						<li class="text"></li>
+                					</ul></div></td></tr>
+
 								</table>
-								
-</form>
+
 								<div style="clear: both;"></div>
 								</div>
 							
@@ -149,51 +150,13 @@
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-							
+								
 							</table>
 							
 							
 						
 						</td>
 						</tr>
-						<tr>
-<td colspan="6">  
-	<div class="extrabottom">
-             <ul class="pagination">
-        
-             <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewmanagementreport_page?page=${currentpage - 1}" >Prev</a></li> 
-               </c:if>
-              
-             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
-               <c:forEach begin="1" end="${noofpages}" var="i">
-                <c:choose>
-                    <c:when test="${currentpage eq i}">
-                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
-                     </c:when>
-                    <c:otherwise>
-                        <li class="page_unselect"><a href="viewmanagementreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>          
-            <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewmanagementreport_page?page=${currentpage+1}">Next</a></li> 
-                 </c:if>
-              <c:choose>
-              <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallmanagementreport" class="paging_select">ViewAll</a></li>
-             </c:when>
-                <c:otherwise>
-                  <li class="page"><a href="viewmanagementreview" class="paging_select">Back</a></li>
-              </c:otherwise>
-              </c:choose>					
-		 
-		  </ul>
-		  </div>
-		  </td>
-		  </tr>
-		 
-
 						</table>
 						<script>
 
