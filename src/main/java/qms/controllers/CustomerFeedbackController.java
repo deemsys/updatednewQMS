@@ -55,7 +55,6 @@ public class CustomerFeedbackController
 		return "add_customerfeedback";
 	}
 	
-	//edit a record
 	@RequestMapping(value={"/editfeedback"}, method = RequestMethod.GET)
 	public String edit_customerfeedback(@RequestParam("fid") String fid,ModelMap model, Principal principal ) {
 		
@@ -243,13 +242,15 @@ public class CustomerFeedbackController
 					System.out.println("File Size:::" + file.getSize());
 					return "/login";
 				}				
-			    orginal_fileName ="C:/projects/"+file.getOriginalFilename();
+
+			    orginal_fileName ="D:/customerfeedback"+file.getOriginalFilename();
 			    duplicate_fileName=orginal_fileName;
 			    File create_file=new File(orginal_fileName);
 			    int i=1;			    
 			    while(create_file.exists())
 			    {
-			    	duplicate_fileName="C:/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+
+			    	duplicate_fileName="D:/customerfeedback"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
 			    	create_file=new File(duplicate_fileName);
 			    	i++;
 			    }

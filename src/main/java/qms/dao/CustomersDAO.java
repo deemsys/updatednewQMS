@@ -19,6 +19,7 @@ public class CustomersDAO {
 		this.dataSource = dataSource;
 	}
 	
+	
 	public String getMax_customerID(){
 		Connection con = null;
 		Statement statement = null;
