@@ -268,7 +268,7 @@ public class MaintenanceDAO extends AbstractExcelView
 	}
 	
 	//Search operation for find a particular record
-	public List<Maintenance>  search_maintenance(String equipment_id,String equipment_name,String date_acquired) {
+	public List<Maintenance>  search_maintenance(String equipment_id,String equipment_name) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -287,7 +287,7 @@ public class MaintenanceDAO extends AbstractExcelView
 		try {
 			
 
-			String cmd_select = "select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where equipment_id='"+equipment_id+"'or equipment_name='"+equipment_name+"' or date_acquired='"+date_acquired+"'";
+			String cmd_select = "select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where equipment_id='"+equipment_id+"'or equipment_name='"+equipment_name+"'";
 			resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {
 				

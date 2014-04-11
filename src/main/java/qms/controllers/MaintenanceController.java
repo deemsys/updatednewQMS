@@ -48,20 +48,20 @@ public class MaintenanceController {
 	//search for record in view 
 	@RequestMapping(value={"/search_maintenance"}, method = RequestMethod.GET)
 	
-	public String search_maintenance(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,@RequestParam("date_acquired") String date_acquired,ModelMap model, Principal principal)
+	public String search_maintenance(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal)
 {
 	System.out.println(equipment_id);
-    if(equipment_id.equals("")&&equipment_name.equals("")&&date_acquired.equals(""))
+    if(equipment_id.equals("")&&equipment_name.equals(""))
 	{
     	MaintenanceForm maintenanceForm=new MaintenanceForm();
-    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,date_acquired));
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
     	
     	model.addAttribute("maintenanceForm",maintenanceForm);
 	}
 	else
 	{
 		MaintenanceForm maintenanceForm=new MaintenanceForm();
-		maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,date_acquired));
+		maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
 		
 		model.addAttribute("maintenanceForm",maintenanceForm);
 			}

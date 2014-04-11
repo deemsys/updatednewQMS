@@ -316,7 +316,7 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="25%">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="datepicker"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="date" class="input_txtbx1" ></td>
 							    <td align="left" valign="middle" width="25%">&nbsp;Type of Feedback: </td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="type_of_feedback" id="type" class="input_txtbx1"></td>
 							    <!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>

@@ -235,7 +235,7 @@ import qms.forms.SupplierPerformanceForm;;
 			model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
 			model.addAttribute("menu","supplier");
 			System.out.println("list result.......");
-			return "list_supplier";
+			return "list_supplierperformance";
 		}
 
 	//report page request passing

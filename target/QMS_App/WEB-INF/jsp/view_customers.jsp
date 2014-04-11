@@ -92,7 +92,7 @@
 								<!-- <td valign="center" align="left" width="5%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="10%">Customer&nbsp;ID</td>
 					         	<td valign="top" align="left" width="15%">Customer Name</td>
-								<td valign="top" align="left" width="10%">Telephone</td>
+								<td valign="top" align="left" width="10%">Address</td>
           						<td valign="top" align="left" width="15%">Email Address</td>
           						<td valign="top" align="left" width="15%">Actions</td>
         					</tr>
@@ -108,7 +108,7 @@
 							       		<tr class="row<%=i%>" ">
 								           	<td valign="top" align="left"  width="10%"><a href="list_customer?id=${customers.customer_id}">${customers.customer_id}</a></td>
 											<td valign="top" align="left" width="15%">${customers.customer_name}</td>
-											<td valign="top" align="left" width="10%">${customers.telephone}</td>
+											<td valign="top" align="left" width="10%">${customers.address}</td>
 											<td valign="top" align="left" width="15%">${customers.email_address}</td>
 											<td valign="top" align="left" width="15%">
 											
