@@ -269,15 +269,6 @@ public class DocumentControlDAO extends AbstractExcelView
 					}
 					
 				}
-				
-				
-				
-				
-				
-				
-				
-				
-				
 		}
 	}
 	

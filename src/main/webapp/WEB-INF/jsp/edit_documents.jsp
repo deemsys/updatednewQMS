@@ -23,6 +23,9 @@ $(window).load(function(){
  
 <jsp:include page="header.jsp"></jsp:include>
 	<script src="/QMS_App/resources/js/jquery.js"></script>
+	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
  <form method="post" enctype="multipart/form-data" action="update_documents">
  
   <div id="right_content">
@@ -100,9 +103,18 @@ $(window).load(function(){
                <option onclick="toggle2(this.value);" value="Hard Copy">Hard Copy</option>
                <option onclick="toggle2(this.value);" value="Electronic">Electronic</option>
                </select> -->
+               <c:choose>
+               <c:when test="${documentMain.media_type==0}">
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${documentMain.media_type==1}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               </c:choose>
                </td>
            <td valign="top" align="left" class="input_txt" width="20%"></td>
               
@@ -111,10 +123,10 @@ $(window).load(function(){
               
                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Document Title:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
-              
+              <c:choose>
+                <c:when test="${documentMain.media_type==0}">
                <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
-               
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
                <option value="Lab" <c:if test="${documentMain.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
@@ -124,7 +136,23 @@ $(window).load(function(){
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
               <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
                </td>
-          
+              </c:when>
+               </c:choose>
+               <c:choose>
+                <c:when test="${documentMain.media_type==1}">
+               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
+              <option value="">--Select--</option>
+               <option value="Lab" <c:if test="${documentMain.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
+               <option value="Shop Floor" <c:if test="${documentMain.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
+               <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
+               </select>
+               <input name="attachments" id="id_file" type="file" value="${documentMain.attachment_name}"/>${documentMain.attachment_name}<br/>
+              <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
+               </td>
+              </c:when>
+               </c:choose>
            <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err">*</span></td>
                <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
      
@@ -153,7 +181,7 @@ $(window).load(function(){
                <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-               <option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
+               <option value="<c:out value="${processes.process_name}"/>" <c:if test="${documentMain.process==processes.process_name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_name}"/></option>
                </c:forEach>
                
                
@@ -240,7 +268,7 @@ $(window).load(function(){
              <tr class="row1" style="border:none;">
               
                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="date" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
                 <td valign="middle" align="right" class="input_txt" width="20%">
                
@@ -329,4 +357,11 @@ else if(value==0)
     
 }
 </script>
+<script>
+$(function() {
+
+  $( "#datepicker123" ).datepicker({dateFormat:"yy-mm-dd"});
+});
+</script>
+
       <jsp:include page="footer.jsp"></jsp:include>

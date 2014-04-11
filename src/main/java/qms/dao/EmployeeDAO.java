@@ -345,7 +345,6 @@ public class EmployeeDAO extends AbstractExcelView{
 				 
 			  status=statement.execute(cmd_delete1);
 			  status=statement.execute(cmd_delete2);
-				 
 			
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

@@ -3,8 +3,8 @@
  
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
-<script src="resources/js/jquery.min.js"></script>
- <script src="resources/js/jquery-ui.js"></script>
+<script src="/resources/js/jquery.min.js"></script>
+ <script src="/resources/js/jquery-ui.js"></script>
 	
 	  <script>
  $(function() {
