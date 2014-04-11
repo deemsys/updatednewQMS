@@ -785,7 +785,9 @@ public class EmployeeDAO extends AbstractExcelView{
 		}
 		return employees;
 
-	}	public int getnoofemployeereport() {
+	}
+	
+	public int getnoofemployeereport() {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;

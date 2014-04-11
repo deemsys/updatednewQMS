@@ -164,14 +164,35 @@
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span><label>Employee ID:</label></td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="employee_id" value="<c:out value="${employee.employee_id }"/>"/><c:out value="${employee.employee_id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Qualified By:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="qualified_by" class="input_txtbx1" id="inp_qualified_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.qualified_by }" /><br><span class="err"><form:errors path="Employee.qualified_by"></form:errors> </span></td>
+                  <td valign="top" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+                  													
+                  										<option
+															<c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
+															value="Education">Education</option>
+														<option
+															<c:if test="${Employee.qualified_by eq 'Experience'}"><c:out value="Selected"/></c:if>
+															value="Experience">Experience</option>
+														<option
+															<c:if test="${Employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if>
+															value="Training">Training</option>
+														
+															</select><span class="err"><form:errors path="Employee.qualified_by"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="name" class="input_txtbx1" id="inp_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.name }" /><br><span class="err"><form:errors path="Employee.name"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Type:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="type_of_training" class="input_txtbx1" id="inp_contact_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.type_of_training}" /><br><span class="err"><form:errors path="Employee.type_of_training"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+
+				                  									
+                  										<option
+															<c:if test="${Employee.type_of_training eq 'Classroom'}"><c:out value="Selected"/></c:if>
+															value="Classroom">Classroom</option>
+														<option
+															<c:if test="${Employee.type_of_training eq 'Hands on'}"><c:out value="Selected"/></c:if>
+															value="Hands on">Hands on</option>
+														</select></td>
                 
                 </tr>
 		<tr class="row2">

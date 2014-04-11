@@ -1,6 +1,14 @@
 package qms.controllers;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
+/* import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;*/
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -18,9 +26,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import qms.dao.ManagementReviewDAO;
-import qms.forms.ManagementReviewForm;
-import qms.model.ManagementReview;
 
+//import qms.forms.InternalAuditsForm;
+import qms.forms.MaintenanceForm;
+import qms.forms.ManagementReviewForm;
+//import qms.forms.ManagementReviewChildForm;
+//import qms.model.InternalAudits;
+//import qms.model.InternalAudits;
+import qms.model.InternalAudits;
+import qms.model.Maintenance;
+import qms.model.ManagementReview;
 @Controller
 @SessionAttributes({"managementreview"})
 public class ManagementReviewController
@@ -29,7 +44,7 @@ public class ManagementReviewController
 	@Autowired
 	ManagementReviewDAO managementreviewDAO;
 	
-//Getting Unique Id
+
 @RequestMapping(value={"/addmanagementreview"}, method = RequestMethod.GET)
 	
 	public String add_managementreview(ModelMap model, Principal principal)  {
@@ -40,7 +55,7 @@ public class ManagementReviewController
 
 
 
-//Insert a record
+
 @RequestMapping(value="/addmanagementreview", method = RequestMethod.POST)
 public String insert_managementreview(HttpSession session,@ModelAttribute("ManagementReview") @Valid ManagementReview managementReview, BindingResult result,ModelMap model, Principal principal)
 {
@@ -58,8 +73,6 @@ public String insert_managementreview(HttpSession session,@ModelAttribute("Manag
 	
 	if(!managementreviewDAO.insert_managementreview(managementReview))
 	{
-
-		System.out.println("inserted");
 		session.removeAttribute("managementreview");
 	}
 	}
@@ -72,7 +85,7 @@ public String insert_managementreview(HttpSession session,@ModelAttribute("Manag
 }
 
 
-//view a record page
+
 @RequestMapping(value="/view_review", method=RequestMethod.GET)
 public String viewmaintenance(HttpServletRequest request,@RequestParam("review_id") String review_id ,ModelMap model,ManagementReview managementreview)
 {
@@ -82,7 +95,7 @@ public String viewmaintenance(HttpServletRequest request,@RequestParam("review_i
 	model.addAttribute("menu","managementreview");
 	return "view_review";
 }
-  //Edit a record 
+  //for EDITING REVIEW 
 @RequestMapping(value = "/edit_managementreview", method = RequestMethod.GET)
 public String edit_review(@RequestParam("review_id") String review_id,ModelMap model,Principal principal) {
 	ManagementReviewForm managementreviewForm= new ManagementReviewForm();
@@ -93,67 +106,18 @@ public String edit_review(@RequestParam("review_id") String review_id,ModelMap m
 
 
 
-// For view review
+// for VIEWING REVIEW
 
 @RequestMapping(value = "/viewmanagementreview", method = RequestMethod.GET)
 public String view_review(ModelMap model, Principal principal) {
-		ManagementReviewForm managementreviewform= new ManagementReviewForm();
-	/*managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());*/	
-	model.addAttribute("menu","managementreview");
-	model.addAttribute("noofrows",5);     
-	managementreviewform.setManagementreviewdetails(managementreviewDAO.getlimitedmanagementreport(1));
-	    model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.getnoofmanagementreport() * 1.0 / 5));	 
-	        model.addAttribute("button","viewall");
-	        model.addAttribute("success","false");
-	        model.addAttribute("currentpage",1);
-
-	        model.addAttribute("managementreviewform", managementreviewform);
-
-	return "view_managementreview";
-}
-
-
-
-@RequestMapping(value="/viewmanagementreport_page", method=RequestMethod.GET)
-public String viewmanagementreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
-	ManagementReviewForm managementreviewform= new ManagementReviewForm();
-	managementreviewform.setManagementreviewdetails(managementreviewDAO.getlimitedmanagementreport(page));
- 	model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.getnoofmanagementreport() * 1.0 / 5));
- 	model.addAttribute("managementreviewform",managementreviewform);	
-  	model.addAttribute("noofrows",5);   
-    model.addAttribute("currentpage",page);
-    model.addAttribute("menu","managementreview");
-    model.addAttribute("button","viewall");
-    System.out.println("request passing");
-    
-    return "view_managementreview";
-    
 	
-}
-
-
-@RequestMapping(value={"/", "/viewallmanagementreport"}, method = RequestMethod.GET)
-public String viewallmanagementreport(HttpServletRequest request,ModelMap model, Principal principal ) {
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 	model.addAttribute("managementreviewform", managementreviewform);
-
-  	    model.addAttribute("noofrows",5);    
-        //narrativereportForm.getNarrativereport().size()
-        model.addAttribute("menu","managementreview");
-        model.addAttribute("button","close");
-      
-    	model.addAttribute("menu","managementreview");
-        model.addAttribute("success","false");
-        model.addAttribute("button","close");
-        
-        return "view_managementreview";
-
+	return "view_managementreview";
 }
 
-
-
-//Updating a record 
+//for UPDATING REVIEW 
 @RequestMapping(value = "/updatemanagementreview", method = RequestMethod.POST)
 public String update_review(HttpSession session,@ModelAttribute("ManagementReview") @Valid ManagementReview managementreview,BindingResult result,ModelMap model,Principal principal) {
 	
@@ -189,15 +153,16 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	return "view_managementreview";
 }
 
-// Delete a record 
+// for DELETING REVIEW 
 	@RequestMapping(value="/delete_managementreview", method = RequestMethod.GET)
 	public String delete_review(@RequestParam("review_id") String review_id,ModelMap model, Principal principal )
 	{
-   		managementreviewDAO.delete_managementreview(review_id);
+    
 		ManagementReviewForm managementreviewform= new ManagementReviewForm();
 		managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 		model.addAttribute("managementreviewform", managementreviewform);
-		model.addAttribute("menu","review");
+
+
 		return "view_managementreview";
  	}
 	
@@ -210,7 +175,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 			"action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};	
 			String title = null;
 			java.util.List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
-		System.out.println("before the switch case in controller");
+		
 		 switch(Integer.parseInt(request.getParameter("management_report_type")))
 				  {
 					  case 0:
@@ -229,7 +194,6 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 						  managementreviewdetails=managementreviewDAO.getmanagement_bytype("past_due_action_list");
 						  title="past_due_action_list";
 						  break;
-						  
 					  case 4:
 						  managementreviewdetails=managementreviewDAO.getmanagement_bytype("list_of_continuous_improv_projects");
 						  title="list_of_continuous_improv_projects";
@@ -289,7 +253,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	}
 	
    
-
+	
 	//search for record in view 
 
 @RequestMapping(value={"/search_review"}, method = RequestMethod.GET)
@@ -299,7 +263,6 @@ public String searchmanagementreviews(@RequestParam("review_id") String review_i
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
 	model.addAttribute("managementreviewform", managementreviewform);
-	
 	return "view_managementreview";
 
 }
