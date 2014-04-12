@@ -22,6 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 import qms.dao.EmployeeDAO;
 import qms.model.Employee;
 import qms.forms.EmployeeForm;
+import qms.forms.JobForm;
 
 
 import qms.dao.JobDAO;
@@ -150,6 +151,11 @@ public class EmployeeController
     	EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployeess_byid(employee_id));
 		model.addAttribute("employeeForm",employeeForm);
+		
+		JobForm jobForm=new JobForm();
+		jobForm.setJobs(jobDAO.getJobs());
+		model.addAttribute("jobForm",jobForm);
+
 		model.addAttribute("menu","employee");
 		return "edit_employee";
  	}

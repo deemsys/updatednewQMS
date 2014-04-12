@@ -41,12 +41,12 @@ public class Employee
 	private String management_rep;
     
 	public Employee(String employee_id, String name, String job_title,
-			String date_hired, String attachments,
+			String date_hired, String attachments,String process,String process_name,String doc_control,String management_rep,
 			String list_of_functions_needes, String documented_in,
 			String qualified_by, String type_of_training, String trainer,
 			String training_due_date, String training_completion_date,
 			String training_effectiveness_review_due_date,
-			String training_effectiveness_notes,String process,String process_name,String doc_control,String management_rep) {
+			String training_effectiveness_notes) {
 		
 		super();
 		this.employee_id = employee_id;

@@ -12,7 +12,7 @@
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addemployee" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Employees</span>
+								<span>Add Employees</span>
 									
 								</a>
 							</li>
@@ -20,7 +20,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewemployees" class="<c:choose>
 								<c:when test="${menu=='employee'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Employees</span>
+								<span>View Employees</span>
 									
 								</a>
 							</li>
@@ -97,27 +97,7 @@
 							  </form>
 							  </div>
 							  
-	<!--  		         <div class="contentbox">
-						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
-								<form action="findemployee" method="GET">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							  <tr>
-							    <td align="left" valign="middle" width="15%">Type:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="type_of_training" class="input_txtbox" ids="type"></td>
-							    <td align="left" valign="middle" width="8%">QualifiedBy:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbox"></td>
-							    <td align="left" valign="middle" width="10%">Trainer:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbox" id="trainer"></td>
-							    
-							    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Clear" name="welcome" ></td>
-							  	
-							  </tr>
-							</table>
-							
-							</form>
-						</div>
-	 -->			         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+	 <table cellpadding="0" cellspacing="0" border="0" width="100%">
 				        
 				        
 							<tr class="title">
@@ -139,7 +119,8 @@
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" ">
-								           	<td valign="top" align="left"  width="10%"><a href="list_employee?id=${employees.employee_id}">${employees.employee_id}</td>
+								           	<td valign="top" align="left"  width="10%">
+								           	<a href="list_employee?id=${employees.employee_id}">${employees.employee_id}</td>
 											<td valign="top" align="left" width="15%">${employees.name}</td>
 											<td valign="top" align="left" width="10%">${employees.type_of_training}</td>											
 											<td valign="top" align="left" width="20%">${employees.qualified_by}</td>											

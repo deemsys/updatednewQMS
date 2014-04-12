@@ -140,9 +140,10 @@ function doAjaxPost() {
                 </tr>
 		<tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Job Title:</td>
-               	<td valign="top" align="left" class="input_txt" width="70%"><span id="job_titles"></span>&nbsp;&nbsp;<a href="#newjob" data-toggle="modal">Add New Job</a><br/><span class="err"><form:errors path="Employee.job_title"></form:errors></span></td>
+               	<td valign="top" align="left" class="input_txt" width="70%"><span id="job_titles"></span>&nbsp;&nbsp;
+               	<a href="newjob" data-toggle="modal">Add New Job</a><br/><span class="err"><form:errors path="Employee.job_title"></form:errors></span></td>
    				  <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span> Trainer :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="trainer" class="input_txtbx1" id="inp_title_of_contact" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.trainer}" /><br/><span class="err"><form:errors path="Employee.trainer"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input  type="text" name="trainer" class="input_txtbx1" id="inp_title_of_contact" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.trainer}" /><br/><span class="err"><form:errors path="Employee.trainer"></form:errors></span></td>
                 </tr>
                 	
 				<tr class="row1">
@@ -152,7 +153,7 @@ function doAjaxPost() {
                   <input type="checkbox" name="process_owner" onchange="toggle2(this)" value="yes" id="id_field_document_id"/>&nbsp;Process Owner                 
                   
                   <label id="process_name_label" style="display:none;">&nbsp;&nbsp;&nbsp;Process Name:</label>
-                  <input type="text" name="process_name" id="process_name" style="display: none;" class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><br/>
+                  <input type="text"  name="process_name1" id="process_name" style="display: none;" class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><br/>
                   <input type="checkbox" name="report_field[]" value="document_id" id="id_field_document_id"/>&nbsp;Document Control<br/><br/>
                   <input type="checkbox" name="report_field[]" value="document_id" id="id_field_document_id"/>&nbsp;Management Representative<br/>
                   
@@ -177,7 +178,7 @@ function doAjaxPost() {
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Attachments:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="file" name="attachments" class="input_txtbx1" id="inp_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.attachments}" /><br><span class="err"><form:errors path="Employee.attachments"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="attachments" class="input_txtbx1" id="inp_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.attachments}" /><br><span class="err"><form:errors path="Employee.attachments"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Completion Date</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.training_completion_date}" /><br><span class="err"><form:errors path="Employee.training_completion_date"></form:errors></span></td>
                 
@@ -186,7 +187,8 @@ function doAjaxPost() {
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Process:</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process" class="input_txtbx1" id="inp_process" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.process}" /><br><span class="err"><form:errors path="Employee.process"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Process Name</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" class="input_txtbx1" id="inp_process_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.process_name}" /><br><span class="err"><form:errors path="Employee.process_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <input type="text" name="process_name" class="input_txtbx1" id="inp_process_name" value="${Employee.process_name}" /><br><span class="err"><form:errors path="Employee.process_name"></form:errors></span></td>
                 
                 </tr>
                 
@@ -255,25 +257,24 @@ function doAjaxPost() {
    				   
 </form>
 <script>
+
 $(function() {
-	 var format="yy-mm-dd";
-          $( "#datepicker" ).datepicker();
-          
+	var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' }).val();   
         });
  
 
  $(function() {
-	 $( "#datepicker1" ).datepicker();
+	 var date = $('#datepicker1').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
         });
  
 
  $(function() {
-	 $( "#datepicker3" ).datepicker();
+	 var date = $('#datepicker2').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
          });
  
 
  $(function() {
-	 $( "#datepicker2" ).datepicker();
+	 var date = $('#datepicker3').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
      
          });
  
