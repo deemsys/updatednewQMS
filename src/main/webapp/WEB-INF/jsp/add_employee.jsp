@@ -4,18 +4,11 @@
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
- <script src="resources/js/jquery-ui.js"></script>
- 
-
-<!-- Modal -->
-
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
 <script src="resources/js/modal.js"></script>
 <script src="resources/js/popover.js"></script>
 <script src="resources/js/transition.js"></script>
-<script src="resources/js/jquery-1.7.2.min.js"></script>
-
-
-
 <!-- Modal Ends -->
 
 <!-- Ajax -->
@@ -65,18 +58,6 @@ function doAjaxPost() {
 	}
 </script>
 	<!-- End Ajax -->
-
-
-
-
-
-
-
-
-
-
-
-
 <form method="post" action="addemployee">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -188,14 +169,15 @@ function doAjaxPost() {
 		
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> <span class="err">*</span>Date Hired:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_hired" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.date_hired}" /><br><span class="err"><form:errors path="Employee.date_hired"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <input type="text" name="date_hired" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.date_hired}" /><br><span class="err"><form:errors path="Employee.date_hired"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="training_due_date" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.training_due_date}" /><br><span class="err"><form:errors path="Employee.training_due_date"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Attachments:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="attachments" class="input_txtbx1" id="inp_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.attachments}" /><br><span class="err"><form:errors path="Employee.attachments"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="file" name="attachments" class="input_txtbx1" id="inp_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.attachments}" /><br><span class="err"><form:errors path="Employee.attachments"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Completion Date</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.training_completion_date}" /><br><span class="err"><form:errors path="Employee.training_completion_date"></form:errors></span></td>
                 
@@ -273,42 +255,30 @@ function doAjaxPost() {
    				   
 </form>
 <script>
- $(function() {
-	 $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+$(function() {
+	 var format="yy-mm-dd";
+          $( "#datepicker" ).datepicker();
+          
         });
  
-</script>
-  <script>
+
  $(function() {
-	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
+	 $( "#datepicker1" ).datepicker();
         });
  
-</script>
-   <script>
+
  $(function() {
-           $( "#datepicker3" ).datepicker({dateFormat: 'yy-mm-dd'});
+	 $( "#datepicker3" ).datepicker();
          });
  
-</script>
 
-   <script>
  $(function() {
-	 $( "#datepicker2" ).datepicker({dateFormat: 'yy-mm-dd'});
+	 $( "#datepicker2" ).datepicker();
      
          });
  
 </script>
- <!-- 
- function toggle2(sender){
 
-	    var e3=document.getElementById("process_name");
-	    var e4=document.getElementById("process_name_label");
-	    
-	    
-	e3.style.display=sender.checked?'inline':'none';
-	e4.style.display=sender.checked?'inline':'none';
-	    
-	} --> 
             
       <jsp:include page="footer.jsp"></jsp:include>
   
