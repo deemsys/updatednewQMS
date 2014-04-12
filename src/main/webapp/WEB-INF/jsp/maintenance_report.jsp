@@ -60,7 +60,7 @@
 					<h2>Maintenance Report </h2>
 				</div>
 				<div class="contentbox">
-					<form method="post" action="maintenances_report">
+					<form method="post" action="maintanence_report">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="report_type_table">
@@ -135,7 +135,8 @@
 					      		</tr>
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="frequency_maintenance" id="id_audit_notes"/>Frequency of Maintenance</td>
-								<td><input type="checkbox" name="report_field[]" value="calibration" id="id_finding"/>Calibration</td>
+								<td><input type="checkbox" name="report_field[]" value="calibration" id="id_finding"/>Calibration</td> 
+								<td><input type="checkbox" name="report_field[]" value="equipmentid" id="id_finding"/>Equipment Id</td>
 								<td><input type="checkbox" name="report_field[]" value="type_of_maintenance" id="id_completion_date"/>Type of Maintenance </td>
 					      		</tr>
 					      		<tr>

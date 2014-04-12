@@ -66,6 +66,32 @@ function doAjaxPost() {
 </script>
 	<!-- End Ajax -->
 
+<script>
+ $(function() {
+	 $( "#datepicker" ).datepicker();
+        });
+ 
+</script>
+  <script>
+ $(function() {
+	 $( "#datepicker1" ).datepicker();
+        });
+ 
+</script>
+   <script>
+ $(function() {
+           $( "#datepicker2" ).datepicker();
+         });
+ 
+</script>
+
+   <script>
+ $(function() {
+	 $( "#datepicker3" ).datepicker();
+     
+         });
+ 
+</script>
 
 
 
@@ -272,32 +298,7 @@ function doAjaxPost() {
    				</div>
    				   
 </form>
-<script>
- $(function() {
-	 $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
-        });
- 
-</script>
-  <script>
- $(function() {
-	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
-        });
- 
-</script>
-   <script>
- $(function() {
-           $( "#datepicker3" ).datepicker({dateFormat: 'yy-mm-dd'});
-         });
- 
-</script>
 
-   <script>
- $(function() {
-	 $( "#datepicker2" ).datepicker({dateFormat: 'yy-mm-dd'});
-     
-         });
- 
-</script>
  <!-- 
  function toggle2(sender){
 

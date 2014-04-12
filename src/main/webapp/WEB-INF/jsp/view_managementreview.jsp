@@ -129,11 +129,45 @@
 											
 											<td valign="top" align="left" width="15%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_managementreview?review_id=${managementreviewdetails.review_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" >Remove</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" onclick="return confirmation()">Remove</a>
 											</td>	
 											
 										</tr>
-							    </c:forEach>			
+							    </c:forEach>	
+							    
+							      <td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
+        
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewmanagementreviewreport_page?page=${currentpage - 1}" >Prev</a></li> 
+               </c:if>
+              
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                        <li class="page_unselect"><a href="viewmanagementreviewreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewmanagementreviewreport_page?page=${currentpage+1}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewallmanagementreviewreport" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="view_managementreview" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>			
+							    
+							    
+							    		
 						    		<tr><td colspan="7">  <div class="extrabottom">
               						<ul class="pagination">
                 						<li class="text"><input type="submit" name="view" value="View All" class="submit_btn"></li>
@@ -172,6 +206,17 @@
 						
 
 
+</script>
+<script>
+function confirmation() {
+	var answer = confirm("Are you Sure You Want to Delete Management Reviews Form ?")
+	if (answer){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 </script>
  <script>
  $(function() {

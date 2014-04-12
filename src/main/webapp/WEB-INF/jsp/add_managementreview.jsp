@@ -68,7 +68,7 @@
             <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>&nbsp;REVIEW ID:</td>
+                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>&nbsp;Review Id:</td>
 	                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="review_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span class="err"></span></td>
               <td valign="middle" align="right" class="input_txt" width="30%">
               <td valign="top" align="left" class="input_txt" width="70%">
@@ -77,7 +77,7 @@
                 		
                 <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>&nbsp;MANAGEMENT REVIEW DATE:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementreview.management_review_date}"></c:out>' /><br/><span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="management_review_date" class="input_txtbx" id="management_review_date" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementreview.management_review_date}"></c:out>' /><br/><span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
                  <td valign="middle" align="right" class="input_txt" width="30%">
               <td valign="top" align="left" class="input_txt" width="70%">
               

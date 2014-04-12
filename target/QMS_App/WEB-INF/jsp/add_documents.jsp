@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
+  
  <form method="post" enctype="multipart/form-data" action="insert_documents">
  
   <div id="right_content">
@@ -56,7 +57,9 @@
 									
 								</a>
 							</li>
-				             --%></ul>
+				             --%>
+				             
+				             </ul>
   </div>
         </td>
       </tr>
@@ -80,7 +83,8 @@
     
              <tr class="row1">
              
-               <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">Document ID:<input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/></td>
+               <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">Document ID:
+               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/></td>
               
                <td valign="top" align="left" class="input_txt1" width="15%" id="lable_td" style="display:none;">
                <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
@@ -136,7 +140,7 @@
                <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
                </select>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
-              <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
+              
                </td>
           
            <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err"></td>
@@ -215,8 +219,8 @@
              <tr class="row1" style="border:none;">
            
             <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Issuer:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">
-               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" style="width:80px;">
+               <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
+               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" onblur="change_to_label_issuer();" style="width:80px;">
                <option value="">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -246,12 +250,17 @@
               <option value="Z">Z</option>
               
                </select>
-               
-               <!-- <select name="issuer" id="issuer" class="input_cmbbx1" style="width:120px;"> -->
-               <span id="issuer_generate">
-               
+                <span id="issuer_generate">
                
                </span>
+                <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
+               <br/>
+              </td>
+               
+               
+            
+               <!-- <select name="issuer" id="issuer" class="input_cmbbx1" style="width:120px;"> -->
+               
            <%-- <a href="#" style="text-decoration: none;" onclick="show_filter()">&nbsp;&nbsp;Change</a>
                <br/><span class="err"><form:errors path="DocumentMain.issuer"></form:errors></span></td>
             --%> 
@@ -315,10 +324,7 @@
                <c:forEach items="${employeeForm2.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>"><c:out value="${employees.name}"/></option>
                </c:forEach>
-               
-               
-               
-               </select>
+              </select>
                
                <br/><span class="err"><form:errors path="DocumentMain.approver3"></form:errors></span></td>
            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
@@ -399,9 +405,6 @@ function doAjaxPost() {
 			
 			$('#issuer_generate').html(response);
 			//$('#filter_value').hide();
-			
-			
-		
 		},
 		error : function(e) {
 			alert('Error: ' + e);
@@ -426,6 +429,7 @@ function doAjaxPost_for_process() {
 		}
 	});
 }
+
 function change_to_label()
 {
 	
@@ -481,6 +485,27 @@ document.getElementById("lable_td").style.display="none";
   document.getElementById("filter_value").style.display="inline";
   document.getElementById("issuer_generate").style.display="none";
   	} 
+  
+  function change_to_label_issuer()
+  {
+  	
+      
+  	var type=document.getElementById("filter_value");	
+  	
+  	document.getElementById("lable_td_issuer").style.display="block";
+  	document.getElementById("edit_td_issuer").style.display="none";
+  	
+  	document.getElementById("issuer_full_lbl").innerHTML=type.value;
+  	
+  	}
+  function show_edit_issuer()
+  {
+	  document.getElementById("issuer_generate").style.display="none";
+	  document.getElementById("issuer_full_lbl").style.display="none";
+  document.getElementById("filter_value").style.display="block";
+  
+  	
+  	}
   </script>
        
  

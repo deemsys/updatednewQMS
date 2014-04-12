@@ -1,5 +1,6 @@
 package qms.dao;
 
+import java.awt.Font;
 import java.sql.Connection;
 
 import java.sql.ResultSet;
@@ -13,10 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
+
 import qms.model.ManagementReview;
 
 public class ManagementReviewDAO extends AbstractExcelView
@@ -30,8 +35,8 @@ public class ManagementReviewDAO extends AbstractExcelView
 	return dataSource;
 }
 	@SuppressWarnings("rawtypes")
-	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook ,
+	//@Override
+/*	protected void buildExcelDocument(Map model, HSSFWorkbook workbook ,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
@@ -60,7 +65,6 @@ public class ManagementReviewDAO extends AbstractExcelView
 				{
 					excelHeader.createCell(record++).setCellValue(
 							"REVIEW ID");
-					
 				}
 				else if (field.equals("management_review_date")) {
 					excelHeader.createCell(record++).setCellValue(
@@ -178,7 +182,226 @@ public class ManagementReviewDAO extends AbstractExcelView
 			}
 		}
 	}
+*/
+	/**
+	 * Excel Sheet Generation
+	 */
+	
+	@Override
+	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
 
+		HSSFSheet excelSheet = workbook.createSheet("Management Review Report");
+		excelSheet.setDefaultColumnWidth(20);
+		  
+		//Style 1
+		CellStyle style = workbook.createCellStyle();
+	        HSSFFont font = workbook.createFont();
+	        font.setFontName("Arial");
+	        style.setFillForegroundColor(HSSFColor.BROWN.index);
+	        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+	        style.setWrapText(true);
+	        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	        font.setColor(HSSFColor.WHITE.index);
+	        style.setFont(font);
+		
+	    //Style2
+	        CellStyle style2 = workbook.createCellStyle();
+	        HSSFFont font2 = workbook.createFont();
+	        font2.setFontName("Arial");
+	        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
+	        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
+	        style2.setWrapText(true);
+	        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	        font2.setColor(HSSFColor.WHITE.index);
+	        style2.setFont(font2); 
+	        System.out.println("came inside report");
+
+		@SuppressWarnings("unchecked")
+		List<ManagementReview> managementReviews = (List<ManagementReview>) model.get("managementReviews");
+		String[] fields=(String[])model.get("fields");
+		
+		//System.out.println("came inside report");
+        setExcelHeader(excelSheet,style,fields);
+		
+		setExcelRows(excelSheet,managementReviews,fields,style2);
+		
+	}
+	//creating header records
+	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
+		HSSFRow excelHeader = excelSheet.createRow(0);	
+	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
+		int i=0;
+		for (String field : fields) {
+			
+			if(field.equals("review_id"))
+			{
+				excelHeader.createCell(i).setCellValue("review_id");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("management_review_date"))
+			{
+				excelHeader.createCell(i).setCellValue("Management review date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("attendee_list_with_titles"))
+			{
+				excelHeader.createCell(i).setCellValue("Attendee list with titles");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("next_management_review_by"))
+			{
+				excelHeader.createCell(i).setCellValue("Next management review by");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("category"))
+			{
+				excelHeader.createCell(i).setCellValue("category");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("assessment"))
+			{
+				excelHeader.createCell(i).setCellValue("Assessment");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("report_link"))	
+			{
+				excelHeader.createCell(i).setCellValue("Report Link");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("action_needed"))	
+			{
+				excelHeader.createCell(i).setCellValue("Action needed");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("action_detail"))	
+			{
+				excelHeader.createCell(i).setCellValue("Action detail");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("action_due_date"))
+			{
+				excelHeader.createCell(i).setCellValue("Action due date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("responsibility"))	
+			{
+				excelHeader.createCell(i).setCellValue("Responsibility");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("completion_date"))	
+			{
+				excelHeader.createCell(i).setCellValue("Completion Date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("continuous_improvement_project"))	
+			{
+				excelHeader.createCell(i).setCellValue("Continuous improvement project");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+		}
+	
+	}
+	
+	
+	//End
+	
+	
+	//creating cell records
+	public void setExcelRows(HSSFSheet excelSheet, List<ManagementReview> managementReviews,String[] fields,CellStyle style2){
+		int record = 1;
+		int i=0;
+		for (ManagementReview managementReview:managementReviews){	
+			HSSFRow excelRow = excelSheet.createRow(record++);
+	//		excelRow.setRowStyle((HSSFCellStyle) style2);
+		i=0;
+				for (String field : fields) {
+					
+					if(field.equals("review_id"))
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getReview_id());
+							i++;
+					}
+					else if(field.equals("management_review_date"))
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getManagement_review_date());
+
+						i++;
+					}
+					else if(field.equals("attendee_list_with_titles"))
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getAttendee_list_with_titles());
+								i++;
+					}
+					else if(field.equals("next_management_review_by"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getNext_management_review_by());
+						i++;
+					}else if(field.equals("category"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getCategory());
+						i++;
+					}else if(field.equals("assessment"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getAssessment());
+						i++;
+					}else if(field.equals("report_link"))
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getReport_link());
+					}else if(field.equals("action_needed"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getAction_needed());
+						i++;
+					}else if(field.equals("action_detail"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getAction_detail());
+						i++;
+					}else if(field.equals("action_due_date"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getAction_due_date());
+						i++;
+					}
+					else if(field.equals("responsibility"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getResponsibility());
+						i++;
+					}else if(field.equals("completion_date"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getCompletion_date());
+						i++;
+					}else if(field.equals("continuous_improvement_project"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								managementReview.getContinuous_improvement_project());
+						i++;
+					}
+					
+				}
+				
+		}
+	}
+	
 // to GET MAXIMUM REVIEW ID	
 	public int getMax_reviewid(){
 		Connection con = null;
@@ -417,6 +640,40 @@ public List<ManagementReview> search_managementreviews(String review_id,String c
 		releaseConnection(con);
 	}
 	return managementreviewdetails;
+}
+
+public int getnoofmanagementreviewreport() {
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	int noofRecords = 0;
+	
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ManagementReview> managementReviews = new ArrayList<ManagementReview>();
+	try {
+
+		String cmd;
+			cmd = "select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";
+		System.out.println("command"+cmd);			
+		resultSet = statement.executeQuery(cmd);
+		if (resultSet.next())
+			noofRecords = resultSet.getInt("noofrecords");
+		System.out.println("NOof Records="+noofRecords);
+	} catch (Exception e) {
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	} finally {
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	}
+	return noofRecords;
 }
 // For REPORT GENERATION 
 public  List<ManagementReview> getmanagement_bytype(String type){

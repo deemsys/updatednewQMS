@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;*/
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -158,15 +159,16 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	public String delete_review(@RequestParam("review_id") String review_id,ModelMap model, Principal principal )
 	{
     
+		managementreviewDAO.delete_managementreview(review_id);
 		ManagementReviewForm managementreviewform= new ManagementReviewForm();
 		managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 		model.addAttribute("managementreviewform", managementreviewform);
-
-
+		model.addAttribute("menu","managementreview");
 		return "view_managementreview";
+		
  	}
 	
-	//Management Review Report generation
+/*	//Management Review Report generation
 	@RequestMapping(value = "/management_review_report", method = RequestMethod.POST)
 	public ModelAndView generatereview_Report(HttpServletRequest request,ModelMap model) 
 	{	
@@ -251,8 +253,83 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		model.addAttribute("menu","review");
 		return "managementreview_report";
 	}
-	
+	*/
    
+
+	
+	//This is used for downloading Excel Sheet
+	@RequestMapping(value ={ "/managementreviewreport" }, method = RequestMethod.GET)
+	  public ModelAndView getExcel_view1() {
+	java.util.List<ManagementReview> managementReviews=new ArrayList<ManagementReview>();
+	
+	managementReviews=managementreviewDAO.get_managementreview();
+	
+	return new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+	
+	}
+	//report page request passing
+	@RequestMapping(value = "/managementreview_report", method = RequestMethod.GET)
+	public String reportmanagementreview(ModelMap model) {
+		  model.addAttribute("menu","managementreview");
+		return "report_managementreview";
+
+	}
+	
+	//ManagementReview Report Generation
+	@RequestMapping(value = "/generate_managementreview_report", method = RequestMethod.POST)
+	public ModelAndView generatemanagementreview_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response)
+	{
+		String start = null,end = null;
+		String[] fields={"review_id","management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
+		System.out.println(request.getParameter("type_of_report"));
+		java.util.List<ManagementReview> managementReviews=new ArrayList<ManagementReview>();
+			switch(Integer.parseInt(request.getParameter("management_report_type")))
+			  {
+				  case 0:
+					  managementReviews=managementreviewDAO.getmanagement_bytype("management_review_minutes");
+					  //title="management_review_minutes";
+					  break;
+				  case 1:
+					  managementReviews=managementreviewDAO.getmanagement_bytype("upcoming_management_review_memo");
+					  //title="upcoming_management_review_memo";
+					  break;
+				  case 2:
+					  managementReviews=managementreviewDAO.getmanagement_bytype("action_list_beween_dates");
+					  //title="action_list_beween_dates";
+					  break;
+				  case 3:
+					  managementReviews=managementreviewDAO.getmanagement_bytype("past_due_action_list");
+					  //title="past_due_action_list";
+					  break;
+				  case 4:
+					  managementReviews=managementreviewDAO.getmanagement_bytype("list_of_continuous_improv_projects");
+					  //title="list_of_continuous_improv_projects";
+					  break;
+				  default:
+					  break;
+		}
+		if(Integer.parseInt(request.getParameter("report_type"))==1)
+		{
+		
+				System.out.println("now ok");
+				 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
+					
+				fields=request.getParameterValues("report_field[]");
+			
+		}
+		else
+			
+		response.setHeader("Content-Disposition","attachment;filename='ManagementReview_Report'");
+		
+		
+		ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+		
+		modelAndView.addObject("fields",fields);
+		
+		System.out.println("now ok::::");
+		return modelAndView ;
+	}
+	
 	
 	//search for record in view 
 
