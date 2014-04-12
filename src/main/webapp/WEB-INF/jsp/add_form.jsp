@@ -1,18 +1,9 @@
  <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
- 
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
-<script src="/resources/js/jquery.min.js"></script>
- <script src="/resources/js/jquery-ui.js"></script>
-	
-	  <script>
- $(function() {
-	
-           $( "#datepicker123" ).datepicker({dateFormat:"yy-mm-dd"});
-         });
- 
-</script>
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 	<form method="post" enctype="multipart/form-data" action="addform">
 
  
@@ -472,11 +463,13 @@ document.getElementById("lable_td").style.display="none";
   	document.getElementById("user_defined_td").style.display="none";
   	} 
   </script>
-  
-  <script type="text/javascript">
-  
-
-  </script>
+  <script>
+ $(function() {
+	 
+           $( "#datepicker123" ).datepicker();
+         });
+ 
+</script>
     
   
       <jsp:include page="footer.jsp"></jsp:include>

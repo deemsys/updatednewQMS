@@ -60,12 +60,12 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>&nbsp;&nbsp;Add Form</h2>
+              <h2>&nbsp;&nbsp;Update Form</h2>
             </div>
             <div class="contentbox">
-            
+    <c:set value="${formForm.form[0]}" var="form"/>        
 	<table cellpadding="0" cellspacing="0" border="0" width="100%">
-	<c:set value="${formForm.form[0]}" var="form"> </c:set>
+	
 														<tr>
 															<td align="left" valign="top" width="50%"
 																style="padding-right: 25px;">
@@ -74,7 +74,7 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr class="row1">
               <%-- <input type="hidden" class="input_txtbx1" id="inp_id" value="${form.auto_number}" name="auto_number" /> --%>
-              <td valign="middle" align="left" class="input_txt"><span
+             <%--  <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Auto Number :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="hidden" class="input_txtbx1" id="inp_external_id"
@@ -84,20 +84,17 @@
 																			value="${form.auto_number}" />
 																			<c:out value="${form.auto_number}"></c:out>
 																		
-																		</td>
+																		</td> --%>
 			<td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><label id="location_label" ><span class="err">*</span> Location:</label><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" >
                
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
-              <option value="">--Select--</option>
-               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
-               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
+               <option <c:if test="${form.location eq 'Lab'}"><c:out value="Selected"/></c:if>value="Lab">Lab</option>
+               <option value="Shop Floor" <c:if test="${form.location eq 'Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
+               <option value="Office" <c:if test="${form.location eq 'Office'}"><c:out value="Selected"/></c:if>>Office</option>
                </select>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align= "left" class="input_txt">																	
-																		</td>
+               </td>
+																		
 																		</tr>
                
               
@@ -144,15 +141,20 @@
 				<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Process:</td>
                <td valign="top" align="left" class="input_txt" >
                
-               <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
+              <%--  <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
-              <%--  <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
+                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                <option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
-               </c:forEach>
-                --%>
+               </c:forEach>               
+               </select> --%>
                
-               
-               </select>
+                <select name="process">
+							 
+			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
+        				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
+			                  </c:forEach>
+			                 </select>
+         
                
 																		
 																		<td valign="top" align="left" class="input_txt">																	
@@ -224,12 +226,12 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="auto_no"
-																			value="${form.auto_no}" />
-																			<c:out value="${form.auto_no}"></c:out>
+																			value="${form.auto_number}" />
+																			<c:out value="${form.auto_number}"></c:out>
 																		
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Effective Date :</td>
+																			class="err">*</span>c Date :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"

@@ -87,9 +87,11 @@ public class FormController
 		int flag = 0;
 		
 		String form_id=request.getParameter("document_id_hidden");
+		System.out.println("form id="+form_id);
 		form.setForm_or_rec_id(form_id);
-		String auto_number=request.getParameter("auto_number");
-		System.out.println("Auto"+auto_number);
+		String auto_number=request.getParameter("auto_no");
+		System.out.println("auto-number"+auto_number);
+		
 	//	form.setForm_or_rec_id(request.getParameter("document_type_id") + '-'	+ form.getForm_or_rec_id());
 		/*form.setAuto_no(request.getParameter("document_type_id1") + '-' + form.getAuto_no());*/
 		System.out.println("Started Inserting documents");
@@ -197,7 +199,7 @@ public class FormController
 	
 	//Update a record
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
-	public String update_form(HttpSession session,@ModelAttribute("Form") @Valid Form form,BindingResult result,ModelMap model, Principal principal)
+	public String update_form(HttpSession session,@ModelAttribute("form") @Valid Form form,BindingResult result,ModelMap model, Principal principal)
 	{
 		int flag = 0;
 		session.setAttribute("docform",form);
@@ -265,10 +267,12 @@ public class FormController
 
 					}
 				}
-				if (formDAO.update_form(form)) {
+				if (true){
+					formDAO.update_form(form,form.getAuto_number(),principal.getName());
 					model.addAttribute("success", "true");
 					model.addAttribute("success_message", "Updated Successfully");
 					flag = 1;
+					System.out.println("flag=1");
 				}
 			} catch (Exception e) {
 				System.out.println(e.toString());
@@ -367,7 +371,7 @@ public class FormController
 	@RequestMapping(value={"/edit_form"}, method = RequestMethod.GET)
 	public String edit_forms(HttpSession session,@RequestParam("auto_no") String auto_no,Form form,ModelMap model)
 	{
-    
+		System.out.println("auto no = "+auto_no);
 		session.removeAttribute("docform");
 		load_document_page_dropdowns(model);
 		FormForm formForm=new FormForm();

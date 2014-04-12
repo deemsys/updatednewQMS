@@ -165,8 +165,9 @@ public class FormDAO extends AbstractExcelView{
 		}
 	
 	//Update Operation
-	public boolean update_form(Form form)
+	public boolean update_form(Form form,String auto_number,String admin)
 	{
+		System.out.println("auto number = "+auto_number);
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -182,9 +183,9 @@ public class FormDAO extends AbstractExcelView{
 		}
 		try
 		{
-			String cmd_update1 = "update tbl_form set auto_number='"+form.getAuto_number()+"',location='"+form.getLocation()+"',form_or_rec_id='"+form.getForm_or_rec_id()+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_number()+"'";
+			String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form.getForm_or_rec_id()+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 			statement.execute(cmd_update1);
-			String cmd_update2="update tbl_form_child set auto_no='"+form.getAuto_no()+"',effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+form.getApprover1()+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'";
+			String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+form.getApprover1()+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'";
 		    statement.execute(cmd_update2);
 		}
 		catch(Exception e)
@@ -219,7 +220,7 @@ public class FormDAO extends AbstractExcelView{
 		}
 		  try{
 			  System.out.println("inserting");
-			  String cmd_insert1="insert into tbl_form(auto_number,location,form_or_rec_id,responsibility,form_or_rec_title,process,media_type,retention_time,form,attachment_name,attachment_type,attachment_referrence) values('"+form.getAuto_number()+"','"+form.getLocation()+"','"+form.getForm_or_rec_id()+"','"+form.getResponsibility()+"','"+form.getForm_or_rec_title()+"','"+form.getProcess()+"','"+form.getMedia_type()+"','"+form.getRetention_time()+"','"+form.getForm()+"','"+form.getAttachment_name()+"','"+form.getAttachment_type()+"','"+form.getAttachment_referrence()+"')"; 
+			  String cmd_insert1="insert into tbl_form(auto_number,location,form_or_rec_id,responsibility,form_or_rec_title,process,media_type,retention_time,form,attachment_name,attachment_type,attachment_referrence) values('"+form.getAuto_no()+"','"+form.getLocation()+"','"+form.getForm_or_rec_id()+"','"+form.getResponsibility()+"','"+form.getForm_or_rec_title()+"','"+form.getProcess()+"','"+form.getMedia_type()+"','"+form.getRetention_time()+"','"+form.getForm()+"','"+form.getAttachment_name()+"','"+form.getAttachment_type()+"','"+form.getAttachment_referrence()+"')"; 
 			  statement.execute(cmd_insert1);
 			  
 			  /*String cmd_insert1="insert into tbl_doccontrol_main(document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
@@ -257,7 +258,7 @@ public class FormDAO extends AbstractExcelView{
 		}
 		List<Form> form = new ArrayList<Form>();
 	    try{
-	    	resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no ");
+	    	resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number='"+auto_no+"' AND t2.auto_no='"+auto_no+"'");
 			System.out.println("came");
 			while(resultSet.next()){
 								form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments")));
