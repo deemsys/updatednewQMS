@@ -350,7 +350,7 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 							       			i=2;
 							       			else
 							       			i=1;%>
-							       		 <tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");"> 
+							       		 <tr class="row<%=i%>" onmouseover="mouse_event(this,'row_hover');" onmouseout="mouse_event(this,'row1');"> 
 								           	<td valign="top" align="left"  width="10%">${customerFeedbacks.date_of_feedback}</td>
 											<td valign="top" align="left" width="15%">${customerFeedbacks.type_of_feedback}</td>
 									 	 <td valign="top" align="left" width="10%">${customerFeedbacks.feedback_details}</td>
@@ -367,7 +367,7 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 									    	 --%><td valign="top" align="left" width="15%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editfeedback?fid=${customerFeedbacks.feedback_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletefeedbackr?fid=${customersFeedbacks.feedback_id}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletefeedback?fid=${customerFeedbacks.feedback_id}"/>" onclick="return confirmation()">Remove</a>
 											
 											</td>
 										</tr>
@@ -483,7 +483,7 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 <script>
  $(function() {
            $( "#datepicker" ).datepicker();
-         });
+         })
  
 </script>
 <jsp:include page="footer.jsp"></jsp:include>

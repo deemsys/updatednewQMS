@@ -32,6 +32,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import qms.dao.CustomerFeedbackDAO;
 import qms.model.CustomerFeedback;
 import qms.forms.CustomerFeedbackForm;
+import qms.forms.CustomersForm;
 
 import qms.dao.FileHandlingDAO;
 
@@ -147,7 +148,10 @@ public class CustomerFeedbackController
 	public String delete_customerfeedback(@RequestParam("fid") String fid,ModelMap model, Principal principal ) {
 		
 		
-		customerFeedbackDAO.delete_customerfeedback(fid);		
+		customerFeedbackDAO.delete_customerfeedback(fid);
+		CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
+		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
+	    model.addAttribute("customerFeedbackForm",customerFeedbackForm);
 		model.addAttribute("status","false");
 		return "view_customerfeedback";
 	}
