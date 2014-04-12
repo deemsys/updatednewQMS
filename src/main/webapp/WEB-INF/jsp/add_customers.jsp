@@ -11,7 +11,7 @@
   <ul class="horizmenu">
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcustomer" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+								<c:when test="${menu=='customer'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
 									<span>Add Customers</span>
 									
 								</a>
@@ -40,7 +40,7 @@
 							</li>
 				           <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="feedback_report" class="<c:choose>
-								<c:when test="${menu=='customer'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
 									<span>Feedback Report</span>
 									
 								</a>
