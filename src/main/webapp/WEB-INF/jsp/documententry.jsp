@@ -22,4 +22,3 @@
              <td colspan="3">
             <input type="submit" id="form"  name="FORM" value="form" class="submit_btn1"></td>
 </tr></table></div>
-<jsp:include page="footer.jsp"></jsp:include>

@@ -168,7 +168,10 @@
                <td valign="top" align="left"  colspan="3">${maintenance.notes}<br/><span class="err"></span></td>
             </tr>
  --%>            
-                
+                <tr>
+                <td align="right"><input type="button" value="Back" onclick="window.location.href='viewdocuments'" class="submit_btn1">
+                </td>
+                </tr>
             </table>
             </div>
             </td>

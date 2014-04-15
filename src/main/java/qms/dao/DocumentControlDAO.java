@@ -425,8 +425,16 @@ public class DocumentControlDAO extends AbstractExcelView
 				e1.printStackTrace();
 		}
 		  try{
+			  System.out.print(documentMain.getAttachments());
 			  String cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where document_id='"+documentMain.getDocument_id()+"'";
 			  String cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+documentMain.getApprover1()+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+			 
+			  if(documentMain.getAttachments().equals(null))
+			  {
+				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				  cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+documentMain.getApprover1()+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+			  }
+			 
 			statement.execute(cmd_update1);
 			statement.execute(cmd_update2);
 			status=true;
@@ -658,7 +666,7 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
-			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_id='"+search_document_type+"' or process='"+search_process+"'");
+			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type='"+search_document_type+"' or process='"+search_process+"'");
 			System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");

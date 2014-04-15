@@ -93,7 +93,7 @@
 							    <td align="left" valign="middle" width="10%"><input type="text" name="search_process" id="search_process" class="input_txtbx2"></td>
 							   
 							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  onclick="findpart()"></td>
-							    <td align="center" valign="middle" width="38%"><input type="button" value="Clear" class="submit_btn1"></td>
+							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
 							  </tr>
 							</table>
 							
@@ -123,15 +123,20 @@
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" ">
-								           	<td valign="top" align="left"  width="10%"><a href="list_document?id=${documentMains.document_id}">${documentMains.document_id}</a></td>
+								           	<td valign="top" align="left"  width="10%"><a href="list_documents?id=${documentMains.document_id}">${documentMains.document_id}</a></td>
+											<td valign="top" align="left" width="15%">${documentMains.document_title}</td>
 											<td valign="top" align="left" width="15%">${documentMains.document_type}</td>
 											<td valign="top" align="left" width="10%">${documentMains.process}</td>
 											
 											<c:choose>
-											<c:when test="${documentMains.location=='Nil'}">
+											<c:when test="${documentMains.media_type==1}">
 											<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a></td>
 										</c:when>
-										<c:otherwise><td valign="top" align="center" width="10%">Hard Copy </td>
+										<c:when test="${documentMains.media_type==0}">
+										<td valign="top" align="center" width="10%">Hard Copy </td>
+										</c:when>
+										<c:otherwise>
+										<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
 										</c:otherwise>
 										</c:choose>	
 											<td valign="top" align="center" width="15%">

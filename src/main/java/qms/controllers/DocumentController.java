@@ -151,17 +151,27 @@ public class DocumentController {
 
 		int flag = 0;
 		session.setAttribute("documentMain",documentMain);
-		if(result.hasErrors())
+		/*if(result.hasErrors())
 		{
 			
 			load_document_page_dropdowns(model);
 			return "edit_documents";
 		}
 		else
+		{*/
+		
+		
+		if(documentMain.getMedia_type().equals("1"))
 		{
-
-			byte[] buffer;
+			documentMain.setLocation("Nil");
+		}
+		else if(documentMain.getMedia_type().equals("2")){
+			documentMain.setLocation(documentMain.getLocation());
+		}
+		 
+		byte[] buffer;
 			try {
+				
 				MultipartFile file = documentMain.getAttachments();
 				String orginal_fileName = null;
 				String duplicate_fileName = null;
@@ -172,29 +182,23 @@ public class DocumentController {
 						inputStream = file.getInputStream();
 						if (file.getSize() > 100000) {
 							System.out.println("File Size:::" + file.getSize());
-							return "/add_document";
+							return "/add_documents";
 						}
-						orginal_fileName = "D:/Projects/Upload/DocumentControl/"
-								+ file.getOriginalFilename();
+						orginal_fileName = "C:/projects/"+ file.getOriginalFilename();
 						duplicate_fileName = orginal_fileName;
 						File create_file = new File(orginal_fileName);
 						int i = 1;
 						while (create_file.exists()) {
-							duplicate_fileName = "D:/Projects/Upload/DocumentControl/"
-									+ file.getOriginalFilename().substring(
-											0,
-											file.getOriginalFilename().lastIndexOf(
-													'.'))
-									+ i
-									+ file.getOriginalFilename().substring(
-											file.getOriginalFilename().lastIndexOf(
-													'.'));
+							duplicate_fileName = "C:/projects/"+ file.getOriginalFilename().substring(
+											0,file.getOriginalFilename().lastIndexOf(
+													'.'))+ i
+													+ file.getOriginalFilename().substring(
+											file.getOriginalFilename().lastIndexOf('.'));
 							create_file = new File(duplicate_fileName);
 							i++;
 						}
 						outputStream = new FileOutputStream(duplicate_fileName);
-						System.out
-								.println("fileName:" + file.getOriginalFilename());
+						System.out.println("fileName:" + file.getOriginalFilename());
 
 						// ------Lines to changes------//
 
@@ -215,6 +219,7 @@ public class DocumentController {
 
 					}
 				}
+				
 				if (documentControlDAO.update_document(documentMain)) {
 					model.addAttribute("success", "true");
 					model.addAttribute("success_message", "Updated Successfully");
@@ -229,7 +234,7 @@ public class DocumentController {
 			model.addAttribute("id", "1001");
 			if (flag == 1)
 			{
-				;
+				
 				DocumentMainForm documentMainForm = new DocumentMainForm();
 				documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 				model.addAttribute("documentMainForm", documentMainForm);
@@ -239,7 +244,7 @@ public class DocumentController {
 			}
 			else
 				return "add_documents";
-			}
+			/*}*/
 			
 		}
 	
@@ -270,6 +275,9 @@ public class DocumentController {
 			{
 				documentMain.setLocation("Nil");
 			}
+			/*else if(documentMain.getMedia_type().equals("2")){
+				documentMain.setLocation(documentMain.getLocation());
+			}*/
 		byte[] buffer;
 		try {
 			MultipartFile file = documentMain.getAttachments();
@@ -282,20 +290,19 @@ public class DocumentController {
 					inputStream = file.getInputStream();
 					if (file.getSize() > 100000) {
 						System.out.println("File Size:::" + file.getSize());
-						return "/add_document";
+						return "/add_documents";
 					}
-					orginal_fileName = "D:/customerfeedback"
-							+ file.getOriginalFilename();
+					orginal_fileName = "C:/projects/"+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
-						duplicate_fileName = "D:/customerfeedback"
-								+ file.getOriginalFilename().substring(
+
+						duplicate_fileName = "C:/projects/"+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
 												'.'))
-								+ i
+												+ i
 								+ file.getOriginalFilename().substring(
 										file.getOriginalFilename().lastIndexOf(
 												'.'));
@@ -303,8 +310,7 @@ public class DocumentController {
 						i++;
 					}
 					outputStream = new FileOutputStream(duplicate_fileName);
-					System.out
-							.println("fileName:" + file.getOriginalFilename());
+					System.out.println("fileName:" + file.getOriginalFilename());
 
 					// ------Lines to changes------//
 
@@ -458,8 +464,7 @@ public class DocumentController {
 				.getDocuments(document_id));
 		model.addAttribute("documentMainForm", documentMainForm);
 
-		fileHandlingDAO
-				.filedownload(response, documentMainForm.getDocumentMains()
+		fileHandlingDAO.filedownload(response, documentMainForm.getDocumentMains()
 						.get(0).getAttachment_referrence(), documentMainForm
 						.getDocumentMains().get(0).getAttachment_name());
 
@@ -476,8 +481,7 @@ public class DocumentController {
 			ModelMap model) {
 
 		DocumentMainForm documentMainForm = new DocumentMainForm();
-		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(
-				search_document_type,search_process));
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
 		model.addAttribute("documentMainForm", documentMainForm);
 		return "view_documents";
 
@@ -485,7 +489,7 @@ public class DocumentController {
 	
 	// Document Control list page	
 	
-	@RequestMapping(value = "list_document", method = RequestMethod.GET)
+	@RequestMapping(value = "/list_documents", method = RequestMethod.GET)
 	public String list_document(@RequestParam("id") String document_id,
 			ModelMap model, Principal principal) 
 	{
@@ -495,7 +499,7 @@ public class DocumentController {
 
 		model.addAttribute("documentMainForm", documentMainForm);
 		model.addAttribute("menu","document");
-		return "list_document";
+		return "list_documents";
 	}
 
 

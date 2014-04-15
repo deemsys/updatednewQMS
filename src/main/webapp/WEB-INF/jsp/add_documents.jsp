@@ -128,17 +128,16 @@
               <tr class="row2">
               
                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Document Title:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err"> Location:</label><label id="file_upload_label" style="display:none;"><span class="err"> Upload File:</label></td>
-               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
-               
-               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
+               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err"> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"> Upload File:</label></td>
+               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <select align="middle" id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
                <option value="Lab" <c:if test="${documentMain.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
                <option value="Shop Floor" <c:if test="${documentMain.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
                <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
-               </select>
+               </select><br>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
               
                </td>
@@ -380,6 +379,13 @@ else if(value==0)
 	e3.style.display="none";
   
     }
+else if(value==2)
+	{
+	e.style.display="block";
+	e1.style.display="block";
+	e2.style.display="block";
+	e3.style.display="block";
+	}
     
 }
 </script>
