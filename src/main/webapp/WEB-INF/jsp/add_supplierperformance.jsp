@@ -2,6 +2,7 @@
 <%@page import="qms.model.SupplierPerformance"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
+
 <html>
 <head>
 <STYLE type="text/css">
@@ -11,8 +12,9 @@
   </STYLE>
  </head>
  <body>
-<form method="post" action="add_supplierperformance">
+
   <div id="right_content">
+  <form method="post" action="add_supplierperformance">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
       <tr>
         <td>
@@ -142,9 +144,7 @@
 </td>
 </tr>
 </table>
-</div>
-
-  </form>
+</form></div>
 </body>
 </html>
       <jsp:include page="footer.jsp"></jsp:include>

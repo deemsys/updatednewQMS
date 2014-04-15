@@ -8,6 +8,8 @@
  <form method="get" enctype="multipart/form-data" action="adddocument">
  
   <div id="right_content">
+  
+        
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
      <tr>
         <td>
@@ -22,3 +24,8 @@
              <td colspan="3">
             <input type="submit" id="form"  name="FORM" value="form" class="submit_btn1"></td>
 </tr></table></div>
+
+<table  width=300 height=400>
+			<tr height=30><td></td></tr></table>
+			
+<jsp:include page="footer.jsp"></jsp:include>			

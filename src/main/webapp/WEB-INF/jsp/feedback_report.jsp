@@ -5,15 +5,15 @@
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery-ui.js"></script>
  
- 
 
-<form method="post" action="feedback_report">
- <div id="right_content">
-<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
- <tr>
- <td>
-         <div>
-  <ul class="horizmenu">
+<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table" >
+	<tr>
+		<td>
+			<div>
+				<ul class="horizmenu">
+<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+  
+  
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcustomer" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
@@ -56,10 +56,14 @@
   </td>
   </tr>
   <tr>
+
         <td valign="top" align="left"><div>
             <div class="headings altheading">
               <h2>Customer Feedback Report</h2>
             </div>
+            
+              <form method="post" action="feedback_report">
+ <div id="right_content">
             <div class="contentbox">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <tr class="row2">
@@ -71,19 +75,21 @@
                   
                   </select>
                   <td></td>
-                  </td>
+                  
                   <td></td><td></td>
                    </tr>
                   <tr class="row1">
                   <td valign="top" width="30%"><span class="err">*</span>From Date:
-                  <input type="text" name="from_date" class="input_txtbx1" id="datepicker"  value="${fromdate}" /></br><span class="err"></span></td>
+                  <input type="text" name="from_date" class="input_txtbx1" id="datepicker"  value="${fromdate}" /><br><span class="err"></span></td>
                    <td width="30%"><span class="err">*</span>To Date:
-                  <input type="text" name="to_date" class="input_txtbx1" id="datepicker1" value="${todate}" /></br><span class="err"></span></td>
-                  <td  valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Generate" class="submit_btn1" id="button" ></td>                
+                  <input type="text" name="to_date" class="input_txtbx1" id="datepicker1" value="${todate}" /><br><span class="err"></span></td>
+                  <td  valign="top" align="right">&nbsp;</td><!-- 
+                  <td valign="top" align="left"><input type="submit" value="Generate" class="submit_btn1" id="button" ></td> -->
+                   <td valign="top" align="left"  colspan="3"><a href="./feedbackexport?type=${type}">Generate</a></td>
+                             
 </tr>
 </table>
- <table cellpadding="0" cellspacing="0" border="0" width="100%" id="feedbacktable" styel="display:none" >
+<%--  <table cellpadding="0" cellspacing="0" border="0" width="100%" id="feedbacktable" style="display:none" >
 
 							<tr class="title">
 								
@@ -113,21 +119,15 @@
 											</td>
 											</tr>
 											
-        					</c:forEach>
+        					</c:forEach> --%>
         					                
         					
-<tr class="row1">
+<%-- <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="right"  colspan="3"><a href="./feedbackexport?type=${type}">Export</a></td>
-                </tr>
+                </tr> --%>
+</div></div></form></div></td></tr>
 </table> 
-
-</div>
-</div>
-</td>
-</tr>
-</table>
-</form>
 <script>
  $(function() {
            $( "#datepicker" ).datepicker();
@@ -141,3 +141,7 @@
          });
  
 </script>
+
+<table  width=300 height=280>
+			<tr height=30><td></td></tr></table>
+<jsp:include page="footer.jsp"></jsp:include>

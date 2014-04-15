@@ -10,10 +10,6 @@
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <script src="resources/js/jquery_checkbox.js" type="text/javascript"></script>
 
-
-<script src="resources/js/jquery.min.js"></script>
- <script src="resources/js/jquery-ui.js"></script>
-
 <div id="right_content">
 	
     	<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -45,7 +41,7 @@
   </div>
       		</td>
       		</tr>
-			<tr>
+		<%-- 	<tr>
 			<c:if test="${success==true}">
         <tr>
         <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
@@ -55,15 +51,16 @@
           </div>
       </tr>
     </c:if>
-    </tr>
+    </tr> --%>
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Corrective and Preventive Actions List</h2>
 			        </div>
 			        <div class="contentbox">
+
 			     <form action="search_correctiveactions" name="dashboard" method="GET">
-<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
+			     <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">CAPA Requester</td>
@@ -75,9 +72,7 @@
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
-							</table>
-						</div>
-</form>
+	</table></div></form>
 			      <form action="correctiveactions_list" method="POST"> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
@@ -121,13 +116,15 @@
 							    	</c:if>
         				       				 </table>
         				       				</form>
-        				       				</div>
+        				       				
+        				       				
         				       				</td>
         				       				</tr>
         				       				</table>
         				       				</div>
         				       				
-        				  
+        				  <table   height=50>
+			<tr height=30><td></td></tr></table>
 <script language="javascript">
 
 function confirmation() {
@@ -147,4 +144,6 @@ function confirmation() {
            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
          });
  
-</script>   				       				
+</script>   
+
+<jsp:include page="footer.jsp"></jsp:include>				       				
