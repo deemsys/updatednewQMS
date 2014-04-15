@@ -23,6 +23,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 import qms.model.ManagementReview;
+import qms.model.NonConformance;
 
 public class ManagementReviewDAO extends AbstractExcelView
 {
@@ -642,7 +643,60 @@ public List<ManagementReview> search_managementreviews(String review_id,String c
 	return managementreviewdetails;
 }
 
-public int getnoofmanagementreviewreport() {
+public  List<ManagementReview> getlimitedmanagementreport(int page) {
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	
+	
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
+	try {
+
+		String cmd;
+		int offset = 5 * (page - 1);
+		int limit = 5;
+				cmd="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id limit " + offset + ","+ limit+"" ;
+			
+			//	cmd = "select * from tbl_narrativereport order by pname asc limit " + offset + ","+ limit+"" ;
+
+		resultSet = statement.executeQuery(cmd);
+		while (resultSet.next()) {			
+			managementreviewdetails.add(new ManagementReview(resultSet
+					.getString("review_id"), resultSet
+					.getString("management_review_date"), resultSet
+					.getString("attendee_list_with_titles"), resultSet
+					.getString("next_management_review_by"), resultSet
+					.getString("category"), resultSet
+					.getString("assessment"), resultSet
+					.getString("report_link"), resultSet
+					.getString("action_needed"), resultSet
+					.getString("action_detail"), resultSet
+					.getString("action_due_date"),resultSet
+					.getString("responsibility"),resultSet
+					.getString("completion_date"),resultSet
+					.getString("continuous_improvement_project")));
+		}
+		} catch (Exception e) {
+		/*logger.info(e.toString());*/
+			System.out.println(e.toString());
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	} finally {
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	}
+	return managementreviewdetails;
+
+}
+public int getnoofmanagementreport() {
 	Connection con = null;
 	Statement statement = null;
 	ResultSet resultSet = null;
@@ -654,16 +708,17 @@ public int getnoofmanagementreviewreport() {
 	} catch (SQLException e1) {
 		e1.printStackTrace();
 	}
-	List<ManagementReview> managementReviews = new ArrayList<ManagementReview>();
+	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();	
 	try {
 
 		String cmd;
-			cmd = "select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";
-		System.out.println("command"+cmd);			
+		
+				cmd = "select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id ";
+				System.out.println("command"+cmd);			
 		resultSet = statement.executeQuery(cmd);
 		if (resultSet.next())
 			noofRecords = resultSet.getInt("noofrecords");
-		System.out.println("NOof Records="+noofRecords);
+
 	} catch (Exception e) {
 		releaseResultSet(resultSet);
 		releaseStatement(statement);
@@ -674,6 +729,7 @@ public int getnoofmanagementreviewreport() {
 		releaseConnection(con);
 	}
 	return noofRecords;
+
 }
 // For REPORT GENERATION 
 public  List<ManagementReview> getmanagement_bytype(String type){

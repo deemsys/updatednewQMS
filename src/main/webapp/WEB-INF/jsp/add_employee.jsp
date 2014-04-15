@@ -58,6 +58,45 @@ function doAjaxPost() {
 	}
 </script>
 	<!-- End Ajax -->
+
+
+<script>
+ $(function() {
+	 $( "#datepicker" ).datepicker();
+        });
+ 
+</script>
+  <script>
+ $(function() {
+	 $( "#datepicker1" ).datepicker();
+        });
+ 
+</script>
+   <script>
+ $(function() {
+           $( "#datepicker2" ).datepicker();
+         });
+ 
+</script>
+
+   <script>
+ $(function() {
+	 $( "#datepicker3" ).datepicker();
+     
+         });
+ 
+</script>
+
+
+
+
+
+
+
+
+
+
+
 <form method="post" action="addemployee">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -272,13 +311,13 @@ $(function() {
 	 var date = $('#datepicker2').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
          });
  
-
  $(function() {
 	 var date = $('#datepicker3').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
      
          });
  
 </script>
+
 
             
       <jsp:include page="footer.jsp"></jsp:include>
