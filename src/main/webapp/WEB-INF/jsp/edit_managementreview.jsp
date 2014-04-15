@@ -98,9 +98,9 @@
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Action Needed :</td>
-                  <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="action_needed" class="input_txtbx" id="id_action_needed" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_needed}"></c:out>'> <span class="err"><form:errors path="ManagementReview.action_needed"></form:errors></span></td>
-                  <td valign="middle" align="right" class="input_txt" width="30%">
-             	   <td valign="middle" align="left" class="input_txt" width="70%"></tr>
+                  <td valign="middle" align="left" class="input_txt" width="70%">
+                   <input type="radio" name="action_needed" value="Yes" onchange="toggle3(this.value);"  id="action_needed_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="action_needed" value="No" id="action_needed_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+               </tr>
                    <tr class="row1">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Action Detail :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="action_detail" class="input_txtbx" id="id_action_detail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_detail}"></c:out>'> <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>

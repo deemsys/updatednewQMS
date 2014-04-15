@@ -332,7 +332,7 @@ function confirmation() {
 											
 											<td valign="top" align="left" width="15%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_managementreview?review_id=${managementreviewdetails.review_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" >Remove</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" onclick="return confirmation()" >Remove</a>
 											</td>	
 											
 										</tr>
@@ -393,19 +393,20 @@ function confirmation() {
 		  </td>
 		  </tr>
 		 
-
+<table  width=300 height=200>
+			<tr height=30><td></td></tr></table>
 						</table>
 						<script>
 
-					/*function confirmation(val) {
-							var answer = confirm("Are you Sure You Want to Internal Audits ?")
+					function confirmation(val) {
+							var answer = confirm("Are you Sure You Want to delete this record ?")
 							if (answer){
 								window.location = "?do=deleteparticipant&id="+val;
 							}
 							else{
 								
 							}
-						}*/
+						}
 						
 
 

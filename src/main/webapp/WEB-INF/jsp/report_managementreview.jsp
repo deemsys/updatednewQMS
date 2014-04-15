@@ -142,6 +142,7 @@
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn"></td>
             
              </tr></table>
+           
             
            
              </tr>
@@ -152,7 +153,8 @@
 					</div>
 				</td></tr>
 </table></td></tr></table>
-
+<table  width=300 height=200>
+			<tr height=30><td></td></tr></table>
 
 <script type="text/javascript">
 function toggle2(value){
@@ -228,11 +230,6 @@ $('#select_all').change(function() {
 </script>
 
 
+
+
   <jsp:include page="footer.jsp"></jsp:include>
-  
-  
- 
-  
-  
-  
-  

@@ -78,10 +78,10 @@
                   <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.report_link}
                   <br/><span class="err"></span></td>
                   </tr>
-                   <tr class="row1">
+                  <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="20%">Action Needed:</td>
                <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.action_needed}
-               </td>
+               </td></td>
                 </tr>
              
                <tr class="row2">

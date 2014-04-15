@@ -287,7 +287,7 @@
 
 <script>
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete Supplier Performance Form ?")
+	var answer = confirm("Are you Sure You Want to Delete NonConformance Form ?")
 	if (answer){
 		return true;
 	}

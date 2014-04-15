@@ -114,13 +114,11 @@
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="inp_report_link" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementreview.report_link}"></c:out>' /><br/><span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
                   
                   </tr>
-                  <tr class="row2" >
-			                  <td valign="top" align="right" class="input_txt"><span class="err">*</span>&nbsp; Action Needed:</td>
-			        		         <td valign="middle" align="left" class="input_txt"><input type="radio" name="action_needed"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="action_needed" value="1" class="input_txt">No
-                	          <td valign="middle" align="right" class="input_txt" width="20%">
-              				<td valign="middle" align="left" class="input_txt" width="20%">
-              
-                	          </tr>
+                <tr class="row2">
+               <td valign="middle" align="left" class="input_txt" width="50%"><span class="err">*</span>Action Needed(Y/N):</td>
+               <td valign="top" align="left" class="input_txt" width="70%">
+               <input type="radio" name="action_needed" value="Yes" onchange="toggle3(this.value);"  id="action_needed_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="action_needed" value="No" id="action_needed_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+               </td> </tr>
                   
                       <tr class="row1" >
                   <td valign="middle" align="right" class="input_txt" width="20%"> <span class="err">*</span>&nbsp;Action Detail :</td>
