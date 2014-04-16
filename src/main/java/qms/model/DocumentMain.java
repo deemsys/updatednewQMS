@@ -231,11 +231,6 @@ public class DocumentMain
 	
 	private String attachment_name;	
 	private String attachment_type;
-	
-	
-
-
-
 	private String attachment_referrence;
 
 	public CommonsMultipartFile getAttachments() {

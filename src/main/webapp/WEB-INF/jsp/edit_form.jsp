@@ -2,6 +2,9 @@
  <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
 	<script src="/QMS_App/resources/js/jquery.js"></script>
+	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
  <form method="post" action="updateform">
  
   <div id="right_content">
@@ -324,9 +327,16 @@
             </table>
             </div>
             </form>
-           
+            <script>
+ $(function() {
+	 
+           $( "#datepicker" ).datepicker();
+         });
+ 
+</script>
              
-       
+     <jsp:include page="footer.jsp"></jsp:include>
+         
        <%-- 
        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>

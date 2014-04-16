@@ -130,7 +130,7 @@ $(window).load(function(){
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               <c:choose>
                 <c:when test="${documentMain.media_type==0}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span style="color:red;" class="err">*</span> Upload New File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
@@ -138,14 +138,13 @@ $(window).load(function(){
                <option value="Shop Floor" <c:if test="${documentMain.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
                <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
                </select><br>
-              <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
+             
               <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
                </td>
               </c:when>
-               </c:choose>
-               <c:choose>
+              
                 <c:when test="${documentMain.media_type==1}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span style="color:red;" class="err">*</span> Upload New File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
               <option value="">--Select--</option>
@@ -153,15 +152,16 @@ $(window).load(function(){
                <option value="Shop Floor" <c:if test="${documentMain.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
                <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
                </select><br>
-               <input name="filename" type="hidden" id="file_name"/>${documentMain.attachment_name}
-               <input name="attachments" id="id_file" type="file" style="display:none;" value="${documentMain.attachment_name}"/>
-              <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
+                <c:out value="${documentMain.attachment_name}"></c:out>
+               <input name="attachments" type="hidden" id="file_name"/>
+               <input name="attachments" id="id_file" type="file" value="${documentMain.attachment_name}"/>
+            <!--   <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label> -->
               <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
                </td>
               </c:when>
               <c:when test="${documentMain.media_type==2}">
-              <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label"><span class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
-               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
+              <td valign="top" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label"><span  class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span style="color:red;"class="err">*</span> Upload New File:</label></td>
+               <td valign="bottom" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1">
               <option value="">--Select--</option>
                <option value="Lab" <c:if test="${documentMain.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
@@ -219,8 +219,11 @@ $(window).load(function(){
                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
-              <input type="radio" name="external" value="1"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="external" value="0" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-               
+<!--               <input type="radio" name="external" value="1"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="external" value="0" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+ -->               
+ 				<input type="radio" name="external" value="1" id="id_yesforexternal" <c:if test="${documentMain.external=='1'}"><c:out value="checked=checked"/></c:if>>Yes &nbsp;&nbsp;&nbsp;
+  				<input type="radio" name="external" value="0" <c:if test="${documentMain.external=='0'}"><c:out value="checked=checked"/></c:if>>No &nbsp;&nbsp;&nbsp;</td>
+  				
                </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
               
@@ -243,16 +246,13 @@ $(window).load(function(){
                <br/><span class="err"><form:errors path="DocumentMain.issuer"></form:errors></span></td>
             
                 <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Approver 1(Process Owner):</td>
-               <td valign="top" align="left" class="input_txt" width="25%">
+               <td valign="top" align="left" class="input_txt" width="25%" >
                <span id="process_owner_id"></span>
-               <!-- <select name="approver1" id="approver1" class="input_cmbbx1" style="width:200px;">
-               <option value="">--Select--</option>
-               <option value="Apporver name1">Approver name 1</option>
-               <option value="Approver name2">Approver name 2</option>
-               <option value="Approver name3">Approver name 3</option>
-               </select>    -->   
+            
+              <%--   <c:out value="${documentMain.approver1}" ></c:out> 
+ --%>              
+                <input type="hidden" class="input_txtbx1" id="approver" value="${documentMain.approver1}" onchange="Approver1();" name="approver1" />${documentMain.approver1}
                
-               <c:out value="${documentMain.issuer}"></c:out>         
                <br/><span class="err"><form:errors path="DocumentMain.approver1"></form:errors></span>
                
                
@@ -307,7 +307,9 @@ $(window).load(function(){
                
               -->
               <c:forEach items="${employeeForm2.employees}" var="employees" varStatus="true">
-               <option value="<c:out value="${employees.name}"/> <c:if test="${documentMain.approver3==employees.name}"><c:out value="Selected"/></c:if>"><c:out value="${employees.name}"/></option>
+               <%-- <option value="<c:out value="${employees.name}"/> <c:if test="${documentMain.approver3==employees.name}"><c:out value="Selected"/></c:if>"><c:out value="${employees.name}"/></option> --%>
+               <option value="${employees.name}"<c:if test="${employees.name == documentMain.approver3}"><c:out value="selected"/></c:if>>${employees.name}</option>
+           
                </c:forEach>
               
               
@@ -386,15 +388,19 @@ e3.style.display="block";
 function doAjaxPost_for_process() {
 
 	var proceee_name = $('#id_inpprocess').val();
+	
 	/*   var education = $('#education').val();	 */		
 	$.ajax({
+		
 		type : "POST",
 		url : "/QMS_App/ajax_getprocess",
 		data : "process=" + proceee_name,
 		success : function(response) {
+              
+              
+              
+	       $('#process_owner_id').html(response);
 			
-			$('#process_owner_id').html(response);
-		
 		},
 		error : function(e) {
 			alert('Error: ' + e);
@@ -406,6 +412,12 @@ function change_file(){
 	document.getElementById("file_name").style.display="none";
 	
 }
+
+function Approver1(){
+	var element = document.getElementById("approver").value();
+	alert(element);
+	
+}
 </script>
 <script>
 $(function() {
@@ -413,5 +425,11 @@ $(function() {
   $( "#datepicker123" ).datepicker({dateFormat:"yy-mm-dd"});
 });
 </script>
-
+  <script>
+	
+	window.onload = function(){
+	
+		Approver1();
+	}
+</script>	 
       <jsp:include page="footer.jsp"></jsp:include>

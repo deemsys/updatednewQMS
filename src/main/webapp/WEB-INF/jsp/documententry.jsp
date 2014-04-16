@@ -24,8 +24,11 @@
              <td colspan="3">
             <input type="submit" id="form"  name="FORM" value="form" class="submit_btn1"></td>
 </tr></table></div>
+</form>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="footer.jsp"></jsp:include>
 
 <table  width=300 height=400>
 			<tr height=30><td></td></tr></table>
 			
-<jsp:include page="footer.jsp"></jsp:include>			
+<jsp:include page="footer.jsp"></jsp:include>		
