@@ -107,7 +107,7 @@
              <%-- <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td>
                   <td valign="top" align="left" class="input_txt" ><input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
 			 --%>
-			<td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><label id="location_label" ><span class="err"></span> Location:</label><label id="file_upload_label" style="display:none;"><span class="err"></span> Upload File:</label></td>
+			<td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><label id="location_label" ><span class="err"></span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"></span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" >
                
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
@@ -116,6 +116,7 @@
                <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
                <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
                </select>
+               <br>
 				 <input name="attachments" style="display:none;" id="id_file" type="file" />														<td valign="top" align="left" class="input_txt">																	
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
@@ -216,9 +217,11 @@
                <td valign="top" align="left" class="input_txt">
                
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;<input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-                   <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type==2}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                   <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type==2}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                   
                </td>
+               
+            
                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err"></span>Process:</td>
                <td valign="top" align="left" class="input_txt" >
                
@@ -407,6 +410,14 @@ else if(value==0)
 	e3.style.display="none";
   
     }
+else if(value==2)
+{
+e.style.display="block";
+e1.style.display="block";
+e2.style.display="block";
+e3.style.display="block";
+}
+
     
 }
 </script>
