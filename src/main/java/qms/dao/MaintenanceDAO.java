@@ -45,9 +45,9 @@ public class MaintenanceDAO extends AbstractExcelView
 		this.dataSource = dataSource;
 	}
 	
-	/**
-	 * Excel Sheet Generation
-	 */
+     
+	 // Excel Sheet Generation
+	 
 	
 	@Override
 	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
@@ -616,7 +616,7 @@ public class MaintenanceDAO extends AbstractExcelView
 
 	}
 	
-	//report request passing
+	/*//report request passing
 	public List<Maintenance> getMaintenance_bytype(String type,int no_of_days)
 	{
 		Connection con = null;
@@ -690,7 +690,75 @@ public class MaintenanceDAO extends AbstractExcelView
 		
 	}
 
-public  List<Maintenance> getlimitedmaintenancereport(int page) {
+*/
+	//Report Generation
+	public List<Maintenance> getMaintenance_bytype(String type,int no_of_days)
+	 {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		List<Maintenance> maintenances = new ArrayList<Maintenance>();
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = null;
+			
+			if(type=="maintain_for_30")
+				cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id";
+			//cmd_select= "select * from tbl_nonconformance where disposition==0 AND disposition_complete_date==NULL" ;
+			
+				else if(type=="maintain_for_ndays")
+				//	cmd_select="select * from tbl_nonconformance where disposition_complete_date between now() and DATE_ADDNOW(), INTERVAL 30 DAYS";
+					cmd_select="select * from tbl_nonconformance  WHERE   disposition_complete_date BETWEEN NOW() + INTERVAL 30 DAY AND NOW()";
+					else if(type=="past_due_maintenance")
+						cmd_select="select * from tbl_maintenance where due_date<now()";
+					else if(type=="past_due_calibration")
+						cmd_select="select * from tbl_maintenance where due_date<now() and calibration='yes'";
+					else
+						cmd_select="select * from tbl_maintenance where due_date between now() and DATE_ADD(NOW())";
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				System.out.println("came");
+				System.out.println(maintenances.add(new Maintenance(resultSet
+						.getString("equipment_id"), resultSet
+						.getString("equipment_name"), resultSet
+						.getString("equipment_model"), resultSet
+						.getString("serial_number"), resultSet
+						.getString("date_acquired"), resultSet
+						.getString("equipment_status"), resultSet
+						.getString("frequency_maintenance"), resultSet
+						.getString("calibration"), resultSet
+						.getString("equipmentid"), resultSet
+						.getString("type_of_maintenance"), resultSet
+						.getString("maintenance_frequency"), resultSet
+						.getString("reference"), resultSet
+						.getString("instructions"), resultSet
+						.getString("due_date"), resultSet
+						.getString("completion_date"),resultSet
+						.getString("completed_by"),
+						resultSet.getString("notes"))));
+
+			}
+
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return maintenances;
+	}
+
+	public  List<Maintenance> getlimitedmaintenancereport(int page) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;

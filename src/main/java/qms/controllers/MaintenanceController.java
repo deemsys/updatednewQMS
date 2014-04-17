@@ -197,7 +197,7 @@ return "maintenance_list";
 	    return "maintenance_list";
 	}
 	
-	//Report generation
+	/*//Report generation
 	@RequestMapping(value = "/maintenances_report", method = RequestMethod.POST)
 		public ModelAndView generateMaintenance_Report(HttpServletRequest request, HttpServletResponse response,ModelMap model) {
 		//System.out.println("generateAudit_Report");
@@ -236,7 +236,7 @@ return "maintenance_list";
 				  
 		}		
 		 //System.out.println(title);
-	/*if(Integer.parseInt(request.getParameter("report_type"))==1)
+	if(Integer.parseInt(request.getParameter("report_type"))==1)
 		{
 		if(request.getParameterValues("report_field[]")!=null)
 			
@@ -263,7 +263,7 @@ return "maintenance_list";
 		return modelAndView ;
 		
 	}
-*/
+
 		 if(Integer.parseInt(request.getParameter("report_type"))==1)
 			{
 			
@@ -317,6 +317,79 @@ return "maintenance_list";
 		model.addAttribute("menu","maintenance");
 	    return "maintenance_report";
 	}
+*/	
+	
+	//This is used for downloading Excel Sheet
+	@RequestMapping(value ={ "/maintenancereport" }, method = RequestMethod.GET)
+	  public ModelAndView getExcel_view() {
+	java.util.List<Maintenance> maintenances=new ArrayList<Maintenance>();
+	
+	maintenances=maintenanceDAO.getmaintenance();
+	
+	return new ModelAndView("maintenanceDAO","maintenances",maintenances);
+	
+	}
+	//report page request passing
+	@RequestMapping(value = "/maintenance_report", method = RequestMethod.GET)
+	public String reportnonconformance(ModelMap model) {
+		  model.addAttribute("menu","maintenance");
+		return "report_maintenance";
+
+	}
+	
+	//Nonconformance Report Generation
+	@RequestMapping(value = "/generate_maintenance_report", method = RequestMethod.POST)
+	public ModelAndView generatemaintenance_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response)
+	{
+		int no_of_days=0;
+		String[] fields={"equipment_id","equipment_name","equipment_model","serial_number","date_acquired","equipment_status","frequency_maintenance","calibration","type_of_maintenance","maintenance_frequency","reference","instructions","due_date","completion_date","completed_by","notes"};
+		System.out.println(request.getParameter("type_of_report"));
+		java.util.List<Maintenance> maintenances=new ArrayList<Maintenance>();
+			switch(Integer.parseInt(request.getParameter("doc_type")))
+				  {
+		  case 0:
+			  maintenances=maintenanceDAO.getMaintenance_bytype("maintain_for_30", no_of_days);
+			  break;
+		  case 1:
+			  no_of_days = Integer.parseInt(request.getParameter("no_of_days"));
+			  
+			  maintenances=maintenanceDAO.getMaintenance_bytype("upcoming_calibration",no_of_days);
+			  break;
+		  case 2:
+			 
+			  maintenances=maintenanceDAO.getMaintenance_bytype("maintenance_past_due",no_of_days);
+			  break;
+		  case 3:
+				 
+			  maintenances=maintenanceDAO.getMaintenance_bytype("calibration_past_due",no_of_days);
+			  break;
+		  default:
+			  break;
+				  
+				
+		}
+		if(Integer.parseInt(request.getParameter("report_type"))==1)
+		{
+		
+				System.out.println("now ok");
+				 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
+					
+				fields=request.getParameterValues("report_field[]");
+			
+		}
+		else
+			
+		response.setHeader("Content-Disposition","attachment;filename='Maintenance_Report'");
+		
+		
+		ModelAndView modelAndView=new ModelAndView("maintenanceDAO","maintenances",maintenances);
+		
+		modelAndView.addObject("fields",fields);
+		
+		System.out.println("now ok::::");
+		return modelAndView ;
+	}
+	
 	
 	//delete a record
 	@RequestMapping(value = "/delete_maintenance", method = RequestMethod.GET)
