@@ -5,6 +5,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -198,18 +199,19 @@ return "maintenance_list";
 	
 	//Report generation
 	@RequestMapping(value = "/maintenances_report", method = RequestMethod.POST)
-		public ModelAndView generateMaintenance_Report(HttpServletRequest request,ModelMap model) {
+		public ModelAndView generateMaintenance_Report(HttpServletRequest request, HttpServletResponse response,ModelMap model) {
 		//System.out.println("generateAudit_Report");
-	String[] fields={"equipment_id","equipment_name","equipment_model","serial_number","date_acquired","equipment_status","frequency_maintenance","calibration","type_of_maintenance","maintenance_frequency","reference","instructions","due_date","completion_date","completed_by","notes"};	
-		String title = "internal_audit";
 		int no_of_days=0;
+		String[] fields={"equipment_id","equipment_name","equipment_model","serial_number","date_acquired","equipment_status","frequency_maintenance","calibration","type_of_maintenance","maintenance_frequency","reference","instructions","due_date","completion_date","completed_by","notes"};	
+		//String title = "internal_audit";
+		
 		java.util.List<Maintenance> maintenance=new ArrayList<Maintenance>();
 		 switch(Integer.parseInt(request.getParameter("maintenance_report_type")))
 				  {
 					  case 0:
 						
 			  maintenance=maintenanceDAO.getMaintenance_bytype("maintain_for_30",no_of_days);
-			  title="Due Maintenance for next 30 days";
+			//  title="Due Maintenance for next 30 days";
 			  break;
 		  case 1:
 			
@@ -217,31 +219,31 @@ return "maintenance_list";
 			  maintenance=maintenanceDAO.getMaintenance_bytype("upcoming_calibration",no_of_days);
 			  no_of_days=Integer.parseInt(request.getParameter("no_of_days"));
 				
-			  title="Upcoming Calibration for next xx days";
+			  //title="Upcoming Calibration for next xx days";
 			  break;
 		  case 2:
 			 
 			  maintenance=maintenanceDAO.getMaintenance_bytype("maintenance_past_due",no_of_days);
-			  title="Past Due Maintenance";
+			  //title="Past Due Maintenance";
 			  break;
 		  case 3:
 			  System.out.println("case4");
 			  maintenance=maintenanceDAO.getMaintenance_bytype("calibration_past_due",no_of_days);
-			  title="Past Due Calibration";
+			  //title="Past Due Calibration";
 			  break;
 			  default:
 			  break;
 				  
 		}		
-		 System.out.println(title);
-	if(Integer.parseInt(request.getParameter("report_type"))==1)
+		 //System.out.println(title);
+	/*if(Integer.parseInt(request.getParameter("report_type"))==1)
 		{
 		if(request.getParameterValues("report_field[]")!=null)
 			
 			for (@SuppressWarnings("unused") String field : request.getParameterValues("report_field[]")) 
 			{
-				title=request.getParameter("report_title");
-				System.out.println(title);
+				//title=request.getParameter("report_title");
+				//System.out.println(title);
 						
 				//fields=request.getParameterValues("report_type");
 				ModelAndView modelAndView=new ModelAndView("maintenanceDAO","maintenance",maintenance);
@@ -261,6 +263,28 @@ return "maintenance_list";
 		return modelAndView ;
 		
 	}
+*/
+		 if(Integer.parseInt(request.getParameter("report_type"))==1)
+			{
+			
+					System.out.println("now ok");
+					 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
+						
+					fields=request.getParameterValues("report_field[]");
+				
+			}
+			else
+				
+			response.setHeader("Content-Disposition","attachment;filename='NonConformance_Report'");
+			
+			
+			ModelAndView modelAndView=new ModelAndView("maintenanceDAO","maintenance",maintenance);
+			
+			modelAndView.addObject("fields",fields);
+			
+			System.out.println("now ok::::");
+			return modelAndView ;
+		}
 
 	//report page request passing
 	@RequestMapping(value = { "/maintenance_report" }, method = RequestMethod.GET)

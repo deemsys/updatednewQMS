@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 
@@ -33,208 +34,271 @@ public class MaintenanceDAO extends AbstractExcelView
 {
 	private DataSource dataSource;
 	 
+	
+	
+		
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 	
+	/**
+	 * Excel Sheet Generation
+	 */
 	
-	//Excel view format creation
 	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook ,
+	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		response.setHeader("Content-Disposition","attachment;filename='"+(String)model.get("title")+"'");
+
+		HSSFSheet excelSheet = workbook.createSheet("NonConformance Report");
+		excelSheet.setDefaultColumnWidth(20);
+		  
+		//Style 1
+		CellStyle style = workbook.createCellStyle();
+	        Font font = workbook.createFont();
+	        font.setFontName("Arial");
+	        style.setFillForegroundColor(HSSFColor.BROWN.index);
+	        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+	        style.setWrapText(true);
+	        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	        font.setColor(HSSFColor.WHITE.index);
+	        style.setFont(font);
 		
-		HSSFSheet excelSheet = workbook.createSheet((String)model.get("title"));
+	    //Style2
+	        CellStyle style2 = workbook.createCellStyle();
+	        Font font2 = workbook.createFont();
+	        font2.setFontName("Arial");
+	        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
+	        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
+	        style2.setWrapText(true);
+	        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+	        font2.setColor(HSSFColor.WHITE.index);
+	        style2.setFont(font2); 
+	        System.out.println("came inside report");
+
 		@SuppressWarnings("unchecked")
-		List<Maintenance> maintenance=(List<Maintenance>) model.get("maintenance");
-		
+		List<Maintenance> maintenances = (List<Maintenance>) model.get("maintenances");
 		String[] fields=(String[])model.get("fields");
-		System.out.println(fields[0]);
-		setExcelHeader(excelSheet,maintenance,fields);
-		setExcelRows(excelSheet,maintenance,fields);
+		
+		//System.out.println("came inside report");
+        setExcelHeader(excelSheet,style,fields);
+		
+		setExcelRows(excelSheet,maintenances,fields,style2);
 		
 	}
 	
+
 	//creating header records
-	public void setExcelHeader(HSSFSheet excelSheet,List<Maintenance> maintenance,String[] fields)
-	{
-		HSSFRow excelHeader = excelSheet.createRow(0);
-		int record = 0;
-		
-			for(String field:fields)
+	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
+		HSSFRow excelHeader = excelSheet.createRow(0);	
+	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
+		int i=0;
+		for (String field : fields) {
+			
+			if(field.equals("equipment_id"))
 			{
-				if (field.equals("equipment_id")) 
-				{
-					
-					excelHeader.createCell(record++).setCellValue(
-							"EQUIPMENT ID");
-					
-				}
-				else if (field.equals("equipment_name")) {
-					excelHeader.createCell(record++).setCellValue(
-							"EQUIPMENT NAME");
-					}
-				else if (field.equals("equipment_model")) {
-					excelHeader.createCell(record++).setCellValue(
-							"EQUIPMENT MODEL");
-					} 
-				else if (field.equals("serial_number")) {
-					excelHeader.createCell(record++).setCellValue(
-							"SERIAL NUMBER");
-					}
-				else if (field.equals("date_acquired")) {
-					excelHeader.createCell(record++).setCellValue(
-							"DATE ACQUIRED");
-					}
-				
-				else if (field.equals("equipment_status")) {
-					excelHeader.createCell(record++).setCellValue(
-							"EQUIPMENT STATUS");
-					}
-				else if (field.equals("frequency_maintenance")) {
-					excelHeader.createCell(record++).setCellValue(
-							"FREQUENCY MAINTENANCE");}
-				else if (field.equals("calibration")) {
-					excelHeader.createCell(record++).setCellValue(
-							"CALIBRATION");
-					}
-				else if (field.equals("type_of_maintenance")) {
-					excelHeader.createCell(record++).setCellValue(
-							"TYPE OF MAINTENANCE");
-					}
-				else if (field.equals("maintenance_frequency")) {
-					excelHeader.createCell(record++).setCellValue(
-							"MAINTENANCE FREQUENCY");
-					}
-				else if (field.equals("reference")) {
-					excelHeader.createCell(record++).setCellValue(
-							"REFERENCE");
-					}
-				else if (field.equals("instructions")) {
-					excelHeader.createCell(record++).setCellValue(
-							"INSTRUCTIONS");
-					}
-				else if (field.equals("due_date")) {
-					excelHeader.createCell(record++).setCellValue(
-							"DUE DATE");
-					}
-				else if (field.equals("completion_date")) {
-					excelHeader.createCell(record++).setCellValue(
-							"COMPLETION DATE");
-					}
-				else if (field.equals("completed_by")) {
-					excelHeader.createCell(record++).setCellValue(
-							"COMPLETED BY");
-					}
-				else if (field.equals("notes")) {
-					excelHeader.createCell(record++).setCellValue(
-							"NOTES");
-					}
+				excelHeader.createCell(i).setCellValue("Equipement Id");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("equipment_name"))
+			{
+				excelHeader.createCell(i).setCellValue("Equipement Name");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("equipment_model"))
+			{
+				excelHeader.createCell(i).setCellValue("Equipement Model");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("serial_number"))
+			{
+				excelHeader.createCell(i).setCellValue("Serial Number");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("date_acquired"))
+			{
+				excelHeader.createCell(i).setCellValue("Date Acquired");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("equipment_status"))
+			{
+				excelHeader.createCell(i).setCellValue("Equipement Status");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("frequency_maintenance"))	
+			{
+				excelHeader.createCell(i).setCellValue("Frequency Maintenance");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("calibration"))	
+			{
+				excelHeader.createCell(i).setCellValue("Calibration");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("type_of_maintenance"))	
+			{
+				excelHeader.createCell(i).setCellValue("Type of maintenance");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("maintenance_frequency"))
+			{
+				excelHeader.createCell(i).setCellValue("Maintenace Frequency");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("reference"))	
+			{
+				excelHeader.createCell(i).setCellValue("Reference");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("instructions"))	
+			{
+				excelHeader.createCell(i).setCellValue("Instructions");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("due_date"))	
+			{
+				excelHeader.createCell(i).setCellValue("Due Date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("completion_date"))	
+			{
+				excelHeader.createCell(i).setCellValue("Completion Date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("completed_by"))	
+			{
+				excelHeader.createCell(i).setCellValue("Completed By");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("notes"))	
+			{
+				excelHeader.createCell(i).setCellValue("Notes");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
 			}
 		}
 	
-	/*
-	public void sugges()
-	{
-		 if(!sr.equals("")) 
-		 { 
-		 sr=sr+"%"; 
-		 rs=s.executeQuery("select keyword from dictionary where keyword LIKE '"+sr+"'"); 
-		 while(rs.next()) 
-		 {
-		 name=rs.getString(1); %>
-		<%=name%>
-		<%}} else{%>
-		<%}%>
 	}
-*/
+	
+	
+	//End
+	
 	
 	//creating cell records
-		
-	public void setExcelRows(HSSFSheet excelSheet, List<Maintenance> maintenance,String[] fields){
-		int record = 1,column=0;
-		
-		for (Maintenance maintenances:maintenance ){	
-			
+	public void setExcelRows(HSSFSheet excelSheet, List<Maintenance> maintenances,String[] fields,CellStyle style2){
+		int record = 1;
+		int i=0;
+		for (Maintenance maintenance:maintenances){	
 			HSSFRow excelRow = excelSheet.createRow(record++);
-			
-			for(String field:fields)
-			{
-				if (field.equals("equipment_id")) 
-				{
+	//		excelRow.setRowStyle((HSSFCellStyle) style2);
+		i=0;
+				for (String field : fields) {
 					
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getEquipment_id());
+					if(field.equals("equipment_id"))
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getEquipment_id());
+							i++;
+					}
+					else if(field.equals("equipment_name"))
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getEquipment_name());
+
+						i++;
+					}
+					else if(field.equals("equipment_model"))
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getEquipment_model());
+								i++;
+					}
+					else if(field.equals("serial_number"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getSerial_number());
+						i++;
+					}else if(field.equals("date_acquired"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getDate_acquired());
+						i++;
+					}else if(field.equals("equipment_status"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getEquipment_status());
+						i++;
+					}else if(field.equals("frequency_maintenance"))
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getFrequency_maintenance());
+					}else if(field.equals("calibration"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getCalibration());
+						i++;
+					}else if(field.equals("type_of_maintenance"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getType_of_maintenance());
+						i++;
+					}else if(field.equals("maintenance_frequency"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getMaintenance_frequency());
+						i++;
+					}else if(field.equals("reference"))	
+					{
+							excelRow.createCell(i).setCellValue(						
+									maintenance.getReference());
+						i++;
 					
+					}else if(field.equals("instructions"))	
+					{
+						excelRow.createCell(i).setCellValue(						
+							maintenance.getInstructions());
+						
+						i++;
+					}else if(field.equals("due_date"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getDue_date());
+						i++;
+					}else if(field.equals("completion_date"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getCompletion_date());
+						i++;
+					}else if(field.equals("completed_by"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getCompleted_by());
+						i++;
+					}
+					else if(field.equals("notes"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								maintenance.getNotes());
+						i++;
+					}
 				}
-				else if (field.equals("equipment_name")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getEquipment_name());
-					}
-				else if (field.equals("equipment_model")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getEquipment_model());
-					} 
-				else if (field.equals("serial_number")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getSerial_number());
-					}
-				else if (field.equals("date_acquired")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getDate_acquired());
-					}
 				
-				else if (field.equals("equipment_status")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getEquipment_status());
-					}
-				else if (field.equals("frequency_maintenance")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getFrequency_maintenance());}
-				else if (field.equals("calibration")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getCalibration());
-					}
-				else if (field.equals("type_of_maintenance")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getType_of_maintenance());
-					}
-				else if (field.equals("maintenance_frequency")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getMaintenance_frequency());
-					}
-				else if (field.equals("reference")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getReference());
-					}
-				else if (field.equals("instructions")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getInstructions());
-					}
-				else if (field.equals("due_date")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getDue_date());
-					}
-				else if (field.equals("completion_date")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getCompletion_date());
-					}
-				else if (field.equals("completed_by")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getCompleted_by());
-					}
-				else if (field.equals("notes")) {
-					excelRow.createCell(column++).setCellValue(
-							maintenances.getNotes());
-					}
-				
-			}
-			column=0;
-			}
-			
+		}
 	}
+
+	
+
 	
 	//Insert operation
 	public boolean insert_maintenance(Maintenance maintenance) {
@@ -558,6 +622,8 @@ public class MaintenanceDAO extends AbstractExcelView
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		List<Maintenance> maintenances = new ArrayList<Maintenance>();
+
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -567,21 +633,26 @@ public class MaintenanceDAO extends AbstractExcelView
 		
 		List<Maintenance> maintenance = new ArrayList<Maintenance>();
 	    try{
-	    	
-	   if(type.equals("maintain_for_30"))
-		//resultSet = statement.executeQuery("select * from tbl_maintenance where due_date between now() and DATE_ADD(NOW(), INTERVAL 30 DAY)" );
-			resultSet = statement.executeQuery("select * from tbl_maintenance" );
+			String cmd_select = null;
 
-		   else if(type.equals("maintain_for_ndays"))
-			resultSet = statement.executeQuery("select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date between now() and DATE_ADD(NOW(),INTERVAL no_of_days DAY)" );
-	   else if(type.equals("past_due_maintenance"))
-			resultSet = statement.executeQuery("select * from tbl_maintenance where due_date<now()");
-	   else if(type.equals("past_due_calibration"))
-			resultSet = statement.executeQuery("select * from tbl_maintenance where due_date<now() and calibration='yes'" );
+	   if(type=="maintain_for_30")
+		//resultSet = statement.executeQuery("select * from tbl_maintenance where due_date between now() and DATE_ADD(NOW(), INTERVAL 30 DAY)" );
+			cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id";
+		   //cmd_select="select * from tbl_maintenance";
+
+		   else if(type=="maintain_for_ndays")
+			     cmd_select = "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date between now() and DATE_ADD(NOW(),INTERVAL 10  DAY)";
+			   //cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date between now() and DATE_ADD(NOW(),INTERVAL " + no_of_days + " DAY)";
+			   //cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date between now() and DATE_ADD(NOW(),INTERVAL no_of_days DAY)";
+	   else if(type=="past_due_maintenance")
+		   cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date<now()";
+		   //cmd_select= "select * from tbl_maintenance where due_date<now()";
+	   else if(type=="past_due_calibration")
+			cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date<now() and calibration='yes'";
 	   else
-			resultSet = statement.executeQuery("select * from tbl_maintenance where due_date between now() and DATE_ADD(NOW())" );
+			cmd_select ="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date between now() and DATE_ADD(NOW())";
 		 
-		   
+		resultSet = statement.executeQuery(cmd_select);   
 	   while(resultSet.next()){
 		   
 			System.out.println(maintenance.add(new Maintenance(resultSet

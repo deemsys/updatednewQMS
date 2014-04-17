@@ -189,13 +189,15 @@
 																		<td valign="top" align="left" class="input_txt"><span
 																			class="err">*</span> Disposition Required?(Y/N) </td>
 																		
-																		<td valign="top" align="left" class="input_txt"><input
+																		<%-- <td valign="top" align="left" class="input_txt"><input
 																			type="radio" name="disposition_required" value="0"
 																			class="input_txt" checked>Yes&nbsp;&nbsp;&nbsp;<input
 																			type="radio" name="disposition_required" value="1"
 																			class="input_txt">No<span class="err"><form:errors
 																					path="Nonconformance.disposition_required"></form:errors>
-																		</span></td> 
+																		</span></td> --%>
+																		    <td valign="middle" align="left" class="input_txt"><input type="radio" name="disposition_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="disposition_required" value="1" class="input_txt">No
+                	          <td valign="middle" align="right" class="input_txt" width="20%"> 
 																	</tr>
 																	
 																	<tr class="row1">
@@ -281,13 +283,15 @@
 																	</tr>
 																	
 																	<tr class="row2">
-																	<td valign="middle" align="left" class="input_txt"> Corrective Action Required</td>
-														<td valign="top" align="left" class="input_txt"><input
+																 	<td valign="middle" align="left" class="input_txt"> Corrective Action Required(Y/N)</td>
+													<!--	<td valign="top" align="left" class="input_txt"><input
 															type="radio" name="corrective_action_required" value="1"
 															class="input_txt" onchange="toggle2(this.value)">Yes&nbsp;&nbsp;&nbsp;<input
 															type="radio" name="corrective_action_required" value="0"
-															class="input_txt" checked onchange="toggle2(this.value)">No
+															class="input_txt" checked onchange="toggle2(this.value)">No -->
 	
+											 		   <td valign="middle" align="left" class="input_txt"><input type="radio" name="corrective_action_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="corrective_action_required" value="1" class="input_txt">No
+                	          							<td valign="middle" align="right" class="input_txt" width="20%">
 																	
 																		<td valign="top" align="left" class="input_txt"><span
 																			class="err">*</span> Cost of NC </td>

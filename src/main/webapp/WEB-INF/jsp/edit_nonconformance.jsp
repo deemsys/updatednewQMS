@@ -306,11 +306,13 @@ function CreateGroup()
 				               
 				                
 				                	
-			                  <td valign="top" align="left" class="input_txt"><span class="err">*</span> Disposition Required </td>
+			                  <td valign="top" align="left" class="input_txt"><span class="err">*</span> Disposition Required(Y/N) </td>
 			        		         <td valign="top" align="left" class="input_txt">
-			        		         <input type="radio" name="disposition_required" value="0" class="input_txt" <c:if test="${nonconformance.disposition_required eq '0'}"><c:out value="Checked='true'"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+			        		         <%-- <input type="radio" name="disposition_required" value="0" class="input_txt" <c:if test="${nonconformance.disposition_required eq '0'}"><c:out value="Checked='true'"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
 			        		         <input type="radio" name="disposition_required" value="1" class="input_txt" <c:if test="${nonconformance.disposition_required eq '1'}"><c:out value="Checked='true'"/></c:if>>No
-                	          </tr>
+                	          --%>
+                	                            <td valign="middle" align="left" class="input_txt" width="70%"><input type="radio" name="disposition_required" value="Yes" onchange="toggle3(this.value);"  id="disposition_required_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="disposition_required" value="No" id="disposition_required_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
+                	           </tr>
 								 <tr class="row1">
 				                 	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Date Found </td>
 				                  	                        	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.date_found}" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br><span class="err"><form:errors path="Nonconformance.date_found"></form:errors></span></td>
@@ -341,11 +343,13 @@ function CreateGroup()
 				        		</tr>
 		  					
 		  					<tr class="row2">
-                  				   	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Corrective Action Required </td>
+                  				   	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Corrective Action Required(Y/N) </td>
                   				    <td valign="top" align="left" class="input_txt">
-                  				    <input type="radio" name="corrective_action_required" value="0" class="input_txt" <c:if test="${nonconformance.corrective_action_required eq '0'}"><c:out value="Checked='true'"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+                  				    <%-- <input type="radio" name="corrective_action_required" value="0" class="input_txt" <c:if test="${nonconformance.corrective_action_required eq '0'}"><c:out value="Checked='true'"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                   				    <input type="radio" name="corrective_action_required" value="1" class="input_txt" <c:if test="${nonconformance.corrective_action_required eq '1'}"><c:out value="Checked='true'"/></c:if>>No
-                			
+                			 --%>                  <td valign="middle" align="left" class="input_txt" width="70%"><input type="radio" name="corrective_action_required" value="Yes" onchange="toggle3(this.value);"  id="corrective_action_required_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="corrective_action_required" value="No" id="corrective_action_required_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
+                			 
+                			 
 			    	                <td valign="top" align="left" class="input_txt"><span class="err">*</span> Cost of NC </td>
 			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/><span class="err"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
 				          </tr>

@@ -226,7 +226,7 @@ public class CustomerFeedbackController
 		CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
 		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
 	    model.addAttribute("customerFeedbackForm",customerFeedbackForm);
-		model.addAttribute("status","false");
+		model.addAttribute("menu","customer");
 		return "view_customerfeedback";
 	}
 	

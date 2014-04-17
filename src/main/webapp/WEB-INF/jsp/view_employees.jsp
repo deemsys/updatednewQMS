@@ -185,9 +185,11 @@
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?")
 	if (answer){
-		window.location = "?do=deleteparticipant&id="+val;
+		return true;
 	}
 	else{
+		
+		return false;
 		
 	}
 }

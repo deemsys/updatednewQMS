@@ -90,12 +90,12 @@
                </td>
                 </tr>
                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Corrective Action Required:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Corrective Action Required(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="70%">${nonconformance.corrective_action_required}
                </td>
                 </tr>
                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Disposition Required:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Disposition Required(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="70%">${nonconformance.disposition_required}
                </td>
                 </tr>

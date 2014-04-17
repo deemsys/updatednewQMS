@@ -136,7 +136,7 @@
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="frequency_maintenance" id="id_audit_notes"/>Frequency of Maintenance</td>
 								<td><input type="checkbox" name="report_field[]" value="calibration" id="id_finding"/>Calibration</td> 
-								<td><input type="checkbox" name="report_field[]" value="equipmentid" id="id_finding"/>Equipment Id</td>
+
 								<td><input type="checkbox" name="report_field[]" value="type_of_maintenance" id="id_completion_date"/>Type of Maintenance </td>
 					      		</tr>
 					      		<tr>

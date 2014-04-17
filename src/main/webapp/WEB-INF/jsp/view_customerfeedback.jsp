@@ -423,12 +423,12 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 
 <script>
 function confirmation(val) {
-	var answer = confirm("Are you Sure You Want to Delete Participant ?")
+	var answer = confirm("Are you Sure You Want to Delete CustomerFeedback Form ?")
 	if (answer){
-		window.location = "?do=deleteparticipant&id="+val;
+		return true;
 	}
 	else{
-		
+		return false;
 	}
 }
 </script>
