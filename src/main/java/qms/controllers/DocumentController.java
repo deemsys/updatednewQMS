@@ -147,10 +147,12 @@ public class DocumentController {
 	
 	//updating a record
 	@RequestMapping(value = { "/update_documents" }, method = RequestMethod.POST)
-	public String update_document(@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain,BindingResult result,HttpSession session, ModelMap model,Principal principal) {
+	public String update_document(HttpServletRequest request,@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain,BindingResult result,HttpSession session, ModelMap model,Principal principal) {
 
 		int flag = 0;
 		session.setAttribute("documentMain",documentMain);
+		System.out.println("attachment name= "+documentMain.getAttachment_name());
+		System.out.println("attachments = "+documentMain.getAttachments()+request.getParameter("attachments"));
 		/*if(result.hasErrors())
 		{
 			

@@ -431,15 +431,37 @@ public class DocumentControlDAO extends AbstractExcelView
 			  String approver = split[0];
 			  String cmd_update1;
 			  String cmd_update2;
-			  /*if(documentMain.getAttachment_name().equals(null) || documentMain.getAttachment_type().equals(null) || documentMain.getAttachment_referrence().equals(null))
+			  String attachment_name ="";
+			  String attachment_type="",attachment_reference="";
+			 
+			 if(documentMain.getAttachment_name() == null || documentMain.getAttachment_type() == null || documentMain.getAttachment_referrence() == null)
+			 {
+				 resultSet=statement.executeQuery("select attachment_name,attachment_type,attachment_referrence from tbl_doccontrol_main where document_id = '"+documentMain.getDocument_id()+"'");
+			  while(resultSet.next())
 			  {
-				   cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"' where document_id='"+documentMain.getDocument_id()+"'";
-				   cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				  attachment_name=resultSet.getString("attachment_name");
+				  attachment_type=resultSet.getString("attachment_type");
+				   attachment_reference= resultSet.getString("attachment_referrence");
 			  }
-			  else{*/
-			   cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where document_id='"+documentMain.getDocument_id()+"'";
-			   cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+			  statement.executeUpdate("update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where document_id='"+documentMain.getDocument_id()+"'");
+			  statement.executeUpdate("update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'");
+			  status=true;
+			 }
+			 else
+			  {
+				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				   cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				  
 			  
+				   
+			  /*else {
+			   * documentMain.getAttachments() == null
+				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				   cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+			
+				 
+			  }   
+			 */
 			 /* if(documentMain.getAttachments().equals(null))
 			  {
 				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"' where document_id='"+documentMain.getDocument_id()+"'";
@@ -449,6 +471,8 @@ public class DocumentControlDAO extends AbstractExcelView
 			statement.execute(cmd_update1);
 			statement.execute(cmd_update2);
 			status=true;
+			  }
+			
 		  }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);

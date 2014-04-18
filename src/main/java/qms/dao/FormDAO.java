@@ -183,10 +183,30 @@ public class FormDAO extends AbstractExcelView{
 		}
 		try
 		{
+			
+			 String attachment_name ="";
+			  String attachment_type="",attachment_reference="";
+			 
+			if(form.getAttachment_name() == null || form.getAttachment_type() == null || form.getAttachment_referrence() == null)
+			 {
+				 resultSet=statement.executeQuery("select attachment_name,attachment_type,attachment_referrence from tbl_form where auto_number='"+form.getAuto_no()+"'");
+			  while(resultSet.next())
+			  {
+				  attachment_name=resultSet.getString("attachment_name");
+				  attachment_type=resultSet.getString("attachment_type");
+				   attachment_reference= resultSet.getString("attachment_referrence");
+			  }
+			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form.getForm_or_rec_id()+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
+			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+form.getApprover1()+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'");	
+			  status =true;
+			 } 
+			else{
 			String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form.getForm_or_rec_id()+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 			statement.execute(cmd_update1);
 			String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+form.getApprover1()+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'";
 		    statement.execute(cmd_update2);
+		    status =true;
+			}
 		}
 		catch(Exception e)
 		{
@@ -226,7 +246,7 @@ public class FormDAO extends AbstractExcelView{
 			  /*String cmd_insert1="insert into tbl_doccontrol_main(document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
 			  statement.execute(cmd_insert1);*/
 			  
-			  String cmd_insert2="";	
+			  String cmd_insert2;	
 				 cmd_insert2="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getDocument_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"')";
 				 statement.execute(cmd_insert2);
 		

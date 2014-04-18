@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import qms.dao.EmployeeDAO;
@@ -106,6 +107,10 @@ public class FormController
 		}
 		else
 		{
+			if(form.getMedia_type().equals("1"))
+			{
+				form.setLocation("Nil");
+			}
 		byte[] buffer;
 		try {
 			MultipartFile file = form.getAttachments();
@@ -118,15 +123,15 @@ public class FormController
 					inputStream = file.getInputStream();
 					if (file.getSize() > 100000) {
 						System.out.println("File Size:::" + file.getSize());
-						return "/add_form";
+						return "/addform";
 					}
-					orginal_fileName = "/usr/share/tomcat6/temp/Upload/Form/"
+					orginal_fileName = "C:/QMS/Upload/Documents/"
 							+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
-						duplicate_fileName = "/usr/share/tomcat6/temp/Upload/Form/"
+						duplicate_fileName = "C:/QMS/Upload/Documents/"
 								+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
@@ -199,22 +204,85 @@ public class FormController
 	
 	//Update a record
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
-	public String update_form(HttpSession session,@ModelAttribute("form") @Valid Form form,BindingResult result,ModelMap model, Principal principal)
+	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,BindingResult result,ModelMap model, Principal principal)
 	{
+		
 		int flag = 0;
-		session.setAttribute("docform",form);
-		if(result.hasErrors())
+		session.setAttribute("docform",form1);
+		/*String attachments = request.getParameter("attachments");*/
+		/*System.out.println("attachments = "+form1.getAttachments()+request.getParameter("attachments"));*/
+		/*if(result.hasErrors())
 		{
 			
 			load_document_page_dropdowns(model);
 			return "edit_form";
-		}
-		else
+		}*/
+		if(form1.getMedia_type().equals("1"))
 		{
+			form1.setLocation("Nil");
+		}
+		else if(form1.getMedia_type().equals("2")){
+			form1.setLocation(form1.getLocation());
+		}
+		byte[] buffer;
+		try {
+			MultipartFile file = form1.getAttachments();
+			System.out.println("file =" +file);
+			String orginal_fileName = null;
+			String duplicate_fileName = null;
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+			if (file != null) {
+				if (file.getSize() > 0) {
+					inputStream = file.getInputStream();
+					if (file.getSize() > 100000) {
+						System.out.println("File Size:::" + file.getSize());
+						return "/addform";
+					}
+					orginal_fileName = "C:/QMS/Upload/Documents/"
+							+ file.getOriginalFilename();
+					duplicate_fileName = orginal_fileName;
+					File create_file = new File(orginal_fileName);
+					int i = 1;
+					while (create_file.exists()) {
+						duplicate_fileName = "C:/QMS/Upload/Documents/"
+								+ file.getOriginalFilename().substring(
+										0,
+										file.getOriginalFilename().lastIndexOf(
+												'.'))
+								+ i
+								+ file.getOriginalFilename().substring(
+										file.getOriginalFilename().lastIndexOf(
+												'.'));
+						create_file = new File(duplicate_fileName);
+						i++;
+					}
+					outputStream = new FileOutputStream(duplicate_fileName);
+					System.out.println("fileName:" + file.getOriginalFilename());
 
-			byte[] buffer;
+					// ------Lines to changes------//
+
+					form1.setAttachment_type(file.getContentType());
+					form1.setAttachment_name(file.getOriginalFilename());
+					form1.setAttachment_referrence(duplicate_fileName);
+
+					// ----End Lines to changed----//
+
+					int readBytes = 0;
+					buffer = new byte[(int) file.getSize()];
+					while ((readBytes = inputStream.read(buffer, 0,
+							(int) file.getSize())) != -1) {
+						outputStream.write(buffer, 0, readBytes);
+					}
+					outputStream.close();
+					inputStream.close();
+
+				}
+
+		 
+			/*byte[] buffer;
 			try {
-				MultipartFile file = form.getAttachments();
+				MultipartFile file = form1.getAttachments();
 				String orginal_fileName = null;
 				String duplicate_fileName = null;
 				InputStream inputStream = null;
@@ -250,9 +318,9 @@ public class FormController
 
 						// ------Lines to changes------//
 
-						form.setAttachment_type(file.getContentType());
-						form.setAttachment_name(file.getOriginalFilename());
-						form.setAttachment_referrence(duplicate_fileName);
+						form1.setAttachment_type(file.getContentType());
+						form1.setAttachment_name(file.getOriginalFilename());
+						form1.setAttachment_referrence(duplicate_fileName);
 
 						// ----End Lines to changed----//
 
@@ -265,10 +333,10 @@ public class FormController
 						outputStream.close();
 						inputStream.close();
 
-					}
+					}*/
 				}
 				if (true){
-					formDAO.update_form(form,form.getAuto_number(),principal.getName());
+					formDAO.update_form(form1,form1.getAuto_number(),principal.getName());
 					model.addAttribute("success", "true");
 					model.addAttribute("success_message", "Updated Successfully");
 					flag = 1;
@@ -325,7 +393,7 @@ public class FormController
 		 
 		return "view_form";*/
  	
-	}
+	
 	
 	//delete a record
 	@RequestMapping(value={"/deleteform"}, method = RequestMethod.GET)

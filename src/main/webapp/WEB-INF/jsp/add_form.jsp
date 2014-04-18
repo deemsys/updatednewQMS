@@ -216,8 +216,10 @@
                <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Media Type:</td>
                <td valign="top" align="left" class="input_txt">
                
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;<input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-                   <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type==2}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                  
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" <c:if test="${form.media_type==0}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type==1}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type==2}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                   
                </td>
                

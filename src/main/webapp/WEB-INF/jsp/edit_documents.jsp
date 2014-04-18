@@ -155,7 +155,8 @@ $(window).load(function(){
                <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
                </select><br>
                <input name="filename" type="hidden" id="file_name"/>${documentMain.attachment_name}
-               <input name="attachments" id="id_file" type="file" style="display:none;" value="${documentMain.attachment_name}"/>
+             <%--   <%session.setAttribute("attachmentname", request.getParameter("attachment_name")); %> --%>
+               <input name="attachments" id="id_file" type="file" style="display:none;" value="${documentMain.attachments}"/>
               <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
               <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
                </td>

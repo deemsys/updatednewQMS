@@ -72,7 +72,7 @@ public class Form {
 
 	public Form(String auto_number, String location, String form_or_rec_id,
 			String responsibility, String form_or_rec_title, String process,
-			String media_type, String retention_time, String form,String attachment_referrence,String attachment_name,String attachment_type,
+			String media_type, String retention_time, String form,String  attachment_name,String attachment_type, String attachment_referrence,
 			String auto_no, String effective_date, String document_id,
 			String approver1, String issuer, String comments) {
 		super();
@@ -95,6 +95,27 @@ public class Form {
 		this.issuer = issuer;
 		this.comments = comments;
 		
+	}
+
+
+
+
+	public Form(String location, String form_or_rec_id, String responsibility,
+			String form_or_rec_title, String process, String media_type,
+			String retention_time, String form, String attachment_name,
+			String attachment_type, String attachment_referrence) {
+		super();
+		this.location = location;
+		this.form_or_rec_id = form_or_rec_id;
+		this.responsibility = responsibility;
+		this.form_or_rec_title = form_or_rec_title;
+		this.process = process;
+		this.media_type = media_type;
+		this.retention_time = retention_time;
+		this.form = form;
+		this.attachment_name = attachment_name;
+		this.attachment_type = attachment_type;
+		this.attachment_referrence = attachment_referrence;
 	}
 
 

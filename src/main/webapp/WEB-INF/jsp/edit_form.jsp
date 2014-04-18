@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
- <form method="post" action="updateform">
+ <form method="post" enctype="multipart/form-data" action="updateform">
  
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -88,15 +88,7 @@
 																			<c:out value="${form.auto_number}"></c:out>
 																		
 																		</td> --%>
-			<td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><label id="location_label" ><span class="err">*</span> Location:</label><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
-               <td valign="top" align="left" id="id_location_txt" class="input_txt" >
-               
-               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
-               <option <c:if test="${form.location eq 'Lab'}"><c:out value="Selected"/></c:if>value="Lab">Lab</option>
-               <option value="Shop Floor" <c:if test="${form.location eq 'Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${form.location eq 'Office'}"><c:out value="Selected"/></c:if>>Office</option>
-               </select>
-               </td>
+			
 																		
 																		</tr>
                
@@ -112,7 +104,7 @@
 																			value="${form.form_or_rec_id}" /><br/><span class="err"><form:errors path="Form.form_or_rec_id"></form:errors></span>
 																		
 																		</td>
-																		              <td valign="middle" align="left" class="input_txt"><span
+																		<td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Responsibility :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_external_id"
@@ -122,8 +114,17 @@
 																			value="${form.responsibility}" /><br/><span class="err"><form:errors path="Form.responsibility"></form:errors></span>
 																		
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
+																		              
+																		<%-- <td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><label id="location_label" ><span class="err">*</span> Location:</label><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" >
+               
+               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
+               <option <c:if test="${form.location eq 'Lab'}"><c:out value="Selected"/></c:if>value="Lab">Lab</option>
+               <option value="Shop Floor" <c:if test="${form.location eq 'Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
+               <option value="Office" <c:if test="${form.location eq 'Office'}"><c:out value="Selected"/></c:if>>Office</option>
+               </select>
+               </td> --%>
+																		
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
 																		
@@ -132,7 +133,7 @@
               
               <tr class="row1">
                <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Form/Rec Title :</td>
+																			class="err">*</span>Form/Rec Title:</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -141,7 +142,7 @@
 																			value="${form.form_or_rec_title}" /><br/><span class="err"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
-				<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Process:</td>
+																		<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Process:</td>
                <td valign="top" align="left" class="input_txt" >
                
               <%--  <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
@@ -163,7 +164,10 @@
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
-																		</td>              </tr>
+																		</td> 
+               <td valign="top" align="left" class="input_txt" width="20%"></td>
+																		
+				             </tr>
               
               <tr class="row2">
                             <td valign="middle" align="left" class="input_txt" ><span class="err">*</span>Media Type:</td>
@@ -171,14 +175,79 @@
                
                 <!-- <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;<input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span> -->
                  
-                 <input type="radio" name="media_type" value="0" id="id_hardcopy" class="input_txt"   <c:if test="${form.media_type=='0'}"><c:out value="Checked=checked"/></c:if>>Hardcopy&nbsp;&nbsp;&nbsp;
-				  <input type="radio" name="media_type" value="1" id="id_electronic" class="input_txt"  <c:if test="${form.media_type=='1'}"><c:out value="Checked=checked"/></c:if>>Electronic&nbsp;&nbsp;&nbsp;
-				  <input type="radio" name="media_type" value="2" id="id_both" class="input_txt"  <c:if test="${form.media_type=='2'}"><c:out value="Checked=checked"/></c:if>>Both&nbsp;&nbsp;&nbsp;
-				  
-                    
+                 <c:choose>
+               <c:when test="${form.media_type==0}">
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;<br>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${form.media_type==1}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;<br>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${form.media_type==2}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;<br>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               </c:choose>
                </td>
+                <c:choose>
+                <c:when test="${form.media_type==0}">
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
+              <option value="">--Select--</option>
+               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
+               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
+               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
+               </select><br>
+              <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
+              <span class="err"><form:errors path="form.location"></form:errors></span>
+               </td>
+              </c:when>
+               </c:choose>
+               <c:choose>
+                <c:when test="${form.media_type==1}">
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
+              <option value="">--Select--</option>
+               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
+               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
+               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
+               </select><br>
+              
+               
+              <input name="filename" type="hidden" id="file_name"/>${form.attachment_name}
+               <input name="attachments" id="id_file" type="file" style="display:none;" value="${form.attachment_name }"/>
+               
+              <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
+              <span class="err"><form:errors path="form.location"></form:errors></span>
+               </td>
+              </c:when>
+             
+              <c:when test="${form.media_type==2}">
+              <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label"><span class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <select id="location_text" name="location" class="input_cmbbx1">
+              <option value="">--Select--</option>
+               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
+               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
+               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
+               </select><br><br>
+               <input name="filename" type="hidden" id="file_name"/>${form.attachment_name}
+               <input name="attachments" id="id_file" type="file" style="display:none;" value="${form.attachment_name}"/>
+              <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
+              <span class="err"><form:errors path="form.location"></form:errors></span>
+               </td>
+              </c:when>
+               </c:choose>
+               </tr>
+               <tr class="row1">
 																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Retention Time :</td>
+																			class="err">*</span>Retention Time:</td>
 																		<td valign="top" align="left" class="input_txt"><%-- <input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -193,7 +262,9 @@
                </select>
 																		
 																		</td>
-																		<td></td><td></td>
+																		
+			
+<td></td>
 																		</tr>
 																		<tr class="row1">
 																		<td valign="middle" align="left" class="input_txt">Form:</td>
@@ -332,11 +403,47 @@
 	 
            $( "#datepicker" ).datepicker();
          });
- 
+ function change_file(){
+		document.getElementById("id_file").style.display="block";
+		document.getElementById("file_name").style.display="none";
+		
+	}
 </script>
-             
-     <jsp:include page="footer.jsp"></jsp:include>
-         
+     <script type="text/javascript">
+function toggle2(value){
+  
+    var e = document.getElementById('location_label');
+    var e1 = document.getElementById('file_upload_label');
+    var e2=document.getElementById('location_text');
+    var e3=document.getElementById('id_file');
+if(value==1)
+    {
+	e.style.display="none";
+	e1.style.display="block";
+	e2.style.display="none";
+	e3.style.display="block";
+	
+    }
+else if(value==0)
+    {
+	e.style.display="block";
+	e1.style.display="none";
+	e2.style.display="block";
+	e3.style.display="none";
+  
+    }
+else if(value==2)
+{
+e.style.display="block";
+e1.style.display="block";
+e2.style.display="block";
+e3.style.display="block";
+}
+    
+}
+</script>
+   <jsp:include page="footer.jsp"></jsp:include>   
+        
        <%-- 
        <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -508,31 +615,6 @@
       </div></td></tr></table></div>
       
 </form>
-<script type="text/javascript">
-function toggle2(value){
-  
-    var e = document.getElementById('location_label');
-    var e1 = document.getElementById('file_upload_label');
-    var e2=document.getElementById('location_text');
-    var e3=document.getElementById('id_file');
-if(value==1)
-    {
-	e.style.display="none";
-	e1.style.display="block";
-	e2.style.display="none";
-	e3.style.display="block";
-	
-    }
-else if(value==0)
-    {
-	e.style.display="block";
-	e1.style.display="none";
-	e2.style.display="block";
-	e3.style.display="none";
-  
-    }
-    
-}
-</script>
-      <jsp:include page="footer.jsp"></jsp:include> --%>
-       
+
+      <jsp:include page="footer.jsp"></jsp:include> 
+       --%>
