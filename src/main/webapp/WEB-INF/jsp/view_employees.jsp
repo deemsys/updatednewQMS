@@ -106,7 +106,7 @@
 					         	<td valign="top" align="left" width="10%">Type</td>
 								<td valign="top" align="left" width="10%">Qualified By</td>
 								<td valign="top" align="left" width="10%">Trainer</td>
-          						<td valign="top" align="left" width="15%">Attachments</td>
+          						<td valign="top" align="left" width="10%">Attachments</td>
           						<td valign="top" align="left" width="15%">Actions</td>
           					</tr>
 						
@@ -123,9 +123,15 @@
 								           	<a href="list_employee?id=${employees.employee_id}">${employees.employee_id}</td>
 											<td valign="top" align="left" width="15%">${employees.name}</td>
 											<td valign="top" align="left" width="10%">${employees.type_of_training}</td>											
-											<td valign="top" align="left" width="20%">${employees.qualified_by}</td>											
+											<td valign="top" align="left" width="10%">${employees.qualified_by}</td>											
 											<td valign="top" align="left" width="10%">${employees.trainer}</td>
-											<td valign="top" align="left" width="15%">${employees.attachments}</td>
+											<c:choose>
+											<c:when test="${employees.attachment_name!='null'}">
+											<td valign="top" align="left" width="10%"><a href="<c:out value="downloademployeefile?eid=${employees.employee_id}"></c:out>">Download</a></td>
+										</c:when>
+										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
+										</c:otherwise>
+										</c:choose>		
 												<td valign="top" align="left" width="15%">
 												
 												

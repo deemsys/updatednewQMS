@@ -33,7 +33,7 @@ $(function() {
  
 </script>
 
-<form method="post" action="updateemployee">
+<form method="post" enctype="multipart/form-data" action="updateemployee">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
       <tr>
@@ -71,7 +71,7 @@ $(function() {
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Add Employee</h2>
+              <h2>Update Employee</h2>
             </div>
             <div class="contentbox">
             <c:set value="${employeeForm.employees[0]}" var="employee"/>
@@ -139,8 +139,14 @@ $(function() {
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Attachments</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="attachments" class="input_txtbx1" id="inp_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.attachments}" /><br><span class="err"><form:errors path="Employee.attachments"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Completion Date</td>
+                  
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                   <c:out value="${employee.attachment_name}"></c:out>
+                  <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br><span class="err"></span></td>
+                  
+                   </tr>
+                   
+                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Completion Date</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_completion_date }" /><br><span class="err"><form:errors path="Employee.training_completion_date"></form:errors></span></td>
                 </tr>
@@ -187,6 +193,32 @@ $(function() {
       
 </form>
 
+<script type="text/javascript">
+function toggle2(value){
+  
+    var e = document.getElementById('location_label');
+    var e1 = document.getElementById('file_upload_label');
+    var e2=document.getElementById('location_text');
+    var e3=document.getElementById('id_file');
+ if(value==0)
+    {
+	e.style.display="block";
+	e1.style.display="none";
+	e2.style.display="block";
+	e3.style.display="none";
+  
+    }
+
+    
+}
+</script>
+<script>
+function change_file(){
+	document.getElementById("id_file").style.display="block";
+	document.getElementById("file_name").style.display="none";
+	
+}
+</script>
 
  <script>
    $(function() {
@@ -209,5 +241,6 @@ $(function() {
 		 var format="yy-mm-dd";
          $( "#datepicker3" ).datepicker();
        });
-      <jsp:include page="footer.jsp"></jsp:include>
+    </script> 
+	 <jsp:include page="footer.jsp"></jsp:include>
  

@@ -1,7 +1,19 @@
 package qms.controllers;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import qms.dao.FileHandlingDAO;
+
 
 import java.security.Principal;
 import java.util.ArrayList;
+
+import java.io.FileOutputStream;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +29,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import qms.dao.EmployeeDAO;
 import qms.model.Employee;
+import qms.forms.CustomerFeedbackForm;
 import qms.forms.EmployeeForm;
 import qms.forms.JobForm;
 
@@ -36,6 +50,9 @@ public class EmployeeController
 	@Autowired
 	JobDAO jobDAO;
 	
+	@Autowired
+	FileHandlingDAO fileHandlingDAO;
+	
 	//Getting unique id
 	@RequestMapping(value={"/addemployee"},method=RequestMethod.GET)
 	public String addEmployee(HttpSession session,ModelMap model,Principal principal)
@@ -47,36 +64,108 @@ public class EmployeeController
 		return "add_employee";
 	}
 	
-	//Insert operation
-	@RequestMapping(value={"/addemployee"},method=RequestMethod.POST)
-	public String insertEmployee(HttpSession session, @ModelAttribute("Employee") @Valid Employee employee,BindingResult result, ModelMap model)
-	{
-
-		session.setAttribute("employees",employee);
-			if (result.hasErrors())
-			{
-				System.out.println("some error while inserting.....");
-				EmployeeForm employeeForm=new EmployeeForm();
-				employeeForm.setEmployees(employeeDAO.getEmployees());
-				model.addAttribute("employeeForm",employeeForm);
-				model.addAttribute("Success","true");
-				model.addAttribute("id",employeeDAO.getMax_employeeID());
-		        return "add_employee";
+	
+	//insert operation
+	@RequestMapping(value={"/addemployee"}, method = RequestMethod.POST)
+	public String insert_employee(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("Employee") @Valid Employee employee,BindingResult result ) throws IOException {
+		System.err.println("-------------------------------------------");
+		byte[] buffer=null;// = new byte[10000];
+		try {
+			MultipartFile file = employee.getAttachments();
+			String orginal_fileName = null;
+			String duplicate_fileName=null;
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+			/*if(file != null)
+			{*/
+			    if (file.getSize() > 0) {
+				inputStream = file.getInputStream();
+				if (file.getSize() > 100000) 
+				{
+					System.out.println("File Size:::" + file.getSize());
+					return "/add_employee";
+				}				
+			    orginal_fileName ="C:/Projects/"+file.getOriginalFilename();
+			    duplicate_fileName=orginal_fileName;
+			    File create_file=new File(orginal_fileName);
+			    int i=1;			    
+			    while(create_file.exists())
+			    {
+			    	duplicate_fileName="C:/Projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+			    	create_file=new File(duplicate_fileName);
+			    	i++;
+			    }
+			    outputStream = new FileOutputStream(duplicate_fileName);
+			    System.out.println("fileName:" + file.getOriginalFilename());
+         
+			    
+			    //------Lines to changes------//
+			    employee.setAttachment_name(file.getOriginalFilename());
+			    employee.setAttachment_type(file.getContentType());
+                employee.setAttachment_referrence(duplicate_fileName);
+                
+                //----End Lines to changed----//
+              
+                int readBytes = 0;
+				buffer=new byte[(int)file.getSize()];
+				while ((readBytes = inputStream.read(buffer, 0,(int) file.getSize())) != -1) {
+				outputStream.write(buffer, 0, readBytes);			
+				}
+				outputStream.close();
+				inputStream.close();
+				//employeeDAO.insert_employee(employee);
 			}
-			
-			
-		employeeDAO.insert_employee(employee);
-		System.out.println("records to be inserted......");
+	
+		
+			if (employeeDAO.insert_employee(employee)) {
+				//employeeDAO.insert(documentMain.getDocument_id().substring(0,documentMain.getDocument_id().lastIndexOf('-')));
+				model.addAttribute("success", "true");
+				model.addAttribute("success_message", "Inserted Successfully");
+			//	flag = 1;
+			}
+		}
+			catch (Exception e) {
+			System.out.println(e.toString());
+			e.printStackTrace();
+		}
+		session.setAttribute("employees",employee);
+		if (result.hasErrors())
+		{
+			EmployeeForm employeeForm=new EmployeeForm();
+			employeeForm.setEmployees(employeeDAO.getEmployees());
+			model.addAttribute("employeeForm",employeeForm);	
+			model.addAttribute("Success","true");
+			model.addAttribute("menu","employee");
+	        return "add_employee";
+		}
+		
+		
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployees());
-		model.addAttribute("employeeForm",employeeForm);
+		model.addAttribute("employeeForm",employeeForm);		
 		model.addAttribute("menu","employee");
-		return "view_employees";
+        return "view_employees";
+		}
+		
 	
+	//downloading the attachment
+	@RequestMapping(value={"/downloademployeefile"}, method = RequestMethod.GET)
+	public String downloademployeefile(@RequestParam("eid") String employee_id,HttpServletResponse response,ModelMap model, Principal principal ) throws IOException {
+		
+	
+		EmployeeForm employeeForm=new EmployeeForm();
+		employeeForm.setEmployees(employeeDAO.getParticular_Employee(employee_id));
+		model.addAttribute("employeeForm",employeeForm);
+		System.out.println("Employee id is:::"+employee_id);	
+		System.out.println("Going to download");
+		fileHandlingDAO.filedownload(response,employeeForm.getEmployees().get(0).getAttachment_referrence(),employeeForm.getEmployees().get(0).getAttachment_name());
+		System.out.println("End Download");
+		
+		return "view_employees";
 	}
 	
 	//view records
-	@RequestMapping(value={"/viewemployees"},method=RequestMethod.GET)
+		@RequestMapping(value = "/viewemployees", method = RequestMethod.GET)
 	public String viewEmployees(ModelMap model,Principal principal,Employee employee)
 	{
 		EmployeeForm employeeForm=new EmployeeForm();
@@ -106,7 +195,6 @@ public class EmployeeController
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","employee");
 	    model.addAttribute("button","viewall");
-	    
 	    return "view_employees";
 	    
 		
@@ -133,7 +221,7 @@ public class EmployeeController
 
 	//delete a record
 	@RequestMapping(value={"/deleteemployee"}, method = RequestMethod.GET)
-	public String delete_customer(@RequestParam("empid") String employee_id,ModelMap model, Principal principal )
+	public String delete_employee(@RequestParam("empid") String employee_id,ModelMap model, Principal principal )
 	{
     
 		employeeDAO.delete_employee(employee_id);
@@ -146,7 +234,7 @@ public class EmployeeController
 	
 	//Edit a record
 	@RequestMapping(value={"/editemployee"}, method = RequestMethod.GET)
-	public String edit_customer(@RequestParam("empid") String employee_id,ModelMap model, Principal principal)//,Employee employee )
+	public String edit_employee(@RequestParam("empid") String employee_id,ModelMap model, Principal principal)//,Employee employee )
 	{
     	EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployeess_byid(employee_id));
@@ -162,7 +250,7 @@ public class EmployeeController
 	
 	//Update a record
 	@RequestMapping(value={"/updateemployee"}, method = RequestMethod.POST)
-	public String update_customer(ModelMap model, @ModelAttribute("Employee") @Valid Employee employee, BindingResult result)
+/*	public String update_customer(ModelMap model, @ModelAttribute("Employee") @Valid Employee employee, BindingResult result)
 	{
 
 		if (result.hasErrors())
@@ -174,13 +262,108 @@ public class EmployeeController
 	        return "edit_employee";
 		}
     	employeeDAO.update_employee(employee);
-    	EmployeeForm employeeForm=new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.getEmployees());
-		model.addAttribute("employeeForm",employeeForm);
+    	//EmployeeForm employeeForm=new EmployeeForm();
+		//employeeForm.setEmployees(employeeDAO.getEmployees());
+		//model.addAttribute("employeeForm",employeeForm);
 		model.addAttribute("menu","employee");
 		return "view_employees";
- 	}
+ 	}*/
+		public String update_employee(@ModelAttribute("Employee") @Valid Employee employee,BindingResult result,HttpSession session, ModelMap model,Principal principal) {
 
+				byte[] buffer=null;
+				int status =0;
+				try {
+					MultipartFile file = employee.getAttachments();
+					String orginal_fileName = null;
+					String duplicate_fileName = null;
+					InputStream inputStream = null;
+					OutputStream outputStream = null;
+						if (file.getSize() > 0) {
+							inputStream = file.getInputStream();
+							if (file.getSize() > 100000) {
+								System.out.println("File Size:::" + file.getSize());
+								return "/add_employee";
+							}
+							orginal_fileName = "C:/Projects/"
+									+ file.getOriginalFilename();
+							duplicate_fileName = orginal_fileName;
+							File create_file = new File(orginal_fileName);
+							int i = 1;
+							while (create_file.exists()) {
+								duplicate_fileName = "C:/Projects/"
+										+ file.getOriginalFilename().substring(
+												0,
+												file.getOriginalFilename().lastIndexOf(
+														'.'))
+										+ i
+										+ file.getOriginalFilename().substring(
+												file.getOriginalFilename().lastIndexOf(
+														'.'));
+								create_file = new File(duplicate_fileName);
+								i++;
+							}
+							outputStream = new FileOutputStream(duplicate_fileName);
+							System.out
+									.println("fileName:" + file.getOriginalFilename());
+
+							// ------Lines to changes------//
+
+							employee.setAttachment_type(file.getContentType());
+							employee.setAttachment_name(file.getOriginalFilename());
+							employee.setAttachment_referrence(duplicate_fileName);
+
+							// ----End Lines to changed----//
+
+							int readBytes = 0;
+							buffer = new byte[(int) file.getSize()];
+							while ((readBytes = inputStream.read(buffer, 0,
+									(int) file.getSize())) != -1) {
+								outputStream.write(buffer, 0, readBytes);
+							}
+							outputStream.close();
+							inputStream.close();
+
+						}
+					
+					if (employeeDAO.update_employee(employee)) {
+						model.addAttribute("success", "true");
+						model.addAttribute("success_message", "Updated Successfully");
+						status = 1;
+					}
+
+				} catch (Exception e) {
+					System.out.println(e.toString());
+					e.printStackTrace();
+				}
+				if(status == 1)
+				{
+				EmployeeForm employeeForm=new EmployeeForm();
+				employeeForm.setEmployees(employeeDAO.getEmployees());
+				model.addAttribute("employeeForm", employeeForm);
+				model.addAttribute("menu","employee");
+				return "view_employees";
+				}
+				else{
+					return "edit_employee";
+				}
+			}
+				/*int flag = 0;
+				if (flag == 1)
+				{
+					
+					EmployeeForm employeeForm = new EmployeeForm();
+					employeeForm.setEmployees(employeeDAO.getEmployees());
+					model.addAttribute("employeeForm", employeeForm);
+					  model.addAttribute("menu","employee");
+					return "view_employees";
+				
+				}
+				else
+					return "add_employee";
+				}
+		*/		
+			
+		
 	//Search operation 
 	@RequestMapping(value="/findemployee",method=RequestMethod.GET)		
 	public String findemployee(HttpServletRequest request,HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)
@@ -266,21 +449,21 @@ public class EmployeeController
 		  case 0:
 			  employees=employeeDAO.getEmployee_bytype("trainingneeds");
 			  break;
-		 /* case 1:
+		  case 1:
 			  employees=employeeDAO.getEmployee_bytype("training_report_for_each_employee");
 			  break;
 		  case 2:
 			  employees=employeeDAO.getEmployee_bytype("qualification_for_each_employee");
 			  break;
-		*/  case 1:
+		  case 3:
 			  employees=employeeDAO.getEmployee_bytype("opentraining");
 			  break;
-		  /*case 4:
+		  case 4:
 			  employees=employeeDAO.getEmployee_bytype("opentrainingeffectiveness");
 			  break;
 		  case 5:
 			  employees=employeeDAO.getEmployee_bytype("past_due_training_by_trainer");
-			  break;*/
+			  break;
 		  default:
 			  break;
 				  

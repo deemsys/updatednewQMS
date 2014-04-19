@@ -65,9 +65,16 @@
                   <td valign="top" align="left" class="input_txt" width="70%">${employees21.date_hired}<br/><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%"> Attachments :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${employees21.attachments}<br/><span class="err"></span></td>
-                </tr>
+                  <%--  <td valign="top" align="left" class="input_txt" width="70%">${employees21.attachments}<br/><span class="err"></span></td>
+                 --%>
+                 <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%">Upload File:</td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${employees21.attachment_name}
+            
+           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err">*</span></td>
+               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
+     
+     
+                 </tr>
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="20%"> Process :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${employees21.process}<br/><span class="err"></span></td>
@@ -136,8 +143,6 @@
 
                          </table>
                          
-                         
-                         ${employees21.process_name}
             </div>
             </td>
             </tr>

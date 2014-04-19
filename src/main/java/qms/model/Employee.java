@@ -1,6 +1,7 @@
 package qms.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class Employee
 {
@@ -11,8 +12,10 @@ public class Employee
 	private String job_title;
 	@NotEmpty
 	private String date_hired;
-	@NotEmpty
-	private String attachments;
+	private CommonsMultipartFile attachments;
+	private String attachment_name;	
+	private String attachment_type;
+	private String attachment_referrence;
 	@NotEmpty
 	private String list_of_functions_needes;
 	@NotEmpty
@@ -39,9 +42,12 @@ public class Employee
 	private String doc_control;
 	@NotEmpty
 	private String management_rep;
+	
+	
     
 	public Employee(String employee_id, String name, String job_title,
-			String date_hired, String attachments,String process,String process_name,String doc_control,String management_rep,
+			String date_hired, String attachment_name,
+			String attachment_type, String attachment_referrence,String process,String process_name,String doc_control,String management_rep,
 			String list_of_functions_needes, String documented_in,
 			String qualified_by, String type_of_training, String trainer,
 			String training_due_date, String training_completion_date,
@@ -53,7 +59,9 @@ public class Employee
 		this.name = name;
 		this.job_title = job_title;
 		this.date_hired = date_hired;
-		this.attachments = attachments;
+		this.attachment_name = attachment_name;
+		this.attachment_type = attachment_type;
+		this.attachment_referrence = attachment_referrence;
 		this.list_of_functions_needes = list_of_functions_needes;
 		this.documented_in = documented_in;
 		this.qualified_by = qualified_by;
@@ -84,9 +92,7 @@ public class Employee
 	public String getDate_hired() {
 		return date_hired;
 	}
-	public String getAttachments() {
-		return attachments;
-	}
+	
 	
 	public String getProcess() {
 		return process;
@@ -151,9 +157,7 @@ public class Employee
 	public void setDate_hired(String date_hired) {
 		this.date_hired = date_hired;
 	}
-	public void setAttachments(String attachments) {
-		this.attachments = attachments;
-	}
+	
 	public void setList_of_functions_needes(String list_of_functions_needes) {
 		this.list_of_functions_needes = list_of_functions_needes;
 	}
@@ -181,6 +185,30 @@ public class Employee
 	}
 	public void setTraining_effectiveness_notes(String training_effectiveness_notes) {
 		this.training_effectiveness_notes = training_effectiveness_notes;
+	}
+	public String getAttachment_name() {
+		return attachment_name;
+	}
+	public void setAttachment_name(String attachment_name) {
+		this.attachment_name = attachment_name;
+	}
+	public String getAttachment_type() {
+		return attachment_type;
+	}
+	public void setAttachment_type(String attachment_type) {
+		this.attachment_type = attachment_type;
+	}
+	public String getAttachment_referrence() {
+		return attachment_referrence;
+	}
+	public void setAttachment_referrence(String attachment_referrence) {
+		this.attachment_referrence = attachment_referrence;
+	}
+	public CommonsMultipartFile getAttachments() {
+		return attachments;
+	}
+	public void setAttachments(CommonsMultipartFile attachments) {
+		this.attachments = attachments;
 	}
 	
 		

@@ -92,21 +92,24 @@
                 <tr class="row1">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Equipment Status :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="equipment_status" class="input_cmbbx1">
-                  <option value="Active">Active</option>
-                  <option value="Not Active">Not Active</option>
-                  </select>
+                  <select name="equipment_status" class="input_cmbbx1">				  
+                  <option value="">--Select--</option>
+             	<option <c:if test="${Maintenance.equipment_status eq 'Active'}"><c:out value="Selected"/></c:if> value="Active" >Active</option>
+                <option <c:if test="${Maintenance.equipment_status eq 'Not Active'}"><c:out value="Selected"/></c:if> value="Not Active" >Not Active</option>
+                 
+                   </select>
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="right" class="input_txt" width="50%"> Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <select name="frequency_maintenance" class="input_cmbbx1">
-                  <option value="Weekly">Weekly</option>
-                  <option value="Monthly">Monthly</option>
-                   <option value="Weekly">Quarterly</option>
-                   <option value="Weekly">Semi-Annually</option>
-                  <option value="Monthly">Annually</option>
+                  <option value="">--Select--</option>
+                  <option <c:if test="${Maintenance.frequency_maintenance eq 'Weekly'}"><c:out value="Selected"/></c:if> value="Weekly" >Weekly</option>
+                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Monthly'}"><c:out value="Selected"/></c:if> value="Monthly" >Monthly</option>
+                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Quarterly'}"><c:out value="Selected"/></c:if> value="Quarterly" >Quarterly</option>
+                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Semi-Annually'}"><c:out value="Selected"/></c:if> value="Semi-Annually" >Semi-Annually</option>
+                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Annually'}"><c:out value="Selected"/></c:if> value="Active" >Annually</option>
                   </select>
                   <br/><span class="err"></span></td>
                   </tr>
@@ -138,9 +141,11 @@
                  <td valign="middle" align="right" class="input_txt" width="30%"> Type of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <select name="type_of_maintenance" class="input_cmbbx1">
-                  <option value="Preventive">Preventive</option>
-                  <option value="Corrective">Corrective</option>
-                   <option value="Predictive">Predictive</option>
+                  <option value="">--Select--</option>
+                  <option <c:if test="${Maintenance.type_of_maintenance eq 'Preventive'}"><c:out value="Selected"/></c:if> value="Preventive" >Preventive</option>
+                  <option <c:if test="${Maintenance.type_of_maintenance eq 'Corrective'}"><c:out value="Selected"/></c:if> value="Corrective" >Corrective</option>
+                  <option <c:if test="${Maintenance.type_of_maintenance eq 'Predictive'}"><c:out value="Selected"/></c:if> value="Predictive" >Predictive</option>
+
                </select>
                 <br/><span class="err"></span></td>
                   </tr>
@@ -216,4 +221,5 @@ else
        
 }
 </script> -->
+ <jsp:include page="footer.jsp"></jsp:include>
           

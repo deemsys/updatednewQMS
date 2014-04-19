@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FileHandlingDAO
 {
-	public void filedownload(HttpServletResponse response,String referrence,String original) throws IOException
+	public static void filedownload(HttpServletResponse response,String referrence,String original) throws IOException
 	{
 		OutputStream outputStream = null;
         InputStream in = null;
