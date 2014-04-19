@@ -215,11 +215,30 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 			e1.printStackTrace();
 		}
 		try {
+			String attachment_name ="";
+			  String attachment_type="",attachment_reference="";
+			  if(customerFeedback.getAttachment_name() == null || customerFeedback.getAttachment_type() == null || customerFeedback.getAttachment_referrence() == null)
+				 {
+					 resultSet=statement.executeQuery("select attachment_name,attachement_type,attachment_referrence from tbl_customerfeedback where feedback_id='"+customerFeedback.getFeedback_id()+"'");
+				  while(resultSet.next())
+				  {
+					  attachment_name= resultSet.getString("attachment_name");
+					  attachment_type= resultSet.getString("attachement_type");
+					   attachment_reference= resultSet.getString("attachment_referrence");
+				  }
+				  statement.executeUpdate("update tbl_customerfeedback set date_of_feedback='"+customerFeedback.getDate_of_feedback()+"',type_of_feedback='"+customerFeedback.getType_of_feedback()+"',feedback_recorded_by='"+customerFeedback.getFeedback_recorded_by()+"',feedback_details='"+customerFeedback.getFeedback_details()+"',attachment_name='"+attachment_name+"',attachement_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where feedback_id='"+customerFeedback.getFeedback_id()+"'");
+				
+				  status=true;
+				 }
+			  else{
+				  
 			String cmd_update = "update tbl_customerfeedback set date_of_feedback='"+customerFeedback.getDate_of_feedback()+"',type_of_feedback='"+customerFeedback.getType_of_feedback()+"',feedback_recorded_by='"+customerFeedback.getFeedback_recorded_by()+"',feedback_details='"+customerFeedback.getFeedback_details()+"',attachment_name='"+customerFeedback.getAttachment_name()+"', attachement_type='"+customerFeedback.getAttachment_type()+"', attachment_referrence='"+customerFeedback.getAttachment_referrence()+"' where feedback_id='"+customerFeedback.getFeedback_id()+"'";
 			System.out.println(statement.execute(cmd_update));
 			System.out.println("update feedback="+status);
 			System.out.println("feed back id= "+customerFeedback.getFeedback_id());
 			statement.execute(cmd_update);
+			status = true;
+			  }
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			releaseResultSet(resultSet);

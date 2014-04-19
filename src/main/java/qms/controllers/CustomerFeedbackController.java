@@ -148,6 +148,7 @@ public class CustomerFeedbackController
 	public String update_customerfeedback(ModelMap model,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result ) throws IOException
 	{
 		byte[] buffer=null;// = new byte[10000];
+		int flag = 0;
 		try {
 			
 			MultipartFile file = customerFeedback.getAttachments();
@@ -193,9 +194,14 @@ public class CustomerFeedbackController
 				outputStream.close();
 				inputStream.close();
 				/*customerFeedbackDAO.insert_customerfeedback(customerFeedback);*/
-				customerFeedbackDAO.update_customerfeedback(customerFeedback);
+				
 			}
-	
+			    
+			    if (customerFeedbackDAO.update_customerfeedback(customerFeedback)) {
+					model.addAttribute("success", "true");
+					model.addAttribute("success_message", "Updated Successfully");
+					flag = 1;
+				}
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			e.printStackTrace();
@@ -210,12 +216,18 @@ public class CustomerFeedbackController
 		        return "edit_customerfeedback";
 		}*/
 		/*customerFeedbackDAO.update_customerfeedback(customerFeedback);*/
+		if (flag == 1)
+		{
+		
 		CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
 		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
 		model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
 		model.addAttribute("menu","customer");
 		return "view_customerfeedback";
 	}
+		else
+			return "view_customerfeedback";
+	}	
 	
 	//delete a record
 	@RequestMapping(value={"/deletefeedback"}, method = RequestMethod.GET)

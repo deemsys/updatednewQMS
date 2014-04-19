@@ -57,7 +57,7 @@ $(window).load(function(){
 									
 								</a>
 							</li>
-				             <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <%--  <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
 									<span>Add Form</span>
@@ -77,7 +77,7 @@ $(window).load(function(){
 									<span>Form Report</span>
 									
 								</a>
-							</li>
+							</li> --%>
 				            </ul>
   </div>
         </td>
