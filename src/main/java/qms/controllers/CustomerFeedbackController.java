@@ -157,7 +157,8 @@ public class CustomerFeedbackController
 			String duplicate_fileName=null;
 			InputStream inputStream = null;
 			OutputStream outputStream = null;
-			    if (file.getSize() > 0) {
+			    if (file.getSize() > 0)
+			    {
 				inputStream = file.getInputStream();
 				if (file.getSize() > 100000) 
 				{

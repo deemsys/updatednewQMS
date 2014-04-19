@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
+<form method="post"  action="updatefeedback">
 <form method="post" enctype="multipart/form-data" action="updatefeedback">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -107,7 +108,7 @@
                   </tr>
                   <tr class="row1">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Attachment choosen:</td>
-                 <td valign="middle" align="left">${customerfeedbacks.attachment_name}
+                	<td valign="middle" align="left">${customerfeedbacks.attachment_name}
                  <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.attachments}"></c:out>'></br><span class="err"></span></td>
                  </tr> 
                   

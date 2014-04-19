@@ -576,13 +576,38 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 			e1.printStackTrace();
 		}
 		try {
-			
-			String cmd_update = "update tbl_corrective_and_preventive_main set capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"',nc_id='"+correctiveAndPreventiveActions.getNc_id()+"',source_of_nonconformance='"+correctiveAndPreventiveActions.getSource_of_nonconformance()+"',external_id='"+correctiveAndPreventiveActions.getExternal_id()+"',type_of_nonconformance='"+correctiveAndPreventiveActions.getType_of_nonconformance()+"',date_found='"+correctiveAndPreventiveActions.getDate_found()+"',temporary_action='"+correctiveAndPreventiveActions.getTemporary_action()+"',nature_of_nc='"+correctiveAndPreventiveActions.getNature_of_nc()+"',capa_requestor='"+correctiveAndPreventiveActions.getCapa_requestor()+"',request_date='"+correctiveAndPreventiveActions.getRequest_date()+"',capa_due_date='"+correctiveAndPreventiveActions.getCapa_due_date()+"',assigned_team_leader='"+correctiveAndPreventiveActions.getAssigned_team_leader()+"',team_members='"+correctiveAndPreventiveActions.getTeam_members()+"',root_cause_analysis_file='"+correctiveAndPreventiveActions.getRoot_cause_analysis_file()+"',use_5_why_in_system='"+correctiveAndPreventiveActions.getUse_5_why_in_system()+"',why='"+correctiveAndPreventiveActions.getWhy()+"',root_cause_statement='"+correctiveAndPreventiveActions.getRoot_cause_statement()+"',upload_external_analysis='"+correctiveAndPreventiveActions.getUpload_external_analysis()+"' where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'";
-			String cmd_update1 = "update tbl_corrective_and_preventive_child set capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"',action='"+correctiveAndPreventiveActions.getAction()+"',responsibility='"+correctiveAndPreventiveActions.getResponsibility()+"',due_date='"+correctiveAndPreventiveActions.getDue_date()+"',completion_date='"+correctiveAndPreventiveActions.getCompletion_date()+"',verified_by='"+correctiveAndPreventiveActions.getVerified_by()+"',verification_date='"+correctiveAndPreventiveActions.getVerification_date()+"' where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'";
-		
-			 statement.execute(cmd_update);
-			 statement.execute(cmd_update1);
-		} catch (Exception e) {
+			 String attachment_name ="";
+			  String attachment_type="",attachment_reference="";
+			 
+			 if(correctiveAndPreventiveActions.getAttachment_name() == null || correctiveAndPreventiveActions.getAttachment_type() == null || correctiveAndPreventiveActions.getAttachment_referrence() == null)
+			 {
+				 resultSet=statement.executeQuery("select attachment_name,attachment_type,attachment_referrence from tbl_corrective_and_preventive_main where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'");
+			  while(resultSet.next())
+			  {
+				  attachment_name=resultSet.getString("attachment_name");
+				  attachment_type=resultSet.getString("attachment_type");
+				   attachment_reference= resultSet.getString("attachment_referrence");
+			  }
+			  String cmd_update = "update tbl_corrective_and_preventive_main set capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"',nc_id='"+correctiveAndPreventiveActions.getNc_id()+"',source_of_nonconformance='"+correctiveAndPreventiveActions.getSource_of_nonconformance()+"',external_id='"+correctiveAndPreventiveActions.getExternal_id()+"',type_of_nonconformance='"+correctiveAndPreventiveActions.getType_of_nonconformance()+"',date_found='"+correctiveAndPreventiveActions.getDate_found()+"',temporary_action='"+correctiveAndPreventiveActions.getTemporary_action()+"',nature_of_nc='"+correctiveAndPreventiveActions.getNature_of_nc()+"',capa_requestor='"+correctiveAndPreventiveActions.getCapa_requestor()+"',request_date='"+correctiveAndPreventiveActions.getRequest_date()+"',capa_due_date='"+correctiveAndPreventiveActions.getCapa_due_date()+"',assigned_team_leader='"+correctiveAndPreventiveActions.getAssigned_team_leader()+"',team_members='"+correctiveAndPreventiveActions.getTeam_members()+"',root_cause_analysis_file='"+correctiveAndPreventiveActions.getRoot_cause_analysis_file()+"',use_5_why_in_system='"+correctiveAndPreventiveActions.getUse_5_why_in_system()+"',why='"+correctiveAndPreventiveActions.getWhy()+"',root_cause_statement='"+correctiveAndPreventiveActions.getRoot_cause_statement()+"',upload_external_analysis='"+correctiveAndPreventiveActions.getUpload_external_analysis()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'";
+				String cmd_update1 = "update tbl_corrective_and_preventive_child set capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"',action='"+correctiveAndPreventiveActions.getAction()+"',responsibility='"+correctiveAndPreventiveActions.getResponsibility()+"',due_date='"+correctiveAndPreventiveActions.getDue_date()+"',completion_date='"+correctiveAndPreventiveActions.getCompletion_date()+"',verified_by='"+correctiveAndPreventiveActions.getVerified_by()+"',verification_date='"+correctiveAndPreventiveActions.getVerification_date()+"' where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'";
+				 statement.execute(cmd_update);
+				 System.out.println("status = "+statement.execute(cmd_update));
+				 statement.execute(cmd_update1);
+				 status  = true;
+			 } 
+			 else
+				 {
+				 String cmd_update = "update tbl_corrective_and_preventive_main set capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"',nc_id='"+correctiveAndPreventiveActions.getNc_id()+"',source_of_nonconformance='"+correctiveAndPreventiveActions.getSource_of_nonconformance()+"',external_id='"+correctiveAndPreventiveActions.getExternal_id()+"',type_of_nonconformance='"+correctiveAndPreventiveActions.getType_of_nonconformance()+"',date_found='"+correctiveAndPreventiveActions.getDate_found()+"',temporary_action='"+correctiveAndPreventiveActions.getTemporary_action()+"',nature_of_nc='"+correctiveAndPreventiveActions.getNature_of_nc()+"',capa_requestor='"+correctiveAndPreventiveActions.getCapa_requestor()+"',request_date='"+correctiveAndPreventiveActions.getRequest_date()+"',capa_due_date='"+correctiveAndPreventiveActions.getCapa_due_date()+"',assigned_team_leader='"+correctiveAndPreventiveActions.getAssigned_team_leader()+"',team_members='"+correctiveAndPreventiveActions.getTeam_members()+"',root_cause_analysis_file='"+correctiveAndPreventiveActions.getRoot_cause_analysis_file()+"',use_5_why_in_system='"+correctiveAndPreventiveActions.getUse_5_why_in_system()+"',why='"+correctiveAndPreventiveActions.getWhy()+"',root_cause_statement='"+correctiveAndPreventiveActions.getRoot_cause_statement()+"',upload_external_analysis='"+correctiveAndPreventiveActions.getUpload_external_analysis()+"',attachment_name='"+correctiveAndPreventiveActions.getAttachment_name()+"',attachment_type='"+correctiveAndPreventiveActions.getAttachment_type()+"',attachment_referrence='"+correctiveAndPreventiveActions.getAttachment_referrence()+"' where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'";
+					String cmd_update1 = "update tbl_corrective_and_preventive_child set capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"',action='"+correctiveAndPreventiveActions.getAction()+"',responsibility='"+correctiveAndPreventiveActions.getResponsibility()+"',due_date='"+correctiveAndPreventiveActions.getDue_date()+"',completion_date='"+correctiveAndPreventiveActions.getCompletion_date()+"',verified_by='"+correctiveAndPreventiveActions.getVerified_by()+"',verification_date='"+correctiveAndPreventiveActions.getVerification_date()+"' where capa_id='"+correctiveAndPreventiveActions.getCapa_id()+"'";
+				
+					 statement.execute(cmd_update);
+					 System.out.println("status = "+statement.execute(cmd_update));
+					 statement.execute(cmd_update1);
+					 status  = true;
+				 }
+		 }
+			 catch (Exception e) {
+				 
 			System.out.println(e.toString());
 			releaseResultSet(resultSet);
 			releaseStatement(statement);

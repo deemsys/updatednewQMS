@@ -246,10 +246,10 @@ public class CorrectiveAndPreventiveActionsController
 					}
 				}
 					
-				if (!correctiveAndPreventiveActionsDAO.insert_correctiveAndPreventiveActions(correctiveAndPreventiveActions))
+				if (correctiveAndPreventiveActionsDAO.insert_correctiveAndPreventiveActions(correctiveAndPreventiveActions))
 				 	{
-					//	model.addAttribute("success", "true");
-					//	model.addAttribute("success_message", "Inserted Successfully");
+						model.addAttribute("success", "true");
+						model.addAttribute("success_message", "Inserted Successfully");
 						flag = 1;
 				 	}	
 
@@ -316,25 +316,116 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value = "/updatecorrectiveAndPreventiveActions", method = RequestMethod.POST)
 	public String update_correctiveAndPreventiveActions(ModelMap model, Principal principal,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,
 			BindingResult result) {
+		//NEW LINES
 		
-		if (result.hasErrors())
+		
+		//END NEW LINE
+		
+		
+		
+		/*if (result.hasErrors())
 		{
 			
 			//System.out.println("output");
 			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.edit_CorrectiveAndPreventiveActions(correctiveAndPreventiveActions.getCapa_id()));
 			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
-	        return "view_correctiveactions";
-		}
+	        return "edit_correctiveactions";
+		}*/
+		byte[] buffer;
+		int flag =0;
+		try 
+		{
+			System.out.println("try");
 		
-		correctiveAndPreventiveActionsDAO.update_correctiveAndPreventiveActions(correctiveAndPreventiveActions);
+			MultipartFile file = correctiveAndPreventiveActions.getAttachments();
+			String orginal_fileName = null;
+			String duplicate_fileName = null;
+			InputStream inputStream = null;
+			OutputStream outputStream = null;
+				if (file != null) 
+				{
+					System.out.println("file != null");
+					if (file.getSize() > 0) 
+					{
+						System.out.println("file.getSize() > 0");
+						inputStream = file.getInputStream();
+						if (file.getSize() > 100000)
+						{
+							System.out.println("File Size:::" + file.getSize());
+							return "/add_correctiveAndPreventiveActions";
+						}
+						orginal_fileName = "C:/QMS_App/"
+							+ file.getOriginalFilename();
+						duplicate_fileName = orginal_fileName;
+						File create_file = new File(orginal_fileName);
+						int i = 1;
+						while (create_file.exists())
+							{
+							System.out.println("create");
+								duplicate_fileName = "C:/QMS_App/"
+								+ file.getOriginalFilename().substring(
+										0,
+										file.getOriginalFilename().lastIndexOf(
+												'.'))
+								+ i
+								+ file.getOriginalFilename().substring(
+										file.getOriginalFilename().lastIndexOf(
+												'.'));
+								create_file = new File(duplicate_fileName);
+								i++;
+							}
+						outputStream = new FileOutputStream(duplicate_fileName);
+						System.out.println("fileName:" + file.getOriginalFilename());
+
+					// ------Lines to changes------//
+
+						correctiveAndPreventiveActions.setAttachment_type(file.getContentType());
+						correctiveAndPreventiveActions.setAttachment_name(file.getOriginalFilename());
+						correctiveAndPreventiveActions.setAttachment_referrence(duplicate_fileName);
+						System.out.println(correctiveAndPreventiveActions.getAttachment_type());
+					// ----End Lines to changed----//
+
+						int readBytes = 0;
+						buffer = new byte[(int) file.getSize()];
+						while ((readBytes = inputStream.read(buffer, 0,
+							(int) file.getSize())) != -1) 
+							{
+								outputStream.write(buffer, 0, readBytes);
+							}
+						outputStream.close();
+						inputStream.close();
+					}
+				}
+				if (correctiveAndPreventiveActionsDAO.update_correctiveAndPreventiveActions(correctiveAndPreventiveActions))
+			 	{
+					model.addAttribute("success", "true");
+					model.addAttribute("success_message", "updated Successfully");
+					flag = 1;
+			 	}
+				}
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+			e.printStackTrace();
+		}
+
+		if(flag == 1)
+		{
 	//	model.addAttribute("menu","audits");
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 	//	model.addAttribute("menu","audits");
-		return "view_correctiveactions";
+		return "correctiveactions_list";
+		}
+		else
+		{
+			return "edit_correctiveactions";
+		}		
+		
 	}
+	
 
 	//view records
 	@RequestMapping(value = { "/view_correctiveandpreventive" }, method = RequestMethod.GET)

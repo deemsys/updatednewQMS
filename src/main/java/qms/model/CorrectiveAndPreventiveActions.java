@@ -92,7 +92,7 @@ public class CorrectiveAndPreventiveActions
 	private String why;
 	@NotEmpty
 	private String root_cause_statement;
-	@NotEmpty
+	
 	private String upload_external_analysis;
 
 	@NotEmpty

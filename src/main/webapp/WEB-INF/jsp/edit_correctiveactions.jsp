@@ -7,7 +7,7 @@
  <script src="resources/js/jquery-ui.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 
-<form method="post" action="updatecorrectiveAndPreventiveActions">
+<form method="post" enctype="multipart/form-data"  action="updatecorrectiveAndPreventiveActions">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
       <tr>
@@ -73,8 +73,7 @@
                   <td valign="middle" align="right" class="input_txt" width="30%"> EXTERNAL ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.external_id}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span>
-                  </td>         		</tr>
-                  
+                  </td>            
 
 								
                 <tr class="row1">
@@ -114,7 +113,10 @@
 				                 </select>
 				                   	</td>	
 				                   	<td valign="middle" align="left" class="input_txt"> Use 5 Whys's in system(Y/N)</td>
-				                   	<td><input type="checkbox" name="use_why" value="use_why" id="0"/></td>
+				                   	<td><input type="checkbox"  name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system" onclick="Use5();"
+				                   	<c:if test="${ correctiveAndPreventiveActions.use_5_why_in_system == 'use_5_why_in_system'}"><c:out value="Checked=checked"/></c:if>/>
+				                   	
+				                   	</td>
 								
 						         </tr> 
 				
@@ -122,19 +124,26 @@
                   <td valign="middle" align="right" class="input_txt" width="30%"> Request Date</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.request_date}" /><span class="err"><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></span></td>
                  
-                  <td valign="middle" align="left" class="input_txt" width="20">Why's?'</td>
-				                   	<td><input type="checkbox" name="whys" value="why" id="0"/></td>
-								
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="why" class="input_txtbx" id="why" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.why}" /><span class="err"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>
-                </tr>
-                <tr class="row2">
+                  <td valign="middle" align="left" class="input_txt" id="why?" width="20" style="display:none;">
+				   	
+				   <!-- 	<input type="checkbox" name="why1" value="why1" id="0"/> -->
+					</td>
+					  <td valign="top" align="left" class="input_txt" width="70% " id="5why" >
+					 
+					
+					 <textarea class="input_txtbx1" id="why5" name="why" style="width:70%; height: 70px;display:none;">${correctiveAndPreventiveActions.why}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
+                 </tr>	
+                
+                
+                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"> CAPA Due Date</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.capa_due_date}" /><span class="err"><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></span></td>
-                 </tr>
-                     
+                   </td>
+                    </tr>
             <tr class="row1">
-              <td valign="middle" align="right" class="input_txt">Assigned Team Leader</td>
-						           <td valign="top" align="left" class="input_txt">
+                 <td valign="middle" align="right" class="input_txt">Assigned Team Leader</td>
+                
+						          <td valign="top" align="left" class="input_txt">
 				                  		<select name="assigned_team_leader" class="input_cmbbx1">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
@@ -143,6 +152,8 @@
 				                 </select>
 				                   	</td>	
                  </tr>
+                     
+            
                   <tr class="row2">
                  <td valign="middle" align="right" class="input_txt" width="30%">Team Member(s)</td>      
 						         	 <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="team_members"  style="width:70%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
@@ -155,10 +166,44 @@
                   
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.root_cause_analysis_file}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
                <td valign="middle" align="left" class="input_txt"> Upload External Analysis(Y/N)</td>
-				                   	<td><input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="0"/></td>
-							</tr>
+				                  <td> <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" onclick="Upload();"
+				                  <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis == 'upload_external_analysis'}"><c:out value="Checked=checked"/></c:if>/>
+				    
+				                  <td>
+				                   
+							 </tr>
 				
-                 
+             
+                 <tr class="row1" id="id_file" >
+                  <td valign="middle" align="right" class="input_txt" width="30%">Upload the files</td>
+                  
+                  <td valign="top" align="left" class="input_txt" width="70%"> <c:out value="${correctiveAndPreventiveActions.attachment_name}" ></c:out>  				   
+                   	 
+                  <input name="attachments"  type="file"  /> </td>
+                  <%-- <input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.root_cause_analysis_file}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span> --%></td>
+               <td valign="middle" align="left" class="input_txt"> <!-- Upload External Analysis(Y/N) --></td>
+				                  <td> <%-- <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" onclick="Upload();"
+				                  <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis == 'upload_external_analysis'}"><c:out value="Checked=checked"/></c:if>/>
+				     --%>
+				                  <td>
+				                   
+							 </tr>
+                        		
+                  			 <tr class="row2" >
+                  			    
+				  <td valign="middle" align="right" class="input_txt" width="40%">.</td>
+				                 	
+				   <td valign="top" align="left" class="input_txt" width="10%"> 
+				 		 
+                  </td>  
+                  			 <td valign="middle" align="right" class="input_txt" width="25%"></td>
+				                 	
+				   <td valign="top" align="left" class="input_txt" width="25%"> 
+				 		
+                  </td>       
+           
+                  </tr>
+        
                   </table>
                 
                 <div>
@@ -175,7 +220,7 @@
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="verified_by" value="<c:out value="${correctiveAndPreventiveActions.verified_by}"/>"/><c:out value="${verified_by}"/><br/><span class="err"></span></td>
                </tr>
                     <tr class="row2">
-                     <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Responsibity</td>
+                     <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Responsibility</td>
                      <td valign="top" align="left" class="input_txt">
 				                  		<select name="responsibility" class="input_cmbbx1">
 						                  <option value="">--Select--</option>
@@ -217,15 +262,77 @@
                   </form>
                   
                   
-                  
-                  
-                      
-   <script>
- $(function() {
-	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
-        });
- 
+           <!--    <script>
+ $('#externalfile').change(function() {
+	 var e1=document.getElementById("upload");
+	   
+	 if($(this).is(':checked')) {
+		 e1.style.display="table-row";
+			
+     
+     } else {
+    	 e1.style.display="none";
+ 	 }
+   
+}); 
+
+</script> -->
+<!--  <script>
+
+$('#use_5_why_in_system').change(function() {
+	 var e4=document.getElementById("5why");
+	 var e5=document.getElementById("why?");
+		  
+	 if($(this).is(':checked')) {
+		 e4.style.display="table-cell";
+		 e5.style.display="table-cell";
+     
+     } else {
+    	 e4.style.display="none";
+    	 e5.style.display="none";
+    	    	 
+			 }
+   
+}); 
+</script> -->
+<script type="text/javascript">
+function Use5(){
+
+	var element = document.getElementById('why5');
+	if(document.getElementById('use_5_why_in_system').checked)
+		{
+		
+			element.style.display="block";
+		
+		}
+	else
+		element.style.display="none";
+	
+}
+function Upload(){
+
+	var element = document.getElementById('id_file');
+	var element1 = document.getElementById('upload');	
+	if(document.getElementById('externalfile').checked)
+		{
+		
+			element.style.display="block";
+			element1.style.display="block";
+		
+		}
+	else
+		element.style.display="none";
+	element1.style.display="none";
+	
+}
 </script>
+          
+                  
+                  
+
+          
+      
+ 
    <script>
  $(function() {
            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
@@ -238,5 +345,11 @@
      
          });
  
+</script>
+<script>
+window.onload = function(){
+	
+	Use5();Upload();
+}
 </script>
       <jsp:include page="footer.jsp"></jsp:include>
