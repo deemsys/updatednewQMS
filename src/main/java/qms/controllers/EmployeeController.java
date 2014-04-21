@@ -158,6 +158,7 @@ public class EmployeeController
 		model.addAttribute("employeeForm",employeeForm);
 		System.out.println("Employee id is:::"+employee_id);	
 		System.out.println("Going to download");
+		System.out.println("index of employee 0 ="+employeeForm.getEmployees().get(0).getAttachment_referrence());
 		fileHandlingDAO.filedownload(response,employeeForm.getEmployees().get(0).getAttachment_referrence(),employeeForm.getEmployees().get(0).getAttachment_name());
 		System.out.println("End Download");
 		

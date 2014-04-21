@@ -550,7 +550,7 @@ public class EmployeeDAO extends AbstractExcelView{
 		}
 		List<Employee> employees = new ArrayList<Employee>();
 	    try{
-			resultSet = statement.executeQuery("select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where employee_id='"+employee_id+"'");
+			resultSet = statement.executeQuery("select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id = '"+employee_id+"' and t2.employee_id = '"+employee_id+"'");
 			//System.out.println("came");
 			while(resultSet.next()){
 				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
