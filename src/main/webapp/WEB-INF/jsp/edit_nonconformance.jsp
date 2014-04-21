@@ -311,7 +311,9 @@ function CreateGroup()
 			        		         <%-- <input type="radio" name="disposition_required" value="0" class="input_txt" <c:if test="${nonconformance.disposition_required eq '0'}"><c:out value="Checked='true'"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
 			        		         <input type="radio" name="disposition_required" value="1" class="input_txt" <c:if test="${nonconformance.disposition_required eq '1'}"><c:out value="Checked='true'"/></c:if>>No
                 	          --%>
-                	                            <td valign="middle" align="left" class="input_txt" width="70%"><input type="radio" name="disposition_required" value="Yes" onchange="toggle3(this.value);"  id="disposition_required_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="disposition_required" value="No" id="disposition_required_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
+                	                            <td valign="middle" align="left" class="input_txt" width="70%">
+                	                            <input type="radio" name="disposition_required" value="Yes" onchange="toggle3(this.value);"  id="disposition_required_yes"<c:if test="${nonconformance.disposition_required=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+                	                            <input type="radio" name="disposition_required" value="No" id="disposition_required_no" onchange="toggle3(this.value);"  <c:if test="${nonconformance.disposition_required=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
                 	           </tr>
 								 <tr class="row1">
 				                 	<td valign="middle" align="left" class="input_txt"><span class="err">*</span> Date Found </td>
@@ -347,7 +349,9 @@ function CreateGroup()
                   				    <td valign="top" align="left" class="input_txt">
                   				    <%-- <input type="radio" name="corrective_action_required" value="0" class="input_txt" <c:if test="${nonconformance.corrective_action_required eq '0'}"><c:out value="Checked='true'"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                   				    <input type="radio" name="corrective_action_required" value="1" class="input_txt" <c:if test="${nonconformance.corrective_action_required eq '1'}"><c:out value="Checked='true'"/></c:if>>No
-                			 --%>                  <td valign="middle" align="left" class="input_txt" width="70%"><input type="radio" name="corrective_action_required" value="Yes" onchange="toggle3(this.value);"  id="corrective_action_required_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="corrective_action_required" value="No" id="corrective_action_required_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
+                			 --%>                  <td valign="middle" align="left" class="input_txt" width="70%">
+                			 					<input type="radio" name="corrective_action_required" value="Yes" onchange="toggle3(this.value);"  id="corrective_action_required_yes" <c:if test="${nonconformance.corrective_action_required=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+                			 					<input type="radio" name="corrective_action_required" value="No" id="corrective_action_required_no" onchange="toggle3(this.value);"  <c:if test="${nonconformance.corrective_action_required=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
                 			 
                 			 
 			    	                <td valign="top" align="left" class="input_txt"><span class="err">*</span> Cost of NC </td>

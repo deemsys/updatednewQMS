@@ -62,7 +62,7 @@
               <h2>Customer Feedback Report</h2>
             </div>
             
-              <form method="post" action="feedback_report">
+              <form method="post" action="feedbackreport">
  <div id="right_content">
             <div class="contentbox">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -85,8 +85,12 @@
                   <input type="text" name="to_date" class="input_txtbx1" id="datepicker1" value="${todate}" /><br><span class="err"></span></td>
                   <td  valign="top" align="right">&nbsp;</td><!-- 
                   <td valign="top" align="left"><input type="submit" value="Generate" class="submit_btn1" id="button" ></td> -->
-                   <td valign="top" align="left"  colspan="3"><a href="./feedbackexport?type=${type}">Generate</a></td>
-                             
+                   <td valign="top" align="left"  colspan="3"><input type="submit" value="Generate" class="submit_btn1" id="button" ></td>
+     				                     
+</tr>
+<tr class="row2">
+<td></td>
+<td></td> <td valign="top" align="right"> <a href="./feedbackexport?type=${type}">Generate All</a></td>
 </tr>
 </table>
 <%--  <table cellpadding="0" cellspacing="0" border="0" width="100%" id="feedbacktable" style="display:none" >

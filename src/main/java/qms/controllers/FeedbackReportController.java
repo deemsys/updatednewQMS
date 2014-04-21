@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,23 +36,30 @@ public class FeedbackReportController {
 }
 
 //Customer feedback report generation
-@RequestMapping(value={"/feedback_report"}, method = RequestMethod.POST)
-public String view_feedbackreport(HttpSession session,HttpServletRequest request, ModelMap model, Principal principal,CustomerFeedback customerFeedback ) {
+@RequestMapping(value={"/feedbackreport"}, method = RequestMethod.POST)
+public ModelAndView view_feedbackreport(HttpServletResponse response,HttpSession session,HttpServletRequest request, ModelMap model, Principal principal,CustomerFeedback customerFeedback ) {
+	String[] fields={"date_of_feedback,type_of_feedback,feedback_recorded_by,feedback_details"};
+	java.util.List<CustomerFeedback> maintenances=new ArrayList<CustomerFeedback>();
 	session.setAttribute("feedback", customerFeedback.getType_of_feedback());
-	
+	System.out.println("type of feeback ="+customerFeedback.getType_of_feedback());
 	String from_date=request.getParameter("from_date");
 	session.setAttribute("fromdate", from_date);
 	String to_date=request.getParameter("to_date");
 	session.setAttribute("todate", to_date);
 	System.out.println("from_date"+from_date);
 	
-	CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
+
 	System.out.println("customerfeed"+customerFeedback.getType_of_feedback());
-	customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfeedback_report(customerFeedback.getType_of_feedback(),from_date,to_date));
+	maintenances = customerFeedbackDAO.getfeedback_report(customerFeedback.getType_of_feedback(),from_date,to_date);
+	System.out.println(maintenances.size());
 	System.out.println("type of report"+customerFeedback.getType_of_feedback());
-	model.addAttribute("customerFeedbackForm",customerFeedbackForm);
+	model.addAttribute("maintenances",maintenances);
 	model.addAttribute("menu","customer");
-	return "feedback_report";
+	response.setHeader("Content-Disposition","attachment;filename='Customer_Report'");
+	ModelAndView modelAndView =  new ModelAndView("customerfeedbackDAO","customerFeedbacks",maintenances);
+	modelAndView.addObject("fields",fields);
+	return modelAndView;
+	//return "feedback_report";
 }
 
 //report generation request passing

@@ -131,7 +131,7 @@ public class CustomersDAO {
 				e1.printStackTrace();
 		}
 		  try{
-			  String cmd_insert="update tbl_customer set customer_name='"+customers.getCustomer_name()+"',address='"+customers.getAddress()+"',city='"+customers.getCity()+"',state='"+customers.getState()+"',country='"+customers.getCountry()+"',zipcode='"+customers.getZipcode()+"',website='"+customers.getWebsite()+"',contact_name='"+customers.getContact_name()+"',title_of_contact='"+customers.getTitle_of_contact()+"',telephone='"+customers.getTelephone()+"',fax='"+customers.getFax()+"',email_address='"+customers.getEmail_address()+"' where customer_id='"+customers.getCustomer_id()+"'";
+			  String cmd_insert="update tbl_customer set customer_name='"+customers.getCustomer_name()+"',address='"+customers.getAddress().trim()+"',city='"+customers.getCity()+"',state='"+customers.getState()+"',country='"+customers.getCountry()+"',zipcode='"+customers.getZipcode()+"',website='"+customers.getWebsite()+"',contact_name='"+customers.getContact_name()+"',title_of_contact='"+customers.getTitle_of_contact()+"',telephone='"+customers.getTelephone()+"',fax='"+customers.getFax()+"',email_address='"+customers.getEmail_address()+"' where customer_id='"+customers.getCustomer_id()+"'";
 			  statement.execute(cmd_insert);
 		  }catch(Exception e){
 	    	System.out.println(e.toString());

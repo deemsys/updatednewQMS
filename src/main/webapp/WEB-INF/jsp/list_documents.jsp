@@ -87,7 +87,7 @@
                </td></c:when>
                <c:when test="${documentMain.media_type==1}">
                <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Upload File:</td>
-               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${documentMain.attachement_name}
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${documentMain.attachment_name}
               </c:when>
                </c:choose>
            <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err">*</span></td>
