@@ -571,7 +571,7 @@ public class EmployeeDAO extends AbstractExcelView{
 	    return employees;
 		
 	}
-	public List<Employee> filterEmployees(String filter){
+	public List<Employee> filterEmployees(){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -583,7 +583,7 @@ public class EmployeeDAO extends AbstractExcelView{
 		}
 		List<Employee> employees = new ArrayList<Employee>();
 	    try{
-	    	String cmd="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.name like '"+filter+"%'";
+	    	String cmd="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.name like '%'";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
 			//System.out.println("came");

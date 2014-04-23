@@ -85,7 +85,7 @@
                   <td valign="top" align="left" class="input_txt" width="70%">${form.effective_date}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Document ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Form/Rec Id :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${form.document_id}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row1">

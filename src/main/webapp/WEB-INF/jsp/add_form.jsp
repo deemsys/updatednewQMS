@@ -228,7 +228,7 @@
                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err"></span>Process:</td>
                <td valign="top" align="left" class="input_txt" >
                
-               <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
+               <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                 <option value="${processes.process_name}">${processes.process_name}</option>
@@ -334,12 +334,16 @@
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Approver1(Process Owner) :</td>
-																		<td valign="top" align="left" class="input_txt"><input
+																			
+																		<td valign="top" align="left" class="input_txt">
+																		<%--<input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="approver1"
-																			value="${docform.approver1}" /><br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
+																			value="${docform.approver1}" /> --%>
+																			<span id="process_owner_id"></span>
+																			<br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -347,15 +351,44 @@
 																		</td> </tr>
               
               <tr class="row1">
-                            <td valign="middle" align="left" class="input_txt"><span
-																			class="err"></span>Issuer :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="issuer"
-																			value="${docform.issuer }" /><br/><span class="err"><form:errors path="Form.issuer"></form:errors></span>
-																		</td>
+                            <td valign="top" align="left" class="input_txt" width="25%"><span class="err">Issuer:</td>
+               <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
+               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" onblur="change_to_label_issuer();" style="width:80px;">
+               <option value="">--Select--</option>
+               <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
+              <option value="N">N</option>
+              <option value="O">O</option>
+              <option value="P">P</option>
+              <option value="Q">Q</option>
+              <option value="R">R</option>
+              <option value="S">S</option>
+              <option value="T">T</option>
+              <option value="U">U</option>
+              <option value="V">V</option>
+              <option value="W">W</option>
+              <option value="X">X</option>
+              <option value="Y">Y</option>
+              <option value="Z">Z</option>
+              
+               </select>
+                <span id="issuer_generate">
+               
+               </span>
+                <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
+               <br/>
+              </td>
 																		   <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Comments :</td>
 																		<td valign="top" align="left" class="input_txt"><textarea class="input_txtbx1"  name="comments"  style="width:75%; height: 50px;" >${docform.comments}</textarea><br/><span class="err"><form:errors path="Form.comments"></form:errors></span></td>
@@ -426,7 +459,63 @@ e3.style.display="block";
 </script>
 
 <script type="text/javascript">
+function doAjaxPost() {
+	document.getElementById('filter_value').style.display="none";
+	 document.getElementById("issuer_generate").style.display="inline";
+	var filer_value = $('#filter_value').val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getissuer",
+		data : "filter_val=" + filer_value,
+		success : function(response) {
+			
+			$('#issuer_generate').html(response);
+			//$('#filter_value').hide();
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
+function doAjaxPost_for_process() {
 
+	var proceee_name = $('#id_inpprocess').val();
+	/*   var education = $('#education').val();	 */		
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getprocess",
+		data : "process=" + proceee_name,
+		success : function(response) {
+			
+			$('#process_owner_id').html(response);
+		
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
+function change_to_label_issuer()
+{
+	
+    
+	var type=document.getElementById("filter_value");	
+	
+	document.getElementById("lable_td_issuer").style.display="block";
+	document.getElementById("edit_td_issuer").style.display="none";
+	
+	document.getElementById("issuer_full_lbl").innerHTML=type.value;
+	
+	}
+function show_edit_issuer()
+{
+	  document.getElementById("issuer_generate").style.display="none";
+	  document.getElementById("issuer_full_lbl").style.display="none";
+document.getElementById("filter_value").style.display="block";
+
+	
+	}	
 function change_to_label()
 {
 	

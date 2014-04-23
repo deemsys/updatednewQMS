@@ -367,9 +367,9 @@ public class DocumentController {
 			HttpServletRequest request, ModelMap model, Principal principal) {
 		String resultHTML="";
 		EmployeeForm employeeForm=new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.filterEmployees(request.getParameter("filter_val")));
+		employeeForm.setEmployees(employeeDAO.filterEmployees());
 		resultHTML="<Select name='issuer' class='input_cmbbx1' style='width:120px;'>";
-		for (Employee employee : employeeDAO.filterEmployees(request.getParameter("filter_val")) ) {
+		for (Employee employee : employeeDAO.filterEmployees() ) {
 			resultHTML+="<option value='"+employee.getName()+"'>"+employee.getName()+"</option>";
 		}
 		resultHTML+="</select>";
@@ -590,7 +590,7 @@ public void load_document_page_dropdowns(ModelMap model)
 	 */
 
 	EmployeeForm employeeForm = new EmployeeForm();
-	employeeForm.setEmployees(employeeDAO.filterEmployees("A"));
+	employeeForm.setEmployees(employeeDAO.filterEmployees());
 	model.addAttribute("employeeForm", employeeForm);
 	
 	/*

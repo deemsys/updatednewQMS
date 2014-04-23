@@ -209,34 +209,24 @@ $(window).load(function(){
                <option value="<c:out value="${processes.process_name}"/>" <c:if test="${documentMain.process==processes.process_name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_name}"/></option>
                </c:forEach>
                </select>
-               
-               
                <br/><span class="err"><form:errors path="DocumentMain.process"></form:errors></span></td>
             <td valign="top" align="left" class="input_txt" width="20%"></td>
-              
              </tr> 
              <tr class="row2">
-              
                <td valign="middle" align="right" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
-               
 <!--               <input type="radio" name="external" value="1"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="external" value="0" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
  -->               
  				<input type="radio" name="external" value="1" id="id_yesforexternal" <c:if test="${documentMain.external=='1'}"><c:out value="checked=checked"/></c:if>>Yes &nbsp;&nbsp;&nbsp;
   				<input type="radio" name="external" value="0" <c:if test="${documentMain.external=='0'}"><c:out value="checked=checked"/></c:if>>No &nbsp;&nbsp;&nbsp;</td>
-  				
                </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
-              
              </tr>  
-             
 		      <tr class="row1" style="border:none;">
-           
             <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Issuer:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
-               
                
                <select name="issuer" id="issuer" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option> 
@@ -254,7 +244,7 @@ $(window).load(function(){
             
               <%--   <c:out value="${documentMain.approver1}" ></c:out> 
  --%>              
-                <input type="hidden" class="input_txtbx1" id="approver" value="${documentMain.approver1}" onchange="Approver1();" name="approver1" />${documentMain.approver1}
+                <input type="hidden" class="input_txtbx1" id="approver" value="${documentMain.approver1}" name="approver1" />${documentMain.approver1}
                
                <br/><span class="err"><form:errors path="DocumentMain.approver1"></form:errors></span>
                

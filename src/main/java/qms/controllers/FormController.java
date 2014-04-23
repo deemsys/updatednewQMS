@@ -604,7 +604,7 @@ public class FormController
 		model.addAttribute("formLocationForm",formLocationForm);
 
 		EmployeeForm employeeForm = new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.filterEmployees("A"));
+		employeeForm.setEmployees(employeeDAO.filterEmployees());
 		model.addAttribute("employeeForm", employeeForm);
 		
 		model.addAttribute("prefix",formDAO.getDocument_prefix());

@@ -95,26 +95,33 @@
               
               <tr class="row2">
                             <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Form/Rec ID :</td>
-			<td valign="top" align="left" class="input_txt" ><a id="formid">
+			<td valign="top" align="left" class="input_txt" >
+			
+			<a id="formid">
+			
 					<input type="hidden" id="formid"class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');"
-					name="form_or_rec_id" />${form.form_or_rec_id}</a><span class="err"><form:errors path="Form.form_or_rec_id"></form:errors>
+					name="form_or_rec_id" />${form.form_or_rec_id}</a>
 																		
 													 
-               <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>          
+                        
               
               
-               <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:57px;border:none;background-color:lightgrey; display:none;">
+               <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="display:none;">
                <option value = "">Select Form Prefix</option>
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
                </select>
-                <label id="changeafter" style="display:none;" ></label>  
-                <input type="hidden" name=form_or_rec_id id="generated_id" class="input_txtbx1" style="width:200px;" value=""/> 
-                <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()"/>
+              
+                <label id="changeafter" style="display:none;" ></label> 
+                
+                  <input type="text" value="" id="form_or_rec_id"  style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()"/>
+                <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
+               <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
+            <span class="err"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             
-               </td>
+               
               
 																		<td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Responsibility :</td>
@@ -164,7 +171,7 @@
                </c:forEach>               
                </select> --%>
                
-                <select name="process">
+                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
 							 
 			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
         				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
@@ -216,7 +223,7 @@
         				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == form.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
 			                  </c:forEach>
 			                   </select><br>
-              <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
+              <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/> 
               <span class="err"><form:errors path="form.location"></form:errors></span>
                </td>
               </c:when>
@@ -234,11 +241,11 @@
 			                  </c:forEach>
                </select><br>
               
-               
+               <label id="label1" >
               <input name="filename" type="hidden" id="file_name"/>${form.attachment_name}
                <input name="attachments" id="id_file" type="file" style="display:none;" value="${form.attachment_name }"/>
                
-              <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
+              <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label></label>
               <span class="err"><form:errors path="form.location"></form:errors></span>
                </td>
               </c:when>
@@ -347,12 +354,13 @@
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Approver1(Process Owner) :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="approver1"
-																			value="${form.approver1}" /><br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
+																		<td valign="top" align="left" class="input_txt">
+																		
+																		<span id="process_owner_id"></span>
+				<input type="hidden" class="input_txtbx1" id="inp_external_id" name="approver1" onchange="Approver1();" value="${form.approver1}" /> ${form.approver1}
+																			
+																			
+																			<br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -362,12 +370,20 @@
               <tr class="row1">
                             <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Issuer :</td>
-																		<td valign="top" align="left" class="input_txt"><input
+																		<td valign="top" align="left" class="input_txt"><%-- <input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="issuer"
-																			value="${form.issuer}" /><br/><span class="err"><form:errors path="Form.issuer"></form:errors></span>
+																			value="${form.issuer}" /> --%>
+																			 <select name="issuer" id="issuer" class="input_cmbbx1" style="width:200px;">
+               <option value="">--Select--</option> 
+               <c:forEach items="${employeeForm.employees}" var="employees" varStatus="true">
+               <option value="<c:out value="${employees.name}"/>" <c:if test="${form.issuer==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
+               </c:forEach>              
+               </select>
+																			
+																			<br/><span class="err"><form:errors path="Form.issuer"></form:errors></span>
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -425,6 +441,28 @@
 	}
 </script>
      <script type="text/javascript">
+     function doAjaxPost_for_process() {
+
+    		var proceee_name = $('#id_inpprocess').val();
+    		
+    		/*   var education = $('#education').val();	 */		
+    		$.ajax({
+    			
+    			type : "POST",
+    			url : "/QMS_App/ajax_getprocess",
+    			data : "process=" + proceee_name,
+    			success : function(response) {
+    	              
+    	              
+    	              
+    		       $('#process_owner_id').html(response);
+    				
+    			},
+    			error : function(e) {
+    				alert('Error: ' + e);
+    			}
+    		});
+    	}
 function toggle2(value){
   
     var e = document.getElementById('location_label');
@@ -437,6 +475,8 @@ if(value==1)
 	e1.style.display="block";
 	e2.style.display="none";
 	e3.style.display="block";
+	document.getElementById('label1').style.display="block";
+	
 	
     }
 else if(value==0)
@@ -445,6 +485,7 @@ else if(value==0)
 	e1.style.display="none";
 	e2.style.display="block";
 	e3.style.display="none";
+	document.getElementById('label1').style.display="none";
   
     }
 else if(value==2)
