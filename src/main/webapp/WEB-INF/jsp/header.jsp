@@ -196,7 +196,7 @@
 							<li>
 								<a href="addmanagementreview" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
+									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
 								</a>
 							</li>
 				            

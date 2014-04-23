@@ -94,16 +94,28 @@
                
               
               <tr class="row2">
-                            <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Form/Rec ID :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_id"
-																			value="${form.form_or_rec_id}" /><br/><span class="err"><form:errors path="Form.form_or_rec_id"></form:errors></span>
+                            <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Form/Rec ID :</td>
+			<td valign="top" align="left" class="input_txt" ><a id="formid">
+					<input type="hidden" id="formid"class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
+					onmouseout="hideTooltip('tooltip_id');"
+					name="form_or_rec_id" />${form.form_or_rec_id}</a><span class="err"><form:errors path="Form.form_or_rec_id"></form:errors>
 																		
-																		</td>
+													 
+               <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>          
+              
+              
+               <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:57px;border:none;background-color:lightgrey; display:none;">
+               <option value = "">Select Form Prefix</option>
+			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
+        				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
+			                  </c:forEach>
+               </select>
+                <label id="changeafter" style="display:none;" ></label>  
+                <input type="hidden" name=form_or_rec_id id="generated_id" class="input_txtbx1" style="width:200px;" value=""/> 
+                <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()"/>
+            
+               </td>
+              
 																		<td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Responsibility :</td>
 																		<td valign="top" align="left" class="input_txt"><input
@@ -199,10 +211,11 @@
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
-               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
-               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
-               </select><br>
+                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
+                  
+        				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == form.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
+			                  </c:forEach>
+			                   </select><br>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
               <span class="err"><form:errors path="form.location"></form:errors></span>
                </td>
@@ -213,10 +226,12 @@
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
+              
               <option value="">--Select--</option>
-               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
-               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
+                  <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
+                  
+        				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == form.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
+			                  </c:forEach>
                </select><br>
               
                
@@ -233,10 +248,10 @@
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1">
               <option value="">--Select--</option>
-               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
-               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
-               </select><br><br>
+                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
+                  
+        				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == form.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
+			                  </c:forEach></select><br><br>
                <input name="filename" type="hidden" id="file_name"/>${form.attachment_name}
                <input name="attachments" id="id_file" type="file" style="display:none;" value="${form.attachment_name}"/>
               <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
@@ -442,6 +457,46 @@ e3.style.display="block";
     
 }
 </script>
+<script type="text/javascript">
+	function show_edit()
+	{
+		
+		var element = document.getElementById('document_type_id');
+		var element1 = document.getElementById('formid');
+		var element2 = document.getElementById('change');
+		var element3 = document.getElementById('form_or_rec_id');
+		
+			element.style.display="block";
+			element3.style.display="block";
+			element1.style.display="none";
+			element2.style.display="none";
+			document.getElementById("changeafter").style.display="none";
+		
+	}
+
+	function change_to_label()
+	{
+		
+	   
+		var type=document.getElementById('document_type_id');	
+		
+		var doc_id=document.getElementById('form_or_rec_id');	
+		
+		
+		document.getElementById("changeafter").style.display="block";
+		
+		document.getElementById("changeafter").innerHTML = type.value+-+doc_id.value;
+		
+		
+		var gen_id=document.getElementById("generated_id");
+		gen_id.value=type.value+-+doc_id.value;
+		document.getElementById('document_type_id').style.display="none";
+		document.getElementById('form_or_rec_id').style.display="none";
+		document.getElementById("change").style.display="block";
+		
+
+		}
+</script>	
    <jsp:include page="footer.jsp"></jsp:include>   
         
        <%-- 

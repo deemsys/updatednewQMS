@@ -54,8 +54,12 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
-	
-	
+	<bean id="formprefixDAO" class="qms.dao.FormprefixDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="formlocationDAO" class="qms.dao.FormLocationDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  <bean id="filehandlingDAO" class="qms.dao.FileHandlingDAO">
 	</bean>
 </beans>

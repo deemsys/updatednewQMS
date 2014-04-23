@@ -10,17 +10,13 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import qms.model.FormPrefix;
-import qms.model.ParticipantsDetails;
+import qms.model.Maintenance;
 
-import qms.model.Process;
-
-public class ProcessDAO
-{
+public class FormprefixDAO {
 	private DataSource dataSource;
-	 
 	
 	
-	public boolean insert_Process(Process process) {
+	public boolean insert_PrefixForm(FormPrefix formPrefix) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -32,7 +28,7 @@ public class ProcessDAO
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_insert = "insert into tbl_process(process_id,process_name,process_owner)values('"+process.getProcess_id()+"','"+process.getProcess_name()+"','"+process.getProcess_owner()+"')";
+			String cmd_insert = "insert into tb_formprefix(form_name,form_prefix)values('"+formPrefix.getForm_name()+"','"+formPrefix.getForm_prefix()+"')";
 		
 			statement.execute(cmd_insert);
 			
@@ -49,7 +45,49 @@ public class ProcessDAO
 		return status;
 
 	}
-	public  List<Process> getlimitedprocessreport(int page) {
+
+	
+	
+	
+	
+	public List<FormPrefix> getprefix() {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		List<FormPrefix> prefix = new ArrayList<FormPrefix>();
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = "select * from tb_formprefix";
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				prefix.add(new FormPrefix(resultSet
+						.getString("id"), resultSet
+						.getString("form_name"), resultSet
+						.getString("form_prefix")
+						));
+			}	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return prefix;
+	}	
+	
+	public  List<FormPrefix> getlimitedprefixreport(int page) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -61,22 +99,22 @@ public class ProcessDAO
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		List<Process> processes = new ArrayList<Process>();
+		List<FormPrefix> formPrefixs = new ArrayList<FormPrefix>();
 		  try {
 
 			String cmd;
 			int offset = 5 * (page - 1);
 			int limit = 5;
-					cmd="select * from tbl_process where auto_id limit " + offset + ","+ limit+"" ;
+					cmd="select * from tb_formprefix where id limit " + offset + ","+ limit+"" ;
 				
 				//	cmd = "select * from tbl_narrativereport order by pname asc limit " + offset + ","+ limit+"" ;
 
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next()){
-				processes.add(new Process(resultSet
-						.getString("process_id"), resultSet
-						.getString("process_name"), resultSet
-						.getString("process_owner")));
+				formPrefixs.add(new FormPrefix(resultSet
+						.getString("id"), resultSet
+						.getString("form_name"), resultSet
+						.getString("form_prefix")));
 			}
 			
 			} catch (Exception e) {
@@ -90,11 +128,10 @@ public class ProcessDAO
 			releaseStatement(statement);
 			releaseConnection(con);
 		}
-		return processes;
+		return formPrefixs;
 
 	}
-	
-	public int getnoofprocessreport() {
+	public int getnoofprefixreport() {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -110,7 +147,7 @@ public class ProcessDAO
 		try {
 
 			String cmd;
-				cmd = "select count(*) as noofrecords from tbl_process";
+				cmd = "select count(*) as noofrecords from tb_formprefix";
 			System.out.println("command"+cmd);			
 			resultSet = statement.executeQuery(cmd);
 			if (resultSet.next())
@@ -128,9 +165,8 @@ public class ProcessDAO
 		return noofRecords;
 
 	}
-	
 	//Get request method
-	public List<Process> processes(String id){
+	public List<FormPrefix> getformPrefixs(String id){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -141,15 +177,15 @@ public class ProcessDAO
 			e1.printStackTrace();
 		}
 		
-		List<Process> processes = new ArrayList<Process>();
+		List<FormPrefix> formPrefixs = new ArrayList<FormPrefix>();
 	    try{
-	    	String cmd_select = "select * from tbl_process  where process_id='"+id+"'";
+	    	String cmd_select = "select * from tb_formprefix  where id='"+id+"'";
 			resultSet = statement.executeQuery(cmd_select);
 			while(resultSet.next()){
-				processes.add(new Process(resultSet
-						.getString("process_id"), resultSet
-						.getString("process_name"), resultSet
-						.getString("process_owner")));
+				formPrefixs.add(new FormPrefix(resultSet
+						.getString("id"), resultSet
+						.getString("form_name"), resultSet
+						.getString("form_prefix")));
 			}
 			
 	    }catch(Exception e){
@@ -162,13 +198,11 @@ public class ProcessDAO
 	    	releaseStatement(statement);
 	    	releaseConnection(con);	    	
 	    }
-	    return processes;
+	    return formPrefixs;
 		
 	}
-	
-	
 	//Update Operation
-	public boolean update_Process(Process process) {
+	public boolean update_formprefix(FormPrefix formPrefix) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -181,7 +215,7 @@ public class ProcessDAO
 		}
 		try {
 			
-			String cmd_update = "update tbl_process set process_name='"+process.getProcess_name()+"',process_owner='"+process.getProcess_owner()+"' where process_id='"+process.getProcess_id()+"'";
+			String cmd_update = "update tb_formprefix set form_name='"+formPrefix.getForm_name()+"',form_prefix='"+formPrefix.getForm_prefix()+"' where id='"+formPrefix.getId()+"'";
 			
 			System.out.println(cmd_update);
 			 statement.execute(cmd_update);
@@ -200,96 +234,72 @@ public class ProcessDAO
 		return status;
 
 	}
-	
-	public List<Process> getProcess(){
+	//Delete Operation
+	public boolean delete_formprefix(String id) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		boolean status = false;
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		List<Process> processes = new ArrayList<Process>();
-	    try{
-			resultSet = statement.executeQuery("select * from tbl_process");
-			while(resultSet.next()){
-				processes.add(new Process(resultSet.getString("process_id"),resultSet.getString("process_name"),resultSet.getString("process_owner")));
-				
-			}
-	    }catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-	    return processes;
-		
-	}
-	public List<Process> getProcess_owner(String process_name){
-		Connection con = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
 		try {
-			con = dataSource.getConnection();
-			statement = con.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		List<Process> processes = new ArrayList<Process>();
-	    try{
-			resultSet = statement.executeQuery("select * from tbl_process where process_name='"+process_name+"'");
-			while(resultSet.next()){
-				processes.add(new Process(resultSet.getString("process_id"),resultSet.getString("process_name"),resultSet.getString("process_owner")));
-				
-			}
-	    }catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-	    return processes;
-		
-	}
-	public void releaseConnection(Connection con) {
-		try {
-			if (con != null)
-				con.close();
+			String cmd_delete = "delete from tb_formprefix where id='"+ id + "'";
+			
+			
+			statement.execute(cmd_delete);
+			
 		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
 		}
-	}
+		return status;
 
-	public void releaseResultSet(ResultSet rs) {
-		try {
-			if (rs != null)
-				rs.close();
-		} catch (Exception e) {
-		}
 	}
-
-	public void releaseStatement(Statement stmt) {
-		try {
-			if (stmt != null)
-				stmt.close();
-		} catch (Exception e) {
-		}
-	}
+				
 	
-	public DataSource getDataSource() {
-		return dataSource;
-	}
+						public void releaseConnection(Connection con) {
+							try {
+								if (con != null)
+									con.close();
+							} catch (Exception e) {
+							}
+						}
 
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+						public void releaseResultSet(ResultSet rs) {
+							try {
+								if (rs != null)
+									rs.close();
+							} catch (Exception e) {
+							}
+						}
+
+						public void releaseStatement(Statement stmt) {
+							try {
+								if (stmt != null)
+									stmt.close();
+							} catch (Exception e) {
+							}
+						}
+						
+						 
+						
+						
+						
+						public DataSource getDataSource() {
+							return dataSource;
+						}
+
+						public void setDataSource(DataSource dataSource) {
+							this.dataSource = dataSource;
+						}
 }

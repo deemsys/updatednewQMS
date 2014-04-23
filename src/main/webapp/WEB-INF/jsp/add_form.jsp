@@ -93,12 +93,14 @@
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
                <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:57px;border:none;background-color:lightgrey;">
-               <!-- <option value="FHR">FHR</option>
-               <option value="FEN">FEN</option> -->
-               <c:forEach items="${prefix}" var="prefix" varStatus="true">
+               
+             <%--   <c:forEach items="${formFormPrefix}" var="prefix" varStatus="true">
                <option value="<c:out value="${prefix}"/>"><c:out value="${prefix}"/></option>
-               </c:forEach>
-              
+               </c:forEach> --%>
+               <option value = "">Select Form Prefix</option>
+			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
+        				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
+			                  </c:forEach>
                </select>
                
               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/> 
@@ -111,11 +113,10 @@
                <td valign="top" align="left" id="id_location_txt" class="input_txt" >
                
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
-              <option value="">--Select--</option>
-               <option value="Lab" <c:if test="${form.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
-               <option value="Shop Floor" <c:if test="${form.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${form.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
-               </select>
+              <option value = "">Select Location</option>
+			                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
+        				       <option value="${formlocation.form_location}">${formlocation.form_location}</option>
+			                  </c:forEach> </select>
                <br>
 				 <input name="attachments" style="display:none;" id="id_file" type="file" />														<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -230,7 +231,7 @@
                <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-               <option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
+                <option value="${processes.process_name}">${processes.process_name}</option>
                </c:forEach>
                 
                

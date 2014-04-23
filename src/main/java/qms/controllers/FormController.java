@@ -28,13 +28,18 @@ import org.springframework.web.servlet.ModelAndView;
 import qms.dao.EmployeeDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.FormDAO;
+import qms.dao.FormLocationDAO;
+import qms.dao.FormprefixDAO;
 import qms.dao.ProcessDAO;
 import qms.model.Employee;
 import qms.model.Form;
+import qms.model.FormPrefix;
 import qms.model.Maintenance;
 import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
 import qms.forms.FormForm;
+import qms.forms.FormFormPrefix;
+import qms.forms.FormLocationForm;
 import qms.forms.MaintenanceForm;
 
 import qms.forms.ProcessForm;
@@ -57,7 +62,10 @@ public class FormController
 	@Autowired
 	FileHandlingDAO fileHandlingDAO;
 	
-	
+	@Autowired
+	FormprefixDAO formprefixDAO;
+	@Autowired
+	FormLocationDAO formLocationDAO;
 	
 	/*@RequestMapping(value={"/viewform"}, method = RequestMethod.GET)
 	public String show_form(HttpSession session,HttpServletRequest request, ModelMap model, Principal principal )
@@ -74,6 +82,12 @@ public class FormController
 	{
 		session.removeAttribute("docform");
 		load_document_page_dropdowns(model);
+		
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
 		model.addAttribute("id", formDAO.get_formid());
 		  model.addAttribute("menu","document");
         return "add_form";
@@ -581,7 +595,13 @@ public class FormController
 
 		/*
 		 * Load Employee list*/
-		 
+		FormFormPrefix formFormPrefix = new FormFormPrefix();
+		formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
+		model.addAttribute("formFormPrefix",formFormPrefix);
+		
+		FormLocationForm formLocationForm = new FormLocationForm();
+		formLocationForm.setFormLocations(formLocationDAO.getlocation());
+		model.addAttribute("formLocationForm",formLocationForm);
 
 		EmployeeForm employeeForm = new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.filterEmployees("A"));
