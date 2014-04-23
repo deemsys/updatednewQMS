@@ -410,20 +410,45 @@ public class FormController
 	
 	
 	//delete a record
-	@RequestMapping(value={"/deleteform"}, method = RequestMethod.GET)
-	public String delete_form(@RequestParam("auto_no") String auto_no,ModelMap model, Principal principal )
+	@RequestMapping(value={"/formdelete"}, method = RequestMethod.GET)
+	public String delete_form(ModelMap model, Principal principal )
 	{
 		
-		formDAO.delete_form(auto_no);
 		FormForm formForm=new FormForm();
-	    formForm.setForm(formDAO.getform());
-	    model.addAttribute("formForm",formForm);
+		formForm.setForm(formDAO.getform());
+		model.addAttribute("formForm",formForm);
 
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("button","close");
+	      
 	    model.addAttribute("menu","document");
-		return "view_form";
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    return "formdelete";
+		
 		
  	}
 	
+	@RequestMapping(value={"/deleteform"}, method = RequestMethod.POST)
+	public String deleteSelectedForm(HttpServletRequest request,ModelMap model,Principal principal) 
+	{	
+		String[] SelectedIDs=new String[100];
+		SelectedIDs=request.getParameterValues("chkUser");
+		for(String id:SelectedIDs)
+		{
+		System.out.println(id);
+		//formDAO.deleteParticipant(id,principal.getName());
+		formDAO.delete_form(id);
+		}
+		FormForm formForm=new FormForm();
+		formForm.setForm(formDAO.getform());
+		model.addAttribute("formForm",formForm);
+        model.addAttribute("menu","document");
+		return "formdelete";
+		
+	}	
 	
 	/*@RequestMapping(value = "review_history_form", method = RequestMethod.GET)
 	public String revision_history1(@RequestParam("") String document_id,HttpSession session ,ModelMap model, Principal principal) 
