@@ -145,7 +145,7 @@ public class FormDAO extends AbstractExcelView{
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no");
 			while(resultSet.next())
 			{
-			form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"),resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments")));
+			form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"),resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 			}
 		}
 			catch(Exception e)
@@ -199,57 +199,79 @@ public class FormDAO extends AbstractExcelView{
 			
 			 String attachment_name ="";
 			  String attachment_type="",attachment_reference="",form_or_rec_id="";
+			  System.out.println("revision_id= "+form.getRevision_id());
+			  int revision_id = 0;/*Integer.parseInt(form.getRevision_id());*/
+			  System.out.println(revision_id);
 			 
 			if((form.getAttachment_name() == null && form.getForm_or_rec_id().equals(",")) || (form.getAttachment_type() == null && form.getForm_or_rec_id().equals(",")) || (form.getAttachment_referrence() == null && form.getForm_or_rec_id().equals(",")))
 			 {
 				System.out.println("all null");
-				 resultSet=statement.executeQuery("select form_or_rec_id,attachment_name,attachment_type,attachment_referrence from tbl_form where auto_number='"+form.getAuto_no()+"'");
-			  while(resultSet.next())
+				 resultSet=statement.executeQuery("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
+			
+				 while(resultSet.next())
 			  {
-				  form_or_rec_id=resultSet.getString("form_or_rec_id");
+				   form_or_rec_id=resultSet.getString("form_or_rec_id");
 				  attachment_name=resultSet.getString("attachment_name");
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
+				   
+				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				   System.out.println("revision id ="+revision_id);
 			  }
+			
 			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
-			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'");	
+			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+(revision_id+1)+"' where auto_no='"+form.getAuto_no()+"'");	
 			  status =true;
 			 } 
 			
 			else if(form.getForm_or_rec_id().equals(","))
 			{
 				System.out.println("form id null");
-				 resultSet=statement.executeQuery("select  form_or_rec_id from tbl_form where auto_number='"+form.getAuto_no()+"'");
-				  while(resultSet.next())
+				 resultSet=statement.executeQuery("select  tbl_form.form_or_rec_id,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
+				
+ 
+				 while(resultSet.next())
 				  {
 					  form_or_rec_id=resultSet.getString("form_or_rec_id");
+					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   System.out.println("revision id ="+revision_id);	
 				  }
 				  String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 					statement.execute(cmd_update1);
-					String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'";
+					String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+1+"' where auto_no='"+form.getAuto_no()+"'";
 				    statement.execute(cmd_update2);
 				    status =true;
 			}
 			else if(form.getAttachment_name() == null || form.getAttachment_type() == null || form.getAttachment_referrence() == null)
 			 {
 				System.out.println("attachment null");
-				 resultSet=statement.executeQuery("select attachment_name,attachment_type,attachment_referrence from tbl_form where auto_number='"+form.getAuto_no()+"'");
-			  while(resultSet.next())
+				 resultSet=statement.executeQuery("select tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
+				
+
+				 while(resultSet.next())
 			  {
 				 
 				  attachment_name=resultSet.getString("attachment_name");
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
+				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				   System.out.println("revision id ="+revision_id);
 			  }
 			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+formid+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
-			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'");	
+			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+1+"' where auto_no='"+form.getAuto_no()+"'");	
 			  status =true;
 			 } 
 			else{
 				System.out.println("not null");
+				 resultSet=statement.executeQuery("select revision_id from tbl_form_child where auto_no='"+form.getAuto_no()+"'");
+				 while(resultSet.next())
+				  {
+					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   System.out.println("revision id ="+revision_id);
+				  }
 			String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+formid+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 			statement.execute(cmd_update1);
-			String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+form.getAuto_no()+"'";
+			String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form.getDocument_id()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+1+"' where auto_no='"+form.getAuto_no()+"'";
 		    statement.execute(cmd_update2);
 		    status =true;
 			}
@@ -295,7 +317,7 @@ public class FormDAO extends AbstractExcelView{
 			  statement.execute(cmd_insert1);*/
 			  
 			  String cmd_insert2;	
-				 cmd_insert2="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getDocument_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"')";
+				 cmd_insert2="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getDocument_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','"+1+"')";
 				 statement.execute(cmd_insert2);
 		
 			 status=true;
@@ -329,7 +351,7 @@ public class FormDAO extends AbstractExcelView{
 	    	resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number='"+auto_no+"' AND t2.auto_no='"+auto_no+"'");
 			System.out.println("came");
 			while(resultSet.next()){
-								form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments")));
+								form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -361,7 +383,7 @@ public class FormDAO extends AbstractExcelView{
 	    	resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no ");
 			System.out.println("came");
 			while(resultSet.next()){
-								form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments")));
+								form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -457,7 +479,7 @@ public class FormDAO extends AbstractExcelView{
 						.getString("document_id"), resultSet
 						.getString("approver1"), resultSet
 						.getString("issuer"), resultSet
-						.getString("comments")));
+						.getString("comments"),resultSet.getString("revision_id")));
 			}
 
 		} catch (Exception e) {
@@ -489,7 +511,7 @@ public class FormDAO extends AbstractExcelView{
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where form_or_rec_id LIKE  'FHR%'");
 			System.out.println("fhr");
 			while(resultSet.next()){
-				form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments")));
+				form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -522,7 +544,7 @@ public class FormDAO extends AbstractExcelView{
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where form_or_rec_id LIKE  'FEN%'");
 			System.out.println("fen");
 			while(resultSet.next()){
-				form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments")));
+				form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -884,7 +906,7 @@ public class FormDAO extends AbstractExcelView{
 						resultSet.getString("document_id"),
 						resultSet.getString("approver1"),
 						resultSet.getString("issuer"),
-						resultSet.getString("comments")));
+						resultSet.getString("comments"),resultSet.getString("revision_id")));
 			}
 			
 			} catch (Exception e) {

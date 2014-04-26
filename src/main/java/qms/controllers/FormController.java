@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -31,16 +33,19 @@ import qms.dao.FormDAO;
 import qms.dao.FormLocationDAO;
 import qms.dao.FormprefixDAO;
 import qms.dao.ProcessDAO;
+import qms.dao.RevisionFormDAO;
 import qms.model.Employee;
 import qms.model.Form;
 import qms.model.FormPrefix;
 import qms.model.Maintenance;
+import qms.model.RevisionForm;
 import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
 import qms.forms.FormForm;
 import qms.forms.FormFormPrefix;
 import qms.forms.FormLocationForm;
 import qms.forms.MaintenanceForm;
+import qms.forms.RevisionFormForm;
 
 import qms.forms.ProcessForm;
 
@@ -66,6 +71,8 @@ public class FormController
 	FormprefixDAO formprefixDAO;
 	@Autowired
 	FormLocationDAO formLocationDAO;
+	@Autowired
+	RevisionFormDAO revisionFormDAO;
 	
 	/*@RequestMapping(value={"/viewform"}, method = RequestMethod.GET)
 	public String show_form(HttpSession session,HttpServletRequest request, ModelMap model, Principal principal )
@@ -96,7 +103,7 @@ public class FormController
 
 	//Insert a record
 	@RequestMapping(value={"/addform"}, method = RequestMethod.POST)
-	public String insert_form(HttpSession session,HttpServletRequest request,ModelMap model, @ModelAttribute("Form") @Valid Form form, BindingResult result, Principal principal)
+	public String insert_form(HttpSession session,HttpServletRequest request,ModelMap model, @ModelAttribute("Form") @Valid Form form,@ModelAttribute("RevisionForm") @Valid RevisionForm revisionForm, BindingResult result, Principal principal)
 
 	{	
 		int flag = 0;
@@ -202,6 +209,7 @@ public class FormController
 		    model.addAttribute("formForm",formForm);
              model.addAttribute("menu","document");
              model.addAttribute("id", formDAO.get_formid());
+             revisionFormDAO.insert_revision(revisionForm,form.getAuto_no());
 			return "view_form";
 		}
 		else
@@ -218,10 +226,12 @@ public class FormController
 	
 	//Update a record
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
-	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,BindingResult result,ModelMap model, Principal principal)
+	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result,ModelMap model, Principal principal)
 	{
 		
 		int flag = 0;
+		request.getAttribute("revision_id");
+		System.out.println("revisionid = "+request.getAttribute("revision_id"));
 		session.setAttribute("docform",form1);
 		/*String attachments = request.getParameter("attachments");*/
 		/*System.out.println("attachments = "+form1.getAttachments()+request.getParameter("attachments"));*/
@@ -351,9 +361,11 @@ public class FormController
 				}
 				if (true){
 					formDAO.update_form(form1,form1.getAuto_number(),principal.getName());
+					
 					model.addAttribute("success", "true");
 					model.addAttribute("success_message", "Updated Successfully");
 					flag = 1;
+					
 					System.out.println("flag=1");
 				}
 			} catch (Exception e) {
@@ -369,6 +381,7 @@ public class FormController
 			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
+	             revisionFormDAO.insert_revision(revisionForm,form1.getAuto_no());
 				return "view_form";
 			}
 			else
@@ -464,11 +477,16 @@ public class FormController
 		return "revisionhistoryform";
 	}*/
 	@RequestMapping(value={"/review_history_form"}, method = RequestMethod.GET)
-	public String review_history_form(HttpSession session,@RequestParam("auto_no") String auto_no,Form form,ModelMap model)
+	public String review_history_form(HttpSession session,@RequestParam("auto_no") String auto_no,@RequestParam("document_id")String document_id,Form form,ModelMap model)
 	{
     
 		//session.removeAttribute("docform");
 		//load_document_page_dropdowns(model);
+		
+		RevisionFormForm revisionFormForm = new RevisionFormForm();
+		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(document_id));
+		model.addAttribute("revisionFormForm", revisionFormForm);
+		System.out.println(revisionFormForm.getRevisionForms().get(0).getRevision_id());
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formForm",formForm);
@@ -655,7 +673,25 @@ public class FormController
 	    return "view_form";
 
 	}
-	 
+	 @RequestMapping(value={"/search_todelete"}, method = RequestMethod.GET)
+		
+		public String search_formDelete(@RequestParam("process") String process,ModelMap model, Principal principal)
+	{
+		
+		 FormForm formForm = new FormForm();
+		 
+		
+		formForm.setForm(formDAO.search_form(process));
+		
+		
+		model.addAttribute("formForm", formForm);
+     model.addAttribute("menu","form");
+     
+		 model.addAttribute("formForm",formForm);
+		
+	    return "formdelete";
+
+	}
 	 //report page request passing
 	 @RequestMapping(value={"/form_report"}, method = RequestMethod.GET)
 		public String form_report(HttpSession session,ModelMap model, Principal principal )
@@ -706,5 +742,70 @@ public class FormController
 			return modelAndView ;
 		}
 	
+	//Post method for ajax get process 
+		@RequestMapping(value = { "/ajax_getrevision" }, method = RequestMethod.POST)
+		public @ResponseBody String ajax_revision(@RequestParam("revision_id")String revision_id,@RequestParam("document_id")String document_id1, HttpSession session,
+				HttpServletRequest request, ModelMap model, Principal principal) {
+			System.out.println(revision_id);
+			System.out.println("docu = "+document_id1);
+			String resultHTML="";
+		
+			
+			
+			
+			String document_id= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getDocument_id();
+			String effective_date= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getEffective_date();
+			String issuer= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getIssuer();
+			String approver1= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getApprover1();
+			
+			String comments= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getComments();
+			/*<input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/><label id='approver1'>"+approver1+"</label>*/
+			
+			resultHTML = 
+				" <tr class='row2'>"+
+				" <td valign='middle' align='left' class='input_txt' width='20%'>Comments:&nbsp;&nbsp;&nbsp;</td>" +
+				"<td valign='top' align='center' class='input_txt' width='70%'><input type='hidden' name='comments' id='comments' value='"+comments+"'/><label id='approver1'>"+comments+"</label></br><span class='err'></span></td>" +
+				"</tr>" +
+				
+				" <tr class='row1'>" +
+				" <td valign='middle' align='left' class='input_txt' width='20%'>Issuer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+				"<td valign='top' align='center' class='input_txt' width='70%'><input type='hidden' name='issuer' id='issuer' value='"+issuer+"'/><label id='approver1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+issuer+"</label></br><span class='err'></span></td>" +
+				"</tr>" +
+				
+				
+				" <tr class='row2'>"+
+				" <td valign='middle' align='left' class='input_txt' width='20%'>Approver1(Process&nbsp;Owner):</td>" +
+				"<td valign='top' align='left' class='input_txt' width='70%'><input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/><label id='approver1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+approver1+"</label></br><span class='err'></span></td>" +
+				"</tr>" +
+				
+				" <tr class='row1'>" +
+				" <td valign='middle' align='left' class='input_txt' width='20%'>Effective&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+				"<td valign='top' align='left' class='input_txt' width='70%'><input type='hidden'name='effective_date' id='effective_date' value='"+effective_date+"'/><label id='effective_date'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+effective_date+"</label></br><span class='err'></span></td>" +
+				"</tr>" +
+			
+				
+					" <tr class='row2'>" +
+					" <td valign='middle' align='left' class='input_txt' width='20%'>Form/Rec&nbsp;Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+					"<td valign='top' align='left' class='input_txt' width='70%'><input type='hidden'name='document_id' id='document_id' value='"+document_id+"'/><label id='document_id'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+document_id+"</label></br><span class='err'></span></td>" +
+					"</tr>" +
+					
+				
+					
+					
+					
+					
+					
+					
+					"";
+					
+			
+			
+			
+			return resultHTML;
+		}
+
+		
+	 
+	 
 }
 

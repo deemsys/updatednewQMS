@@ -60,7 +60,7 @@ public class Form {
 	@NotEmpty
 	private String comments;
 
-    
+    private String revision_id;
 	
 	public Form() {
 		super();
@@ -74,7 +74,7 @@ public class Form {
 			String responsibility, String form_or_rec_title, String process,
 			String media_type, String retention_time, String form,String  attachment_name,String attachment_type, String attachment_referrence,
 			String auto_no, String effective_date, String document_id,
-			String approver1, String issuer, String comments) {
+			String approver1, String issuer, String comments, String revision_id) {
 		super();
 		this.auto_number = auto_number;
 		this.location = location;
@@ -94,6 +94,7 @@ public class Form {
 		this.approver1 = approver1;
 		this.issuer = issuer;
 		this.comments = comments;
+		this.revision_id = revision_id;
 		
 	}
 
@@ -406,6 +407,20 @@ public class Form {
 
 	public void setDocument_type_id1(String document_type_id1) {
 		this.document_type_id1 = document_type_id1;
+	}
+
+
+
+
+	public String getRevision_id() {
+		return revision_id;
+	}
+
+
+
+
+	public void setRevision_id(String revision_id) {
+		this.revision_id = revision_id;
 	}
 
 

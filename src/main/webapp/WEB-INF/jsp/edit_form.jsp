@@ -284,13 +284,9 @@
                </select>
 																		
 																		</td>
-																		
-			
-<td></td>
-																		</tr>
-																		<tr class="row1">
 																		<td valign="middle" align="left" class="input_txt">Form:</td>
-														<td valign="top" align="left" class="input_txt">
+														
+																		<td valign="top" align="left" class="input_txt">
 														<!-- <input
 															type="radio" name="form" value="1"
 															class="input_txt" onchange="toggle2(this.value)">Yes&nbsp;&nbsp;&nbsp;<input
@@ -300,6 +296,12 @@
 															<input type="radio" name="form" value="1"  class="input_txt"   <c:if test="${form.form=='1'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
 				  											<input type="radio" name="form" value="0"  class="input_txt"  <c:if test="${form.form=='0'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				  
+																		
+			
+<td></td>
+																		</tr>
+																		<tr class="row1">
+																		
                             <td></td>
                             <td></td>
                             <td></td>
@@ -315,7 +317,7 @@
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
              
               <tr class="row1">
-                             <td valign="middle" align="left" class="input_txt"><span
+                           <%--   <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Auto Number :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="hidden" class="input_txtbx1" id="inp_external_id"
@@ -325,6 +327,15 @@
 																			value="${form.auto_number}" />
 																			<c:out value="${form.auto_number}"></c:out>
 																		
+																		</td> --%>
+																		  <td valign="middle" align="left" class="input_txt"><span
+																			class="err">*</span>Document ID :</td>
+																		<td valign="top" align="left" class="input_txt"><input
+																			type="hidden" class="input_txtbx1" id="inp_external_id"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="document_id"
+																			value="${form.document_id}" />${form.document_id}<br/><span class="err"><form:errors path="Form.document_id"></form:errors></span>
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>c Date :</td>
@@ -333,7 +344,14 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="effective_date"
-																			value="${form.effective_date}" /><br/><span class="err"><form:errors path="Form.effective_date"></form:errors></span>
+																			value="${form.effective_date}" />
+																			<input
+																			type="hidden" class="input_txtbx1" id="inp_external_id"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="auto_no"
+																			value="${form.auto_number}" />
+																			<br/><span class="err"><form:errors path="Form.effective_date"></form:errors></span>
 																		</td>  
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -343,15 +361,7 @@
 																		</tr>
               
               <tr class="row2">
-                            <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Document ID :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="document_id"
-																			value="${form.document_id}" /><br/><span class="err"><form:errors path="Form.document_id"></form:errors></span>
-																		</td>
+                          
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Approver1(Process Owner) :</td>
 																		<td valign="top" align="left" class="input_txt">
@@ -385,6 +395,19 @@
 																			
 																			<br/><span class="err"><form:errors path="Form.issuer"></form:errors></span>
 																		</td>
+																		
+																		
+																		 <td valign="middle" align="left" class="input_txt"><span
+																			class="err">*</span>Comments :</td>
+																		<td valign="top" align="left" class="input_txt">
+																		<input
+																			type="text" class="input_txtbx1" id="inp_external_id"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="comments"
+																			value="${form.comments}" />
+																		<input type="hidden" 	value="${form.revision_id}"/>
+																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
@@ -393,19 +416,7 @@
               </tr>
               
               <tr class="row2">
-                            <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Comments :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="comments"
-																			value="${form.comments}" />
-																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
+                           
               </tr>
               
               </table>

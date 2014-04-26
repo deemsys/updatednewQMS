@@ -60,6 +60,9 @@
 	<bean id="formlocationDAO" class="qms.dao.FormLocationDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="revisionformDAO" class="qms.dao.RevisionFormDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  <bean id="filehandlingDAO" class="qms.dao.FileHandlingDAO">
 	</bean>
 </beans>

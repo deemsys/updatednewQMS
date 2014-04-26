@@ -1,10 +1,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
+
+<html>
 <head>
 <script  language="javascript">
 function validate()
 {
-alert("fname");
  var chks = document.getElementsByName('chkUser');
 var hasChecked = false;
 for (var i = 0; i < chks.length; i++)
@@ -20,7 +21,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are you sure.You want to delete the User(s)?");
+var result=confirm("Are you sure.You want to delete the Form(s)?");
 if(result)
 	{
 return true;
@@ -32,6 +33,7 @@ else
 }	
 </script>
 </head>
+<body>
 <div id="right_content">
 
 	
@@ -80,7 +82,19 @@ else
 							<h2>Delete Forms</h2>
 						</div>
 						 <div class="contentbox">
-						
+						<form action="search_todelete" name="dashboard" method="GET">
+<div style="border:#993300 2px solid; padding:15px; margin-bottom:15px;">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+							    <td align="left" valign="middle" width="20%">Process:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx2" id="recordtitle"></td>
+							    <td align="center" valign="middle" width="38%">
+							  <input type="submit" value="Find" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn" ></td>
+							  </tr>
+							</table>
+						</div> 
+</form>
 					<form action="deleteform" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
@@ -128,10 +142,11 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
+		<td colspan="6">   <br><br><br> <br><br><br> <br>
+		
 	<div class="extrabottom">
              <ul class="pagination">
-        
+       
            <%--   <c:if test="${currentpage!=1&&currentpage!=null}">
              <li class="page_unselect"><a href="viewformreport_page?page=${currentpage - 1}" >Prev</a></li> 
                </c:if>
@@ -155,13 +170,17 @@ else
                   <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise> --%>
-                  <li class="page"><a href="view_form" class="paging_select">Back</a></li>
+                  <li class="page"><a href="view_form" class="paging_select">Back</a>  </li>
                   
            <%--    </c:otherwise>
               </c:choose>			 --%>		
-		 
-		</ul></div></td></table></div>
-						
+	
+		</ul></div>
+		
+		</td>
+	
+		</table></div>
+						</body>
 <script  language="javascript">
 
 $(function () {
@@ -185,4 +204,6 @@ $(function () {
 	});
 	});
 </script>
-<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+
+<jsp:include page="footer.jsp"></jsp:include>
+</html>

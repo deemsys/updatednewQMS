@@ -1,5 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 
 <form method="post" action="form" method="post">
   <div id="right_content">
@@ -72,25 +75,52 @@
             <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${formForm.form[0]}" var="form"> </c:set>
-               <tr class="row2">
-
-<!--                   <td valign="middle" align="left" class="input_txt" width="20%">Equipment Id: </td>
- -->
-                  <td valign="middle" align="left" class="input_txt" width="20%">Form/Rec Id:</td>
-
-                  <td valign="top" align="left" class="input_txt" width="70%">${form.form_or_rec_id}</br><span class="err"></span></td>
-                </tr>
-                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Effective Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${form.effective_date}</br><span class="err"></span></td>
-                </tr>
-                 <tr class="row2">
+               
+               <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="20%">Revision No :</td>
+              <td valign="top" align="left"> <input type="hidden" id="document_id" value="${form.document_id}"/>
+               <select name="revision_id" id="revisionid" onchange="doAjaxPost_for_process();"  class="input_cmbbx1" style="width:200px;">
+              
+             <c:forEach items="${revisionFormForm.revisionForms}" var="revision" varStatus="true">
+               
+                
+               <option value="${revision.revision_id}"<c:if test="${revision.revision_id == form.revision_id}"><c:out value="selected"/></c:if>>${revision.revision_id}</option>
+                
+               </c:forEach>
+               </select>
+            </td>
+            </tr>
+               </table>
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+               
+               <tr class="row1">
+               <td>
+               <span id="documentname"></span>
+               </td>
+               </tr>
+               </table>
+               </div>
+               </div>
+               </td>
+               </table>
+               </div>
+               </form>
+                
+           
+              
+             <%--  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Form/Rec Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${form.document_id}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" id="document_id" value="${form.document_id}"/>${form.document_id}</br><span class="err"></span></td>
+                </tr> --%>
+              
+                <%--  <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="20%">Effective Date :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"> ${form.effective_date}</br><span class="err"></span></td>
                 </tr>
+                 
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Approver1(Process Owner) :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${form.approver1}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">${form.approver1} </br><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Issuer :</td>
@@ -99,9 +129,9 @@
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="20%"> Comments :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${form.comments}
-                  
+                 
                   <br/><span class="err"></span></td>
-                  </tr>
+                  </tr> --%>
                                 
               
 <%-- 
@@ -152,19 +182,29 @@
             </tr>
  --%>            
                 
-            </table>
-            </div>
-            </td>
-            </tr>
-            </table>
-            </div>
-            </div>
-            </td>
-            </tr>
-            </table></div>
-            </form>
-            <!--  <script type="text/javascript">
-function toggle3(value){
+          
+             <script type="text/javascript">
+             
+             function doAjaxPost_for_process() {
+            		var revision_id = $('#revisionid').val();
+            		var document_id= $('#document_id').val();
+            		/*   var education = $('#education').val();	 */		
+            		$.ajax({
+            			type : "POST",
+            			url : "/QMS_App/ajax_getrevision",
+            			data : "revision_id=" +revision_id+"&document_id="+document_id,
+            				
+            			success : function(response) {
+            				
+            				$('#documentname').html(response);
+            			
+            			},
+            			error : function(e) {
+            				alert('Error: ' + e);
+            			}
+            		});
+            	}
+/* function toggle3(value){
      
        var e = document.getElementById('child_table');
       // var e1=document.getElementById('employee');
@@ -177,6 +217,14 @@ else
 	e.style.display="block";
        }
        
-}
-</script> -->
+} */
+</script> 
+
+<script>
+	
+	window.onload = function(){
+		doAjaxPost_for_process();
+		
+	}
+</script>	
             

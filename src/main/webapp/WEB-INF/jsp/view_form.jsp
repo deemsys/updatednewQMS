@@ -126,7 +126,7 @@
 											
 											 --%>
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/> " style="padding-right:10px;">Review History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="review_history_form?auto_no=${form.auto_no}&&document_id=${form.document_id}" style="padding-right:10px;">Review History</a>
 											
 											
 											</td>
