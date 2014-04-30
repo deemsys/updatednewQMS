@@ -48,7 +48,7 @@ public class Form {
 	@NotEmpty
 	private String effective_date;
 	
-	@NotEmpty
+	
 	private String document_id;
 	
 	@NotEmpty

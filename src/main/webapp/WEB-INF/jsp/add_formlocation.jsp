@@ -61,5 +61,7 @@
  </td>
  </tr>
  </table>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
  </form>
+  <jsp:include page="footer.jsp"></jsp:include> 
  </html>

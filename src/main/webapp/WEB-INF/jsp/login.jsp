@@ -78,16 +78,21 @@
 		      
 		      <li>
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
+		      
 		      <td valign="top" align="left">
-		      <a href="forgot-password"><font color="#993300">Forgot Password</font></a></li>
+		     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="forgot-password"><font color="#993300">Forgot Password</font></a></li>
 		      </td>
+		     
 		      </table>
 		    
 		    <li>
 		    	
 		      <li>
 		      <table cellpadding="0" cellspacing="0" width="100%">
-		      <td valign="top" align="left"> <a href="createuser"><font color="#993300">Register</font></a></td></table></li>
+		      
+		      <td valign="top" align="left">
+		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="createuser"><font color="#993300">Register</font></a></td></table></li>
+		      
 		    </ul>
 		  </div>
 		  <div class="login-bottom"></div>

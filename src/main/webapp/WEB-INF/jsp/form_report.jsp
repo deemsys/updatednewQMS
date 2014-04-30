@@ -94,12 +94,23 @@
 							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Form List by Process :</td>
-									<td valign="top" align="left" class="input_txt" width="100%">
+									<!-- <td valign="top" align="left" class="input_txt" width="100%">
 									<select name="type_of_form" class="input_cmbbx_big"
 									onchange="toggle2(this.value)">
 										<option value="human_resources">Human Resources (FHR-XX)</option>
 										<option value="engineering">Engineering (FEN-XX)</option>
-								   </select>
+								   </select> -->
+								
+               <td valign="top" align="left" class="input_txt" >
+               
+               <select name="process" id="id_inpprocess"  class="input_cmbbx1" style="width:200px;">
+               
+             <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
+                <option value="${processes.process_name}">${processes.process_name}</option>
+               </c:forEach>
+                
+               
+               </select>
 								</td>
 								
 							</tr>

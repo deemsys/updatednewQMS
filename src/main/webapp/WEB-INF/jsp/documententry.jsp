@@ -18,11 +18,11 @@
         
        	 <tr class="row1" >
              <td colspan="2" align="right">
-             <input type="submit" id="document"  name="DOCUMENT" value="document" class="submit_btn1"></td>
+             <input type="submit" id="document"  name="DOCUMENT" value="Documents" class="submit_btn1"></td>
             </form>
             <form method="get" enctype="multipart/form-data" action="addform">
              <td colspan="3">
-            <input type="submit" id="form"  name="FORM" value="form" class="submit_btn1"></td>
+            <input type="submit" id="form"  name="FORM" value="Forms/Records" class="submit_btn1"></td>
 </tr></table></div>
 </form>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

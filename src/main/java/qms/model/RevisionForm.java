@@ -2,6 +2,7 @@ package qms.model;
 
 public class RevisionForm
 {
+	private String auto_no;
 	private String document_id;
 	private String effective_date;
 	private String approver1;
@@ -14,9 +15,10 @@ public class RevisionForm
 	}
 	
 	
-	public RevisionForm(String document_id, String effective_date,
+	public RevisionForm(String auto_no,String document_id, String effective_date,
 			String approver1, String issuer, String comments, String revision_id) {
 		super();
+		this.auto_no = auto_no;
 		this.document_id = document_id;
 		this.effective_date = effective_date;
 		this.approver1 = approver1;
@@ -27,6 +29,16 @@ public class RevisionForm
 
 
 	
+	public String getAuto_no() {
+		return auto_no;
+	}
+
+
+	public void setAuto_no(String auto_no) {
+		this.auto_no = auto_no;
+	}
+
+
 	public String getDocument_id() {
 		return document_id;
 	}

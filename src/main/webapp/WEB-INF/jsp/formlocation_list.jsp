@@ -95,6 +95,7 @@
 							    	</c:if> --%>
         				       				 </table>
         				       				</form>
+        				       				<br><br><br><br><br><br>
         				       				</div>
         				       				</td>
         				       				</tr>
@@ -151,4 +152,4 @@ function confirmation() {
 
 
 </script> 
-        				       		
+ <jsp:include page="footer.jsp"></jsp:include>        				       		

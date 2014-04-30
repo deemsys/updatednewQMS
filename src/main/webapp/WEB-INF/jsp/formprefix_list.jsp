@@ -89,6 +89,7 @@
         				       				 </tr>
         				       				 </c:forEach>
         				       				 </c:if>
+        				       				
         				       				<%--   <c:if test="${fn:length(formFormPrefix.formPrefixs) == 0}">	
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
@@ -96,6 +97,7 @@
 							    	</tr>
 							    	</c:if> --%>
         				       				 </table>
+        				       				 <br><br><br><br><br><br><br><br><br><br>
         				       				</form>
         				       				</div>
         				       				</td>
@@ -154,3 +156,4 @@ function confirmation() {
 
 </script> 
         				       		
+        				       		  <jsp:include page="footer.jsp"></jsp:include> 

@@ -67,7 +67,7 @@
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>View Form</h2>
+							<h2>View Forms</h2>
 						</div>
 						 <div class="contentbox">
 						<form action="search_form" name="dashboard" method="GET">
@@ -86,11 +86,10 @@
 					<form action="?do=viewparticipants" name="dashboard" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="10%">Auto Number</td>
+								
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
 									<td valign="top" align="left" width="10%">Effective Date</td>
-									 <td valign="top" align="left" width="10%">Document Id</td>
 									<td valign="top" align="left" width="10%">Approver1</td>
 									<td valign="top" align="left" width="10%">Issuer</td>
 									<td valign="top" align="left" width="10%">Actions</td>
@@ -105,11 +104,10 @@
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-								           	<td valign="top" align="left"  width="10%"><a href="list_form?id=${form.auto_number}">${form.auto_number}</a></td>
+								           	<b><input type="hidden" name="auto_number" value="${form.auto_number}"/></b>
 									        <td valign="top" align="left" width="10%">${form.form_or_rec_id}</td>
 											<td valign="top" align="left" width="10%">${form.process}</td>
 											<td valign="top" align="left" width="10%">${form.effective_date}</td>
-											<td valign="top" align="left" width="10%">${form.document_id}</td>
 											<td valign="top" align="left" width="10%">${form.approver1}</td>
 											<td valign="top" align="left" width="10%">${form.issuer}</td>
 											
@@ -126,7 +124,7 @@
 											
 											 --%>
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="review_history_form?auto_no=${form.auto_no}&&document_id=${form.document_id}" style="padding-right:10px;">Review History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="review_history_form?auto_no=${form.auto_no}&&document_id=${form.document_id}" style="padding-right:10px;">View Revision History</a>
 											
 											
 											</td>

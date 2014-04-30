@@ -71,7 +71,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>&nbsp;&nbsp;Add Document</h2>
+              <h2>&nbsp;&nbsp;Form Details</h2>
             </div>
             <div class="contentbox">
                     
@@ -82,7 +82,7 @@
               
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:0.5px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    		<label><u> Document Details </u></label>
+    	
     		<%-- <tr></td><td>
     		</td>
     		<td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td>
@@ -110,7 +110,7 @@
 			                  </c:forEach>
                </select>
                
-              <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/> 
+              <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value="" /> 
               <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
               
              <%-- <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td>
@@ -125,9 +125,21 @@
         				       <option value="${formlocation.form_location}">${formlocation.form_location}</option>
 			                  </c:forEach> </select>
                <br>
-				 <input name="attachments" style="display:none;" id="id_file" type="file" />														<td valign="top" align="left" class="input_txt">																	
+				 <input name="attachments" style="display:none;" id="id_file" type="file" />	
+				 </td>										
+				<td valign="top" align="left" class="input_txt">																	
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="right" class="input_txt">																	
+																		</td>
+																		<td valign="top" align="right" class="input_txt">																	
+																		</td>
+																		<td valign="top" align="right" class="input_txt">																	
+																		</td>
+																		<td valign="top" align="right" class="input_txt">																	
+																		</td>
+																		<td valign="top" align="right" class="input_txt">																	
+																		</td>
+																		<td valign="top" align="right" class="input_txt">																	
 																		</td>
 																		</tr>
                
@@ -225,9 +237,9 @@
                <td valign="top" align="left" class="input_txt">
                
                   
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" <c:if test="${form.media_type==0}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type==1}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type==2}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" <c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                   
                </td>
                
@@ -275,9 +287,9 @@
 																		
 																		<td valign="middle" align="left" class="input_txt">Is this a Form?</td>
 														<td valign="top" align="left" class="input_txt"><input
-															type="radio" name="form" value="1"
+															type="radio" name="form" value="Yes"
 															class="input_txt" checked >Yes&nbsp;&nbsp;&nbsp;<input
-															type="radio" name="form" value="0"
+															type="radio" name="form" value="No"
 															class="input_txt" >No
                             
                            </tr>
@@ -295,11 +307,14 @@
               <td colspan="4">
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
+ <div class="headings altheading">
+              <h2>&nbsp;&nbsp;Revision Details</h2>
+            </div>
                 <div class="contentbox">
               
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-             <label> <u>Revision Details </u></label>
+           
              <li>
              </li>
              <li>
@@ -307,8 +322,8 @@
              <br>
              
               <tr class="row1">
-                             <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="hidden" name="auto_no" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
+                          <!--    <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td> -->
+                <!--   <td valign="top" align="left" class="input_txt" ><br/><span class="err"></span></td> -->
               
 																		             
 																		          
@@ -317,27 +332,25 @@
 																		             
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Effective Date :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="datepicker123"
+																		<td valign="top" align="left" class="input_txt">
+																		<input type="hidden" name="auto_no" value="${id }"/>
+																		<input type="text" class="input_txtbx1" id="datepicker123"
 																				name="effective_date"
 																			value="${docform.effective_date}" /><br/><span class="err"><form:errors path="Form.effective_date"></form:errors></span>
 																		</td>  
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>      
+																		     
 																		  
 																		</tr>
               
               <tr class="row2">
                             <td valign="middle" align="left" class="input_txt"><span
-																			class="err"></span>Document ID :</td>
+																			class="err"></span>Form/Rec Id</td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
+																			type="text" class="input_txtbx1" id="form_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="document_id"
-																			value="${docform.document_id}" /><br/><span class="err"><form:errors path="Form.document_id"></form:errors></span>
+																			value="" /><br/><span class="err"><form:errors path="Form.document_id"></form:errors></span>
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Approver1(Process Owner) :</td>
@@ -352,10 +365,7 @@
 																			<span id="process_owner_id"></span>
 																			<br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td> </tr>
+																		 </tr>
               
               <tr class="row1">
                             <td valign="top" align="left" class="input_txt" width="25%"><span class="err">Issuer:</td>
@@ -400,17 +410,11 @@
 																			class="err"></span>Comments :</td>
 																		<td valign="top" align="left" class="input_txt"><textarea class="input_txtbx1"  name="comments"  style="width:75%; height: 50px;" >${docform.comments}</textarea><br/><span class="err"><form:errors path="Form.comments"></form:errors></span></td>
 																		
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt">
+																	
 																		
               </tr>
               
-             <!--  <tr class="row2">
-                         																	
-																		</td><td></td><td></td>
-              </tr> -->
-              
+             
               </table>
               </div>
       
@@ -437,7 +441,7 @@ function toggle2(value){
     var e1 = document.getElementById('file_upload_label');
     var e2=document.getElementById('location_text');
     var e3=document.getElementById('id_file');
-if(value==1)
+if(value=='electronic')
     {
 	e.style.display="none";
 	e1.style.display="block";
@@ -445,7 +449,7 @@ if(value==1)
 	e3.style.display="block";
 	
     }
-else if(value==0)
+else if(value=='hardcopy')
     {
 	e.style.display="block";
 	e1.style.display="none";
@@ -453,7 +457,7 @@ else if(value==0)
 	e3.style.display="none";
   
     }
-else if(value==2)
+else if(value=='both')
 {
 e.style.display="block";
 e1.style.display="block";
@@ -535,7 +539,12 @@ function change_to_label()
 	document.getElementById("document_id_full_lbl").innerHTML=type.value+-+doc_id.value;
 	var gen_id=document.getElementById("generated_id");
 	gen_id.value=type.value+-+doc_id.value;
-	
+	 
+	if((gen_id.value)!= null)
+		{
+       	form_id.value=gen_id.value;
+       
+		}
 
 	}
 function show_edit()
@@ -580,7 +589,14 @@ document.getElementById("lable_td").style.display="none";
          });
  
 </script>
-    
+     <script>
+            function toggle(value){
+            	
+            if(value!=null)
+            	form_id.value=value;
+            
+            }
+            </script>
   
       <jsp:include page="footer.jsp"></jsp:include>
        

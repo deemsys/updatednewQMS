@@ -233,6 +233,7 @@ public class FormController
 		request.getAttribute("revision_id");
 		System.out.println("revisionid = "+request.getAttribute("revision_id"));
 		session.setAttribute("docform",form1);
+		System.out.println("document id ****** "+form1.getDocument_id());
 		/*String attachments = request.getParameter("attachments");*/
 		/*System.out.println("attachments = "+form1.getAttachments()+request.getParameter("attachments"));*/
 		/*if(result.hasErrors())
@@ -381,7 +382,8 @@ public class FormController
 			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
-	             revisionFormDAO.insert_revision(revisionForm,form1.getAuto_no());
+	             System.out.println("document id ****** "+form1.getDocument_id());
+	             revisionFormDAO.insert_revision(revisionForm,form1.getAuto_no(),form1);
 				return "view_form";
 			}
 			else
@@ -499,6 +501,9 @@ public class FormController
 		System.out.println("auto no = "+auto_no);
 		session.removeAttribute("docform");
 		load_document_page_dropdowns(model);
+		RevisionFormForm revisionFormForm = new RevisionFormForm();
+		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(auto_no));
+		model.addAttribute("revisionFormForm", revisionFormForm);
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formForm",formForm);
@@ -696,7 +701,10 @@ public class FormController
 	 @RequestMapping(value={"/form_report"}, method = RequestMethod.GET)
 		public String form_report(HttpSession session,ModelMap model, Principal principal )
 		{
-			
+		 ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+
 	        return "form_report";
 	 	}
 	 
@@ -704,22 +712,16 @@ public class FormController
 	 @RequestMapping(value = "/generate_doc_form", method = RequestMethod.POST)
 		public ModelAndView generateDocument_Form(HttpServletRequest request,ModelMap model, HttpServletResponse response) {
 			
-			String[] fields={"auto_number","location","form_or_rec_id","responsibility","form_or_rec_title","process","media_type","retention_time","form","effective_date","document_id","approver1","issuer","comments"};
-			System.out.println(request.getParameter("type_of_form"));
+			String[] fields={"auto_number","location","form_or_rec_id","responsibility","form_or_rec_title","process","media_type","retention_time","form","effective_date","document_id","approver1","issuer","comments","revision_id"};
+			System.out.println(request.getParameter("process"));
 			java.util.List<Form> form=new ArrayList<Form>();
 			
-			if(request.getParameter("type_of_form").equals("human_resources"))
-			{
-				
-				form=formDAO.gethuman_resources();
-				
-				
-			}
-			else
-			{
-				form=formDAO.getengineering();
 			
-			}
+				
+				form=formDAO.gethuman_resources(request.getParameter("process"));
+				
+			
+			
 			
 			if(Integer.parseInt(request.getParameter("report_type"))==1)
 			{

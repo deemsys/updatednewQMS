@@ -76,6 +76,7 @@
              </table>
              </div>
              </form>
-                
-</body>
-</html>
+       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>         
+
+
+ <jsp:include page="footer.jsp"></jsp:include>    

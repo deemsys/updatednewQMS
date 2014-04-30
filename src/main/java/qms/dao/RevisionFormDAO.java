@@ -29,7 +29,7 @@ public class RevisionFormDAO {
 	    try{
 			resultSet = statement.executeQuery("select * from tbl_revisionform");
 			while(resultSet.next()){
-				revisionForms.add(new RevisionForm(resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
+				revisionForms.add(new RevisionForm(resultSet.getString("auto_no"),resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
 						resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 				
 			}
@@ -62,7 +62,7 @@ public class RevisionFormDAO {
 	    	System.out.println("select * from tbl_revisionform where document_id='"+document_id+"' and revision_id='"+revision_id+"'");
 			resultSet = statement.executeQuery("select * from tbl_revisionform where document_id='"+document_id+"'AND revision_id='"+revision_id+"'");
 			while(resultSet.next()){
-				revisionForms.add(new RevisionForm(resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
+				revisionForms.add(new RevisionForm(resultSet.getString("auto_no"),resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
 						resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 				
 			}
@@ -80,7 +80,7 @@ public class RevisionFormDAO {
 	    return revisionForms;
 		
 	}
-	public List<RevisionForm> getRevision(String document_id){
+	public List<RevisionForm> getRevision(String auto_no){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -93,10 +93,10 @@ public class RevisionFormDAO {
 		}
 		List<RevisionForm> revisionForms = new ArrayList<RevisionForm>();
 	    try{
-	    	System.out.println("select * from tbl_revisionform where document_id='"+document_id+"'");
-			resultSet = statement.executeQuery("select * from tbl_revisionform where document_id='"+document_id+"'");
+	    	System.out.println("select * from tbl_revisionform where auto_no='"+auto_no+"'");
+			resultSet = statement.executeQuery("select * from tbl_revisionform where auto_no='"+auto_no+"'");
 			while(resultSet.next()){
-				revisionForms.add(new RevisionForm(resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
+				revisionForms.add(new RevisionForm(resultSet.getString("auto_no"),resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
 						resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 				
 			}
@@ -121,6 +121,7 @@ public class RevisionFormDAO {
 		ResultSet resultSet = null;
 		boolean status=false;
 		System.out.println("auto_id = "+auto_id);
+		System.out.println("document_id =" +form.getDocument_id());
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -141,10 +142,80 @@ public class RevisionFormDAO {
 				  }
 			  
 			  String cmd_insert2;	
-				 cmd_insert2="insert into tbl_revisionform(document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_id+"')";
+				 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_id+"')";
 				 statement.execute(cmd_insert2);
 		
 			 status=true;
+		  }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+		    return status;
+	}
+	public boolean insert_revision(RevisionForm form,String auto_id, Form forms)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status=false;
+		System.out.println("auto_id = "+auto_id);
+		System.out.println("document_id =" +form.getDocument_id());
+		 String revision_no="",effectivedate="",documentid="",Approver="",issuer="",comments="";
+		 
+		  form.getRevision_id();
+		  form.getEffective_date();
+		  form.getDocument_id();
+		  form.getApprover1();
+		  form.getIssuer();
+		  form.getComments();
+		  
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+				e1.printStackTrace();
+		}
+		  try{
+			  System.out.println("inserting into revision table");
+			  int revision_id =0;
+			  String approver1 = new String(form.getApprover1());
+			  String[] split = approver1.split(",");
+			  String approver = split[0];
+			 /* resultSet=statement.executeQuery("select revision_id from tbl_form_child where auto_no='"+auto_id+"'");*/
+			  
+			  resultSet=statement.executeQuery("select tbl_form_child.revision_id,tbl_form_child.effective_date,tbl_form_child.document_id,tbl_form_child.approver1,tbl_form_child.issuer,tbl_form_child.comments from tbl_form_child where tbl_form_child.auto_no='"+auto_id+"'");
+				
+				 while(resultSet.next())
+			  {
+					 revision_no=resultSet.getString("revision_id");
+					 System.out.println(revision_no+ forms.getRevision_id());
+					 effectivedate=resultSet.getString("effective_date");
+					 System.out.println(effectivedate+" "+forms.getEffective_date());
+					 documentid=resultSet.getString("document_id");
+					 System.out.println(documentid+" "+forms.getDocument_id());
+					 Approver= resultSet.getString("approver1");
+					 System.out.println(Approver+" "+forms.getApprover1());
+					 issuer= resultSet.getString("issuer"); 
+					 System.out.println(issuer+" "+forms.getIssuer());
+					 comments= resultSet.getString("comments"); 
+					 System.out.println(comments+" "+forms.getComments());
+			  }
+			  
+			  if((!forms.getRevision_id().equals(revision_no))|| (!forms.getEffective_date().equals(effectivedate))||(!forms.getDocument_id().equals(documentid))|| (!forms.getApprover1().equals(Approver))||(!forms.getIssuer().equals(issuer))|| (!forms.getComments().equals(comments)))
+			  {	
+			 String cmd_insert2;	
+				 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_no+"')";
+				 statement.execute(cmd_insert2);
+				 status=true;
+			  }
+			 
 		  }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);

@@ -72,8 +72,9 @@
 														<tr>
 															<td align="left" valign="top" width="50%"
 																style="padding-right: 25px;">
-																<h2 class="quck-txt">Quick Info</h2>
-            
+																  <div align="left">
+              <h2>Form Details</h2>
+            </div>
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr class="row1">
               <%-- <input type="hidden" class="input_txtbx1" id="inp_id" value="${form.auto_number}" name="auto_number" /> --%>
@@ -195,25 +196,25 @@
                 <!-- <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;<input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span> -->
                  
                  <c:choose>
-               <c:when test="${form.media_type==0}">
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;<br>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               <c:when test="${form.media_type=='hardcopy'}">
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;<br>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
-               <c:when test="${form.media_type==1}">
-               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;<br>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               <c:when test="${form.media_type=='electronic'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;<br>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
-               <c:when test="${form.media_type==2}">
-               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;<br>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               <c:when test="${form.media_type=='both'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;<br>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
                </c:choose>
                </td>
                 <c:choose>
-                <c:when test="${form.media_type==0}">
+                <c:when test="${form.media_type=='hardcopy'}">
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
@@ -229,7 +230,7 @@
               </c:when>
                </c:choose>
                <c:choose>
-                <c:when test="${form.media_type==1}">
+                <c:when test="${form.media_type=='electronic'}">
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
@@ -250,7 +251,7 @@
                </td>
               </c:when>
              
-              <c:when test="${form.media_type==2}">
+              <c:when test="${form.media_type=='both'}">
               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label"><span class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1">
@@ -293,8 +294,8 @@
 															type="radio" name="form" value="0"
 															class="input_txt" checked onchange="toggle2(this.value)">No -->
 															
-															<input type="radio" name="form" value="1"  class="input_txt"   <c:if test="${form.form=='1'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
-				  											<input type="radio" name="form" value="0"  class="input_txt"  <c:if test="${form.form=='0'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
+															<input type="radio" name="form" value="Yes"  class="input_txt"   <c:if test="${form.form=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+				  											<input type="radio" name="form" value="No"  class="input_txt"  <c:if test="${form.form=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				  
 																		
 			
@@ -329,16 +330,23 @@
 																		
 																		</td> --%>
 																		  <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Document ID :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="hidden" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="document_id"
-																			value="${form.document_id}" />${form.document_id}<br/><span class="err"><form:errors path="Form.document_id"></form:errors></span>
+																			class="err">*</span>Revision No. (optional):</td>
+																		<td valign="top" align="left" class="input_txt">
+																		
+																  <input type="text" name="revision_id" id="revisionid" value="${form.revision_id}" onclick="revision_change()" class="input_cmbbx1" >
+              																	
+            <%--  <c:forEach items="${revisionFormForm.revisionForms}" var="revision" varStatus="true">
+               
+                
+               <option value="${revision.revision_id}"<c:if test="${revision.revision_id == form.revision_id}"><c:out value="selected"/></c:if>>${revision.revision_id}</option>
+                
+               </c:forEach>
+               <option value=""/>
+               </select>													 --%>
+																		<br/><span class="err"><form:errors path="Form.revision_id"></form:errors></span>
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>c Date :</td>
+																			class="err">*</span>Effective Date :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -361,6 +369,16 @@
 																		</tr>
               
               <tr class="row2">
+              																	 <td valign="middle" align="left" class="input_txt"><span
+																			class="err">*</span>Form/Rec ID :</td>
+																		<td valign="top" align="left" class="input_txt"><input
+																			type="text" class="input_txtbx1" id="form_id"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="document_id"
+																			value="${form.form_or_rec_id}" style="display:none;" />
+																			<b id="hide_id">${form.form_or_rec_id}</b><br/><span class="err"><%-- <form:errors path="Form.document_id"></form:errors> --%></span>
+																		</td>
                           
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Approver1(Process Owner) :</td>
@@ -406,7 +424,7 @@
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="comments"
 																			value="${form.comments}" />
-																		<input type="hidden" 	value="${form.revision_id}"/>
+																		
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -480,7 +498,7 @@ function toggle2(value){
     var e1 = document.getElementById('file_upload_label');
     var e2=document.getElementById('location_text');
     var e3=document.getElementById('id_file');
-if(value==1)
+if(value=='electronic')
     {
 	e.style.display="none";
 	e1.style.display="block";
@@ -490,7 +508,7 @@ if(value==1)
 	
 	
     }
-else if(value==0)
+else if(value=='hardcopy')
     {
 	e.style.display="block";
 	e1.style.display="none";
@@ -499,7 +517,7 @@ else if(value==0)
 	document.getElementById('label1').style.display="none";
   
     }
-else if(value==2)
+else if(value=='both')
 {
 e.style.display="block";
 e1.style.display="block";
@@ -517,11 +535,15 @@ e3.style.display="block";
 		var element1 = document.getElementById('formid');
 		var element2 = document.getElementById('change');
 		var element3 = document.getElementById('form_or_rec_id');
+		var element4 = document.getElementById('form_id');
+		var element5 = document.getElementById('hide_id');
 		
 			element.style.display="block";
 			element3.style.display="block";
 			element1.style.display="none";
 			element2.style.display="none";
+			element4.style.display="block";
+			element5.style.display="none";
 			document.getElementById("changeafter").style.display="none";
 		
 	}
@@ -545,9 +567,24 @@ e3.style.display="block";
 		document.getElementById('document_type_id').style.display="none";
 		document.getElementById('form_or_rec_id').style.display="none";
 		document.getElementById("change").style.display="block";
-		
+		if((gen_id.value)!= null)
+		{
+       	form_id.value=gen_id.value;
+       
+		}
+
 
 		}
+	function revision_change(){
+		
+		if(revisionid.value != null)
+			{
+				var value = revisionid.value;
+				
+				var inc = parseFloat('1');
+			  revisionid.value = parseInt(value)+parseFloat(inc);
+			}
+	}
 </script>	
    <jsp:include page="footer.jsp"></jsp:include>   
         

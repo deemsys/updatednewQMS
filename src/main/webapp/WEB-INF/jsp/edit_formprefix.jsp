@@ -78,7 +78,10 @@
              </tr>
              </table>
              </div>
+             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
              </form>
                 
 </body>
+
+  <jsp:include page="footer.jsp"></jsp:include> 
 </html>
