@@ -100,7 +100,7 @@ public class RevisionFormDAO {
 						resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
 				
 			}
-			System.out.println("revision_id"+revisionForms.get(0).getRevision_id());
+			
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);

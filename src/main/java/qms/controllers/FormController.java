@@ -486,14 +486,14 @@ public class FormController
 		//load_document_page_dropdowns(model);
 		
 		RevisionFormForm revisionFormForm = new RevisionFormForm();
-		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(document_id));
+		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(auto_no));
 		model.addAttribute("revisionFormForm", revisionFormForm);
 		System.out.println(revisionFormForm.getRevisionForms().get(0).getRevision_id());
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform(auto_no));
-		model.addAttribute("formForm",formForm);
+		model.addAttribute("formdetails",formForm);
 		  model.addAttribute("menu","document");
-		return "revisionhistoryform";
+		return "view_form";
  	}
 	@RequestMapping(value={"/edit_form"}, method = RequestMethod.GET)
 	public String edit_forms(HttpSession session,@RequestParam("auto_no") String auto_no,Form form,ModelMap model)
@@ -806,8 +806,57 @@ public class FormController
 			return resultHTML;
 		}
 
+		@RequestMapping(value = { "/ajax_getrevisions" }, method = RequestMethod.POST)
+		public @ResponseBody String ajax_revisions(@RequestParam("auto_number")String auto_no, HttpSession session,
+				HttpServletRequest request, ModelMap model, Principal principal) {
+			System.out.println(auto_no);
+		String number = auto_no.trim();
+			//String resultHTML="";
+			List<RevisionForm> revisionForms = new ArrayList<RevisionForm>();
+			revisionForms = revisionFormDAO.getRevision(number);
+			System.out.println(revisionForms.size());
+			 String revision_no="",effective_date="",document_id="",approver1="",issuer="",comments="";
+		    
+		    String resultHTML="<tr>";
+		    int list = revisionForms.size();
+		   
+		    	for (int index=0;list>=1; index++,list--)
+		    	{
+		    		document_id=revisionForms.get(index).getDocument_id();
+		    		effective_date=revisionForms.get(index).getEffective_date();
+		    		approver1 = revisionForms.get(index).getApprover1();
+		    		issuer=revisionForms.get(index).getIssuer();
+		    		comments=revisionForms.get(index).getComments();
+		    		revision_no=revisionForms.get(index).getRevision_id();
+		    		resultHTML=  resultHTML +
+		    		"<td><input type='hidden'name='document_id' id='document_id' value='"+document_id+"'/>"+document_id+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+		    		"<td><input type='hidden'name='effective_date' id='effective_date' value='"+effective_date+"'/>"+effective_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+		    		"<td><input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/>"+approver1+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+		    		"<td ><input type='hidden' name='issuer' id='issuer' value='"+issuer+"'/>"+issuer+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+		    		"<td ><input type='hidden' name='comments' id='comments' value='"+comments+"'/>"+comments+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+					"<td ><input type='hidden'name='revision_id' id='revision_id' value='"+revision_no+"'/>"+revision_no+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+		    				"</tr><tr>";
+		    		
+		    	}
+		    	
+		    
+			
+		/*	
+			String document_id= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getDocument_id();
+			String effective_date= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getEffective_date();
+			String issuer= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getIssuer();
+			String approver1= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getApprover1();
+			
+			String comments= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getComments();*/
+			/*<input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/><label id='approver1'>"+approver1+"</label>*/
+			
+			/*String document_id= revisionFormDAO.getRevision(auto_no).get(0).getDocument_id();
+			String effective_date= revisionFormDAO.getRevision(auto_no).get(0).getEffective_date();
+			resultHTML = "fsdfsdgd";*/
+		//	resultHTML = resultHTML+"</br></tr>";
+			return resultHTML;
+		}	
+	 
 		
-	 
-	 
 }
 

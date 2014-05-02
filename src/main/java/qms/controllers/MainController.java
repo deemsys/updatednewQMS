@@ -3,6 +3,10 @@ package qms.controllers;
  
 
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -21,7 +25,7 @@ import qms.model.*;
  
  
 @Controller
-@SessionAttributes
+@SessionAttributes({"role"})
 public class MainController {
 	
 	@Autowired  
@@ -36,7 +40,14 @@ public class MainController {
  
 	@RequestMapping(value={"/", "/welcome"}, method = RequestMethod.GET)
 	//TODO Change to Dashboard
-	public String printWelcome(ModelMap model, Principal principal ) {
+	public String printWelcome(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal ) {
+		
+		
+		int role;
+			
+		role =	mainDAO.getrole();
+		model.addAttribute("role",role);
+	    session.setAttribute("role", role);
 		
 		ParticipantsDetailsForm participantsDetailsForm = new ParticipantsDetailsForm();
 		participantsDetailsForm.setParticipantsDetails(mainDAO.getParticipants());
@@ -80,7 +91,7 @@ public class MainController {
 	public String addUserProfileFromForm(UserProfile userProfile) {
 		
 		System.out.println("Save User" + userProfile.getFullName());
-		return "/welcome";
+		return "/dashboard";
 	}
 	
 	//this method for show the inserted records

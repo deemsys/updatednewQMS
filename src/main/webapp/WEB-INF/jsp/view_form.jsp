@@ -1,5 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="/QMS_App/resources/js/jquery.js"></script>
+	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 <div id="right_content">
 
 	
@@ -81,10 +85,13 @@
 							  <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn" ></td>
 							  </tr>
 							</table>
+							
 						</div> 
 </form>
+
 					<form action="?do=viewparticipants" name="dashboard" method="POST">
-							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					
+							<table cellpadding="0" cellspacing="0" border="0" width="100%" id="autonumber1">
 								<tr class="title">
 								
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
@@ -104,14 +111,17 @@
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-								           	<b><input type="hidden" name="auto_number" value="${form.auto_number}"/></b>
-									        <td valign="top" align="left" width="10%">${form.form_or_rec_id}</td>
+								           	<td valign="top" align="left" width="10%"style="display:none"><input type="hidden" name="auto_number" id="autonumber" value="${form.auto_number}"/>
+									        ${form.auto_number}</td>
+									        <td valign="top" align="left" width="10%">
+									        ${form.form_or_rec_id}</td>
 											<td valign="top" align="left" width="10%">${form.process}</td>
 											<td valign="top" align="left" width="10%">${form.effective_date}</td>
 											<td valign="top" align="left" width="10%">${form.approver1}</td>
 											<td valign="top" align="left" width="10%">${form.issuer}</td>
 											
 											
+									
 											
 											<td valign="top" align="left" width="15%">
 											<%-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="edit_form?id=<c:out value="${form.id}"/>">Edit</a>
@@ -124,12 +134,18 @@
 											
 											 --%>
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="review_history_form?auto_no=${form.auto_no}&&document_id=${form.document_id}" style="padding-right:10px;">View Revision History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 											
 											
 											</td>
 										</tr>
 							    	</c:forEach>
+							    	
+							    	<tr>
+							    	
+							    	<span id="process_owner_id"></span>
+							    	
+						    		</tr>
 						    	
 
 							<!-- 	<tr><td colspan="7">  <div class="extrabottom">
@@ -186,7 +202,114 @@
 							</table>
 							</form>
 						</div>
-						
+	 
+	 <script type="text/javascript">
+	    
+	   
+	  /*  function show_more_views() {
+	    	 alert("hi");
+	   var proceee_name = '';
+	   $('#autonumber1 tr').each(function (i, row) {
+	     
+		   if (proceee_name == '') {
+			      proceee_name = $(this).find("td:first").html();
+			     }
+			     else{
+			      proceee_name = proceee_name + ',' + $(this).find("td:first").html();
+			     }
+			     
+			      });
+	    		var proceee_name = $('#autonumber').val();
+	    		alert(proceee_name);
+	    	
+	          */
+	          
+	          $(function () {
+						//alert("good");
+						$("a[data-bind-action='toggle-content']").click(toggleContent);
+						function toggleContent(){
+	        	  	    	// alert("hi");
+	        	  	   var proceee_name = '';
+
+	        	 // $('#autonumber1 tr').each(function() {
+	        		
+	        		 
+	        	   //   $.each(this.cells, function(){
+	        	/*   alert($(this).html()); */
+	        	    	  if (proceee_name == '') {
+	        			   //  proceee_name = $(this).find("td:first").html();
+	        			  //   proceee_name = $(this).parents('tr').find('td:eq(0) input').val();
+	        			     var $td= $(this).closest('tr').children('td');  
+	        			     
+	        			     
+	        			      proceee_name= $td.eq(0).text();  
+	        			     // alert(proceee_name);
+	        			     }
+	        			     else{
+	        			      proceee_name = proceee_name + ',' + $(this).find("td:first").html();
+	        			     }
+	        			     
+	        			    //  });
+	        	    		//proceee_name = $('#autonumber').val();
+	        	     // });
+	        	  	
+	        	 
+	        	  	    		//alert(proceee_name);
+	    		$.ajax({
+	    			
+	    			type : "POST",
+	    			url : "/QMS_App/ajax_getrevisions",
+	    			data : "auto_number=" + proceee_name,
+	    			success : function(response) {
+	    	              
+	    	             // alert("response= "+response);
+	    	              
+	    		       $('#process_owner_id').html(response);
+	    				
+	    			},
+	    			error : function(e) {
+	    				alert('Error: ' + e);
+	    			}
+	    		});
+						}
+	    	});
+	 
+	   
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 /* 
+	 
+     function show_more_views() {
+    	 alert("hi");
+    		var proceee_name = $('#autonumber').val();
+    		alert(proceee_name);
+    		   var education = $('#education').val();		
+    		$.ajax({
+    			
+    			type : "POST",
+    			url : "/QMS_App/ajax_getrevisions",
+    			data : "auto_number=" + proceee_name,
+    			success : function(response) {
+    	              
+    	              alert("response= "+response);
+    	              
+    		       $('#process_owner_id').html(response);
+    				
+    			},
+    			error : function(e) {
+    				alert('Error: ' + e);
+    			}
+    		});
+    	} */
+     </script>
 						
 <script>
 function confirmation(val) {

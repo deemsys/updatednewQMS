@@ -124,7 +124,34 @@
 						<!-- <ul class="menu"> -->
 						<div>
 						  <ul class="menu">
-						  		
+						  	<c:if test="${role==0}">
+						  	<hr width="95%"/>
+							<li>
+								<a href="add_prefixform" class="<c:choose>
+								<c:when test="${menu=='prefixform'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span>Add Prefix</span>
+									
+								</a>
+							</li>
+							 <hr width="95%"/>
+							<li>
+								<a href="add_formlocation" class="<c:choose>
+								<c:when test="${menu=='formlocation'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span>Add Location</span>
+									
+								</a>
+							</li>
+				            <hr width="95%"/>
+				           <li>
+								<a href="add_process" class="<c:choose>
+								<c:when test="${menu=='controlprocess'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span>Add process</span>
+									
+								</a>
+							</li>
+							<hr width="95%"/>
+						  	</c:if>	
+						  	<c:if test="${role==1}">
 							<hr width="95%"/>
 							<li>
 								<a href="add_maintenance" class="<c:choose>
@@ -199,7 +226,7 @@
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
 								</a>
 							</li>
-				            
+				          </c:if>  
 						</ul>  
 						</div>
 						<div>
