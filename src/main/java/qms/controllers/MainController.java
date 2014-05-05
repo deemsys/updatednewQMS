@@ -6,7 +6,10 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -17,6 +20,7 @@ import org.springframework.ui.ModelMap;
 
 import qms.dao.MainDAO;
 import qms.forms.ParticipantsDetailsForm;
+import qms.forms.UserProfileForm;
 import qms.model.*;
 
 //import org.slf4j.Logger;
@@ -87,12 +91,43 @@ public class MainController {
 	}
 	
 	//submit the user login
-	@RequestMapping(value="/submituser", method=RequestMethod.POST)
+	/*@RequestMapping(value="/submituser", method=RequestMethod.POST)
 	public String addUserProfileFromForm(UserProfile userProfile) {
 		
 		System.out.println("Save User" + userProfile.getFullName());
 		return "/dashboard";
+	}*/
+	
+	
+	@RequestMapping(value="/submituser", method = RequestMethod.POST)
+	public String insert_signup(HttpSession session,@ModelAttribute("UserProfile")  @Valid UserProfile signup,BindingResult result,ModelMap model) {
+		session.setAttribute("signup",signup);
+		if(result.hasErrors())
+		{
+			//SignupForm signupForm= new SignupForm();
+			UserProfileForm userProfileForm = new UserProfileForm();
+			userProfileForm.setUserProfiles(mainDAO.getSignup());
+	    	
+			model.addAttribute("userProfileForm",userProfileForm);
+			model.addAttribute("Success","true");
+			return "createuser";
+		}
+		
+		
+    	//int h =signDAO.setSignup(signup);
+		int h = mainDAO.setSignup(signup);
+		UserProfileForm userProfileForm = new UserProfileForm();
+		userProfileForm.setUserProfiles(mainDAO.getSignup());
+    	
+		model.addAttribute("userProfileForm",userProfileForm);
+
+		
+		return "login";
 	}
+	
+	
+	
+	
 	
 	//this method for show the inserted records
 	@RequestMapping(value="/showaddparticipants", method=RequestMethod.GET)

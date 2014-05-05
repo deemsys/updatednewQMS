@@ -361,6 +361,9 @@ public class FormController
 					}*/
 				}
 				if (true){
+					   System.out.println("document id ****** "+form1.getDocument_id());
+			             revisionFormDAO.insert_revision(revisionForm,form1.getAuto_no(),form1);
+						
 					formDAO.update_form(form1,form1.getAuto_number(),principal.getName());
 					
 					model.addAttribute("success", "true");
@@ -382,9 +385,7 @@ public class FormController
 			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
-	             System.out.println("document id ****** "+form1.getDocument_id());
-	             revisionFormDAO.insert_revision(revisionForm,form1.getAuto_no(),form1);
-				return "view_form";
+	          return "view_form";
 			}
 			else
 			{
@@ -555,6 +556,7 @@ public class FormController
         model.addAttribute("currentpage",1);
 	    
 	    model.addAttribute("formForm",formForm);
+	    
 	    
 		return "view_form";
 	}
@@ -746,65 +748,43 @@ public class FormController
 	
 	//Post method for ajax get process 
 		@RequestMapping(value = { "/ajax_getrevision" }, method = RequestMethod.POST)
-		public @ResponseBody String ajax_revision(@RequestParam("revision_id")String revision_id,@RequestParam("document_id")String document_id1, HttpSession session,
+		public @ResponseBody String ajax_revision(@RequestParam("auto_number")String auto_no, HttpSession session,
 				HttpServletRequest request, ModelMap model, Principal principal) {
-			System.out.println(revision_id);
-			System.out.println("docu = "+document_id1);
-			String resultHTML="";
+			System.out.println(auto_no);
+		String number = auto_no.trim();
+			//String resultHTML="";
+			List<RevisionForm> revisionForms = new ArrayList<RevisionForm>();
+			revisionForms = revisionFormDAO.getRevision(number);
+			System.out.println(revisionForms.size());
+			 String revision_no="",effective_date="",document_id="",approver1="",issuer="",comments="";
+		    
+		    String resultHTML="";
+		    int list = revisionForms.size();
+		   
+		    	for (int index=0;list>=1; index++,list--)
+		    	{
+		    		document_id=revisionForms.get(index).getDocument_id();
+		    		effective_date=revisionForms.get(index).getEffective_date();
+		    		approver1 = revisionForms.get(index).getApprover1();
+		    		issuer=revisionForms.get(index).getIssuer();
+		    		comments=revisionForms.get(index).getComments();
+		    		revision_no=revisionForms.get(index).getRevision_id();
+		    		resultHTML=  resultHTML +
+		    		""+document_id+"" +","+
+		    		""+effective_date+""+"," +
+		    		""+approver1+"" +","+
+		    		""+issuer+"" +","+
+		    		""+comments+"" +","+
+					""+revision_no+""+
+		    				",";
+		    		
+		    	}
+		    	
+		    
+			
 		
-			
-			
-			
-			String document_id= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getDocument_id();
-			String effective_date= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getEffective_date();
-			String issuer= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getIssuer();
-			String approver1= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getApprover1();
-			
-			String comments= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getComments();
-			/*<input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/><label id='approver1'>"+approver1+"</label>*/
-			
-			resultHTML = 
-				" <tr class='row2'>"+
-				" <td valign='middle' align='left' class='input_txt' width='20%'>Comments:&nbsp;&nbsp;&nbsp;</td>" +
-				"<td valign='top' align='center' class='input_txt' width='70%'><input type='hidden' name='comments' id='comments' value='"+comments+"'/><label id='approver1'>"+comments+"</label></br><span class='err'></span></td>" +
-				"</tr>" +
-				
-				" <tr class='row1'>" +
-				" <td valign='middle' align='left' class='input_txt' width='20%'>Issuer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
-				"<td valign='top' align='center' class='input_txt' width='70%'><input type='hidden' name='issuer' id='issuer' value='"+issuer+"'/><label id='approver1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+issuer+"</label></br><span class='err'></span></td>" +
-				"</tr>" +
-				
-				
-				" <tr class='row2'>"+
-				" <td valign='middle' align='left' class='input_txt' width='20%'>Approver1(Process&nbsp;Owner):</td>" +
-				"<td valign='top' align='left' class='input_txt' width='70%'><input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/><label id='approver1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+approver1+"</label></br><span class='err'></span></td>" +
-				"</tr>" +
-				
-				" <tr class='row1'>" +
-				" <td valign='middle' align='left' class='input_txt' width='20%'>Effective&nbsp;Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
-				"<td valign='top' align='left' class='input_txt' width='70%'><input type='hidden'name='effective_date' id='effective_date' value='"+effective_date+"'/><label id='effective_date'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+effective_date+"</label></br><span class='err'></span></td>" +
-				"</tr>" +
-			
-				
-					" <tr class='row2'>" +
-					" <td valign='middle' align='left' class='input_txt' width='20%'>Form/Rec&nbsp;Id:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
-					"<td valign='top' align='left' class='input_txt' width='70%'><input type='hidden'name='document_id' id='document_id' value='"+document_id+"'/><label id='document_id'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+document_id+"</label></br><span class='err'></span></td>" +
-					"</tr>" +
-					
-				
-					
-					
-					
-					
-					
-					
-					"";
-					
-			
-			
-			
 			return resultHTML;
-		}
+		}	
 
 		@RequestMapping(value = { "/ajax_getrevisions" }, method = RequestMethod.POST)
 		public @ResponseBody String ajax_revisions(@RequestParam("auto_number")String auto_no, HttpSession session,
@@ -819,8 +799,8 @@ public class FormController
 		    
 		    String resultHTML="<tr>";
 		    int list = revisionForms.size();
-		   
-		    	for (int index=0;list>=1; index++,list--)
+		   int rows=list-1;
+		    	for (int index=list-1;rows>=0;  index--,rows--)
 		    	{
 		    		document_id=revisionForms.get(index).getDocument_id();
 		    		effective_date=revisionForms.get(index).getEffective_date();
@@ -829,7 +809,7 @@ public class FormController
 		    		comments=revisionForms.get(index).getComments();
 		    		revision_no=revisionForms.get(index).getRevision_id();
 		    		resultHTML=  resultHTML +
-		    		"<td><input type='hidden'name='document_id' id='document_id' value='"+document_id+"'/>"+document_id+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
+		    		"<td align='left'><input type='hidden'name='document_id' id='document_id' value='"+document_id+"'/>"+document_id+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
 		    		"<td><input type='hidden'name='effective_date' id='effective_date' value='"+effective_date+"'/>"+effective_date+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
 		    		"<td><input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/>"+approver1+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
 		    		"<td ><input type='hidden' name='issuer' id='issuer' value='"+issuer+"'/>"+issuer+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>" +
@@ -839,21 +819,16 @@ public class FormController
 		    		
 		    	}
 		    	
-		    
+		    resultHTML = "<tr class='row1'>" +
+		    		"<td><b>Form/Rec Id</b></td>" +
+		    		"<td><b>Effective Date</b></td>" +
+		    		"<td><b>Approver1</b></td>" +
+		    		"<td><b>Issuer</b></td>" +
+		    		"<td><b>Comments</b></td>" +
+		    		"<td><b>Revision No</b></td>" +
+		    		"</tr>"+resultHTML;
 			
-		/*	
-			String document_id= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getDocument_id();
-			String effective_date= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getEffective_date();
-			String issuer= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getIssuer();
-			String approver1= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getApprover1();
-			
-			String comments= revisionFormDAO.getRevision(revision_id,document_id1).get(0).getComments();*/
-			/*<input type='hidden' name='approver1' id='approver1' value='"+approver1+"'/><label id='approver1'>"+approver1+"</label>*/
-			
-			/*String document_id= revisionFormDAO.getRevision(auto_no).get(0).getDocument_id();
-			String effective_date= revisionFormDAO.getRevision(auto_no).get(0).getEffective_date();
-			resultHTML = "fsdfsdgd";*/
-		//	resultHTML = resultHTML+"</br></tr>";
+		
 			return resultHTML;
 		}	
 	 

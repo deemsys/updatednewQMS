@@ -56,14 +56,7 @@
 									
 								</a>
 							</li>
-							 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="formdelete" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Delete Forms</span>
-									
-								</a>
-							</li>
-				</ul>
+											</ul>
 			</div></td>
 	</tr>
 	<tr>

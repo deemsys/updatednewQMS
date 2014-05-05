@@ -211,7 +211,7 @@ public class RevisionFormDAO {
 			  if((!forms.getRevision_id().equals(revision_no))|| (!forms.getEffective_date().equals(effectivedate))||(!forms.getDocument_id().equals(documentid))|| (!forms.getApprover1().equals(Approver))||(!forms.getIssuer().equals(issuer))|| (!forms.getComments().equals(comments)))
 			  {	
 			 String cmd_insert2;	
-				 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_no+"')";
+				 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+form.getRevision_id()+"')";
 				 statement.execute(cmd_insert2);
 				 status=true;
 			  }

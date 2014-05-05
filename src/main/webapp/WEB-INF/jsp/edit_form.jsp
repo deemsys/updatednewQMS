@@ -314,9 +314,15 @@
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
               
-             <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
-             <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+    
              
+             <table cellpadding="0" cellspacing="0" border="0" width="100%" id="displayold">
+             <tr class="row2">
+             <td valign="top" align="left" width="15%">
+            <!--  <a href="#" style="padding-right:10px;" onclick="reset_form()">Enter New Revision</a> -->
+             <input type="button" value="Enter New Revision" onClick="reset_form()"/>
+             </td>
+             </tr>
               <tr class="row1">
                            <%--   <td valign="middle" align="left" class="input_txt"><span
 																			class="err">*</span>Auto Number :</td>
@@ -419,7 +425,7 @@
 																			class="err">*</span>Comments :</td>
 																		<td valign="top" align="left" class="input_txt">
 																		<input
-																			type="text" class="input_txtbx1" id="inp_external_id"
+																			type="text" class="input_txtbx1" id="comments"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="comments"
@@ -438,6 +444,7 @@
               </tr>
               
               </table>
+                  
               </div>
               </td>
 
@@ -462,6 +469,7 @@
  $(function() {
 	 
            $( "#datepicker" ).datepicker();
+           $( "#datepicker123" ).datepicker();
          });
  function change_file(){
 		document.getElementById("id_file").style.display="block";
@@ -586,6 +594,21 @@ e3.style.display="block";
 			}
 	}
 </script>	
+<script language="JavaScript">
+function reset_form()
+{
+	
+	
+	document.getElementById('revisionid').value="0";
+	document.getElementById('datepicker').value="";
+	document.getElementById('issuer').value="";
+	document.getElementById('comments').value="";
+	
+	
+	
+    
+}
+</script>
    <jsp:include page="footer.jsp"></jsp:include>   
         
        <%-- 

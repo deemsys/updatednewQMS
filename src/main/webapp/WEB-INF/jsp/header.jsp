@@ -122,34 +122,94 @@
 		$previ=explode(",",$rec);
 	<AJDF:output>/php</AJDF:output>	 Suresh-->
 						<!-- <ul class="menu"> -->
-						<div>
+						
 						  <ul class="menu">
 						  	<c:if test="${role==0}">
 						  	<hr width="95%"/>
 							<li>
-								<a href="add_prefixform" class="<c:choose>
-								<c:when test="${menu=='prefixform'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Prefix</span>
+								<a href="add_maintenance" class="<c:choose>
+								<c:when test="${menu=='maintenance'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Maintenance & Calibration</span>
+								</a>
+							</li>
+				            <hr width="95%"/>
+				            <li>
+								<a href="add_nonconformance" class="<c:choose>
+								<c:when test="${menu=='nonconformance'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/icon_03.png" />" alt="" style="padding:5px 5px 0 0;" />Non Conformance</span>
+								</a>
+							</li>
+				            <hr width="95%"/>
+				             <li>
+								<a href="addcustomer" class="<c:choose>
+								<c:when test="${menu=='customer'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/customer.png" />" alt="" style="padding:5px 5px 0 0;" />Customers</span>
+								</a>
+							</li>
+				           
+				            <hr width="95%"/>
+				             <li>
+								<a href="addemployee" class="<c:choose>
+								<c:when test="${menu=='employee'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/emploee.png" />" alt="" style="padding:5px 5px 0 0;" />Employees</span>
+								</a>
+							</li>
+							<hr width="95%"/>
+				            <li>
+								<a href="documententry" class="<c:choose>
+								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/document.png" />" alt="" style="padding:5px 5px 0 0;" />Document Control</span>
+								</a>
+							</li>
+				             
+							
+				            <%-- <hr width="95%"/>
+				            <li>
+								<a href="adddocument" class="<c:choose>
+								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/document.png" />" alt="" style="padding:5px 5px 0 0;" />Document Control</span>
+								</a>
+							</li>
+							 --%>
+				            <hr width="95%"/>
+				            <li>
+								<a href="addinternalaudits" class="<c:choose>
+								<c:when test="${menu=='audits'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img style="width:20px;height:20px;margin-top:2px;m" src="<c:url value="/resources/images/audit_black.png" />" alt=""  />Internal Audits</span>
+								</a>
+							</li>
+				           
+				              <hr width="95%"/>
+				              <li>
+								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
+								<c:when test="${menu=='corrective'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/corrective.png" />" alt="" style="padding:5px 5px 0 0;" />Corrective And Preventive Actions</span>
+								</a>
+							</li>
+				            <hr width="95%"/>
+				            <li>
+								<a href="add_supplierperformance" class="<c:choose>
+								<c:when test="${menu=='supplier'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Supplier Performance</span>
+								</a>
+							</li>
+								<hr width="95%"/>
+							<li>
+								<a href="addmanagementreview" class="<c:choose>
+								<c:when test="${menu=='managementreview'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
+								</a>
+							</li>
+						  	<hr width="95%"/>
+							<li>
+								<a href="#" class="<c:choose>
+								<c:when test="${menu=='prefixform'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>" rel="ddsubmenu2">
+									<span>Admin Set-Up-Modules</span>
 									
 								</a>
 							</li>
 							 <hr width="95%"/>
-							<li>
-								<a href="add_formlocation" class="<c:choose>
-								<c:when test="${menu=='formlocation'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Location</span>
-									
-								</a>
-							</li>
-				            <hr width="95%"/>
-				           <li>
-								<a href="add_process" class="<c:choose>
-								<c:when test="${menu=='controlprocess'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add process</span>
-									
-								</a>
-							</li>
-							<hr width="95%"/>
+							
 						  	</c:if>	
 						  	<c:if test="${role==1}">
 							<hr width="95%"/>
@@ -228,7 +288,7 @@
 							</li>
 				          </c:if>  
 						</ul>  
-						</div>
+					
 						<div>
 						
 						
@@ -267,10 +327,10 @@
 							<li ><a href="maintenance_list">View Maintenance</a></li>
 					</ul>
 						<ul id="ddsubmenu2" class="ddsubmenustyle">
-							<li ><a href="add_nonconformance">Add NonConformance</a></li>
-				            <li ><a href="view_nonconformance">View Details</a></li>
-				            <li><a href="showaddparticipantgroups">Add Participant Groups</a></li>
-							<li><a href="viewparticipantgroups">View Participant Groups</a></li>
+							<li ><a href="add_prefixform">prefix for Form/Rec ID</a></li>
+				            <li ><a href="add_formlocation">Location</a></li>
+				            <li><a href="add_process">Process</a></li>
+							<li><a href="formdelete">Delete Forms</a></li>
 						</ul>
 						<ul id="ddsubmenu3" class="ddsubmenustyle">
 							<li><a href="addcustomer">Add Customer</a></li>        
