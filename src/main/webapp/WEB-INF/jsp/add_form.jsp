@@ -1,4 +1,4 @@
- <%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
@@ -12,7 +12,7 @@
      <tr>
         <td>
         <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:190px;">
 						
   <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
@@ -40,52 +40,8 @@
 						    </ul>
   </div>
         </td>
-      </tr> --%>
-      <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="header.jsp"></jsp:include>
-<script src="/QMS_App/resources/js/jquery.js"></script>
-	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
-<script src="resources/js/jquery.min.js"></script>
- <script src="resources/js/jquery-ui.js"></script>
-<div id="right_content">
-
-	
-		<table cellpadding="0" cellspacing="0" border="0" width="98%"
-			class="margin_table">
-<tr>
-<td>
-<div>
-  <ul class="horizmenu" style=" float:left;margin-left:190px;">
-		
-		
-				             <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
-								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Add Form
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
-								<a href="view_form" class="<c:choose>
-								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									View Form
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
-								<a href="form_report" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Form Report
-									
-								</a>
-							</li>
-
-						
-							
-							</ul>
-  </div>
-</td>
-</tr>
+      </tr>
+      
       <tr>
         <td valign="top" align="left">
             <div class="contentbox">
