@@ -4,6 +4,20 @@
 	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
+        });
+    </script>   
 <div id="right_content">
 
 	
@@ -67,7 +81,7 @@
 
 					<form action="?do=viewparticipants" name="dashboard" method="POST">
 					
-							<table cellpadding="0" cellspacing="0" border="0" width="100%" id="autonumber1">
+							<table cellpadding="0" cellspacing="0" border="0" width="100%" id="report">
 								<tr class="title">
 								
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
@@ -78,7 +92,7 @@
 									<td valign="top" align="left" width="10%">Actions</td>
 									</tr>
 
-								<!-- Display Admin Userd here  Suresh--> 
+								
 								<% int i=1; %>
 							       		
 									<c:forEach items="${formForm.form}" var="form" varStatus="status">
@@ -105,36 +119,53 @@
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
 											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 											 -->
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a onclick="subhide();" href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>">View Revision History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>#current">View Revision History</a>
 											</td>
 										</tr>
-										
-										
 									
-										
+						    	
+										<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
+										<c:if test="${revision.auto_no == form.auto_number}">
+									<%-- 	<c:if test="${display == 'show'}">	
+									<script>
+									
+									document.getElementById('tabledisplay').style.display="block";
+									
+									
+									</script>
+									</c:if>
+									<tr class="header11" id="tabledisplay" style="display:none;">
+								
+									<td valign="top" align="center" width="10%">Form/Rec ID</td>
+									<td valign="top" align="center" width="10%">Effective Date</td>
+									<td valign="top" align="center" width="10%">Approver1</td>
+									<td valign="top" align="center" width="10%">Issuer</td>
+									<td valign="top" align="center" width="10%">Comments</td>
+									<td valign="top" align="center" width="10%">Revision No</td>
+									</tr>  --%>
+									
+										<tr class="row2" style="color:#0000A0; font-style: inherit;">
+										<a name="current">
+										 	 <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="left" width="10%">${revision.effective_date}</td>
+											<td valign="top" align="left" width="10%">${revision.approver1}</td>
+											<td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<td valign="top" align="left" width="10%">${revision.comments}</td>
+											<td valign="top" align="left" width="10%">${revision.revision_id}</td>
+												</a>
+										</tr>
+									
+									</c:if>
+										</c:forEach>
 										
 										</table>
 										
-									<!--list of sub rows
 									
-									
-									
-									 	<table  width="100%">
-										<tr>
-										  <td>
-							    				<div id="process_owner_id" value=""></div>
-							    	   	  </td>
-						    		
-						    	    	</tr>
-						    		   </table> 
-						    		
-						    	end of sub rows
-						    	-->
 						    	
 						    								    	</c:forEach>
 							    	
-						    		<table width="60%" align="right">
-						    	<tr class="header11" id="subrow">
+						    	<%-- <table width="60%" align="right">
+						    	<tr class="header11">
 								
 									<td valign="top" align="center" width="10%">Form/Rec ID</td>
 									<td valign="top" align="center" width="10%">Effective Date</td>
@@ -159,12 +190,8 @@
 										</tr>
 										</c:forEach>
 										</table>
-							<!-- 	<tr><td colspan="7">  <div class="extrabottom">
-              						<ul class="pagination">
-                						<li class="text"><input type="submit" name="view" value="View All" class="submit_btn"></li>
-                						<li class="text"></li>
-                					</ul></div></td></tr> -->
 
+						 --%>
 								</table>
 							
 								<div style="clear: both;"></div>

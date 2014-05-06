@@ -506,7 +506,7 @@ public class FormController
 	    model.addAttribute("menu","document");
 	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");
-
+	    model.addAttribute("display","show");
 		 String number = auto_no.trim();
 		    System.out.println("auto_number= "+number);
 			//String resultHTML="";
