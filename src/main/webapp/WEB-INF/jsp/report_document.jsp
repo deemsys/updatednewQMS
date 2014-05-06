@@ -214,4 +214,8 @@ if(value==0)
     
 }
 </script>
-  <jsp:include page="footer.jsp"></jsp:include>
+
+<table  width=300 height=200>
+			<tr height=30><td></td></tr></table>
+			
+<jsp:include page="footer.jsp"></jsp:include>		

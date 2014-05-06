@@ -720,21 +720,21 @@ color:#fff;
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:-5px 0px 0 0;" />Maintenance & Calibration</span>
 								</a>
 							</li>
-				           
+				           <br>
 				            <li>
 								<a href="add_nonconformance" class="<c:choose>
 								<c:when test="${menu=='nonconformance'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span ><img src="<c:url value="/resources/images/icon_03.png" />" alt="" style="padding:5px 5px 0 0;" />Non Conformance</span>
 								</a>
 							</li>
-				             
+				             <br>
 				             <li>
 								<a href="addcustomer" class="<c:choose>
 								<c:when test="${menu=='customer'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/customer.png" />" alt="" style="padding:5px 5px 0 0;" />Customers</span>
 								</a>
 							</li>
-				           
+				           <br>
 				             
 				             <li>
 								<a href="addemployee" class="<c:choose>
@@ -742,7 +742,7 @@ color:#fff;
 									<span><img src="<c:url value="/resources/images/emploee.png" />" alt="" style="padding:5px 5px 0 0;" />Employees</span>
 								</a>
 							</li>
-							 
+							 <br>
 				            <li>
 								<a href="documententry" class="<c:choose>
 								<c:when test="${menu=='document'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
@@ -750,29 +750,29 @@ color:#fff;
 								</a>
 							</li>
 				           
-				             
+				             <br>
 				            <li>
 								<a href="addinternalaudits" class="<c:choose>
 								<c:when test="${menu=='audits'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img style="width:20px;height:20px;margin-top:2px;m" src="<c:url value="/resources/images/audit_black.png" />" alt=""  />Internal Audits</span>
 								</a>
 							</li>
-				           
-				               
+				            <br>
+				            
 				              <li>
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
 								<c:when test="${menu=='corrective'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/corrective.png" />" alt="" style="padding:5px 5px 0 0;" />Corrective&amp;Preventive Actions</span>
 								</a>
 							</li>
-				             
+				            <br>
 				            <li>
 								<a href="add_supplierperformance" class="<c:choose>
 								<c:when test="${menu=='supplier'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Supplier Performance</span>
 								</a>
 							</li>
-							 
+							 <br>
 							<li>
 								<a href="addmanagementreview" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
@@ -780,24 +780,28 @@ color:#fff;
 								</a>
 							</li>
 							<li>
-							
+							<br>
 								<a href="#" class="<c:choose>
-								<c:when test="${menu=='supplier'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />ADMIN SET-UP ROLES</span>
 								</a>
+							
 							<ul>
+				            <br>
 				            <li>
 								<a href="add_prefixdocument" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Prefix</span>
 								</a>
 							</li>
+							<br>
 							<li>
 								<a href="add_documentlocation" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Location</span>
 								</a>
 							</li>
+							<br>
 							<li>
 								<a href="add_documenttype" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
@@ -806,6 +810,32 @@ color:#fff;
 							</li>
 							</ul>
 							</li>
+							
+							
+							<nav>
+	<ul>
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Tutorials</a>
+			<ul>
+				<li><a href="#">Photoshop</a></li>
+				<li><a href="#">Illustrator</a></li>
+				<li><a href="#">Web Design</a>
+					<ul>
+						<li><a href="#">HTML</a></li>
+						<li><a href="#">CSS</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href="#">Articles</a>
+			<ul>
+				<li><a href="#">Web Design</a></li>
+				<li><a href="#">User Experience</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Inspiration</a></li>
+	</ul>
+</nav>
 							
 							</c:if>
 							<c:if test="${role==1}">
@@ -919,13 +949,4 @@ color:#fff;
 			</div>
 			<div class="clear"></div>
 		</div>
-		<script>jQuery(function ($) {
-		    var $btn = $('.divbutton').hide()
-		    $(".mybooks").mouseenter(function () {
-		        $btn.show();
-		    });
-
-		    $(".mybooks").mouseleave(function () {
-		        $btn.hide();
-		    });
-		})</script>
+		

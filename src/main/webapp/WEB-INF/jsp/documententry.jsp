@@ -16,7 +16,9 @@
         </td>
         </tr>
         
-       	 <tr class="row1" >
+        
+       	 <tr class="row1" height="200px;" >
+        <td width="25%"></td>
              <td colspan="2" align="right">
              <input type="submit" id="document"  name="DOCUMENT" value="Documents" class="menubuttonsub blue"></td>
             </form>
@@ -25,8 +27,8 @@
             <input type="submit" id="form"  name="FORM" value="Forms/Records" class="menubuttonsub blue"></td>
 </tr></table></div>
 </form>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<jsp:include page="footer.jsp"></jsp:include>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 
 <table  width=300 height=400>
 			<tr height=30><td></td></tr></table>
