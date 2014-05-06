@@ -480,26 +480,46 @@ public class FormController
 		return "revisionhistoryform";
 	}*/
 	@RequestMapping(value={"/review_history_form"}, method = RequestMethod.GET)
-	public String review_history_form(HttpSession session,@RequestParam("auto_no") String auto_no,@RequestParam("document_id")String document_id,Form form,ModelMap model)
+	public String review_history_form(HttpSession session,@RequestParam("auto_no") String auto_no,Form form,ModelMap model)
 	{
     
 		//session.removeAttribute("docform");
 		//load_document_page_dropdowns(model);
 		
-		RevisionFormForm revisionFormForm = new RevisionFormForm();
+		/*RevisionFormForm revisionFormForm = new RevisionFormForm();
 		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(auto_no));
 		model.addAttribute("revisionFormForm", revisionFormForm);
 		System.out.println(revisionFormForm.getRevisionForms().get(0).getRevision_id());
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formdetails",formForm);
-		  model.addAttribute("menu","document");
+		  model.addAttribute("menu","document");*/
+		
+		FormForm formForm=new FormForm();
+		model.addAttribute("menu","document");
+	  	model.addAttribute("noofrows",5);
+	  	
+	    formForm.setForm(formDAO.getlimitedformreport(1));
+	    model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	 
+        model.addAttribute("button","viewall");
+        model.addAttribute("success","false");
+        model.addAttribute("currentpage",1);
+	    
+	    model.addAttribute("formForm",formForm);
+		
+		 String number = auto_no.trim();
+		    System.out.println("auto_number= "+number);
+			//String resultHTML="";
+			//List<RevisionForm> revisionForms = new ArrayList<RevisionForm>();
+		    RevisionFormForm revisionForms = new RevisionFormForm();
+		    revisionForms.setRevisionForms(revisionFormDAO.getRevision(number));
+			 model.addAttribute("revisionForms",revisionForms);
 		return "view_form";
  	}
 	@RequestMapping(value={"/edit_form"}, method = RequestMethod.GET)
 	public String edit_forms(HttpSession session,@RequestParam("auto_no") String auto_no,Form form,ModelMap model)
 	{
-		System.out.println("auto no = "+auto_no);
+		System.out.println("edit auto no = "+auto_no);
 		session.removeAttribute("docform");
 		load_document_page_dropdowns(model);
 		RevisionFormForm revisionFormForm = new RevisionFormForm();
@@ -556,6 +576,9 @@ public class FormController
         model.addAttribute("currentpage",1);
 	    
 	    model.addAttribute("formForm",formForm);
+	    
+	    
+	   
 	    
 	    
 		return "view_form";

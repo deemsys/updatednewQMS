@@ -123,26 +123,55 @@
 											<td valign="top" align="left" width="15%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
-											
-											
+											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
+											 -->
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>">View Revision History</a>
 											</td>
 										</tr>
 										
 										
+									
+										
+										
 										</table>
-										<table  width="100%">
+										
+									<!--list of sub rows
+									
+									
+									
+									 	<table  width="100%">
 										<tr>
-							  <td>
-							    	
-							    	<div id="process_owner_id" value=""></div>
-							    	</td>
+										  <td>
+							    				<div id="process_owner_id" value=""></div>
+							    	   	  </td>
 						    		
-						    		</tr>
-						    		</table>
-							    	</c:forEach>
-							    	
+						    	    	</tr>
+						    		   </table> 
+						    		
+						    	end of sub rows
+						    	-->
 						    	
+						    								    	</c:forEach>
+							    	
+						    	<table>
+											<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
+										<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
+								           	
+									        <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="left" width="10%">${revision.effective_date}</td>
+											<td valign="top" align="left" width="10%">${revision.approver1}</td>
+											<td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<td valign="top" align="left" width="10%">${revision.comments}</td>
+											
+									
+											
+											<td valign="top" align="left" width="15%">
+											
+											</td>
+											
+										</tr>
+										</c:forEach>
+										</table>
 
 							<!-- 	<tr><td colspan="7">  <div class="extrabottom">
               						<ul class="pagination">
