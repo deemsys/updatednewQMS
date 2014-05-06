@@ -1,75 +1,52 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
-<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="http://s.codepen.io/assets/reset/normalize.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
- <script src="resources/js/jquery-ui.js"></script>
-  
- <form method="post" enctype="multipart/form-data" action="insert_documents">
- 
+<script src="resources/js/jquery-ui.js"></script>  	
+<form method="post" enctype="multipart/form-data" action="insert_documents">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
      <tr>
         <td>
         <div>
-  <ul class="horizmenu">
+  						<ul class="horizmenu" style=" float:left;margin-left:190px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Document</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									Add Document
 									
 								</a>
 							</li>
 						
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Document</span>
+								<c:when test="${menu=='document'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									View Document
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Document report</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Document report
 									
 								</a>
 							</li>
-				            <%--  <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Form</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="view_form" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Form</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="form_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Form Report</span>
-									
-								</a>
-							</li>
-				             --%>
-				             
+							
 				             </ul>
   </div>
         </td>
       </tr>
      
       <tr>
-        <td valign="top" align="left">
+        <td valign="top" align="left"><!-- <!-- 
             <div class="headings altheading">
-              <h2>&nbsp;&nbsp;Add Document</h2>
-            </div>
+              <h2>&nbsp;&nbsp;Document Details</h2> 
+            </div> -->
             <div class="contentbox">
+             <h2><b>&nbsp;&nbsp;Document Details</b></h2>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
@@ -78,14 +55,12 @@
               
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    		<label> Document Details </label>
-    
-    
-             <tr class="row1">
-             
-               <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">Document ID:
+    		
+                <tr>
+                 <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">Document ID:
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/></td>
-              
+              <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/>
+               
                <td valign="top" align="left" class="input_txt1" width="15%" id="lable_td" style="display:none;">
                <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
                <br/>
@@ -93,9 +68,12 @@
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
                <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:60px;border:none;background-color:lightgrey;">
-            	 <c:forEach items="${prefix}" var="prefix" varStatus="true">
+            	 <%-- <c:forEach items="${prefix}" var="prefix" varStatus="true">
                <option value="<c:out value="${prefix}"/>"><c:out value="${prefix}"/></option>
-               </c:forEach>
+               </c:forEach> --%>
+               <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
+        				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
+			                  </c:forEach>
                </select>
                <input type="text" value="" id="document_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="document_id" onblur="change_to_label();"/>
                <!-- <a href="#" style="text-decoration: none;" onclick="show_userdefined()">&nbsp;&nbsp;User defined</a><br/><span class="err"></span>
@@ -132,12 +110,12 @@
               
                <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err"> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
-               <select align="middle" id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
-              <option value="">--Select--</option>
-               <option value="Lab" <c:if test="${documentMain.location=='Lab'}"><c:out value="Selected"/></c:if>>Lab</option>
-               <option value="Shop Floor" <c:if test="${documentMain.location=='Shop Floor'}"><c:out value="Selected"/></c:if>>Shop Floor</option>
-               <option value="Office" <c:if test="${documentMain.location=='Office'}"><c:out value="Selected"/></c:if>>Office</option>
-               </select><br>
+               
+               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
+              <option value = "">Select Location</option>
+			                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
+        				       <option value="${formlocation.form_location}">${formlocation.form_location}</option>
+			                  </c:forEach> </select><br>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
               
                </td>
@@ -152,7 +130,21 @@
              <tr class="row1">
               
                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Document Type:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">
+              <td valign="top" align="left" class="input_txt" width="25%">
+              <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
+              <option value="">--Select--</option>
+                <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
+        				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
+			                  </c:forEach> </select>
+               
+               
+               
+               </select>
+               
+               
+               <br/><span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span></td>
+              
+              <%--  <td valign="top" align="left" class="input_txt" width="20%">
                <select name="document_type" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <option value="Manual" <c:if test="${documentMain.document_type=='Manual'}"><c:out value="Selected"/></c:if>>Manual</option>
@@ -163,7 +155,7 @@
                <option value="Specification" <c:if test="${documentMain.document_type=='Specification'}"><c:out value="Selected"/></c:if>>Specification</option>
                </select><br/>
                <span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span>
-               </td>
+               </td> --%>
                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">Process:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
@@ -196,10 +188,8 @@
               
              </tr>
                
-             <li>
-             </li>
-             <li>
-             </li>
+            
+            
             </table>
            
             </td>
@@ -208,13 +198,31 @@
           
       </td>
       </tr>
+      
+     
               <td colspan="1">
             <!--  <div id="child_table" style="display:none;"> -->
-<br>
+<br><!-- 
+ <div class="headings altheading">
+              <h2>&nbsp;&nbsp;Revision Details</h2> -->
                 <div class="contentbox">
+           <h2><b>&nbsp;&nbsp;Revision Details</b></h2>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+              
+              
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    		<label> Revision details </label>
+    		
+    <tr class="row2">
+                            <td valign="middle" align="left" class="input_txt"><span
+																			class="err"></span>Document Id</td>
+																		<td valign="top" align="left" class="input_txt"><input
+																			type="text" class="input_txtbx1" id="documentid"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="document_id"
+																			value="" /><br/><span class="err"></span>
+								
+</tr>             
              <tr class="row1" style="border:none;">
            
             <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Issuer:</td>
@@ -351,10 +359,17 @@
              </div>
              <tr class="row1" >
              <td colspan="2" align="right">
-             <input type="submit" id="submit"  name="submit" value="Submit" class="submit_btn1"></td>
+             <input align="left" class="submit_btn1" type="submit" id="submit"  name="submit" value="Submit" ></td>
              <td colspan="3">
-            <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
-            
+              <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td>
+            <!-- <td><a href="#" class="button blue">
+  
+</a>
+
+<a href="#" class="button yellow">
+  Reset
+</a>        
+</td> -->
 </tr></table></div></form>
 <script type="text/javascript">
 function toggle2(value){
@@ -449,8 +464,21 @@ function change_to_label()
 	var gen_id=document.getElementById("generated_id");
 	gen_id.value=type.value+-+doc_id.value;
 	
-
+	if((gen_id.value)!= null)
+	{
+   	documentid.value=gen_id.value;
+   
 	}
+
+}
+
+    function toggle(value){
+    	
+    if(value!=null)
+    	documentid.value=value;
+    
+    }
+   
 function show_edit()
 {
 	
@@ -514,5 +542,6 @@ document.getElementById("lable_td").style.display="none";
   	}
   </script>
        
- 
+ 		
       <jsp:include page="footer.jsp"></jsp:include>
+ 

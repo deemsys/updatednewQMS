@@ -11,52 +11,31 @@
 	<tr>
 		<td>
 			<div>
-				<ul class="horizmenu">
+				<ul class="horizmenu" style=" float:left;margin-left:204px;">
 
-					<%-- <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Document</span>
-									
-								</a>
-							</li>
-						
-				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Document</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Document report</span>
-									
-								</a>
-							</li>
-				     --%>         <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				        <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Form</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Form
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="view_form" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Form</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									View Form
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
-								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Form Report</span>
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									Form Report
 									
 								</a>
 							</li>
-											</ul>
+							 
+				</ul>
 			</div></td>
 	</tr>
 	<tr>

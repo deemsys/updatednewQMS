@@ -7,35 +7,16 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class DocumentMain
 {
 
+	private String auto_id;
+	private String auto_number;
+	private String auto_no;
+	
+	@NotEmpty
 	private String document_id;
 	
 	
 	private String document_type_id;
 	
-	public String getDocument_type_id() {
-		return document_type_id;
-	}
-
-	public void setDocument_type_id(String document_type_id) {
-		this.document_type_id = document_type_id;
-	}
-
-	public DocumentMain(String document_id, String document_title,
-			String document_type, String media_type, String location,
-			String external, String attachment_name, String attachment_type,
-			String attachment_referrence) {
-		super();
-		this.document_id = document_id;
-		this.document_title = document_title;
-		this.document_type = document_type;
-		this.media_type = media_type;
-		this.location = location;
-		this.external = external;
-		this.attachment_name = attachment_name;
-		this.attachment_type = attachment_type;
-		this.attachment_referrence = attachment_referrence;
-	}
-
 	@NotEmpty
 	private String document_title;
 	
@@ -46,6 +27,7 @@ public class DocumentMain
 	private String media_type;
 	
 
+	@NotEmpty
 	private String location;
 	
 	@NotEmpty
@@ -74,16 +56,53 @@ public class DocumentMain
 	
 	@NotEmpty
 	private String status;
-
 	
-	public DocumentMain(String document_id, String document_title,
+	
+	private String revision_id;
+	
+	private CommonsMultipartFile attachments;
+	
+	private String attachment_name;	
+	private String attachment_type;
+	private String attachment_referrence;
+	
+	public DocumentMain() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public DocumentMain(String auto_number,
+			String document_id, String document_title,
+			String document_type, String media_type, 
+			String location,String process, String external, 
+			String attachment_name,	String attachment_type,
+			String attachment_referrence) {
+		super();
+		this.auto_number = auto_number;
+		this.auto_no = auto_no;
+		this.document_id = document_id;
+		this.document_title = document_title;
+		this.document_type = document_type;
+		this.media_type = media_type;
+		this.location = location;
+		this.process = process;
+		this.external = external;
+		this.attachment_name = attachment_name;
+		this.attachment_type = attachment_type;
+		this.attachment_referrence = attachment_referrence;
+	}
+	
+	public DocumentMain(String auto_number,String document_id, String document_title,
 			String document_type, String media_type, String location,
-			String process, String issuer, String revision_level, String date,
+			String process,String auto_no, String issuer, String revision_level, String date,
 			String approver1, String approver2, String approver3,
 			String comments, String status, String external,
 			String attachment_name, String attachment_type,
-			String attachment_referrence) {
+			String attachment_referrence,String revision_id) {
 		super();
+		//this.auto_id = auto_id;
+		this.auto_number = auto_number;
+		this.auto_no = auto_no;
 		this.document_id = document_id;
 		this.document_title = document_title;
 		this.document_type = document_type;
@@ -102,6 +121,15 @@ public class DocumentMain
 		this.attachment_name = attachment_name;
 		this.attachment_type = attachment_type;
 		this.attachment_referrence = attachment_referrence;
+		this.revision_id = revision_id;
+	}
+
+	public String getDocument_type_id() {
+		return document_type_id;
+	}
+
+	public void setDocument_type_id(String document_type_id) {
+		this.document_type_id = document_type_id;
 	}
 
 	public String getIssuer() {
@@ -168,22 +196,16 @@ public class DocumentMain
 		this.status = status;
 	}
 
-	public DocumentMain(String document_id, String document_title,
-			String document_type, String media_type, String location,
-			String process, String external, String attachment_name,
-			String attachment_type, String attachment_referrence) {
-		super();
-		this.document_id = document_id;
-		this.document_title = document_title;
-		this.document_type = document_type;
-		this.media_type = media_type;
-		this.location = location;
-		this.process = process;
-		this.external = external;
-		this.attachment_name = attachment_name;
-		this.attachment_type = attachment_type;
-		this.attachment_referrence = attachment_referrence;
+	
+	public String getRevision_id() {
+		return revision_id;
 	}
+
+	public void setRevision_id(String revision_id) {
+		this.revision_id = revision_id;
+	}
+
+	
 
 	public String getProcess() {
 		return process;
@@ -227,11 +249,7 @@ public class DocumentMain
 		this.attachment_referrence = attachment_referrence;
 	}
 
-	private CommonsMultipartFile attachments;
 	
-	private String attachment_name;	
-	private String attachment_type;
-	private String attachment_referrence;
 
 	public CommonsMultipartFile getAttachments() {
 		return attachments;
@@ -241,10 +259,6 @@ public class DocumentMain
 		this.attachments = attachments;
 	}
 
-	public DocumentMain() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	
 	
 
@@ -286,6 +300,30 @@ public class DocumentMain
 
 	public void setExternal(String external) {
 		this.external = external;
+	}
+
+	public String getAuto_id() {
+		return auto_id;
+	}
+
+	public void setAuto_id(String auto_id) {
+		this.auto_id = auto_id;
+	}
+
+	public String getAuto_number() {
+		return auto_number;
+	}
+
+	public void setAuto_number(String auto_number) {
+		this.auto_number = auto_number;
+	}
+
+	public String getAuto_no() {
+		return auto_no;
+	}
+
+	public void setAuto_no(String auto_no) {
+		this.auto_no = auto_no;
 	}
 	
 	

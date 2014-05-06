@@ -108,7 +108,7 @@ function doAjaxPost() {
   <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addemployee" class="<c:choose>
 								<c:when test="${menu=='employee'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Employees</span>
+									<span class="buttonsub blue">Add Employees</span>
 									
 								</a>
 							</li>
@@ -116,7 +116,7 @@ function doAjaxPost() {
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewemployees" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Employees</span>
+									<span class="buttonsub blue">View Employees</span>
 									
 								</a>
 							</li>
@@ -124,7 +124,7 @@ function doAjaxPost() {
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="employee_report" class="<c:choose>
 								<c:when test="${menu=='employees'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Employee Report</span>
+									<span class="buttonsub blue">Employee Report</span>
 									
 								</a>
 							</li>

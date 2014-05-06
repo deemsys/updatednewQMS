@@ -30,7 +30,7 @@
 					<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_nonconformance" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add NonConformance</span>
+									<span class="buttonsub blue">Add NonConformance</span>
 									
 								</a>
 							</li>
@@ -38,14 +38,14 @@
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_nonconformance" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View NonConformance</span>
+									<span class="buttonsub blue">View NonConformance</span>
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="nonconformance_report" class="<c:choose>
 								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Reports</span>
+									<span class="buttonsub blue">Reports</span>
 									
 								</a>
 							</li>

@@ -74,7 +74,6 @@ public class FormDAO extends AbstractExcelView{
 			 System.out.println(e.toString());
 			 releaseResultSet(resultset);
 			 releaseStatement(statement);
-			 releaseConnection(con);
 		 }
 		 finally
 		 {

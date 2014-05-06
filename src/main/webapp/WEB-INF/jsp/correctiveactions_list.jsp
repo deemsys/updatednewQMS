@@ -21,20 +21,20 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Corrective and Preventive Actions</span>
+									<span class="buttonsub blue">Add Corrective and Preventive Actions</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="correctiveactions_list" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Corrective and Preventive Actions</span>
+									<span class="buttonsub blue">View Corrective and Preventive Actions</span>
 								</a>
 							</li>
 				           <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="capa_report" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Reports</span>
+									<span class="buttonsub blue">Reports</span>
 								</a>
 							</li>
 							</ul>

@@ -13,48 +13,28 @@
   						<ul class="horizmenu">
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Document</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Document
 									
 								</a>
 							</li>
 						
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Document</span>
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									View Document
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Document report</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Document report
 									
 								</a>
 							</li>
-				            <%--  <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Form</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="view_form" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Form</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="form_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Form Report</span>
-									
-								</a>
-							</li>
-		 --%>		            </ul>
+							
+			            </ul>
   </div>
       		</td>
       		</tr>
@@ -151,8 +131,9 @@
 											</td>
 											<td valign="top" align="left" width="15%">
 											
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?doc_id=${documentMains.document_id}"></c:out>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="view_revision_history?doc_id=${documentMains.document_id}"></c:out>" style="padding-right:10px;">View Revision History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:10px;">Edit</a>
+								<%-- 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="view_revision_history?document_id=${documentMains.document_id}"></c:out>" style="padding-right:10px;">View Revision History</a>
+								 --%>			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 													
 											</td>
 										</tr>
@@ -257,6 +238,116 @@ return false;
 return true;
 }
 
+
+<script type="text/javascript">
+
+
+/*  function show_more_views() {
+  	 alert("hi");
+ var proceee_name = '';
+ $('#autonumber1 tr').each(function (i, row) {
+   
+	   if (proceee_name == '') {
+		      proceee_name = $(this).find("td:first").html();
+		     }
+		     else{
+		      proceee_name = proceee_name + ',' + $(this).find("td:first").html();
+		     }
+		     
+		      });
+  		var proceee_name = $('#autonumber').val();
+  		alert(proceee_name);
+  	
+        */
+        
+        $(function () {
+					//alert("good");
+					$("a[data-bind-action='toggle-content']").click(toggleContent);
+					function toggleContent(){
+      	  	    	// alert("hi");
+      	  	   var proceee_name = '';
+
+      	 // $('#autonumber1 tr').each(function() {
+      		
+      		 
+      	   //   $.each(this.cells, function(){
+      	/*   alert($(this).html()); */
+      	    	  if (proceee_name == '') {
+      			   //  proceee_name = $(this).find("td:first").html();
+      			  //   proceee_name = $(this).parents('tr').find('td:eq(0) input').val();
+      			     var $td= $(this).closest('tr').children('td');  
+      			     
+      			     
+      			      proceee_name= $td.eq(0).text();  
+      			     // alert(proceee_name);
+      			     }
+      			     else{
+      			      proceee_name = proceee_name + ',' + $(this).find("td:first").html();
+      			     }
+      			     
+      			    //  });
+      	    		//proceee_name = $('#autonumber').val();
+      	     // });
+      	  	
+      	 
+      	  	    		//alert(proceee_name);
+  		$.ajax({
+  			
+  			type : "POST",
+  			url : "/QMS_App/ajax_getrevisiondoc",
+  			data : "auto_number=" + proceee_name,
+  			success : function(response) {
+  	              
+  	             // alert("response= "+response);
+  	              
+  		       $('#process_owner_id').html(response);
+  				
+  			},
+  			error : function(e) {
+  				alert('Error: ' + e);
+  			}
+  		});
+					}
+  	});
+
+ 
+
+
+
+
+
+
+
+
+
+
+/* 
+
+function show_more_views() {
+	 alert("hi");
+		var proceee_name = $('#autonumber').val();
+		alert(proceee_name);
+		   var education = $('#education').val();		
+		$.ajax({
+			
+			type : "POST",
+			url : "/QMS_App/ajax_getrevisions",
+			data : "auto_number=" + proceee_name,
+			success : function(response) {
+	              
+	              alert("response= "+response);
+	              
+		       $('#process_owner_id').html(response);
+				
+			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	} */
+</script>
+
+<script>
 function findpart()
 {
 // alert(document.getElementById("moblie").value);

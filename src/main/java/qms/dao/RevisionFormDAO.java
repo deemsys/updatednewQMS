@@ -94,7 +94,7 @@ public class RevisionFormDAO {
 		List<RevisionForm> revisionForms = new ArrayList<RevisionForm>();
 	    try{
 	    	System.out.println("select * from tbl_revisionform where auto_no='"+auto_no+"'");
-			resultSet = statement.executeQuery("select * from tbl_revisionform where auto_no='"+auto_no+"'");
+			resultSet = statement.executeQuery("select * from tbl_revisionform where auto_no='"+auto_no+"' ORDER BY revision_id DESC");
 			while(resultSet.next()){
 				revisionForms.add(new RevisionForm(resultSet.getString("auto_no"),resultSet.getString("document_id"),resultSet.getString("effective_date"),resultSet.getString("approver1"),
 						resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));

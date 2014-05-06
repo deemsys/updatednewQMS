@@ -11,7 +11,7 @@
 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addmanagementreview" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Management Review</span>
+									<span class="buttonsub blue">Add Management Review</span>
 									
 								</a>
 							</li>
@@ -19,7 +19,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewmanagementreview" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Management Review</span>
+									<span class="buttonsub blue">View Management Review</span>
 									
 								</a>
 							</li>
@@ -27,7 +27,7 @@
 				         <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="managementreview_report" class="<c:choose>
 								<c:when test="${menu=='review'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Reports</span>
+									<span class="buttonsub blue">Reports</span>
 									
 								</a>
 							</li>

@@ -16,21 +16,21 @@
   							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_supplierperformance" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Supplier</span>
+									<span class="buttonsub blue">Add Supplier</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_supplierperformance" class="<c:choose>
 								<c:when test="${menu=='supplier'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Supplier</span>
+									<span class="buttonsub blue">View Supplier</span>
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="supplierperformance_report" class="<c:choose>
 								<c:when test="${menu=='supplier'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Report Supplier</span>
+									<span class="buttonsub blue">Report Supplier</span>
 									
 								</a>
 							</li>

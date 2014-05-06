@@ -17,7 +17,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>
 								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Document</span>
+									<span class="buttonsub blue">Add Document</span>
 									
 								</a>
 							</li>
@@ -25,14 +25,21 @@
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewdocuments" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Document</span>
+									<span class="buttonsub blue">View Document</span>
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="document_report" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Document report</span>
+									<span class="buttonsub blue">Document report</span>
+									
+								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="documentdelete" class="<c:choose>
+								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
+									<span class="buttonsub blue">Delete Document</span>
 									
 								</a>
 							</li>

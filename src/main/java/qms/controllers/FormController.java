@@ -494,19 +494,19 @@ public class FormController
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formdetails",formForm);
 		  model.addAttribute("menu","document");*/
-		
 		FormForm formForm=new FormForm();
-		model.addAttribute("menu","document");
-	  	model.addAttribute("noofrows",5);
-	  	
-	    formForm.setForm(formDAO.getlimitedformreport(1));
-	    model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	 
-        model.addAttribute("button","viewall");
-        model.addAttribute("success","false");
-        model.addAttribute("currentpage",1);
-	    
-	    model.addAttribute("formForm",formForm);
-		
+		formForm.setForm(formDAO.getform());
+		model.addAttribute("formForm",formForm);
+
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("button","close");
+	      
+	    model.addAttribute("menu","document");
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+
 		 String number = auto_no.trim();
 		    System.out.println("auto_number= "+number);
 			//String resultHTML="";

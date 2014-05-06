@@ -27,14 +27,14 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_formlocation" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Location</span>
+									<span class="buttonsub blue">Add Location</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formlocation_list" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Locations</span>
+									<span class="buttonsub blue">View Locations</span>
 								</a>
 							</li>
 				          

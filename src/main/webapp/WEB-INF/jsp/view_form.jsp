@@ -13,50 +13,30 @@
 <td>
 <div>
   <ul class="horizmenu">
-						
-	<%-- 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Document</span>
-									
-								</a>
-							</li>
-						
-				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Document</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Document report</span>
-									
-								</a>
-							</li> --%>
-				             <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+		
+				             <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Form</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Form
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="view_form" class="<c:choose>
-								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Form</span>
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									View Form
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Form Report</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Form Report
 									
 								</a>
 							</li>
+
+						
 							
 							</ul>
   </div>
@@ -125,7 +105,7 @@
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
 											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 											 -->
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>">View Revision History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a onclick="subhide();" href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>">View Revision History</a>
 											</td>
 										</tr>
 										
@@ -153,26 +133,32 @@
 						    	
 						    								    	</c:forEach>
 							    	
-						    	<table>
+						    		<table width="60%" align="right">
+						    	<tr class="header11" id="subrow">
+								
+									<td valign="top" align="center" width="10%">Form/Rec ID</td>
+									<td valign="top" align="center" width="10%">Effective Date</td>
+									<td valign="top" align="center" width="10%">Approver1</td>
+									<td valign="top" align="center" width="10%">Issuer</td>
+									<td valign="top" align="center" width="10%">Comments</td>
+									<td valign="top" align="center" width="10%">Revision No</td>
+									</tr>
 											<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
 										<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 								           	
-									        <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
-											<td valign="top" align="left" width="10%">${revision.effective_date}</td>
-											<td valign="top" align="left" width="10%">${revision.approver1}</td>
-											<td valign="top" align="left" width="10%">${revision.issuer}</td>
-											<td valign="top" align="left" width="10%">${revision.comments}</td>
-											
+									        <td valign="top" align="center" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="center" width="10%">${revision.effective_date}</td>
+											<td valign="top" align="center" width="10%">${revision.approver1}</td>
+											<td valign="top" align="center" width="10%">${revision.issuer}</td>
+											<td valign="top" align="center" width="10%">${revision.comments}</td>
+											<td valign="top" align="center" width="10%">${revision.revision_id}</td>
 									
 											
-											<td valign="top" align="left" width="15%">
 											
-											</td>
 											
 										</tr>
 										</c:forEach>
 										</table>
-
 							<!-- 	<tr><td colspan="7">  <div class="extrabottom">
               						<ul class="pagination">
                 						<li class="text"><input type="submit" name="view" value="View All" class="submit_btn"></li>
@@ -335,5 +321,11 @@ function confirmation(val) {
 		
 	}
 }
+function subhide()
+
+{
+	document.getElementById('subrow').style.display="block";
+}
+
 </script>
 <%-- <jsp:include page="footer.jsp"></jsp:include> --%>

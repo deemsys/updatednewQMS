@@ -26,6 +26,7 @@ import org.springframework.web.servlet.view.document.AbstractExcelView;
 import qms.model.DocumentMain;
 import qms.model.Employee;
 import qms.model.ExternalDocument;
+import qms.model.Form;
 import qms.model.NonConformance;
 
 public class DocumentControlDAO extends AbstractExcelView
@@ -309,6 +310,51 @@ public class DocumentControlDAO extends AbstractExcelView
 		
 	}
 	
+	//Getting unique id
+	public String get_documentid()
+	{
+		 Connection con = null;
+		 Statement statement = null;
+		 ResultSet resultset = null;
+		 String Max_id = "D1001";
+		 try
+		 {
+			 con = dataSource.getConnection();
+			 statement = con.createStatement();
+		 }
+		 catch(SQLException e)
+		 {
+			 e.printStackTrace();
+		 }
+		 try
+		 {
+			 String cmd_select = "select max(auto_id) as id from tbl_doccontrol_main";
+			 resultset = statement.executeQuery(cmd_select);
+			 if(resultset.next())
+			 {
+				 if(!resultset.getString("id").equals("null"))
+				 {
+					 Max_id = "D" + (Integer.parseInt(resultset.getString("id")) + 1001);
+				 }
+			 }
+			 
+		 }
+		 catch(Exception e)
+		 {
+			 System.out.println("max"+e.toString());
+			 System.out.println(e.toString());
+			 releaseResultSet(resultset);
+			 releaseStatement(statement);
+		 }
+		 finally
+		 {
+			releaseResultSet(resultset);
+			releaseStatement(statement);
+			releaseConnection(con);
+		 }
+		 return Max_id;
+	}
+	
 	
 	public boolean delete_document(String document_id){
 		Connection con = null;
@@ -343,7 +389,7 @@ public class DocumentControlDAO extends AbstractExcelView
 		
 	}
 	
-	public List<DocumentMain> getDocument_byid(String document_id){
+	public List<DocumentMain> getDocument_byid(String auto_number){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -356,11 +402,11 @@ public class DocumentControlDAO extends AbstractExcelView
 		List<DocumentMain> documentMains=new ArrayList<DocumentMain>();
 		
 	    try{
-	    	System.out.println("sucess:"+document_id);
-			resultSet = statement.executeQuery("SELECT t1.*,t2.* FROM tbl_doccontrol_main  as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id where t1.document_id='"+document_id+"'");
+	    	System.out.println("sucess:"+auto_number);
+			resultSet = statement.executeQuery("SELECT t1.*,t2.* FROM tbl_doccontrol_main  as t1 join tbl_doccontrol_external as t2 on t1.auto_number=t2.auto_no where t1.auto_number='"+auto_number+"'");
 			while(resultSet.next())
 			{
-				documentMains.add(new DocumentMain(resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"),resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("auto_no"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"),resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"),resultSet.getString("revision_id")));
 				
 					
 		    }
@@ -411,81 +457,141 @@ public class DocumentControlDAO extends AbstractExcelView
 	    return prefix;
 		
 	}
-	public boolean update_document(DocumentMain documentMain)
+	
+	
+	//Update Operation
+	public boolean update_document(DocumentMain documentMain,String auto_number,String admin)
 	{
+		System.out.println("auto number = "+auto_number);
+		System.out.println(documentMain.getAuto_no());
+		System.out.println(documentMain.getAuto_number());
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
-		boolean status=false;
-		
-		try {
-			con = dataSource.getConnection();
+		boolean status = false;
+		try
+		{
+			con= dataSource.getConnection();
 			statement = con.createStatement();
-		} catch (SQLException e1) {
-				e1.printStackTrace();
 		}
-		  try{
-			  System.out.print(documentMain.getAttachments());
-			  String approver1 = new String(documentMain.getApprover1());
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		try
+		{
+			String doc_id = new String(documentMain.getDocument_id());
+			System.out.println("document_id="+doc_id);
+			String[] strings = doc_id.split(",");
+			String documentid="";
+			String id_nochange = "";
+			 String approver1 = new String(documentMain.getApprover1());
 			  String[] split = approver1.split(",");
 			  String approver = split[0];
-			  String cmd_update1;
-			  String cmd_update2;
-			  String attachment_name ="";
-			  String attachment_type="",attachment_reference="";
+			if(strings.length >1)
+			
+			 documentid = strings[2];
+			id_nochange= strings[0];
+			
+			System.out.println("document id = "+documentid);
+			
+			 String attachment_name ="";
+			  String attachment_type="",attachment_reference="",document_id="";
+			  System.out.println("revision_id= "+documentMain.getRevision_id());
+			  int revision_id = 0;/*Integer.parseInt(form.getRevision_id());*/
+			  System.out.println(revision_id);
 			 
-			 if(documentMain.getAttachment_name() == null || documentMain.getAttachment_type() == null || documentMain.getAttachment_referrence() == null)
+			if((documentMain.getAttachment_name() == null && documentMain.getDocument_id().equals(id_nochange+","+id_nochange)) || (documentMain.getAttachment_type() == null && documentMain.getDocument_id().equals(id_nochange+","+id_nochange)) || (documentMain.getAttachment_referrence() == null && documentMain.getDocument_id().equals(id_nochange+","+id_nochange)))
 			 {
-				 resultSet=statement.executeQuery("select attachment_name,attachment_type,attachment_referrence from tbl_doccontrol_main where document_id = '"+documentMain.getDocument_id()+"'");
-			  while(resultSet.next())
+				System.out.println("all null");
+				 resultSet=statement.executeQuery("select tbl_doccontrol_main.attachment_name,tbl_doccontrol_main.attachment_type,tbl_doccontrol_main.attachment_referrence,tbl_doccontrol_external.revision_id from tbl_doccontrol_main,tbl_doccontrol_external where tbl_doccontrol_main.auto_number='"+documentMain.getAuto_number()+"'");
+			
+				 while(resultSet.next())
 			  {
+					 /*document_id=resultSet.getString("document_id");*/
 				  attachment_name=resultSet.getString("attachment_name");
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
-			  }
-			  statement.executeUpdate("update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where document_id='"+documentMain.getDocument_id()+"'");
-			  statement.executeUpdate("update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'");
-			  status=true;
-			 }
-			 else
-			  {
-				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where document_id='"+documentMain.getDocument_id()+"'";
-				   cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
-				  
-			  
 				   
-			  /*else {
-			   * documentMain.getAttachments() == null
-				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"' where document_id='"+documentMain.getDocument_id()+"'";
-				   cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				   System.out.println("revision id ="+revision_id);
+			  }
 			
-				 
-			  }   
-			 */
-			 /* if(documentMain.getAttachments().equals(null))
+			 
+				 	statement.executeUpdate("update tbl_doccontrol_main set document_id='"+id_nochange+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
+					statement.executeUpdate("update tbl_doccontrol_external set document_id='"+id_nochange+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'");
+					status =true;
+			 } 
+			
+		else if(documentMain.getDocument_id().equals(id_nochange+","+id_nochange))
+			{
+				System.out.println("document id null");
+				 resultSet=statement.executeQuery("select  tbl_doccontrol_external.revision_id from tbl_doccontrol_main,tbl_doccontrol_external where tbl_doccontrol_main.auto_number='"+documentMain.getAuto_number()+"'");
+				
+ 
+				 while(resultSet.next())
+				  {
+					 /*document_id=resultSet.getString("document_id");*/
+					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   System.out.println("revision id ="+revision_id);	
+				  }
+				  String cmd_update1 = "update tbl_doccontrol_main set document_id='"+id_nochange+"', document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where auto_number='"+documentMain.getAuto_number()+"'";
+					statement.execute(cmd_update1);
+					String cmd_update2="update tbl_doccontrol_external set document_id='"+id_nochange+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"', where auto_no='"+documentMain.getAuto_number()+"'";
+				    statement.execute(cmd_update2);
+				    status =true;
+		}
+			else if(documentMain.getAttachment_name() == null || documentMain.getAttachment_type() == null || documentMain.getAttachment_referrence() == null)
+			 {
+				System.out.println("attachment null");
+				 resultSet=statement.executeQuery("select tbl_doccontrol_main.attachment_name,tbl_doccontrol_main.attachment_type,tbl_doccontrol_main.attachment_referrence,tbl_doccontrol_external.revision_id from tbl_doccontrol_main,tbl_doccontrol_external where tbl_doccontrol_main.auto_number='"+documentMain.getAuto_number()+"'");
+				
+
+				 while(resultSet.next())
 			  {
-				  cmd_update1="update tbl_doccontrol_main set document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"' where document_id='"+documentMain.getDocument_id()+"'";
-				  cmd_update2="update tbl_doccontrol_external set issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"' where document_id='"+documentMain.getDocument_id()+"'";
+				 
+				  attachment_name=resultSet.getString("attachment_name");
+				  attachment_type=resultSet.getString("attachment_type");
+				   attachment_reference= resultSet.getString("attachment_referrence");
+				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				   System.out.println("revision id ="+revision_id);
 			  }
-			 */
+			  statement.executeUpdate("update tbl_doccontrol_main set document_id='"+documentid+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
+			  statement.executeUpdate("update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'");	
+			  status =true;
+			 } 
+			else{
+				System.out.println("not null");
+				 resultSet=statement.executeQuery("select revision_id from tbl_doccontrol_external where auto_no='"+documentMain.getAuto_no()+"'");
+				 while(resultSet.next())
+				  {
+					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   System.out.println("revision id ="+revision_id);
+				  }
+			String cmd_update1 = "update tbl_doccontrol_main set document_id='"+documentid+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where auto_number='"+documentMain.getAuto_number()+"'";
 			statement.execute(cmd_update1);
-			statement.execute(cmd_update2);
-			status=true;
-			  }
+			String cmd_update2="update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'";
+		    statement.execute(cmd_update2);
+		    status =true;
+			}
+		
 			
-		  }catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-		    return status;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		finally
+		{
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return status;
 	}
-	
 	
 	public boolean insert_document(DocumentMain documentMain)
 	{
@@ -501,11 +607,11 @@ public class DocumentControlDAO extends AbstractExcelView
 				e1.printStackTrace();
 		}
 		  try{
-			  String cmd_insert1="insert into tbl_doccontrol_main(document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
+			  String cmd_insert1="insert into tbl_doccontrol_main(auto_number,document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
 			  statement.execute(cmd_insert1);
 			  
 			  String cmd_insert2="";	
-				 cmd_insert2="insert into tbl_doccontrol_external(document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status) values('"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"')";
+				 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','"+0+"')";
 				 statement.execute(cmd_insert2);
 		
 			 status=true;
@@ -541,7 +647,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
-				documentMains.add(new DocumentMain(resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -612,7 +718,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
-				documentMains.add(new DocumentMain(resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -642,7 +748,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id where document_type='"+type+"'");
 			System.out.println("came");
 			while(resultSet.next()){
-								documentMains.add(new DocumentMain(resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"), resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+								documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"),resultSet.getString("auto_no"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("revision_id")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -673,8 +779,19 @@ public class DocumentControlDAO extends AbstractExcelView
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id where external=1");
 			System.out.println("came");
 			while(resultSet.next()){
-								documentMains.add(new DocumentMain(resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"), resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
-			}
+				documentMains.add(new DocumentMain(
+						resultSet.getString("auto_number"),resultSet.getString("document_id"), 
+						resultSet.getString("document_title"), resultSet.getString("document_type"),
+						resultSet.getString("media_type"),resultSet.getString("location"),
+						resultSet.getString("process"),resultSet.getString("auto_no"), 
+						resultSet.getString("issuer"),
+						resultSet.getString("revision_level"),resultSet.getString("date"),
+						resultSet.getString("approver1"),resultSet.getString("approver2"),
+						resultSet.getString("approver3"),resultSet.getString("comments"),
+						resultSet.getString("status"),
+						resultSet.getString("external"),resultSet.getString("attachment_name"),
+						resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"),resultSet.getString("revision_id")));
+	}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);
@@ -705,7 +822,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
-				documentMains.add(new DocumentMain(resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -737,7 +854,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id");
 			System.out.println("came");
 			while(resultSet.next()){
-								documentMains.add(new DocumentMain(resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"), resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+								documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"), resultSet.getString("auto_no"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("revision_id"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -777,7 +894,9 @@ public class DocumentControlDAO extends AbstractExcelView
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next()){
 				System.out.println("count");
-				documentMains.add(new DocumentMain(resultSet.getString("document_id"),
+				documentMains.add(new DocumentMain(
+						resultSet.getString("auto_number"),
+						resultSet.getString("document_id"),
 						resultSet.getString("document_title"),
 						resultSet.getString("document_type"),
 						resultSet.getString("media_type"),

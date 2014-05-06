@@ -17,14 +17,14 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_process" class="<c:choose>
 								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Process</span>
+									<span class="buttonsub blue">Add Process</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="process_list" class="<c:choose>
 								<c:when test="${menu=='controlprocess'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Process</span>
+									<span class="buttonsub blue">View Process</span>
 								</a>
 							</li>
 				          

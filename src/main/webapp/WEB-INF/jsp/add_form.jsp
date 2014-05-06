@@ -1,4 +1,4 @@
- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+ <%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
@@ -14,78 +14,93 @@
         <div>
   <ul class="horizmenu">
 						
-							<%-- <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Document</span>
-									
-								</a>
-							</li>
-						
-				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Document</span>
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Document report</span>
-									
-								</a>
-							</li>
-				         --%>     <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+  <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
-								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Add Form</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									Add Form
+									
+								</a>
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="view_form" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>View Form</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									View Form</span>
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span>Form Report</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Form Report</span>
 									
 								</a>
 							</li>
-							
-				            </ul>
+						    </ul>
   </div>
         </td>
-      </tr>
+      </tr> --%>
+      <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<jsp:include page="header.jsp"></jsp:include>
+<script src="/QMS_App/resources/js/jquery.js"></script>
+	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
+<div id="right_content">
+
+	
+		<table cellpadding="0" cellspacing="0" border="0" width="98%"
+			class="margin_table">
+<tr>
+<td>
+<div>
+  <ul class="horizmenu" style=" float:left;margin-left:190px;">
+		
+		
+				             <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
+								<a href="addform" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Form
+									
+								</a>
+							</li>
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
+								<a href="view_form" class="<c:choose>
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									View Form
+									
+								</a>
+							</li>
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
+								<a href="form_report" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Form Report
+									
+								</a>
+							</li>
+
+						
+							
+							</ul>
+  </div>
+</td>
+</tr>
       <tr>
         <td valign="top" align="left">
-            <div class="headings altheading">
-              <h2>&nbsp;&nbsp;Form Details</h2>
-            </div>
             <div class="contentbox">
+             <h2><b>&nbsp;&nbsp;Form Details</b></h2>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
-              <td colspan="1">
+              <td colspan="3">
             <!--  <div id="child_table" style="display:none;"> -->
-
+<br>
               
-             <div style="border:#993300  2px solid; padding:15px; margin-bottom:0.5px;">
+             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    	
-    		<%-- <tr></td><td>
-    		</td>
-    		<td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
-			</tr>
-			 --%><br>
-    		<br>
-    		          <tr class="row1">
-    		          <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Form/Rec Id:</td>
+    		
+    	     <tr class="row1">
+    		 <td valign="middle" align="left" class="input_txt"><span class="err"></span>Form/RecId:</td>
               
                <td valign="top" align="left" class="input_txt1"  id="lable_td" style="display:none;">
                <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
@@ -121,16 +136,11 @@
                <br>
 				 <input name="attachments" style="display:none;" id="id_file" type="file" />	
 				 </td>										
-				<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="right" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="right" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="right" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="right" class="input_txt">																	
-																		</td>
+				<td valign="top" align="left" class="input_txt"></td>
+				<td valign="top" align="right" class="input_txt"></td>
+				<td valign="top" align="right" class="input_txt"></td>
+				<td valign="top" align="right" class="input_txt"></td>
+				<td valign="top" align="right" class="input_txt"></td>
 																		<td valign="top" align="right" class="input_txt">																	
 																		</td>
 																		<td valign="top" align="right" class="input_txt">																	
@@ -138,36 +148,7 @@
 																		</tr>
                
               
-              <tr class="row2">
-                           <%-- <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Form/Rec Id:</td>
-              
-               <td valign="top" align="left" class="input_txt1"  id="lable_td" style="display:none;">
-               <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
-               <br/>
-               </td>          
-              
-               <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
-               <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:57px;border:none;background-color:lightgrey;">
-               <!-- <option value="FHR">FHR</option>
-               <option value="FEN">FEN</option> -->
-               <c:forEach items="${prefix}" var="prefix" varStatus="true">
-               <option value="<c:out value="${prefix}"/>"><c:out value="${prefix}"/></option>
-               </c:forEach>
-              
-               </select>
-               
-              <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/> 
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
-               --%><!--  <a href="#" style="text-decoration: none;" onclick="show_userdefined()">&nbsp;&nbsp;User defined</a><br/><span class="err"></span>
-               </td>
-              
-              <td valign="top" align="left" class="input_txt1" width="15%" id="user_defined_td" style="display:none;">
-               <input type="text" id="user_def_document_id" class="input_txtbx1" value="" style="width:150px;" onblur="show_lable();"/>
-               <input type="text" id="user_def_document_id" class="input_txtbx1" value="" style="width:70px;"/>-<input type="text" id="user_def_document_id1" class="input_txtbx1" value="" style="width:70px;" onblur="show_lable();"/>
-               <a href="#" style="text-decoration: none;" onclick="hide_userdefined()">&nbsp;&nbsp;Cancel</a>           
-               <br/>
-               </td>
-				 -->	
+              <tr class="row2">	
 				  <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Form/Rec Title :</td>
 																		<td valign="top" align="left" class="input_txt"><input
@@ -197,38 +178,9 @@
 
              </tr>
               
-              <tr class="row1">
-              <%--  <td valign="middle" align="left" class="input_txt"><span
-																			class="err"></span>Form/Rec Title :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title"
-																			value="${docform.form_or_rec_title }" /><br/><span class="err"><form:errors path="Form.form_or_rec_title"></form:errors></span>
-																		
-																		</td>
-				 --%><%-- <td valign="middle" align="left" class="input_txt" width="20%"><span class="err"></span>Process:</td>
-               <td valign="top" align="left" class="input_txt" >
-               
-               <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
-               <option value="">--Select--</option>
-             <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-               <option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
-               </c:forEach>
-                
-               
-               </select>
-               
-																		
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>              </tr>
-              
-               --%><tr class="row2">
+<tr class="row2">
                <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Media Type:</td>
-               <td valign="top" align="left" class="input_txt">
+               <td valign="top" align="left" class="input_txt" width="100%">
                
                   
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" <c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
@@ -260,7 +212,7 @@
                </tr>
                <tr class="row2">
                
-																		              <td valign="middle" align="left" class="input_txt"><span
+																		              <td valign="middle" align="left" class="input_txt" width="100%"><span
 																			class="err"></span>Retention Time :</td>
 																		<td valign="top" align="left" class="input_txt">
 																		<%-- <input type="text" class="input_txtbx1" id="inp_external_id"
@@ -287,42 +239,25 @@
 															class="input_txt" >No
                             
                            </tr>
-                    
-                           </table>
-           
-            </td>
-           
-            </table>
-          
-      </td>
-      </tr>
-            
-              
-              <td colspan="4">
+               </table>
+               </div>
+               </td>
+               
+         <!-- 
+            <div class="contentbox">
+             <h2><b>&nbsp;&nbsp;Revision Details</b></h2>
+                     -->
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <td colspan="3">
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
- <div class="headings altheading">
-              <h2>&nbsp;&nbsp;Revision Details</h2>
-            </div>
-                <div class="contentbox">
-              
+             
+             <h2><b>Revision Details</b></h2> 
+<br>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-           
-             <li>
-             </li>
-             <li>
-             </li>
-             <br>
              
-              <tr class="row1">
-                          <!--    <td valign="middle" align="left" class="input_txt" ><span class="err"></span>Auto Number:</td> -->
-                <!--   <td valign="top" align="left" class="input_txt" ><br/><span class="err"></span></td> -->
-              
-																		             
-																		          
-																		             
-																		             
+    														<tr class="row1">			             
 																		             
 																		              <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Effective Date :</td>
@@ -405,30 +340,28 @@
 																		<td valign="top" align="left" class="input_txt"><textarea class="input_txtbx1"  name="comments"  style="width:75%; height: 50px;" >${docform.comments}</textarea><br/><span class="err"><form:errors path="Form.comments"></form:errors></span></td>
 																		
 																	
-																		
-              </tr>
-              
-             
-              </table>
-              </div>
-      
-            
-            </div>
-              
+					</tr>
+					</table>
+					</div>
+					</td>
+					</table>
+					
+					
               <tr class="row1">
               <td colspan="1" align="right">
              <input type="submit" id="export"  name="export" value="Submit" class="submit_btn1"></td>
              <td colspan="1">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
-     </tr>
-     </table>
-     </div>
-     
-            </form>
-           
-        
-       
-       <script type="text/javascript">
+</tr>
+</table>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</form>
+
+<script type="text/javascript">
 function toggle2(value){
   
     var e = document.getElementById('location_label');
