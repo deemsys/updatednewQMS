@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
+
 <link rel="stylesheet" href="resources/css/jquery-ui.css"
 	type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
@@ -54,7 +55,7 @@
 		</c:if>
 	</tr>
 <tr><td>
-<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
+<table cellpadding="0" cellspacing="0"style="height:720px;" border="0" width="98%" class="margin_table">
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
@@ -62,7 +63,7 @@
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_doc_form">
-						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						<table cellpadding="0"  cellspacing="0" border="0" width="100%">
 							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Form List by Process :</td>
@@ -161,20 +162,25 @@
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
              </tr>
+            
              </table>
              </td>
              </tr>
+             
              </table>
              </form></div>
              </td>
              </tr>
              </table>
+             
+             	
              </td>
              </tr>
+             
              </table>
              
              
-							
+						
 							
 							
 							
@@ -217,5 +223,6 @@ if(value==0)
     
 }
  </script>
- 
+ <jsp:include page="footer.jsp"></jsp:include> 
+
 				

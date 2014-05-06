@@ -194,14 +194,14 @@
 						 --%>
 								</table>
 							
-								<div style="clear: both;"></div>
+								<!-- <div style="clear: both;"></div>
 								</div>
 								</div>
 								</td>
 								</tr>
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
-								</tr><tr>
+								</tr><tr> -->
 		<td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">
@@ -236,10 +236,7 @@
 		  </ul>
 		  </div>
 		  </td>
-		  </tr>						
-							</table>
-							</form>
-						</div>
+		  </tr>				</table></div>
 	 
 	<!--  <script type="text/javascript">
 	    

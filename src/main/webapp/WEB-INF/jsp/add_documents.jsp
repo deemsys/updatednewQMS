@@ -86,8 +86,8 @@
                </td> 
                -->
               
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">Media Type:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">
+               <td valign="top" align="left" class="input_txt" width="5%"><span class="err">Media Type:</td>
+               <td valign="top" align="left" class="input_txt" width="89px;">
                
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" <c:if test="${documentMain.media_type==0}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type==1}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
