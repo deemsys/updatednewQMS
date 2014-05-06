@@ -184,6 +184,7 @@ public class FormDAO extends AbstractExcelView{
 		try
 		{
 			String form_id = new String(form.getForm_or_rec_id());
+			System.out.println("auto number @@@@@@@ = "+form.getAuto_no());
 			System.out.println("form_or_rec_id="+form_id);
 			String[] strings = form_id.split(",");
 			String formid="";
@@ -208,7 +209,7 @@ public class FormDAO extends AbstractExcelView{
 			 {
 				System.out.println("all null");
 				 resultSet=statement.executeQuery("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
-			
+			System.out.println("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
 				 while(resultSet.next())
 			  {
 				   form_or_rec_id=resultSet.getString("form_or_rec_id");
