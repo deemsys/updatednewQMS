@@ -39,7 +39,7 @@ public class FormLocationController {
 	
 	public String addFormPrefix(HttpSession session,ModelMap model, Principal principal) {
 		session.removeAttribute("formlocation");
-		model.addAttribute("menu","formlocation");
+		model.addAttribute("menu","admin");
 		return "add_formlocation";
 	}
 
@@ -62,7 +62,7 @@ public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @
 		FormLocationForm formLocationForm = new FormLocationForm();
 		formLocationForm.setFormLocations(formLocationDAO.getlocation());
 		model.addAttribute("formLocationForm",formLocationForm);
-		model.addAttribute("menu","formlocation");
+		model.addAttribute("menu","admin");
 	return "formlocation_list";
 }
 
@@ -73,7 +73,7 @@ public String editformlocation_get(@RequestParam("location_id") String location_
 	FormLocationForm formLocationForm = new FormLocationForm();
 	formLocationForm.setFormLocations(formLocationDAO.getformLocations(location_id));
 	model.addAttribute("formLocationForm",formLocationForm);
-	model.addAttribute("menu","formlocation");
+	model.addAttribute("menu","admin");
     return "edit_formlocation";
 }
 
@@ -96,7 +96,7 @@ public String update_formlocation(ModelMap model,@ModelAttribute("FormLocation")
 	FormLocationForm formLocationForm = new FormLocationForm();
 	formLocationForm.setFormLocations(formLocationDAO.getlocation());
 	model.addAttribute("formLocationForm",formLocationForm);
-	model.addAttribute("menu","formlocation");
+	model.addAttribute("menu","admin");
     return "formlocation_list";
 }
 
@@ -110,7 +110,7 @@ public String deletelocation(@RequestParam("location_id") String location_id,For
 	FormLocationForm formLocationForm = new FormLocationForm();
 	formLocationForm.setFormLocations(formLocationDAO.getlocation());
 	model.addAttribute("formLocationForm",formLocationForm);
-	model.addAttribute("menu","formlocation");
+	model.addAttribute("menu","admin");
     return "formlocation_list";
 	
 }
@@ -120,7 +120,7 @@ public String deletelocation(@RequestParam("location_id") String location_id,For
 @RequestMapping(value="/formlocation_list", method=RequestMethod.GET)
 public String Formlocationlist(HttpServletRequest request,ModelMap model, Principal principal) {
 	FormLocationForm formLocationForm = new FormLocationForm();
-	model.addAttribute("menu","formlocation");
+	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	
 	
@@ -142,7 +142,7 @@ public String viewlocationreport_page(HttpServletRequest request,@RequestParam("
 	model.addAttribute("formLocationForm",formLocationForm);	
   	model.addAttribute("noofrows",5);   
     model.addAttribute("currentpage",page);
-    model.addAttribute("menu","formlocation");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","viewall");
     
     return "formlocation_list";
@@ -159,10 +159,10 @@ public String viewalllocationreport(HttpServletRequest request,ModelMap model, P
 
   	model.addAttribute("noofrows",5);    
    //narrativereportForm.getNarrativereport().size()
-    model.addAttribute("menu","formlocation");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","close");
       
-    	model.addAttribute("menu","formlocation");
+    	model.addAttribute("menu","admin");
         model.addAttribute("success","false");
         model.addAttribute("button","close");
         return "formlocation_list";

@@ -37,7 +37,7 @@ public class DocumentTypeController {
 	
 	public String addFormPrefix(HttpSession session,ModelMap model, Principal principal) {
 		session.removeAttribute("documenttype");
-		model.addAttribute("menu","documenttype");
+		model.addAttribute("menu","admin");
 		return "add_documenttype";
 	}
 
@@ -61,7 +61,7 @@ public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 		model.addAttribute("documentTypeForm",documentTypeForm);
-		model.addAttribute("menu","documenttype");
+		model.addAttribute("menu","admin");
 	return "documenttype_list";
 }
 
@@ -72,7 +72,7 @@ public String editdocumenttype_get(@RequestParam("id") String id,DocumentType do
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 	documentTypeForm.setDocumentTypes(documentTypeDAO.getDocumentTypes(id));
 	model.addAttribute("documentTypeForm",documentTypeForm);
-	model.addAttribute("menu","documenttype");
+	model.addAttribute("menu","admin");
     return "edit_documenttype";
 }
 
@@ -113,7 +113,7 @@ public String deletedocumenttype(@RequestParam("id") String id,DocumentType docu
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 	documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 	model.addAttribute("documentTypeForm",documentTypeForm);
-	model.addAttribute("menu","documenttype");
+	model.addAttribute("menu","admin");
     return "documenttype_list";
 	
 }
@@ -123,7 +123,7 @@ public String deletedocumenttype(@RequestParam("id") String id,DocumentType docu
 @RequestMapping(value="/documenttype_list", method=RequestMethod.GET)
 public String Documenttypelist(HttpServletRequest request,ModelMap model, Principal principal) {
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
-	model.addAttribute("menu","documenttype");
+	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	
 	documentTypeForm.setDocumentTypes(documentTypeDAO.getlimiteddocumenttypereport(1));
@@ -144,7 +144,7 @@ public String viewdocumenttypereport_page(HttpServletRequest request,@RequestPar
 	model.addAttribute("documentTypeForm",documentTypeForm);	
   	model.addAttribute("noofrows",5);   
     model.addAttribute("currentpage",page);
-    model.addAttribute("menu","documenttype");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","viewall");
     
     return "documenttype_list";
@@ -161,10 +161,10 @@ public String viewalldocumenttypereport(HttpServletRequest request,ModelMap mode
 
   	model.addAttribute("noofrows",5);    
    //narrativereportForm.getNarrativereport().size()
-    model.addAttribute("menu","documenttype");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","close");
       
-    	model.addAttribute("menu","documenttype");
+    	model.addAttribute("menu","admin");
         model.addAttribute("success","false");
         model.addAttribute("button","close");
         return "documenttype_list";

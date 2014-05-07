@@ -38,7 +38,7 @@ public class FormPrefixController {
 	
 	public String addFormPrefix(HttpSession session,ModelMap model, Principal principal) {
 		session.removeAttribute("formprefix");
-		model.addAttribute("menu","formprefix");
+		model.addAttribute("menu","admin");
 		return "add_prefixform";
 	}
 
@@ -60,14 +60,14 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 		FormFormPrefix formFormPrefix = new FormFormPrefix();
 		formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
 		model.addAttribute("formFormPrefix",formFormPrefix);
-		model.addAttribute("menu","formprefix");
+		model.addAttribute("menu","admin");
 	return "formprefix_list";
 }
 	
 @RequestMapping(value="/formprefix_list", method=RequestMethod.GET)
 public String Formprefixlist(HttpServletRequest request,ModelMap model, Principal principal) {
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
-	model.addAttribute("menu","formprefix");
+	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	
 	
@@ -89,7 +89,7 @@ public String viewprefixreport_page(HttpServletRequest request,@RequestParam("pa
 	model.addAttribute("formFormPrefix",formFormPrefix);	
   	model.addAttribute("noofrows",5);   
     model.addAttribute("currentpage",page);
-    model.addAttribute("menu","formprefix");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","viewall");
     
     return "formprefix_list";
@@ -104,10 +104,10 @@ public String viewallprefixreport(HttpServletRequest request,ModelMap model, Pri
 	model.addAttribute("formFormPrefix",formFormPrefix);
 
   	model.addAttribute("noofrows",5);    
-    model.addAttribute("menu","formprefix");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","close");
       
-    	model.addAttribute("menu","formprefix");
+    	model.addAttribute("menu","admin");
         model.addAttribute("success","false");
         model.addAttribute("button","close");
         return "formprefix_list";
@@ -120,7 +120,7 @@ public String editformprefix_get(@RequestParam("id") String id,FormPrefix formPr
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
 	formFormPrefix.setFormPrefixs(formprefixDAO.getformPrefixs(id));
 	model.addAttribute("formFormPrefix",formFormPrefix);
-	model.addAttribute("menu","formprefix");
+	model.addAttribute("menu","admin");
     return "edit_formprefix";
 }
 
@@ -142,7 +142,7 @@ public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Va
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
 	formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
 	model.addAttribute("formFormPrefix",formFormPrefix);
-	model.addAttribute("menu","formprefix");
+	model.addAttribute("menu","admin");
     return "formprefix_list";
 }
 
@@ -155,7 +155,7 @@ public String deletemaintenance(@RequestParam("id") String id,FormPrefix formPre
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
 	formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
 	model.addAttribute("formFormPrefix",formFormPrefix);
-	model.addAttribute("menu","formprefix");
+	model.addAttribute("menu","admin");
     return "formprefix_list";
 	
 }

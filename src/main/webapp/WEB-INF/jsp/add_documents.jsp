@@ -12,7 +12,7 @@
      <tr>
         <td>
         <div>
-  						<ul class="horizmenu" style=" float:left;margin-left:190px;">
+  						<ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;" >
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>

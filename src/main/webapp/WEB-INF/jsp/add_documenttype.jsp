@@ -12,19 +12,19 @@
       <tr>
       <td>
       <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:205px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_documenttype" class="<c:choose>
-								<c:when test="${menu=='documenttype'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add DocumentType</span>
+								<c:when test="${menu=='documenttype'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span">Add DocumentType</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documenttype_list" class="<c:choose>
-								<c:when test="${menu=='documenttype'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View DocumentType</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>View DocumentType</span>
 								</a>
 							</li>
 				          

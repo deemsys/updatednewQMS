@@ -44,28 +44,6 @@ else
 <div>
   <ul class="horizmenu">
 						
-	
-				             <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
-								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Add Form
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
-								<a href="view_form" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									View Form
-									
-								</a>
-							</li>
-				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
-								<a href="form_report" class="<c:choose>
-								<c:when test="${menu=='document'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Form Report
-									
-								</a>
-							</li>
 							 <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="formdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">

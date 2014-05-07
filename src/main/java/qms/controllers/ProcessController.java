@@ -38,7 +38,7 @@ public class ProcessController
 		
 		public String addProcess(HttpSession session,ModelMap model, Principal principal) {
 			session.removeAttribute("controlprocess");
-			model.addAttribute("menu","controlprocess");
+			model.addAttribute("menu","admin");
 			return "add_process";
 		}
 
@@ -60,7 +60,7 @@ public class ProcessController
 			ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
-			model.addAttribute("menu","controlprocess");
+			model.addAttribute("menu","admin");
 		return "process_list";
 	}
 
@@ -69,7 +69,7 @@ public class ProcessController
 	public String Processlist(HttpServletRequest request,ModelMap model, Principal principal) {
 		
 		ProcessForm processForm = new ProcessForm();
-		model.addAttribute("menu","controlprocess");
+		model.addAttribute("menu","admin");
 	  	model.addAttribute("noofrows",5);
 	  	processForm.setProcesses(processDAO.getlimitedprocessreport(1));
 		model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
@@ -89,7 +89,7 @@ public class ProcessController
 		model.addAttribute("processForm",processForm);	
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
-	    model.addAttribute("menu","controlprocess");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","viewall");
 	    
 	    return "process_list";
@@ -103,7 +103,7 @@ public class ProcessController
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm",processForm);
 	  	model.addAttribute("noofrows",5);    
-	    model.addAttribute("menu","controlprocess");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
 	    model.addAttribute("success","false");
 	    return "process_list";
@@ -117,7 +117,7 @@ public class ProcessController
 		ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.processes(process_id));
 		model.addAttribute("processForm",processForm);
-		model.addAttribute("menu","controlprocess");
+		model.addAttribute("menu","admin");
 	    return "edit_process";
 	}
 	
@@ -138,7 +138,7 @@ public class ProcessController
 		ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm",processForm);
-		model.addAttribute("menu","controlprocess");
+		model.addAttribute("menu","admin");
 	    return "process_list";
 	}
 

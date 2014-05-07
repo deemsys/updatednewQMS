@@ -40,7 +40,7 @@ public class DocumentPrefixController {
 	
 	public String addDocumentPrefix(HttpSession session,ModelMap model, Principal principal) {
 		session.removeAttribute("documentprefix");
-		model.addAttribute("menu","documentprefix");
+		model.addAttribute("menu","admin");
 		return "add_prefixdocument";
 	}
 
@@ -62,14 +62,14 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 		DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
 		documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 		model.addAttribute("documentPrefixForm",documentPrefixForm);
-		model.addAttribute("menu","documentprefix");
+		model.addAttribute("menu","admin");
 	return "documentprefix_list";
 }
 	
 @RequestMapping(value="/documentprefix_list", method=RequestMethod.GET)
 public String documentprefixlist(HttpServletRequest request,ModelMap model, Principal principal) {
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
-	model.addAttribute("menu","documentprefix");
+	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	
 	
@@ -111,7 +111,7 @@ public String viewalldocumentprefixreport(HttpServletRequest request,ModelMap mo
     model.addAttribute("menu","documentprefix");
     model.addAttribute("button","close");
       
-    	model.addAttribute("menu","documentprefix");
+    	model.addAttribute("menu","admin");
         model.addAttribute("success","false");
         model.addAttribute("button","close");
         return "documentprefix_list";
@@ -124,7 +124,7 @@ public String editdocumentprefix_get(@RequestParam("id") String id,FormPrefix fo
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
 	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getdocumentPrefixs(id));
 	model.addAttribute("documentPrefixForm",documentPrefixForm);
-	model.addAttribute("menu","documentprefix");
+	model.addAttribute("menu","admin");
     return "edit_documentprefix";
 }
 
@@ -147,7 +147,7 @@ public String update_documentprefix(ModelMap model,@ModelAttribute("DocumentPref
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
 	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 	model.addAttribute("documentPrefixForm",documentPrefixForm);
-	model.addAttribute("menu","documentprefix");
+	model.addAttribute("menu","admin");
     return "documentprefix_list";
 }
 
@@ -160,7 +160,7 @@ public String deletedocumentprefix(@RequestParam("id") String id,DocumentPrefix 
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
 	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 	model.addAttribute("documentPrefixForm",documentPrefixForm);
-	model.addAttribute("menu","documentprefix");
+	model.addAttribute("menu","admin");
     return "documentprefix_list";
 	
 }

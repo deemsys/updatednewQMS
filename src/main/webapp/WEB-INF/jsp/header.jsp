@@ -23,7 +23,7 @@
 .menubuttonsub {
   text-decoration: none;
   color: #fff;
-  padding: 10px;
+  padding: 5px;
   text-transform: uppercase;
   display: inline-block;
   text-shadow: -2px 2px 0 rgba(0, 0, 0, 0.2);
@@ -270,6 +270,15 @@
 						  		<c:if test="${role==0}">
 							
 							<li>
+							
+								<a href="#" class="<c:choose>
+								<c:when test="${menu=='admin'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>" rel="ddsubmenu2">
+									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />ADMIN SET-UP ROLES</span>
+								</a>
+							
+							</li>
+							<br>
+							<li>
 								<a href="add_maintenance" class="<c:choose>
 								<c:when test="${menu=='maintenance'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:-5px 0px 0 0;" />Maintenance & Calibration</span>
@@ -334,34 +343,7 @@
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
 								</a>
 							</li>
-							<br>
-							<li>
 							
-								<a href="#" class="<c:choose>
-								<c:when test="${menu==''}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>" rel="ddsubmenu2">
-									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />ADMIN SET-UP ROLES</span>
-								</a>
-							
-							</li>
-				            <br>
-				            <li>
-				            
-								<a href="add_prefixdocument" class="<c:choose>
-								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
-									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Prefix</span>
-								</a>
-							</li>
-							
-							
-							<br>
-							<li>
-								<a href="add_documenttype" class="<c:choose>
-								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
-									<span ><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />DocumentType</span>
-								</a>
-							</li>
-							</ul>
-							</li>
 							</c:if>
 							<c:if test="${role==1}">
 							
@@ -445,10 +427,14 @@
 							<li ><a href="maintenance_list">View Maintenance</a></li>
 					</ul>
 						<ul id="ddsubmenu2" class="ddsubmenustyle">
+						<li><a href="add_prefixdocument">Prefix for Document/Rec ID</a></li>
 							<li ><a href="add_prefixform">prefix for Form/Rec ID</a></li>
 				            <li ><a href="add_formlocation">Location</a></li>
 				            <li><a href="add_process">Process</a></li>
-							<li><a href="formdelete">Delete Forms</a></li>
+				            <li><a href="add_documenttype">Document Type</a></li>
+							 <li><a href="formdelete">Delete Forms</a></li>
+							 <li><a href="documentdelete">Delete Documents</a></li>
+							 
 							</ul>
 						<ul id="ddsubmenu3" class="ddsubmenustyle">
 							<li><a href="addcustomer">Add Customer</a></li>        
