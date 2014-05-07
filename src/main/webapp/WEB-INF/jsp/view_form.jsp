@@ -68,7 +68,7 @@
 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="20%">Process:</td>
+							    <td align="left" valign="middle" width="20%">Process Area </td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx2" id="recordtitle"></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" value="Find" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
@@ -352,4 +352,4 @@ function subhide()
 }
 
 </script>
-<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+ <jsp:include page="footer.jsp"></jsp:include> 

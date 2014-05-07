@@ -44,7 +44,7 @@
 	 <table cellpadding="0" cellspacing="0" border="0" width="300"%>
 	 <td>
 	
-		        <p><font color="#993300">Email-Id&nbsp;&nbsp;&nbsp;:</font></p>
+		        <p><font color="#993300">Email ID &nbsp;&nbsp;&nbsp;:</font></p>
 		     </td>
 		     
 		       <td valign="top" align="left"> <input type="text" class="inputbx1" style="border:solid 1px brown;" name="j_username" value=''>
@@ -55,7 +55,7 @@
 		      <li>
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
 		      <td>
-		        <p><font color="#993300">Password :</font></p>
+		        <p><font color="#993300">Password &nbsp;&nbsp;:</font></p>
 		        </td>
 		      
 		      

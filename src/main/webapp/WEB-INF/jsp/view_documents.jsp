@@ -172,8 +172,8 @@
 											<td valign="top" align="left" width="10%">${revision.approver3}</td>
 											<td valign="top" align="left" width="10%">${revision.comments}</td>
 											<td valign="top" align="left" width="10%">${revision.status}</td>
-											<%-- <td valign="top" align="left" width="10%">${revision.revision_id}</td>
-											 --%>	</a>
+											 <td valign="top" align="left" width="10%">${revision.revision_id}</td>
+												</a>
 										</tr>
 									
 									</c:if>

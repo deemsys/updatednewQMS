@@ -119,7 +119,7 @@ public class RevisionDocumentDAO {
 		List<RevisionDocument> revisionDocuments = new ArrayList<RevisionDocument>();
 		    try{
 	    	System.out.println("select * from tbl_revisiondocument where auto_number='"+auto_number+"'");
-			resultSet = statement.executeQuery("select * from tbl_revisiondocument where auto_number='"+auto_number+"'");
+			resultSet = statement.executeQuery("select * from tbl_revisiondocument where auto_number='"+auto_number+"'ORDER BY revision_id DESC");
 			while(resultSet.next()){
 				revisionDocuments.add(new RevisionDocument(
 						 resultSet.getString("auto_number")
@@ -153,9 +153,10 @@ public class RevisionDocumentDAO {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet1 = null;
 		boolean status=false;
 		System.out.println("auto_number = "+auto_id);
-		String revision_no="",documentid="",issuer="",revisionlevel="",date="",approver1="",approver2="",approver3="", status1="",comments="";
+		String revision_no="",documentid="",issuer="",revisionlevel="",date="",approver1="",approver2="",approver3="", status1="",comments="",revision_number="";
 		 
 		 
 		  document.getDocument_id();
@@ -180,8 +181,9 @@ public class RevisionDocumentDAO {
 			  System.out.println("inserting into revision table");
 			  int revision_id =0;
 			  String documnet = new String(documentMain.getDocument_id());
+			  System.out.println("document id #####= "+documnet);
 			  String approver = new String(document.getApprover1());
-			  
+			  int update=0;
 			  System.out.println("update approver= "+approver);
 			  String[] split = approver.split(",");
 			  String[] doc = documnet.split(",");
@@ -212,6 +214,23 @@ public class RevisionDocumentDAO {
 					   revision_no = resultSet.getString("revision_id");
 					   
 				  }
+			  resultSet1 =statement.executeQuery("select revision_id from tbl_revisiondocument where auto_number='"+auto_id+"'");
+				while(resultSet1.next())
+				{
+					revision_number = resultSet1.getString("revision_id");
+					System.out.println("revision numner= "+revision_number);
+					if(revision_number.equals(document.getRevision_id()))
+					{
+						System.out.println("updte befor= "+update);
+						 update = 1;
+						 System.out.println("updte after= "+update);
+					}
+				}
+				if(update == 1)
+				{
+					statement.executeUpdate("update tbl_revisiondocument set document_id='"+document.getDocument_id()+"',issuer='"+document.getIssuer()+"',revision_level='"+document.getRevision_level()+"',date='"+document.getDate()+"',approver1='"+approver11+"',approver2='"+document.getApprover2()+"',approver3='"+document.getApprover3()+"',comments='"+document.getComments()+"',status='"+document.getStatus()+"' where auto_number='"+auto_id+"' and revision_id='"+document.getRevision_id()+"'");
+				}
+				else
 		  if((!document_number.equals(documentid))|| (!documentMain.getIssuer().equals(issuer))||(!documentMain.getRevision_level().equals(revisionlevel))|| (!documentMain.getDate().equals(date))||(!documentMain.getApprover1().equals(approver1))|| (!documentMain.getApprover2().equals(approver2))|| (!documentMain.getApprover3().equals(approver3))|| (!documentMain.getComments().equals(comments))|| (!documentMain.getStatus().equals(status1))||  (!documentMain.getRevision_id().equals(revision_no)))
 			  {	
 			 String cmd_insert2;	

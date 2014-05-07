@@ -263,11 +263,11 @@ $(window).load(function(){
 			  <td valign="middle" align="left" class="input_txtbx1">&nbsp;&nbsp;
 			  <input type="text" name="revision_id" id="revisionid" value="${documentMain.revision_id}" onclick="revision_change()" class="input_txtbx1" ></td>
               
-              <%-- <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Document Id :</td>
+             <!--   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Document Id :</td> -->
 			  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;<input type="hidden" class="input_txtbx1" id="documentid"
 			  name="document_id" value="${documentMain.document_id}" style="display:none;" />
-			  <b id="hide_id">${documentMain.document_id}</b><br/></td>
-			  </tr> 	 --%>
+			  <%-- <b id="hide_id">${documentMain.document_id}</b><br/> --%></td>
+			  </tr>
 		      <tr class="row1" style="border:none;">
             <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Issuer:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
