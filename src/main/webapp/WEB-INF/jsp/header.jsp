@@ -334,28 +334,25 @@
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
 								</a>
 							</li>
-							<li>
 							<br>
+							<li>
+							
 								<a href="#" class="<c:choose>
-								<c:when test="${menu==''}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>" rel="ddsubmenu2">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />ADMIN SET-UP ROLES</span>
 								</a>
 							
-							<ul>
+							</li>
 				            <br>
 				            <li>
+				            
 								<a href="add_prefixdocument" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Prefix</span>
 								</a>
 							</li>
-							<br>
-							<li>
-								<a href="add_documentlocation" class="<c:choose>
-								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
-									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Location</span>
-								</a>
-							</li>
+							
+							
 							<br>
 							<li>
 								<a href="add_documenttype" class="<c:choose>
@@ -448,11 +445,11 @@
 							<li ><a href="maintenance_list">View Maintenance</a></li>
 					</ul>
 						<ul id="ddsubmenu2" class="ddsubmenustyle">
-							<li ><a href="add_nonconformance">Add NonConformance</a></li>
-				            <li ><a href="view_nonconformance">View Details</a></li>
-				            <li><a href="showaddparticipantgroups">Add Participant Groups</a></li>
-							<li><a href="viewparticipantgroups">View Participant Groups</a></li>
-						</ul>
+							<li ><a href="add_prefixform">prefix for Form/Rec ID</a></li>
+				            <li ><a href="add_formlocation">Location</a></li>
+				            <li><a href="add_process">Process</a></li>
+							<li><a href="formdelete">Delete Forms</a></li>
+							</ul>
 						<ul id="ddsubmenu3" class="ddsubmenustyle">
 							<li><a href="addcustomer">Add Customer</a></li>        
 				            <li><a href="viewcustomers">View Customers</a></li>

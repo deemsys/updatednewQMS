@@ -1,7 +1,25 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="/QMS_App/resources/js/jquery.js"></script>
+	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+ <script type="text/javascript" src="js/ajaxpaging.js">
+    <script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
+        });
+    </script>   
 
-<script type="text/javascript" src="js/ajaxpaging.js"></script>
 
 <div id="right_content">
 	
@@ -78,8 +96,8 @@
 							</table>
 							
 						</div></form>
-						<form name="grid"  action="" method="POST">
-				        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+						<form name="grid"  action="" method="POST" name="dashboard">
+				        <table cellpadding="0" cellspacing="0" border="0" width="100%" id="report">
 				        
 				        
 							<tr class="title">
@@ -133,11 +151,39 @@
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:10px;">Edit</a>
 								<%-- 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="view_revision_history?document_id=${documentMains.document_id}"></c:out>" style="padding-right:10px;">View Revision History</a>
-								 --%>			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
+								 --%>			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>#current">View Revision History</a>
+											
 													
 											</td>
 										</tr>
-							    	</c:forEach>
+							    	
+										<c:forEach items="${revisionDocumentForm.revisionDocuments}" var="revision" varStatus="status">
+										<c:if test="${revision.auto_number == documentMains.auto_number}">
+									
+									
+										<tr class="row2" style="color:#0000A0; font-style: inherit;">
+										<a name="current">
+										 	<%--  <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
+											 --%><td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<%-- <td valign="top" align="left" width="10%">${revision.revision_level}</td>
+											 --%><td valign="top" align="left" width="10%">${revision.date}</td>
+											<td valign="top" align="left" width="10%">${revision.approver1}</td>
+											<td valign="top" align="left" width="10%">${revision.approver2}</td>
+											<td valign="top" align="left" width="10%">${revision.approver3}</td>
+											<td valign="top" align="left" width="10%">${revision.comments}</td>
+											<td valign="top" align="left" width="10%">${revision.status}</td>
+											<%-- <td valign="top" align="left" width="10%">${revision.revision_id}</td>
+											 --%>	</a>
+										</tr>
+									
+									</c:if>
+										</c:forEach>
+										 </c:forEach>
+										</table>
+									   
+									    
+								
+							    	
 						<tr><td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">
@@ -173,19 +219,9 @@
 		  </div>
 		  </td>
 		  </tr>
-		 
-
-
-						    	
-						
-						
-						</table></form>
-					</div>
-				</td>
-			</tr>
-		</table> 
-	
-</div>
+		  </table>
+		  </div>
+		  
 
 <script>
 function confirmation(val) {
@@ -242,110 +278,54 @@ return true;
 <script type="text/javascript">
 
 
-/*  function show_more_views() {
-  	 alert("hi");
- var proceee_name = '';
- $('#autonumber1 tr').each(function (i, row) {
-   
-	   if (proceee_name == '') {
-		      proceee_name = $(this).find("td:first").html();
-		     }
-		     else{
-		      proceee_name = proceee_name + ',' + $(this).find("td:first").html();
-		     }
-		     
-		      });
-  		var proceee_name = $('#autonumber').val();
-  		alert(proceee_name);
-  	
-        */
-        
         $(function () {
-					//alert("good");
-					$("a[data-bind-action='toggle-content']").click(toggleContent);
-					function toggleContent(){
-      	  	    	// alert("hi");
-      	  	   var proceee_name = '';
+			//alert("good");
+			$("a[data-bind-action='toggle-content']").click(toggleContent);
+			function toggleContent(){
+	  	    	
+	  	   var proceee_name = '';
 
-      	 // $('#autonumber1 tr').each(function() {
-      		
-      		 
-      	   //   $.each(this.cells, function(){
-      	/*   alert($(this).html()); */
-      	    	  if (proceee_name == '') {
-      			   //  proceee_name = $(this).find("td:first").html();
-      			  //   proceee_name = $(this).parents('tr').find('td:eq(0) input').val();
-      			     var $td= $(this).closest('tr').children('td');  
-      			     
-      			     
-      			      proceee_name= $td.eq(0).text();  
-      			     // alert(proceee_name);
-      			     }
-      			     else{
-      			      proceee_name = proceee_name + ',' + $(this).find("td:first").html();
-      			     }
-      			     
-      			    //  });
-      	    		//proceee_name = $('#autonumber').val();
-      	     // });
-      	  	
-      	 
-      	  	    		//alert(proceee_name);
-  		$.ajax({
-  			
-  			type : "POST",
-  			url : "/QMS_App/ajax_getrevisiondoc",
-  			data : "auto_number=" + proceee_name,
-  			success : function(response) {
-  	              
-  	             // alert("response= "+response);
-  	              
-  		       $('#process_owner_id').html(response);
-  				
-  			},
-  			error : function(e) {
-  				alert('Error: ' + e);
-  			}
-  		});
-					}
-  	});
-
- 
-
-
-
-
-
-
-
-
-
-
-/* 
-
-function show_more_views() {
-	 alert("hi");
-		var proceee_name = $('#autonumber').val();
-		alert(proceee_name);
-		   var education = $('#education').val();		
-		$.ajax({
-			
-			type : "POST",
-			url : "/QMS_App/ajax_getrevisions",
-			data : "auto_number=" + proceee_name,
-			success : function(response) {
-	              
-	              alert("response= "+response);
-	              
-		       $('#process_owner_id').html(response);
-				
-			},
-			error : function(e) {
-				alert('Error: ' + e);
+	 // $('#autonumber1 tr').each(function() {
+		
+		 
+	   //   $.each(this.cells, function(){
+	/*   alert($(this).html()); */
+	    	  if (proceee_name == '') {
+			   var $td= $(this).closest('tr').children('td');  
+			     
+			     
+			      proceee_name= $td.eq(0).text();  
+			     
+			  
+			     }
+			     else{
+			    	
+			      proceee_name = proceee_name + ',' + $(this).find("td").html();
+			     }
+			     
+			   
+	$.ajax({
+		
+		type : "POST",
+		url : "/QMS_App/ajax_getrevisionsdoc",
+		data : "auto_number=" + proceee_name,
+		success : function(response) {
+              
+             // alert("response= "+response);
+              
+	       $('#process_owner_id').html(response);
+      	    			},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+	
+	
+	
 			}
-		});
-	} */
-</script>
+});
+
+
 
 <script>
 function findpart()
@@ -354,6 +334,14 @@ function findpart()
 // alert(document.getElementById("group").value);
 // alert(document.getElementById("city").value);
 window.location="?do=viewparticipants&moblie="+document.getElementById("moblie").value+"&group="+document.getElementById("group").value+"&city="+document.getElementById("city").value;
+}
+
+
+
+function subhide()
+
+{
+	document.getElementById('subrow').style.display="block";
 }
 </script>
 

@@ -643,7 +643,7 @@ public class FormController
 		
 		
 		model.addAttribute("formForm", formForm);
-        model.addAttribute("menu","form");
+		model.addAttribute("menu","document");
         
 		 model.addAttribute("formForm",formForm);
 		
@@ -662,7 +662,7 @@ public class FormController
 		
 		
 		model.addAttribute("formForm", formForm);
-     model.addAttribute("menu","form");
+     model.addAttribute("menu","document");
      
 		 model.addAttribute("formForm",formForm);
 		
@@ -676,7 +676,7 @@ public class FormController
 		 ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm", processForm);
-
+			model.addAttribute("menu","document");
 	        return "form_report";
 	 	}
 	 

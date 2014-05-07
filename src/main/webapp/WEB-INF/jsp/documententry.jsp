@@ -24,7 +24,7 @@
             </form>
             <form method="get" enctype="multipart/form-data" action="addform">
              <td colspan="3">
-            <input type="submit" id="form"  name="FORM" value="Forms/Records" class="menubuttonsub blue"></td>
+            <input type="submit" id="form" name="FORM" value="Forms/Records" class="menubuttonsub blue"></td>
 </tr></table></div>
 </form>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

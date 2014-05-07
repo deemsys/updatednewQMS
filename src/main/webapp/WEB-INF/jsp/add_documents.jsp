@@ -1,6 +1,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="/QMS_App/resources/js/jquery.js"></script>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <link rel="stylesheet" href="http://s.codepen.io/assets/reset/normalize.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery-ui.js"></script>  	
@@ -46,7 +48,7 @@
               <h2>&nbsp;&nbsp;Document Details</h2> 
             </div> -->
             <div class="contentbox">
-             <h2><b>&nbsp;&nbsp;Document Details</b></h2>
+           <h1 style="color:#7A3A3A;font-size:20px;">Document Details</h1>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
@@ -105,10 +107,10 @@
               
               <tr class="row2">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Title:</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label" ><span class="err"> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err"> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
@@ -120,7 +122,7 @@
               
                </td>
           
-           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err"></td>
+           <td valign="middle" id="softcopy_file_label" style="display:none;" align="left" class="input_txt" width="20%"><span class="err"></td>
                <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
      
           
@@ -129,7 +131,7 @@
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Document Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Type:</td>
               <td valign="top" align="left" class="input_txt" width="25%">
               <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
@@ -156,7 +158,7 @@
                </select><br/>
                <span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span>
                </td> --%>
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">Process:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">Process:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
@@ -176,7 +178,7 @@
              </tr> 
              <tr class="row2">
               
-               <td valign="middle" align="right" class="input_txt" width="25%">
+               <td valign="middle" align="left" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -206,7 +208,7 @@
  <div class="headings altheading">
               <h2>&nbsp;&nbsp;Revision Details</h2> -->
                 <div class="contentbox">
-           <h2><b>&nbsp;&nbsp;Revision Details</b></h2>
+           <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               
               
@@ -225,7 +227,7 @@
 </tr>             
              <tr class="row1" style="border:none;">
            
-            <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Issuer:</td>
+            <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
                <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" onblur="change_to_label_issuer();" style="width:80px;">
                <option value="">--Select--</option>
@@ -271,7 +273,7 @@
            <%-- <a href="#" style="text-decoration: none;" onclick="show_filter()">&nbsp;&nbsp;Change</a>
                <br/><span class="err"><form:errors path="DocumentMain.issuer"></form:errors></span></td>
             --%> 
-                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">Approver 1(Process Owner):</td>
+                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">Approver 1(Process Owner):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                <span id="process_owner_id"></span>
                            
@@ -283,7 +285,7 @@
                  </tr>  
               <tr class="row2" style="border:none;">
               
-                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Revision Level:</td>
+                <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Revision Level:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="revision_level" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
               <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">Approver 2(Doc Control):</td>
@@ -310,7 +312,7 @@
              </tr>
              <tr class="row1" style="border:none;">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">Date:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Date:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
                 <td valign="middle" align="right" class="input_txt" width="20%">
@@ -337,10 +339,10 @@
            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
              </tr>  
               <tr class="row2" style="border:none;">
-                 <td valign="middle" align="right" class="input_txt"><span class="err">Comments:</td>
+                 <td valign="middle" align="left" class="input_txt"><span class="err">Comments:</td>
                <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/><span class="err"></span></td>
          
-               <td valign="top" align="right" class="input_txt" width="20%"><span class="err">Status:</td>
+               <td valign="top" align="left" class="input_txt" width="20%"><span class="err">Status:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
               
                
@@ -405,11 +407,11 @@ else if(value==2)
 }
 </script>
          <script>
- $(function() {
-	
-           $( "#datepicker123" ).datepicker({dateFormat:"yy-mm-dd"});
-         });
- 
+         $(function() {
+        	 
+             $( "#datepicker" ).datepicker();
+             $( "#datepicker123" ).datepicker();
+           });
 </script>
 
 <script type="text/javascript">

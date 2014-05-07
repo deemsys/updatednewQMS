@@ -182,7 +182,7 @@ public class DocumentController {
 	}	
 	
 
-	@RequestMapping(value = "/view_revision_history", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/view_revision_history", method = RequestMethod.GET)
 	public String revision_history(@RequestParam("document_id") String document_id,@RequestParam("auto_number")String auto_number,HttpSession session ,ModelMap model, Principal principal) 
 	{
 		  System.out.println("inside history");
@@ -199,8 +199,34 @@ public class DocumentController {
 		
 		return "view_documents";
 	}
-	
-	
+	*/
+	@RequestMapping(value={"/review_history_document"}, method = RequestMethod.GET)
+	public String review_history_document(HttpSession session,@RequestParam("auto_number") String auto_number,ModelMap model)
+	{
+    
+		
+		DocumentMainForm documentMainForm=new DocumentMainForm();
+		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
+		model.addAttribute("documentMainForm",documentMainForm);
+
+	  	model.addAttribute("noofrows",5);    
+	  	model.addAttribute("menu","documentMain");
+	    model.addAttribute("button","close");
+	      
+	   
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    model.addAttribute("display","show");
+	    
+		 String number = auto_number.trim();
+		    System.out.println("auto_number= "+number);
+			
+		    RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
+		    revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(number));
+			 model.addAttribute("revisionDocumentForm",revisionDocumentForm);
+		return "view_documents";
+ 	}
+
 	
 	//edit a record
 	@RequestMapping(value = "/edit_document", method = RequestMethod.GET)

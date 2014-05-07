@@ -1,7 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
-	<script src="/QMS_App/resources/js/jquery.js"></script>
-	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="/QMS_App/resources/js/jquery.js"></script>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 <script type='text/javascript' src='//code.jquery.com/jquery-1.10.1.js'></script>
  <link href="resources/css/buttonQMS.css" rel="stylesheet"	type="text/css"  />
  
@@ -67,10 +69,10 @@ $(window).load(function(){
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>&nbsp;&nbsp;Update Document</h2>
+            <h1 style="color:#7A3A3A;font-size:20px;">Document Details</h1>
             </div>
             <div class="contentbox">
-            <h2><b>&nbsp;&nbsp;Document Details</b></h2>
+			
             <c:set value="${documentMainForm.documentMains[0]}" var="documentMain"></c:set>
               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              
@@ -246,19 +248,26 @@ $(window).load(function(){
              
           -->
                 <div class="contentbox">
-           <h2><b>&nbsp;&nbsp;Revision Details</b></h2>
+			 <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
          
+         <tr class="row2">
+             <td valign="top" align="left" width="15%">
+            <!--  <a href="#" style="padding-right:10px;" onclick="reset_form()">Enter New Revision</a> -->
+             <input type="button" value="Enter New Revision" onClick="reset_form()"/>
+             </td>
+             </tr>
               <tr>
-              <td valign="top" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Document Id :</td>
-			  <td valign="top" align="left" class="input_txt">&nbsp;&nbsp;<input type="text" class="input_txtbx1" id="documentid"
+              <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Revision No. (optional):</td>
+			  <td valign="middle" align="left" class="input_txtbx1">&nbsp;&nbsp;
+			  <input type="text" name="revision_id" id="revisionid" value="${documentMain.revision_id}" onclick="revision_change()" class="input_txtbx1" ></td>
+              
+              <%-- <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Document Id :</td>
+			  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;<input type="hidden" class="input_txtbx1" id="documentid"
 			  name="document_id" value="${documentMain.document_id}" style="display:none;" />
 			  <b id="hide_id">${documentMain.document_id}</b><br/></td>
-			  <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Revision No. (optional):</td>
-			  <td valign="top" align="left" class="input_txtbx1">&nbsp;&nbsp;
-			  <input type="text" name="revision_id" id="revisionid" value="${documentMain.revision_id}" onclick="revision_change()" class="input_txtbx1" ></td></tr>
-               	
+			  </tr> 	 --%>
 		      <tr class="row1" style="border:none;">
             <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Issuer:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
@@ -290,7 +299,7 @@ $(window).load(function(){
               <tr class="row2" style="border:none;">
               
                 <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Revision Level:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="revision_level" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="revisionlevel" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
               <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Approver 2(Doc Control):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -316,7 +325,7 @@ $(window).load(function(){
              <tr class="row1" style="border:none;">
               
                <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
                <td valign="middle" align="left" class="input_txt" width="70%"><span class="err">*</span>Approver 3(Mgmt Report):</td>
@@ -501,6 +510,28 @@ function show_edit()
 			  revisionid.value = parseInt(value)+parseFloat(inc);
 			}
 	}
+	
+	
+	function reset_form()
+	{
+		
+		
+		document.getElementById('revisionid').value="0";
+		document.getElementById('datepicker').value="";
+		document.getElementById('issuer').value="";
+		document.getElementById('comments').value="";
+		document.getElementById('revisionlevel').value="";
+		document.getElementById('approver2').value="";
+		document.getElementById('approver3').value="";
+		document.getElementById('status').value="";
+	 
+	}
+	
+ $(function() {
+    	 
+         $( "#datepicker" ).datepicker();
+         $( "#datepicker123" ).datepicker();
+       });
 </script>	
 
 
