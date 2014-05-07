@@ -44,8 +44,11 @@
       
       <tr>
         <td valign="top" align="left">
+        <!--  <div class="headings altheading">
+              <h2>&nbsp;&nbsp;Form Details</h2>
+            </div> -->
             <div class="contentbox">
-             <h2><b>&nbsp;&nbsp;Form Details</b></h2>
+            <h1 style="color:#7A3A3A;font-size:20px;">Form Details</h1>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
@@ -209,7 +212,7 @@
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
              
-             <h2><b>Revision Details</b></h2> 
+             <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
 <br>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >

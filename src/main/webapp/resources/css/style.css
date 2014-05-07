@@ -176,6 +176,17 @@ ul.login-list li p {
 	-moz-border-radius-bottomright: 10px;
 	-moz-border-radius-bottomleft: 10px;
 }
+.contentbox1 {
+	overflow: auto;
+	border: 1px solid #fff;
+	padding: 15px;
+	margin-left:18px; 
+	background-color: #FFFFD6; /* url(../images/bg_fade_med.png) repeat-x top; */
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+}
 .nopad {
 	padding: 0;
 }

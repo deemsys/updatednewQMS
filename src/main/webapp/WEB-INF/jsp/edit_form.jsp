@@ -45,12 +45,12 @@
               <h2>&nbsp;&nbsp;Update Form</h2>
             </div>
             <div class="contentbox">
-            <h2><b>Form Details</b></h2>
+            <h1 style="color:#7A3A3A;font-size:20px;">Form Details</h1>
     <c:set value="${formForm.form[0]}" var="form"/>        
 	<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 	
 	          <tr class="row2">
-                            <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Form/Rec ID :</td>
+                            <td valign="middle" align="left" class="input_txt">Form/Rec ID :</td>
 			<td valign="top" align="left" class="input_txt" >
 			
 			<a id="formid">
@@ -79,8 +79,7 @@
             
                
               
-																		<td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Responsibility :</td>
+																		<td valign="middle" align="left" class="input_txt">Responsibility :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -107,8 +106,7 @@
              </tr>
               
               <tr class="row1">
-               <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Form/Rec Title:</td>
+               <td valign="middle" align="left" class="input_txt">Form/Rec Title:</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -117,7 +115,7 @@
 																			value="${form.form_or_rec_title}" /><br/><span class="err"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
-																		<td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Process:</td>
+																		<td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
                <td valign="top" align="left" class="input_txt" >
                
               <%--  <select name="process" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
@@ -148,7 +146,7 @@
                             <td valign="middle" align="left" class="input_txt" width="50%" ><span class="err">*</span>Media Type:</td>
                <td valign="top" align="left" class="input_txt" > -->
                
-<td valign="middle" align="left" class="input_txt" width="40%"><span class="err">*</span>Media Type:</td>
+<td valign="middle" align="left" class="input_txt" width="40%">Media Type:</td>
                <td valign="top" align="left" class="input_txt">
                
                 <!-- <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;<input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span> -->
@@ -173,7 +171,7 @@
                </td>
                 <c:choose>
                 <c:when test="${form.media_type=='hardcopy'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
@@ -210,7 +208,7 @@
               </c:when>
              
               <c:when test="${form.media_type=='both'}">
-              <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label"><span class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+              <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label"> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1">
               <option value="">--Select--</option>
@@ -227,8 +225,7 @@
                </c:choose>
                </tr>
                <tr class="row1">
-																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Retention Time:</td>
+																		              <td valign="middle" align="left" class="input_txt">Retention Time:</td>
 																		<td valign="top" align="left" class="input_txt"><%-- <input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -243,7 +240,7 @@
                </select>
 																		
 																		</td>
-																		<td valign="middle" align="left" class="input_txt"><span class="err">&nbsp;*</span>Form:</td>
+																		<td valign="middle" align="left" class="input_txt">Is this a Form?</td>
 														
 																		<td valign="top" align="left" class="input_txt">
 														<!-- <input
@@ -268,7 +265,7 @@
              
           -->
                 <div class="contentbox">
-           <h2><b>&nbsp;&nbsp;Revision Details</b></h2>
+           <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" id="displayold">
              <tr class="row2">
@@ -279,16 +276,14 @@
              </tr>
               <tr class="row1">
                          
-																		  <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Revision No. (optional):</td>
+																		  <td valign="middle" align="left" class="input_txt">Revision No. (optional):</td>
 																		<td valign="top" align="left" class="input_txt">
 																		
 																  <input type="text" name="revision_id" id="revisionid" value="${form.revision_id}" onclick="revision_change()" class="input_cmbbx1" >
               																	
            													<br/><span class="err"><form:errors path="Form.revision_id"></form:errors></span>
 																		</td>
-																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Effective Date :</td>
+																		              <td valign="middle" align="left" class="input_txt">Effective Date :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -311,8 +306,7 @@
 																		</tr>
               
               <tr class="row2">
-              																	 <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Form/Rec ID :</td>
+              																	 <td valign="middle" align="left" class="input_txt">Form/Rec ID :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="form_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -322,8 +316,7 @@
 																			<b id="hide_id">${form.form_or_rec_id}</b><br/><span class="err"><%-- <form:errors path="Form.document_id"></form:errors> --%></span>
 																		</td>
                           
-																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Approver1(Process Owner) :</td>
+																		              <td valign="middle" align="left" class="input_txt">Approver1(Process Owner) :</td>
 																		<td valign="top" align="left" class="input_txt">
 																		
 																		<span id="process_owner_id"></span>
@@ -338,8 +331,7 @@
 																		</td> </tr>
               
               <tr class="row1">
-                            <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Issuer :</td>
+                            <td valign="middle" align="left" class="input_txt">Issuer :</td>
 																		<td valign="top" align="left" class="input_txt"><%-- <input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -357,8 +349,7 @@
 																		</td>
 																		
 																		
-																		 <td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Comments :</td>
+																		 <td valign="middle" align="left" class="input_txt">Comments :</td>
 																		<td valign="top" align="left" class="input_txt">
 																		<input
 																			type="text" class="input_txtbx1" id="comments"

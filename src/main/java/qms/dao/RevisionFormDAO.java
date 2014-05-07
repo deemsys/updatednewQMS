@@ -163,11 +163,12 @@ public class RevisionFormDAO {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet1 = null;
 		boolean status=false;
 		System.out.println("auto_id = "+auto_id);
 		System.out.println("document_id =" +form.getDocument_id());
-		 String revision_no="",effectivedate="",documentid="",Approver="",issuer="",comments="";
-		 
+		 String revision_no="",effectivedate="",documentid="",Approver="",issuer="",comments="",revision_number="";
+		 int update=0;
 		  form.getRevision_id();
 		  form.getEffective_date();
 		  form.getDocument_id();
@@ -185,7 +186,7 @@ public class RevisionFormDAO {
 		  try{
 			  System.out.println("inserting into revision table");
 			  int revision_id =0;
-			  String approver1 = new String(form.getApprover1());
+			  String approver1 = new String(forms.getApprover1());
 			  String[] split = approver1.split(",");
 			  String approver = split[0];
 			 /* resultSet=statement.executeQuery("select revision_id from tbl_form_child where auto_no='"+auto_id+"'");*/
@@ -207,8 +208,23 @@ public class RevisionFormDAO {
 					 comments= resultSet.getString("comments"); 
 					 System.out.println(comments+" "+forms.getComments());
 			  }
-			  
-			  if((!forms.getRevision_id().equals(revision_no))|| (!forms.getEffective_date().equals(effectivedate))||(!forms.getDocument_id().equals(documentid))|| (!forms.getApprover1().equals(Approver))||(!forms.getIssuer().equals(issuer))|| (!forms.getComments().equals(comments)))
+				 resultSet1 =statement.executeQuery("select revision_id from tbl_revisionform where auto_no='"+auto_id+"'");
+				while(resultSet1.next())
+				{
+					revision_number = resultSet1.getString("revision_id");
+					System.out.println("revision numner= "+revision_number);
+					if(revision_number.equals(form.getRevision_id()))
+					{
+						System.out.println("updte befor= "+update);
+						 update = 1;
+						 System.out.println("updte after= "+update);
+					}
+				}
+				if(update == 1)
+				{
+					statement.executeUpdate("update tbl_revisionform set document_id='"+form.getDocument_id()+"',effective_date='"+form.getEffective_date()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+auto_id+"' and revision_id='"+form.getRevision_id()+"'");
+				}
+				else  if((!forms.getRevision_id().equals(revision_no))|| (!forms.getEffective_date().equals(effectivedate))||(!forms.getDocument_id().equals(documentid))|| (!forms.getApprover1().equals(Approver))||(!forms.getIssuer().equals(issuer))|| (!forms.getComments().equals(comments)))
 			  {	
 			 String cmd_insert2;	
 				 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+form.getRevision_id()+"')";

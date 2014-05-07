@@ -305,60 +305,7 @@ public class FormController
 				}
 
 		 
-			/*byte[] buffer;
-			try {
-				MultipartFile file = form1.getAttachments();
-				String orginal_fileName = null;
-				String duplicate_fileName = null;
-				InputStream inputStream = null;
-				OutputStream outputStream = null;
-				if (file != null) {
-					if (file.getSize() > 0) {
-						inputStream = file.getInputStream();
-						if (file.getSize() > 100000) {
-							System.out.println("File Size:::" + file.getSize());
-							return "/add_form";
-						}
-						orginal_fileName = "C:/QMS/Upload/Documents/"
-								+ file.getOriginalFilename();
-						duplicate_fileName = orginal_fileName;
-						File create_file = new File(orginal_fileName);
-						int i = 1;
-						while (create_file.exists()) {
-							duplicate_fileName = "C:/QMS/Upload/Documents/"
-									+ file.getOriginalFilename().substring(
-											0,
-											file.getOriginalFilename().lastIndexOf(
-													'.'))
-									+ i
-									+ file.getOriginalFilename().substring(
-											file.getOriginalFilename().lastIndexOf(
-													'.'));
-							create_file = new File(duplicate_fileName);
-							i++;
-						}
-						outputStream = new FileOutputStream(duplicate_fileName);
-						System.out
-								.println("fileName:" + file.getOriginalFilename());
-
-						// ------Lines to changes------//
-
-						form1.setAttachment_type(file.getContentType());
-						form1.setAttachment_name(file.getOriginalFilename());
-						form1.setAttachment_referrence(duplicate_fileName);
-
-						// ----End Lines to changed----//
-
-						int readBytes = 0;
-						buffer = new byte[(int) file.getSize()];
-						while ((readBytes = inputStream.read(buffer, 0,
-								(int) file.getSize())) != -1) {
-							outputStream.write(buffer, 0, readBytes);
-						}
-						outputStream.close();
-						inputStream.close();
-
-					}*/
+			
 				}
 				if (true){
 					   System.out.println("document id ****** "+form1.getDocument_id());
