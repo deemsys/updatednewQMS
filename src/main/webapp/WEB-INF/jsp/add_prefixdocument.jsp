@@ -17,16 +17,40 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixdocument" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span>Add Prefix</span>
+									<span>Add Document Prefix</span>
 									
 								</a>
 							</li>
-						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="documentprefix_list" class="<c:choose>
+							
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="add_prefixform" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Prefixes</span>
+									<span>Add Form Prefix</span>
+									
 								</a>
 							</li>
+								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="add_process" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Add process</span>
+									
+								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="add_formlocation" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Add Location</span>
+									
+								</a>
+							</li>
+								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="add_documenttype" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span">Add DocumentType</span>
+									
+								</a>
+							</li>
+						
 				          
 				           </ul>
   </div>

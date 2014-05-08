@@ -370,10 +370,10 @@ public class DocumentControlDAO extends AbstractExcelView
 		  try{
 			  String cmd_delete1="delete from tbl_doccontrol_main where document_id='"+document_id+"'";
 			  String cmd_delete2="delete from tbl_doccontrol_external where document_id='"+document_id+"'";
-				 
+			  String revisiondocument = "delete from tbl_revisiondocument where auto_nummber='"+document_id+"'";
 			  status=statement.execute(cmd_delete1);
 			  status=statement.execute(cmd_delete2);
-				 
+			  status=statement.execute(revisiondocument);
 			
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

@@ -189,11 +189,11 @@
 .ddsubmenustyle li a {
 	display: block;
 	width: 160px;
-	color: #fff;
+	color: #0000;
 	text-decoration: none;
 	padding: 0 10px;
-	background: #0a86af;
-	border-bottom: 1px solid #fff;
+	background: #eee;
+	border-bottom: 1px solid #68491B;
 	font-size: 13px;
 }
 
@@ -203,9 +203,9 @@
 }
 
 .ddsubmenustyle li a:hover {
-	background-color: #eee;
+	background-color: #333333;
 	border-bottom: 1px solid #ccc;
-	color: #333333;
+	color: #eee;
 }
 
 .downarrowpointer {
@@ -353,21 +353,21 @@
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:-5px 0px 0 0;" />Maintenance & Calibration</span>
 								</a>
 							</li>
-				           
+				           <br>
 				            <li>
 								<a href="add_nonconformance" class="<c:choose>
 								<c:when test="${menu=='nonconformance'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span ><img src="<c:url value="/resources/images/icon_03.png" />" alt="" style="padding:5px 5px 0 0;" />Non Conformance</span>
 								</a>
 							</li>
-				             
+				             <br>
 				             <li>
 								<a href="addcustomer" class="<c:choose>
 								<c:when test="${menu=='customer'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/customer.png" />" alt="" style="padding:5px 5px 0 0;" />Customers</span>
 								</a>
 							</li>
-				           
+				           <br>
 				             
 				             <li>
 								<a href="addemployee" class="<c:choose>
@@ -375,14 +375,14 @@
 									<span><img src="<c:url value="/resources/images/emploee.png" />" alt="" style="padding:5px 5px 0 0;" />Employees</span>
 								</a>
 							</li>
-							 
+							 <br>
 				            <li>
 								<a href="documententry" class="<c:choose>
 								<c:when test="${menu=='document'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/document.png" />" alt="" style="padding:5px 5px 0 0;" />Document Control</span>
 								</a>
 							</li>
-				           
+				           <br>
 				             
 				            <li>
 								<a href="addinternalaudits" class="<c:choose>
@@ -390,7 +390,7 @@
 									<span><img style="width:20px;height:20px;margin-top:2px;m" src="<c:url value="/resources/images/audit_black.png" />" alt=""  />Internal Audits</span>
 								</a>
 							</li>
-				           
+				           <br>
 				               
 				              <li>
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
@@ -398,13 +398,14 @@
 									<span><img src="<c:url value="/resources/images/corrective.png" />" alt="" style="padding:5px 5px 0 0;" />Corrective&amp;Preventive Actions</span>
 								</a>
 							</li>
-				             
+				             <br>
 				            <li>
 								<a href="add_supplierperformance" class="<c:choose>
 								<c:when test="${menu=='supplier'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
 									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />Supplier Performance</span>
 								</a>
 							</li>
+							<br>
 							<li>
 								<a href="addmanagementreview" class="<c:choose>
 								<c:when test="${menu=='managementreview'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
@@ -427,13 +428,11 @@
 							<li ><a href="maintenance_list">View Maintenance</a></li>
 					</ul>
 						<ul id="ddsubmenu2" class="ddsubmenustyle">
-						<li><a href="add_prefixdocument">Prefix for Document/Rec ID</a></li>
-							<li ><a href="add_prefixform">prefix for Form/Rec ID</a></li>
-				            <li ><a href="add_formlocation">Location</a></li>
-				            <li><a href="add_process">Process</a></li>
-				            <li><a href="add_documenttype">Document Type</a></li>
-							 <li><a href="formdelete">Delete Forms</a></li>
-							 <li><a href="documentdelete">Delete Documents</a></li>
+						<li><a href="add_prefixdocument">Add</a></li>
+							<li ><a href="documentprefix_list">View </a></li>
+				            <li ><a href="documentdelete">Delete</a></li>
+							 
+							 
 							 
 							</ul>
 						<ul id="ddsubmenu3" class="ddsubmenustyle">

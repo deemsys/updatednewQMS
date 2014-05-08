@@ -176,7 +176,7 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 		model.addAttribute("documentMainForm",documentMainForm);
-        model.addAttribute("menu","document");
+        model.addAttribute("menu","admin");
 		return "documentdelete";
 		
 	}	

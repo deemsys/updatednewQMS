@@ -160,8 +160,8 @@
                
                   
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" <c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;<br/><span class="err"></span>
                   
                </td>
                
@@ -216,22 +216,7 @@
 <br>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-             
-    														<tr class="row1">			             
-																		             
-																		              <td valign="middle" align="left" class="input_txt"><span
-																			class="err"></span>Effective Date :</td>
-																		<td valign="top" align="left" class="input_txt">
-																		<input type="hidden" name="auto_no" value="${id }"/>
-																		<input type="text" class="input_txtbx1" id="datepicker123"
-																				name="effective_date"
-																			value="${docform.effective_date}" /><br/><span class="err"><form:errors path="Form.effective_date"></form:errors></span>
-																		</td>  
-																		     
-																		  
-																		</tr>
-              
-              <tr class="row2">
+             <tr class="row2">
                             <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Form/Rec Id</td>
 																		<td valign="top" align="left" class="input_txt"><input
@@ -255,6 +240,22 @@
 																			<br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
 																		 </tr>
+              
+    														<tr class="row1">			             
+																		             
+																		              <td valign="middle" align="left" class="input_txt">Effective Date :</td>
+																		<td valign="middle" align="left" class="input_txt">
+																		<input type="hidden" name="auto_no" value="${id }"/>
+																		<input type="text" class="input_txtbx1" id="datepicker123"
+																				name="effective_date"
+																			value="${docform.effective_date}" /><span class="err"><form:errors path="Form.effective_date"></form:errors></span>
+																		</td>  
+																		    <td valign="middle" align="left" class="input_txt">Comments :</td>
+																		<td valign="top" align="left" class="input_txt"><textarea class="input_txtbx1"  name="comments"  style="width:75%; height: 50px;" >${docform.comments}</textarea><br/><span class="err"><form:errors path="Form.comments"></form:errors></span></td>
+																		   
+																		  
+																		</tr>
+              
               
               <tr class="row1">
                             <td valign="top" align="left" class="input_txt" width="25%"><span class="err">Issuer:</td>
@@ -295,10 +296,7 @@
                 <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
                <br/>
               </td>
-																		   <td valign="middle" align="left" class="input_txt"><span
-																			class="err"></span>Comments :</td>
-																		<td valign="top" align="left" class="input_txt"><textarea class="input_txtbx1"  name="comments"  style="width:75%; height: 50px;" >${docform.comments}</textarea><br/><span class="err"><form:errors path="Form.comments"></form:errors></span></td>
-																		
+																		 
 																	
 					</tr>
 					</table>

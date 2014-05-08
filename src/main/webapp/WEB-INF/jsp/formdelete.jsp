@@ -44,9 +44,17 @@ else
 <div>
   <ul class="horizmenu">
 						
+						
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="documentdelete" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Delete Document
+									
+								</a>
+							</li>
 							 <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="formdelete" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Delete Forms
 									
 								</a>

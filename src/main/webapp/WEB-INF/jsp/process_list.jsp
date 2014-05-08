@@ -15,18 +15,36 @@
   <ul class="horizmenu">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="add_process" class="<c:choose>
+								<a href="documentprefix_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Process</span>
-									
+									<span>View Document Prefix</span>
 								</a>
 							</li>
-						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="formprefix_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>View Form Prefix</span>
+								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="process_list" class="<c:choose>
 								<c:when test="${menu=='controlprocess'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									<span>View Process</span>
 								</a>
 							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="formlocation_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>View Locations</span>
+								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="documenttype_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<span>View DocumentType</span>
+								</a>
+							</li>
+						
 				          
 							</ul>
   </div>

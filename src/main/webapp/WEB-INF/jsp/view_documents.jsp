@@ -85,9 +85,9 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="20%"> Document type : &nbsp; &nbsp;</td>
-							    <td align="left" valign="middle" width="8%"><input type="text" name="search_document_type" class="input_txtbx2" id="moblie"></td>
-							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Process:</td>
+							    <td align="left" valign="middle" width="15%"> Document Type : </td>
+							    <td><input type="text" name="search_document_type" class="input_txtbx2" id="moblie"></td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="search_process" id="search_process" class="input_txtbx2"></td>
 							   
 							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  onclick="findpart()"></td>
@@ -109,7 +109,7 @@
           						<td valign="top" align="left" width="10%">Process</td>
           						<td valign="top" align="center" width="10%">Document</td>
           						<td valign="top" align="center" width="15%">External Documents</td>
-          						<td valign="top" align="center" width="15%">Actions</td>
+          						<td valign="top" align="left" width="25%">Actions</td>
         					</tr>
 						
 						
@@ -147,11 +147,10 @@
 											</c:otherwise>							
 											</c:choose>
 											</td>
-											<td valign="top" align="left" width="15%">
+											<td valign="top" align="left" width="25%">
 											
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:10px;">Edit</a>
-								<%-- 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="view_revision_history?document_id=${documentMains.document_id}"></c:out>" style="padding-right:10px;">View Revision History</a>
-								 --%>			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>#current">View Revision History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:20px;">Edit</a>
+										    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>#current">View Revision History</a>
 											
 													
 											</td>

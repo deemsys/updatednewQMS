@@ -106,6 +106,9 @@ public class FormDAO extends AbstractExcelView{
 			status = statement.execute(cmd_delete1);
 			String cmd_delete2 = "delete from tbl_form_child where auto_no ='"+auto_no+"'";
 			status = statement.execute(cmd_delete2);
+			String cmd_delete3 = "delete from tbl_revisionform where auto_no='"+auto_no+"'";
+			System.out.println(cmd_delete3 );
+			status = statement.execute(cmd_delete3);
 		}
 		catch(Exception e)
 		{

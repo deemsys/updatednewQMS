@@ -78,7 +78,7 @@ $(window).load(function(){
              
              
              <tr class="row1">
-                            <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Document ID :</td>
+                            <td valign="middle" align="left" class="input_txt">Document ID :</td>
 			<td valign="top" align="left" class="input_txt" >
 			<input type="hidden" name="auto_number" value="${documentMain.auto_number }"/>
 			<a id="documentid1">
@@ -105,7 +105,7 @@ $(window).load(function(){
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
             <span class="err"><form:errors path="DocumentMain.document_id"></form:errors></span>
             
-<td valign="middle" align="left" class="input_txt" width="10%"><span class="err">*</span>Media Type:</td>
+<td valign="middle" align="left" class="input_txt" width="10%">Media Type:</td>
                <td valign="top" align="left" class="input_txt" width="70%">
                <!-- <select name="media_type" class="input_cmbbx1" onchange="">
                <option onclick="toggle2(this.value);" value="Hard Copy">Hard Copy</option>
@@ -135,7 +135,7 @@ $(window).load(function(){
              </tr>  
               <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%">Document Title:</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               <c:choose>
                 <c:when test="${documentMain.media_type==0}">
@@ -192,8 +192,8 @@ $(window).load(function(){
               </c:when>
                </c:choose>
 
-           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err">*</span></td>
-               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
+           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"></td>
+               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/></div></td>
      
           
            <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -201,7 +201,7 @@ $(window).load(function(){
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Document Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%">Document Type:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
            
                 <select name="document_type" id="id_document_type"  class="input_cmbbx1" style="width:200px;">
@@ -212,7 +212,7 @@ $(window).load(function(){
 			                 </select><span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span>
                
                
-               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Process:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
@@ -227,14 +227,14 @@ $(window).load(function(){
              <tr class="row2">
                <td valign="middle" align="left" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
-               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>External Document(Y/N):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
 <!--               <input type="radio" name="external" value="1"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="external" value="0" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
  -->               
  				<input type="radio" name="external" value="1" id="id_yesforexternal" <c:if test="${documentMain.external=='1'}"><c:out value="checked=checked"/></c:if>>Yes &nbsp;&nbsp;&nbsp;
   				<input type="radio" name="external" value="0" <c:if test="${documentMain.external=='0'}"><c:out value="checked=checked"/></c:if>>No &nbsp;&nbsp;&nbsp;</td>
                
-            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+            <td valign="top" align="left" class="input_txt" width="20%"></td>
              </tr>
          </table>
          </div>
@@ -258,8 +258,8 @@ $(window).load(function(){
              <input type="button" value="Enter New Revision" onClick="reset_form()"/>
              </td>
              </tr>
-              <tr>
-              <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Revision No. (optional):</td>
+              <tr class="row1">
+              <td valign="middle" align="left" class="input_txt" width="30%">Revision No. (optional):</td>
 			  <td valign="middle" align="left" class="input_txtbx1">&nbsp;&nbsp;
 			  <input type="text" name="revision_id" id="revisionid" value="${documentMain.revision_id}" onclick="revision_change()" class="input_txtbx1" ></td>
               
@@ -269,7 +269,7 @@ $(window).load(function(){
 			  <%-- <b id="hide_id">${documentMain.document_id}</b><br/> --%></td>
 			  </tr>
 		      <tr class="row1" style="border:none;">
-            <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Issuer:</td>
+            <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
                
                <select name="issuer" id="issuer" class="input_cmbbx1" style="width:200px;">
@@ -282,7 +282,7 @@ $(window).load(function(){
                
                <br/><span class="err"><form:errors path="DocumentMain.issuer"></form:errors></span></td>
             
-                <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Approver 1(Process Owner):</td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" class="input_txt" width="25%" >
                <span id="process_owner_id"></span>
             
@@ -294,25 +294,19 @@ $(window).load(function(){
                
                
                </td>
-              <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+              <td valign="top" align="left" class="input_txt" width="20%"></td>
                  </tr>  
               <tr class="row2" style="border:none;">
               
-                <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Revision Level:</td>
+                <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="revisionlevel" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
               <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
-               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">*</span>Approver 2(Doc Control):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
  				<select name="approver2" class="input_cmbbx1" id="approver2" style="width:200px;">
              	  <option value="">--Select--</option>
-            	<!--   <option value="Apporver name1">Approver name 1</option>
-               <option value="Approver name2">Approver name 2</option>
-               <option value="Approver name3">Approver name 3</option>
-               
-               
-               
-              -->
+            	
               <c:forEach items="${employeeForm1.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>" <c:if test="${documentMain.approver2==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
                </c:forEach>    
@@ -320,26 +314,19 @@ $(window).load(function(){
                </select>
                
                <br/><span class="err"><form:errors path="DocumentMain.approver2"></form:errors></span></td>
-            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+            <td valign="top" align="left" class="input_txt" width="20%"></td>
              </tr>
              <tr class="row1" style="border:none;">
               
-               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">*</span>Date:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
-               <td valign="middle" align="left" class="input_txt" width="70%"><span class="err">*</span>Approver 3(Mgmt Report):</td>
+               <td valign="middle" align="left" class="input_txt" width="70%">Approver 3(Mgmt Report):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
                <select name="approver3" id="approver3" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
-             <!--   <option value="Apporver name1">Approver name 1</option>
-               <option value="Approver name2">Approver name 2</option>
-               <option value="Approver name3">Approver name 3</option>
-               
-               
-               
-              -->
               <c:forEach items="${employeeForm2.employees}" var="employees" varStatus="true">
               
                <option value="${employees.name}"<c:if test="${employees.name == documentMain.approver3}"><c:out value="selected"/></c:if>>${employees.name}</option>
@@ -354,10 +341,10 @@ $(window).load(function(){
            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
              </tr>  
               <tr class="row2" style="border:none;">
-                 <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Comments:</td>
+                 <td valign="middle" align="left" class="input_txt">Comments:</td>
                <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/><span class="err"></span></td>
          
-               <td valign="top" align="left" class="input_txt" width="20%"><span class="err">*</span>Status:</td>
+               <td valign="top" align="left" class="input_txt" width="20%">Status:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                <input type="hidden" value="${documentMain.revision_id}"/>
               <select name="status" id="status" class="input_cmbbx1" style="width:200px;">
@@ -368,7 +355,7 @@ $(window).load(function(){
                </select>
                 
                <br/><span class="err"><form:errors path="DocumentMain.status"></form:errors></span></td>
-            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+            <td valign="top" align="left" class="input_txt" width="20%"></td>
         </tr>
              <tr class="row1" >
              <td colspan="2" align="right">
