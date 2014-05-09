@@ -72,7 +72,7 @@ else
 <div style="border:#993300 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="20%">Process:</td>
+							    <td align="left" valign="middle" width="20%">Process Area:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx2" id="recordtitle"></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" value="Find" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
@@ -85,7 +85,6 @@ else
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
 									<td valign="top" align="left" width="10%">select</td>
-									<td valign="top" align="left" width="10%">Auto Number</td>
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
 									
@@ -101,7 +100,7 @@ else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${form.auto_number}"/></td>
-								           	<td valign="top" align="left"  width="10%">${form.auto_number}</td>
+								        <%--    	<td valign="top" align="left"  width="10%">${form.auto_number}</td> --%>
 									        <td valign="top" align="left" width="10%">${form.form_or_rec_id}</td>
 											<td valign="top" align="left" width="10%">${form.process}</td>
 											

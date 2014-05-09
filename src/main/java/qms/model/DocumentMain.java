@@ -27,7 +27,7 @@ public class DocumentMain
 	private String media_type;
 	
 
-	@NotEmpty
+	
 	private String location;
 	
 	@NotEmpty

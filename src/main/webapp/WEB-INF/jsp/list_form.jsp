@@ -14,37 +14,28 @@
         <div>
   <ul class="horizmenu">
 						
-							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-							 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Form</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Form
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="view_form" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Form</span>
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									View Form
 									
 								</a>
 							</li>
-				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Form Report</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Form Report
 									
 								</a>
 							</li>
 
-							 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="formdelete" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Delete Forms</span>
-									
-								</a>
-							</li> 
-							
 				             </ul>
   </div>
         </td>

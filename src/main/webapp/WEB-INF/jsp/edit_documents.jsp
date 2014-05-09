@@ -113,20 +113,20 @@ $(window).load(function(){
                </select> -->
               
                <c:choose>
-               <c:when test="${documentMain.media_type==0}">
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               <c:when test="${documentMain.media_type=='hardcopy'}">
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
-               <c:when test="${documentMain.media_type==1}">
-               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               <c:when test="${documentMain.media_type=='electronic'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
-               <c:when test="${documentMain.media_type==2}">
-               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               <c:when test="${documentMain.media_type=='both'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
                </c:choose>
                </td>
@@ -138,7 +138,7 @@ $(window).load(function(){
                <td valign="middle" align="left" class="input_txt" width="25%">Document Title:</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               <c:choose>
-                <c:when test="${documentMain.media_type==0}">
+                <c:when test="${documentMain.media_type=='hardcopy'}">
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
@@ -155,7 +155,7 @@ $(window).load(function(){
               </c:when>
                </c:choose>
                <c:choose>
-                <c:when test="${documentMain.media_type==1}">
+                <c:when test="${documentMain.media_type=='electronic'}">
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
@@ -174,7 +174,7 @@ $(window).load(function(){
               <span class="err"><form:errors path="DocumentMain.location"></form:errors></span>
                </td>
               </c:when>
-              <c:when test="${documentMain.media_type==2}">
+              <c:when test="${documentMain.media_type=='both'}">
               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label"><span class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_cmbbx1" >
@@ -229,10 +229,11 @@ $(window).load(function(){
                <td valign="top" align="left" class="input_txt" width="20%">
                <td valign="middle" align="left" class="input_txt" width="20%">External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
-<!--               <input type="radio" name="external" value="1"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="external" value="0" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+<!--               <input type="radio" name="external" value="Yes"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="external" value="No" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
  -->               
- 				<input type="radio" name="external" value="1" id="id_yesforexternal" <c:if test="${documentMain.external=='1'}"><c:out value="checked=checked"/></c:if>>Yes &nbsp;&nbsp;&nbsp;
-  				<input type="radio" name="external" value="0" <c:if test="${documentMain.external=='0'}"><c:out value="checked=checked"/></c:if>>No &nbsp;&nbsp;&nbsp;</td>
+ 				<input type="radio" name="external" value="Yes" id="id_yesforexternal" <c:if test="${documentMain.external=='Yes'}"><c:out value="checked=checked"/></c:if>>Yes &nbsp;&nbsp;&nbsp;
+  				<input type="radio" name="external" value="No" <c:if test="${documentMain.external=='No'}"><c:out value="checked=checked"/></c:if>>No &nbsp;&nbsp;&nbsp;</td>
                
             <td valign="top" align="left" class="input_txt" width="20%"></td>
              </tr>
@@ -380,7 +381,7 @@ function toggle2(value){
     var e1 = document.getElementById('file_upload_label');
     var e2=document.getElementById('location_text');
     var e3=document.getElementById('id_file');
-if(value==1)
+if(value=='electronic')
     {
 	e.style.display="none";
 	e1.style.display="block";
@@ -388,7 +389,7 @@ if(value==1)
 	e3.style.display="block";
 	
     }
-else if(value==0)
+else if(value=='hardcopy')
     {
 	e.style.display="block";
 	e1.style.display="none";
@@ -396,7 +397,7 @@ else if(value==0)
 	e3.style.display="none";
   
     }
-else if(value==2)
+else if(value=='both')
 {
 e.style.display="block";
 e1.style.display="block";

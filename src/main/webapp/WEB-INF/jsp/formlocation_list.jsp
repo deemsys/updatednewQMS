@@ -42,7 +42,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documenttype_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-								<span>View DocumentType</span>
+								<span>View Document Type</span>
 								</a>
 							</li>
 				          

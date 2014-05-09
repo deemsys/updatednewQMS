@@ -36,13 +36,7 @@
 									
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="documentdelete" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Delete Document</span>
-									
-								</a>
-							</li>
+						
 				            
 				             
 				             </ul>
@@ -88,11 +82,11 @@
                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Document Title:</td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.document_title}</td>
                 <c:choose>
-                <c:when test="${documentMain.media_type==0}">
+                <c:when test="${documentMain.media_type=='hardcopy'}">
                <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Location:</td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${documentMain.location}
                </td></c:when>
-               <c:when test="${documentMain.media_type==1}">
+               <c:when test="${documentMain.media_type=='electronic'}">
                <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Upload File:</td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${documentMain.attachment_name}
               </c:when>

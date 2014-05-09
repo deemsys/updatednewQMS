@@ -46,7 +46,7 @@
 								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_documenttype" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span">Add DocumentType</span>
+									<span">Add Document Type</span>
 									
 								</a>
 							</li>

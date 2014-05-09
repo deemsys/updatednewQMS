@@ -127,10 +127,10 @@
 											<td valign="top" align="left" width="10%">${documentMains.process}</td>
 											
 											<c:choose>
-											<c:when test="${documentMains.media_type==1}">
+											<c:when test="${documentMains.media_type=='electronic'}">
 											<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a></td>
 										</c:when>
-										<c:when test="${documentMains.media_type==0}">
+										<c:when test="${documentMains.media_type=='hardcopy'}">
 										<td valign="top" align="center" width="10%">Hard Copy </td>
 										</c:when>
 										<c:otherwise>
@@ -139,7 +139,7 @@
 										</c:choose>	
 											<td valign="top" align="center" width="15%">
 											<c:choose>
-											<c:when test="${documentMains.external=='1'}">
+											<c:when test="${documentMains.external=='Yes'}">
 											<c:out value="Yes"></c:out>
 											</c:when>	
 											<c:otherwise>

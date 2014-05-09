@@ -104,8 +104,8 @@
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 								           	<td valign="top" align="left" width="10%"style="display:none"><input type="hidden" name="auto_number" id="autonumber" value="${form.auto_number}"/>
 									        ${form.auto_number}</td>
-									        <td valign="top" align="left" width="10%">
-									        ${form.document_id}</td>
+									        <td valign="top" align="left" width="10%"><a href="list_form?id=${form.auto_number}">
+									        ${form.document_id}</a></td>
 											<td valign="top" align="left" width="10%">${form.process}</td>
 											<td valign="top" align="left" width="10%">${form.effective_date}</td>
 											<td valign="top" align="left" width="10%">${form.approver1}</td>

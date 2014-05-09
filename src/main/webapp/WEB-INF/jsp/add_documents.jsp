@@ -91,9 +91,9 @@
                <td valign="top" align="left" class="input_txt" width="5%">Media Type:</td>
                <td valign="top" align="left" class="input_txt" width="89px;">
                
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="0"   id="id_hardcopy" <c:if test="${documentMain.media_type==0}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="1"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type==1}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<span class="err"></span>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="2"  id="id_both" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type==2}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" <c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;&nbsp;&nbsp;<span class="err"></span>
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                     
                </td>
            <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -110,11 +110,11 @@
                <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Title:</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err"> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
-              <option value = "">Select Location</option>
+              <option value = "">--Select Location--</option>
 			                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
         				       <option value="${formlocation.form_location}">${formlocation.form_location}</option>
 			                  </c:forEach> </select><br>
@@ -122,8 +122,8 @@
               
                </td>
           
-           <td valign="middle" id="softcopy_file_label" style="display:none;" align="left" class="input_txt" width="20%"><span class="err"></td>
-               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
+           <td valign="middle" id="softcopy_file_label" style="display:none;" align="left" class="input_txt" width="20%"></td>
+               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/></div></td>
      
           
            <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -131,7 +131,7 @@
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%">Document Type:</td>
               <td valign="top" align="left" class="input_txt" width="25%">
               <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
@@ -183,7 +183,8 @@
                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
-              <input type="radio" name="external" value="1"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="external" value="0" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+              <input type="radio" name="external" value="Yes"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="external" value="No" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                
                </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
@@ -307,8 +308,8 @@
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
              </tr>
              <tr class="row1" style="border:none;">
-              
-             
+               <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+              <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                <select name="approver3" id="id_inpapprover3"  class="input_cmbbx1" style="width:200px;">
@@ -319,7 +320,7 @@
               </select>
                
                <br/><span class="err"><form:errors path="DocumentMain.approver3"></form:errors></span></td>
-           <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+          
              </tr>  
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments:</td>
@@ -363,7 +364,7 @@ function toggle2(value){
     var e1 = document.getElementById('file_upload_label');
     var e2=document.getElementById('location_text');
     var e3=document.getElementById('id_file');
-if(value==1)
+if(value=='electronic')
     {
 	e.style.display="none";
 	e1.style.display="block";
@@ -371,7 +372,7 @@ if(value==1)
 	e3.style.display="block";
 	
     }
-else if(value==0)
+else if(value=='hardcopy')
     {
 	e.style.display="block";
 	e1.style.display="none";
@@ -379,7 +380,7 @@ else if(value==0)
 	e3.style.display="none";
   
     }
-else if(value==2)
+else if(value=='both')
 	{
 	e.style.display="block";
 	e1.style.display="block";

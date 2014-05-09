@@ -17,14 +17,14 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixdocument" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Prefix</span>
+									<span>Add Document Prefix</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixform" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Prefix</span>
+									<span>Add Form Prefix</span>
 									
 								</a>
 							</li>

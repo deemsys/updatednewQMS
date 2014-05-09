@@ -851,10 +851,10 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
-			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id");
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id='"+document_id+"' and t2.document_id='"+document_id+"'");
 			System.out.println("came");
 			while(resultSet.next()){
-								documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"), resultSet.getString("auto_no"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("revision_id"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+								documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"), resultSet.getString("auto_no"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("comments"),resultSet.getString("status"),resultSet.getString("external"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"),resultSet.getString("revision_id")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
