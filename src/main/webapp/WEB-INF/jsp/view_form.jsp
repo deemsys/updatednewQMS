@@ -352,4 +352,6 @@ function subhide()
 }
 
 </script>
+<table  width=300 height=70>
+			<tr height=30><td></td></tr></table>
  <jsp:include page="footer.jsp"></jsp:include> 

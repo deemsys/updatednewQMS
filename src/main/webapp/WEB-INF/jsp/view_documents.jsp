@@ -109,7 +109,7 @@
           						<td valign="top" align="left" width="10%">Process</td>
           						<td valign="top" align="center" width="10%">Document</td>
           						<td valign="top" align="center" width="15%">External Documents</td>
-          						<td valign="top" align="left" width="25%">Actions</td>
+          						<td valign="top" align="left" width="20%">Actions</td>
         					</tr>
 						
 						
@@ -122,8 +122,8 @@
 							       			i=1;%>
 							       		<tr class="row<%=i%>" ">
 								           	<td valign="top" align="left"  width="10%"><a href="list_documents?id=${documentMains.document_id}">${documentMains.document_id}</a></td>
-											<td valign="top" align="left" width="15%">${documentMains.document_title}</td>
-											<td valign="top" align="left" width="15%">${documentMains.document_type}</td>
+											<td valign="top" align="left" width="10%">${documentMains.document_title}</td>
+											<td valign="top" align="left" width="10%">${documentMains.document_type}</td>
 											<td valign="top" align="left" width="10%">${documentMains.process}</td>
 											
 											<c:choose>
@@ -169,9 +169,9 @@
 											<td valign="top" align="left" width="10%">${revision.approver1}</td>
 											<td valign="top" align="left" width="10%">${revision.approver2}</td>
 											<td valign="top" align="left" width="10%">${revision.approver3}</td>
-											<td valign="top" align="left" width="10%">${revision.comments}</td>
-											<td valign="top" align="left" width="10%">${revision.status}</td>
-											 <td valign="top" align="left" width="10%">${revision.revision_id}</td>
+											<td valign="top" align="center" width="10%">${revision.comments}</td>
+											<td valign="top" align="left" width="10%">${revision.status}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											${revision.revision_id}</td>
 												</a>
 										</tr>
 									

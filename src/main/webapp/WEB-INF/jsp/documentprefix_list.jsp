@@ -101,8 +101,8 @@
         				       				</td>
         				       				</tr>
         				       				<tr><td colspan="6">  
-	<div class="extrabottom">
-             <ul class="pagination">
+	<div class="extrabottom" >
+             <ul class="pagination" >
         
              <c:if test="${currentpage!=1&&currentpage!=null}">
              <li class="page_unselect"><a href="viewprefixreport_page?page=${currentpage - 1}" >Prev</a></li> 
@@ -139,6 +139,9 @@
         				       				
         				       				</table>
         				       				</div>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  <jsp:include page="footer.jsp"></jsp:include>         				       				
 <script language="javascript">
 
 function confirmation() {

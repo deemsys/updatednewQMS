@@ -273,7 +273,7 @@
 							
 								<a href="#" class="<c:choose>
 								<c:when test="${menu=='admin'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>" rel="ddsubmenu2">
-									<span><img src="<c:url value="/resources/images/suplier.png" />" alt="" style="padding:5px 5px 0 0;" />ADMIN SET-UP ROLES</span>
+									<span><img src="<c:url value="/resources/images/admin.png" />" alt="" style="padding:5px 5px 0 0;" />ADMIN SET-UP ROLES</span>
 								</a>
 							
 							</li>

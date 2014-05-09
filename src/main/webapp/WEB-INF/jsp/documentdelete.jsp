@@ -73,7 +73,7 @@ else
 									<td valign="top" align="left" width="10%">select</td>
 									<td valign="top" align="left" width="10%">Document Id</td>
 									<td valign="top" align="left" width="10%">Document Title</td>
-									<td valign="top" align="left" width="10%">Process</td>		
+									<td valign="top" align="left" width="10%">Document</td>		
 	          						<td valign="top" align="center" width="15%">External Documents</td>
 									
 									
@@ -94,19 +94,19 @@ else
 									        <td valign="top" align="left" width="10%">${documentMains.document_title}</td>
 											<td valign="top" align="left" width="10%">${documentMains.process}</td>
 											<c:choose>
-											<c:when test="${documentMains.media_type==1}">
-											<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a></td>
+											<c:when test="${documentMains.media_type=='electronic'}">
+											<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a></td>
 										</c:when>
-										<c:when test="${documentMains.media_type==0}">
-										<td valign="top" align="center" width="10%">Hard Copy </td>
+										<c:when test="${documentMains.media_type=='hardcopy'}">
+										<td valign="top" align="left" width="10%">Hard Copy </td>
 										</c:when>
 										<c:otherwise>
-										<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
+										<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
 										</c:otherwise>
 										</c:choose>	
 											<td valign="top" align="center" width="15%">
 											<c:choose>
-											<c:when test="${documentMains.external=='1'}">
+											<c:when test="${documentMains.external=='Yes'}">
 											<c:out value="Yes"></c:out>
 											</c:when>	
 											<c:otherwise>
@@ -194,4 +194,5 @@ $(function () {
 	});
 	});
 </script>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include> 

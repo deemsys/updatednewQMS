@@ -250,13 +250,14 @@ ul.login-list li p {
 	border-bottom:#bed8e5 solid 1px;
 }
 .extrabottom {
-	padding: 15px;
+	
 	height: 40px;
+	
 	background: url(../images/bg_fade_sml.png) repeat-x top;
 	border-radius:10px;
 	-moz-border-radius:10px;
 	margin-top:10px;
-	
+	margin-left: 180px;
 }
 .extrabottom ul {
 	float: left;
@@ -267,7 +268,7 @@ ul.login-list li p {
 }
 .extrabottom li img {
 	float: left;
-	padding: 0 5px 0 0;
+	padding: 0px 5px 0 0;
 }
 .bulkactions {
 	float: left;

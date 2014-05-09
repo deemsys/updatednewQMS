@@ -145,6 +145,8 @@
         				       				
         				       				</table>
         				       				</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <jsp:include page="footer.jsp"></jsp:include>     
 <script language="javascript">
 
 function confirmation() {
@@ -159,4 +161,4 @@ function confirmation() {
 
 
 </script> 
- <jsp:include page="footer.jsp"></jsp:include>        				       		
+   				       		

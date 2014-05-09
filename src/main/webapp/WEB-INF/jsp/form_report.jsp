@@ -174,13 +174,13 @@
              </table>
              
              	
-             </td>
-             </tr>
+           <table  width=300 height=30>
+			<tr height=30><td></td></tr></table>
+ 
+           
              
-             </table>
-             
-             
-						
+			
+ <jsp:include page="footer.jsp"></jsp:include> 			
 							
 							
 							
@@ -223,6 +223,6 @@ if(value==0)
     
 }
  </script>
- <jsp:include page="footer.jsp"></jsp:include> 
+ 
 
 				

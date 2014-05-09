@@ -212,7 +212,7 @@ public class DocumentController {
 	  	model.addAttribute("noofrows",5);    
 	  	model.addAttribute("menu","documentMain");
 	    model.addAttribute("button","close");
-	      
+		model.addAttribute("menu","document");
 	   
 	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");

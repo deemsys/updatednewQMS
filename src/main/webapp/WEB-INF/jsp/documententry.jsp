@@ -27,10 +27,10 @@
             <input type="submit" id="form" name="FORM" value="Forms/Records" class="menubuttonsub blue"></td>
 </tr></table></div>
 </form>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
-<table  width=300 height=400>
+
+<table  width=300 height=300>
 			<tr height=30><td></td></tr></table>
 			
 <jsp:include page="footer.jsp"></jsp:include>		

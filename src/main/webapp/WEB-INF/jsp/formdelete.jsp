@@ -127,7 +127,7 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">   <br><br><br> <br><br><br> <br>
+		<td colspan="6">
 		
 	<div class="extrabottom">
              <ul class="pagination">
@@ -189,6 +189,7 @@ $(function () {
 	});
 	});
 </script>
-
-<jsp:include page="footer.jsp"></jsp:include>
+  <table  width=300 height=40>
+			<tr height=30><td></td></tr></table>
+			<jsp:include page="footer.jsp"></jsp:include>
 </html>
