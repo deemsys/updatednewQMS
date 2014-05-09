@@ -290,10 +290,11 @@
               <option value="Z">Z</option>
               
                </select>
-                <span id="issuer_generate">
+                <span id="issuer_generate"> 
+               
                
                </span>
-                <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
+                      <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>      
                <br/>
               </td>
 																		 

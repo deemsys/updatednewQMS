@@ -512,12 +512,14 @@ public class DocumentController {
 	@RequestMapping(value = { "/ajax_getissuer" }, method = RequestMethod.POST)
 	public @ResponseBody
 	String insert_external_document(HttpSession session,
-			HttpServletRequest request, ModelMap model, Principal principal) {
+			HttpServletRequest request, @RequestParam("filter_val")String letter,ModelMap model, Principal principal) {
 		String resultHTML="";
+		System.out.println(letter);
+		String albapate = letter.trim();
 		EmployeeForm employeeForm=new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.filterEmployees());
+		employeeForm.setEmployees(employeeDAO.filterEmployees(albapate));
 		resultHTML="<Select name='issuer' class='input_cmbbx1' style='width:120px;'>";
-		for (Employee employee : employeeDAO.filterEmployees() ) {
+		for (Employee employee : employeeDAO.filterEmployees(albapate) ) {
 			resultHTML+="<option value='"+employee.getName()+"'>"+employee.getName()+"</option>";
 		}
 		resultHTML+="</select>";
