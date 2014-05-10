@@ -18,14 +18,14 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixdocument" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Document Prefix</span>
+									<span>Document Prefix</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixform" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Form Prefix</span>
+									<span>Form Prefix</span>
 									
 								</a>
 							</li>
@@ -33,21 +33,21 @@
 								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_process" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add process</span>
+									<span>Process</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_formlocation" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Location</span>
+									<span>Location</span>
 									
 								</a>
 							</li>
 								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_documenttype" class="<c:choose>
 								<c:when test="${menu=='documenttype'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span">Add Document Type</span>
+									<span">Document Type</span>
 									
 								</a>
 							</li>
@@ -60,7 +60,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Document Type</h2>
+              <h2>Add Document Type</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -68,7 +68,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="70%"><span class="err">*</span>Add Document Type :</td>
+                  <td valign="middle" align="left" class="input_txt" width="70%">Add Document Type :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_type" class="input_txtbx1" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
                 </tr>
                 

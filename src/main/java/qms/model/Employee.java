@@ -42,7 +42,9 @@ public class Employee
 	private String doc_control;
 	@NotEmpty
 	private String management_rep;
-	
+	private String management;
+	private String process_owner;
+	private String document_control;
 	
     
 	public Employee(String employee_id, String name, String job_title,
@@ -52,7 +54,7 @@ public class Employee
 			String qualified_by, String type_of_training, String trainer,
 			String training_due_date, String training_completion_date,
 			String training_effectiveness_review_due_date,
-			String training_effectiveness_notes) {
+			String training_effectiveness_notes,String management,String process_owner,String document_control) {
 		
 		super();
 		this.employee_id = employee_id;
@@ -75,6 +77,9 @@ public class Employee
 		this.process_name=process_name;
 		this.doc_control=doc_control;
 		this.management_rep=management_rep;
+		this.management = management;
+		this.process_owner =process_owner;
+		this.document_control = document_control;
 	}
 	public Employee() {
 		super();
@@ -209,6 +214,24 @@ public class Employee
 	}
 	public void setAttachments(CommonsMultipartFile attachments) {
 		this.attachments = attachments;
+	}
+	public String getManagement() {
+		return management;
+	}
+	public void setManagement(String management) {
+		this.management = management;
+	}
+	public String getProcess_owner() {
+		return process_owner;
+	}
+	public void setProcess_owner(String process_owner) {
+		this.process_owner = process_owner;
+	}
+	public String getDocument_control() {
+		return document_control;
+	}
+	public void setDocument_control(String document_control) {
+		this.document_control = document_control;
 	}
 	
 		

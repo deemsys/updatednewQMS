@@ -319,10 +319,18 @@
 																		              <td valign="middle" align="left" class="input_txt">Approver1(Process Owner) :</td>
 																		<td valign="top" align="left" class="input_txt">
 																		
-																		<span id="process_owner_id"></span>
+																		<%-- <span id="process_owner_id"></span>
 				<input type="hidden" class="input_txtbx1" id="inp_external_id" name="approver1" onchange="Approver1();" value="${form.approver1}" /> ${form.approver1}
 																			
-																			
+																			 --%>
+																			  <select name="approver1" class="input_cmbbx1" id="approver" style="width:200px;">
+             	
+            	
+             																 <c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
+             															     <option value="<c:out value="${employeeowner.name}"/>" <c:if test="${form.approver1==employeeowner.name}"><c:out value="Selected"/></c:if>><c:out value="${employeeowner.name}"/></option>
+              																 </c:forEach>    
+               
+             															  </select>  
 																			<br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
@@ -519,6 +527,7 @@ function reset_form()
 	document.getElementById('revisionid').value="0";
 	document.getElementById('datepicker').value="";
 	document.getElementById('issuer').value="";
+	document.getElementById('approver').value="";
 	document.getElementById('comments').value="";
 	
 	

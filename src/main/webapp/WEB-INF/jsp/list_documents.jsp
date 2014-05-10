@@ -12,34 +12,36 @@
      <tr>
         <td>
         <div>
-  <ul class="horizmenu">
-						
-							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+  
+					<ul class="horizmenu">
+						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu=='document'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Document</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Document
 									
 								</a>
 							</li>
 						
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Document</span>
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									View Document
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Document report</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Document report
 									
 								</a>
 							</li>
+							
+			            </ul>
 						
 				            
 				             
-				             </ul>
+				          
   </div>
         </td>
       </tr>
@@ -157,7 +159,7 @@
                </td>
             
                 <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Approver 1(Process Owner):</td>
-               <td valign="top" align="left" class="input_txt" width="25%">${documentMain.issuer}
+               <td valign="top" align="left" class="input_txt" width="25%">${documentMain.approver1}
                <!-- <select name="approver1" id="approver1" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <option value="Apporver name1">Approver name 1</option>

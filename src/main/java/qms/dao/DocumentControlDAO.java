@@ -818,8 +818,18 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
-			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type='"+search_document_type+"' or process='"+search_process+"'");
-			System.out.println("came");
+	    	if((!search_document_type.equals(null)) && (!search_process.equals(null)))
+	    			{
+			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type like '"+search_document_type+"%' and process like '"+search_process+"%'");
+			
+	    			}
+	    	else if((!search_document_type.equals(null)))
+	    	{
+	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type like '"+search_document_type+"%' ");
+	    	}
+	    	else
+	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where process like '"+search_process+"%'");
+	    	System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
 				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));

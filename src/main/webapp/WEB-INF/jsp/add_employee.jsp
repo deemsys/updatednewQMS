@@ -192,10 +192,10 @@ function doAjaxPost() {
                   
                   <input type="checkbox" name="process_owner" onchange="toggle2(this)" value="yes" id="id_field_document_id"/>&nbsp;Process Owner                 
                   
-                  <label id="process_name_label" style="display:none;">&nbsp;&nbsp;&nbsp;Process Name:</label>
-                  <input type="text"  name="process_name1" id="process_name" style="display: none;" class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><br/>
-                  <input type="checkbox" name="report_field[]" value="document_id" id="id_field_document_id"/>&nbsp;Document Control<br/><br/>
-                  <input type="checkbox" name="report_field[]" value="document_id" id="id_field_document_id"/>&nbsp;Management Representative<br/>
+                 <!--  <label id="process_name_label" style="display:none;">&nbsp;&nbsp;&nbsp;Process Name:</label> -->
+                 <!--  <input type="text"  name="process_name1" id="process_name" style="display: none;" class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><br/> -->
+                  <input type="checkbox" name="document_control" value="yes" id="id_field_document_id"/>&nbsp;Document Control<br/><br/>
+                  <input type="checkbox" name="management" value="yes" id="id_field_document_id"/>&nbsp;Management Representative<br/>
                   
                   
                   

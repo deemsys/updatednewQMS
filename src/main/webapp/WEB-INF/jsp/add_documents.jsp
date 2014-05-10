@@ -183,8 +183,8 @@
                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
-              <input type="radio" name="external" value="Yes"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="external" value="No" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+              <input type="radio" name="external" value="Yes"  id="id_yesforexternal"checked>Yes&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="external" value="No" id="id_noforexternal"  >No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                
                </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
@@ -270,14 +270,52 @@
                 <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
                <br/>
               </td>
-                <td valign="middle" align="left" class="input_txt" width="20%">Approver 1(Process Owner):</td>
+               <%--  <td valign="middle" align="left" class="input_txt" width="20%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                <span id="process_owner_id"></span>
                            
                <br/><span class="err"><form:errors path="DocumentMain.approver1"></form:errors></span>
                
                
-               </td>
+               </td> --%>
+                <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner):</td>
+               <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="20%">
+               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" style="width:80px;">
+               <option value="">--Select--</option>
+               <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
+              <option value="N">N</option>
+              <option value="O">O</option>
+              <option value="P">P</option>
+              <option value="Q">Q</option>
+              <option value="R">R</option>
+              <option value="S">S</option>
+              <option value="T">T</option>
+              <option value="U">U</option>
+              <option value="V">V</option>
+              <option value="W">W</option>
+              <option value="X">X</option>
+              <option value="Y">Y</option>
+              <option value="Z">Z</option>
+              
+               </select>
+                <span id="issuer_generate1">
+               
+               </span>
+                <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
+               <br/>
+              </td>
               <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
                  </tr>  
               <tr class="row2" style="border:none;">
@@ -418,6 +456,25 @@ function doAjaxPost() {
 		}
 	});
 }
+function AjaxProcessOwner() {
+	document.getElementById('filter_value1').style.display="none";
+	 document.getElementById("issuer_generate1").style.display="inline";
+	var filer_value1 = $('#filter_value1').val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getprocessowner",
+		data : "filter_val=" + filer_value1,
+		success : function(response) {
+			
+			$('#issuer_generate1').html(response);
+			//$('#filter_value').hide();
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
 function doAjaxPost_for_process() {
 
 	var proceee_name = $('#id_inpprocess').val();
@@ -518,11 +575,31 @@ document.getElementById("lable_td").style.display="none";
   	document.getElementById("issuer_full_lbl").innerHTML=type.value;
   	
   	}
+  function change_to_label_issuer1()
+  {
+  	
+      
+  	var type=document.getElementById("filter_value1");	
+  	
+  	document.getElementById("lable_td_issuer").style.display="block";
+  	document.getElementById("edit_td_issuer1").style.display="none";
+  	
+  	document.getElementById("issuer_full_lbl1").innerHTML=type.value;
+  	
+  	}
   function show_edit_issuer()
   {
 	  document.getElementById("issuer_generate").style.display="none";
 	  document.getElementById("issuer_full_lbl").style.display="none";
   document.getElementById("filter_value").style.display="block";
+  
+  	
+  	}
+  function show_edit_issuer1()
+  {
+	  document.getElementById("issuer_generate1").style.display="none";
+	  document.getElementById("issuer_full_lbl1").style.display="none";
+  document.getElementById("filter_value1").style.display="block";
   
   	
   	}

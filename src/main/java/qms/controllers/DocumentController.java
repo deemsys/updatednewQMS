@@ -132,7 +132,7 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 		model.addAttribute("documentMainForm", documentMainForm);
-		  model.addAttribute("menu","document");
+		  model.addAttribute("menu","admin");
 		return "view_documents";
 		
 	}
@@ -525,7 +525,22 @@ public class DocumentController {
 		resultHTML+="</select>";
 		return resultHTML;
 	}
-	
+	@RequestMapping(value = { "/ajax_getprocessowner" }, method = RequestMethod.POST)
+	public @ResponseBody
+	String processowner(HttpSession session,
+			HttpServletRequest request, @RequestParam("filter_val")String letter,ModelMap model, Principal principal) {
+		String resultHTML="";
+		System.out.println(letter);
+		String albapate = letter.trim();
+		EmployeeForm employeeForm=new EmployeeForm();
+		employeeForm.setEmployees(employeeDAO.filterProcessOwner(albapate));
+		resultHTML="<Select name='approver1' class='input_cmbbx1' style='width:120px;'>";
+		for (Employee employee : employeeDAO.filterProcessOwner(albapate) ) {
+			resultHTML+="<option value='"+employee.getName()+"'>"+employee.getName()+"</option>";
+		}
+		resultHTML+="</select>";
+		return resultHTML;
+	}
 	//Post method for ajax get process 
 	@RequestMapping(value = { "/ajax_getprocess" }, method = RequestMethod.POST)
 	public @ResponseBody
@@ -559,7 +574,7 @@ public class DocumentController {
         model.addAttribute("button","viewall");
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
-        model.addAttribute("documentMainForm", documentMainForm);
+      //  model.addAttribute("documentMainForm", documentMainForm);
 		return "view_documents";
 
 	}
@@ -573,7 +588,7 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 	  	documentMainForm.setDocumentMains(documentControlDAO.getlimiteddocumentreport(page));
 		model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.getnoofdocumentreport() * 1.0 / 5));
-	 	model.addAttribute("documentMainForm", documentMainForm);	
+		//model.addAttribute("documentMainForm", documentMainForm);	
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","document");
@@ -588,7 +603,7 @@ public class DocumentController {
 	public String viewalldocumentreport(HttpServletRequest request,ModelMap model, Principal principal ) {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-		model.addAttribute("documentMainForm", documentMainForm);
+	//	model.addAttribute("documentMainForm", documentMainForm);
 
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
@@ -624,7 +639,7 @@ public class DocumentController {
 	//search a record
 	@RequestMapping(value = "/findDocument", method = RequestMethod.GET)
 	public String findDocument(
-			@RequestParam("search_document_type") String search_document_type,
+			@RequestParam("document_type") String search_document_type,
 		//	@RequestParam("search_document_title") String search_document_title,
 			@RequestParam("search_process") String search_process,
 			ModelMap model) {
@@ -743,6 +758,10 @@ public void load_document_page_dropdowns(ModelMap model)
 	/*
 	 * Load Employee of Doc Control
 	 */
+	EmployeeForm employeeowner = new EmployeeForm();
+	employeeowner.setEmployees(employeeDAO.getEmployees_by_process_owner());
+	model.addAttribute("employeeowner", employeeowner); 
+	
 	EmployeeForm employeeForm1 = new EmployeeForm();
 	employeeForm1.setEmployees(employeeDAO.getEmployees_by_doc_control());
 	model.addAttribute("employeeForm1",employeeForm1);
@@ -750,6 +769,8 @@ public void load_document_page_dropdowns(ModelMap model)
 	/*
 	 * Load Employee for management 
 	 */
+	
+	
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
 	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 	model.addAttribute("documentPrefixForm",documentPrefixForm);

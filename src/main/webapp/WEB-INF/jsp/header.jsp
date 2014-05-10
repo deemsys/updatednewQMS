@@ -428,9 +428,9 @@
 							<li ><a href="maintenance_list">View Maintenance</a></li>
 					</ul>
 						<ul id="ddsubmenu2" class="ddsubmenustyle">
-						<li><a href="add_prefixdocument">Add</a></li>
-							<li ><a href="documentprefix_list">View </a></li>
-				            <li ><a href="documentdelete">Delete</a></li>
+						<li><a href="add_prefixdocument">ADD SET-UP</a></li>
+							<li ><a href="documentprefix_list">LIST SET-UP</a></li>
+				            <li ><a href="documentdelete">DELETE</a></li>
 							 
 							 
 							 

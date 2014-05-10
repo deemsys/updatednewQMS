@@ -75,7 +75,7 @@ else
 									<td valign="top" align="left" width="10%">Document Title</td>
 									<td valign="top" align="left" width="10%">Document</td>		
 	          						<td valign="top" align="center" width="15%">External Documents</td>
-									
+									<td valign="top" align="left" width="10%"></td>
 									
 									
 									</tr>

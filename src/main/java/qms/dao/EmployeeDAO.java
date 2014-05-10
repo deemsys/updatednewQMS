@@ -388,7 +388,8 @@ public class EmployeeDAO extends AbstractExcelView{
 			while(resultSet.next())
 			{
 				System.out.println("count");
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),
+						resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 				//				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
 		    }
 	    }catch(Exception e){
@@ -424,7 +425,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			//("select * from tbl_employee where employee_id='"+employee_id+"'");
 			while (resultSet.next()) {
 
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));			
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));			
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -467,7 +468,7 @@ public class EmployeeDAO extends AbstractExcelView{
 				   attachment_reference= resultSet.getString("attachment_referrence");
 			  }
 			  
-			  String cmd_update1="update tbl_employee set name='"+employee.getName()+"',job_title='"+employee.getJob_title()+"',date_hired='"+employee.getDate_hired()+"',attachment_name='"+attachment_name+"', attachment_type='"+attachment_type+"', attachment_referrence='"+attachment_reference+"',process='"+employee.getProcess()+"',process_name='"+employee.getProcess_name()+"',doc_control='"+employee.getDoc_control()+"',management_rep='"+employee.getManagement_rep()+"' where employee_id='"+employee.getEmployee_id()+"'";
+			  String cmd_update1="update tbl_employee set name='"+employee.getName()+"',job_title='"+employee.getJob_title()+"',date_hired='"+employee.getDate_hired()+"',attachment_name='"+attachment_name+"', attachment_type='"+attachment_type+"', attachment_referrence='"+attachment_reference+"',process='"+employee.getProcess()+"',process_name='"+employee.getProcess_name()+"',doc_control='"+employee.getDoc_control()+"',management_rep='"+employee.getManagement_rep()+"',management='"+employee.getManagement()+"',process_owner='"+employee.getProcess_owner()+"',document_control='"+employee.getDocument_control()+"' where employee_id='"+employee.getEmployee_id()+"'";
 			  System.out.println("query problem");
 			  String cmd_update2="update tbl_employee_desc set list_of_functions_needes='"+employee.getList_of_functions_needes()+"',documented_in='"+employee.getDocumented_in()+"',qualified_by='"+employee.getQualified_by()+"',type_of_training='"+employee.getType_of_training()+"',trainer='"+employee.getTrainer()+"',training_due_date='"+employee.getTraining_due_date()+"',training_completion_date='"+employee.getTraining_completion_date()+"',training_effectiveness_review_due_date='"+employee.getTraining_effectiveness_review_due_date()+"',training_effectiveness_notes='"+employee.getTraining_effectiveness_notes()+"' where employee_id='"+employee.getEmployee_id()+"'";
 			System.out.println("query problem2");
@@ -476,7 +477,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			status = true;
 		  }
 			 else{
-				 String cmd_update1="update tbl_employee set name='"+employee.getName()+"',job_title='"+employee.getJob_title()+"',date_hired='"+employee.getDate_hired()+"',attachment_name='"+employee.getAttachment_name()+"', attachment_type='"+employee.getAttachment_type()+"', attachment_referrence='"+employee.getAttachment_referrence()+"',process='"+employee.getProcess()+"',process_name='"+employee.getProcess_name()+"',doc_control='"+employee.getDoc_control()+"',management_rep='"+employee.getManagement_rep()+"' where employee_id='"+employee.getEmployee_id()+"'";
+				 String cmd_update1="update tbl_employee set name='"+employee.getName()+"',job_title='"+employee.getJob_title()+"',date_hired='"+employee.getDate_hired()+"',attachment_name='"+employee.getAttachment_name()+"', attachment_type='"+employee.getAttachment_type()+"', attachment_referrence='"+employee.getAttachment_referrence()+"',process='"+employee.getProcess()+"',process_name='"+employee.getProcess_name()+"',doc_control='"+employee.getDoc_control()+"',management_rep='"+employee.getManagement_rep()+"',management='"+employee.getManagement()+"',process_owner='"+employee.getProcess_owner()+"',document_control='"+employee.getDocument_control()+"' where employee_id='"+employee.getEmployee_id()+"' where employee_id='"+employee.getEmployee_id()+"'";
 				  System.out.println("query problem");
 				  String cmd_update2="update tbl_employee_desc set list_of_functions_needes='"+employee.getList_of_functions_needes()+"',documented_in='"+employee.getDocumented_in()+"',qualified_by='"+employee.getQualified_by()+"',type_of_training='"+employee.getType_of_training()+"',trainer='"+employee.getTrainer()+"',training_due_date='"+employee.getTraining_due_date()+"',training_completion_date='"+employee.getTraining_completion_date()+"',training_effectiveness_review_due_date='"+employee.getTraining_effectiveness_review_due_date()+"',training_effectiveness_notes='"+employee.getTraining_effectiveness_notes()+"' where employee_id='"+employee.getEmployee_id()+"'";
 				System.out.println("query problem2");
@@ -514,17 +515,17 @@ public class EmployeeDAO extends AbstractExcelView{
 		}
 		  try{
 			 // String cmd_insert1="insert into tbl_employee(employee_id,name,job_title,date_hired,attachments,process,process_name,doc_control,management_rep) values('"+employee.getEmployee_id()+"','"+employee.getName()+"','"+employee.getJob_title()+"','"+employee.getDate_hired()+"','"+employee.getAttachments()+"','"+employee.getProcess()+"','"+employee.getProcess_name()+"','"+employee.getDoc_control()+"','"+employee.getManagement_rep()+"')";
-			  String cmd_insert1="insert into tbl_employee(employee_id,name,job_title,date_hired,attachment_name,attachment_type,attachment_referrence,process,process_name,doc_control,management_rep) values('"+employee.getEmployee_id()+"','"+employee.getName()+"','"+employee.getJob_title()+"','"+employee.getDate_hired()+"','"+employee.getAttachment_name()+"','"+employee.getAttachment_type()+"','"+employee.getAttachment_referrence()+"','"+employee.getProcess()+"','"+employee.getProcess_name()+"','"+employee.getDoc_control()+"','"+employee.getManagement_rep()+"')";
+			  String cmd_insert1="insert into tbl_employee(employee_id,name,job_title,date_hired,attachment_name,attachment_type,attachment_referrence,process,process_name,doc_control,management_rep,management,process_owner,document_control) values('"+employee.getEmployee_id()+"','"+employee.getName()+"','"+employee.getJob_title()+"','"+employee.getDate_hired()+"','"+employee.getAttachment_name()+"','"+employee.getAttachment_type()+"','"+employee.getAttachment_referrence()+"','"+employee.getProcess()+"','"+employee.getProcess_name()+"','"+employee.getDoc_control()+"','"+employee.getManagement_rep()+"','"+employee.getManagement()+"','"+employee.getProcess_owner()+"',+'"+employee.getDocument_control()+"')";
 			  String cmd_insert2="insert into tbl_employee_desc(employee_id,list_of_functions_needes,documented_in,qualified_by,type_of_training,trainer,training_due_date,training_completion_date,training_effectiveness_review_due_date,training_effectiveness_notes) values('"+employee.getEmployee_id()+"','"+employee.getList_of_functions_needes()+"','"+employee.getDocumented_in()+"','"+employee.getQualified_by()+"','"+employee.getType_of_training()+"','"+employee.getTrainer()+"','"+employee.getTraining_due_date()+"','"+employee.getTraining_completion_date()+"','"+employee.getTraining_effectiveness_review_due_date()+"','"+employee.getTraining_effectiveness_notes()+"')";
 			  statement.execute(cmd_insert1);
 			  statement.execute(cmd_insert2);
 			  
-			  if(employee.getProcess().equals("yes"))
+			/*  if(employee.getProcess().equals("yes"))
 			  {
 				  String cmd_insert_process="insert into tbl_process(process_id,process_name,process_owner) values('"+employee.getProcess()+"','"+employee.getProcess_name()+"','"+employee.getName()+"')";
 				  statement.execute(cmd_insert_process);
 			  }
-			  
+			  */
 		  }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);
@@ -553,7 +554,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			resultSet = statement.executeQuery("select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id = '"+employee_id+"' and t2.employee_id = '"+employee_id+"'");
 			//System.out.println("came");
 			while(resultSet.next()){
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 				
 				
 			
@@ -590,7 +591,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			while(resultSet.next()){
 				System.out.println("count");
 			//	employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -618,13 +619,14 @@ public class EmployeeDAO extends AbstractExcelView{
 		List<Employee> employees = new ArrayList<Employee>();
 	    try{
 	    	String cmd="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.name like '"+letter+"%'";
+	    	//String cmd1="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.process_owner like '"+letter+"%'";
 			resultSet = statement.executeQuery(cmd);
 			System.out.println(cmd);
 			//System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
 			//	employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -639,7 +641,41 @@ public class EmployeeDAO extends AbstractExcelView{
 	    return employees;
 		
 	}
+	public List<Employee> filterProcessOwner(String letter){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Employee> employees = new ArrayList<Employee>();
+	    try{
+	    	
+	    	String cmd="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.name like '"+letter+"%' and t1.process_owner like 'yes'";
+			resultSet = statement.executeQuery(cmd);
+			System.out.println(cmd);
+			//System.out.println("came");
+			while(resultSet.next()){
+				System.out.println("count");
+			//	employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return employees;
 		
+	}	
 	
 	public List<Employee> getEmployees(){
 		Connection con = null;
@@ -658,7 +694,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			while(resultSet.next()){
 				System.out.println("count");
 //				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -692,7 +728,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			while(resultSet.next()){
 				System.out.println("doc_employee");
 			//	employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -706,6 +742,37 @@ public class EmployeeDAO extends AbstractExcelView{
 	    }
 	    return employees;
 		
+	}
+	public List<Employee> getEmployees_by_process_owner(){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Employee> employees = new ArrayList<Employee>();
+	    try{
+			resultSet = statement.executeQuery("select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.process_owner='yes';");
+			//System.out.println("came");
+			while(resultSet.next()){
+				System.out.println("doc_employee");
+			//	employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return employees;
 	}
 	public List<Employee> getEmployees_by_management_rep(){
 		Connection con = null;
@@ -723,7 +790,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			//System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -776,7 +843,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			System.out.println("came");
 			while(resultSet.next()){
 //				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 
 			}
 	    }catch(Exception e){
@@ -814,7 +881,7 @@ public class EmployeeDAO extends AbstractExcelView{
 			//System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("inside the search operation in database");
-				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 			System.out.println("searching.....");
 			}
 	    }catch(Exception e){
@@ -875,7 +942,7 @@ public class EmployeeDAO extends AbstractExcelView{
 						resultSet.getString("training_due_date"),
 						resultSet.getString("training_completion_date"),
 						resultSet.getString("training_effectiveness_review_due_date"),
-						resultSet.getString("training_effectiveness_notes")));
+						resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
 				}
 			} catch (Exception e) {
 			/*logger.info(e.toString());*/

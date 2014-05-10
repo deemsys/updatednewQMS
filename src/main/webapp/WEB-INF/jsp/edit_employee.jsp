@@ -141,14 +141,22 @@ $(function() {
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Attachments</td>
                   
                   <td valign="top" align="left" class="input_txt" width="70%">
-                   <c:out value="${employee.attachment_name}"></c:out>
+                   <c:out value="${employee.attachment_name}"></c:out><br>
                   <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br><span class="err"></span></td>
+                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Working as :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                  
+                   <input type="checkbox" name="process_owner" value="yes" id="id_field_document_id"<c:if test="${employee.process_owner=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Process Owner                 
+                   <input type="checkbox" name="document_control" value="yes" id="id_field_document_id"<c:if test="${employee.document_control=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Document Control<br/><br/>
+                   <input type="checkbox" name="management" value="yes" id="id_field_document_id"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
+                  
                   
                    </tr>
-                   
+                   <tr class="row1">
                    <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Completion Date</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_completion_date }" /><br><span class="err"><form:errors path="Employee.training_completion_date"></form:errors></span></td>
+                  <input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_completion_date }" /><br><span class="err"><form:errors path="Employee.training_completion_date"></form:errors></span>
+                  </td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Process:</td>

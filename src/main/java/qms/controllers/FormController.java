@@ -472,6 +472,11 @@ public class FormController
 		RevisionFormForm revisionFormForm = new RevisionFormForm();
 		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(auto_no));
 		model.addAttribute("revisionFormForm", revisionFormForm);
+		
+		EmployeeForm employeeowner = new EmployeeForm();
+		employeeowner.setEmployees(employeeDAO.getEmployees_by_process_owner());
+		model.addAttribute("employeeowner", employeeowner); 
+		
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formForm",formForm);

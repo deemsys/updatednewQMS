@@ -285,7 +285,7 @@ $(window).load(function(){
             
                 <td valign="middle" align="left" class="input_txt" width="30%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" class="input_txt" width="25%" >
-               <span id="process_owner_id"></span>
+               <%-- <span id="process_owner_id"></span>
             
                 <c:out value="${documentMain.approver1}" ></c:out> 
               
@@ -294,7 +294,18 @@ $(window).load(function(){
                <br/><span class="err"><form:errors path="DocumentMain.approver1"></form:errors></span>
                
                
-               </td>
+               </td> --%>
+               
+               
+               <select name="approver1" class="input_cmbbx1" id="approver" style="width:200px;">
+             	
+            	
+              <c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
+               <option value="<c:out value="${employeeowner.name}"/>" <c:if test="${documentMain.approver1==employeeowner.name}"><c:out value="Selected"/></c:if>><c:out value="${employeeowner.name}"/></option>
+               </c:forEach>    
+               
+               </select>   <br/><span class="err"><form:errors path="DocumentMain.approver1"></form:errors></span></td>
+            
               <td valign="top" align="left" class="input_txt" width="20%"></td>
                  </tr>  
               <tr class="row2" style="border:none;">
@@ -509,6 +520,7 @@ function show_edit()
 		document.getElementById('issuer').value="";
 		document.getElementById('comments').value="";
 		document.getElementById('revisionlevel').value="";
+		document.getElementById('approver').value="";
 		document.getElementById('approver2').value="";
 		document.getElementById('approver3').value="";
 		document.getElementById('status').value="";

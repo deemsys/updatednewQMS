@@ -86,11 +86,11 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="15%"> Document Type : </td>
-							    <td><input type="text" name="search_document_type" class="input_txtbx2" id="moblie"></td>
+							    <td><input type="text" name="document_type" class="input_txtbx2" id="moblie"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="search_process" id="search_process" class="input_txtbx2"></td>
 							   
-							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  onclick="findpart()"></td>
+							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  "></td>
 							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
 							  </tr>
 							</table>

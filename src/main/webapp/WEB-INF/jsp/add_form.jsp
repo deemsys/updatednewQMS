@@ -159,7 +159,7 @@
                <td valign="top" align="left" class="input_txt" width="70%;">
                
                   
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" <c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" checked<c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;<br/><span class="err"></span>
                   
@@ -226,17 +226,54 @@
 																			name="document_id"
 																			value="" /><br/><span class="err"><form:errors path="Form.document_id"></form:errors></span>
 																		</td>
-																		              <td valign="middle" align="left" class="input_txt"><span
+																		             <%--  <td valign="middle" align="left" class="input_txt"><span
 																			class="err"></span>Approver1(Process Owner) :</td>
 																			
 																		<td valign="top" align="left" class="input_txt">
-																		<%--<input
+																		<input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="approver1"
-																			value="${docform.approver1}" /> --%>
-																			<span id="process_owner_id"></span>
+																			value="${docform.approver1}" />
+																			<span id="process_owner_id"></span> --%>
+																			 <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner):</td>
+               <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="20%">
+               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" style="width:80px;">
+               <option value="">--Select--</option>
+               <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
+              <option value="N">N</option>
+              <option value="O">O</option>
+              <option value="P">P</option>
+              <option value="Q">Q</option>
+              <option value="R">R</option>
+              <option value="S">S</option>
+              <option value="T">T</option>
+              <option value="U">U</option>
+              <option value="V">V</option>
+              <option value="W">W</option>
+              <option value="X">X</option>
+              <option value="Y">Y</option>
+              <option value="Z">Z</option>
+              
+               </select>
+                <span id="issuer_generate1">
+               
+               </span>
+                <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
+               
 																			<br/><span class="err"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
 																		 </tr>
@@ -375,6 +412,25 @@ function doAjaxPost() {
 		}
 	});
 }
+function AjaxProcessOwner() {
+	document.getElementById('filter_value1').style.display="none";
+	 document.getElementById("issuer_generate1").style.display="inline";
+	var filer_value1 = $('#filter_value1').val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getprocessowner",
+		data : "filter_val=" + filer_value1,
+		success : function(response) {
+			
+			$('#issuer_generate1').html(response);
+			//$('#filter_value').hide();
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
 function doAjaxPost_for_process() {
 
 	var proceee_name = $('#id_inpprocess').val();
@@ -405,6 +461,18 @@ function change_to_label_issuer()
 	document.getElementById("issuer_full_lbl").innerHTML=type.value;
 	
 	}
+function change_to_label_issuer1()
+{
+	
+    
+	var type=document.getElementById("filter_value1");	
+	
+	document.getElementById("lable_td_issuer").style.display="block";
+	document.getElementById("edit_td_issuer1").style.display="none";
+	
+	document.getElementById("issuer_full_lbl1").innerHTML=type.value;
+	
+	}
 function show_edit_issuer()
 {
 	  document.getElementById("issuer_generate").style.display="none";
@@ -412,7 +480,15 @@ function show_edit_issuer()
 document.getElementById("filter_value").style.display="block";
 
 	
-	}	
+	}
+function show_edit_issuer1()
+{
+	  document.getElementById("issuer_generate1").style.display="none";
+	  document.getElementById("issuer_full_lbl1").style.display="none";
+document.getElementById("filter_value1").style.display="block";
+
+	
+	}
 function change_to_label()
 {
 	

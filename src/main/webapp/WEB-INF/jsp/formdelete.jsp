@@ -87,7 +87,8 @@ else
 									<td valign="top" align="left" width="10%">select</td>
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
-									
+									<td valign="top" align="left" width="10%"></td>
+									<td valign="top" align="left" width="10%"></td>
 									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
