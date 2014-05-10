@@ -78,7 +78,7 @@
 								
 							</tr>
 							<tr class="row1" id="document_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<!-- <td valign="middle" align="right" class="input_txt" width="30%">
 								Select Document Type :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
@@ -88,7 +88,18 @@
 								<input type="radio"  name="doc_type" value="3" id="id_type_standard"/>Standard<br/>
 								<input type="radio"  name="doc_type" value="4" id="id_type_gov_regulation"/>Goverment Regulation<br/>
 								<input type="radio" name="doc_type" value="5" id="id_type_manual"/>Specification<br/>
-							</td>
+							</td> -->
+							 <td valign="middle" align="right" class="input_txt" width="30%">
+								Select Document Type :
+								</td>
+              <td valign="top" align="left" class="input_txt" width="25%">
+              <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
+              <option value="">--Select--</option>
+                <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
+        				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
+			                  </c:forEach> </select>
+               </td>
+               
 							</tr>
 							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
@@ -139,7 +150,7 @@
 								<td><input type="checkbox" name="report_field[]" value="process" id="id_field_process"/>Process</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="external" id="id_field_external"/>External?</td>
+								<td><input type="checkbox" name="report_field[]" value="external" id="id_field_external"/>Is an External Document</td>
 								<td><input type="checkbox" name="report_field[]" value="issuer" id="id_field_issuer"/>Issuer</td>
 								<td><input type="checkbox" name="report_field[]" value="revision_level" id="id_field_revision_level"/>Revision Level</td>
 					      		</tr>

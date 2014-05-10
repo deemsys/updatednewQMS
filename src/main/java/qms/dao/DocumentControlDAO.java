@@ -776,7 +776,7 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
-			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id where external=1");
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id where external='Yes'");
 			System.out.println("came");
 			while(resultSet.next()){
 				documentMains.add(new DocumentMain(

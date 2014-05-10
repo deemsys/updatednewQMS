@@ -458,7 +458,7 @@ public class FormDAO extends AbstractExcelView{
 			e1.printStackTrace();
 		}
 		try {
-			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where t1.process='"+process+"'");
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where t1.process like'"+process+"%'");
 
 		//	String cmd_select = "select * from tb1_internalaudits";
 			//resultSet = statement.executeQuery(cmd_select);

@@ -527,7 +527,7 @@ public class FormController
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
 	    
-	    model.addAttribute("formForm",formForm);
+	  //  model.addAttribute("formForm",formForm);
 	    
 	    
 	   
@@ -543,7 +543,7 @@ public class FormController
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getlimitedformreport(page));
 		model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	
-		model.addAttribute("formForm",formForm);
+	//	model.addAttribute("formForm",formForm);
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","document");
@@ -558,7 +558,7 @@ public class FormController
 	public String viewallformreport(HttpServletRequest request,ModelMap model, Principal principal ) {
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform());
-		model.addAttribute("formForm",formForm);
+	//	model.addAttribute("formForm",formForm);
 
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()

@@ -670,7 +670,12 @@ public class DocumentController {
 	//report page request passing
 	@RequestMapping(value = "/document_report", method = RequestMethod.GET)
 	public String reportDocument(ModelMap model) {
-		  model.addAttribute("menu","document");
+			model.addAttribute("menu","document");
+			DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+			documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+			model.addAttribute("documentTypeForm",documentTypeForm);
+			
+		
 		return "report_document";
 
 	}
@@ -685,7 +690,10 @@ public class DocumentController {
 		
 		if(request.getParameter("type_of_report").equals("document_list_by_type"))
 		{
-			switch(Integer.parseInt(request.getParameter("doc_type")))
+			String doc_type = request.getParameter("document_type");
+			 documentMains=documentControlDAO.getDocuments_bytype(doc_type);
+			
+			/*switch(Integer.parseInt(request.getParameter("document_type")))
 				  {
 		  case 0:
 			  documentMains=documentControlDAO.getDocuments_bytype("Manual");
@@ -706,10 +714,10 @@ public class DocumentController {
 			  documentMains=documentControlDAO.getDocuments_bytype("Specification");
 			  break;
 		  default:
-			  break;
+			  break;*/
 				  
 		}		
-		}
+		
 		else
 		{
 			documentMains=documentControlDAO.getDocuments_byExternal();

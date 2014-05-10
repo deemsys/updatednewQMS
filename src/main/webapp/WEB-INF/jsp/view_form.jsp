@@ -202,7 +202,7 @@
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr><tr> -->
-		<td colspan="6">  
+	<tr>	<td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">
         
