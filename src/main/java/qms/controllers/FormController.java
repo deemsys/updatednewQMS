@@ -332,6 +332,11 @@ public class FormController
 			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
+	             
+	             ProcessForm processForm1 = new ProcessForm();
+					processForm1.setProcesses(processDAO.getProcess());
+					model.addAttribute("processForm", processForm1);
+					
 	          return "view_form";
 			}
 			else
@@ -441,6 +446,11 @@ public class FormController
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formdetails",formForm);
 		  model.addAttribute("menu","document");*/
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform());
 		model.addAttribute("formForm",formForm);
@@ -462,6 +472,8 @@ public class FormController
 		    revisionForms.setRevisionForms(revisionFormDAO.getRevision(number));
 			 model.addAttribute("revisionForms",revisionForms);
 			
+			
+				
 		return "view_form";
  	}
 	@RequestMapping(value={"/edit_form"}, method = RequestMethod.GET)
@@ -522,6 +534,10 @@ public class FormController
 		model.addAttribute("menu","document");
 	  	model.addAttribute("noofrows",5);
 	  	
+	  	ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+	  	
 	    formForm.setForm(formDAO.getlimitedformreport(1));
 	    model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	 
         model.addAttribute("button","viewall");
@@ -550,6 +566,10 @@ public class FormController
 	    model.addAttribute("menu","document");
 	    model.addAttribute("button","viewall");
 	    
+	    ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+	    
 	    return "view_form";
 		
 	}
@@ -569,6 +589,10 @@ public class FormController
 	    model.addAttribute("menu","document");
 	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");
+	    
+	    ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
 	        return "view_form";
 
 	}
@@ -653,6 +677,9 @@ public class FormController
         
 		 model.addAttribute("formForm",formForm);
 		
+		 ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
 	    return "view_form";
 
 	}

@@ -41,12 +41,13 @@
         </td>
       </tr>
      
-      <tr>
+     <tr>
         <td valign="top" align="left">
-            <div class="headings altheading">
+        <!--  <div class="headings altheading">
               <h2>&nbsp;&nbsp;Form Details</h2>
-            </div>
+            </div> -->
             <div class="contentbox">
+            <h1 style="color:#7A3A3A;font-size:20px;">Form Details</h1>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
@@ -56,15 +57,11 @@
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
              <c:set value="${formForm.form[0]}" var="forms"> </c:set>
-    		<label> Form Details </label>
-    
-    
-             <tr class="row1">
-             
-              <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">*</span>Form/Rec Id:</td>
+    		  <tr class="row1">
+    		 <td valign="middle" align="left" class="input_txt"><strong>Form/RecId:</strong></td>
                <td valign="top" align="left" class="input_txt1" width="15%">${forms.form_or_rec_id}</td>
                
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Responsibility :</td>
+               <td valign="middle" align="left" class="input_txt"><strong>Responsibility :</strong></td>
                <td valign="top" align="left" class="input_txt" width="20%">${forms.responsibility}
              
                
@@ -73,34 +70,34 @@
              </tr>  
               <tr class="row2">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Form/Rec Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><strong>Form/Rec Title:</strong></td>
                <td valign="top" align="left" class="input_txt" width="20%">${forms.form_or_rec_title}</td>
                
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Process:</td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><strong>Process:</strong></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${forms.process}
             </td>
             </tr>
             <tr class="row1">
               
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Media Type:</td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><strong>Media Type:</strong></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${forms.media_type}
                 <c:choose>
                 <c:when test="${forms.media_type=='hardcopy'}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Location:</td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" ><strong>Location:</strong></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${forms.location}
                </td></c:when>
                <c:when test="${forms.media_type=='electronic'}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Upload File:</td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt"><strong>Upload File:</strong></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${forms.attachment_name}
               </c:when>
                <c:when test="${forms.media_type=='both'}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Upload File:</td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt"><strong>Upload File:</strong></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${forms.location}
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${forms.attachment_name}
               </c:when>
                </c:choose>
-           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err">*</span></td>
-               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
+           <td valign="middle" id="softcopy_file_label" style="display:none;" align="left" class="input_txt"></td>
+               <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/></div></td>
      
           
            <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -108,11 +105,11 @@
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Retention Time:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><strong>Retention Time:</strong></td>
                <td valign="top" align="left" class="input_txt" width="20%">${forms.retention_time}
                
                </td>
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Form :</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><strong>Form :</strong></td>
                <td valign="top" align="left" class="input_txt" width="25%">${forms.form}
               </td>
             <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -120,10 +117,10 @@
              </tr> 
              <tr class="row2">
               
-               <td valign="middle" align="right" class="input_txt" width="25%">
+               <td valign="middle" align="left" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
               
-            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+            <td valign="top" align="left" class="input_txt" width="20%"></td>
               
              </tr>  
              
@@ -135,49 +132,49 @@
              
              
                
-             <li>
-             </li>
-             <li>
-             </li>
-            </table>
+            
            
-            </td>
-           
-            </table>
-          
-      </td>
-      </tr>
-              <td colspan="1">
+          </table>
+               </div>
+               </td>
+               
+         <!-- 
+            <div class="contentbox">
+             <h2><b>&nbsp;&nbsp;Revision Details</b></h2>
+                     -->
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <td colspan="3">
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
-                <div class="contentbox">
+             
+             <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
+<br>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    		<label> Revision details </label>
-             <tr class="row1">
-            <td valign="top" align="right" class="input_txt" width="20%"><span class="err">*</span>Document ID :</td>
+             <tr class="row2">
+                            <td valign="middle" align="left" class="input_txt"><strong>Form/Rec Id</strong></td>
                <td valign="top" align="left" class="input_txt" width="25%">${forms.document_id}
                </td>
-           <td valign="top" align="right" class="input_txt" width="25%"><span class="err">*</span>Date :</td>
+           <td valign="top" align="left" class="input_txt" width="25%"><strong>Date :</strong></td>
                <td valign="top" align="left" class="input_txt" width="20%">${forms.effective_date}
                
                
                </td>
             
                
-              <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+              <td valign="top" align="left" class="input_txt" width="20%"></td>
                  </tr>  
               <tr class="row2" style="border:none;">
-               <td valign="top" align="right" class="input_txt" width="20%"><span class="err">*</span>Approver 1(Process Owner):</td>
+               <td valign="top" align="left" class="input_txt" width="20%"><strong>Approver 1(Process Owner):</strong></td>
                <td valign="top" align="left" class="input_txt" width="25%">${forms.approver1}
                </td>
-                <td valign="top" align="right" class="input_txt" width="25%"><span class="err">*</span>Issuer :</td>
+                <td valign="top" align="left" class="input_txt" width="25%"><strong>Issuer :</strong></td>
                <td valign="top" align="left" class="input_txt" width="20%">${forms.issuer}</td>
                
-            <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+            <td valign="top" align="left" class="input_txt" width="20%"></td>
              </tr>
             <tr class="row1">
-            <td valign="top" align="right" class="input_txt" width="20%"><span class="err">*</span>Comments :</td>
+            <td valign="top" align="left" class="input_txt" width="20%"><strong>Comments :</strong></td>
                <td valign="top" align="left" class="input_txt" width="25%">${forms.comments}
                
  				</td>
