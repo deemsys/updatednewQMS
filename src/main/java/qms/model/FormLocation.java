@@ -1,8 +1,9 @@
 package qms.model;
-
+import org.hibernate.validator.constraints.NotEmpty;
 public class FormLocation {
 	
 	private String location_id;
+	@NotEmpty
 	private String form_location;
 	
 	

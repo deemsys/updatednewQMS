@@ -50,6 +50,13 @@
 									
 								</a>
 							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="add_revisionleveldocument" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Level</span>
+									
+								</a>
+							</li>
 						
 				          
 				           </ul>
@@ -67,12 +74,12 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="70%">Description :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx1" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt">Description :</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" class="input_txtbx1" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Form Prefix</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx1" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" >Form Prefix</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx1" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>

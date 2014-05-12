@@ -12,7 +12,7 @@
      <tr>
         <td>
         <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
 						  <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">

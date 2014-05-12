@@ -1,8 +1,10 @@
 package qms.model;
-
+import org.hibernate.validator.constraints.NotEmpty;
 public class FormPrefix {
 	private String id;
+	@NotEmpty
 	private String form_name;
+	@NotEmpty
 	private String form_prefix;
 	
 	public FormPrefix() {

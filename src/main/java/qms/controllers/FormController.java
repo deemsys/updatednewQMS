@@ -388,10 +388,10 @@ public class FormController
 
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
-	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
 	      
-	    model.addAttribute("menu","document");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");
 	    return "formdelete";

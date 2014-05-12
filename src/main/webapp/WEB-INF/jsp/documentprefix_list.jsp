@@ -15,32 +15,38 @@
   <ul class="horizmenu">
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentprefix_list" class="<c:choose>
-								<c:when test="${menu=='formprefix'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span>View Document Prefix</span>
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span>Document Prefix</span>
 								</a>
 							</li>
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formprefix_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Form Prefix</span>
+									<span>Form Prefix</span>
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="process_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Process</span>
+									<span>Process</span>
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formlocation_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Locations</span>
+									<span>Locations</span>
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documenttype_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-								<span>View DocumentType</span>
+								<span>DocumentType</span>
+								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="documentrevisionlevel_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Level</span>
 								</a>
 							</li>
 						
@@ -124,10 +130,10 @@
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallprefixreport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewalldocumentprefixreport" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
-                  <li class="page"><a href="formprefix_list" class="paging_select">Back</a></li>
+                  <li class="page"><a href="documentprefix_list" class="paging_select">Back</a></li>
               </c:otherwise>
               </c:choose>					
 		 

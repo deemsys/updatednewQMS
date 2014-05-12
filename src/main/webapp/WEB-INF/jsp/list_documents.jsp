@@ -48,28 +48,25 @@
      
       <tr>
         <td valign="top" align="left">
-            <div class="headings altheading">
-              <h2>&nbsp;&nbsp;View Documents</h2>
-            </div>
+            
             <div class="contentbox">
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
-              
-             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+			 <h1 style="color:#7A3A3A;font-size:20px;">Document Details</h1>
+			 <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
              <c:set value="${documentMainForm.documentMains[0]}" var="documentMain"> </c:set>
-    		<label> Document Details </label>
     
     
              <tr class="row1">
              
-              <td valign="middle" align="right" class="input_txt" width="15%"><span class="err">*</span>Document ID:</td>
+              <td valign="middle" align="left" class="input_txt" width="15%"><b>Document ID:</b></td>
                <td valign="top" align="left" class="input_txt1" width="15%">${documentMain.document_id}</td>
                
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Media Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><b>Media Type:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.media_type}
                <!-- <select name="media_type" class="input_cmbbx1" onchange="">
                <option onclick="toggle2(this.value);" value="Hard Copy">Hard Copy</option>
@@ -81,19 +78,19 @@
              </tr>  
               <tr class="row2">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><b>Document Title:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.document_title}</td>
                 <c:choose>
                 <c:when test="${documentMain.media_type=='hardcopy'}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Location:</td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><b>Location:</b></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${documentMain.location}
                </td></c:when>
                <c:when test="${documentMain.media_type=='electronic'}">
-               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%">Upload File:</td>
+               <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><b>Upload File:</b></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">${documentMain.attachment_name}
               </c:when>
                </c:choose>
-           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"><span class="err">*</span></td>
+           <td valign="middle" id="softcopy_file_label" style="display:none;" align="right" class="input_txt" width="20%"></td>
                <td valign="top" id="softcopy_file_upload" style="display:none;" align="left" class="input_txt" width="25%"><div ><br/><span class="err"></span></div></td>
      
           
@@ -102,11 +99,11 @@
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Document Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><b>Document Type:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.document_type}
                
                </td>
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Process:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><b>Process:</b></td>
                <td valign="top" align="left" class="input_txt" width="25%">${documentMain.process}
               </td>
             <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -114,9 +111,9 @@
              </tr> 
              <tr class="row2">
               
-               <td valign="middle" align="right" class="input_txt" width="25%">
+               <td valign="middle" align="left" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>External Document(Y/N):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><b>External Document(Y/N):</b></td>
                <td valign="top" align="left" class="input_txt" width="25%">${documentMain.external}
                </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
@@ -147,18 +144,29 @@
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
                 <div class="contentbox">
-             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+                             <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1><br>
+                <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-    		<label> Revision details </label>
+    		
+           <tr class="row2">
+                            <td valign="left" align="left" class="input_txt"><strong>Document Id</strong></td>
+               <td valign="top" align="left" class="input_txt" width="25%">${documentMain.document_id}
+               </td>
+           <td valign="middle" align="left" class="input_txt" width="25%"><b>Date:</b></td>
+               <td valign="top" align="left" class="input_txt" width="20%">${documentMain.date}</td>
+               
+               
+               </td>
+           
              <tr class="row1" style="border:none;">
            
-           <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Issuer:</td>
+           <td valign="middle" align="left" class="input_txt" width="25%"><b>Issuer:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.issuer}
                
                
                </td>
             
-                <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Approver 1(Process Owner):</td>
+                <td valign="middle" align="left" class="input_txt" width="20%"><b>Approver 1(Process Owner):</b></td>
                <td valign="top" align="left" class="input_txt" width="25%">${documentMain.approver1}
                <!-- <select name="approver1" id="approver1" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
@@ -172,9 +180,9 @@
                  </tr>  
               <tr class="row2" style="border:none;">
               
-                <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Revision Level:</td>
+                <td valign="middle" align="left" class="input_txt" width="25%"><b>Revision Level:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.revision_level}</td>
-               <td valign="middle" align="right" class="input_txt" width="20%"><span class="err">*</span>Approver 2(Doc Control):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><b>Approver 2(Doc Control):</b></td>
                <td valign="top" align="left" class="input_txt" width="25%">${documentMain.approver2}
                
  				</td>
@@ -182,20 +190,20 @@
              </tr>
              <tr class="row1" style="border:none;">
               
-               <td valign="middle" align="right" class="input_txt" width="25%"><span class="err">*</span>Date:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%"><b>Date:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.date}</td>
-               <td valign="top" align="right" class="input_txt" width="25%">Approver 3(Mgmt Report):</td>
+               <td valign="top" align="left" class="input_txt" width="25%"><b>Approver 3(Mgmt Report):</b></td>
            <td valign="top" align="left" class="input_txt" width="20%">${documentMain.approver3}<span class="err"></span></td>
              </tr>  
               <tr class="row2" style="border:none;">
-                 <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Comments:</td>
+                 <td valign="middle" align="left" class="input_txt"><b>Comments:</b></td>
                <td valign="top" align="left" class="input_txt" width="20%">${documentMain.comments}</td>
          
-               <td valign="top" align="right" class="input_txt" width="20%"><span class="err">*</span>Status:</td>
+               <td valign="top" align="left" class="input_txt" width="20%"><b>Status:</b></td>
                <td valign="top" align="left" class="input_txt" width="25%">${documentMain.status}
                
               </td>
-                <td valign="middle" align="right" class="input_txt" width="20%">
+                <td valign="middle" align="left" class="input_txt" width="20%">
                <span class="err"></td>
                <td valign="top" align="left" class="input_txt" width="25%">
             

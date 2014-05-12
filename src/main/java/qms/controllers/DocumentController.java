@@ -29,6 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import qms.dao.DocumentControlDAO;
 import qms.dao.DocumentPrefixDAO;
+import qms.dao.DocumentRevisionLevelDAO;
 import qms.dao.DocumentTypeDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.FormLocationDAO;
@@ -39,6 +40,7 @@ import qms.model.RevisionDocument;
 import qms.model.RevisionForm;
 import qms.dao.ProcessDAO;
 import qms.forms.DocumentPrefixForm;
+import qms.forms.DocumentRevisionLevelForm;
 import qms.forms.DocumentTypeForm;
 import qms.forms.EmployeeForm;
 import qms.forms.FormForm;
@@ -77,6 +79,10 @@ public class DocumentController {
 	
 	@Autowired
 	FormLocationDAO formLocationDAO;
+	
+	@Autowired
+	DocumentRevisionLevelDAO documentRevisionLevelDAO;
+	
 		@RequestMapping(value = { "/documententry" }, method = RequestMethod.GET)
 	public String add_document1(HttpSession session, ModelMap model,
 			Principal principal) {
@@ -150,10 +156,10 @@ public class DocumentController {
 
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
-	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
 	      
-	    model.addAttribute("menu","document");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");
 	    return "documentdelete";
@@ -181,25 +187,6 @@ public class DocumentController {
 		
 	}	
 	
-
-	/*@RequestMapping(value = "/view_revision_history", method = RequestMethod.GET)
-	public String revision_history(@RequestParam("document_id") String document_id,@RequestParam("auto_number")String auto_number,HttpSession session ,ModelMap model, Principal principal) 
-	{
-		  System.out.println("inside history");
-		load_document_page_dropdowns(model);
-		RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
-		revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(auto_number));
-		model.addAttribute("revisionDocumentForm",revisionDocumentForm);
-		System.out.println(revisionDocumentForm.getRevisionDocuments().get(0).getRevision_id());
-		DocumentMainForm documentMainForm=new DocumentMainForm();
-		documentMainForm.setDocumentMains(documentControlDAO.getDocument_byid(auto_number));
-		model.addAttribute("documentMainForm",documentMainForm);
-		
-		model.addAttribute("menu","document");
-		
-		return "view_documents";
-	}
-	*/
 	@RequestMapping(value={"/review_history_document"}, method = RequestMethod.GET)
 	public String review_history_document(HttpSession session,@RequestParam("auto_number") String auto_number,ModelMap model)
 	{
@@ -647,6 +634,7 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
 		model.addAttribute("documentMainForm", documentMainForm);
+		model.addAttribute("menu","document");
 		return "view_documents";
 
 	}
@@ -798,6 +786,11 @@ public void load_document_page_dropdowns(ModelMap model)
 	FormLocationForm formLocationForm = new FormLocationForm();
 	formLocationForm.setFormLocations(formLocationDAO.getlocation());
 	model.addAttribute("formLocationForm",formLocationForm);
+	
+	
+	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());
+	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 	
 	
 }

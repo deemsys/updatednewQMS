@@ -217,7 +217,9 @@
 		 <c:if test="${display == 'show'}">
 		  <div class='popup'>
 											<div class='cnt223'>
-											<img src='http://www.developertips.net/demos/popup-dialog/img/x.png' alt='quit' class='x' id='x' />
+									<!-- 		<img src='http://www.developertips.net/demos/popup-dialog/img/x.png' alt='quit' class='x' id='x' />
+						    		 -->		<img src='resources/images/closebutton-md1.png' alt='quit' class='x' id='x' />
+						    				
 						    				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						    					<tr id="tabledisplay">
 								

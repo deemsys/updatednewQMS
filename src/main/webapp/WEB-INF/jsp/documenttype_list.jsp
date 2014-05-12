@@ -16,31 +16,37 @@
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentprefix_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Document Prefix</span>
+									<span>Document Prefix</span>
 								</a>
 							</li>
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formprefix_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Form Prefix</span>
+									<span>Form Prefix</span>
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="process_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Process</span>
+									<span>Process</span>
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formlocation_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Locations</span>
+									<span>Locations</span>
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documenttype_list" class="<c:choose>
 								<c:when test="${menu=='documenttype'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-								<span>View Document Type</span>
+								<span>Document Type</span>
+								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="documentrevisionlevel_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Level</span>
 								</a>
 							</li>
 							</ul>

@@ -1,11 +1,12 @@
 package qms.model;
-
+import org.hibernate.validator.constraints.NotEmpty;
 public class Process
 {
+	@NotEmpty
 	private String process_id;
-	
+	@NotEmpty
 	private String process_name;
-	
+	@NotEmpty
 	private String process_owner;
 
 	public Process(String process_id, String process_name, String process_owner) {

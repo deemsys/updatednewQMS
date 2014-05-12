@@ -12,7 +12,7 @@
       <tr>
       <td>
       <div>
-  <ul class="horizmenu" style=" float:left;margin-left:210px;">
+  <ul class="horizmenu" style=" float:left;margin-left:205px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixdocument" class="<c:choose>
@@ -50,6 +50,13 @@
 									
 								</a>
 							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="add_revisionleveldocument" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Level</span>
+									
+								</a>
+							</li>
 						
 				           </ul>
   </div>
@@ -66,16 +73,16 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="70%">Process Id:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_id" class="input_txtbx1" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" >Process Id:</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_id" class="input_txtbx1" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="70%">Process Name:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" class="input_txtbx1" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" >Process Name:</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_name" class="input_txtbx1" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="70%">Process Owner:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" class="input_txtbx1" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" >Process Owner:</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" class="input_txtbx1" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>

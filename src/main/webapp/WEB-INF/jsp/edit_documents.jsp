@@ -261,7 +261,7 @@ $(window).load(function(){
              </tr>
               <tr class="row1">
               <td valign="middle" align="left" class="input_txt" width="30%">Revision No. (optional):</td>
-			  <td valign="middle" align="left" class="input_txtbx1">&nbsp;&nbsp;
+			  <td valign="middle" align="left" class="input_txt">&nbsp;&nbsp;
 			  <input type="text" name="revision_id" id="revisionid" value="${documentMain.revision_id}" onclick="revision_change()" class="input_txtbx1" ></td>
               
              <!--   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">&nbsp;&nbsp;*</span>Document Id :</td> -->
@@ -311,9 +311,17 @@ $(window).load(function(){
               <tr class="row2" style="border:none;">
               
                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="revisionlevel" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
+               <td valign="top" align="left" class="input_txt" width="20%">
+               <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:200px;">
+                           <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
+        				       <option value="${revisionlevel.revision_level}"<c:if test="${revisionlevel.revision_level == documentMain.revision_level}"><c:out value="selected"/></c:if>>${revisionlevel.revision_level}</option>
+			                  </c:forEach>
+			                 </select><span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
+                
+              
+              <%-- <input type="text" id="revisionlevel" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
               <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
-               <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
+              --%>  <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
  				<select name="approver2" class="input_cmbbx1" id="approver2" style="width:200px;">

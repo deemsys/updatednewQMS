@@ -150,22 +150,20 @@
 											<td valign="top" align="left" width="25%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:20px;">Edit</a>
-										    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>#current">View Revision History</a>
-											
-													
+										    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="element_to_pop_up"  onclick="popupwindow()" href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>" >View Revision History</a>
 											</td>
 										</tr>
 							    	
-										<c:forEach items="${revisionDocumentForm.revisionDocuments}" var="revision" varStatus="status">
+									<%-- 	<c:forEach items="${revisionDocumentForm.revisionDocuments}" var="revision" varStatus="status">
 										<c:if test="${revision.auto_number == documentMains.auto_number}">
 									
 									
 										<tr class="row2" style="color:#0000A0; font-style: inherit;">
 										<a name="current">
-										 	<%--  <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
-											 --%><td valign="top" align="left" width="10%">${revision.issuer}</td>
-											<%-- <td valign="top" align="left" width="10%">${revision.revision_level}</td>
-											 --%><td valign="top" align="left" width="10%">${revision.date}</td>
+										 	 <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<td valign="top" align="left" width="10%">${revision.revision_level}</td>
+											<td valign="top" align="left" width="10%">${revision.date}</td>
 											<td valign="top" align="left" width="10%">${revision.approver1}</td>
 											<td valign="top" align="left" width="10%">${revision.approver2}</td>
 											<td valign="top" align="left" width="10%">${revision.approver3}</td>
@@ -176,7 +174,7 @@
 										</tr>
 									
 									</c:if>
-										</c:forEach>
+										</c:forEach> --%>
 										 </c:forEach>
 										</table>
 									   
@@ -220,9 +218,128 @@
 		  </tr>
 		  </table>
 		  </div>
+		  <c:if test="${display == 'show'}">
+		  <div class='popup'>
+											<div class='cnt223'>
+									<!-- 		<img src='http://www.developertips.net/demos/popup-dialog/img/x.png' alt='quit' class='x' id='x' />
+						    		 -->		<img src='resources/images/closebutton-md1.png' alt='quit' class='x' id='x' />
+						    				
+						    				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						    					<tr class="title" id="tabledisplay">
+								
+									<td valign="top" align="center" width="10%">Issuer</td>
+									<td valign="top" align="center" width="10%">Date</td>
+									<td valign="top" align="center" width="10%">Approver1</td>
+									<td valign="top" align="center" width="10%">Approver2</td>
+									<td valign="top" align="center" width="10%">Approver3</td>
+									<td valign="top" align="center" width="10%">Comments</td>
+									<td valign="top" align="center" width="10%">Status</td>
+									<td valign="top" align="center" width="20%">Revision No</td>
+									</tr>  			    	
+										<c:forEach items="${revisionDocumentForm.revisionDocuments}" var="revision" varStatus="status">
+<%-- 										<c:if test="${revision.auto_number == documentMains.auto_number}">
+ --%>										<%-- <c:if test="${revision.auto_no == form.auto_number}"> --%>
+									<%-- 	<c:if test="${display == 'show'}">	
+									<script>
+									
+									document.getElementById('tabledisplay').style.display="block";
+									
+									
+									</script>
+									</c:if>--%>
+									
+									
+										<tr class="row2" style="color:#0000A0; font-style: inherit;">
+										
+									
+									<td valign="top" align="left">${revision.issuer}</td>
+											<%-- <td valign="top" align="left" width="10%">${revision.revision_level}</td>
+											 --%><td valign="top" align="left" width="10%">${revision.date}</td>
+											<td valign="top" align="left" width="10%">${revision.approver1}</td>
+											<td valign="top" align="left" width="10%">${revision.approver2}</td>
+											<td valign="top" align="left" width="10%">${revision.approver3}</td>
+											<td valign="top" align="left" width="10%">${revision.comments}</td>
+											<td valign="top" align="left" width="10%">${revision.status}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<td valign="top" align="left" width="10%">${revision.revision_id}</td>
+									
+									
+										</tr>
+									
+										</c:forEach>
+							</table>
+							</div>
+							</div>	
+								</c:if>	
+	
 		  
 
+  <style type="text/css">
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+// background:red;
+left:30px;
+width: 1100px;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.cnt223{
+min-width: 400px;
+width: 64%;
+min-height: 150px;
+margin:4px auto;
+background: #fff;
+border:2px solid #ccc;
+box-shadow:inset 0px 20px 25px #ccc;
+position: relative;
+z-index: 103;
+padding: 10px;
+border-radius: 5px;
+
+}
+.cnt223 p{
+clear: both;
+color: #555555;
+text-align: justify;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 35px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 34px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+</style>
+
+
 <script>
+
+
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?");
 	if (answer){
@@ -235,6 +352,46 @@ function confirmation(val) {
 </script>
 
 <script language="javascript">
+
+function popupwindow()
+{
+//	alert("fsdf");
+
+	self.setInterval("winClose()",20000);
+//alert("pop-up");
+var overlay = $('<div id="overlay"></div>');
+overlay.show();
+overlay.appendTo(document.body);
+//$('.popup').show();
+//alert("sfjhsdfhg");
+}
+
+$('.popup').show();
+
+$('.close').click(function(){
+$('.popup').hide();
+
+return false;
+});
+
+$('.x').click(function(){
+$('.popup').hide();
+
+return false;
+});
+
+
+
+</script>
+  <script type="text/javascript">
+          
+  function pop_up()
+  {
+  	var url="review_history_form?auto_no=${form.auto_no}";
+  	popupWindow = window.open(url,"shoulderpopUpWindow" ,'width=1500,height=700,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+  }
+ 
+
 
 function selectall(field)
 {
