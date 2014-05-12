@@ -138,13 +138,7 @@
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
 			                  </c:forEach> </select>
-               
-               
-               
-               </select>
-               
-               
-               <br/><span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span></td>
+             <br/><span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span></td>
               
               <%--  <td valign="top" align="left" class="input_txt" width="20%">
                <select name="document_type" class="input_cmbbx1" style="width:200px;">
@@ -321,8 +315,16 @@
               <tr class="row2" style="border:none;">
               
                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="revision_level" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
-              <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
+               <td valign="top" align="left" class="input_txt" width="20%">
+               <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:200px;">
+              
+                <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
+        				       <option value="${revisionlevel.revision_level}">${revisionlevel.revision_level}</option>
+			                  </c:forEach> </select>
+             <br/><span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span></td>
+              
+               <%-- <input type="text" id="revision_level" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
+              <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span> --%>
                <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                

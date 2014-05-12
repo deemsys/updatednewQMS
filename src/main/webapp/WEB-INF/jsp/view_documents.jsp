@@ -222,19 +222,20 @@
 		  <div class='popup'>
 											<div class='cnt223'>
 									<!-- 		<img src='http://www.developertips.net/demos/popup-dialog/img/x.png' alt='quit' class='x' id='x' />
-						    		 -->		<img src='resources/images/closebutton-md1.png' alt='quit' class='x' id='x' />
-						    				
+						    		 -->		
 						    				<table cellpadding="0" cellspacing="0" border="0" width="100%">
-						    					<tr class="title" id="tabledisplay">
+						    				<img src='resources/images/closebutton-md1.png' alt='quit' class='x' id='x' /><br>
+						<tr  id="tabledisplay">
 								
-									<td valign="top" align="center" width="10%">Issuer</td>
-									<td valign="top" align="center" width="10%">Date</td>
-									<td valign="top" align="center" width="10%">Approver1</td>
-									<td valign="top" align="center" width="10%">Approver2</td>
-									<td valign="top" align="center" width="10%">Approver3</td>
-									<td valign="top" align="center" width="10%">Comments</td>
-									<td valign="top" align="center" width="10%">Status</td>
-									<td valign="top" align="center" width="20%">Revision No</td>
+									<td valign="top" align="center" width="10%"><b>Issuer</b></td>
+									<td valign="top" align="center" width="10%"><b>RevisionLevel</b></td>
+									<td valign="top" align="center" width="10%"><b>Date</b></td>
+									<td valign="top" align="center" width="10%"><b>Approver1</b></td>
+									<td valign="top" align="center" width="10%"><b>Approver2</b></td>
+									<td valign="top" align="center" width="10%"><b>Approver3</b></td>
+									<td valign="top" align="center" width="10%"><b>Comments</b></td>
+									<td valign="top" align="center" width="10%"><b>Status</b></td>
+									<td valign="top" align="center" width="10%"><b>Revision No</b></td>
 									</tr>  			    	
 										<c:forEach items="${revisionDocumentForm.revisionDocuments}" var="revision" varStatus="status">
 <%-- 										<c:if test="${revision.auto_number == documentMains.auto_number}">
@@ -253,8 +254,8 @@
 										
 									
 									<td valign="top" align="left">${revision.issuer}</td>
-											<%-- <td valign="top" align="left" width="10%">${revision.revision_level}</td>
-											 --%><td valign="top" align="left" width="10%">${revision.date}</td>
+											 <td valign="top" align="left" width="10%">${revision.revision_level}</td>
+											 <td valign="top" align="left" width="10%">${revision.date}</td>
 											<td valign="top" align="left" width="10%">${revision.approver1}</td>
 											<td valign="top" align="left" width="10%">${revision.approver2}</td>
 											<td valign="top" align="left" width="10%">${revision.approver3}</td>
@@ -302,9 +303,9 @@ z-index: 101;
 }
 .cnt223{
 min-width: 400px;
-width: 64%;
+width: 60%;
 min-height: 150px;
-margin:4px auto;
+margin:280px auto;
 background: #fff;
 border:2px solid #ccc;
 box-shadow:inset 0px 20px 25px #ccc;
@@ -325,11 +326,11 @@ font-weight: bold;
 }
 .cnt223 .x{
 float: right;
-height: 35px;
-left: 22px;
+height: 15px;
+left: 10px;
 position: relative;
 top: -25px;
-width: 34px;
+width: 15px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
