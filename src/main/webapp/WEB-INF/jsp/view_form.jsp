@@ -119,50 +119,15 @@
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
 											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 											 -->
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>#current">View Revision History</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="element_to_pop_up"  onclick="popupwindow()" href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>" >View Revision History</a>
 											</td>
 										</tr>
 									
 						    	
-										<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
-										<c:if test="${revision.auto_no == form.auto_number}">
-									<%-- 	<c:if test="${display == 'show'}">	
-									<script>
 									
-									document.getElementById('tabledisplay').style.display="block";
-									
-									
-									</script>
-									</c:if>
-									<tr class="header11" id="tabledisplay" style="display:none;">
-								
-									<td valign="top" align="center" width="10%">Form/Rec ID</td>
-									<td valign="top" align="center" width="10%">Effective Date</td>
-									<td valign="top" align="center" width="10%">Approver1</td>
-									<td valign="top" align="center" width="10%">Issuer</td>
-									<td valign="top" align="center" width="10%">Comments</td>
-									<td valign="top" align="center" width="10%">Revision No</td>
-									</tr>  --%>
-									
-										<tr class="row2" style="color:#0000A0; font-style: inherit;">
-										<a name="current">
-										 	 <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
-											<td valign="top" align="left" width="10%">${revision.effective_date}</td>
-											<td valign="top" align="left" width="10%">${revision.approver1}</td>
-											<td valign="top" align="left" width="10%">${revision.issuer}</td>
-											<td valign="top" align="left" width="10%">${revision.comments}</td>
-											<td valign="top" align="left" width="10%">${revision.revision_id}</td>
-												</a>
-										</tr>
-									
-									</c:if>
-										</c:forEach>
-										
 										</table>
-										
-									
-						    	
-						    								    	</c:forEach>
+										</c:forEach>
+						    			
 							    	
 						    	<%-- <table width="60%" align="right">
 						    	<tr class="header11">
@@ -237,6 +202,49 @@
 		  </div>
 		  </td>
 		  </tr>				</table></div>
+		  
+		 <c:if test="${display == 'show'}">
+		  <div class='popup'>
+											<div class='cnt223'>
+											<img src='http://www.developertips.net/demos/popup-dialog/img/x.png' alt='quit' class='x' id='x' />
+						    				<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						    					<tr id="tabledisplay">
+								
+									<td valign="top" align="center" width="10%">Form/Rec ID</td>
+									<td valign="top" align="center" width="10%">Effective Date</td>
+									<td valign="top" align="center" width="10%">Approver1</td>
+									<td valign="top" align="center" width="10%">Issuer</td>
+									<td valign="top" align="center" width="10%">Comments</td>
+									<td valign="top" align="center" width="10%">Revision No</td>
+									</tr>  			    	
+						    			<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
+										<%-- <c:if test="${revision.auto_no == form.auto_number}"> --%>
+									<%-- 	<c:if test="${display == 'show'}">	
+									<script>
+									
+									document.getElementById('tabledisplay').style.display="block";
+									
+									
+									</script>
+									</c:if>--%>
+									
+									
+										<tr class="row2" style="color:#0000A0; font-style: inherit;">
+										
+										 	 <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="left" width="10%">${revision.effective_date}</td>
+											<td valign="top" align="left" width="10%">${revision.approver1}</td>
+											<td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<td valign="top" align="left" width="10%">${revision.comments}</td>
+											<td valign="top" align="left" width="10%">${revision.revision_id}</td>
+									
+										</tr>
+									
+										</c:forEach>
+							</table>
+							</div>
+							</div>	
+								</c:if>	
 	 
 	<!--  <script type="text/javascript">
 	    
@@ -249,56 +257,117 @@
 		  
 	});
 	  </script> -->
+	  <style type="text/css">
+#overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: #000;
+filter:alpha(opacity=70);
+-moz-opacity:0.7;
+-khtml-opacity: 0.7;
+opacity: 0.7;
+z-index: 100;
+display: none;
+}
+.cnt223 a{
+text-decoration: none;
+}
+.popup{
+width: 100%;
+margin: 0 auto;
+display: none;
+position: fixed;
+z-index: 101;
+}
+.cnt223{
+min-width: 400px;
+width: 60%;
+min-height: 150px;
+margin: 100px auto;
+background: #f3f3f3;
+position: relative;
+z-index: 103;
+padding: 10px;
+border-radius: 5px;
+box-shadow: 0 2px 5px #000;
+}
+.cnt223 p{
+clear: both;
+color: #555555;
+text-align: justify;
+}
+.cnt223 p a{
+color: #d91900;
+font-weight: bold;
+}
+.cnt223 .x{
+float: right;
+height: 35px;
+left: 22px;
+position: relative;
+top: -25px;
+width: 34px;
+}
+.cnt223 .x:hover{
+cursor: pointer;
+}
+</style>
+
+<script type='text/javascript'>
+/* 
+$(function(){
+	$("a[data-bind-action='toggle-content']").click(toggleContent);
+	function toggleContent(){
+
+$('element_to_pop_up').bPopup({
+    contentContainer:'.content',
+    loadUrl: 'review_history_form?auto_no=${form.auto_no}' //Uses jQuery.load()
+});
+	}
+}); */
+/* $(function(){
+	$("a[data-bind-action='toggle-content']").click(toggleContent);
+	function toggleContent(){ */
+		function popupwindow()
+	{
+	//	alert("fsdf");
+	
+		self.setInterval("winClose()",20000);
+	//alert("pop-up");
+var overlay = $('<div id="overlay"></div>');
+overlay.show();
+overlay.appendTo(document.body);
+//$('.popup').show();
+//alert("sfjhsdfhg");
+	}
+	
+	$('.popup').show();
+
+$('.close').click(function(){
+$('.popup').hide();
+
+return false;
+});
+
+$('.x').click(function(){
+$('.popup').hide();
+
+return false;
+});
+
+
+
+</script>
 	  <script type="text/javascript">
 	          
-	          $(function () {
-						//alert("good");
-						$("a[data-bind-action='toggle-content']").click(toggleContent);
-						function toggleContent(){
-	        	  	    	
-	        	  	   var proceee_name = '';
-
-	        	 // $('#autonumber1 tr').each(function() {
-	        		
-	        		 
-	        	   //   $.each(this.cells, function(){
-	        	/*   alert($(this).html()); */
-	        	    	  if (proceee_name == '') {
-	        			   var $td= $(this).closest('tr').children('td');  
-	        			     
-	        			     
-	        			      proceee_name= $td.eq(0).text();  
-	        			     
-	        			  
-	        			     }
-	        			     else{
-	        			    	
-	        			      proceee_name = proceee_name + ',' + $(this).find("td").html();
-	        			     }
-	        			     
-	        			   
-	    		$.ajax({
-	    			
-	    			type : "POST",
-	    			url : "/QMS_App/ajax_getrevisions",
-	    			data : "auto_number=" + proceee_name,
-	    			success : function(response) {
-	    	              
-	    	             // alert("response= "+response);
-	    	              
-	    		       $('#process_owner_id').html(response);
-                  	    			},
-	    			error : function(e) {
-	    				alert('Error: ' + e);
-	    			}
-	    		});
-	    		
-	    		
-	    		
-						}
-	    	});
-	 
-	   
+	  function pop_up()
+	  {
+	  	var url="review_history_form?auto_no=${form.auto_no}";
+	  	popupWindow = window.open(url,"shoulderpopUpWindow" ,'width=1500,height=700,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+	  }
 	 
 	 
 	 
@@ -336,6 +405,7 @@
      </script>
 						
 <script>
+
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Form ?");
 	if (answer){

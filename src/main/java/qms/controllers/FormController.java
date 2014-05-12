@@ -461,6 +461,7 @@ public class FormController
 		    RevisionFormForm revisionForms = new RevisionFormForm();
 		    revisionForms.setRevisionForms(revisionFormDAO.getRevision(number));
 			 model.addAttribute("revisionForms",revisionForms);
+			
 		return "view_form";
  	}
 	@RequestMapping(value={"/edit_form"}, method = RequestMethod.GET)
