@@ -227,7 +227,7 @@ $(window).load(function(){
              <tr class="row2">
                <td valign="middle" align="left" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
-               <td valign="middle" align="left" class="input_txt" width="20%">External Document(Y/N):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">External Document ?(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
 <!--               <input type="radio" name="external" value="Yes"  id="id_yesforexternal">Yes&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="external" value="No" id="id_noforexternal"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>

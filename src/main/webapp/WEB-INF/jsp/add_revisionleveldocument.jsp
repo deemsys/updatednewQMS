@@ -53,7 +53,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_revisionleveldocument" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span>Level</span>
+									<span>Revision Level</span>
 									
 								</a>
 							</li>
@@ -74,7 +74,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt">RevisionLevel :</td>
+                  <td valign="middle" align="left" class="input_txt">Revision Level :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="revision_level" class="input_txtbx1" id="revisionlevel" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="DocumentRevisionLevel.revision_level"></form:errors></span></td>
                 </tr>
                  

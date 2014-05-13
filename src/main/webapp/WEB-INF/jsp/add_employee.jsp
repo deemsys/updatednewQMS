@@ -235,9 +235,17 @@ function doAjaxPost() {
                 
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Document Control:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="doc_control" class="input_txtbx1" id="inp_doc_control" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.doc_control}" /><br><span class="err"><form:errors path="Employee.doc_control"></form:errors></span></td>
+                 	<td valign="top" align="left" class="input_txt"><input
+															type="radio" name="doc_control" value="yes"
+															class="input_txt" checked >Yes&nbsp;&nbsp;&nbsp;<input
+															type="radio" name="doc_control" value="no"
+															class="input_txt" >No<br><span class="err"><form:errors path="Employee.doc_control"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Management Rep:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="management_rep" class="input_txtbx1" id="inp_management_rep" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.management_rep}" /><br><span class="err"><form:errors path="Employee.management_rep"></form:errors></span></td>
+                  	<td valign="top" align="left" class="input_txt"><input
+															type="radio" name="management_rep" value="yes"
+															class="input_txt" checked >Yes&nbsp;&nbsp;&nbsp;<input
+															type="radio" name="management_rep" value="no"
+															class="input_txt" >No<span class="err"><form:errors path="Employee.management_rep"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row1">

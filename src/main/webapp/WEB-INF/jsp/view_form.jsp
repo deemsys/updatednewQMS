@@ -271,7 +271,7 @@
 		  
 	});
 	  </script> -->
-<!-- 	  <style type="text/css">
+	  <style type="text/css">
 #overlay {
 position: fixed;
 top: 0;
@@ -328,8 +328,8 @@ width: 34px;
 .cnt223 .x:hover{
 cursor: pointer;
 }
-</style> -->
-  <style type="text/css">
+</style> 
+  <!-- <style type="text/css">
 #overlay {
 position: fixed;
 top: 0;
@@ -390,7 +390,7 @@ width: 15px;
 .cnt223 .x:hover{
 cursor: pointer;
 }
-</style>
+</style> -->
 <script type='text/javascript'>
 /* 
 $(function(){

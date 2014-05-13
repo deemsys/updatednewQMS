@@ -46,7 +46,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentrevisionlevel_list" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span>Level</span>
+									<span>Revision Level</span>
 								</a>
 							</li>
 						

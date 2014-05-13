@@ -717,7 +717,7 @@ public class FormController
 	 @RequestMapping(value = "/generate_doc_form", method = RequestMethod.POST)
 		public ModelAndView generateDocument_Form(HttpServletRequest request,ModelMap model, HttpServletResponse response) {
 			
-			String[] fields={"auto_number","location","form_or_rec_id","responsibility","form_or_rec_title","process","media_type","retention_time","form","effective_date","document_id","approver1","issuer","comments","revision_id"};
+			String[] fields={"location","form_or_rec_id","responsibility","form_or_rec_title","process","media_type","retention_time","form","effective_date","document_id","approver1","issuer","comments","revision_id"};
 			System.out.println(request.getParameter("process"));
 			java.util.List<Form> form=new ArrayList<Form>();
 			

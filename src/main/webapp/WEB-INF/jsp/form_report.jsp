@@ -126,7 +126,7 @@
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="auto_number" id="id_field_document_id"/>Auto Number</td>
+								
 								<td><input type="checkbox" name="report_field[]" value="location" id="id_field_document_title"/>Location</td>
 								<td><input type="checkbox" name="report_field[]" value="form_or_rec_id" id="id_field_document_type"/>Form/Rec Id</td>
 					      		</tr>

@@ -168,9 +168,18 @@ $(function() {
                 
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Document Control:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="doc_control" class="input_txtbx1" id="inp_doc_control" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.doc_control}" /><br><span class="err"><form:errors path="Employee.doc_control"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <input type="radio" name="doc_control" value="yes"  class="input_txt"   <c:if test="${employee.doc_control=='yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+				  <input type="radio" name="doc_control" value="no"  class="input_txt"  <c:if test="${employee.doc_control=='no'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
+				
+                  <span class="err"><form:errors path="Employee.doc_control"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Management Rep:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="management_rep" class="input_txtbx1" id="inp_management_rep" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.management_rep}" /><br><span class="err"><form:errors path="Employee.management_rep"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                
+                   <input type="radio" name="management_rep" value="yes"  class="input_txt"   <c:if test="${employee.management_rep=='yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+				  <input type="radio" name="management_rep" value="no"  class="input_txt"  <c:if test="${employee.management_rep=='no'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
+				
+                  <span class="err"><form:errors path="Employee.management_rep"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row1">

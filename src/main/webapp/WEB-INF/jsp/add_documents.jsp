@@ -174,7 +174,7 @@
               
                <td valign="middle" align="left" class="input_txt" width="25%">
                <td valign="top" align="left" class="input_txt" width="20%">
-               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document(Y/N):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document ?(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
               <input type="radio" name="external" value="Yes"  id="id_yesforexternal"checked>Yes&nbsp;&nbsp;&nbsp;
