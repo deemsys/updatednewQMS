@@ -124,6 +124,30 @@ public class DocumentMain
 		this.revision_id = revision_id;
 	}
 
+	public DocumentMain(String document_id, String document_title,
+			String document_type, String media_type, String location,
+			String process, String external, String issuer, String revision_level, String date,
+			String approver1, String approver2, String approver3,
+			String status,String comments,String revision_id) {
+		super();
+		this.document_id = document_id;
+		this.document_title = document_title;
+		this.document_type = document_type;
+		this.media_type = media_type;
+		this.location = location;
+		this.process = process;
+		this.issuer = issuer;
+		this.revision_level = revision_level;
+		this.date = date;
+		this.approver1 = approver1;
+		this.approver2 = approver2;
+		this.approver3 = approver3;
+		this.comments = comments;
+		this.status = status;
+		this.revision_id = revision_id;
+		this.external = external;
+	}
+
 	public String getDocument_type_id() {
 		return document_type_id;
 	}

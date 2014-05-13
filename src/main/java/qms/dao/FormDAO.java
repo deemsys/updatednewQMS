@@ -516,6 +516,7 @@ public class FormDAO extends AbstractExcelView{
 			System.out.println("fhr");
 			while(resultSet.next()){
 				form.add(new Form(resultSet.getString("auto_number"), resultSet.getString("location"), resultSet.getString("form_or_rec_id"),resultSet.getString("responsibility"),resultSet.getString("form_or_rec_title"), resultSet.getString("process"), resultSet.getString("media_type"),resultSet.getString("retention_time"),resultSet.getString("form"),resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("auto_no"),resultSet.getString("effective_date"),resultSet.getString("document_id"),resultSet.getString("approver1"),resultSet.getString("issuer"),resultSet.getString("comments"),resultSet.getString("revision_id")));
+				
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
