@@ -833,11 +833,11 @@ text-decoration: none;
 background:#ccc;
 /* left:220px;
 top:290px; */
-left:0px;
-top:90px;
+left:0%;
+top:15%;
 opacity:0.90;
-width: 1200px;
-height: 1000px;
+width: 100%;
+height: 100%;
 margin: 0 auto;
 display: none;
 position: fixed;
