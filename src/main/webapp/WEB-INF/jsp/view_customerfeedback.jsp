@@ -258,37 +258,37 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcustomer" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Customers</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Add Customers</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewcustomers" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Customers</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>View Customers</span>
 									
 								</a>
 							</li>
 						
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addfeedback" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Feedback</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Add Feedback</span>
 									
 								</a>
 							</li>
 				           <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewfeedback" class="<c:choose>
-								<c:when test="${menu=='customer'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View feedback</span>
+								<c:when test="${menu=='customer'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactvie</c:otherwise></c:choose>">
+									<span>View feedback</span>
 									
 								</a>
 							</li>
 				           <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="feedback_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Feedback Report</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Feedback Report</span>
 									
 								</a>
 							</li>

@@ -16,7 +16,7 @@
 					<ul class="horizmenu">
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Add Document
 									
 								</a>
@@ -24,14 +24,14 @@
 						
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewdocuments" class="<c:choose>
-								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									View Document
 									
 								</a>
 							</li>
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="document_report" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Document report
 									
 								</a>

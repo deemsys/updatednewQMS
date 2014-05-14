@@ -16,25 +16,25 @@
       		<tr>
       		<td>
       		 <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Corrective and Preventive Actions</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Add Corrective and Preventive Actions</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="correctiveactions_list" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Corrective and Preventive Actions</span>
+								<c:when test="${menu=='corrective'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span>View Corrective and Preventive Actions</span>
 								</a>
 							</li>
 				           <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="capa_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Reports</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Reports</span>
 								</a>
 							</li>
 							</ul>

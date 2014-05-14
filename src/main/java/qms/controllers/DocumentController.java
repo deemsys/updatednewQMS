@@ -9,6 +9,7 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -45,6 +46,7 @@ import qms.forms.DocumentTypeForm;
 import qms.forms.EmployeeForm;
 import qms.forms.FormForm;
 import qms.forms.FormLocationForm;
+import qms.forms.NonConformanceForm;
 import qms.forms.ProcessForm;
 import qms.forms.RevisionDocumentForm;
 import qms.forms.RevisionFormForm;
@@ -99,7 +101,9 @@ public class DocumentController {
 		
 	System.out.println("insideadd");
 			session.removeAttribute("documentMain");
+			
 			load_document_page_dropdowns(model);
+			
 			DocumentMainForm documentMainForm=new DocumentMainForm();
 			model.addAttribute("documentMainForm",documentMainForm);
 			model.addAttribute("id", documentControlDAO.get_documentid());
@@ -548,10 +552,14 @@ public class DocumentController {
 
 	// Document Views
 	@RequestMapping(value = "/viewdocuments", method = RequestMethod.GET)
-	public String login(ModelMap model) {
+	public String login(ModelMap model,HttpSession session) {
+
+		session.removeAttribute("documentMain");
+		session.removeAttribute("documentMain1");
 
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		//documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
+		load_document_page_dropdowns(model);
 		
 		model.addAttribute("menu","document");
 	  	model.addAttribute("noofrows",5);
@@ -622,22 +630,68 @@ public class DocumentController {
 		return "view_documents";
 
 	}
-
+/*
 	//search a record
 	@RequestMapping(value = "/findDocument", method = RequestMethod.GET)
-	public String findDocument(
+	public String findDocument(HttpSession session,
 			@RequestParam("document_type") String search_document_type,
 		//	@RequestParam("search_document_title") String search_document_title,
 			@RequestParam("search_process") String search_process,
 			ModelMap model) {
+		session.setAttribute("documentMain",search_document_type);
+		session.setAttribute("documentMain",search_process);
+		load_document_page_dropdowns(model);
 
+		
+		if(search_document_type=="" && search_process=="")
+		{
+			load_document_page_dropdowns(model);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
 		model.addAttribute("documentMainForm", documentMainForm);
 		model.addAttribute("menu","document");
 		return "view_documents";
+		}
+		else
+		{
+			load_document_page_dropdowns(model);
+			DocumentMainForm documentMainForm = new DocumentMainForm();
+			documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
+			model.addAttribute("documentMainForm", documentMainForm);
+			model.addAttribute("menu","document");
+			return "view_documents";
+		}
+			
+	}	
+	*/
 
-	}
+	//search a record
+	@RequestMapping(value = "/findDocument", method = RequestMethod.GET)
+	public String findDocument(HttpSession session,
+			@RequestParam("document_type") String search_document_type,
+		//	@RequestParam("search_document_title") String search_document_title,
+			@RequestParam("search_process") String search_process,
+			ModelMap model) {
+		
+
+
+		session.setAttribute("documentMain",search_document_type);
+		session.setAttribute("documentMain1",search_process);
+
+
+		//session.removeAttribute("documentMain");
+		//session.removeAttribute("documentMain1");
+		
+		load_document_page_dropdowns(model);
+		DocumentMainForm documentMainForm = new DocumentMainForm();
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
+		
+		model.addAttribute("documentMainForm", documentMainForm);
+		model.addAttribute("menu","document");
+		return "view_documents";
+		}
+			
+
 	
 	// Document Control list page	
 	

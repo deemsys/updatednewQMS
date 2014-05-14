@@ -157,7 +157,7 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value = { "/addcorrectiveAndPreventiveActions" }, method = RequestMethod.GET)
 	public String add_correctiveAndPreventiveActions(ModelMap model, Principal principal) {
 		model.addAttribute("capa_id",correctiveAndPreventiveActionsDAO.get_maxid());
-	//	model.addAttribute("menu","audits");
+		model.addAttribute("menu","corrective");
 		return "add_correctiveAndPreventiveActions";
 
 	}
@@ -293,7 +293,7 @@ public class CorrectiveAndPreventiveActionsController
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
-		
+		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
 	}
 	
@@ -416,7 +416,7 @@ public class CorrectiveAndPreventiveActionsController
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
-	//	model.addAttribute("menu","audits");
+		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
 		}
 		else
@@ -433,7 +433,7 @@ public class CorrectiveAndPreventiveActionsController
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions(capa_id));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
-		//model.addAttribute("menu","audits");
+		model.addAttribute("menu","corrective");
 		return "view_correctiveactions";
 	}
 
@@ -461,7 +461,7 @@ public class CorrectiveAndPreventiveActionsController
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("type",type);		
 		model.addAttribute("report_table","yes");
-	//	model.addAttribute("menu","audits");
+		model.addAttribute("menu","corrective");
 		return "capa_report";
 	}
 	
@@ -470,7 +470,7 @@ public class CorrectiveAndPreventiveActionsController
 	public String get_capa_report(ModelMap model, Principal principal) 
 	{
 		model.addAttribute("report_table","no");
-	//	model.addAttribute("menu","audits");
+		model.addAttribute("menu","corrective");
 		return "capa_report";
 	}
 	

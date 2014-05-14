@@ -241,7 +241,7 @@ import qms.forms.SupplierPerformanceForm;;
 	//report page request passing
 	@RequestMapping(value = "/supplierperformance_report", method = RequestMethod.GET)
 	public String reportsupplierperformance(ModelMap model) {
-		  model.addAttribute("menu","supplierperformance");
+		  model.addAttribute("menu","supplier");
 		return "report_supplierperformance";
 
 	}

@@ -13,28 +13,28 @@
       <tr>
        <td>
         <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
 						
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addinternalaudits" class="<c:choose>
-								<c:when test="${menu=='audits'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Internal Audits</span>
+								<c:when test="${menu=='audits'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span>Add Internal Audits</span>
 									
 								</a>
 							</li>
 							
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_internalaudits" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Internal Audits </span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>View Internal Audits </span>
 									
 								</a>
 							</li>
 						
 				         <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="internalaudit_report" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Reports</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Reports</span>
 									
 								</a>
 							</li>

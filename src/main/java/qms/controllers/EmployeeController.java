@@ -419,7 +419,7 @@ public class EmployeeController
 	//report page request passing	
 	@RequestMapping(value = "/employee_report", method = RequestMethod.GET)
 	public String reportEmployee(ModelMap model) {
-		  model.addAttribute("menu","employees");
+		model.addAttribute("menu","employee");
 		  System.out.println("get method....");
 		return "report_employee";
 

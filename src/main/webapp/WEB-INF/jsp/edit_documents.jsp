@@ -36,7 +36,7 @@ $(window).load(function(){
      <tr>
         <td>
         <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="adddocument" class="<c:choose>
@@ -509,13 +509,33 @@ function show_edit()
 		}
 	function revision_change(){
 		
-		if(revisionid.value != null)
+		
+		var revisionlevel=document.getElementById("revisionlevel").value;
+		
+		
+		if(revisionlevel==1)
+		{
+			alert("integer");
+			if(revisionid.value != null)
 			{
 				var value = revisionid.value;
 				
 				var inc = parseFloat('1');
 			  revisionid.value = parseInt(value)+parseFloat(inc);
 			}
+			
+		}
+		else if(revisionlevel==2)
+			{
+			alert("roman");
+			}
+		else if(revisionlevel==3)
+			{
+			alert("alphabet");
+			}
+		
+			
+		
 	}
 	
 	

@@ -413,7 +413,7 @@ public class FormController
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform());
 		model.addAttribute("formForm",formForm);
-        model.addAttribute("menu","document");
+        model.addAttribute("menu","admin");
 		return "formdelete";
 		
 	}	

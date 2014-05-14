@@ -10,27 +10,27 @@
 	<tr>
 		<td>
 			<div>
-				<ul class="horizmenu">
+				<ul class="horizmenu" style=" float:left;margin-left:215px; margin-top:8px;">
 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addmanagementreview" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Management Review</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span>Add Management Review</span>
 									
 								</a>
 							</li>
 							
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="viewmanagementreview" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Management Review</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>View Management Review</span>
 									
 								</a>
 							</li>
 						
 				         <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="managementreview_report" class="<c:choose>
-								<c:when test="${menu=='review'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Reports</span>
+								<c:when test="${menu=='review'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Reports</span>
 									
 								</a>
 							</li>

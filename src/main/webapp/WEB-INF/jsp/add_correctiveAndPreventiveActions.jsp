@@ -17,11 +17,11 @@
       <tr>
        <td>
         <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu"  style=" float:left;margin-left:190px; margin-top:8px;" >
 						
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='corrective'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Add Corrective And Preventive Actions
 									
 								</a>
