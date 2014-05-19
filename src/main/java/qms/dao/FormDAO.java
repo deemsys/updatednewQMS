@@ -23,6 +23,8 @@ import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 
 import qms.model.Form;
+import qms.model.FormLocation;
+import qms.model.Revision_No;
 
 
 public class FormDAO extends AbstractExcelView{
@@ -211,7 +213,7 @@ public class FormDAO extends AbstractExcelView{
 			 {
 				System.out.println("all null");
 				 resultSet=statement.executeQuery("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
-			System.out.println("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
+			System.out.println("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
 				 while(resultSet.next())
 			  {
 				   form_or_rec_id=resultSet.getString("form_or_rec_id");
@@ -219,8 +221,8 @@ public class FormDAO extends AbstractExcelView{
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
 				   
-				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
-				   System.out.println("revision id ="+revision_id);
+				 //  revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				 //  System.out.println("revision id ="+revision_id);
 			  }
 			
 			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
@@ -258,8 +260,8 @@ public class FormDAO extends AbstractExcelView{
 				  attachment_name=resultSet.getString("attachment_name");
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
-				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
-				   System.out.println("revision id ="+revision_id);
+				//   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				//   System.out.println("revision id ="+revision_id);
 			  }
 			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+formid+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
 			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+formid+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+form.getRevision_id()+"' where auto_no='"+form.getAuto_no()+"'");	
@@ -270,8 +272,8 @@ public class FormDAO extends AbstractExcelView{
 				 resultSet=statement.executeQuery("select revision_id from tbl_form_child where auto_no='"+form.getAuto_no()+"'");
 				 while(resultSet.next())
 				  {
-					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
-					   System.out.println("revision id ="+revision_id);
+					 //  revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					 //  System.out.println("revision id ="+revision_id);
 				  }
 			String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+formid+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 			statement.execute(cmd_update1);
@@ -304,7 +306,10 @@ public class FormDAO extends AbstractExcelView{
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet1 = null;
 		boolean status=false;
+		
+		String decimal1 = "",floor1 = "";
 		
 		try {
 			con = datasource.getConnection();
@@ -314,15 +319,103 @@ public class FormDAO extends AbstractExcelView{
 		}
 		  try{
 			  System.out.println("inserting");
+			  resultSet1=statement.executeQuery("select first,second from tbl_revision_format where sno='1'");
+			  while(resultSet1.next())
+			  {
+				decimal1  = resultSet1.getString("first");
+				floor1 = resultSet1.getString("second");
+			  }
+			  if(decimal1.equalsIgnoreCase("integer"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  String bothint;	
+						 bothint="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','0.0')";
+						 statement.execute(bothint);
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  String intalpha;	
+						 intalpha="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','"+0+".a')";
+						 statement.execute(intalpha);
+				  }
+				  else if(floor1.equalsIgnoreCase("romain"))
+				  {
+					  String intromain;	
+					  intromain="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','"+0+".i')";
+						 statement.execute(intromain);
+				  }
+				  else
+				  {
+					  String intonly;	
+					  intonly="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','"+0+"')";
+						 statement.execute(intonly);
+				  }
+			  }
+			  else  if(decimal1.equalsIgnoreCase("alpha"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  String bothint;	
+						 bothint="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','a.0')";
+						 statement.execute(bothint);
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  String intalpha;	
+						 intalpha="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','a.a')";
+						 statement.execute(intalpha);
+				  }
+				  else if(floor1.equalsIgnoreCase("romain"))
+				  {
+					  String intromain;	
+					  intromain="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','a.i')";
+						 statement.execute(intromain);
+				  }
+				  else
+				  {
+					  String intonly;	
+					  intonly="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','a')";
+						 statement.execute(intonly);
+				  }
+				  
+			  }
+			  else if(decimal1.equalsIgnoreCase("romain"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  String bothint;	
+						 bothint="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i.0')";
+						 statement.execute(bothint);
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  String intalpha;	
+						 intalpha="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i.a')";
+						 statement.execute(intalpha);
+				  }
+				  else if(floor1.equalsIgnoreCase("romain"))
+				  {
+					  String intromain;	
+					  intromain="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i.i')";
+						 statement.execute(intromain);
+				  }
+				  else
+				  {
+					  String intonly;	
+					  intonly="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i')";
+						 statement.execute(intonly);
+				  }
+			  }
 			  String cmd_insert1="insert into tbl_form(auto_number,location,form_or_rec_id,responsibility,form_or_rec_title,process,media_type,retention_time,form,attachment_name,attachment_type,attachment_referrence) values('"+form.getAuto_no()+"','"+form.getLocation()+"','"+form.getForm_or_rec_id()+"','"+form.getResponsibility()+"','"+form.getForm_or_rec_title()+"','"+form.getProcess()+"','"+form.getMedia_type()+"','"+form.getRetention_time()+"','"+form.getForm()+"','"+form.getAttachment_name()+"','"+form.getAttachment_type()+"','"+form.getAttachment_referrence()+"')"; 
 			  statement.execute(cmd_insert1);
 			  
 			  /*String cmd_insert1="insert into tbl_doccontrol_main(document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
 			  statement.execute(cmd_insert1);*/
 			  
-			  String cmd_insert2;	
+			 /* String cmd_insert2;	
 				 cmd_insert2="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','"+0+"')";
-				 statement.execute(cmd_insert2);
+				 statement.execute(cmd_insert2);*/
 		
 			 status=true;
 		  }catch(Exception e){
@@ -963,7 +1056,375 @@ public class FormDAO extends AbstractExcelView{
 		return noofRecords;
 
 	}
+	public int getFormat() {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		int count=0;
+		List<Revision_No> format = new ArrayList<Revision_No>();
 
+		try {
+			con = datasource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = "select * from tbl_revision_format";
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				format.add(new Revision_No(resultSet
+						.getString("first"), resultSet
+						.getString("second")
+						));
+				count=count+1;
+			}	
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			System.out.println("count = "+count);
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return count;
+	}
+	public List<Revision_No> getFormattype() {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		List<Revision_No> format = new ArrayList<Revision_No>();
+
+		try {
+			con = datasource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = "select * from tbl_revision_format where sno='1'";
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				format.add(new Revision_No(resultSet
+						.getString("first"), resultSet
+						.getString("second")
+						));
+			}	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return format;
+	}
+	public boolean Revision_No_Format(Revision_No revision_No) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		try {
+			con = datasource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_insert = "insert into tbl_revision_format(first,second)values('"+revision_No.getfirst()+"','"+revision_No.getsecond()+"')";
+		
+			statement.execute(cmd_insert);
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return status;
+
+	}
+	public boolean update_revisionformate(Revision_No revision_No) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		try {
+			con = datasource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			
+			String cmd_update = "update tbl_revision_format set first='"+revision_No.getfirst()+"',second='"+revision_No.getsecond()+"' where sno='1'";
+			
+			System.out.println(cmd_update);
+			 statement.execute(cmd_update);
+			 status = true;
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return status;
+
+	}
+	public boolean change_RevisionFormat(Form form,String auto_no)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ResultSet resultSet1 = null;
+		boolean status=false;
+		String revision="",decimal1="",floor1="";
+		System.out.println("revision Format");
+		try {
+			con = datasource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+				e1.printStackTrace();
+		}
+		  try{
+			  System.out.println("inserting");
+			  resultSet1=statement.executeQuery("select tbl_form_child.revision_id,tbl_revision_format.first,tbl_revision_format.second from tbl_form_child,tbl_revision_format where tbl_form_child.auto_no='"+auto_no+"' and tbl_revision_format.sno='1'");
+			 
+			  while(resultSet1.next())
+			  {
+				revision  = resultSet1.getString("revision_id");
+				decimal1  = resultSet1.getString("first");
+				floor1 = resultSet1.getString("second");
+			  }
+			  System.out.println("decimal = "+decimal1);
+			  System.out.println("floor = "+floor1);
+			  System.out.println("revision = "+revision);
+			  if(decimal1.equalsIgnoreCase("integer"))
+			  {
+				  System.out.println("integer");
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  System.out.println("floor");
+					   if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0.a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				  else
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='0' where auto_no='"+auto_no+"'");
+					  }
+					 
+				  }
+			  }
+			  else  if(decimal1.equalsIgnoreCase("alpha"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.0' where auto_no='"+auto_no+"'");
+					  }
+					 
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a.a' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				 /* else if(floor1.equalsIgnoreCase("romain"))
+				  {
+					  String intromain;	
+					  intromain="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','a.i')";
+						 statement.execute(intromain);
+				  }*/
+				  else
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_form_child set revision_id='a' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				  
+			  }
+			 /* else if(decimal1.equalsIgnoreCase("romain"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  String bothint;	
+						 bothint="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i.0')";
+						 statement.execute(bothint);
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  String intalpha;	
+						 intalpha="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i.a')";
+						 statement.execute(intalpha);
+				  }
+				  else if(floor1.equalsIgnoreCase("romain"))
+				  {
+					  String intromain;	
+					  intromain="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i.i')";
+						 statement.execute(intromain);
+				  }
+				  else
+				  {
+					  String intonly;	
+					  intonly="insert into tbl_form_child(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','i')";
+						 statement.execute(intonly);
+				  }
+			  }*/
+				  status=true;
+			  }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+			    return status;
+		}
+			  
 	public void releaseConnection(Connection con){
 		try{if(con != null)
 			con.close();

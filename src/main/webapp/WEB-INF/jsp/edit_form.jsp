@@ -278,10 +278,12 @@
                          
 																		  <td valign="middle" align="left" class="input_txt">Revision No. (optional):</td>
 																		<td valign="top" align="left" class="input_txt">
-																		
-																  <input type="text" name="revision_id" id="revisionid" value="${form.revision_id}" onclick="revision_change()" class="input_cmbbx1" >
-              																	
-           													<br/><span class="err"><form:errors path="Form.revision_id"></form:errors></span>
+																		<span id="valueTempe" style="font-weight: bold; width:28px;">${form.revision_id}</span>
+																		<button id="plus" href="#" style="height: 18px; width:18px;" value="">+</button>
+																   <input type="hidden" name="revision_id" id="revisionid" value=""  class="input_cmbbx1" >
+																  
+																   
+                  													<br/><span class="err"><form:errors path="Form.revision_id"></form:errors></span>
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt">Effective Date :</td>
 																		<td valign="top" align="left" class="input_txt"><input
@@ -508,16 +510,156 @@ e3.style.display="block";
 
 
 		}
-	function revision_change(){
+	
 		
-		if(revisionid.value != null)
+		
+			
+	var valueElement = $('#valueTempe');
+	var intgert = /^[0-9].[0-9]$/;
+	var intalpha = /^[0-9].[a-z]$/;
+	var alphaint =  /^[a-z].[0-9]$/;
+	var alphaalpha = /^[a-z].[a-z]$/;
+	var intgrt = /^[0-9]$/;
+	var alphab = /^[a-z]$/;
+
+	
+
+	function incrementValue(e){
+		if(intgert.test(valueElement.text()))
 			{
-				var value = revisionid.value;
+		if(valueElement.text() < 100){
+			var value = valueElement.text(Math.max(parseFloat(valueElement.text()) + e.data.increment).toFixed(1)); 
+			var id = document.getElementById('revisionid');
+			
+			id.value = Math.max(parseFloat(valueElement.text()).toFixed(1));
+			
+		}
+			}
+		if(intalpha.test(valueElement.text()))
+			{
+			var alpha =  ["0","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+			var print = ["0"];
+			var i,j;
+
+			for(i=0;i<=26;i++)
+			{
+			  for(j=1;j<=26;j++)
+			  {
+				print.push(i + "." + alpha[j]);
+			  }
+			}
+			var c=document.getElementById("valueTempe").innerHTML;
+			 a=print.indexOf(c);
+			
+			 b=a+1;
+			
+			 document.getElementById("valueTempe").innerHTML = print[b];
+			 var id = document.getElementById('revisionid');
+			 
+			 id.value = print[b];
+			
+			}
+		if(alphaint.test(valueElement.text()))
+			{
+			
+			
+			var number =  ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+			var display1 =["a"];
+			var i,j;
+
+			for(i=0;i<=9;i++)
+			{
+			  for(j=0;j<=9;j++)
+			  {
+				display1.push(number[i] + "." + j);
+			  }
+			}
+			var c=document.getElementById("valueTempe").innerHTML;
+			
+			 a=display1.indexOf(c);
+			
+			 b=a+1;
+			 document.getElementById("valueTempe").innerHTML = display1[b];
+			 var id = document.getElementById('revisionid');
+			 
+			 id.value = display1[b];
+			
+			}
+		if(alphaalpha.test(valueElement.text()))
+			{
+			var number =  ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+			var display1 =["a"];
+			var i,j;
+
+			for(i=0;i<=25;i++)
+			{
+			  for(j=0;j<=25;j++)
+			  {
+				display1.push(number[i] + "." + number[j]);
+			  }
+			}
+			var c=document.getElementById("valueTempe").innerHTML;
+			
+			 a=display1.indexOf(c);
+			
+			 b=a+1;
+			 document.getElementById("valueTempe").innerHTML = display1[b];
+			 var id = document.getElementById('revisionid');
+			 
+			 id.value = display1[b];
+			
+			
+			}
+		if(intgrt.test(valueElement.text()))
+			{
+			
+			
+			var value=valueElement.text();
+			var id = document.getElementById('revisionid');
+			var inc = parseFloat('1');
+			
+			  id.value = parseInt(value)+parseFloat(inc);
+					  var value1 = valueElement.text(id.value); 
+			
+			}
+		if(alphab.test(valueElement.text()))
+			{
+			
+			var alpha =  ["0","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]; 
+			var print = ["0"];
+			var i,j;
+
+			
+			  for(j=1;j<=26;j++)
+			  {
+				print.push(alpha[j]);
+			  }
+			
+			var c=document.getElementById("valueTempe").innerHTML;
+			 a=print.indexOf(c);
+			
+			 b=a+1;
+			
+			 document.getElementById("valueTempe").innerHTML = print[b];
+			 var id = document.getElementById('revisionid');
+			 
+			 id.value = print[b];
+			
+			}
+		
+	    return false;
+	}
+
+
+	$('#plus').bind('click', {increment: 0.1}, incrementValue);	
+					
+			
+				/* var value = revisionid.value;
 				
 				var inc = parseFloat('1');
-			  revisionid.value = parseInt(value)+parseFloat(inc);
-			}
-	}
+			  revisionid.value = parseInt(value)+parseFloat(inc); */
+			
+	
 </script>	
 <script language="JavaScript">
 function reset_form()
@@ -534,6 +676,8 @@ function reset_form()
 	
   
 }
+
+
 </script>
  <jsp:include page="footer.jsp"></jsp:include>   
       

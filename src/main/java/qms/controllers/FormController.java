@@ -2,6 +2,7 @@ package qms.controllers;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.security.Principal;
@@ -36,9 +37,11 @@ import qms.dao.ProcessDAO;
 import qms.dao.RevisionFormDAO;
 import qms.model.Employee;
 import qms.model.Form;
+import qms.model.FormLocation;
 import qms.model.FormPrefix;
 import qms.model.Maintenance;
 import qms.model.RevisionForm;
+import qms.model.Revision_No;
 import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
 import qms.forms.FormForm;
@@ -46,6 +49,7 @@ import qms.forms.FormFormPrefix;
 import qms.forms.FormLocationForm;
 import qms.forms.MaintenanceForm;
 import qms.forms.RevisionFormForm;
+import qms.forms.Revision_No_Form;
 
 import qms.forms.ProcessForm;
 
@@ -482,6 +486,7 @@ public class FormController
 		System.out.println("edit auto no = "+auto_no);
 		session.removeAttribute("docform");
 		load_document_page_dropdowns(model);
+		formDAO.change_RevisionFormat(form,auto_no);
 		RevisionFormForm revisionFormForm = new RevisionFormForm();
 		revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(auto_no));
 		model.addAttribute("revisionFormForm", revisionFormForm);
@@ -494,6 +499,9 @@ public class FormController
 		formForm.setForm(formDAO.getform(auto_no));
 		model.addAttribute("formForm",formForm);
 		  model.addAttribute("menu","document");
+		  
+		  
+		  
 		return "edit_form";
  	}
 
@@ -834,7 +842,68 @@ public class FormController
 		
 			return resultHTML;
 		}	
-	 
-		
+		@RequestMapping(value={"/setrevision"}, method = RequestMethod.GET)
+		public String Set_RevisionNo(HttpSession session,ModelMap model,@ModelAttribute("Revision_No") @Valid Revision_No revision_No, Principal principal )
+		{
+			int size = formDAO.getFormat();
+			System.out.println("size = "+size);
+			if(size >= 1)
+			{
+				formDAO.Revision_No_Format(revision_No);
+				Revision_No_Form revision_No_Form = new Revision_No_Form();
+				revision_No_Form.setRevision_Nos(formDAO.getFormattype());
+				model.addAttribute("revision_No_Form",revision_No_Form);
+				return "show_revision_no";
+			}
+			else{
+	        return "set_revision_no";
+			}
+	 	}
+		@RequestMapping(value = "/selectedformat", method = RequestMethod.POST)
+		public String SelectedRevision(HttpSession session,@ModelAttribute("Revision_No") @Valid Revision_No revision_No,BindingResult result, ModelMap model) {
+
+			session.setAttribute("revision_No",revision_No);
+				if (result.hasErrors())
+				{
+				
+					Revision_No_Form revision_No_Form = new Revision_No_Form();
+					revision_No_Form.setRevision_Nos(formDAO.getFormattype());
+					model.addAttribute("revision_No_Form",revision_No_Form);
+					model.addAttribute("Success","true");
+					return "set_revision_no";
+				}
+			
+				
+			//	formLocationDAO.insert_LocationForm(formLocation);
+				formDAO.Revision_No_Format(revision_No);
+				Revision_No_Form revision_No_Form = new Revision_No_Form();
+				revision_No_Form.setRevision_Nos(formDAO.getFormattype());
+				model.addAttribute("revision_No_Form",revision_No_Form);
+				model.addAttribute("menu","admin");
+				model.addAttribute("success","set");
+			return "show_revision_no";
+		}	
+		@RequestMapping(value = "/update_revisionformat", method = RequestMethod.POST)
+		public String update_revisionformat(ModelMap model,@ModelAttribute("Revision_No") @Valid Revision_No revision_No,BindingResult result) throws IOException {
+
+			if (result.hasErrors())
+			{
+				
+				Revision_No_Form revision_No_Form = new Revision_No_Form();
+				revision_No_Form.setRevision_Nos(formDAO.getFormattype());
+				model.addAttribute("revision_No_Form",revision_No_Form);
+				model.addAttribute("Success","true");
+		        return "set_revision_no";
+			}
+			
+			
+			//formLocationDAO.update_formlocation(formLocation);
+			formDAO.update_revisionformate(revision_No);
+			Revision_No_Form revision_No_Form = new Revision_No_Form();
+			revision_No_Form.setRevision_Nos(formDAO.getFormattype());
+			model.addAttribute("revision_No_Form",revision_No_Form);
+			model.addAttribute("menu","admin");
+		    return "show_revision_no";
+		}
 }
 
