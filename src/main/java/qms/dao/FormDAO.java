@@ -204,8 +204,8 @@ public class FormDAO extends AbstractExcelView{
 			
 			 String attachment_name ="";
 			  String attachment_type="",attachment_reference="",form_or_rec_id="";
-			  System.out.println("revision_id= "+form.getRevision_id());
-			  int revision_id = 0;/*Integer.parseInt(form.getRevision_id());*/
+			  System.out.println("revision_id="+form.getRevision_id());
+			  String revision_id ="";/*Integer.parseInt(form.getRevision_id());*/
 			  System.out.println(revision_id);
 			
 			  
@@ -213,7 +213,7 @@ public class FormDAO extends AbstractExcelView{
 			 {
 				System.out.println("all null");
 				 resultSet=statement.executeQuery("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revision_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
-			System.out.println("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
+			System.out.println("select tbl_form.form_or_rec_id,tbl_form.attachment_name,tbl_form.attachment_type,tbl_form.attachment_referrence,tbl_form_child.revisiion_id from tbl_form,tbl_form_child where tbl_form.auto_number='"+form.getAuto_no()+"'");
 				 while(resultSet.next())
 			  {
 				   form_or_rec_id=resultSet.getString("form_or_rec_id");
@@ -221,13 +221,23 @@ public class FormDAO extends AbstractExcelView{
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
 				   
-				 //  revision_id = Integer.parseInt(resultSet.getString("revision_id"));
-				 //  System.out.println("revision id ="+revision_id);
+				  revision_id = resultSet.getString("revision_id");
+				 System.out.println("revision id ="+revision_id);
 			  }
-			
+				
+			if(form.getRevision_id().equals(""))
+			{
+				System.out.println("revision empty");
+				statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
+				  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form_or_rec_id+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+"' where auto_no='"+form.getAuto_no()+"'");	
+				  status =true;
+			}
+			else{
+				System.out.println("revision Noempty");
 			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
 			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form_or_rec_id+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+form.getRevision_id()+"' where auto_no='"+form.getAuto_no()+"'");	
 			  status =true;
+			}
 			 } 
 			
 			else if(form.getForm_or_rec_id().equals(","))
@@ -239,14 +249,22 @@ public class FormDAO extends AbstractExcelView{
 				 while(resultSet.next())
 				  {
 					  form_or_rec_id=resultSet.getString("form_or_rec_id");
-					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   revision_id = resultSet.getString("revision_id");
 					   System.out.println("revision id ="+revision_id);	
 				  }
+				 if(form.getRevision_id().equals(""))
+					{
+						statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
+						  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form_or_rec_id+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+"' where auto_no='"+form.getAuto_no()+"'");	
+						  status =true;
+					}
+				else{
 				  String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 					statement.execute(cmd_update1);
 					String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form_or_rec_id+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+form.getRevision_id()+"' where auto_no='"+form.getAuto_no()+"'";
 				    statement.execute(cmd_update2);
 				    status =true;
+				}
 			}
 			else if(form.getAttachment_name() == null || form.getAttachment_type() == null || form.getAttachment_referrence() == null)
 			 {
@@ -260,26 +278,42 @@ public class FormDAO extends AbstractExcelView{
 				  attachment_name=resultSet.getString("attachment_name");
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
-				//   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
-				//   System.out.println("revision id ="+revision_id);
+				   revision_id = resultSet.getString("revision_id");
+				  System.out.println("revision id ="+revision_id);
 			  }
+				 if(form.getRevision_id().equals(""))
+					{
+						statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
+						  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form_or_rec_id+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+"' where auto_no='"+form.getAuto_no()+"'");	
+						  status =true;
+					}
+					else{
 			  statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+formid+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
 			  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+formid+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+form.getRevision_id()+"' where auto_no='"+form.getAuto_no()+"'");	
 			  status =true;
+					}
 			 } 
 			else{
 				System.out.println("not null");
 				 resultSet=statement.executeQuery("select revision_id from tbl_form_child where auto_no='"+form.getAuto_no()+"'");
 				 while(resultSet.next())
 				  {
-					 //  revision_id = Integer.parseInt(resultSet.getString("revision_id"));
-					 //  System.out.println("revision id ="+revision_id);
+					   revision_id = resultSet.getString("revision_id");
+					  System.out.println("revision id ="+revision_id);
 				  }
+				 if(form.getRevision_id().equals(""))
+					{
+						statement.executeUpdate("update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+form_or_rec_id+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+form.getAuto_no()+"'");
+						  statement.executeUpdate("update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+form_or_rec_id+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+revision_id+"' where auto_no='"+form.getAuto_no()+"'");	
+						  status =true;
+					}
+					else{
 			String cmd_update1 = "update tbl_form set location='"+form.getLocation()+"',form_or_rec_id='"+formid+"',responsibility='"+form.getResponsibility()+"',form_or_rec_title='"+form.getForm_or_rec_title()+"',process='"+form.getProcess()+"',media_type='"+form.getMedia_type()+"',retention_time='"+form.getRetention_time()+"',form='"+form.getForm()+"',attachment_name='"+form.getAttachment_name()+"',attachment_type='"+form.getAttachment_type()+"',attachment_referrence='"+form.getAttachment_referrence()+"' where auto_number='"+form.getAuto_no()+"'";
 			statement.execute(cmd_update1);
 			String cmd_update2="update tbl_form_child set effective_date='"+form.getEffective_date()+"',document_id='"+formid+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"',revision_id='"+form.getRevision_id()+"' where auto_no='"+form.getAuto_no()+"'";
 		    statement.execute(cmd_update2);
 		    status =true;
+					}
 			}
 		
 			

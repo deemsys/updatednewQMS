@@ -224,19 +224,36 @@ public class RevisionFormDAO {
 			  {	
 					  if((!forms.getApprover1().equals(Approver)) || (!form.getEffective_date().equals(effectivedate) ) )
 					  {
+						  if(form.getRevision_id().equals(""))
+						  {
+							  String cmd_insert3;
+							  cmd_insert3="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_no+"')";
+								 statement.execute(cmd_insert3);
+						  }
+						  else{
 						  String cmd_insert3;
 						  cmd_insert3="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+form.getRevision_id()+"')";
 							 statement.execute(cmd_insert3);
+						  }
 					  }
 					  else  if(update == 1)
 						{
 							statement.executeUpdate("update tbl_revisionform set document_id='"+form.getDocument_id()+"',effective_date='"+form.getEffective_date()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+auto_id+"' and revision_id='"+form.getRevision_id()+"'");
 						}
 					  else{
+						  if(form.getRevision_id().equals(""))
+						  {
+							  String cmd_insert2;	
+								 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_no+"')";
+								 statement.execute(cmd_insert2);
+								 status=true;
+						  }
+						  else{
 			 String cmd_insert2;	
 				 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+form.getRevision_id()+"')";
 				 statement.execute(cmd_insert2);
 				 status=true;
+						  }
 				 }
 			  }
 			 
