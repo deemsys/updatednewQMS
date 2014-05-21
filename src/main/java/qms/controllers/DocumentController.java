@@ -88,7 +88,8 @@ public class DocumentController {
 		@RequestMapping(value = { "/documententry" }, method = RequestMethod.GET)
 	public String add_document1(HttpSession session, ModelMap model,
 			Principal principal) {
-
+			
+			
 		session.removeAttribute("documentMain");
 		load_document_page_dropdowns(model);
 		  model.addAttribute("menu","document");
@@ -103,6 +104,10 @@ public class DocumentController {
 			session.removeAttribute("documentMain");
 			
 			load_document_page_dropdowns(model);
+			
+			DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+			documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getLevelFormat());
+			model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 			
 			DocumentMainForm documentMainForm=new DocumentMainForm();
 			model.addAttribute("documentMainForm",documentMainForm);
@@ -842,9 +847,9 @@ public void load_document_page_dropdowns(ModelMap model)
 	model.addAttribute("formLocationForm",formLocationForm);
 	
 	
-	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+	/*DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
 	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());
-	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);*/
 	
 	
 }

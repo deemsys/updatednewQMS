@@ -479,7 +479,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			e.printStackTrace();
 		}
 		try
-		{
+		{	
 			String doc_id = new String(documentMain.getDocument_id());
 			System.out.println("document_id="+doc_id);
 			String[] strings = doc_id.split(",");
@@ -787,7 +787,8 @@ public class DocumentControlDAO extends AbstractExcelView
 						resultSet.getString("media_type"),resultSet.getString("location"),
 						resultSet.getString("process"),resultSet.getString("auto_no"), 
 						resultSet.getString("issuer"),
-						resultSet.getString("revision_level"),resultSet.getString("date"),
+						resultSet.getString("revision_level"),
+						resultSet.getString("date"),
 						resultSet.getString("approver1"),resultSet.getString("approver2"),
 						resultSet.getString("approver3"),resultSet.getString("comments"),
 						resultSet.getString("status"),

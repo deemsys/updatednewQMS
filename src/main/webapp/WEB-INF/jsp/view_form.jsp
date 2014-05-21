@@ -224,10 +224,10 @@
 						    					<tr id="tabledisplay">
 								
 									<td valign="top" align="center" width="10%"><b>Form/Rec ID</b></td>
-									<td valign="top" align="center" width="5%"><b>Effective Date</b></td>
-									<td valign="top" align="left" width="5%"><b>Approver1</b></td>
-									<td valign="top" align="center" width="5%"><b>Issuer</b></td>
-									<td valign="top" align="center" width="5%"><b>Comments</b></td>
+									<td valign="top" align="center" width="10%"><b>Effective Date</b></td>
+									<td valign="top" align="center" width="10%"><b>Approver1</b></td>
+									<td valign="top" align="center" width="10%"><b>Issuer</b></td>
+									<td valign="top" align="center" width="10%"><b>Comments</b></td>
 									<td valign="top" align="center" width="10%"><b>Revision No</b></td>
 									</tr>  			    	
 						    			<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
@@ -247,9 +247,9 @@
 										 	
 										 	<td valign="top" align="center" width="10%"> ${revision.document_id}</td>
 											<td valign="top" align="center" width="10%">${revision.effective_date}</td>
-											<td valign="top" align="left" width="5%">${revision.approver1}</td>
-											<td valign="top" align="left" width="10%">${revision.issuer}</td>
-											<td valign="top" align="left" width="5%">${revision.comments}</td>
+											<td valign="top" align="center" width="10%">${revision.approver1}</td>
+											<td valign="top" align="center" width="10%">${revision.issuer}</td>
+											<td valign="top" align="center" width="10%">${revision.comments}</td>
 											<td valign="top" align="center" width="10%">${revision.revision_id}</td>
 									
 										</tr>
@@ -271,26 +271,35 @@
 		  
 	});
 	  </script> -->
-	  <style type="text/css">
+	 
+  <style type="text/css">
 #overlay {
 position: fixed;
 top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background-color: #000;
-filter:alpha(opacity=70);
--moz-opacity:0.7;
--khtml-opacity: 0.7;
-opacity: 0.7;
-z-index: 100;
-display: none;
+background: none;
+filter: alpha(opacity=0);
+-moz-opacity:0;
+opacity:0;
+z-index: 1001;
+display: block;
+border:5px solid #3366cc;
 }
 .cnt223 a{
 text-decoration: none;
 }
+
 .popup{
+background:#ccc;
+/* left:220px;
+top:290px; */
+left:0%;
+top:15%;
+opacity:0.90;
 width: 100%;
+height: 100%;
 margin: 0 auto;
 display: none;
 position: fixed;
@@ -298,15 +307,18 @@ z-index: 101;
 }
 .cnt223{
 min-width: 400px;
-width: 60%;
+width: 65%;
 min-height: 150px;
-margin: 100px auto;
-background: #f3f3f3;
+margin:100px auto;
+background: #fff;
+border:2px solid #000;
+box-shadow:inset 0px 20px 25px #ccc;
 position: relative;
 z-index: 103;
 padding: 10px;
 border-radius: 5px;
-box-shadow: 0 2px 5px #000;
+opacity: 1;
+
 }
 .cnt223 p{
 clear: both;
@@ -319,17 +331,47 @@ font-weight: bold;
 }
 .cnt223 .x{
 float: right;
-height: 35px;
-left: 22px;
+height: 15px;
+left: 10px;
 position: relative;
 top: -25px;
-width: 34px;
+width: 15px;
 }
 .cnt223 .x:hover{
 cursor: pointer;
 }
-</style> 
-  <!-- <style type="text/css">
+</style>
+<style>
+.black_overlay{
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index:1001;
+        -moz-opacity: 0.8;
+        opacity:.80;
+        filter: alpha(opacity=80);
+    }
+    .white_content {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: 50%;
+        height: 50%;
+        padding: 16px;
+        border: 16px solid orange;
+        background-color: white;
+        z-index:1002;
+        overflow: auto;
+    }
+    </style>
+
+<script>
+/*  <style type="text/css">
 #overlay {
 position: fixed;
 top: 0;
@@ -391,8 +433,8 @@ width: 15px;
 cursor: pointer;
 }
 </style> -->
-<script type='text/javascript'>
-/* 
+ *//* <script type='text/javascript'>
+ *//* 
 $(function(){
 	$("a[data-bind-action='toggle-content']").click(toggleContent);
 	function toggleContent(){

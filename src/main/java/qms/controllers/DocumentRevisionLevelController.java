@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import qms.dao.DocumentRevisionLevelDAO;
 import qms.forms.DocumentRevisionLevelForm;
+
 import qms.model.DocumentRevisionLevel;
+
 
 
 
@@ -35,11 +37,31 @@ public class DocumentRevisionLevelController {
 	
 @RequestMapping(value = {"/add_revisionleveldocument"}, method = RequestMethod.GET)
 	
-	public String addDocumentRevisionLevel(HttpSession session,ModelMap model, Principal principal) {
-		session.removeAttribute("documentrevisionlevel");
+	public String addDocumentRevisionLevel(HttpSession session,ModelMap model, @ModelAttribute("DocumentRevisionLevel") @Valid DocumentRevisionLevel documentRevisionLevel,Principal principal) {
+/*	int size = documentRevisionLevelDAO.getFormat();
+	System.out.println("size="+size);
+	if(size >=1)
+	{
+*/		//documentRevisionLevelDAO.insert_Documentrevision(documentRevisionLevel);
+		DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());
+		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+		model.addAttribute("menu","admin");
+		return "add_revisionleveldocument";		
+	}
+/*	else
+	{
+		return "add_documentrevisionlevel";
+	}
+}*/
+
+
+
+		/*//session.removeAttribute("documentrevisionlevel");
 		model.addAttribute("menu","admin");
 		return "add_revisionleveldocument";
-	}
+	}*/
+
 
 //Insert a record
 @RequestMapping(value = "/add_documentrevisionlevel", method = RequestMethod.POST)
@@ -60,6 +82,7 @@ public String postrevisionlevel(HttpSession session,@ModelAttribute("DocumentRev
 		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());
 		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","set");
 	return "documentrevisionlevel_list";
 }
 	
@@ -134,19 +157,21 @@ public String update_documentrevisionlevel(ModelMap model,@ModelAttribute("Docum
 	{
 		
 		DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
-		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels(documentRevisionLevel.getId()));
+		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());
 		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
-        return "edit_documentrevisionlevel";
+        model.addAttribute("Success","true");
+		return "add_revisionleveldocument";
 	}
 	
 	
 	documentRevisionLevelDAO.update_documentrevisionlevel(documentRevisionLevel);
 	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
-	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());	
+	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());	
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 	model.addAttribute("menu","admin");
-    return "documentrevisionlevel_list";
+    return "edit_documentrevisionlevel";
 }
+
 
 //delete a record
 @RequestMapping(value = "/delete_documentrevisionlevel", method = RequestMethod.GET)

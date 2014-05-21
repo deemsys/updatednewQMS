@@ -36,7 +36,7 @@ public class DocumentMain
 	@NotEmpty
 	private String issuer;
 	
-	@NotEmpty
+	
 	private String revision_level;
 	
 	@NotEmpty
@@ -94,8 +94,8 @@ public class DocumentMain
 	
 	public DocumentMain(String auto_number,String document_id, String document_title,
 			String document_type, String media_type, String location,
-			String process,String auto_no, String issuer, String revision_level, String date,
-			String approver1, String approver2, String approver3,
+			String process,String auto_no, String issuer, String revision_level,
+			String date,String approver1, String approver2, String approver3,
 			String comments, String status, String external,
 			String attachment_name, String attachment_type,
 			String attachment_referrence,String revision_id) {
@@ -126,8 +126,8 @@ public class DocumentMain
 
 	public DocumentMain(String document_id, String document_title,
 			String document_type, String media_type, String location,
-			String process, String external, String issuer, String revision_level, String date,
-			String approver1, String approver2, String approver3,
+			String process, String external, String issuer, String revision_level,
+			String date,String approver1, String approver2, String approver3,
 			String status,String comments,String revision_id) {
 		super();
 		this.document_id = document_id;
@@ -171,6 +171,7 @@ public class DocumentMain
 	public void setRevision_level(String revision_level) {
 		this.revision_level = revision_level;
 	}
+
 
 	public String getDate() {
 		return date;

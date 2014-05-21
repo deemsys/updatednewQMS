@@ -761,6 +761,7 @@ function subhide()
 						    				<img src='resources/images/closebutton-md1.png' alt='quit' class='x' id='x' /><br>
 						<tr  id="tabledisplay">
 								
+									<td valign="top" align="center" width="10%"><b>Doc Id</b></td>
 									<td valign="top" align="center" width="10%"><b>Issuer</b></td>
 									<td valign="top" align="center" width="10%"><b>RevisionLevel</b></td>
 									<td valign="top" align="center" width="10%"><b>Date</b></td>
@@ -788,10 +789,10 @@ function subhide()
 									
 										<tr class="row2" style="color:#0000A0; font-style: inherit;">
 										
-									
-									<td valign="top" align="left">${revision.issuer}</td>
-											 <td valign="top" align="left" width="10%">${revision.revision_level}</td>
-											 <td valign="top" align="left" width="10%">${revision.date}</td>
+											<td valign="top" align="left" width="10%">${revision.document_id}</td>
+											<td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<td valign="top" align="left" width="10%">${revision.revision_level}</td>
+											<td valign="top" align="left" width="10%">${revision.date}</td>
 											<td valign="top" align="left" width="10%">${revision.approver1}</td>
 											<td valign="top" align="left" width="10%">${revision.approver2}</td>
 											<td valign="top" align="left" width="10%">${revision.approver3}</td>

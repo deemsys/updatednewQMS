@@ -75,8 +75,12 @@
 			      <form action="documentrevisionlevel_list" method="POST"> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
-							<td valign="top" align="left" width="20%"> Id</td>
-							<td valign="top" align="left" width="20%">Revision Level</td>
+							<td valign="top" align="left" width="10%"> Id</td>
+							<td valign="top" align="left" width="10%">Revision Prefix</td>
+							<td valign="top" align="left" width="10%">Revision Level</td>
+							<td valign="top" align="left" width="10%">Input1</td>
+							<td valign="top" align="left" width="10%">Input2</td>
+							<td valign="top" align="left" width="10%">Combined output</td>
 							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>
 							<c:if test="${fn:length(documentRevisionLevelForm.documentRevisionLevels) gt 0}">
@@ -85,7 +89,11 @@
         				       				
         				       				
         				       				 <td valign="top" align="left"  width="10%"> ${documentrevisionlevel.id}</td>
+        				       				 <td valign="top" align="left" width="15%">${documentrevisionlevel.revision_prefix}</td>
         				       				 <td valign="top" align="left" width="15%">${documentrevisionlevel.revision_level}</td>
+        				       				 <td valign="top" align="left" width="15%">${documentrevisionlevel.input1}</td>
+        				       				 <td valign="top" align="left" width="15%">${documentrevisionlevel.input2}</td>
+        				       				 <td valign="top" align="left" width="15%">${documentrevisionlevel.combined_output}</td>
         				       					<td valign="top" align="left">
 												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_documentrevisionlevel?id=${documentrevisionlevel.id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_documentrevisionlevel?id=${documentrevisionlevel.id}"/>" onclick="return confirmation()">Remove</a>

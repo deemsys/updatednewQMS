@@ -314,7 +314,7 @@
                  </tr>  
               <tr class="row2" style="border:none;">
               
-                <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
+            <%--     <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
                <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:200px;">
               
@@ -322,6 +322,18 @@
         				       <option value="${revisionlevel.revision_level}">${revisionlevel.revision_level}</option>
 			                  </c:forEach> </select>
              <br/><span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span></td>
+             --%> 
+                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
+           
+               <td valign="top" align="left" class="input_txt1" width="20%">
+         <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;height:18px;beckground:lightgrey;">
+               				<option value="">--select--</option>
+                              <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
+        				       <option value="${revisionlevel.combined_output}">${revisionlevel.combined_output}</option>
+			                  </c:forEach> </select> 
+             <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
+             
+            </td>
               
                <%-- <input type="text" id="revision_level" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
               <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span> --%>
