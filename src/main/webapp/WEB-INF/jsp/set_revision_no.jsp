@@ -86,7 +86,7 @@
               <option value="">--Select--</option>
                <option value="integer">Integer</option>
                <option value="alpha">Alphabet</option>
-               <option value="romain">Romain</option>
+               <!-- <option value="romain">Romain</option> -->
                </select>
 																		
 																		</td>
@@ -95,7 +95,7 @@
              <option value="">--Select--</option>
                <option value="integer">Integer</option>
                <option value="alpha">Alphabet</option>
-               <option value="romain">Romain</option>
+             <!--   <option value="romain">Romain</option> -->
                </select>
 																		
 																		</td>

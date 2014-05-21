@@ -671,11 +671,11 @@ public class FormController
 	//search a record
 	 @RequestMapping(value={"/search_form"}, method = RequestMethod.GET)
 		
-		public String search_form(@RequestParam("process") String process,ModelMap model, Principal principal)
+		public String search_form(HttpSession session,@RequestParam("process") String process,ModelMap model, Principal principal)
 	{
 		
 		 FormForm formForm = new FormForm();
-		 
+		 session.setAttribute("processarea",process);
 		
 		formForm.setForm(formDAO.search_form(process));
 		

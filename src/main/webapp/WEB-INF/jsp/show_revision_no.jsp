@@ -89,7 +89,7 @@
               <option value="">--Select--</option>
                <option value="integer"<c:if test="${revision.first=='integer'}"><c:out value="Selected"/></c:if>>Integer</option>
                <option value="alpha"<c:if test="${revision.first=='alpha'}"><c:out value="Selected"/></c:if>>Alphabet</option>
-               <option value="romain"<c:if test="${revision.first=='romain'}"><c:out value="Selected"/></c:if>>Romain</option>
+             <%--   <option value="romain"<c:if test="${revision.first=='romain'}"><c:out value="Selected"/></c:if>>Romain</option> --%>
                </select>
 																		
 																		</td>
@@ -98,7 +98,7 @@
              <option value="">--Select--</option>
                <option value="integer"<c:if test="${revision.second=='integer'}"><c:out value="Selected"/></c:if>>Integer</option>
                <option value="alpha"<c:if test="${revision.second=='alpha'}"><c:out value="Selected"/></c:if>>Alphabet</option>
-               <option value="romain"<c:if test="${revision.second=='romain'}"><c:out value="Selected"/></c:if>>Romain</option>
+              <%--  <option value="romain"<c:if test="${revision.second=='romain'}"><c:out value="Selected"/></c:if>>Romain</option> --%>
                </select>
 																		
 																		</td>

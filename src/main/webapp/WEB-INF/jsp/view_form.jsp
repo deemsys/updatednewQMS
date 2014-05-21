@@ -77,7 +77,7 @@
                <select name="process" id="id_inpprocess"  class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-                <option value="${processes.process_name}">${processes.process_name}</option>
+                <option value="${processes.process_name}"<c:if test="${processes.process_name==processarea}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
                </c:forEach>
                </select>
               </td>
@@ -107,6 +107,7 @@
 								<% int i=1; %>
 							       		
 									<c:forEach items="${formForm.form}" var="form" varStatus="status">
+									
 							       		<% if(i==1)
 							       			i=2;
 							       			else
@@ -222,7 +223,7 @@
 						    				
 						    				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						    					<tr id="tabledisplay">
-								
+									
 									<td valign="top" align="center" width="10%"><b>Form/Rec ID</b></td>
 									<td valign="top" align="center" width="10%"><b>Effective Date</b></td>
 									<td valign="top" align="center" width="10%"><b>Approver1</b></td>
@@ -231,7 +232,12 @@
 									<td valign="top" align="center" width="10%"><b>Revision No</b></td>
 									</tr>  			    	
 						    			<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
-										<%-- <c:if test="${revision.auto_no == form.auto_number}"> --%>
+										<%--  <c:if test="${revision.auto_no == form.auto_number}">
+										 <td valign="top" align="left" width="10%"style="display:none"><input type="hidden" name="auto_no" id="autono" value="${revision.auto_no}"/>
+									        ${revision.auto_no}</td>
+										  <td valign="top" align="left" width="10%"style="display:none"><input type="hidden" name="auto_no" id="autonu" value="${form.auto_number}"/>
+									        ${form.auto_number}</td>
+										 </c:if> --%>
 									<%-- 	<c:if test="${display == 'show'}">	
 									<script>
 									
@@ -277,8 +283,8 @@
 position: fixed;
 top: 0;
 left: 0;
-width: 100%;
-height: 100%;
+width: 800px; 
+height: 400px; 
 background: none;
 filter: alpha(opacity=0);
 -moz-opacity:0;
@@ -302,13 +308,18 @@ width: 100%;
 height: 100%;
 margin: 0 auto;
 display: none;
-position: fixed;
-z-index: 101;
+position: absolute;
+left:300px;
+top:150px;
+z-index: 100; 
+width: auto; 
+height: auto; 
+
 }
 .cnt223{
-min-width: 400px;
+min-width: 800px;
 width: 65%;
-min-height: 150px;
+min-height: auto;
 margin:100px auto;
 background: #fff;
 border:2px solid #000;
@@ -451,7 +462,10 @@ $('element_to_pop_up').bPopup({
 		function popupwindow()
 	{
 	//	alert("fsdf");
-	
+	var element = document.getElementById('autonu').value;
+	var element1 = document.getElementById('autono').value;
+	alert(element);
+	alert(element1);
 		self.setInterval("winClose()",20000);
 	//alert("pop-up");
 var overlay = $('<div id="overlay"></div>');
