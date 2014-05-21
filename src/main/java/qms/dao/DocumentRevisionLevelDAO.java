@@ -324,7 +324,10 @@ public class DocumentRevisionLevelDAO {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet2 = null;
 		boolean status = false;
+		String prefix = "",suffix="";
+		int count=0;
 		List<DocumentRevisionLevel> documentRevisionLevels = new ArrayList<DocumentRevisionLevel>();
 
 		try {
@@ -334,6 +337,15 @@ public class DocumentRevisionLevelDAO {
 			e1.printStackTrace();
 		}
 		try {
+			 resultSet2=statement.executeQuery("select tbl_documentrevisionlevel.revision_prefix,tbl_documentrevisionlevel.revision_level from tbl_documentrevisionlevel");
+			 while(resultSet2.next())
+			  {
+				prefix  = resultSet2.getString("revision_prefix");
+				suffix  = resultSet2.getString("revision_level");
+				count = count+1;
+			  }
+			 if(count >= 1)
+			 {
 			String cmd_select = "select * from tbl_documentrevisionlevel order by id DESC LIMIT 1";
 			resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {
@@ -347,6 +359,7 @@ public class DocumentRevisionLevelDAO {
 						.getString("combined_output")));	
 				}
 			}	
+		}
 		 catch (Exception e) {
 			System.out.println(e.toString());
 			releaseResultSet(resultSet);
@@ -363,8 +376,9 @@ public class DocumentRevisionLevelDAO {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
-		ResultSet resultSet1 = null;
+		ResultSet resultSet1 = null,resultSet2=null;
 		boolean status = false;
+		int count=0;
 		String prefix = "",suffix="";
 		System.out.println("level format");
 		List<DocumentRevisionLevel> format = new ArrayList<DocumentRevisionLevel>();
@@ -376,8 +390,17 @@ public class DocumentRevisionLevelDAO {
 			e1.printStackTrace();
 		}
 		try {
-			 resultSet1=statement.executeQuery("select tbl_documentrevisionlevel.revision_prefix,tbl_documentrevisionlevel.revision_level from tbl_documentrevisionlevel order by tbl_documentrevisionlevel.id DESC LIMIT 1");
-			 
+			/* resultSet2=statement.executeQuery("select tbl_documentrevisionlevel.revision_prefix,tbl_documentrevisionlevel.revision_level from tbl_documentrevisionlevel");
+			 while(resultSet2.next())
+			  {
+				prefix  = resultSet2.getString("revision_prefix");
+				suffix  = resultSet2.getString("revision_level");
+				count = count+1;
+			  }
+			 if(count >= 1)
+			 {*/
+			resultSet1=statement.executeQuery("select tbl_documentrevisionlevel.revision_prefix,tbl_documentrevisionlevel.revision_level from tbl_documentrevisionlevel order by tbl_documentrevisionlevel.id DESC LIMIT 1");
+			
 			  while(resultSet1.next())
 			  {
 				prefix  = resultSet1.getString("revision_prefix");
@@ -446,6 +469,7 @@ public class DocumentRevisionLevelDAO {
 						.getString("input2"),resultSet
 						.getString("combined_output")));
 			}	
+			 
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());

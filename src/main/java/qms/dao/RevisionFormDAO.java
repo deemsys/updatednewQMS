@@ -212,7 +212,8 @@ public class RevisionFormDAO {
 				while(resultSet1.next())
 				{
 					revision_number = resultSet1.getString("revision_id");
-					System.out.println("revision numner= "+revision_number);
+					System.out.println("revision numnergfgdfgdfgd  = "+revision_number);
+					System.out.println("edit revision id"+form.getRevision_id());
 					if(revision_number.equals(form.getRevision_id()))
 					{
 						System.out.println("updte befor= "+update);

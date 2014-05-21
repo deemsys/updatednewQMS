@@ -229,11 +229,19 @@ public class DocumentController {
 	public String edit_document(@RequestParam("auto_number") String auto_number,HttpSession session, ModelMap model,Principal principal) {
 
 		session.removeAttribute("documentMain");
-		load_document_page_dropdowns(model);
 		System.out.println("auto number=" +auto_number);
+		documentControlDAO.changeRevisionFormat(auto_number);
+		DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getLevelFormat());
+		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+		
+		load_document_page_dropdowns(model);
+		
+		
 		RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
 		revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(auto_number));
 		model.addAttribute("revisionDocumentForm",revisionDocumentForm);
+		
 		DocumentMainForm documentMainForm=new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocument_byid(auto_number));
 		
@@ -265,7 +273,7 @@ public class DocumentController {
 		int flag = 0;
 		
 		request.getAttribute("revision_id");
-		System.out.println("revision_id = "+request.getAttribute("revision_id"));
+		System.out.println("revision_id---- = "+request.getAttribute("revision_id"));
 		System.out.println("auto number from model = "+documentMain1.getAuto_number());
 		session.setAttribute("documentMain",documentMain1);
 		//System.out.println("attachment name= "+documentMain.getAttachment_name());

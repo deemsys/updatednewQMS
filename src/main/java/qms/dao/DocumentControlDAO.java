@@ -498,7 +498,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			 String attachment_name ="";
 			  String attachment_type="",attachment_reference="",document_id="";
 			  System.out.println("revision_id= "+documentMain.getRevision_id());
-			  int revision_id = 0;/*Integer.parseInt(form.getRevision_id());*/
+			  String revision_id = "";/*Integer.parseInt(form.getRevision_id());*/
 			  System.out.println(revision_id);
 			 
 			if((documentMain.getAttachment_name() == null && documentMain.getDocument_id().equals(id_nochange+","+id_nochange)) || (documentMain.getAttachment_type() == null && documentMain.getDocument_id().equals(id_nochange+","+id_nochange)) || (documentMain.getAttachment_referrence() == null && documentMain.getDocument_id().equals(id_nochange+","+id_nochange)))
@@ -513,16 +513,21 @@ public class DocumentControlDAO extends AbstractExcelView
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
 				   
-				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				   revision_id = resultSet.getString("revision_id");
 				   System.out.println("revision id ="+revision_id);
 			  }
-			
-			 
-				 	statement.executeUpdate("update tbl_doccontrol_main set document_id='"+id_nochange+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
+			 if(documentMain.getRevision_id().equals(""))
+			 {
+				 statement.executeUpdate("update tbl_doccontrol_main set document_id='"+id_nochange+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
+					statement.executeUpdate("update tbl_doccontrol_external set document_id='"+id_nochange+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+revision_id+"' where auto_no='"+documentMain.getAuto_number()+"'");
+					status =true;
+			 }
+			 else{
+			  	statement.executeUpdate("update tbl_doccontrol_main set document_id='"+id_nochange+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
 					statement.executeUpdate("update tbl_doccontrol_external set document_id='"+id_nochange+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'");
 					status =true;
 			 } 
-			
+		 }
 		else if(documentMain.getDocument_id().equals(id_nochange+","+id_nochange))
 			{
 				System.out.println("document id null");
@@ -532,14 +537,24 @@ public class DocumentControlDAO extends AbstractExcelView
 				 while(resultSet.next())
 				  {
 					 /*document_id=resultSet.getString("document_id");*/
-					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   revision_id = resultSet.getString("revision_id");
 					   System.out.println("revision id ="+revision_id);	
 				  }
+				 if(documentMain.getRevision_id().equals(""))
+				 {
+					 String cmd_update1 = "update tbl_doccontrol_main set document_id='"+id_nochange+"', document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where auto_number='"+documentMain.getAuto_number()+"'";
+						statement.execute(cmd_update1);
+						String cmd_update2="update tbl_doccontrol_external set document_id='"+id_nochange+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+revision_id+"', where auto_no='"+documentMain.getAuto_number()+"'";
+					    statement.execute(cmd_update2);
+					    status =true;
+				 }
+				 else{
 				  String cmd_update1 = "update tbl_doccontrol_main set document_id='"+id_nochange+"', document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where auto_number='"+documentMain.getAuto_number()+"'";
 					statement.execute(cmd_update1);
 					String cmd_update2="update tbl_doccontrol_external set document_id='"+id_nochange+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"', where auto_no='"+documentMain.getAuto_number()+"'";
 				    statement.execute(cmd_update2);
 				    status =true;
+				 }
 		}
 			else if(documentMain.getAttachment_name() == null || documentMain.getAttachment_type() == null || documentMain.getAttachment_referrence() == null)
 			 {
@@ -553,26 +568,44 @@ public class DocumentControlDAO extends AbstractExcelView
 				  attachment_name=resultSet.getString("attachment_name");
 				  attachment_type=resultSet.getString("attachment_type");
 				   attachment_reference= resultSet.getString("attachment_referrence");
-				   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+				   revision_id = resultSet.getString("revision_id");
 				   System.out.println("revision id ="+revision_id);
 			  }
+				 if(documentMain.getRevision_id().equals(""))
+				 {
 			  statement.executeUpdate("update tbl_doccontrol_main set document_id='"+documentid+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
-			  statement.executeUpdate("update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'");	
+			  statement.executeUpdate("update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+revision_id+"' where auto_no='"+documentMain.getAuto_number()+"'");	
 			  status =true;
 			 } 
+				 else{
+					 statement.executeUpdate("update tbl_doccontrol_main set document_id='"+documentid+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+attachment_name+"',attachment_type='"+attachment_type+"',attachment_referrence='"+attachment_reference+"' where auto_number='"+documentMain.getAuto_number()+"'");
+					  statement.executeUpdate("update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'");	
+					  status =true;
+				 }
+			 }		 
 			else{
 				System.out.println("not null");
 				 resultSet=statement.executeQuery("select revision_id from tbl_doccontrol_external where auto_no='"+documentMain.getAuto_no()+"'");
 				 while(resultSet.next())
 				  {
-					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   revision_id = resultSet.getString("revision_id");
 					   System.out.println("revision id ="+revision_id);
 				  }
+				 if(documentMain.getRevision_id().equals(""))
+				 {
 			String cmd_update1 = "update tbl_doccontrol_main set document_id='"+documentid+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where auto_number='"+documentMain.getAuto_number()+"'";
 			statement.execute(cmd_update1);
-			String cmd_update2="update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'";
+			String cmd_update2="update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+revision_id+"' where auto_no='"+documentMain.getAuto_number()+"'";
 		    statement.execute(cmd_update2);
 		    status =true;
+				 }
+				 else{
+					 String cmd_update1 = "update tbl_doccontrol_main set document_id='"+documentid+"',document_title='"+documentMain.getDocument_title()+"',document_type='"+documentMain.getDocument_type()+"',media_type='"+documentMain.getMedia_type()+"',location='"+documentMain.getLocation()+"',process='"+documentMain.getProcess()+"',external='"+documentMain.getExternal()+"',attachment_name='"+documentMain.getAttachment_name()+"',attachment_type='"+documentMain.getAttachment_type()+"',attachment_referrence='"+documentMain.getAttachment_referrence()+"' where auto_number='"+documentMain.getAuto_number()+"'";
+						statement.execute(cmd_update1);
+						String cmd_update2="update tbl_doccontrol_external set document_id='"+documentid+"',issuer='"+documentMain.getIssuer()+"',revision_level='"+documentMain.getRevision_level()+"',date='"+documentMain.getDate()+"',approver1='"+approver+"',approver2='"+documentMain.getApprover2()+"',approver3='"+documentMain.getApprover3()+"',comments='"+documentMain.getComments()+"',status='"+documentMain.getStatus()+"',revision_id='"+documentMain.getRevision_id()+"' where auto_no='"+documentMain.getAuto_number()+"'";
+					    statement.execute(cmd_update2);
+					    status =true;
+				 }
 			}
 		
 			
@@ -598,8 +631,9 @@ public class DocumentControlDAO extends AbstractExcelView
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		ResultSet resultSet1 = null;
 		boolean status=false;
-		
+		String decimal1 = "",floor1 = "";
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -607,14 +641,58 @@ public class DocumentControlDAO extends AbstractExcelView
 				e1.printStackTrace();
 		}
 		  try{
-			  String cmd_insert1="insert into tbl_doccontrol_main(auto_number,document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
-			  statement.execute(cmd_insert1);
-			  
-			  String cmd_insert2="";	
-				 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','"+0+"')";
+			  resultSet1=statement.executeQuery("select first,second from tbl_revision_format where sno='1'");
+			  while(resultSet1.next())
+			  {
+				decimal1  = resultSet1.getString("first");
+				floor1 = resultSet1.getString("second");
+			  }
+			  if(decimal1.equalsIgnoreCase("integer"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					 
+					  String cmd_insert2;	
+				 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','0.0')";
 				 statement.execute(cmd_insert2);
-		
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  String cmd_insert2;	
+						 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','0.a')";
+						 statement.execute(cmd_insert2);
+				  }
+				  else{
+					  String cmd_insert2;	
+						 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','0')";
+						 statement.execute(cmd_insert2);
+				  }
+			  }
+			  else if(decimal1.equalsIgnoreCase("alpha"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  String cmd_insert2;	
+						 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','a.0')";
+						 statement.execute(cmd_insert2);
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  String cmd_insert2;	
+						 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','a.a')";
+						 statement.execute(cmd_insert2);
+				  }
+				  else
+				  {
+					  String cmd_insert2;	
+						 cmd_insert2="insert into tbl_doccontrol_external(auto_no,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getIssuer()+"','"+documentMain.getRevision_level()+"','"+documentMain.getDate()+"','"+documentMain.getApprover1()+"','"+documentMain.getApprover2()+"','"+documentMain.getApprover3()+"','"+documentMain.getComments()+"','"+documentMain.getStatus()+"','a')";
+						 statement.execute(cmd_insert2);
+				  }
+			  }
+				 String cmd_insert1="insert into tbl_doccontrol_main(auto_number,document_id,document_title,document_type,media_type,location,process,external,attachment_name,attachment_type,attachment_referrence) values('"+documentMain.getAuto_number()+"','"+documentMain.getDocument_id()+"','"+documentMain.getDocument_title()+"','"+documentMain.getDocument_type()+"','"+documentMain.getMedia_type()+"','"+documentMain.getLocation()+"','"+documentMain.getProcess()+"','"+documentMain.getExternal()+"','"+documentMain.getAttachment_name()+"','"+documentMain.getAttachment_type()+"','"+documentMain.getAttachment_referrence()+"')";
+				  statement.execute(cmd_insert1);
 			 status=true;
+			  
 			 
 		  }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -1020,7 +1098,214 @@ public class DocumentControlDAO extends AbstractExcelView
 		return noofRecords;
 
 	}
-
+	public boolean changeRevisionFormat(String auto_no)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		ResultSet resultSet1 = null;
+		boolean status=false;
+		String revision="",decimal1="",floor1="";
+		System.out.println("revision Format");
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+				e1.printStackTrace();
+		}
+		  try{
+			  System.out.println("inserting");
+			  resultSet1=statement.executeQuery("select tbl_doccontrol_external.revision_id,tbl_revision_format.first,tbl_revision_format.second from tbl_doccontrol_external,tbl_revision_format where tbl_doccontrol_external.auto_no='"+auto_no+"' and tbl_revision_format.sno='1'");
+				 
+			  while(resultSet1.next())
+			  {
+				revision  = resultSet1.getString("revision_id");
+				decimal1  = resultSet1.getString("first");
+				floor1 = resultSet1.getString("second");
+			  }
+			  System.out.println("decimal = "+decimal1);
+			  System.out.println("floor = "+floor1);
+			  System.out.println("revision = "+revision);
+			  if(decimal1.equalsIgnoreCase("integer"))
+			  {
+				  System.out.println("integer");
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  System.out.println("floor");
+					   if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='"+0.0+"' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0.a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0.a' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				  else
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='0' where auto_no='"+auto_no+"'");
+					  }
+					 
+				  }
+			  }
+			  else  if(decimal1.equalsIgnoreCase("alpha"))
+			  {
+				  if(floor1.equalsIgnoreCase("integer"))
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.0' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.0' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.0' where auto_no='"+auto_no+"'");
+					  }
+					 
+				  }
+				  else if(floor1.equalsIgnoreCase("alpha"))
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a.a' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				 /* else if(floor1.equalsIgnoreCase("romain"))
+				  {
+					  String intromain;	
+					  intromain="insert into tbl_doccontrol_external(auto_no,effective_date,document_id,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getEffective_date()+"','"+form.getForm_or_rec_id()+"','"+form.getApprover1()+"','"+form.getIssuer()+"','"+form.getComments()+"','a.i')";
+						 statement.execute(intromain);
+				  }*/
+				  else
+				  {
+					  if(revision.matches("^[0-9].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else  if(revision.matches("^[0-9].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a' where auto_no='"+auto_no+"'");
+						 
+					  }
+					  else if(revision.matches("^[a-z].[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[a-z].[a-z]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a' where auto_no='"+auto_no+"'");
+					  }
+					  else if(revision.matches("^[0-9]$"))
+					  {
+						  statement.executeUpdate("update tbl_doccontrol_external set revision_id='a' where auto_no='"+auto_no+"'");
+					  }
+				  }
+				  
+			  }
+			
+				  status=true;
+			  }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+			    return status;
+		}
+		
 
 	
 	public void releaseConnection(Connection con){
