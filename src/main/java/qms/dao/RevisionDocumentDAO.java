@@ -134,7 +134,7 @@ public class RevisionDocumentDAO {
 						,resultSet.getString("status")
 						,resultSet.getString("revision_id")));
 			}
-			System.out.println("revision_id"+revisionDocuments.get(0).getRevision_id());
+			System.out.println("revision_id"+revisionDocuments.get(0).getRevision_id()+"revisionlevel"+revisionDocuments.get(0).getRevision_level());
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
 	    	releaseResultSet(resultSet);

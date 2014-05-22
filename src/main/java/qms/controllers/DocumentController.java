@@ -219,6 +219,7 @@ public class DocumentController {
 			
 		    RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
 		    revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(number));
+		   System.out.println("revisionlevel"+revisionDocumentForm.getRevisionDocuments().get(0).getRevision_level());
 			 model.addAttribute("revisionDocumentForm",revisionDocumentForm);
 		return "view_documents";
  	}
