@@ -428,7 +428,7 @@ public class DocumentRevisionLevelDAO {
 					resultSet = statement.executeQuery(cmd_select);
 				}*/
 				else {
-					String cmd_select = "select * from tbl_documentrevisionlevel where combined_output REGEXP ('^[0-9].$') ";
+					String cmd_select = "select * from tbl_documentrevisionlevel where combined_output REGEXP ('^[0-9]$') ";
 					resultSet = statement.executeQuery(cmd_select);
 				}
 			}

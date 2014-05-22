@@ -217,8 +217,7 @@ public class RevisionFormDAO {
 					if(revision_number.equals(form.getRevision_id()))
 					{
 						System.out.println("updte befor= "+update);
-						 update = 1;
-						 System.out.println("updte after= "+update);
+						System.out.println("updte after= "+update);
 					}
 				}
 				  if((!forms.getRevision_id().equals(revision_no))|| (!forms.getEffective_date().equals(effectivedate))||(!forms.getDocument_id().equals(documentid))|| (!forms.getApprover1().equals(Approver))||(!forms.getIssuer().equals(issuer))|| (!forms.getComments().equals(comments)))
@@ -237,16 +236,18 @@ public class RevisionFormDAO {
 							 statement.execute(cmd_insert3);
 						  }
 					  }
-					  else  if(update == 1)
+					 /* else  if(update == 1)
 						{
 							statement.executeUpdate("update tbl_revisionform set document_id='"+form.getDocument_id()+"',effective_date='"+form.getEffective_date()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+auto_id+"' and revision_id='"+form.getRevision_id()+"'");
-						}
+						}*/
 					  else{
 						  if(form.getRevision_id().equals(""))
 						  {
-							  String cmd_insert2;	
+							  statement.executeUpdate("update tbl_revisionform set document_id='"+form.getDocument_id()+"',effective_date='"+form.getEffective_date()+"',approver1='"+approver+"',issuer='"+form.getIssuer()+"',comments='"+form.getComments()+"' where auto_no='"+auto_id+"' and revision_id='"+revision_no+"'");
+								
+							  /*String cmd_insert2;	
 								 cmd_insert2="insert into tbl_revisionform(auto_no,document_id,effective_date,approver1,issuer,comments,revision_id) values('"+form.getAuto_no()+"','"+form.getDocument_id()+"','"+form.getEffective_date()+"','"+approver+"','"+form.getIssuer()+"','"+form.getComments()+"','"+revision_no+"')";
-								 statement.execute(cmd_insert2);
+								 statement.execute(cmd_insert2);*/
 								 status=true;
 						  }
 						  else{

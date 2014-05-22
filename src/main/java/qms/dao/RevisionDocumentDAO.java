@@ -169,6 +169,7 @@ public class RevisionDocumentDAO {
 		  document.getComments();
 		  document.getStatus();
 		  document.getRevision_id();
+		  System.out.println("rviion = "+document.getRevision_id()+"   ******   "+documentMain.getRevision_id());
 		 
 		  
 		try {
@@ -249,11 +250,11 @@ public class RevisionDocumentDAO {
 						 statement.execute(cmd_insert3);
 				  }
 			  }
-			  else if(update == 1)
+			 /* else if(update == 1)
 				{
 				  System.out.println("condition 2");
 					statement.executeUpdate("update tbl_revisiondocument set document_id='"+document.getDocument_id()+"',issuer='"+document.getIssuer()+"',revision_level='"+document.getRevision_level()+"',date='"+document.getDate()+"',approver1='"+approver11+"',approver2='"+document.getApprover2()+"',approver3='"+document.getApprover3()+"',comments='"+document.getComments()+"',status='"+document.getStatus()+"' where auto_number='"+auto_id+"' and revision_id='"+document.getRevision_id()+"'");
-				}
+				}*/
 			 /* else if((!documentMain.getRevision_id().equals(revision_no))){
 				  System.out.println("condition 3");
 				  statement.executeUpdate("update tbl_revisiondocument set document_id='"+document.getDocument_id()+"',issuer='"+document.getIssuer()+"',revision_level='"+document.getRevision_level()+"',date='"+document.getDate()+"',approver1='"+approver11+"',approver2='"+document.getApprover2()+"',approver3='"+document.getApprover3()+"',comments='"+document.getComments()+"',status='"+document.getStatus()+"',revision_id='"+document.getRevision_id()+"'  where auto_number='"+auto_id+"'   ");
@@ -263,14 +264,20 @@ public class RevisionDocumentDAO {
 				  System.out.println("condition3");
 				  if(document.getRevision_id().equals(""))
 				  {
-					  System.out.println("condition3a");
+					  System.out.println("condition 3a");
+						statement.executeUpdate("update tbl_revisiondocument set document_id='"+document_number+"',issuer='"+document.getIssuer()+"',revision_level='"+document.getRevision_level()+"',date='"+document.getDate()+"',approver1='"+approver11+"',approver2='"+document.getApprover2()+"',approver3='"+document.getApprover3()+"',comments='"+document.getComments()+"',status='"+document.getStatus()+"' where auto_number='"+auto_id+"' and revision_id='"+revision_no+"'");
+					
+					/*  System.out.println("condition3a");
 					  String cmd_insert2;	
 					  cmd_insert2="insert into tbl_revisiondocument(auto_number,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+document.getAuto_number()+"','"+document_number+"','"+document.getIssuer()+"','"+document.getRevision_level()+"','"+document.getDate()+"','"+approver11+"','"+document.getApprover2()+"','"+document.getApprover3()+"','"+document.getComments()+"','"+document.getStatus()+"','"+revision_no+"')";
-					  statement.execute(cmd_insert2);
+					  statement.execute(cmd_insert2);*/
 					  status=true;
 				  }
 				  else
 				  {
+					 /* System.out.println("condition 3b");
+						statement.executeUpdate("update tbl_revisiondocument set document_id='"+document.getDocument_id()+"',issuer='"+document.getIssuer()+"',revision_level='"+document.getRevision_level()+"',date='"+document.getDate()+"',approver1='"+approver11+"',approver2='"+document.getApprover2()+"',approver3='"+document.getApprover3()+"',comments='"+document.getComments()+"',status='"+document.getStatus()+"' where auto_number='"+auto_id+"' and revision_id='"+document.getRevision_id()+"'");
+					*/
 					  System.out.println("condition3b");
 						String cmd_insert2;	
 						 cmd_insert2="insert into tbl_revisiondocument(auto_number,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+document.getAuto_number()+"','"+document_number+"','"+document.getIssuer()+"','"+document.getRevision_level()+"','"+document.getDate()+"','"+approver11+"','"+document.getApprover2()+"','"+document.getApprover3()+"','"+document.getComments()+"','"+document.getStatus()+"','"+document.getRevision_id()+"')";
