@@ -855,7 +855,7 @@ public class FormController
 			System.out.println("size = "+size);
 			if(size >= 1)
 			{
-				formDAO.Revision_No_Format(revision_No);
+				
 				Revision_No_Form revision_No_Form = new Revision_No_Form();
 				revision_No_Form.setRevision_Nos(formDAO.getFormattype());
 				model.addAttribute("revision_No_Form",revision_No_Form);
@@ -878,10 +878,14 @@ public class FormController
 					model.addAttribute("Success","true");
 					return "set_revision_no";
 				}
-			
+				int size = formDAO.getFormat();
+				System.out.println("size = "+size);
+				if(size == 0)
+				{
 				
 			//	formLocationDAO.insert_LocationForm(formLocation);
 				formDAO.Revision_No_Format(revision_No);
+				}
 				Revision_No_Form revision_No_Form = new Revision_No_Form();
 				revision_No_Form.setRevision_Nos(formDAO.getFormattype());
 				model.addAttribute("revision_No_Form",revision_No_Form);
