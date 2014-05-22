@@ -439,7 +439,7 @@ public class FormController
 	public String review_history_form(HttpSession session,@RequestParam("auto_no") String auto_no,Form form,ModelMap model)
 	{
     
-		//session.removeAttribute("docform");
+		session.removeAttribute("processarea");
 		//load_document_page_dropdowns(model);
 		
 		/*RevisionFormForm revisionFormForm = new RevisionFormForm();
@@ -536,8 +536,10 @@ public class FormController
 	
 	//view page generation
 	@RequestMapping(value={"/view_form"},method=RequestMethod.GET)
-	public String viewEmployees(ModelMap model,Principal principal,Employee employee)
+	public String viewEmployees(HttpSession session, ModelMap model,Principal principal,Employee employee)
 	{
+		session.removeAttribute("processarea");
+		
 		FormForm formForm=new FormForm();
 		model.addAttribute("menu","document");
 	  	model.addAttribute("noofrows",5);

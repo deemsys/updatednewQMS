@@ -278,13 +278,13 @@
 	});
 	  </script> -->
 	 
-  <style type="text/css">
+<style type="text/css">
 #overlay {
 position: fixed;
 top: 0;
 left: 0;
-width: 800px; 
-height: 400px; 
+width: 100%;
+height: 100%;
 background: none;
 filter: alpha(opacity=0);
 -moz-opacity:0;
@@ -308,18 +308,13 @@ width: 100%;
 height: 100%;
 margin: 0 auto;
 display: none;
-position: absolute;
-left:300px;
-top:150px;
-z-index: 100; 
-width: auto; 
-height: auto; 
-
+position: fixed;
+z-index: 101;
 }
 .cnt223{
-min-width: 800px;
+min-width: 400px;
 width: 65%;
-min-height: auto;
+min-height: 150px;
 margin:100px auto;
 background: #fff;
 border:2px solid #000;
@@ -352,34 +347,6 @@ width: 15px;
 cursor: pointer;
 }
 </style>
-<style>
-.black_overlay{
-        display: none;
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        z-index:1001;
-        -moz-opacity: 0.8;
-        opacity:.80;
-        filter: alpha(opacity=80);
-    }
-    .white_content {
-        display: none;
-        position: absolute;
-        top: 25%;
-        left: 25%;
-        width: 50%;
-        height: 50%;
-        padding: 16px;
-        border: 16px solid orange;
-        background-color: white;
-        z-index:1002;
-        overflow: auto;
-    }
-    </style>
 
 <script>
 /*  <style type="text/css">
