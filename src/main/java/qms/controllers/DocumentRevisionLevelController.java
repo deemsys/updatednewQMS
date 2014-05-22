@@ -169,7 +169,7 @@ public String update_documentrevisionlevel(ModelMap model,@ModelAttribute("Docum
 	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());	
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 	model.addAttribute("menu","admin");
-    return "edit_documentrevisionlevel";
+    return "documentrevisionlevel_list";
 }
 
 
