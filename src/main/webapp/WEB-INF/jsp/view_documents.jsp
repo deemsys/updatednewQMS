@@ -679,7 +679,7 @@ function subhide()
 											<td valign="top" align="left" width="25%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:20px;">Edit</a>
-										    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="element_to_pop_up" onclick="popupwindow()" href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>" >View Revision History</a>
+										    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="element_to_pop_up" style="color:#7A3A3A;" onclick="popupwindow()" href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>" >View Revision History</a>
 									
 							<%-- 		<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/></a></p>
     <div id="light" class="white_content">This is the lightbox content. <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a></div>
@@ -931,7 +931,7 @@ return false;
           
   function pop_up()
   {
-  	var url="review_history_form?auto_no=${form.auto_no}";
+  	var url="review_history_document?auto_no=${documentMains.auto_no}";
   	popupWindow = window.open(url,"shoulderpopUpWindow" ,'width=1500,height=700,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
   }
  

@@ -208,6 +208,10 @@ public class FormController
 		if (flag == 1)
 		{
 			
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+			
 			FormForm formForm=new FormForm();
 		    formForm.setForm(formDAO.getform());
 		    model.addAttribute("formForm",formForm);

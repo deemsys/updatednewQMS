@@ -85,7 +85,7 @@
                 <td valign="middle" align="left" class="input_txt" id="revisionprefix">Revision Prefix :</td>
                   <td valign="top" align="left" class="input_txt">                
               	 <select name="revision_prefix" id="prefix1" class="input_cmbbx1" style="width:90px;" onclick="showDiv()" >
-              		<option value="" style="display:none;">--Select--</option>
+              		<option value="">--Select--</option>
                		<!-- <option value="Roman">Roman</option> -->
                	<option value="Integer"<c:if test="${documentrevisionlevel.revision_prefix eq 'Integer'}"><c:out value="Selected"/></c:if>>Integer</option>
 				<option value="Alphabet"<c:if test="${documentrevisionlevel.revision_prefix eq 'Alphabet'}"><c:out value="Selected"/></c:if>>Alphabet</option>

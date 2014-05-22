@@ -507,6 +507,18 @@ public class DocumentController {
 		model.addAttribute("id", "1001");
 		if (flag == 1)
 		{
+			
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+
+			
+			DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+			documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+			model.addAttribute("documentTypeForm",documentTypeForm);
+			
+			
+			
 			DocumentMainForm documentMainForm = new DocumentMainForm();
 			documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 			model.addAttribute("documentMainForm", documentMainForm);
