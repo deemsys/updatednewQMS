@@ -976,7 +976,7 @@ $(window).load(function(){
                
                <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;">
                            <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
-        				       <option value="${revisionlevel.combined_output}"<c:if test="${revisionlevel.combined_output == documentMain.revision_level}"><c:out value="selected"/></c:if>>${documentMain.revision_level}</option>
+        				       <option value="${revisionlevel.combined_output}"<c:if test="${revisionlevel.combined_output == documentMain.revision_level}"><c:out value="selected"/></c:if>>${revisionlevel.combined_output}</option>
 			                  </c:forEach>
 			                 </select>
 			                 <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>

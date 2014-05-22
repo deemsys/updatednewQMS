@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
 <html>
-<form method="post" action="update_documentrevisionlevel">
+<form method="post" action="update_revisionformat">
   <!-- <div id="right_content" style="background-color:lightgrey;"> -->
   
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
