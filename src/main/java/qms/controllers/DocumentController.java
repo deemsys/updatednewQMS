@@ -197,10 +197,11 @@ public class DocumentController {
 	}	
 	
 	@RequestMapping(value={"/review_history_document"}, method = RequestMethod.GET)
-	public String review_history_document(HttpSession session,@RequestParam("auto_number") String auto_number,ModelMap model)
+	public String review_history_document(HttpServletRequest request,HttpSession session,@RequestParam("auto_number") String auto_number,ModelMap model)
 	{
 		session.removeAttribute("documentMain");
 		session.removeAttribute("documentMain1");
+		
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 		model.addAttribute("documentTypeForm",documentTypeForm);

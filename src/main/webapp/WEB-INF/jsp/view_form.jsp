@@ -302,20 +302,21 @@ background:#ccc;
 /* left:220px;
 top:290px; */
 left:0%;
-top:15%;
-opacity:0.90;
+top:/*15%;*/0;
+opacity:0.93;
 width: 100%;
 height: 100%;
 margin: 0 auto;
 display: none;
 position: fixed;
 z-index: 101;
+overflow-y:scroll;
 }
 .cnt223{
 min-width: 400px;
 width: 65%;
 min-height: 150px;
-margin:100px auto;
+margin:/*100px auto;*/0 auto;
 background: #fff;
 border:2px solid #000;
 box-shadow:inset 0px 20px 25px #ccc;
@@ -324,7 +325,7 @@ z-index: 103;
 padding: 10px;
 border-radius: 5px;
 opacity: 1;
-
+top: 100px;
 }
 .cnt223 p{
 clear: both;
@@ -347,6 +348,7 @@ width: 15px;
 cursor: pointer;
 }
 </style>
+
 
 <script>
 /*  <style type="text/css">
