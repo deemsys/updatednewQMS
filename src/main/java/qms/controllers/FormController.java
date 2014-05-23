@@ -859,16 +859,20 @@ public class FormController
 				Revision_No_Form revision_No_Form = new Revision_No_Form();
 				revision_No_Form.setRevision_Nos(formDAO.getFormattype());
 				model.addAttribute("revision_No_Form",revision_No_Form);
+				model.addAttribute("menu","admin");
 				return "show_revision_no";
 			}
 			else{
+				model.addAttribute("menu","admin");
 	        return "set_revision_no";
+	        
 			}
 	 	}
 		@RequestMapping(value = "/selectedformat", method = RequestMethod.POST)
 		public String SelectedRevision(HttpSession session,@ModelAttribute("Revision_No") @Valid Revision_No revision_No,BindingResult result, ModelMap model) {
 
 			session.setAttribute("revision_No",revision_No);
+			model.addAttribute("menu","admin");
 				if (result.hasErrors())
 				{
 				
@@ -876,6 +880,7 @@ public class FormController
 					revision_No_Form.setRevision_Nos(formDAO.getFormattype());
 					model.addAttribute("revision_No_Form",revision_No_Form);
 					model.addAttribute("Success","true");
+					model.addAttribute("menu","admin");
 					return "set_revision_no";
 				}
 				int size = formDAO.getFormat();
