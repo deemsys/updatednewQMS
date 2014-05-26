@@ -142,7 +142,7 @@
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   
 <script>
-$('input').change(function(){
+/* $('input').change(function(){
   if (!$('#js-in-1').val().trim()  ) {
     	//check for empty
  
@@ -151,7 +151,7 @@ $('input').change(function(){
   }
   
    $('#js-out').val($('#js-in-1').val() + '.' + $('#js-in-2').val());
-});
+}); */
 </script>
 
 <!-- 
@@ -162,28 +162,32 @@ $('input').change(function(){
 </script> -->
   
  <script>
-$('input').change(function(){
+ $('input').change(function(){
 	var elt1 = document.getElementById('prefix1').value;
 	var elt2 = document.getElementById('suffix1').value;
-	
-	if(elt1=='' && elt2 !='')
+	var text1 = document.getElementById('js-in-1').value;
+	var text2 = document.getElementById('js-in-2').value;
+	alert("onchange");
+	if(elt1!='' && elt2 =='')
+		{
+		
+			
+   			$('#js-out').val($('#js-in-1').val());
+   			text2 = '';
+		}
+	else if((elt1 == '' && elt2 !=''))
 		{
 			
-   			$('#js-out').val($('#js-in-2').val());
+		   $('#js-out').val($('#js-in-2').val());
+			text1='';
 		}
-	else if((elt1 == 'Integer' && elt2=='') || (elt2=='' && elt1 == 'Alphabet'))
-		{
-			
-		   $('#js-out').val($('#js-in-1').val());
-	
-		}
-	else
+	else if((elt1 != '' && elt2 !=''))
 		{
 	
    		$('#js-out').val($('#js-in-1').val()+'.'+$('#js-in-2').val());
 		}
 });
-
+ 
 </script> 
  
  <script type='text/javascript'>//<![CDATA[ 
@@ -198,33 +202,48 @@ $('input').change(function(){
         	
         	var element1 = document.getElementById('prefix1').value;
         	var element2 = document.getElementById('suffix1').value;
-        	var element3 = document.getElementById('js-in-1').value;
-        
         	
+        	var text1 = document.getElementById('js-in-1').value;
+        	var text2 = document.getElementById('js-in-2').value;
         	
-            if (element1 == '') {
-            	var text1 = document.getElementById('js-in-1');
+            if (element1 == '' && element2 != '') {
             	document.getElementById('js-in-1').style.display="none";
-            	text1.value = '';
+            	document.getElementById('js-in-2').style.display="block";
+            	var text1 = document.getElementById('js-in-1');
+            	text1 = '';
+            	$('#js-out').val($('#js-in-2').val());
+            	
+            	
             	
                 
             }
-            else {
+           
+            else  if (element1 != '' && element2 == '') {
+            	text2 = '';
             	document.getElementById('js-in-1').style.display="block";
+            	document.getElementById('js-in-2').style.display="none";
+            	$('#js-out').val($('#js-in-1').val());
+       			
               
             }
-            if(element2 == '') {
-            	var text2 = document.getElementById('js-in-2');
-             	document.getElementById('js-in-2').style.display="none";
-            	text2.value ='';
+            else  if (element1 != '' && element2 != ''){
             	
+            	document.getElementById('js-in-1').style.display="block";
+            	document.getElementById('js-in-2').style.display="block";
+            	$('#js-out').val($('#js-in-1').val()+'.'+$('#js-in-2').val());
             }
             else
             	{
-            	document.getElementById('js-in-2').style.display="block";
+            	
+            	document.getElementById('js-in-1').style.display="none";
+            	document.getElementById('js-in-2').style.display="none";
+            	$('#js-out').val("");
+            	
             	}
-          
+            
+         
         }
+       
 
 
 //]]>  
