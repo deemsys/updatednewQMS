@@ -148,7 +148,7 @@
 $('input').change(function(){
   if (!$('#js-in-1').val().trim()  ) {
     	//check for empty
-    alert("js-in-1 empty!!!");
+ 
   }else if (!$('#js-in-2').val().trim()  ) {//check for empty
   } else {
   }

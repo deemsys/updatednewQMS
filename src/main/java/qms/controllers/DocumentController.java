@@ -322,12 +322,12 @@ public class DocumentController {
 							System.out.println("File Size:::" + file.getSize());
 							return "/add_documents";
 						}
-						orginal_fileName = "C:/projects/"+ file.getOriginalFilename();
+						orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename();
 						duplicate_fileName = orginal_fileName;
 						File create_file = new File(orginal_fileName);
 						int i = 1;
 						while (create_file.exists()) {
-							duplicate_fileName = "C:/projects/"+ file.getOriginalFilename().substring(
+							duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename().substring(
 											0,file.getOriginalFilename().lastIndexOf(
 													'.'))+ i
 													+ file.getOriginalFilename().substring(
@@ -378,10 +378,20 @@ public class DocumentController {
 			model.addAttribute("id", "1001");
 			if (flag == 1)
 			{
+				ProcessForm processForm = new ProcessForm();
+				processForm.setProcesses(processDAO.getProcess());
+				model.addAttribute("processForm", processForm);
+
 				
+				DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+				documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+				model.addAttribute("documentTypeForm",documentTypeForm);
 				
 				DocumentMainForm documentMainForm = new DocumentMainForm();
 				documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
+				
+				
+
 				model.addAttribute("documentMainForm", documentMainForm);
 				  model.addAttribute("menu","document");
 				  model.addAttribute("id", documentControlDAO.get_documentid());
@@ -454,13 +464,13 @@ public class DocumentController {
 						System.out.println("File Size:::" + file.getSize());
 						return "/add_documents";
 					}
-					orginal_fileName = "C:/projects/"+ file.getOriginalFilename();
+					orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
 
-						duplicate_fileName = "C:/projects/"+ file.getOriginalFilename().substring(
+						duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
 												'.'))
@@ -770,7 +780,7 @@ public class DocumentController {
 		{
 			String doc_type = request.getParameter("document_type");
 			 documentMains=documentControlDAO.getDocuments_bytype(doc_type);
-			
+			System.out.println("external = "+documentMains.get(0).getExternal());
 			/*switch(Integer.parseInt(request.getParameter("document_type")))
 				  {
 		  case 0:
@@ -795,7 +805,6 @@ public class DocumentController {
 			  break;*/
 				  
 		}		
-		
 		else
 		{
 			documentMains=documentControlDAO.getDocuments_byExternal();
@@ -815,7 +824,7 @@ public class DocumentController {
 		
 		
 		ModelAndView modelAndView=new ModelAndView("documentcontrolDAO","documentMains",documentMains);
-		
+	System.out.println("kdjsdkj"+fields.toString()+documentMains.get(0).getExternal()+" autoid "+documentMains.get(0).getDocument_id());	
 		modelAndView.addObject("fields",fields);
 		
 	

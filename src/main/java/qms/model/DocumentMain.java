@@ -26,7 +26,8 @@ public class DocumentMain
 	@NotEmpty
 	private String media_type;
 	
-
+	@NotEmpty
+	private String external;
 	
 	private String location;
 	
@@ -124,16 +125,19 @@ public class DocumentMain
 		this.revision_id = revision_id;
 	}
 
+	
 	public DocumentMain(String document_id, String document_title,
-			String document_type, String media_type, String location,
-			String process, String external, String issuer, String revision_level,
-			String date,String approver1, String approver2, String approver3,
-			String status,String comments,String revision_id) {
+			String document_type, String media_type,
+			String location, String process, String external, String issuer,
+			String revision_level, String date, String approver1,
+			String approver2, String approver3, String comments, String status,
+			String revision_id) {
 		super();
 		this.document_id = document_id;
 		this.document_title = document_title;
 		this.document_type = document_type;
 		this.media_type = media_type;
+		this.external = external;
 		this.location = location;
 		this.process = process;
 		this.issuer = issuer;
@@ -145,7 +149,38 @@ public class DocumentMain
 		this.comments = comments;
 		this.status = status;
 		this.revision_id = revision_id;
-		this.external = external;
+	}
+
+	public String getAuto_id() {
+		return auto_id;
+	}
+
+	public void setAuto_id(String auto_id) {
+		this.auto_id = auto_id;
+	}
+
+	public String getAuto_number() {
+		return auto_number;
+	}
+
+	public void setAuto_number(String auto_number) {
+		this.auto_number = auto_number;
+	}
+
+	public String getAuto_no() {
+		return auto_no;
+	}
+
+	public void setAuto_no(String auto_no) {
+		this.auto_no = auto_no;
+	}
+
+	public String getDocument_id() {
+		return document_id;
+	}
+
+	public void setDocument_id(String document_id) {
+		this.document_id = document_id;
 	}
 
 	public String getDocument_type_id() {
@@ -154,6 +189,54 @@ public class DocumentMain
 
 	public void setDocument_type_id(String document_type_id) {
 		this.document_type_id = document_type_id;
+	}
+
+	public String getDocument_title() {
+		return document_title;
+	}
+
+	public void setDocument_title(String document_title) {
+		this.document_title = document_title;
+	}
+
+	public String getDocument_type() {
+		return document_type;
+	}
+
+	public void setDocument_type(String document_type) {
+		this.document_type = document_type;
+	}
+
+	public String getMedia_type() {
+		return media_type;
+	}
+
+	public void setMedia_type(String media_type) {
+		this.media_type = media_type;
+	}
+
+	public String getExternal() {
+		return external;
+	}
+
+	public void setExternal(String external) {
+		this.external = external;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getProcess() {
+		return process;
+	}
+
+	public void setProcess(String process) {
+		this.process = process;
 	}
 
 	public String getIssuer() {
@@ -171,7 +254,6 @@ public class DocumentMain
 	public void setRevision_level(String revision_level) {
 		this.revision_level = revision_level;
 	}
-
 
 	public String getDate() {
 		return date;
@@ -221,7 +303,6 @@ public class DocumentMain
 		this.status = status;
 	}
 
-	
 	public String getRevision_id() {
 		return revision_id;
 	}
@@ -230,24 +311,12 @@ public class DocumentMain
 		this.revision_id = revision_id;
 	}
 
-	
-
-	public String getProcess() {
-		return process;
+	public CommonsMultipartFile getAttachments() {
+		return attachments;
 	}
 
-	public void setProcess(String process) {
-		this.process = process;
-	}
-
-	private String external;
-	
-	public String getDocument_type() {
-		return document_type;
-	}
-
-	public void setDocument_type(String document_type) {
-		this.document_type = document_type;
+	public void setAttachments(CommonsMultipartFile attachments) {
+		this.attachments = attachments;
 	}
 
 	public String getAttachment_name() {
@@ -274,84 +343,6 @@ public class DocumentMain
 		this.attachment_referrence = attachment_referrence;
 	}
 
-	
-
-	public CommonsMultipartFile getAttachments() {
-		return attachments;
-	}
-
-	public void setAttachments(CommonsMultipartFile attachments) {
-		this.attachments = attachments;
-	}
-
-	
-	
-
-	public String getDocument_id() {
-		return document_id;
-	}
-
-	public void setDocument_id(String document_id) {
-		this.document_id = document_id;
-	}
-
-	public String getDocument_title() {
-		return document_title;
-	}
-
-	public void setDocument_title(String document_title) {
-		this.document_title = document_title;
-	}
-
-	public String getMedia_type() {
-		return media_type;
-	}
-
-	public void setMedia_type(String media_type) {
-		this.media_type = media_type;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getExternal() {
-		return external;
-	}
-
-	public void setExternal(String external) {
-		this.external = external;
-	}
-
-	public String getAuto_id() {
-		return auto_id;
-	}
-
-	public void setAuto_id(String auto_id) {
-		this.auto_id = auto_id;
-	}
-
-	public String getAuto_number() {
-		return auto_number;
-	}
-
-	public void setAuto_number(String auto_number) {
-		this.auto_number = auto_number;
-	}
-
-	public String getAuto_no() {
-		return auto_no;
-	}
-
-	public void setAuto_no(String auto_no) {
-		this.auto_no = auto_no;
-	}
-	
-	
 	
 	
 }

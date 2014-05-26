@@ -222,7 +222,7 @@ public class DocumentControlDAO extends AbstractExcelView
 						i++;
 					}else if(field.equals("external"))
 					{
-						if(documentMain.getExternal().equals("1"))
+						if(documentMain.getExternal().equals("Yes"))
 						excelRow.createCell(i).setCellValue("Yes");
 						else
 							excelRow.createCell(i).setCellValue("No");
@@ -825,9 +825,32 @@ public class DocumentControlDAO extends AbstractExcelView
 	    try{
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_doccontrol_main as t1 join tbl_doccontrol_external as t2 on t1.document_id=t2.document_id where document_type='"+type+"'");
 			System.out.println("came");
-			
+			int i=0,j=0;
 			while(resultSet.next()){
-								documentMains.add(new DocumentMain(resultSet.getString("document_id"), resultSet.getString("document_title"), resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"), resultSet.getString("process"),resultSet.getString("external"),resultSet.getString("issuer"),resultSet.getString("revision_level"),resultSet.getString("date"), resultSet.getString("approver1"),resultSet.getString("approver2"),resultSet.getString("approver3"),resultSet.getString("status"),resultSet.getString("comments"),resultSet.getString("revision_id")));
+				
+								documentMains.add(new DocumentMain(resultSet.getString("document_id"),
+										resultSet.getString("document_title"),
+										resultSet.getString("document_type"),
+										resultSet.getString("media_type"),
+										resultSet.getString("location"), 
+										resultSet.getString("process"),
+										resultSet.getString("external"),
+										resultSet.getString("issuer"),
+										resultSet.getString("revision_level"),
+										resultSet.getString("date"),
+										resultSet.getString("approver1"),
+										resultSet.getString("approver2"),
+										resultSet.getString("approver3"),
+										resultSet.getString("status"),
+										resultSet.getString("comments"),
+										resultSet.getString("revision_id")));
+								if(i==j)
+								{
+									
+								System.out.println("external value record no "+i+" "+documentMains.get(i).getExternal());
+								i++;
+								j++;
+								}
 			
 			}
 	    }catch(Exception e){
