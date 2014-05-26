@@ -408,13 +408,7 @@ public class DocumentController {
 				  model.addAttribute("id", documentControlDAO.get_documentid());
 			    // revisionDocumentDAO.insert_revision(revisionDocument,documentMain1.getAuto_number(),documentMain1);
 					
-					DocumentTypeForm documentTypeForm = new DocumentTypeForm();
-					documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
-					model.addAttribute("documentTypeForm",documentTypeForm);
-
-					ProcessForm processForm = new ProcessForm();
-					processForm.setProcesses(processDAO.getProcess());
-					model.addAttribute("processForm", processForm);
+				
 
 				  
 				  
