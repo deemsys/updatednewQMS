@@ -224,7 +224,7 @@ public class DocumentRevisionLevelDAO {
 		}
 		try {
 			
-			String cmd_update = "update tbl_documentrevisionlevel set revision_prefix='"+documentRevisionLevel.getRevision_prefix()+"',revision_level='"+documentRevisionLevel.getRevision_level()+"',input1='"+documentRevisionLevel.getInput1()+"',input2='"+documentRevisionLevel.getInput2()+"',combined_output='"+documentRevisionLevel.getCombined_output()+"'";
+			String cmd_update = "update tbl_documentrevisionlevel set revision_prefix='"+documentRevisionLevel.getRevision_prefix()+"',revision_level='"+documentRevisionLevel.getRevision_level()+"',input1='"+documentRevisionLevel.getInput1()+"',input2='"+documentRevisionLevel.getInput2()+"',combined_output='"+documentRevisionLevel.getCombined_output()+"' where id='"+documentRevisionLevel.getId()+"'";
 			
 			System.out.println(cmd_update);
 			 statement.execute(cmd_update);

@@ -55,6 +55,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                
                 <tr class="row1">
+                
                 <td valign="middle" align="left" class="input_txt">Revision Prefix :</td>
                   <td valign="top" align="left" class="input_txt">                
               	 <select name="revision_prefix" id="prefix1" class="input_cmbbx1" style="width:90px;">
@@ -65,7 +66,7 @@
                	                   	
                	</select>
                 	 <span class="err"><form:errors path="DocumentRevisionLevel.revision_prefix"></form:errors></span>
-        
+             <input type="hidden" value="${documentrevisionlevel.id}" name="id"/>
          		<input type='text' id="js-in-1" name="input1" style="height:22px;width:50px; margin:0 0 0 0;"  value="${documentrevisionlevel.input1}"/> <span class="err"><form:errors path="DocumentRevisionLevel.input1"></form:errors></span>
          </td>
             </tr>
@@ -111,46 +112,43 @@
                 
 </body>
 
-<script>
+<!-- <script>
 $('input').change(function(){
    $('#js-out').val($('#js-in-1').val() + '.' + $('#js-in-2').val());
 });
 </script>
-<!-- 
-<script type='text/javascript'>//<![CDATA[ 
+ -->
 
-        $(document).ready(function () {
-           
-            $('#js-in-1').hide();
-        });
+ <script>
+ $('input').change(function(){
+	var elt1 = document.getElementById('prefix1').value;
+	var elt2 = document.getElementById('suffix1').value;
+	var text1 = document.getElementById('js-in-1').value;
+	var text2 = document.getElementById('js-in-2').value;
 
-        function showDiv() {
-
-        	
-        	var element1 = document.getElementById('prefix1').value;
-        	var element2 = document.getElementById('suffix1').value;
-        	
-            if (element1 == '') {
-            	document.getElementById('js-in-1').style.display="none";
-                
-            }
-            else {
-            	document.getElementById('js-in-1').style.display="block";
-              
-            }
-            if(element2 == '')
-            	{
-            	document.getElementById('js-in-2').style.display="none";
-            	}
-            else
-            	{
-            	document.getElementById('js-in-2').style.display="block";
-            	}
-        }
+	if(elt1!='' && elt2 =='')
+		{
+		
+			
+   			$('#js-out').val($('#js-in-1').val());
+   			text2 = '';
+		}
+	else if((elt1 == '' && elt2 !=''))
+		{
+			
+		   $('#js-out').val($('#js-in-2').val());
+			text1='';
+		}
+	else if((elt1 != '' && elt2 !=''))
+		{
+	
+   		$('#js-out').val($('#js-in-1').val()+'.'+$('#js-in-2').val());
+		}
+});
+ 
+</script> 
 
 
-//]]>  
 
-</script>
- --><jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,7 +152,7 @@ public String editdocumentrevisionlevel_get(@RequestParam("id") String id,Docume
 
 //Update a record
 @RequestMapping(value = "/update_documentrevisionlevel", method = RequestMethod.POST)
-public String update_documentrevisionlevel(ModelMap model,@ModelAttribute("DocumentRevisionLevel") @Valid DocumentRevisionLevel documentRevisionLevel,BindingResult result) throws IOException {
+public String update_documentrevisionlevel(HttpServletRequest request,@RequestParam("id") String sid,ModelMap model,@ModelAttribute("DocumentRevisionLevel") @Valid DocumentRevisionLevel documentRevisionLevel,BindingResult result) throws IOException {
 
 	if (result.hasErrors())
 	{
@@ -163,7 +164,7 @@ public String update_documentrevisionlevel(ModelMap model,@ModelAttribute("Docum
 		return "add_revisionleveldocument";
 	}
 	
-	
+	System.out.println(request.getParameter(sid));
 	documentRevisionLevelDAO.update_documentrevisionlevel(documentRevisionLevel);
 	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
 	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());	
