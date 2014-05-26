@@ -167,7 +167,7 @@ $('input').change(function(){
 	var elt2 = document.getElementById('suffix1').value;
 	var text1 = document.getElementById('js-in-1').value;
 	var text2 = document.getElementById('js-in-2').value;
-	alert("onchange");
+
 	if(elt1!='' && elt2 =='')
 		{
 		
