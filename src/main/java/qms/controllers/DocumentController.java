@@ -248,6 +248,14 @@ public class DocumentController {
 		
 		load_document_page_dropdowns(model);
 		
+		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+		model.addAttribute("documentTypeForm",documentTypeForm);
+
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+
 		
 		RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
 		revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(auto_number));
@@ -378,6 +386,8 @@ public class DocumentController {
 			model.addAttribute("id", "1001");
 			if (flag == 1)
 			{
+
+
 				ProcessForm processForm = new ProcessForm();
 				processForm.setProcesses(processDAO.getProcess());
 				model.addAttribute("processForm", processForm);
@@ -387,6 +397,7 @@ public class DocumentController {
 				documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 				model.addAttribute("documentTypeForm",documentTypeForm);
 				
+
 				DocumentMainForm documentMainForm = new DocumentMainForm();
 				documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 				
@@ -396,8 +407,20 @@ public class DocumentController {
 				  model.addAttribute("menu","document");
 				  model.addAttribute("id", documentControlDAO.get_documentid());
 			    // revisionDocumentDAO.insert_revision(revisionDocument,documentMain1.getAuto_number(),documentMain1);
+					
+					DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+					documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+					model.addAttribute("documentTypeForm",documentTypeForm);
 
-				
+					ProcessForm processForm = new ProcessForm();
+					processForm.setProcesses(processDAO.getProcess());
+					model.addAttribute("processForm", processForm);
+
+				  
+				  
+					/*load_document_page_dropdowns(model);*/
+				  
+				  
 				return "view_documents";
 			
 			}

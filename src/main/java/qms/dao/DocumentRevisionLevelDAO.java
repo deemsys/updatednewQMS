@@ -407,7 +407,23 @@ public class DocumentRevisionLevelDAO {
 				suffix  = resultSet1.getString("revision_level");
 				
 			  }
-			if(prefix.equals("Integer"))
+			
+			  if(suffix.equals("Integer"))
+			  {
+				  System.out.println("int only");
+					String cmd_select = "select * from tbl_documentrevisionlevel where combined_output REGEXP ('^[0-9]$') ";
+					System.out.println(cmd_select);
+					resultSet = statement.executeQuery(cmd_select);
+				
+				}
+				else if(suffix.equals("Alphabet"))
+				{
+					String cmd_select = "select * from tbl_documentrevisionlevel where combined_output REGEXP ('^[a-z]$') ";
+					resultSet = statement.executeQuery(cmd_select);
+				}
+			  
+			  
+			  if(prefix.equals("Integer"))
 			{
 				if(suffix.equals("Integer"))
 				{

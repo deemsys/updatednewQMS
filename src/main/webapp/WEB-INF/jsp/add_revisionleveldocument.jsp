@@ -95,19 +95,16 @@
                		<!-- <option value="Roman">Roman</option> -->
                	<option value="Integer"<c:if test="${documentrevisionlevel.revision_prefix eq 'Integer'}"><c:out value="Selected"/></c:if>>Integer</option>
 				<option value="Alphabet"<c:if test="${documentrevisionlevel.revision_prefix eq 'Alphabet'}"><c:out value="Selected"/></c:if>>Alphabet</option>
-               	                   	
-               	</select>
+               	</select> <span class="err"><form:errors path="DocumentRevisionLevel.revision_prefix"></form:errors></span></td>
                <td valign="top" align="left" class="input_txt"> 	 
-               <input type='text'  id="js-in-1" name="input1" style="height:22px;width:50px; margin:0 0 0 0; display:none; " value="${documentrevisionlevel.input1}"/> <span class="err"><form:errors path="DocumentRevisionLevel.input1"></form:errors></span></td>
-               
-                	 <span class="err"><form:errors path="DocumentRevisionLevel.revision_prefix"></form:errors></span>
-      
-       
-        
+               <input type='text'  id="js-in-1" name="input1" style="height:22px;width:50px; margin:0 0 0 0; display:none; " onblur="myFunction()" value=""/> <span class="err"><form:errors path="DocumentRevisionLevel.input1"></form:errors></span>
+ <td>  <p id="demo"></p></td> 
+    </td>      
+     </tr>   
         
                 
-                <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt">Revision Level :</td>
+                <tr class="row2" >
+                  <td valign="middle" align="left" class="input_txt" id="level">Revision Level :</td>
                   <td valign="top" align="left" class="input_txt">                
               	 <select name="revision_level" id="suffix1" class="input_cmbbx1" style="width:90px;" onclick="showDiv();">
               		<option value="">--Select--</option>
@@ -119,8 +116,8 @@
               </select>
                	<span class="err"><form:errors path="DocumentRevisionLevel.revision_level"></form:errors></span>
           <td valign="top" align="left" class="input_txt"> 
-          		<input type='text' id="js-in-2" name="input2" style="height:22px;width:50px; margin:0 0 0 0; display:none;"  value="${documentrevisionlevel.input2}"/> <span class="err"><form:errors path="DocumentRevisionLevel.input2"></form:errors></span></td>
-    </td>
+          		<input type='text' id="js-in-2" name="input2" style="height:22px;width:50px; margin:0 0 0 0; display:none;" onblur="myFunction1()" value=""/> <span class="err"><form:errors path="DocumentRevisionLevel.input2"></form:errors></span>
+    <td>  <p id="demo1" style="text-color:#7A3A3A;"></p></td>  </td>
              </tr>
      	 <tr class="row1">
      	  <td valign="middle" align="left" class="input_txt">Combined output</td>
@@ -189,27 +186,7 @@ $('input').change(function(){
 
 </script> 
  
- <!-- 
- <script>
-$('input').change(function(){
-  
-   var a = $('#js-in-1');
-   var b = $('#js-in-2');
-   if(a == undefined || a == '' && b == 1) {
-     // only print b
-     $('#js-out').val(b);
-   } else if(b == undefined || b == '' && a == 1) {
-     // only print a
-     $('#js-out').val(a);
-   } else {
-     // print all
-     $('#js-out').val(a + '.' + b);
-   }
-  
-   $('#js-out').val($('#js-in-1').val() + '.' + $('#js-in-2').val());
-});
-</script>
- --><script type='text/javascript'>//<![CDATA[ 
+ <script type='text/javascript'>//<![CDATA[ 
 
         $(document).ready(function () {
            
@@ -221,6 +198,7 @@ $('input').change(function(){
         	
         	var element1 = document.getElementById('prefix1').value;
         	var element2 = document.getElementById('suffix1').value;
+        	var element3 = document.getElementById('js-in-1').value;
         
         	
         	
@@ -251,7 +229,100 @@ $('input').change(function(){
 
 //]]>  
 
+</script> 
+
+
+ 
+<script>
+function myFunction() {
+    //Get the value of input field with id="numb"
+    var val = document.getElementById("js-in-1").value;
+    var val1 = document.getElementById("prefix1").value;
+    var out = document.getElementById("js-out").value;
+
+    //Get the element with id="demo"
+    var elem = document.getElementById("demo");
+
+    //If value is space or not a number
+  
+    if(val1=='Integer')
+    	{
+    if ((val.trim() == "") || isNaN(val))
+   		 {
+        	elem.innerHTML = "Not a Number";
+        	document.getElementById("js-out").style.display="none";
+    	} 
+    	
+    	else
+    {
+		 elem.innerHTML = ""; 
+        document.getElementById("js-out").style.display="block";
+    }
+    	}
+ 
+    if(val1 == 'Alphabet')
+    	{
+     if(val.trim() == "" || Number(val))
+    	{
+    	elem.innerHTML = "Not an Alphabet";
+    	document.getElementById("js-out").style.display="none";
+    	}
+    else
+    	{
+    	 elem.innerHTML = ""; 
+    	document.getElementById("js-out").style.display="block";
+    	}
+    	}
+}
 </script>
+
+
+<script>
+function myFunction1() {
+    //Get the value of input field with id="numb"
+    var val = document.getElementById("js-in-2").value;
+    var val1 = document.getElementById("suffix1").value;
+    var val2 = document.getElementById("js-out").value;
+
+    //Get the element with id="demo"
+    var elem = document.getElementById("demo1");
+
+    //If value is space or not a number
+  
+    if(val1=='Integer')
+    	{
+    if ((val.trim() == "") || isNaN(val))
+   		 {
+        	elem.innerHTML = "Not a Number";
+        	document.getElementById("js-out").style.display="none";
+    	} 
+    	
+ 	else
+    {
+ 		elem.innerHTML = "";
+        document.getElementById("js-out").style.display="block";
+    } 
+    	}
+ 
+    if(val1 == 'Alphabet')
+    	{
+     if(val.trim() == "" || Number(val))
+    	{
+    	elem.innerHTML = "Not an Alphabet";
+    	document.getElementById("js-out").style.display="none";
+    	}
+    else
+    	{
+    	elem.innerHTML = "";
+    	document.getElementById("js-out").style.display="block";
+    	}
+    	 }
+}
+</script>
+
+
+
+
 <jsp:include page="footer.jsp"></jsp:include>
 
 
