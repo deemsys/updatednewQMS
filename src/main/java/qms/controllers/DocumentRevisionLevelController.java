@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import qms.dao.DocumentRevisionLevelDAO;
 import qms.forms.DocumentRevisionLevelForm;
+import qms.forms.InternalAuditsForm;
 
 import qms.model.DocumentRevisionLevel;
 
@@ -152,7 +153,7 @@ public String editdocumentrevisionlevel_get(@RequestParam("id") String id,Docume
 
 //Update a record
 @RequestMapping(value = "/update_documentrevisionlevel", method = RequestMethod.POST)
-public String update_documentrevisionlevel(HttpServletRequest request,@RequestParam("id") String sid,ModelMap model,@ModelAttribute("DocumentRevisionLevel") @Valid DocumentRevisionLevel documentRevisionLevel,BindingResult result) throws IOException {
+public String update_revisionlevel(HttpServletRequest request,@RequestParam("id") String sid,ModelMap model,@ModelAttribute("DocumentRevisionLevel") @Valid DocumentRevisionLevel documentRevisionLevel,BindingResult result) throws IOException {
 
 	if (result.hasErrors())
 	{
@@ -160,8 +161,8 @@ public String update_documentrevisionlevel(HttpServletRequest request,@RequestPa
 		DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
 		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());
 		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
-        model.addAttribute("Success","true");
-		return "add_revisionleveldocument";
+   /*     model.addAttribute("Success","true");*/
+		return "edit_documentrevisionlevel";
 	}
 	
 	System.out.println(request.getParameter(sid));
@@ -172,7 +173,6 @@ public String update_documentrevisionlevel(HttpServletRequest request,@RequestPa
 	model.addAttribute("menu","admin");
     return "documentrevisionlevel_list";
 }
-
 
 //delete a record
 @RequestMapping(value = "/delete_documentrevisionlevel", method = RequestMethod.GET)

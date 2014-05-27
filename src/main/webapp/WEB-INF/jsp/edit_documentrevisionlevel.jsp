@@ -58,7 +58,7 @@
                 
                 <td valign="middle" align="left" class="input_txt">Revision Prefix :</td>
                   <td valign="top" align="left" class="input_txt">                
-              	 <select name="revision_prefix" id="prefix1" class="input_cmbbx1" style="width:90px;">
+              	 <select name="revision_prefix" id="prefix1" class="input_cmbbx1" style="width:90px;" onclick="showDiv()">
               		<option value="">--Select--</option>
                	<%-- 	<option <c:if test="${documentrevisionlevel.revision_prefix eq 'Roman'}"><c:out value="Selected"/></c:if> value="Roman">Roman</option> --%>
                	<option <c:if test="${documentrevisionlevel.revision_prefix eq 'Integer'}"><c:out value="Selected"/></c:if> value="Integer">Integer</option>
@@ -66,15 +66,15 @@
                	                   	
                	</select>
                 	 <span class="err"><form:errors path="DocumentRevisionLevel.revision_prefix"></form:errors></span>
-             <input type="hidden" value="${documentrevisionlevel.id}" name="id"/>
-         		<input type='text' id="js-in-1" name="input1" style="height:22px;width:50px; margin:0 0 0 0;"  value="${documentrevisionlevel.input1}"/> <span class="err"><form:errors path="DocumentRevisionLevel.input1"></form:errors></span>
-         </td>
-            </tr>
+           <input type="hidden" value="${documentrevisionlevel.id}" name="id"/>
+         		<input type='text' id="js-in-1" name="input1" style="height:22px;width:50px; margin:0 0 0 0;"  onblur="myFunction()" value="${documentrevisionlevel.input1}"/>
+			<a id="demo"> </a></td>
+           </tr>
                 <tr class="row2">
                 
                   <td valign="middle" align="left" class="input_txt" width="30%">Revision Level:</td>
                   <td valign="top" align="left" class="input_txt">                
-                	 <select name="revision_level" id="suffix1" class="input_cmbbx1" style="width:90px;">
+                	 <select name="revision_level" id="suffix1" class="input_cmbbx1" style="width:90px;" onclick="showDiv()">
               		<option value="">--Select--</option>
               		<%-- <option <c:if test="${documentrevisionlevel.revision_level eq 'Roman'}"><c:out value="Selected"/></c:if> value="Roman">Roman</option> --%>
               		<option <c:if test="${documentrevisionlevel.revision_level eq 'Integer'}"><c:out value="Selected"/></c:if> value="Integer">Integer</option>
@@ -82,18 +82,15 @@
               		
               </select>
                	<span class="err"><form:errors path="DocumentRevisionLevel.revision_level"></form:errors></span>
-         		<input type='text' id="js-in-2" name="input2" style="height:22px;width:50px; margin:0 0 0 0; "  value="${documentrevisionlevel.input2}"/> <span class="err"><form:errors path="DocumentRevisionLevel.input2"></form:errors></span></td>
-    </td>
+         		<input type='text' id="js-in-2" name="input2" style="height:22px;width:50px; margin:0 0 0 0; " onblur="myFunction1()"  value="${documentrevisionlevel.input2}"/> <span class="err"><form:errors path="DocumentRevisionLevel.input2"></form:errors></span>
+    			<a id="demo1"></a></td>
              </tr>
      	 <tr class="row1">
      	  <td valign="middle" align="left" class="input_txt" width="30%">Combined output</td>
                   <td valign="top" align="left" class="input_txt">
-                  <input type="text" name="combined_output" id="js-out">
+                  <input type="text" name="combined_output" id="js-out" value="${documentrevisionlevel.combined_output}">
     		</td>
     	</tr>
-                  </td>
-                  
-                </tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
@@ -147,6 +144,154 @@ $('input').change(function(){
 });
  
 </script> 
+ 
+ <script type='text/javascript'>//<![CDATA[ 
+
+        $(document).ready(function () {
+           
+          //  $('#js-in-1').hide();
+        });
+
+        function showDiv() {
+
+        	
+        	var element1 = document.getElementById('prefix1').value;
+        	var element2 = document.getElementById('suffix1').value;
+        	
+        	var text1 = document.getElementById('js-in-1').value;
+        	var text2 = document.getElementById('js-in-2').value;
+        	
+            if (element1 == '' && element2 != '') {
+           	document.getElementById('js-in-1').style.display="none";
+            document.getElementById('js-in-2').style.display="block";
+            	var text1 = document.getElementById('js-in-1');
+            	text1 = '';
+            	$('#js-out').val($('#js-in-2').val());
+            	
+            	
+            	
+                
+            }
+           
+            else  if (element1 != '' && element2 == '') {
+            	text2 = '';
+            	document.getElementById('js-in-1').style.display="block";
+     			document.getElementById('js-in-2').style.display="none";
+            	$('#js-out').val($('#js-in-1').val());
+       			
+              
+            }
+            else  if (element1 != '' && element2 != ''){
+            	
+            document.getElementById('js-in-1').style.display="block";
+          	document.getElementById('js-in-2').style.display="block";
+            	$('#js-out').val($('#js-in-1').val()+'.'+$('#js-in-2').val());
+            }
+            else
+            	{
+            	
+            	document.getElementById('js-in-1').style.display="none";
+            	document.getElementById('js-in-2').style.display="none";
+            	$('#js-out').val("");
+            	
+            	}
+            
+         
+        }
+       
+
+
+//]]>  
+
+</script>  
+
+<script>
+function myFunction() {
+    //Get the value of input field with id="numb"
+    var val = document.getElementById("js-in-1").value;
+    var val1 = document.getElementById("prefix1").value;
+    var out = document.getElementById("js-out").value;
+
+    //Get the element with id="demo"
+    var elem = document.getElementById("demo");
+
+    //If value is space or not a number
+  
+    if(val1=='Integer')
+    	{
+    if ((val.trim() == "") || isNaN(val))
+   		 {
+        	elem.innerHTML = "Not a Number";
+        	document.getElementById("js-out").style.display="none";
+    	} 
+    	
+    	else
+    {
+		 elem.innerHTML = ""; 
+        document.getElementById("js-out").style.display="block";
+    }
+    	}
+ 
+    if(val1 == 'Alphabet')
+    	{
+     if(val.trim() == "" || Number(val))
+    	{
+    	elem.innerHTML = "Not an Alphabet";
+    	document.getElementById("js-out").style.display="none";
+    	}
+    else
+    	{
+    	 elem.innerHTML = ""; 
+    	document.getElementById("js-out").style.display="block";
+    	}
+    	}
+}
+</script>
+
+
+<script>
+function myFunction1() {
+    //Get the value of input field with id="numb"
+    var val = document.getElementById("js-in-2").value;
+    var val1 = document.getElementById("suffix1").value;
+    var val2 = document.getElementById("js-out").value;
+
+    //Get the element with id="demo"
+    var elem = document.getElementById("demo1");
+
+    //If value is space or not a number
+  
+    if(val1=='Integer')
+    	{
+    if ((val.trim() == "") || isNaN(val))
+   		 {
+        	elem.innerHTML = "Not a Number";
+        	document.getElementById("js-out").style.display="none";
+    	} 
+    	
+ 	else
+    {
+ 		elem.innerHTML = "";
+        document.getElementById("js-out").style.display="block";
+    } 
+    	}
+ 
+    if(val1 == 'Alphabet')
+    	{
+     if(val.trim() == "" || Number(val))
+    	{
+    	elem.innerHTML = "Not an Alphabet";
+    	document.getElementById("js-out").style.display="none";
+    	}
+    else
+    	{
+    	elem.innerHTML = "";
+    	document.getElementById("js-out").style.display="block";
+    	}
+    	 }
+}
+</script>
+
 
 
 
