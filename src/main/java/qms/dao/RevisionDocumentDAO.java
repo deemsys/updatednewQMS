@@ -317,7 +317,7 @@ public class RevisionDocumentDAO {
 		}
 		  try{
 			  System.out.println("inserting into revision table");
-			  int revision_id =0;
+			  String revision_id ="";
 			  String approver1 = new String(document.getApprover1());
 			  System.out.println("approver1="+approver1);
 			  String[] split = approver1.split(",");
@@ -329,7 +329,7 @@ public class RevisionDocumentDAO {
 			  resultSet=statement.executeQuery("select revision_id from tbl_doccontrol_external where auto_no='"+auto_id+"'");
 				 while(resultSet.next())
 				  {
-					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   revision_id = resultSet.getString("revision_id");
 					   System.out.println("revision id ="+revision_id);
 				  }
 			  

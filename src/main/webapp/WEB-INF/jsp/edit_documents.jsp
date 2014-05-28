@@ -137,7 +137,7 @@ $(window).load(function(){
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               <c:choose>
                 <c:when test="${documentMain.media_type=='hardcopy'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" ><span class="err">*</span> Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
              <!--  <option value="">--Select--</option>
@@ -154,7 +154,7 @@ $(window).load(function(){
                </c:choose>
                <c:choose>
                 <c:when test="${documentMain.media_type=='electronic'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none">Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
               
@@ -173,7 +173,7 @@ $(window).load(function(){
                </td>
               </c:when>
               <c:when test="${documentMain.media_type=='both'}">
-              <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label"><span class="err">*</span> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+              <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label">Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_cmbbx1" >
               <option value="">--Select --</option>

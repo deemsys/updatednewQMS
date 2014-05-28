@@ -142,7 +142,8 @@ public class DocumentController {
 	@RequestMapping(value = { "/deletedocument" }, method = RequestMethod.GET)
 	public String delete_document(@RequestParam("doc_id") String doc_id,ModelMap model,
 			Principal principal) {
-
+		
+		load_document_page_dropdowns(model);
 		documentControlDAO.delete_document(doc_id);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
@@ -156,12 +157,14 @@ public class DocumentController {
 	
 	//delete a record
 	@RequestMapping(value={"/documentdelete"}, method = RequestMethod.GET)
-	public String delete_document(ModelMap model, Principal principal )
+	public String delete_document(ModelMap model, Principal principal,HttpSession session )
 	{
-		
+		session.removeAttribute("documentMain");
+		session.removeAttribute("documentMain1");
+		load_document_page_dropdowns(model);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-		model.addAttribute("documentMainForm",documentMainForm);
+		//model.addAttribute("documentMainForm",documentMainForm);
 
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
@@ -755,7 +758,31 @@ public class DocumentController {
 		}
 			
 
-	
+	@RequestMapping(value = "/findDocuments", method = RequestMethod.GET)
+	public String findDocuments(HttpSession session,
+			@RequestParam("document_type") String search_document_type,
+		//	@RequestParam("search_document_title") String search_document_title,
+			@RequestParam("search_process") String search_process,
+			ModelMap model) {
+		
+
+
+		session.setAttribute("documentMain",search_document_type);
+		session.setAttribute("documentMain1",search_process);
+
+
+		//session.removeAttribute("documentMain");
+		//session.removeAttribute("documentMain1");
+		
+		load_document_page_dropdowns(model);
+		DocumentMainForm documentMainForm = new DocumentMainForm();
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
+		
+		model.addAttribute("documentMainForm", documentMainForm);
+		model.addAttribute("menu","document");
+		return "documentdelete";
+		}
+			
 	// Document Control list page	
 	
 	@RequestMapping(value = "/list_documents", method = RequestMethod.GET)
@@ -789,7 +816,7 @@ public class DocumentController {
 	@RequestMapping(value = "/generate_doc_report", method = RequestMethod.POST)
 	public ModelAndView generateDocument_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response) {
 		
-		String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments","revision_no"};
+		String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments","revision_id"};
 		System.out.println(request.getParameter("type_of_report"));
 		java.util.List<DocumentMain> documentMains=new ArrayList<DocumentMain>();
 		

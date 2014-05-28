@@ -91,7 +91,7 @@ public class DocumentControlDAO extends AbstractExcelView
 			
 			if(field.equals("document_id"))
 			{
-				excelHeader.createCell(i).setCellValue("ID");
+				excelHeader.createCell(i).setCellValue("Document ID");
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
 			}
@@ -165,6 +165,12 @@ public class DocumentControlDAO extends AbstractExcelView
 			}else if(field.equals("comments"))	
 			{
 				excelHeader.createCell(i).setCellValue("Comments");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("revision_id"))	
+			{
+				excelHeader.createCell(i).setCellValue("Revision No");
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
 			}
@@ -268,6 +274,13 @@ public class DocumentControlDAO extends AbstractExcelView
 								documentMain.getComments());
 						i++;
 					}
+					else if(field.equals("revision_id"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								documentMain.getRevision_id());
+						i++;
+					}
+					
 					
 				}
 		}

@@ -149,6 +149,7 @@
 								<td><input type="checkbox" name="report_field[]" value="issuer" id="id_field_approver3"/>Issuer</td>
 								<!-- <td><input type="checkbox" name="report_field[]" value="status" id="id_field_status"/>Status</td> -->
 								<td><input type="checkbox" name="report_field[]" value="comments" id="id_field_comment"/>Comments</td>
+								<td><input type="checkbox" name="report_field[]" value="revision_id" id="id_field_revision_id"/>Revision No</td>
 					      		</tr>
 								</table>
 								

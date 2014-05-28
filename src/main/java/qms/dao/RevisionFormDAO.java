@@ -130,14 +130,14 @@ public class RevisionFormDAO {
 		}
 		  try{
 			  System.out.println("inserting into revision table");
-			  int revision_id =0;
+			  String revision_id ="";
 			  String approver1 = new String(form.getApprover1());
 			  String[] split = approver1.split(",");
 			  String approver = split[0];
 			  resultSet=statement.executeQuery("select revision_id from tbl_form_child where auto_no='"+auto_id+"'");
 				 while(resultSet.next())
 				  {
-					   revision_id = Integer.parseInt(resultSet.getString("revision_id"));
+					   revision_id = resultSet.getString("revision_id");
 					   System.out.println("revision id ="+revision_id);
 				  }
 			  

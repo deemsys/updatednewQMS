@@ -387,13 +387,17 @@ public class FormController
 	
 	//delete a record
 	@RequestMapping(value={"/formdelete"}, method = RequestMethod.GET)
-	public String delete_form(ModelMap model, Principal principal )
+	public String delete_form(ModelMap model, Principal principal,HttpSession session )
 	{
-		
+		session.removeAttribute("processarea");
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform());
-		model.addAttribute("formForm",formForm);
-
+	//	model.addAttribute("formForm",formForm);
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
@@ -410,6 +414,10 @@ public class FormController
 	@RequestMapping(value={"/deleteform"}, method = RequestMethod.POST)
 	public String deleteSelectedForm(HttpServletRequest request,ModelMap model,Principal principal) 
 	{	
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)
@@ -697,6 +705,28 @@ public class FormController
 	    return "view_form";
 
 	}
+	 @RequestMapping(value={"/search_forms"}, method = RequestMethod.GET)
+		
+		public String search_forms(HttpSession session,@RequestParam("process") String process,ModelMap model, Principal principal)
+	{
+		
+		 FormForm formForm = new FormForm();
+		 session.setAttribute("processarea",process);
+		
+		formForm.setForm(formDAO.search_form(process));
+		
+		
+		model.addAttribute("formForm", formForm);
+		model.addAttribute("menu","document");
+     
+		 model.addAttribute("formForm",formForm);
+		
+		 ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+	    return "formdelete";
+
+	}
 	 @RequestMapping(value={"/search_todelete"}, method = RequestMethod.GET)
 		
 		public String search_formDelete(@RequestParam("process") String process,ModelMap model, Principal principal)
@@ -752,7 +782,7 @@ public class FormController
 				
 			}
 			else
-				 response.setHeader("Content-Disposition","attachment;filename='Document_Report'");
+				 response.setHeader("Content-Disposition","attachment;filename='Form_Report'");
 			
 			
 			ModelAndView modelAndView=new ModelAndView("formDAO","form",form);

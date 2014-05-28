@@ -895,6 +895,12 @@ public class FormDAO extends AbstractExcelView{
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
 			}
+			else if(field.equals("revision_id"))	
+			{
+				excelHeader.createCell(i).setCellValue("Revsion No");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
 			
 		}
 	
@@ -959,7 +965,7 @@ public class FormDAO extends AbstractExcelView{
 						i++;
 					}else if(field.equals("form"))	
 					{
-						if(forms.getForm().equals("1"))
+						if(forms.getForm().equals("Yes"))
 							excelRow.createCell(i).setCellValue("Yes");
 							else
 								excelRow.createCell(i).setCellValue("No");
@@ -988,6 +994,12 @@ public class FormDAO extends AbstractExcelView{
 					{
 						excelRow.createCell(i).setCellValue(
 								forms.getComments());
+						i++;
+					}
+					else if(field.equals("revision_id"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								forms.getRevision_id());
 						i++;
 					}
 					
