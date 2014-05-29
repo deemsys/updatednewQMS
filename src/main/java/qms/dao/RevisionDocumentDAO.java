@@ -334,7 +334,7 @@ public class RevisionDocumentDAO {
 				  }
 			  
 			  String cmd_insert2;	
-				cmd_insert2="insert into tbl_revisiondocument(auto_number,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+document.getAuto_number()+"','"+document1+"','"+document.getIssuer()+"','"+document.getRevision_level()+"','"+document.getDate()+"','"+approver+"','"+document.getApprover2()+"','"+document.getApprover3()+"','"+document.getComments()+"','"+document.getStatus()+"','"+0+"')";
+				cmd_insert2="insert into tbl_revisiondocument(auto_number,document_id,issuer,revision_level,date,approver1,approver2,approver3,comments,status,revision_id) values('"+document.getAuto_number()+"','"+document1+"','"+document.getIssuer()+"','"+document.getRevision_level()+"','"+document.getDate()+"','"+approver+"','"+document.getApprover2()+"','"+document.getApprover3()+"','"+document.getComments()+"','"+document.getStatus()+"','"+revision_id+"')";
 
 				 statement.execute(cmd_insert2);
 		
