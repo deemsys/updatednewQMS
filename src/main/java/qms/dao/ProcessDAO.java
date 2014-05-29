@@ -261,6 +261,38 @@ public class ProcessDAO
 	    return processes;
 		
 	}
+	public boolean delete_process(String process_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status=false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+				e1.printStackTrace();
+		}
+		  try{
+			  String cmd_delete1="delete from tbl_process where process_id='"+process_id+"'";
+			  System.out.println(cmd_delete1);
+				 
+			  status=statement.execute(cmd_delete1);
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+		    return status;
+		
+	}
+	
 	public void releaseConnection(Connection con) {
 		try {
 			if (con != null)

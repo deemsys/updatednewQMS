@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import qms.model.Process;
 import qms.dao.ProcessDAO;
+import qms.forms.EmployeeForm;
 import qms.forms.FormFormPrefix;
 import qms.forms.ProcessForm;
 import qms.model.FormPrefix;
@@ -141,6 +142,18 @@ public class ProcessController
 		model.addAttribute("menu","admin");
 	    return "process_list";
 	}
-
+	//delete a record
+	@RequestMapping(value={"/delete_process"}, method = RequestMethod.GET)
+	public String delete_process(@RequestParam("process_id") String employee_id,ModelMap model, Principal principal )
+	{
+    
+		processDAO.delete_process(employee_id);
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm",processForm);
+		model.addAttribute("menu","admin");
+		return "process_list";
+ 	}
+	
 	
 }

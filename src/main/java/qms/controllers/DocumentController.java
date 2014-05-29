@@ -180,8 +180,11 @@ public class DocumentController {
  	}
 	
 	@RequestMapping(value={"/deletedocument"}, method = RequestMethod.POST)
-	public String deleteSelecteddocument(HttpServletRequest request,ModelMap model,Principal principal) 
+	public String deleteSelecteddocument(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
+		load_document_page_dropdowns(model);
+		session.removeAttribute("documentMain");
+		session.removeAttribute("documentMain1");
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)

@@ -412,8 +412,9 @@ public class FormController
  	}
 	
 	@RequestMapping(value={"/deleteform"}, method = RequestMethod.POST)
-	public String deleteSelectedForm(HttpServletRequest request,ModelMap model,Principal principal) 
+	public String deleteSelectedForm(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
+		session.removeAttribute("processarea");
 		ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm", processForm);

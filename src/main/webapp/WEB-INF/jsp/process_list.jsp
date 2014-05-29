@@ -87,7 +87,9 @@
         				       				<tr class="row1">
         				       				
         				       				
-        				       				 <td valign="top" align="left"  width="10%"> ${processes.process_id}</td>
+        				       				 <td valign="top" align="left"  width="10%">
+        				       				 
+        				       				  ${processes.process_id}</td>
         				       				 <td valign="top" align="left" width="15%">${processes.process_name}</td>
         				       				 <td valign="top" align="left" width="15%">${processes.process_owner}</td>
         				       					<td valign="top" align="left">
