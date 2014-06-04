@@ -51,6 +51,7 @@ public class ManagementReviewController
 @RequestMapping(value={"/addmanagementreview"}, method = RequestMethod.GET)
 	
 	public String add_managementreview(ModelMap model, Principal principal)  {
+	
 	model.addAttribute("id", managementreviewDAO.getMax_reviewid());
 	return "add_managementreview";
 
@@ -104,6 +105,7 @@ public String edit_review(@RequestParam("review_id") String review_id,ModelMap m
 	ManagementReviewForm managementreviewForm= new ManagementReviewForm();
 	managementreviewForm.setManagementreviewdetails(managementreviewDAO.edit_managementreview(review_id));
 	model.addAttribute("managementreviewForm", managementreviewForm);
+	model.addAttribute("menu","managementreview");
     return "edit_managementreview";
 }
 
@@ -171,7 +173,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	
 	System.out.println(managementreview.review_id);
 	session.setAttribute("managementreview",managementreview);
-
+	model.addAttribute("menu","managementreview");
 	
 	if(result.hasErrors())
 	{
@@ -301,6 +303,7 @@ public String searchmanagementreviews(@RequestParam("review_id") String review_i
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
 	model.addAttribute("managementreviewform", managementreviewform);
+	model.addAttribute("menu","managementreview");
 	return "view_managementreview";
 
 }

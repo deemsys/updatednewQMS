@@ -190,12 +190,9 @@ function doAjaxPost() {
                   <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Working as :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   
-                  <input type="checkbox" name="process_owner" onchange="toggle2(this)" value="yes" id="id_field_document_id"/>&nbsp;Process Owner                 
-                  
-                 <!--  <label id="process_name_label" style="display:none;">&nbsp;&nbsp;&nbsp;Process Name:</label> -->
-                 <!--  <input type="text"  name="process_name1" id="process_name" style="display: none;" class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><br/> -->
-                  <input type="checkbox" name="document_control" value="yes" id="id_field_document_id"/>&nbsp;Document Control<br/><br/>
-                  <input type="checkbox" name="management" value="yes" id="id_field_document_id"/>&nbsp;Management Representative<br/>
+                  <input type="checkbox" name="process_owner" onclick="toggle1()"  value="yes" id="processowner"/>&nbsp;Process Owner                 
+             	  <input type="checkbox" name="document_control" onclick="toggle2()" value="yes" id="documentcontrol"/>&nbsp;Document Control<br/><br/>
+                  <input type="checkbox" name="management" value="yes"  onclick="toggle3()" id="managementrep"/>&nbsp;Management Representative<br/>
                   
                   
                   
@@ -326,6 +323,83 @@ $(function() {
      
          });
  
+</script>
+<script language="javascript">
+function toggle1()
+{
+ //	var management = document.getElementById('managementrep').checked;
+ 	//alert(management);
+ 	//if(management)
+ 	
+ 		//alert("You already checked Management Representative");
+ 	
+ 	var processown = 	document.getElementById('processowner').checked;
+ 	var documentcon = 	document.getElementById('documentcontrol').checked;
+ 	if(processown && documentcon )
+ 		{
+ 		
+ 		document.getElementById('managementrep').disabled = true;
+ 		
+		}
+ 	else if(processown)
+		{
+ 		
+		document.getElementById('managementrep').disabled = true;
+		
+		}
+ 	else if(documentcon)
+ 		{
+ 		
+ 		document.getElementById('managementrep').disabled = true;
+ 		
+ 		}
+ 	else{
+ 		
+ 		document.getElementById('managementrep').disabled = false;
+ 	}
+}
+function toggle2()
+{
+ 	
+ 	var documentcon = 	document.getElementById('documentcontrol').checked;
+ 	var processown = 	document.getElementById('processowner').checked;
+	if(processown && documentcon )
+		{
+		document.getElementById('managementrep').disabled = true;
+		
+	}
+	else if(documentcon)
+	{
+	document.getElementById('managementrep').disabled = true;
+	
+	}
+	else if(processown)
+		{
+		document.getElementById('managementrep').disabled = true;
+		}
+ 	else
+ 		document.getElementById('managementrep').disabled = false;
+}
+function toggle3()
+{
+ 	
+ 	var management = 	document.getElementById('managementrep').checked;
+ 
+ 	if(management)
+ 		{
+ 		document.getElementById('processowner').disabled = true;
+ 		document.getElementById('documentcontrol').disabled = true;
+ 		
+		}
+ 	else
+ 		{
+ 		document.getElementById('processowner').disabled = false;
+ 		document.getElementById('documentcontrol').disabled = false;
+ 		
+ 		}
+}
+
+
 </script>
 
 

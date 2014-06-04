@@ -99,7 +99,8 @@
                    <tr class="row2">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Action Needed :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%">
-                   <input type="radio" name="action_needed" value="Yes" onchange="toggle3(this.value);"  id="action_needed_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="action_needed" value="No" id="action_needed_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                   <input type="radio" name="action_needed" value="Yes"  id="action_needed_yes" <c:if test="${managementReviewdetails.action_needed=='Yes'}"><c:out value="checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+                   <input type="radio" name="action_needed" value="No" id="action_needed_no" <c:if test="${managementReviewdetails.action_needed=='No'}"><c:out value="checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </tr>
                    <tr class="row1">
                  <td valign="middle" align="right" class="input_txt" width="30%"> Action Detail :</td>

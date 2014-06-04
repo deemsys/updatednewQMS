@@ -146,9 +146,9 @@ $(function() {
                    <td valign="middle" align="left" class="input_txt" width="30%"><span class="err">*</span>Working as :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   
-                   <input type="checkbox" name="process_owner" value="yes" id="id_field_document_id"<c:if test="${employee.process_owner=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Process Owner                 
-                   <input type="checkbox" name="document_control" value="yes" id="id_field_document_id"<c:if test="${employee.document_control=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Document Control<br/><br/>
-                   <input type="checkbox" name="management" value="yes" id="id_field_document_id"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
+                   <input type="checkbox" name="process_owner" value="yes" onclick="toggle1()" id="processowner"<c:if test="${employee.process_owner=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Process Owner                 
+                   <input type="checkbox" name="document_control" value="yes" onclick="toggle2()" id="documentcontrol"<c:if test="${employee.document_control=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Document Control<br/><br/>
+                   <input type="checkbox" name="management" value="yes" onclick="toggle3()"  id="managementrep"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
                   
                   
                    </tr>
@@ -259,5 +259,90 @@ function change_file(){
          $( "#datepicker3" ).datepicker();
        });
     </script> 
+    
+    
+    <script language="javascript">
+function toggle1()
+{
+ //	var management = document.getElementById('managementrep').checked;
+ 	//alert(management);
+ 	//if(management)
+ 	
+ 		//alert("You already checked Management Representative");
+ 	
+ 	var processown = 	document.getElementById('processowner').checked;
+ 	var documentcon = 	document.getElementById('documentcontrol').checked;
+ 	if(processown && documentcon )
+ 		{
+ 		
+ 		document.getElementById('managementrep').disabled = true;
+ 		
+		}
+ 	else if(processown)
+		{
+ 		
+		document.getElementById('managementrep').disabled = true;
+		
+		}
+ 	else if(documentcon)
+ 		{
+ 		
+ 		document.getElementById('managementrep').disabled = true;
+ 		
+ 		}
+ 	else{
+ 		
+ 		document.getElementById('managementrep').disabled = false;
+ 	}
+}
+function toggle2()
+{
+ 	
+ 	var documentcon = 	document.getElementById('documentcontrol').checked;
+ 	var processown = 	document.getElementById('processowner').checked;
+	if(processown && documentcon )
+		{
+		document.getElementById('managementrep').disabled = true;
+		
+	}
+	else if(documentcon)
+	{
+	document.getElementById('managementrep').disabled = true;
+	
+	}
+	else if(processown)
+		{
+		document.getElementById('managementrep').disabled = true;
+		}
+ 	else
+ 		document.getElementById('managementrep').disabled = false;
+}
+function toggle3()
+{
+ 	
+ 	var management = 	document.getElementById('managementrep').checked;
+ 
+ 	if(management)
+ 		{
+ 		document.getElementById('processowner').disabled = true;
+ 		document.getElementById('documentcontrol').disabled = true;
+ 		
+		}
+ 	else
+ 		{
+ 		document.getElementById('processowner').disabled = false;
+ 		document.getElementById('documentcontrol').disabled = false;
+ 		
+ 		}
+}
+
+
+</script>
+<script>
+	
+	window.onload = function(){
+		toggle1();toggle2();toggle3();
+	}
+		</script>
 	 <jsp:include page="footer.jsp"></jsp:include>
  

@@ -538,7 +538,7 @@ public boolean update_managementreview(ManagementReview managementreviewdetails)
 		statement.execute(cmd_update);
 		String cmd_update2 = "update tbl_managementreviewchild set category='"+managementreviewdetails.getCategory()+"',assessment='"+managementreviewdetails.getAssessment()+"',report_link='"+managementreviewdetails.getReport_link()+"',action_needed='"+managementreviewdetails.getAction_needed()+"',action_detail='"+managementreviewdetails.getAction_detail()+"',action_due_date='"+managementreviewdetails.getAction_due_date()+"',responsibility='"+managementreviewdetails.getResponsibility()+"',completion_date='"+managementreviewdetails.getCompletion_date()+"',continuous_improvement_project='"+managementreviewdetails.getContinuous_improvement_project()+"' where review_id='"+managementreviewdetails.getReview_id()+"'"; 
 	statement.execute(cmd_update2);
-		
+		status= true;
 		
 	} catch (Exception e) {
 		System.out.println(e.toString());
