@@ -166,6 +166,15 @@ public class DocumentController {
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 		//model.addAttribute("documentMainForm",documentMainForm);
 
+		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+		model.addAttribute("documentTypeForm",documentTypeForm);
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
+		
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
@@ -182,9 +191,11 @@ public class DocumentController {
 	@RequestMapping(value={"/deletedocument"}, method = RequestMethod.POST)
 	public String deleteSelecteddocument(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
+
 		load_document_page_dropdowns(model);
 		session.removeAttribute("documentMain");
 		session.removeAttribute("documentMain1");
+
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)
@@ -197,7 +208,17 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 		model.addAttribute("documentMainForm",documentMainForm);
-        model.addAttribute("menu","admin");
+        
+		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+		model.addAttribute("documentTypeForm",documentTypeForm);
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
+		
+		model.addAttribute("menu","admin");
 		return "documentdelete";
 		
 	}	

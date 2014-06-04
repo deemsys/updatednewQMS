@@ -183,7 +183,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		return "edit_managementreview";
 
 	}
-	else
+	/*else
 	{
 		
 	    	
@@ -194,12 +194,14 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 
 	}
 	}
-	
+	*/
+	managementreviewDAO.update_managementreview(managementreview);
+	model.addAttribute("menu", "managementreview");
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 	model.addAttribute("managementreviewform", managementreviewform);
 
-
+	model.addAttribute("menu","managementreview");
 	return "view_managementreview";
 }
 
@@ -240,7 +242,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	
 	//ManagementReview Report Generation
 	@RequestMapping(value = "/generate_managementreview_report", method = RequestMethod.POST)
-	public ModelAndView generatemanagementreview_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response)
+	public ModelAndView generatemanagementreview_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response) 
 	{
 		String start = null,end = null;
 		String[] fields={"review_id","management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};

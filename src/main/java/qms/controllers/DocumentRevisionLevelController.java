@@ -143,6 +143,7 @@ public String viewalldocumentrevisionlevelreport(HttpServletRequest request,Mode
 @RequestMapping(value = "/edit_documentrevisionlevel", method = RequestMethod.GET)
 public String editdocumentrevisionlevel_get(@RequestParam("id") String id,DocumentRevisionLevel documentRevisionLevel,ModelMap model) {
 
+	System.out.println(id);
 	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
 	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels(id));
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
@@ -167,6 +168,7 @@ public String update_revisionlevel(HttpServletRequest request,@RequestParam("id"
 	
 	System.out.println(request.getParameter(sid));
 	documentRevisionLevelDAO.update_documentrevisionlevel(documentRevisionLevel);
+	
 	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
 	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());	
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
