@@ -805,7 +805,9 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
-			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_id='"+id+"'");
+	    	String s = "select * from tbl_doccontrol_main where document_id='"+id+"'";
+	    	System.out.println(s);
+			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where auto_number='"+id+"'");
 			System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");

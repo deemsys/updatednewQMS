@@ -56,89 +56,97 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>UPDATE REVIEW</h2>
+              <h2>Management Review Details</h2>
             </div>
             <div class="contentbox">
+              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
       
              <c:set value="${managementreviewForm.managementreviewdetails[0]}" var="managementReviewdetails"></c:set>
              <tr class="row2">
-				                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Review ID :</td>
+				                  <td valign="middle" align="left" class="input_txt" width="30%">Review ID :</td>
 				                  <td valign="middle" align="left" class="input_txt" width="70%">
                                   <input type="hidden" name="review_id" value="<c:out value="${managementReviewdetails.review_id}"/>"/><c:out value="${managementReviewdetails.review_id}"/>
 				                  	<font color="Red" size="+1"></font>
 				                  </td>
 				                   
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Management Review Date :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Management Review Date :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.management_review_date}"></c:out>'> <span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
                 </tr>
                 
                   <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Attendee List With Titles :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Attendee List With Titles :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%">
                   <textarea class="input_txtbx1" name="attendee_list_with_titles" id="id_attendee_list_with_titles" ><c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out></textarea>                  
                   
                   <br/><span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>
                  
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Next Management Review By :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Next Management Review By :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="next_management_review_by" class="input_txtbx" id="id_next_management_Review_By" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.next_management_review_by}"></c:out>'> <span class="err"><form:errors path="ManagementReview.next_management_review_by"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Category :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Category :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%">
                   <select name="category" class="input_cmbbx1">
 				                  		<option value="">--Select--</option>
 						                      
-						                  <option <c:if test="${managementReviewdetails.category eq 'audits'}"><c:out value="Selected"/></c:if> value="audits" >audits</option>
-						                  <option <c:if test="${managementReviewdetails.category eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >corrective and prev actions</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >cost of non conformance</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'customer satisfaction'}"><c:out value="Selected"/></c:if> value="customer satisfaction" >customer satisfaction</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'suppliers'}"><c:out value="Selected"/></c:if> value="suppliers" >suppliers</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'human resources'}"><c:out value="Selected"/></c:if> value="human resources" >human resources</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'product/service conformity'}"><c:out value="Selected"/></c:if> value="product/service conformity" >product/service conformity</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'previous items'}"><c:out value="Selected"/></c:if> value="previous items" >previous items</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'recommendations for improvement'}"><c:out value="Selected"/></c:if> value="recommendations for improvement" >recommendations for improvement</option>
-										  <option <c:if test="${managementReviewdetails.category eq 'significant cchanges to the QMS'}"><c:out value="Selected"/></c:if> value="significant changes to the QMS" >significant changes to the QMS</option>	
+						                  <option <c:if test="${managementReviewdetails.category eq 'audits'}"><c:out value="Selected"/></c:if> value="audits" >Audits</option>
+						                  <option <c:if test="${managementReviewdetails.category eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >Corrective and Prev Actions</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >Cost of Nonconformance</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'customer satisfaction'}"><c:out value="Selected"/></c:if> value="customer satisfaction" >Customer Satisfactions</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'suppliers'}"><c:out value="Selected"/></c:if> value="suppliers" >Suppliers</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'human resources'}"><c:out value="Selected"/></c:if> value="human resources" >Human Resources</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'product/service conformity'}"><c:out value="Selected"/></c:if> value="product/service conformity" >Product / Service Conformity</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'previous items'}"><c:out value="Selected"/></c:if> value="previous items" >Previous items</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'recommendations for improvement'}"><c:out value="Selected"/></c:if> value="recommendations for improvement" >Recommendations for Improvement</option>
+										  <option <c:if test="${managementReviewdetails.category eq 'significant cchanges to the QMS'}"><c:out value="Selected"/></c:if> value="significant changes to the QMS" >Significant Changes to the QMS</option>	
 				                   	</select>
 						           		<br/><span class="err"><form:errors path="ManagementReview.category"></form:errors></span>
 				                   	</td>	
                   
                   
-                  <td valign="middle" align="right" class="input_txt" width="30%">
+                  <td valign="middle" align="left" class="input_txt" width="30%">
              	  <td valign="middle" align="left" class="input_txt" width="70%"> </tr>
                    <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Assessment :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Assessment :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="assessment" class="input_txtbx" id="id_assessment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.assessment}"></c:out>'> <span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>
                   
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Report Link :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Report Link :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="report_link" class="input_txtbx" id="id_report_link" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.report_link}"></c:out>'> <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Action Needed :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Action Needed :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%">
                    <input type="radio" name="action_needed" value="Yes"  id="action_needed_yes" <c:if test="${managementReviewdetails.action_needed=='Yes'}"><c:out value="checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                    <input type="radio" name="action_needed" value="No" id="action_needed_no" <c:if test="${managementReviewdetails.action_needed=='No'}"><c:out value="checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </tr>
                    <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Action Detail :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Action Detail :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="action_detail" class="input_txtbx" id="id_action_detail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_detail}"></c:out>'> <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>
                 
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Action Due Date :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Action Due Date :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_due_date}"></c:out>'><span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Responsibility :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Responsibility :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="responsibility" class="input_txtbx" id="id_responsibility" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>'> <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>
                 
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Completion Date :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Completion Date :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.completion_date}"></c:out>'> <span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>
                   </tr>
                    <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Continuous Improvement Project :</td>
-                  <td valign="middle" align="left" class="input_txt" width="70%"><input type="text" name="continuous_improvement_project" class="input_txtbx" id="id_continuous_improvenement_project" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.continuous_improvement_project}"></c:out>'> <span class="err"><form:errors path="ManagementReview.continuous_improvement_project"></form:errors></span></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Continuous Improvement Project (Y/N):</td>
+                  <td valign="middle" align="left" class="input_txt" width="70%">
+             	     <input type="radio" name="continuous_improvement_project" value="Yes"  class="input_txt" id="id_continuous_improvenement_project" onmouseover="showTooltip('tooltip_id','inp_id3');" 
+             	     				onmouseout="hideTooltip('tooltip_id');"<c:if test="${managementReviewdetails.continuous_improvement_project=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+					 <input type="radio" name="continuous_improvement_project" value="No"  class="input_txt"  id="id_continuous_improvenement_project" onmouseover="showTooltip('tooltip_id','inp_id3');" 
+					 				onmouseout="hideTooltip('tooltip_id');"<c:if test="${managementReviewdetails.continuous_improvement_project=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
+				  </td>
+                 
+                 
                   </tr>
               <tr class="row2">
-                 <td valign="middle" align="right" class="input_txt" width="30%"></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"></td>
                  <td colspan="1" align="right">
                   <td valign="middle" align="left" class="input_txt" width="70%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                  <td valign="middle" align="right" class="input_txt" width="30%">

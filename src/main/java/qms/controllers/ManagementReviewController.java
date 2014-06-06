@@ -1,7 +1,10 @@
 package qms.controllers;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 /* import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -102,6 +105,8 @@ public String viewmaintenance(HttpServletRequest request,@RequestParam("review_i
   //for EDITING REVIEW 
 @RequestMapping(value = "/edit_managementreview", method = RequestMethod.GET)
 public String edit_review(@RequestParam("review_id") String review_id,ModelMap model,Principal principal) {
+	
+	
 	ManagementReviewForm managementreviewForm= new ManagementReviewForm();
 	managementreviewForm.setManagementreviewdetails(managementreviewDAO.edit_managementreview(review_id));
 	model.addAttribute("managementreviewForm", managementreviewForm);
@@ -245,7 +250,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	public ModelAndView generatemanagementreview_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response) 
 	{
 		String start = null,end = null;
-		String[] fields={"review_id","management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
+		String[] fields={"management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
 		System.out.println(request.getParameter("type_of_report"));
 		java.util.List<ManagementReview> managementReviews=new ArrayList<ManagementReview>();
 			switch(Integer.parseInt(request.getParameter("management_report_type")))

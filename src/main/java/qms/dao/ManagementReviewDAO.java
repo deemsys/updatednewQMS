@@ -7,13 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import org.apache.poi.hssf.record.formula.functions.Now;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -235,15 +239,22 @@ public class ManagementReviewDAO extends AbstractExcelView
 		HSSFRow excelHeader = excelSheet.createRow(0);	
 	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
 		int i=0;
+		String[] option2 = {};
 		for (String field : fields) {
 			
-			if(field.equals("review_id"))
+			/*if(field.equals("review_id"))
 			{
 				excelHeader.createCell(i).setCellValue("review_id");
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
 			}
-			else if(field.equals("management_review_date"))
+			else
+			if(field.equals("Date"))
+			{				excelHeader.createCell(i).setCellValue("Report Created Date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else*/ if(field.equals("management_review_date"))
 			{
 				excelHeader.createCell(i).setCellValue("Management review date");
 				excelHeader.getCell(i).setCellStyle(style);
@@ -321,26 +332,41 @@ public class ManagementReviewDAO extends AbstractExcelView
 	public void setExcelRows(HSSFSheet excelSheet, List<ManagementReview> managementReviews,String[] fields,CellStyle style2){
 		int record = 1;
 		int i=0;
+		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
+	    int currentDay = localCalendar.get(Calendar.DATE);
+	    int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
+	    int currentYear = localCalendar.get(Calendar.YEAR);
+	    System.out.println("day  ="+currentDay+"month = "+currentMonth+"year = "+currentYear);
+	    String currentdate = currentDay+"/"+currentMonth+"/"+currentYear;
 		for (ManagementReview managementReview:managementReviews){	
 			HSSFRow excelRow = excelSheet.createRow(record++);
 	//		excelRow.setRowStyle((HSSFCellStyle) style2);
 		i=0;
 				for (String field : fields) {
 					
-					if(field.equals("review_id"))
+				/*	if(field.equals("review_id"))
 					{
 						excelRow.createCell(i).setCellValue(
 								managementReview.getReview_id());
 							i++;
 					}
-					else if(field.equals("management_review_date"))
+					else
+					if(field.equals("Date"))
+					{
+						excelRow.createCell(i).setCellValue(
+								currentdate);
+
+						i++;
+					}
+					else*/ if(field.equals("management_review_date"))
 					{
 						excelRow.createCell(i).setCellValue(
 								managementReview.getManagement_review_date());
 
 						i++;
 					}
-					else if(field.equals("attendee_list_with_titles"))
+					else
+						if(field.equals("attendee_list_with_titles"))
 					{
 						excelRow.createCell(i).setCellValue(
 								managementReview.getAttendee_list_with_titles());
@@ -365,6 +391,7 @@ public class ManagementReviewDAO extends AbstractExcelView
 					{
 						excelRow.createCell(i).setCellValue(
 								managementReview.getReport_link());
+						i++;
 					}else if(field.equals("action_needed"))	
 					{
 						excelRow.createCell(i).setCellValue(
@@ -393,9 +420,12 @@ public class ManagementReviewDAO extends AbstractExcelView
 						i++;
 					}else if(field.equals("continuous_improvement_project"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								managementReview.getContinuous_improvement_project());
-						i++;
+						
+						if(managementReview.getContinuous_improvement_project().equals("Yes"))
+							excelRow.createCell(i).setCellValue("Yes");
+							else
+								excelRow.createCell(i).setCellValue("No");
+								i++;
 					}
 					
 				}
@@ -737,7 +767,30 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	Statement statement = null;
 	ResultSet resultSet = null;
 	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
-	
+
+	 Date date = new Date();
+	    Calendar c = Calendar.getInstance();
+	    c.setTime(date);
+	    System.out.println("Day of week = "+c.get(Calendar.DAY_OF_WEEK));
+	    System.out.println("first day of week = "+c.getFirstDayOfWeek());
+	    int i = c.get(Calendar.DAY_OF_WEEK);
+	    System.out.println("value 0f i = "+i);
+	    int currentDay = c.get(Calendar.DATE);
+	    int currentMonth = c.get(Calendar.MONTH) + 1;
+	    int currentYear = c.get(Calendar.YEAR);
+	    String currentdate = currentYear+"-0"+currentMonth+"-0"+currentDay;
+	    
+	    Date start = c.getTime();
+	    c.add(Calendar.DATE, -13);
+	    Date end = c.getTime();
+	    System.out.println(start + " - " + end);
+	    int oldDay = c.get(Calendar.DATE);
+	    int oldMonth = c.get(Calendar.MONTH) + 1;
+	    int oldYear = c.get(Calendar.YEAR);
+	    String olddate = oldYear+"-0"+oldMonth+"-"+oldDay;
+	    System.out.println(olddate);
+	    System.out.println(currentdate);
+    
 	try {
 		con = dataSource.getConnection();
 		statement = con.createStatement();
@@ -751,7 +804,9 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";			
 		
 		else if (type.equals("upcoming_management_review_memo")) {
-			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";				
+			String s = "select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '+olddate+' AND '+currentdate+')" ;
+			System.out.println(s);
+			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '"+olddate+"' AND '"+currentdate+"')" ;				
 		}
 		
 		else if (type.equals("action_list_beween_dates")) {

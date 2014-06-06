@@ -75,16 +75,16 @@
 							    <select name="category" class="input_cmbbx1">
 				                  		<option value="">--Select--</option>
 						                      
-						                  <option  value="audits" >audits</option>
-						                  <option  value="corrective and prev actions" >corrective and prev actions</option>
-										  <option value="cost of non conformance" >cost of nonconformance</option>
-										  <option  value="customer satisfaction" >customer satisfaction</option>
-										  <option  value="suppliers" >suppliers</option>
-										  <option  value="human resources" >human resources</option>
-										  <option  value="product/service conformity" >product/service conformity</option>
-										  <option  value="previous items" >previous items</option>
-										  <option  value="recommendations for improvement" >recommendations for improvement</option>
-										  <option  value="significant changes to the QMS" >significant changes to the QMS</option>	
+						                  <option  value="audits" >Audits</option>
+						                  <option  value="corrective and prev actions" >Corrective and Prev Actions</option>
+										  <option value="cost of non conformance" >Cost of NonConformance</option>
+										  <option  value="customer satisfaction" >Customer Satisfaction</option>
+										  <option  value="suppliers" >Suppliers</option>
+										  <option  value="human resources" >Human Resources</option>
+										  <option  value="product/service conformity" >Product/Service Conformity</option>
+										  <option  value="previous items" >Previous Items</option>
+										  <option  value="recommendations for improvement" >Recommendations for Improvement</option>
+										  <option  value="significant changes to the QMS" >Significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>

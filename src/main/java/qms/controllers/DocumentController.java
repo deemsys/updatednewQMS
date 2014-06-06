@@ -228,7 +228,8 @@ public class DocumentController {
 	{
 		session.removeAttribute("documentMain");
 		session.removeAttribute("documentMain1");
-		
+		 String number = auto_number.trim();
+		    System.out.println("auto_number= "+number);
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 		model.addAttribute("documentTypeForm",documentTypeForm);
@@ -239,7 +240,7 @@ public class DocumentController {
  
 		
 		DocumentMainForm documentMainForm=new DocumentMainForm();
-		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
+		documentMainForm.setDocumentMains(documentControlDAO.getDocuments(number));
 		model.addAttribute("documentMainForm",documentMainForm);
 
 	  	model.addAttribute("noofrows",5);    
@@ -251,8 +252,7 @@ public class DocumentController {
 	    model.addAttribute("button","close");
 	    model.addAttribute("display","show");
 	    
-		 String number = auto_number.trim();
-		    System.out.println("auto_number= "+number);
+		
 			
 		    RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
 		    revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(number));
@@ -314,7 +314,7 @@ public class DocumentController {
 
 	//updating a record
 	@RequestMapping(value = { "/update_documents" }, method = RequestMethod.POST)
-	public String update_document(HttpServletRequest request,@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain1,@ModelAttribute("RevisionDocument")@Valid RevisionDocument revisionDocument,BindingResult result,HttpSession session, ModelMap model,Principal principal) {
+	public String update_document(HttpServletRequest request,@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain1,@ModelAttribute("RevisionDocument")@Valid RevisionDocument revisionDocument,BindingResult result,HttpSession session, ModelMap model,@RequestParam("document_type") String search_document_type,@RequestParam("process") String search_process,Principal principal) {
 
 		int flag = 0;
 		
@@ -426,10 +426,8 @@ public class DocumentController {
 				
 
 				DocumentMainForm documentMainForm = new DocumentMainForm();
-				documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-				
-				
-
+				//documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
+				documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
 				model.addAttribute("documentMainForm", documentMainForm);
 				  model.addAttribute("menu","document");
 				  model.addAttribute("id", documentControlDAO.get_documentid());
@@ -759,7 +757,6 @@ public class DocumentController {
 	@RequestMapping(value = "/findDocument", method = RequestMethod.GET)
 	public String findDocument(HttpSession session,
 			@RequestParam("document_type") String search_document_type,
-		//	@RequestParam("search_document_title") String search_document_title,
 			@RequestParam("search_process") String search_process,
 			ModelMap model) {
 		

@@ -234,7 +234,7 @@ public class FormController
 	
 	//Update a record
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
-	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result,ModelMap model, Principal principal)
+	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result,ModelMap model,@RequestParam("process") String process, Principal principal)
 	{
 		
 		int flag = 0;
@@ -335,8 +335,11 @@ public class FormController
 			model.addAttribute("id", "1001");
 			if (flag == 1)
 			{
+				//session.removeAttribute("processarea");
+				
 				FormForm formForm=new FormForm();
-			    formForm.setForm(formDAO.getform());
+			   // formForm.setForm(formDAO.getform());
+				formForm.setForm(formDAO.search_form(process));
 			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
@@ -469,7 +472,8 @@ public class FormController
 		model.addAttribute("processForm", processForm);
 		
 		FormForm formForm=new FormForm();
-		formForm.setForm(formDAO.getform());
+		formForm.setForm(formDAO.getform(auto_no));
+		//formForm.setForm(formDAO.search_form(process));
 		model.addAttribute("formForm",formForm);
 
 	  	model.addAttribute("noofrows",5);    
