@@ -224,5 +224,81 @@ public class CustomersController
 			return "list_customer";
 		}
 
-	
+		//delete a record for admin setup
+		@RequestMapping(value={"/customersdelete"}, method = RequestMethod.GET)
+		public String delete_customers(ModelMap model, Principal principal,HttpSession session )
+		{
+			session.removeAttribute("customer");
+			session.removeAttribute("customer1");
+			CustomersForm customersForm = new CustomersForm();
+		    customersForm.setCustomers(customersDAO.getCustomers());
+		  //  model.addAttribute("customersForm",customersForm);
+						
+		  	model.addAttribute("noofrows",5);    
+		   //narrativereportForm.getNarrativereport().size()
+		    model.addAttribute("menu","admin");
+		    model.addAttribute("button","close");
+		      
+		    model.addAttribute("menu","admin");
+		    model.addAttribute("success","false");
+		    model.addAttribute("button","close");
+		    return "customersdelete";
+		}	
+		
+		@RequestMapping(value="/findcustomers",method=RequestMethod.GET)		
+		public String findcustomers(HttpServletRequest request,HttpSession session,@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,ModelMap model)
+		{
+		
+			System.out.println("find");
+			session.setAttribute("id", id);
+			session.setAttribute("name", name);
+			session.setAttribute("address", address);
+
+			if(id=="" && name=="" && address=="")
+			{
+				CustomersForm customersForm = new CustomersForm();
+				customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
+				model.addAttribute("customersForm",customersForm);
+				model.addAttribute("menu", "customer");
+				System.out.println("finding....");
+				return "customersdelete";
+			}
+			else
+			{
+				System.out.println("searching.......");
+			CustomersForm customersForm = new CustomersForm();
+			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
+	        model.addAttribute("customersForm", customersForm);
+	        model.addAttribute("menu","customer");
+	        System.out.println("finding result");
+	        model.addAttribute("menu","customer");
+			return "customersdelete";		
+			}
+			}
+
+			@RequestMapping(value={"/deletecustomers"}, method = RequestMethod.POST)
+		public String deleteSelectedcustomers(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+		{	
+			session.removeAttribute("customer");
+			session.removeAttribute("customer1");
+
+			String[] SelectedIDs=new String[100];
+			SelectedIDs=request.getParameterValues("chkUser");
+			for(String id:SelectedIDs)
+			{
+			System.out.println(id);
+			
+			//formDAO.deleteParticipant(id,principal.getName());
+			customersDAO.delete_customer(id);
+			}
+			CustomersForm customersForm = new CustomersForm();
+		    customersForm.setCustomers(customersDAO.getCustomers());
+		    model.addAttribute("customersForm",customersForm);
+				
+			model.addAttribute("menu","admin");
+			return "customersdelete";
+			
+		}	
+		
 }
+	

@@ -320,4 +320,63 @@ public String searchmanagementreviews(HttpSession session,@RequestParam("review_
 
 }
 	
+//delete a record for admin setup
+@RequestMapping(value={"/managementdelete"}, method = RequestMethod.GET)
+public String delete_management(ModelMap model, Principal principal,HttpSession session )
+{
+	session.removeAttribute("managementreview");
+	session.removeAttribute("managementreview1");
+	ManagementReviewForm managementreviewform= new ManagementReviewForm();
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
+	//model.addAttribute("managementreviewform", managementreviewform);
+			
+  	model.addAttribute("noofrows",5);    
+   //narrativereportForm.getNarrativereport().size()
+    model.addAttribute("menu","admin");
+    model.addAttribute("button","close");
+      
+    model.addAttribute("menu","admin");
+    model.addAttribute("success","false");
+    model.addAttribute("button","close");
+    return "managementdelete";
 }
+
+@RequestMapping(value={"/search_reviews"}, method = RequestMethod.GET)
+public String searchreviews(@RequestParam("review_id") String review_id,@RequestParam("category") String category,@RequestParam("management_review_date") String management_review_date,ModelMap model, Principal principal)
+{
+	System.out.println(review_id);
+	ManagementReviewForm managementreviewform= new ManagementReviewForm();
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
+	model.addAttribute("managementreviewform", managementreviewform);
+	model.addAttribute("menu","managementreview");
+	return "view_managementreview";
+
+}
+
+
+
+	@RequestMapping(value={"/deletemanagement"}, method = RequestMethod.POST)
+public String deleteSelectedmanagement(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+{	
+	session.removeAttribute("managementreview");
+	session.removeAttribute("managementreview1");
+
+	String[] SelectedIDs=new String[100];
+	SelectedIDs=request.getParameterValues("chkUser");
+	for(String id:SelectedIDs)
+	{
+	System.out.println(id);
+	
+	//formDAO.deleteParticipant(id,principal.getName());
+	managementreviewDAO.delete_managementreview(id);
+	}
+	ManagementReviewForm managementreviewform= new ManagementReviewForm();
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
+	model.addAttribute("managementreviewform", managementreviewform);
+	
+	model.addAttribute("menu","admin");
+	return "managementdelete";
+	
+}	
+
+	}

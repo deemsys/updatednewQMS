@@ -43,9 +43,9 @@ else
   <ul class="horizmenu">
 						
 	
-					<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
 								<a href="documentdelete" class="<c:choose>
-								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Document
 									
 								</a>
@@ -96,7 +96,7 @@ else
 							</li>
 							<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
 								<a href="supplierperformancedelete" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Supplier
 								</a>
 							</li>
@@ -113,84 +113,69 @@ else
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete Documents</h2>
+							<h2>Delete SupplierPerformance Records</h2>
 						</div>
 						 <div class="contentbox">
-						 <form action="findDocuments" method="get">
 						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
-							
+							<form action="findsupplierperformances" method="GET">
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="15%"> Document Type: </td>
-							    <td><select name="document_type" id="search_document_type" class="input_cmbbx1" style="width:200px;">
-              					<option value="">--Select--</option>
-                				<c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
-        				       <option value="${documenttype.document_type}" <c:if test="${documenttype.document_type==documentMain}"><c:out value="selected"></c:out></c:if>>${documenttype.document_type}</option>
-			                  </c:forEach> </select></td>
-               
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
+							    <td align="left" valign="middle" width="10%">Supplier Name:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <select name="search_process" id="search_process"  class="input_cmbbx1" style="width:200px;">
-               					<option value="">--Select--</option>
-              					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-              					 <option value="${processes.process_name}" <c:if test="${processes.process_name==documentMain1}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
-             				  </c:forEach>
-               					</select></td>   
-							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  "></td>
-							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
-							 </tr>
+							   
+							    <input type="text" name="supplier_name" class="input_txtbox" id="suppliername"
+							     <c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
+        				       
+							     value="${supplierperformance.supplier_name}" <c:if test="${supplierperformance.supplier_name==supplier}"></c:if>
+			                  </c:forEach>> </td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Phone:</td>
+								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox"></td>							    
+							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox"></td>
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Find" name="findsupplierperformances" ></td>
+							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Clear" name="welcome" ></td>
+							  
+							  </tr>
+							  
 							</table>
-							
-						</div></form>
-					<form action="deletedocument" name="dashboard" onsubmit="return validate()" method="POST">
+							</form>
+						</div>
+			     
+					<form action="deletesupplier" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
-								<tr class="title">
-									<td valign="top" align="left" width="10%">select</td>
-									<td valign="top" align="left" width="10%">Document Id</td>
-									<td valign="top" align="left" width="10%">Document Type</td>
-									<td valign="top" align="left" width="10%">Process Area</td>
-									<td valign="top" align="left" width="10%">Media Type</td>		
-	          						<td valign="top" align="center" width="15%">External Document(Y/N)</td>
-									<td valign="top" align="left" width="10%"></td>
-									
-									
-									</tr>
+							<tr class="title">
+								<td valign="top" align="left" width="10%">Select</td>
+								<td valign="top" align="left" width="10%">&nbsp;ID</td>
+					         	<td valign="top" align="left" width="10%">Supplier Name</td>
+					         	 <td valign="top" align="left" width="15%">Address</td>
+          						<td valign="top" align="left" width="5%">City</td>
+          						<td valign="top" align="left" width="10%">State</td>
+          						<td valign="top" align="left" width="5%">Country</td>
+          						<td valign="top" align="left" >Phone</td>
+          						<td valign="top" align="left" >e_mail address</td>
+          				</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
 							       		
-									<c:forEach items="${documentMainForm.documentMains}" var="documentMains" varStatus="status">
+									<c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${documentMains.document_id}"/></td>
-					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
-									        <td valign="top" align="left" width="10%">${documentMains.document_id}</td>
-									         <td valign="top" align="left" width="10%">${documentMains.document_type}</td>
-											<td valign="top" align="left" width="10%">${documentMains.process}</td>
-											<c:choose>
-											<c:when test="${documentMains.media_type=='electronic'}">
-											<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a></td>
-										</c:when>
-										<c:when test="${documentMains.media_type=='hardcopy'}">
-										<td valign="top" align="left" width="10%">Hard Copy </td>
-										</c:when>
-										<c:otherwise>
-										<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
-										</c:otherwise>
-										</c:choose>	
+							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${supplierperformance.supplier_id}"/></td>
+				  	 			           	<td valign="top" align="left"  width="10%">${supplierperformance.supplier_id}</td> 
+									       <td valign="top" align="left" width="15%">${supplierperformance.supplier_name}</td>
+									       <td valign="top" align="left" width="15%">${supplierperformance.address}</td>
+									       <td valign="top" align="left" width="15%">${supplierperformance.city}</td>
+									       <td valign="top" align="left" width="15%">${supplierperformance.state}</td>
+									       <td valign="top" align="left" width="15%">${supplierperformance.country}</td>
+											<td valign="top" align="left" width="15%">${supplierperformance.phone}</td>
+											<td valign="top" align="left" width="15%">${supplierperformance.email_address}</td>
+											
 											<td valign="top" align="center" width="15%">
-											<c:choose>
-											<c:when test="${documentMains.external=='Yes'}">
-											<c:out value="Yes"></c:out>
-											</c:when>	
-											<c:otherwise>
-											<c:out value="No"></c:out>
-											</c:otherwise>							
-											</c:choose>
 											
 											
 											
@@ -215,33 +200,10 @@ else
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
 		<td colspan="6">  
-	<!-- <div class="extrabottom">
-      -->        <ul class="pagination">
+	        <ul class="pagination">
         
-           <%--   <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewformreport_page?page=${currentpage - 1}" >Prev</a></li> 
-               </c:if>
-              
-           
-               <c:forEach begin="1" end="${noofpages}" var="i">
-                <c:choose>
-                    <c:when test="${currentpage eq i}">
-                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
-                     </c:when>
-                    <c:otherwise>
-                        <li class="page_unselect"><a href="viewformreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
-                    </c:otherwise>
-                </c:choose>
-            </c:forEach>          
-            <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewformreport_page?page=${currentpage+1}">Next</a></li> 
-                 </c:if>
-              <c:choose>
-              <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
-             </c:when>
-                <c:otherwise> --%>
-                  <li class="page"><a href="view_form" class="paging_select">Back</a></li>
+          
+                  <li class="page"><a href="view_supplierperformance" class="paging_select">Back</a></li>
                   
            <%--    </c:otherwise>
               </c:choose>			 --%>		

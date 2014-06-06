@@ -21,7 +21,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
 import qms.dao.MaintenanceDAO;
+import qms.forms.DocumentMainForm;
+import qms.forms.DocumentTypeForm;
 import qms.forms.MaintenanceForm;
+import qms.forms.ProcessForm;
 import qms.model.*;
 
 import org.slf4j.Logger;
@@ -71,6 +74,29 @@ public class MaintenanceController {
 return "maintenance_list";
 }
 	
+	//Search operation for admin setup
+	@RequestMapping(value = "/search_maintenances", method = RequestMethod.GET)
+	public String search_maintenances(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal)
+	{
+		System.out.println(equipment_id);
+	    if(equipment_id.equals("")&&equipment_name.equals(""))
+		{
+	    	MaintenanceForm maintenanceForm=new MaintenanceForm();
+	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
+	    	
+	    	model.addAttribute("maintenanceForm",maintenanceForm);
+		}
+		else
+		{
+			MaintenanceForm maintenanceForm=new MaintenanceForm();
+			maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
+			
+			model.addAttribute("maintenanceForm",maintenanceForm);
+				}
+	  
+		return "maintenancedelete";
+		}
+			
 
 	
 	
@@ -402,4 +428,48 @@ return "maintenance_list";
 		model.addAttribute("menu","maintenance");
 		return "/maintenance_list";
 	}
+	
+
+	//delete a record for admin setup
+	@RequestMapping(value = { "/maintenancedelete" }, method = RequestMethod.GET)
+	public String delete_maintenance(ModelMap model, Principal principal, HttpSession session) {
+	
+		session.removeAttribute("maintenance");
+		session.removeAttribute("maintenance1");
+		MaintenanceForm maintenanceForm= new MaintenanceForm();
+		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
+		//model.addAttribute("maintenanceForm",maintenanceForm);
+		model.addAttribute("menu","admin");
+		return "maintenancedelete";
+		
+	}
+	
+	@RequestMapping(value={"/deletemaintenance"}, method = RequestMethod.POST)
+	public String deleteSelectedmaintenance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+	{	
+
+	
+		session.removeAttribute("maintenances");
+		session.removeAttribute("maintenances1");
+
+		String[] SelectedIDs=new String[100];
+		SelectedIDs=request.getParameterValues("chkUser");
+		for(String id:SelectedIDs)
+		{
+		System.out.println(id);
+		
+		//formDAO.deleteParticipant(id,principal.getName());
+		maintenanceDAO.delete_maintenance(id);
+		}
+		MaintenanceForm maintenanceForm = new MaintenanceForm();
+		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
+	//	model.addAttribute("maintenanceForm",maintenanceForm);
+        
+		model.addAttribute("menu","admin");
+		return "maintenancedelete";
+		
+	}
+	
+	
+	
 }

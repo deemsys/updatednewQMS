@@ -314,5 +314,83 @@ import qms.forms.SupplierPerformanceForm;;
 		return modelAndView ;
 	}
 
+	//delete a record for admin setup
+	@RequestMapping(value={"/supplierperformancedelete"}, method = RequestMethod.GET)
+	public String delete_supplierperformance(ModelMap model, Principal principal,HttpSession session )
+	{
+		session.removeAttribute("supplier");
+		session.removeAttribute("supplier1");
+		SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
+	  //  model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 	
-}
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("button","close");
+	      
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    return "supplierperformancedelete";
+	}
+
+	@RequestMapping(value="/findsupplierperformances",method=RequestMethod.GET)		
+	public String findsupplierperformances(HttpServletRequest request,HttpSession session,@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,@RequestParam("email_address") String email,ModelMap model)
+	{
+	
+		System.out.println("find");
+		session.setAttribute("suppliername", suppliername);
+		session.setAttribute("phone", phone);
+		session.setAttribute("email",email);
+
+		if(suppliername=="" && phone=="" && email=="")
+		{
+			SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
+			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
+
+			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+			model.addAttribute("menu", "supplierperformance");
+			System.out.println("finding....");
+			return "supplierperformancedelete";
+		}
+		else
+		{
+			System.out.println("searching.......");
+		SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
+		supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
+        model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
+        model.addAttribute("menu","supplierperformance");
+        System.out.println("finding result");
+        model.addAttribute("menu","supplier");
+		return "supplierperformancedelete";		
+		}
+		}
+
+
+		@RequestMapping(value={"/deletesupplier"}, method = RequestMethod.POST)
+	public String deleteSelectedsupplierperformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+	{	
+		session.removeAttribute("supplier");
+		session.removeAttribute("supplier1");
+
+		String[] SelectedIDs=new String[100];
+		SelectedIDs=request.getParameterValues("chkUser");
+		for(String id:SelectedIDs)
+		{
+		System.out.println(id);
+		
+		//formDAO.deleteParticipant(id,principal.getName());
+		supplierPerformanceDAO.delete_supplierperformance(id);
+		}
+		SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
+	    model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+
+		model.addAttribute("menu","admin");
+		return "supplierperformancedelete";
+		
+	}	
+	
+ 	}
+	

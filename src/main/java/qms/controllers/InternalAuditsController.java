@@ -303,5 +303,68 @@ InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
     return "view_internalaudits";
 
 }
+
+	//delete a record for admin setup
+	@RequestMapping(value={"/internalauditsdelete"}, method = RequestMethod.GET)
+	public String delete_internalaudits(ModelMap model, Principal principal,HttpSession session )
+	{
+		session.removeAttribute("internalaudits");
+		session.removeAttribute("internalaudits1");
+		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
+		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
+		//model.addAttribute("internalAuditsForm", internalAuditsForm);
+
+				
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("button","close");
+	      
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    return "internalauditsdelete";
+	}
+
+	@RequestMapping(value={"/search_audit"}, method = RequestMethod.GET)
+	public String search_internalaudit(@RequestParam("id") String id,@RequestParam("process") String process,@RequestParam("auditee_name") String auditee_name,ModelMap model, Principal principal)
+{
+	System.out.println(id);
 	
+InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
+	
+	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name));
+	
+	model.addAttribute("internalAuditsForm",internalAuditsForm);
+	
+    return "internalauditsdelete";
+
 }
+
+
+		@RequestMapping(value={"/deleteinternalaudits"}, method = RequestMethod.POST)
+	public String deleteSelectedinternalaudits(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+	{	
+		session.removeAttribute("internalaudits");
+		session.removeAttribute("internalaudits1");
+
+		String[] SelectedIDs=new String[100];
+		SelectedIDs=request.getParameterValues("chkUser");
+		for(String id:SelectedIDs)
+		{
+		System.out.println(id);
+		
+		//formDAO.deleteParticipant(id,principal.getName());
+		internalAuditsDAO.delete_internalAudits(id);
+		}
+		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
+		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
+		model.addAttribute("internalAuditsForm", internalAuditsForm);
+
+		model.addAttribute("menu","admin");
+		return "internalauditsdelete";
+		
+	}	
+	
+ 	}
+

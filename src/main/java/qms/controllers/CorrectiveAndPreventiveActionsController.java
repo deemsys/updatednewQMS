@@ -276,7 +276,7 @@ public class CorrectiveAndPreventiveActionsController
 			}
 			else
 			{
-				return "add_correctiveAndPreventiveActions";
+				return "correctiveactions_list";
 			}
 		}
 	
@@ -474,4 +474,63 @@ public class CorrectiveAndPreventiveActionsController
 		return "capa_report";
 	}
 	
+	
+	//delete a record for admin setup
+	@RequestMapping(value={"/correctiveactionsdelete"}, method = RequestMethod.GET)
+	public String delete_correctiveactions(ModelMap model, Principal principal,HttpSession session )
+	{
+		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
+	//	model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+				
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("button","close");
+	      
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    return "correctiveactionsdelete";
+	}
+
+	@RequestMapping(value={"/search_correctiveaction"}, method = RequestMethod.GET)
+	
+	public String search_correctiveaction(@RequestParam("capa_requestor") String capa_requestor,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
+	{
+	
+	
+		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_requestor,request_date,action));
+		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		return "correctiveactionsdelete";
+
+
 }
+
+
+		@RequestMapping(value={"/deletecorrectiveactions"}, method = RequestMethod.POST)
+	public String deleteSelectedcorrectiveactions(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+	{	
+		session.removeAttribute("correctiveAndPreventiveActions");
+		session.removeAttribute("correctiveAndPreventiveActions1");
+
+		String[] SelectedIDs=new String[100];
+		SelectedIDs=request.getParameterValues("chkUser");
+		for(String id:SelectedIDs)
+		{
+		System.out.println(id);
+		
+		//formDAO.deleteParticipant(id,principal.getName());
+		correctiveAndPreventiveActionsDAO.delete_correctiveAndPreventiveActions(id);
+		}
+		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
+		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		
+		model.addAttribute("menu","admin");
+		return "correctiveactionsdelete";
+		
+	}	
+	
+ 	}

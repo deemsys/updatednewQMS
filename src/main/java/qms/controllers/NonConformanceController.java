@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
+import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.NonConformanceDAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
@@ -343,4 +344,82 @@ public class NonConformanceController {
 		return "view_correctiveactions";
 	}
 
-	}
+	//delete a record for admin setup
+		@RequestMapping(value={"/nonconformancedelete"}, method = RequestMethod.GET)
+		public String delete_nonconformance(ModelMap model, Principal principal,HttpSession session )
+		{
+			session.removeAttribute("nonconformance");
+			session.removeAttribute("nonconformance1");
+			NonConformanceForm nonConformanceForm = new NonConformanceForm();
+			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+		//	model.addAttribute("nonConformanceForm",nonConformanceForm);
+					
+		  	model.addAttribute("noofrows",5);    
+		   //narrativereportForm.getNarrativereport().size()
+		    model.addAttribute("menu","admin");
+		    model.addAttribute("button","close");
+		      
+		    model.addAttribute("menu","admin");
+		    model.addAttribute("success","false");
+		    model.addAttribute("button","close");
+		    return "nonconformancedelete";
+		}
+
+		@RequestMapping(value="/findnonconformances",method=RequestMethod.GET)		
+		public String findnonconformance(HttpServletRequest request,HttpSession session,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model)
+		{
+		
+			System.out.println("find");
+			session.setAttribute("id", id);
+			session.setAttribute("type_of_nonconformance", type_of_nonconformance);
+		
+			if(id=="" && type_of_nonconformance=="")
+			{
+				NonConformanceForm nonConformanceForm = new NonConformanceForm();
+				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
+
+				model.addAttribute("nonConformanceForm",nonConformanceForm);
+				model.addAttribute("menu", "nonconformance");
+				System.out.println("finding....");
+				return "nonconformancedelete";
+			}
+			else
+			{
+				System.out.println("searching started.......");
+				NonConformanceForm nonConformanceForm = new NonConformanceForm();
+				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
+
+				model.addAttribute("nonConformanceForm",nonConformanceForm);
+				model.addAttribute("menu", "nonconformance");
+				System.out.println("finding....");
+				return "nonconformancedelete";
+						
+			}
+			}
+
+
+			@RequestMapping(value={"/deletenonconformance"}, method = RequestMethod.POST)
+		public String deleteSelectednonconformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+		{	
+			session.removeAttribute("nonconformance");
+			session.removeAttribute("nonconformance1");
+
+			String[] SelectedIDs=new String[100];
+			SelectedIDs=request.getParameterValues("chkUser");
+			for(String id:SelectedIDs)
+			{
+			System.out.println(id);
+			
+			//formDAO.deleteParticipant(id,principal.getName());
+			nonConformanceDAO.delete_nonconformance(id);
+			}
+			NonConformanceForm nonConformanceForm = new NonConformanceForm();
+			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+			model.addAttribute("nonConformanceForm",nonConformanceForm);
+	     
+			model.addAttribute("menu","admin");
+			return "nonconformancedelete";
+			
+		}	
+		
+	 	}

@@ -43,9 +43,9 @@ else
   <ul class="horizmenu">
 						
 	
-					<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
 								<a href="documentdelete" class="<c:choose>
-								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Document
 									
 								</a>
@@ -64,7 +64,8 @@ else
 									
 								</a>
 							</li>
-							<li  style=" float:left;text-transform:uppercase;">
+					
+							<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
 								<a href="nonconformancedelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									NonConformance
@@ -78,7 +79,7 @@ else
 							</li>
 							<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
 								<a href="employeesdelete" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Employees
 								</a>
 							</li>
@@ -107,52 +108,75 @@ else
 								</a>
 							</li>
 							
+							
+							
   </div>
 </td>
 </tr>
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete Documents</h2>
+							<h2>Delete Employees</h2>
 						</div>
 						 <div class="contentbox">
-						 <form action="findDocuments" method="get">
-						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
-							
-							
+						 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
+							<form action="findemployees" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="15%"> Document Type: </td>
-							    <td><select name="document_type" id="search_document_type" class="input_cmbbx1" style="width:200px;">
-              					<option value="">--Select--</option>
-                				<c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
-        				       <option value="${documenttype.document_type}" <c:if test="${documenttype.document_type==documentMain}"><c:out value="selected"></c:out></c:if>>${documenttype.document_type}</option>
-			                  </c:forEach> </select></td>
-               
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
-							    <td align="left" valign="middle" width="10%">
-							    <select name="search_process" id="search_process"  class="input_cmbbx1" style="width:200px;">
-               					<option value="">--Select--</option>
-              					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-              					 <option value="${processes.process_name}" <c:if test="${processes.process_name==documentMain1}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
-             				  </c:forEach>
-               					</select></td>   
-							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  "></td>
-							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
-							 </tr>
-							</table>
-							
-						</div></form>
-					<form action="deletedocument" name="dashboard" onsubmit="return validate()" method="POST">
+							    <td align="left" valign="middle" width="10%"> Type&nbsp;</td>
+							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
+							     -->
+							     <td valign="top" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+                 	<option value="">--Select--</option>
+				                  									
+                  										<option
+															<c:if test="${Employee.type_of_training eq 'Classroom'}"><c:out value="Selected"/></c:if>
+															value="Classroom">Classroom</option>
+														<option
+															<c:if test="${Employee.type_of_training eq 'Hands on'}"><c:out value="Selected"/></c:if>
+															value="Hands on">Hands on</option>
+														</select></td>
+                
+							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
+							    <td valign="top" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+                  											<option value="">--Select--</option>
+				                  									
+                  										<option
+															<c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
+															value="Education">Education</option>
+														<option
+															<c:if test="${Employee.qualified_by eq 'Experience'}"><c:out value="Selected"/></c:if>
+															value="Experience">Experience</option>
+														<option
+															<c:if test="${Employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if>
+															value="Training">Training</option>
+														
+															</select><span class="err"><form:errors path="Employee.qualified_by"></form:errors></span></td>
+                <!-- 
+							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
+				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer"></td>
+							  
+	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
+	 -->						  
+							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Find"></td>
+							     <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
+							  </tr>
+							  </table>
+							  </form>
+							  </div>
+				
+					<form action="deleteemployees" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="10%">select</td>
-									<td valign="top" align="left" width="10%">Document Id</td>
-									<td valign="top" align="left" width="10%">Document Type</td>
-									<td valign="top" align="left" width="10%">Process Area</td>
-									<td valign="top" align="left" width="10%">Media Type</td>		
-	          						<td valign="top" align="center" width="15%">External Document(Y/N)</td>
-									<td valign="top" align="left" width="10%"></td>
+								<td valign="top" align="left" width="10%">Select</td>
+								<td valign="top" align="left" width="20%">Employee&nbsp;ID</td>
+					         	<td valign="top" align="left" width="25%">Name</td>
+					         	<td valign="top" align="left" width="20%">Type</td>
+								<td valign="top" align="left" width="20%">Qualified By</td>
+								<td valign="top" align="left" width="20%">Trainer</td>
+          						<td valign="top" align="left" width="20%">Attachments</td>
+          						<td valign="top" align="left" width="20%"></td>
 									
 									
 									</tr>
@@ -160,38 +184,28 @@ else
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
 							       		
-									<c:forEach items="${documentMainForm.documentMains}" var="documentMains" varStatus="status">
+									<c:forEach items="${employeeForm.employees}" var="employees" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${documentMains.document_id}"/></td>
+							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${employees.employee_id}"/></td>
 					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
-									        <td valign="top" align="left" width="10%">${documentMains.document_id}</td>
-									         <td valign="top" align="left" width="10%">${documentMains.document_type}</td>
-											<td valign="top" align="left" width="10%">${documentMains.process}</td>
+									        <td valign="top" align="left" width="10%">${employees.employee_id}</td>
+									        <td valign="top" align="left" width="15%">${employees.name}</td>
+											<td valign="top" align="left" width="10%">${employees.type_of_training}</td>											
+											<td valign="top" align="left" width="10%">${employees.qualified_by}</td>											
+											<td valign="top" align="left" width="10%">${employees.trainer}</td>
 											<c:choose>
-											<c:when test="${documentMains.media_type=='electronic'}">
-											<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a></td>
+											<c:when test="${employees.attachment_name!='null'}">
+											<td valign="top" align="left" width="10%"><a href="<c:out value="downloademployeefile?eid=${employees.employee_id}"></c:out>">Download</a></td>
 										</c:when>
-										<c:when test="${documentMains.media_type=='hardcopy'}">
-										<td valign="top" align="left" width="10%">Hard Copy </td>
-										</c:when>
-										<c:otherwise>
-										<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
+										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
 										</c:otherwise>
-										</c:choose>	
-											<td valign="top" align="center" width="15%">
-											<c:choose>
-											<c:when test="${documentMains.external=='Yes'}">
-											<c:out value="Yes"></c:out>
-											</c:when>	
-											<c:otherwise>
-											<c:out value="No"></c:out>
-											</c:otherwise>							
-											</c:choose>
-											
+										</c:choose>		
+												<td valign="top" align="left" width="15%">
+												
 											
 											
 											<td valign="top" align="left" width="15%">
@@ -241,7 +255,7 @@ else
                   <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise> --%>
-                  <li class="page"><a href="view_form" class="paging_select">Back</a></li>
+                  <li class="page"><a href="viewemployees" class="paging_select">Back</a></li>
                   
            <%--    </c:otherwise>
               </c:choose>			 --%>		

@@ -599,9 +599,11 @@ public class MaintenanceDAO extends AbstractExcelView
 		try {
 			String cmd_delete = "delete from tbl_maintenance where equipment_id='"+ equipment_id + "'";
 			String cmd_delete1 = "delete from tbl_maintenancechild where equipmentid='"+ equipment_id + "'";
+			String admin_delete = "delete from tbl_maintenancechild where equipmentid='"+equipment_id+"'";
 			
 			statement.execute(cmd_delete);
 			statement.execute(cmd_delete1);
+			statement.execute(admin_delete);
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			releaseResultSet(resultSet);

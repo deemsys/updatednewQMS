@@ -493,6 +493,84 @@ public class EmployeeController
 		return modelAndView ;
 	}
 
-	
+	//delete a record for admin setup
+	@RequestMapping(value={"/employeesdelete"}, method = RequestMethod.GET)
+	public String delete_employees(ModelMap model, Principal principal,HttpSession session )
+	{
+		session.removeAttribute("employees");
+		session.removeAttribute("employees1");
+		EmployeeForm employeeForm=new EmployeeForm();
+		employeeForm.setEmployees(employeeDAO.getEmployees());
+		//model.addAttribute("employeeForm",employeeForm);
+		
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("button","close");
+	      
+	    model.addAttribute("menu","admin");
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    return "employeesdelete";
+	}
 
-}
+	@RequestMapping(value="/findemployees",method=RequestMethod.GET)		
+	public String findemployees(HttpServletRequest request,HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)
+	{
+	
+		System.out.println("find");
+		session.setAttribute("trainer", trainer);
+		session.setAttribute("type", type);
+		session.setAttribute("qualifiedby",qualifiedby);
+
+		if(type=="" && qualifiedby=="" && trainer=="")
+		{
+			EmployeeForm employeeForm = new EmployeeForm();
+			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
+			System.out.println(type);
+			System.out.println(qualifiedby);
+			System.out.println(trainer);
+			model.addAttribute("employeeForm",employeeForm);
+			model.addAttribute("menu", "employee");
+			System.out.println("finding....");
+			return "employeesdelete";
+		}
+		else
+		{
+			System.out.println("searching started.......");
+		EmployeeForm employeeForm = new EmployeeForm();
+		employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
+        model.addAttribute("employeeForm", employeeForm);
+        model.addAttribute("menu","employee");
+        System.out.println("finding result");
+        model.addAttribute("menu","employees");
+		return "employeesdelete";		
+		}
+		}
+
+
+		@RequestMapping(value={"/deleteemployees"}, method = RequestMethod.POST)
+	public String deleteSelectedemployees(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+	{	
+		session.removeAttribute("employees");
+		session.removeAttribute("employees1");
+
+		String[] SelectedIDs=new String[100];
+		SelectedIDs=request.getParameterValues("chkUser");
+		for(String id:SelectedIDs)
+		{
+		System.out.println(id);
+		
+		//formDAO.deleteParticipant(id,principal.getName());
+		employeeDAO.delete_employee(id);
+		}
+		EmployeeForm employeeForm=new EmployeeForm();
+		employeeForm.setEmployees(employeeDAO.getEmployees());
+		model.addAttribute("employeeForm",employeeForm);
+
+		model.addAttribute("menu","admin");
+		return "employeesdelete";
+		
+	}	
+	
+ 	}
