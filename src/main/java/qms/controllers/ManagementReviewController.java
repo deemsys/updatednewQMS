@@ -119,8 +119,9 @@ public String edit_review(@RequestParam("review_id") String review_id,ModelMap m
 //For view review
 
 @RequestMapping(value = "/viewmanagementreview", method = RequestMethod.GET)
-public String view_review(ModelMap model, Principal principal) {
+public String view_review(HttpSession session,ModelMap model, Principal principal) {
 		ManagementReviewForm managementreviewform= new ManagementReviewForm();
+		session.removeAttribute("categoryvalue");
 	/*managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());*/	
 	model.addAttribute("menu","managementreview");
 	model.addAttribute("noofrows",5);     
@@ -130,7 +131,7 @@ public String view_review(ModelMap model, Principal principal) {
 	        model.addAttribute("success","false");
 	        model.addAttribute("currentpage",1);
 
-	        model.addAttribute("managementreviewform", managementreviewform);
+	       // model.addAttribute("managementreviewform", managementreviewform);
 
 	return "view_managementreview";
 }
@@ -304,9 +305,13 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	//search for record in view 
 
 @RequestMapping(value={"/search_review"}, method = RequestMethod.GET)
-public String searchmanagementreviews(@RequestParam("review_id") String review_id,@RequestParam("category") String category,@RequestParam("management_review_date") String management_review_date,ModelMap model, Principal principal)
+public String searchmanagementreviews(HttpSession session,@RequestParam("review_id") String review_id,@RequestParam("category") String category,@RequestParam("management_review_date") String management_review_date,ModelMap model, Principal principal)
 {
 	System.out.println(review_id);
+	
+	session.setAttribute("reviewid",review_id);
+	session.setAttribute("categoryvalue",category);
+	session.setAttribute("managementreviewdate",management_review_date);
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
 	model.addAttribute("managementreviewform", managementreviewform);

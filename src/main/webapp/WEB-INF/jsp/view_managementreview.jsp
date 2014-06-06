@@ -64,27 +64,45 @@
 						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 						<form action="search_review" name="dashboard" method="GET">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+						
 							  <tr>
 							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="review_id" class="input_txtbox" id="id"></td>
+							    
+							 <%--    
+							    <input type="text" name="supplier_name" class="input_txtbox" id="suppliername"
+							     <c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
+        				       
+							     value="${supplierperformance.supplier_name}" <c:if test="${supplierperformance.supplier_name==supplier}"></c:if>
+			                  </c:forEach>> </td> --%>
+							    
+							    
+							    <td align="left" valign="middle" width="10%">
+							    <input type="text" name="review_id" class="input_txtbox" id="id"   <c:forEach items="${managementreviewform.managementreviewdetails}" var="managementreviewDetails" varStatus="status">
+        				       
+							     value="${reviewid}" <c:if test="${managementreviewDetails.review_id==reviewid}"></c:if>
+			                  </c:forEach>> </td>
 							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx2" id="datepicker"></td>
+							    <td align="left" valign="middle" width="10%">
+							    
+							    <input type="text" name="management_review_date" class="input_txtbx2" id="datepicker"<c:forEach items="${managementreviewform.managementreviewdetails}" var="managementreviewDetails" varStatus="status">
+							     value="${managementreviewdate}" <c:if test="${managementreviewDetails.management_review_date==managementreviewdate}"></c:if>
+			                  </c:forEach>></td>
 							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
 							    <td align="left" valign="middle" width="10%">
 				                  
 							    <select name="category" class="input_cmbbx1">
 				                  		<option value="">--Select--</option>
 						                      
-						                  <option  value="audits" >Audits</option>
-						                  <option  value="corrective and prev actions" >Corrective and Prev Actions</option>
-										  <option value="cost of non conformance" >Cost of NonConformance</option>
-										  <option  value="customer satisfaction" >Customer Satisfaction</option>
-										  <option  value="suppliers" >Suppliers</option>
-										  <option  value="human resources" >Human Resources</option>
-										  <option  value="product/service conformity" >Product/Service Conformity</option>
-										  <option  value="previous items" >Previous Items</option>
-										  <option  value="recommendations for improvement" >Recommendations for Improvement</option>
-										  <option  value="significant changes to the QMS" >Significant changes to the QMS</option>	
+						                  <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>
+						                  <option <c:if test="${categoryvalue eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >Corrective and Prev Actions</option>
+										  <option <c:if test="${categoryvalue eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >Cost of NonConformance</option>
+										  <option  <c:if test="${categoryvalue eq 'customer satisfaction'}"><c:out value="Selected"/></c:if> value="customer satisfaction" >Customer Satisfaction</option>
+										  <option <c:if test="${categoryvalue eq 'suppliers'}"><c:out value="Selected"/></c:if>  value="suppliers" >Suppliers</option>
+										  <option  <c:if test="${categoryvalue eq 'human resources'}"><c:out value="Selected"/></c:if> value="human resources" >Human Resources</option>
+										  <option <c:if test="${categoryvalue eq 'product/service conformity'}"><c:out value="Selected"/></c:if>  value="product/service conformity" >Product/Service Conformity</option>
+										  <option <c:if test="${categoryvalue eq 'previous items'}"><c:out value="Selected"/></c:if>  value="previous items" >Previous Items</option>
+										  <option <c:if test="${categoryvalue eq 'recommendations for improvement'}"><c:out value="Selected"/></c:if>  value="recommendations for improvement" >Recommendations for Improvement</option>
+										  <option <c:if test="${categoryvalue eq 'significant changes to the QMS'}"><c:out value="Selected"/></c:if>  value="significant changes to the QMS" >Significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>

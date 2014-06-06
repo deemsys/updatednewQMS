@@ -643,7 +643,29 @@ public List<ManagementReview> search_managementreviews(String review_id,String c
 	}
 	
 		try {
-			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"'or t2.category='"+category+"'or t1.management_review_date='"+management_review_date+"'");  
+			
+			if(!review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+			{
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'and t1.management_review_date='"+management_review_date+"'");  
+			}
+			else if(!review_id.equals("") && !category.equals("") && management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'");  
+
+			}
+			else if(!review_id.equals("") && category.equals("") && !management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t1.management_review_date='"+management_review_date+"'");  
+
+			}
+			else if(review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t2.category='"+category+"' and t1.management_review_date='"+management_review_date+"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' or t2.category='"+category+"' or t1.management_review_date='"+management_review_date+"'");
+			}
 			while (resultSet.next()) {
 			managementreviewdetails.add(new ManagementReview(resultSet
 						.getString("review_id"), resultSet
