@@ -70,11 +70,16 @@
 								Type Of Report :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
-								<input type="radio" name="management_report_type" value="0" id="id_type_managementreviewminutes" checked/>Management Review Minutes<br/>
-								<input type="radio" name="management_report_type" value="1" id="id_type_upcomingmanagementreviewmemo"/>Upcoming Management Review Memo<br/>
-								<input type="radio"  name="management_report_type" value="2" id="id_type_actionlistbetweendates"/>Action List Between Dates<br/>
-								<input type="radio"  name="management_report_type" value="3" id="id_type_pastdueactionlist"/>Past Due Action List<br/>
-								<input type="radio" name="management_report_type" value="4" id="id_type_listofcontinuousimprovementprojects"/>List of Continuous Improvement Projects<br/>
+								<input type="radio" name="management_report_type" value="0" id="id_type_managementreviewminutes" onclick="two_dates()"checked/>Management Review Minutes<br/>
+								<input type="radio" name="management_report_type" value="1" id="id_type_upcomingmanagementreviewmemo"onclick="two_dates()"/>Upcoming Management Review Memo<br/>
+								<input type="radio"  name="management_report_type" value="2" id="id_type_actionlistbetweendates" onclick="two_dates()"/>Action List Between Dates<br/>
+								<lable id ="twodates"style="display:none;">Start Date:
+                  				<input type="text" name="start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />                
+                  				End Date:
+                  				<input type="text" name="end_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
+                  				</lable>
+								<input type="radio"  name="management_report_type" value="3" id="id_type_pastdueactionlist"/onclick="two_dates()">Past Due Action List<br/>
+								<input type="radio" name="management_report_type" value="4" id="id_type_listofcontinuousimprovementprojects"/onclick="two_dates()">List of Continuous Improvement Projects<br/>
 							</td>
 							</tr>
 							<tr class="row2">
@@ -173,6 +178,19 @@ else
     }
     
 }
+function two_dates()
+{
+	var lableid = document.getElementById('id_type_actionlistbetweendates').checked;
+	if(lableid)
+		{
+	
+	document.getElementById('twodates').style.display ='block';
+		}
+	else{
+		
+		document.getElementById('twodates').style.display ='none';
+	}
+	}
 function toggle3(value){
 	
    var e1=document.getElementById("userdefined_name");
@@ -227,9 +245,21 @@ $('#select_all').change(function() {
 	 
 		}
 		
+		
 </script>
 
-
+ <script>
+ $(function() {
+	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
+        });
+ 
+</script>
+   <script>
+ $(function() {
+           $( "#datepicker2" ).datepicker({dateFormat: 'yy-mm-dd'});
+         });
+ 
+</script>
 
 
   <jsp:include page="footer.jsp"></jsp:include>

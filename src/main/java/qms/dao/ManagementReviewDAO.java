@@ -15,6 +15,7 @@ import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.apache.poi.hssf.record.formula.functions.Now;
@@ -227,19 +228,59 @@ public class ManagementReviewDAO extends AbstractExcelView
 		@SuppressWarnings("unchecked")
 		List<ManagementReview> managementReviews = (List<ManagementReview>) model.get("managementReviews");
 		String[] fields=(String[])model.get("fields");
-		
+		HttpSession session = request.getSession();
 		//System.out.println("came inside report");
-        setExcelHeader(excelSheet,style,fields);
+        setExcelHeader(excelSheet,style,fields,session);
 		
-		setExcelRows(excelSheet,managementReviews,fields,style2);
+		setExcelRows(excelSheet,managementReviews,fields,style2,session);
 		
 	}
 	//creating header records
-	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
+	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields,HttpSession session) {
 		HSSFRow excelHeader = excelSheet.createRow(0);	
 	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
 		int i=0;
-		String[] option2 = {};
+		String value= (String) session.getAttribute("option");
+		System.out.println("session option = "+value);
+		if(value == "0")
+		{
+			for (String field : fields) {
+			if(field.equals("management_review_date"))
+			{
+				excelHeader.createCell(i).setCellValue("Management review date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("attendee_list_with_titles"))
+			{
+				excelHeader.createCell(i).setCellValue("Attendee list with titles");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			}
+		}
+		else if(value =="2")
+		{
+			for (String field : fields) {
+			if(field.equals("responsibility"))	
+			{
+				excelHeader.createCell(i).setCellValue("Responsibility");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else if(field.equals("action_due_date"))
+			{
+				excelHeader.createCell(i).setCellValue("Action due date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}else  if(field.equals("completion_date"))	
+			{
+				excelHeader.createCell(i).setCellValue("Completion Date");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			}
+		}
+		else{
 		for (String field : fields) {
 			
 			/*if(field.equals("review_id"))
@@ -321,6 +362,7 @@ public class ManagementReviewDAO extends AbstractExcelView
 				i++;
 			}
 		}
+		}
 	
 	}
 	
@@ -329,9 +371,11 @@ public class ManagementReviewDAO extends AbstractExcelView
 	
 	
 	//creating cell records
-	public void setExcelRows(HSSFSheet excelSheet, List<ManagementReview> managementReviews,String[] fields,CellStyle style2){
+	public void setExcelRows(HSSFSheet excelSheet, List<ManagementReview> managementReviews,String[] fields,CellStyle style2,HttpSession session){
 		int record = 1;
 		int i=0;
+		String value= (String) session.getAttribute("option");
+		System.out.println("session option = "+value);
 		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
 	    int currentDay = localCalendar.get(Calendar.DATE);
 	    int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
@@ -342,6 +386,51 @@ public class ManagementReviewDAO extends AbstractExcelView
 			HSSFRow excelRow = excelSheet.createRow(record++);
 	//		excelRow.setRowStyle((HSSFCellStyle) style2);
 		i=0;
+		if(value == "0")
+		{
+			for (String field : fields) {
+				if(field.equals("management_review_date"))
+				{
+					excelRow.createCell(i).setCellValue(
+							managementReview.getManagement_review_date());
+
+					i++;
+				}
+				else
+					if(field.equals("attendee_list_with_titles"))
+				{
+					excelRow.createCell(i).setCellValue(
+							managementReview.getAttendee_list_with_titles());
+							i++;
+				}
+			}
+			
+		}
+		if(value == "2")
+		{
+			for (String field : fields) {
+				 if(field.equals("responsibility"))	
+				{
+					excelRow.createCell(i).setCellValue(
+							managementReview.getResponsibility());
+					i++;
+				}else if(field.equals("action_due_date"))	
+				{
+					excelRow.createCell(i).setCellValue(
+							managementReview.getAction_due_date());
+					i++;
+				}
+				else if(field.equals("completion_date"))	
+				{
+					excelRow.createCell(i).setCellValue(
+							managementReview.getCompletion_date());
+					i++;
+				}
+			}
+			
+		}
+		else{
+	
 				for (String field : fields) {
 					
 				/*	if(field.equals("review_id"))
@@ -429,6 +518,7 @@ public class ManagementReviewDAO extends AbstractExcelView
 					}
 					
 				}
+		}
 				
 		}
 	}
@@ -823,7 +913,7 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 		String cmd_select = "select * from tbl_managementreview";
 		
 		if(type.equals("management_review_minutes"))
-			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";			
+			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date ='"+currentdate+"')";			
 		
 		else if (type.equals("upcoming_management_review_memo")) {
 			String s = "select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '+olddate+' AND '+currentdate+')" ;
@@ -873,7 +963,80 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	}
 	return managementreviewdetails;
 }
+public  List<ManagementReview> getmanagement_bytype(String type,String startdate,String enddate){
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
 
+	 Date date = new Date();
+	    Calendar c = Calendar.getInstance();
+	    c.setTime(date);
+	    System.out.println("Day of week = "+c.get(Calendar.DAY_OF_WEEK));
+	    System.out.println("first day of week = "+c.getFirstDayOfWeek());
+	    int i = c.get(Calendar.DAY_OF_WEEK);
+	    System.out.println("value 0f i = "+i);
+	    int currentDay = c.get(Calendar.DATE);
+	    int currentMonth = c.get(Calendar.MONTH) + 1;
+	    int currentYear = c.get(Calendar.YEAR);
+	    String currentdate = currentYear+"-0"+currentMonth+"-0"+currentDay;
+	    
+	    Date start = c.getTime();
+	    c.add(Calendar.DATE, -13);
+	    Date end = c.getTime();
+	    System.out.println(start + " - " + end);
+	    int oldDay = c.get(Calendar.DATE);
+	    int oldMonth = c.get(Calendar.MONTH) + 1;
+	    int oldYear = c.get(Calendar.YEAR);
+	    String olddate = oldYear+"-0"+oldMonth+"-"+oldDay;
+	    System.out.println(olddate);
+	    System.out.println(currentdate);
+    
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	try {
+		String cmd_select = "select * from tbl_managementreview";
+		
+		if (type.equals("action_list_beween_dates")) {
+			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '"+startdate+"' AND '"+enddate+"')";//doubts
+		}
+		
+		
+		System.out.println(cmd_select);
+		resultSet = statement.executeQuery(cmd_select);
+		while (resultSet.next()) {			
+			managementreviewdetails.add(new ManagementReview(resultSet
+					.getString("review_id"), resultSet
+					.getString("management_review_date"), resultSet
+					.getString("attendee_list_with_titles"), resultSet
+					.getString("next_management_review_by"), resultSet
+					.getString("category"), resultSet
+					.getString("assessment"), resultSet
+					.getString("report_link"), resultSet
+					.getString("action_needed"), resultSet
+					.getString("action_detail"), resultSet
+					.getString("action_due_date"),resultSet
+					.getString("responsibility"),resultSet
+					.getString("completion_date"),resultSet
+					.getString("continuous_improvement_project")));
+		}
+
+	} catch (Exception e) {
+		System.out.println(e.toString());
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	} finally {
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	}
+	return managementreviewdetails;
+}
 // to DELETE SPECIFIC REVIEW
 public boolean delete_managementreview(String review_id) {
 	Connection con = null;

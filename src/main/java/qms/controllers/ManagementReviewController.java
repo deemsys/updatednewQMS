@@ -248,33 +248,45 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	
 	//ManagementReview Report Generation
 	@RequestMapping(value = "/generate_managementreview_report", method = RequestMethod.POST)
-	public ModelAndView generatemanagementreview_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response) 
+	public ModelAndView generatemanagementreview_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response,HttpSession session) 
 	{
 		String start = null,end = null;
+		String option = "";
 		String[] fields={"management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
+		String[] option0 = {"management_review_date","attendee_list_with_titles"};
+		String[] option2 = {"responsibility","action_due_date","completion_date"};
 		System.out.println(request.getParameter("type_of_report"));
+		System.out.println(request.getParameter("start_date"));
+		System.out.println(request.getParameter("end_date"));
+		String startdate  =request.getParameter("start_date");
+		String enddate = request.getParameter("end_date");
 		java.util.List<ManagementReview> managementReviews=new ArrayList<ManagementReview>();
 			switch(Integer.parseInt(request.getParameter("management_report_type")))
 			  {
 				  case 0:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("management_review_minutes");
+					  option ="0";
 					  //title="management_review_minutes";
 					  break;
 				  case 1:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("upcoming_management_review_memo");
 					  //title="upcoming_management_review_memo";
+					  option ="1";
 					  break;
 				  case 2:
-					  managementReviews=managementreviewDAO.getmanagement_bytype("action_list_beween_dates");
+					  managementReviews=managementreviewDAO.getmanagement_bytype("action_list_beween_dates",startdate,enddate);
 					  //title="action_list_beween_dates";
+					  option ="2";
 					  break;
 				  case 3:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("past_due_action_list");
 					  //title="past_due_action_list";
+					  option ="3";
 					  break;
 				  case 4:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("list_of_continuous_improv_projects");
 					  //title="list_of_continuous_improv_projects";
+					  option ="4";
 					  break;
 				  default:
 					  break;
@@ -291,14 +303,35 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		else
 			
 		response.setHeader("Content-Disposition","attachment;filename='ManagementReview_Report'");
-		
-		
+		if(option == "0")
+		{
+			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+			session.setAttribute("option",option);
+			modelAndView.addObject("fields",option0);
+			return modelAndView ;
+			
+		}
+		if(option == "1")
+		{
+			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+			modelAndView.addObject("fields",fields);
+			return modelAndView ;
+		}
+		if(option == "2")
+		{
+			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+			session.setAttribute("option",option);
+			modelAndView.addObject("fields",option2);
+			return modelAndView ;
+		}
+		else{
 		ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
 		
 		modelAndView.addObject("fields",fields);
-		
-		System.out.println("now ok::::");
 		return modelAndView ;
+		}
+		
+		
 	}
 	
 	
