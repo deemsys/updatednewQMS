@@ -85,8 +85,8 @@ public String insert_managementreview(HttpSession session,@ModelAttribute("Manag
 	}
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
-	model.addAttribute("managementreviewform", managementreviewform);
-
+	//model.addAttribute("managementreviewform", managementreviewform);
+	  model.addAttribute("success","true");
 
 	return "view_managementreview";
 }
@@ -122,6 +122,8 @@ public String edit_review(@RequestParam("review_id") String review_id,ModelMap m
 public String view_review(HttpSession session,ModelMap model, Principal principal) {
 		ManagementReviewForm managementreviewform= new ManagementReviewForm();
 		session.removeAttribute("categoryvalue");
+		session.removeAttribute("reviewid");
+		session.removeAttribute("managementreviewdate");
 	/*managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());*/	
 	model.addAttribute("menu","managementreview");
 	model.addAttribute("noofrows",5);     
@@ -129,6 +131,7 @@ public String view_review(HttpSession session,ModelMap model, Principal principa
 	    model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.getnoofmanagementreport() * 1.0 / 5));	 
 	        model.addAttribute("button","viewall");
 	        model.addAttribute("success","false");
+	     
 	        model.addAttribute("currentpage",1);
 
 	       // model.addAttribute("managementreviewform", managementreviewform);
@@ -148,7 +151,7 @@ public String viewmanagementreport_page(HttpServletRequest request,@RequestParam
  model.addAttribute("currentpage",page);
  model.addAttribute("menu","managementreview");
  model.addAttribute("button","viewall");
- 
+ model.addAttribute("success","true");
  return "view_managementreview";
  
 	
@@ -205,8 +208,8 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	model.addAttribute("menu", "managementreview");
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
-	model.addAttribute("managementreviewform", managementreviewform);
-
+	//model.addAttribute("managementreviewform", managementreviewform);
+	 model.addAttribute("success","true");
 	model.addAttribute("menu","managementreview");
 	return "view_managementreview";
 }
@@ -221,6 +224,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 		model.addAttribute("managementreviewform", managementreviewform);
 		model.addAttribute("menu","managementreview");
+		 model.addAttribute("success","true");
 		return "view_managementreview";
 		
  	}
@@ -348,6 +352,7 @@ public String searchmanagementreviews(HttpSession session,@RequestParam("review_
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
 	model.addAttribute("managementreviewform", managementreviewform);
 	model.addAttribute("menu","managementreview");
+	 
 	return "view_managementreview";
 
 }
@@ -370,6 +375,7 @@ public String delete_management(ModelMap model, Principal principal,HttpSession 
     model.addAttribute("menu","admin");
     model.addAttribute("success","false");
     model.addAttribute("button","close");
+    model.addAttribute("success","true");
     return "managementdelete";
 }
 

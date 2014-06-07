@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" /> 	
@@ -37,21 +38,20 @@
 							</ul>
 			</div></td>
 	</tr>
-	<%-- <tr>
-		<c:if test="${success==true}">
+	<tr>
+		<c:if test="${success=='true'}">
 			<tr>
-				<td valign="top" align="left" style="padding: 5px 0 10px 0;">&nbsp;
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
+						
 						<p class="closestatus">
-							<a title="Close" href="maintenance_list">x</a>
+								<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Success!</span>.
+								<a title="Close" href="viewmanagementreview" style="color:red;">X</a>
 						</p>
-						<p>
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.
-						</p>
-					</div>
+					</div></td>
 			</tr>
 		</c:if>
-	</tr> --%>
+	</tr> 
 
 <!-- <table cellpadding="0" cellspacing="0" border="0" width="98%"
 	class="margin_table">
@@ -68,25 +68,14 @@
 							  <tr>
 							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
 							    
-							 <%--    
-							    <input type="text" name="supplier_name" class="input_txtbox" id="suppliername"
-							     <c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
-        				       
-							     value="${supplierperformance.supplier_name}" <c:if test="${supplierperformance.supplier_name==supplier}"></c:if>
-			                  </c:forEach>> </td> --%>
-							    
+							
 							    
 							    <td align="left" valign="middle" width="10%">
-							    <input type="text" name="review_id" class="input_txtbox" id="id"   <c:forEach items="${managementreviewform.managementreviewdetails}" var="managementreviewDetails" varStatus="status">
-        				       
-							     value="${reviewid}" <c:if test="${managementreviewDetails.review_id==reviewid}"></c:if>
-			                  </c:forEach>> </td>
+							    <input type="text" name="review_id" class="input_txtbox" id="id"  value="${reviewid}"> </td>
 							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
 							    <td align="left" valign="middle" width="10%">
 							    
-							    <input type="text" name="management_review_date" class="input_txtbx2" id="datepicker"<c:forEach items="${managementreviewform.managementreviewdetails}" var="managementreviewDetails" varStatus="status">
-							     value="${managementreviewdate}" <c:if test="${managementreviewDetails.management_review_date==managementreviewdate}"></c:if>
-			                  </c:forEach>></td>
+							    <input type="text" name="management_review_date" class="input_txtbx2" id="datepicker" value="${managementreviewdate}"></td>
 							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
 							    <td align="left" valign="middle" width="10%">
 				                  
@@ -127,7 +116,7 @@
 									<td valign="top" align="left" width="15%">Actions</td>						
 									</tr>
 
-					
+					 <c:if test="${fn:length(managementreviewform.managementreviewdetails) gt 0}">
 								<% int i=1; %>
 							      	<c:forEach items="${managementreviewform.managementreviewdetails}" var="managementreviewdetails" varStatus="status">
 							       		
@@ -149,7 +138,14 @@
 											</td>	
 											
 										</tr>
-							    </c:forEach>			
+							    </c:forEach>
+							    </c:if>	
+							    <c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>		
 						    		
 								 <!-- 	<div style="clear: both;"></div>
 								</div>

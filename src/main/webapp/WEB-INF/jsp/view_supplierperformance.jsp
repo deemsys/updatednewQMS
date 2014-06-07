@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 
 <html>
@@ -40,16 +41,23 @@
 				</td>
 				</tr>
 				<tr>
-				<!-- 	<div class="del_div">
-						<p><label style="padding: 0pt 20px 0pt 0pt;"><input type="submit" name="delete" value="" class="icon1" onclick="form.action='?do=deleteparticipant'" /></label></p>
-
-	          		</div>
-				</td> -->
+				
+		<c:if test="${success=='true'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+								<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Success!</span>.
+								<a title="Close" href="view_supplierperformance" style="color:red;">X</a>
+						</p>
+					</div></td>
 			</tr>
+		</c:if>
+	</tr> 
 			<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>View SupplierPerformance</h2>
+			          <h2>View Supplier Performance</h2>
 			        </div>
 			        <div class="contentbox">
  			        <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
@@ -58,11 +66,11 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Supplier Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbox" id="suppliername"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbox" id="suppliername" value="${suppliername}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Phone:</td>
-								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox"></td>							    
+								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox" value="${phone}"></td>							    
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox"value="${email}"></td>
 							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Find" name="findsupplierperformance" ></td>
 							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Clear" name="welcome" ></td>
 							  
@@ -81,23 +89,12 @@
 								<!-- <td valign="center" align="left" width="5%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="10%">&nbsp;Supplier ID</td>
 					         	<td valign="top" align="left" width="10%">Supplier Name</td>
-					         <!--	<td valign="top" align="left" width="10%">Category</td> -->
-								<!-- <td valign="top" align="left" width="15%">Address</td>
-          						<td valign="top" align="left" width="5%">City</td>
-          						<td valign="top" align="left" width="10%">State</td>
-          						<td valign="top" align="left" width="20%">Postal Code</td>
-          						<td valign="top" align="left" width="5%">Country</td>
-          						<td valign="top" align="left" width="10%">Website</td>
-          						<!-- <td valign="top" align="left" width="30%">Certified to</td> -->
-          				<!-- 		<td valign="top" align="left" width="15%">Contact name</td> -->
-          						<!-- <td valign="top" align="left" width="30%">Contact Title</td> -->
-          						<td valign="top" align="left" >Phone</td>
-          					<!-- 	<td valign="top" align="left" width="10%">Fax</td> -->
+					      	    <td valign="top" align="left" >Phone</td>
           						<td valign="top" align="left" >e_mail address</td>
           						<td valign="top" align="left" >Actions</td>
         					</tr>
 						
-						
+						 <c:if test="${fn:length(supplierPerformanceForm.supplierperformance) gt 0}">
 						<% int i=1; %>
 							       		
 									<c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
@@ -117,8 +114,13 @@
 											</td>
 											</tr>
 							    	</c:forEach>
-						    	
-						
+						    	</c:if>
+						 <c:if test="${fn:length(supplierPerformanceForm.supplierperformance) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>		
 						
 						</table>
 						</form>

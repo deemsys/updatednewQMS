@@ -64,7 +64,7 @@
         <td valign="top" align="left"><div>
          <font color="Red" size="+1"></font>
             <div class="headings altheading">
-              <h2>Add Management Review</h2>
+              <h2>Management Review Details</h2>
             </div>
             <div class="contentbox">
             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">

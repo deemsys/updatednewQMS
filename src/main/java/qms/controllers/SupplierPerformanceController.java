@@ -39,6 +39,9 @@ import qms.forms.SupplierPerformanceForm;;
 		@RequestMapping(value={"/view_supplierperformance"}, method = RequestMethod.GET)
 		public String show_supplierperformance(HttpSession session,HttpServletRequest request, ModelMap model, Principal principal )
 		{
+			session.removeAttribute("suppliername");
+			session.removeAttribute("phone");
+			session.removeAttribute("email");
 	    SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 	    model.addAttribute("menu","supplier");
 	    model.addAttribute("noofrows",5); 
@@ -50,7 +53,7 @@ import qms.forms.SupplierPerformanceForm;;
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
         
-	    model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+	  //  model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 	    
 		return "view_supplierperformance";
 	 	}
@@ -70,7 +73,7 @@ import qms.forms.SupplierPerformanceForm;;
 		    model.addAttribute("currentpage",page);
 		    model.addAttribute("menu","supplier");
 		    model.addAttribute("button","viewall");
-		    
+		    model.addAttribute("success","true");
 		    return "view_supplierperformance";
 		    
 			
@@ -88,7 +91,7 @@ import qms.forms.SupplierPerformanceForm;;
 		   //narrativereportForm.getNarrativereport().size()
 		    model.addAttribute("menu","supplier");
 		    model.addAttribute("button","close");
-		      
+		    model.addAttribute("success","true");
 		    	model.addAttribute("menu","supplier");
 		        model.addAttribute("success","false");
 		        model.addAttribute("button","close");
@@ -132,9 +135,10 @@ import qms.forms.SupplierPerformanceForm;;
 			supplierPerformanceDAO.insert_supplierperformance(supplierPerformance);
 			SupplierPerformanceForm supplierPerformanceForm= new SupplierPerformanceForm();
 			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
-			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+		//	model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 			model.addAttribute("id", supplierPerformanceDAO.get_maxid());
 			model.addAttribute("menu","supplier");
+			   model.addAttribute("success","true");
 			return "view_supplierperformance";
 			
 	 	}
@@ -155,9 +159,10 @@ import qms.forms.SupplierPerformanceForm;;
 			supplierPerformanceDAO.update_supplierperformance(supplierPerformance);
 			SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
 			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
-			model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
+		//	model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
 			model.addAttribute("success","true");
 			model.addAttribute("menu","supplier");
+			   model.addAttribute("success","true");
 			return "view_supplierperformance";
 
 	 	}
@@ -171,7 +176,7 @@ import qms.forms.SupplierPerformanceForm;;
 			SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 		    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
 		    model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-
+		    model.addAttribute("success","true");
 		    model.addAttribute("menu","supplier");
 			return "view_supplierperformance";
 			

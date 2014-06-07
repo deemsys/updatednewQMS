@@ -431,6 +431,7 @@ public class DocumentController {
 				model.addAttribute("documentMainForm", documentMainForm);
 				  model.addAttribute("menu","document");
 				  model.addAttribute("id", documentControlDAO.get_documentid());
+				  model.addAttribute("success","true");
 			    // revisionDocumentDAO.insert_revision(revisionDocument,documentMain1.getAuto_number(),documentMain1);
 					
 				
@@ -574,8 +575,9 @@ public class DocumentController {
 			
 			DocumentMainForm documentMainForm = new DocumentMainForm();
 			documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-			model.addAttribute("documentMainForm", documentMainForm);
+			//model.addAttribute("documentMainForm", documentMainForm);
 			  model.addAttribute("menu","document");
+			  model.addAttribute("success","true");
 			  model.addAttribute("id",documentControlDAO.get_documentid());
 			 revisionDocumentDAO.insert_revision(revisionDocument,documentMain.getAuto_number());
 			

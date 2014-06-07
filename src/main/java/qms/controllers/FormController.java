@@ -214,7 +214,7 @@ public class FormController
 			
 			FormForm formForm=new FormForm();
 		    formForm.setForm(formDAO.getform());
-		    model.addAttribute("formForm",formForm);
+		   // model.addAttribute("formForm",formForm);
              model.addAttribute("menu","document");
              model.addAttribute("id", formDAO.get_formid());
              revisionFormDAO.insert_revision(revisionForm,form.getAuto_no());
@@ -340,7 +340,7 @@ public class FormController
 				FormForm formForm=new FormForm();
 			   // formForm.setForm(formDAO.getform());
 				formForm.setForm(formDAO.search_form(process));
-			    model.addAttribute("formForm",formForm);
+			  //  model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
 	             
