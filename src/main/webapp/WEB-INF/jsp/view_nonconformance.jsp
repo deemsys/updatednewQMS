@@ -120,6 +120,7 @@
 <jsp:include page="footer.jsp"></jsp:include> --%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css"/ type="text/css">
 
@@ -172,26 +173,29 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%"> NC ID: </td>
-							    <td align="left" valign="middle"><input type="text" name="id" class="input_text" id="id"></td>
+							    <td align="left" valign="middle"><input type="text" name="id" class="input_text" id="id" value="${id}"></td>
 							    <td align="left" valign="middle">Type of Non Conformance:</td>
 							    <td valign="top" align="left" class="input_txt">
 				                  									<select name="type_of_nonconformance" id="type_of_nonconformance" class="input_cmbbx1">
 				                  										<option value="">--Select--</option>
 						                    							<option
+						                    							<c:if test="${'Product Quality' eq type}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Product Quality'}"><c:out value="Selected"/></c:if>
 																		value="Product Quality">Product Quality</option>
 																		<option
+																		<c:if test="${'Service Quality' eq type}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Service Quality'}"><c:out value="Selected"/></c:if>
 																		value="Service Quality">Service Quality</option>
 																		<option
+																		<c:if test="${'Late Delivery' eq type}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Late Delivery'}"><c:out value="Selected"/></c:if>
 																		value="Late Delivery">Late Delivery</option>
 																		<option
+																		<c:if test="${'Early Delivery' eq type}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Early Delivery'}"><c:out value="Selected"/></c:if>
 																		value="Early Delivery">Early Delivery</option>
 															
 																	</select></td>
-							   
 							 <!--    <td align="left" valign="middle"><input type="text" name="type_of_nonconformance" id="type_of_nonconformance" class="input_text"></td>
 							  --><!--    <td align="left" valign="middle">Product Id:</td>
 							    <td align="left" valign="middle"><input type="text" name="product_id" id="product_id" class="input_text"></td>
@@ -217,8 +221,8 @@
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
-									<c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="status">
+							       	<c:if test="${fn:length(nonConformanceForm.nonconformance) gt 0}">
+							       	<c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
 							       			else
@@ -237,7 +241,15 @@
 										</td>
 										</tr>
 							    	</c:forEach>
-						    	
+						    		</c:if>
+						    		
+
+  									<c:if test="${fn:length(nonConformanceForm.nonconformance) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>
 
 								
                <td colspan="6">  

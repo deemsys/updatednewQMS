@@ -43,7 +43,10 @@ public class NonConformanceController {
 	
 	// Request Method for view page
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
-	public String showNonconformance(ModelMap model, Principal principal) {
+	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
+		
+		session.removeAttribute("id");
+		session.removeAttribute("type");
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		model.addAttribute("menu","nonconformance");
 		model.addAttribute("noofrows",5);
@@ -52,7 +55,7 @@ public class NonConformanceController {
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
-	 	model.addAttribute("nonConformanceForm", nonConformanceForm);
+	 //	model.addAttribute("nonConformanceForm", nonConformanceForm);
 		//model.addAttribute("menu","nonconformance");
 		return "view_nonconformance";
 	}
@@ -193,7 +196,7 @@ public class NonConformanceController {
 	
 		System.out.println("find");
 		session.setAttribute("id", id);
-		session.setAttribute("type_of_nonconformance", type_of_nonconformance);
+		session.setAttribute("type", type_of_nonconformance);
 	
 		if(id=="" && type_of_nonconformance=="")
 		{
@@ -348,8 +351,8 @@ public class NonConformanceController {
 		@RequestMapping(value={"/nonconformancedelete"}, method = RequestMethod.GET)
 		public String delete_nonconformance(ModelMap model, Principal principal,HttpSession session )
 		{
-			session.removeAttribute("nonconformance");
-			session.removeAttribute("nonconformance1");
+			session.removeAttribute("id");
+			session.removeAttribute("type");
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
 		//	model.addAttribute("nonConformanceForm",nonConformanceForm);
@@ -371,10 +374,9 @@ public class NonConformanceController {
 		
 			System.out.println("find");
 			session.setAttribute("id", id);
-			session.setAttribute("type_of_nonconformance", type_of_nonconformance);
+			session.setAttribute("type",type_of_nonconformance);
+//			session.setAttribute("type_of_nonconformance", type_of_nonconformance);
 		
-			if(id=="" && type_of_nonconformance=="")
-			{
 				NonConformanceForm nonConformanceForm = new NonConformanceForm();
 				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
 
@@ -382,19 +384,7 @@ public class NonConformanceController {
 				model.addAttribute("menu", "nonconformance");
 				System.out.println("finding....");
 				return "nonconformancedelete";
-			}
-			else
-			{
-				System.out.println("searching started.......");
-				NonConformanceForm nonConformanceForm = new NonConformanceForm();
-				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
-
-				model.addAttribute("nonConformanceForm",nonConformanceForm);
-				model.addAttribute("menu", "nonconformance");
-				System.out.println("finding....");
-				return "nonconformancedelete";
-						
-			}
+			
 			}
 
 

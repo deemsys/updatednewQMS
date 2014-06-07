@@ -294,7 +294,7 @@ public class InternalAuditsController {
 {
 	System.out.println(id);
 	
-InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
+	InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 	
 	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name));
 	

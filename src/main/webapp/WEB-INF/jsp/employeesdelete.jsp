@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -123,31 +124,36 @@ else
 							<form action="findemployees" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%"> Type&nbsp;</td>
+							    <td align="right" valign="middle" width="10%"> Type&nbsp;</td>
 							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
 							     -->
-							     <td valign="top" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+							    <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
+                  											<c:if test="${'Classroom' eq type}"><c:out value="Selected"/></c:if>
 															<c:if test="${Employee.type_of_training eq 'Classroom'}"><c:out value="Selected"/></c:if>
 															value="Classroom">Classroom</option>
 														<option
+														<c:if test="${'Hands on' eq type}"><c:out value="Selected"/></c:if>
 															<c:if test="${Employee.type_of_training eq 'Hands on'}"><c:out value="Selected"/></c:if>
 															value="Hands on">Hands on</option>
 														</select></td>
                 
 							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
-							    <td valign="top" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+							    <td valign="middle" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
                   											<option value="">--Select--</option>
 				                  									
                   										<option
+                  											<c:if test="${'Product Quality' eq qualifiedby}"><c:out value="Selected"/></c:if>
 															<c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
 															value="Education">Education</option>
 														<option
+															<c:if test="${'Experience' eq qualifiedby}"><c:out value="Selected"/></c:if>
 															<c:if test="${Employee.qualified_by eq 'Experience'}"><c:out value="Selected"/></c:if>
 															value="Experience">Experience</option>
 														<option
+															<c:if test="${'Training' eq qualifiedby}"><c:out value="Selected"/></c:if>
 															<c:if test="${Employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if>
 															value="Training">Training</option>
 														
@@ -155,7 +161,7 @@ else
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
 				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer" value="${trainer}"></td>
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
 	 -->						  
@@ -183,7 +189,7 @@ else
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							       	<c:if test="${fn:length(employeeForm.employees) gt 0}">	
 									<c:forEach items="${employeeForm.employees}" var="employees" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -214,7 +220,13 @@ else
 											</td>
 										</tr>
 							    	</c:forEach>
-						    				
+						    		</c:if>
+						    		<c:if test="${fn:length(employeeForm.employees) == 0}">	
+						    		<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>	
 
 
 								</table>

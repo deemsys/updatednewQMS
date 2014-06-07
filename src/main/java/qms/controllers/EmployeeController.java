@@ -167,8 +167,12 @@ public class EmployeeController
 	
 	//view records
 		@RequestMapping(value = "/viewemployees", method = RequestMethod.GET)
-	public String viewEmployees(ModelMap model,Principal principal,Employee employee)
+	public String viewEmployees(HttpSession session,ModelMap model,Principal principal,Employee employee)
 	{
+		
+		session.removeAttribute("type");
+		session.removeAttribute("qualifiedby");
+		session.removeAttribute("trainer");
 		EmployeeForm employeeForm=new EmployeeForm();
 		model.addAttribute("menu","employee");
 		model.addAttribute("noofrows",5);
@@ -177,7 +181,7 @@ public class EmployeeController
         model.addAttribute("button","viewall");
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
-        model.addAttribute("employeeForm",employeeForm);
+      //  model.addAttribute("employeeForm",employeeForm);
 		
 		return "view_employees";
 	}
@@ -497,8 +501,10 @@ public class EmployeeController
 	@RequestMapping(value={"/employeesdelete"}, method = RequestMethod.GET)
 	public String delete_employees(ModelMap model, Principal principal,HttpSession session )
 	{
-		session.removeAttribute("employees");
-		session.removeAttribute("employees1");
+		session.removeAttribute("trainer");
+		session.removeAttribute("type");
+		session.removeAttribute("qualifiedby");
+
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployees());
 		//model.addAttribute("employeeForm",employeeForm);

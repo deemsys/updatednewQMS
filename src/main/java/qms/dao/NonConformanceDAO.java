@@ -566,8 +566,24 @@ public class NonConformanceDAO extends AbstractExcelView {
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_select = "select * from tbl_nonconformance where id='"+id+"' or type_of_nonconformance='"+type_of_nonconformance+"'";
-			resultSet = statement.executeQuery(cmd_select);
+			
+			
+			if(!id.equals("") && !type_of_nonconformance.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' and type_of_nonconformance='"+type_of_nonconformance+"'");
+			}
+			else if(!id.equals("") && type_of_nonconformance.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"'");
+			}
+			else if(id.equals("") && !type_of_nonconformance.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where type_of_nonconformance='"+type_of_nonconformance+"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' or type_of_nonconformance='"+type_of_nonconformance+"'");
+			}
 			while (resultSet.next()) {
 				System.out.println("came");
 				nonConformances.add(new NonConformance(resultSet

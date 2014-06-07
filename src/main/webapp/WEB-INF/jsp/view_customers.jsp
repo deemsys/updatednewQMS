@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
@@ -71,11 +72,11 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${id}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${name}"></td>
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2" value="${address}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
 							     -->
 							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomer" ></td>
@@ -99,7 +100,7 @@
 						
 						
 						<% int i=1; %>
-							       		
+									<c:if test = "${fn:length(customersForm.customers) gt 0}">	       		
 									<c:forEach items="${customersForm.customers}" var="customers" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -117,6 +118,13 @@
 											</td>
 										</tr>
 							    	</c:forEach>
+							    	</c:if>
+							    	
+							    	<c:if test="${fn:length(customersForm.customers)== 0}">
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
 						    	
 						
 						

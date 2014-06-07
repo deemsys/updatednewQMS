@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -152,7 +153,7 @@ else
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							       	<c:if test="${fn:length(maintenanceForm.maintenance) gt 0}">	
 									<c:forEach items="${maintenanceForm.maintenance}" var="maintenance" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -176,7 +177,13 @@ else
 											</td>
 										</tr>
 							    	</c:forEach>
-						    				
+							    	</c:if>
+						    		<c:if test="${fn:length(maintenanceForm.maintenance) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>		
 
 
 								</table>

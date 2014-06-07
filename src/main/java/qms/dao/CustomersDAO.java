@@ -224,11 +224,28 @@ public class CustomersDAO {
 		List<Customers> customers = new ArrayList<Customers>();
 		try {
 			
-			String cmd="";
+			if(!id.equals("") && !name.equals("") && !address.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' and address='"+ address +"'");
+			}
+			else if(!id.equals("") && !name.equals("") && address.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"'");
+			}
+			else if(!id.equals("") && name.equals("") && !address.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and address='"+ address +"'");
+			}
+			else if(id.equals("") && !name.equals("") && !address.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_name='"+ name +"' and address='"+ address +"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"'");
+			}	
 			
-			cmd = "select * from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"'";
-			
-			resultSet = statement.executeQuery(cmd);
+		
 		while (resultSet.next()) {
 			customers.add(new Customers(resultSet.getString("customer_id"), resultSet.getString("customer_name"), resultSet.getString("address"), resultSet.getString("city"), resultSet.getString("state"), resultSet.getString("country"), resultSet.getString("zipcode"), resultSet.getString("website"), resultSet.getString("contact_name"), resultSet.getString("title_of_contact"), resultSet.getString("telephone"), resultSet.getString("fax"), resultSet.getString("email_address")));
 			
