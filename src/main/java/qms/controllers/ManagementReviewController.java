@@ -326,7 +326,6 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		}
 		else{
 		ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
-		
 		modelAndView.addObject("fields",fields);
 		return modelAndView ;
 		}

@@ -920,13 +920,8 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 			System.out.println(s);
 			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '"+olddate+"' AND '"+currentdate+"')" ;				
 		}
-		
-		else if (type.equals("action_list_beween_dates")) {
-			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";//doubts
-		}
-		
 		else if (type.equals("past_due_action_list")) {
-			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id";
+			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t2.action_due_date <='"+currentdate+"') ";
 		}
 	
 		else if (type.equals("list_of_continuous_improv_projects")) {
