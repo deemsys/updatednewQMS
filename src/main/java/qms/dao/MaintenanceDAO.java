@@ -351,8 +351,28 @@ public class MaintenanceDAO extends AbstractExcelView
 		try {
 			
 
-			String cmd_select = "select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where equipment_id='"+equipment_id+"'or equipment_name='"+equipment_name+"'";
-			resultSet = statement.executeQuery(cmd_select);
+		/*	String cmd_select = "select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where equipment_id='"+equipment_id+"'and equipment_name='"+equipment_name+"'";
+		*/	
+			if(!equipment_id.equals("") && !equipment_name.equals(""))
+			{
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' and t1.equipment_name='"+equipment_name+"'");  
+			}
+			else if(equipment_id.equals("") && !equipment_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_name='"+equipment_name+"'");
+			}
+			else if(!equipment_id.equals("") && equipment_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"'");				
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' or t1.equipment_name='"+equipment_name+"'");
+						
+			}
+			
+			
+			//resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {
 				
 				maintenance.add(new Maintenance(resultSet

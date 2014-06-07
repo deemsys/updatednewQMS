@@ -54,7 +54,7 @@
 			          <h2>Maintenance List</h2>
 			        </div>
 			        <div class="contentbox">
-		<form action="search_maintenance" name="dashboard" method="GET">
+<!-- 		<form action="search_maintenance" name="dashboard" method="GET">
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
@@ -70,7 +70,30 @@
 							</table>
 						</div>
 </form>
-			     
+			  -->  
+			  			<form action="search_maintenance" name="dashboard" method="GET">
+<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
+							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							  <tr>
+							    <td align="left" valign="middle" width="8%">ID:</td>
+							    <td align="left" valign="middle" width="5%">
+							    <input type="text" name="equipment_id" class="input_txtbx2" id="equipment_id" value="${equipid}"> 
+							   
+							    </td>
+							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx2" id="equipment_name" value="${equipname}">
+							  
+							    </td>
+							    
+							  	<td align="center" valign="middle" width="30%">
+							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenance"/></td>
+							 	<td align="center" valign="middle" width="30%">
+							  <input type="button" class="submit_btn1" name="clear" id="id_clear" value="clear">
+							  </tr>
+							</table>
+						</div>
+</form>
+			    
 			      <form action="maintenance_list" method="POST"> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">

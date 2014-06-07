@@ -32,7 +32,7 @@ import org.slf4j.LoggerFactory;
 
 
 @Controller
-@SessionAttributes({"maintenances"})
+@SessionAttributes({"maintenances","equipid","equipname","id","name"})
 public class MaintenanceController {
 	@Autowired
 	MaintenanceDAO maintenanceDAO;
@@ -52,48 +52,37 @@ public class MaintenanceController {
 	//search for record in view 
 	@RequestMapping(value={"/search_maintenance"}, method = RequestMethod.GET)
 	
-	public String search_maintenance(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal)
+	public String search_maintenance(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model,HttpSession session, Principal principal)
 {
 	System.out.println(equipment_id);
-    if(equipment_id.equals("")&&equipment_name.equals(""))
-	{
+	session.setAttribute("equipid",equipment_id);
+	session.setAttribute("equipname",equipment_name);
+	
+	
+    
     	MaintenanceForm maintenanceForm=new MaintenanceForm();
     	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
     	
     	model.addAttribute("maintenanceForm",maintenanceForm);
-	}
-	else
-	{
-		MaintenanceForm maintenanceForm=new MaintenanceForm();
-		maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
 		
-		model.addAttribute("maintenanceForm",maintenanceForm);
-			}
-  
 	//return "view_maintenance";
 return "maintenance_list";
 }
 	
 	//Search operation for admin setup
 	@RequestMapping(value = "/search_maintenances", method = RequestMethod.GET)
-	public String search_maintenances(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal)
+	public String search_maintenances(@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal,HttpSession session)
 	{
-		System.out.println(equipment_id);
-	    if(equipment_id.equals("")&&equipment_name.equals(""))
-		{
-	    	MaintenanceForm maintenanceForm=new MaintenanceForm();
+		System.out.println("equip id====" +equipment_id);
+		System.out.println("equip name==="+equipment_name);
+		session.setAttribute("equipid",equipment_id);
+		session.setAttribute("equipname",equipment_name);
+		
+			MaintenanceForm maintenanceForm=new MaintenanceForm();
 	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
 	    	
 	    	model.addAttribute("maintenanceForm",maintenanceForm);
-		}
-		else
-		{
-			MaintenanceForm maintenanceForm=new MaintenanceForm();
-			maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
-			
-			model.addAttribute("maintenanceForm",maintenanceForm);
-				}
-	  
+	    	
 		return "maintenancedelete";
 		}
 			
@@ -124,7 +113,10 @@ return "maintenance_list";
 	
 	//maintenance report list page
 	@RequestMapping(value="/maintenance_list", method=RequestMethod.GET)
-	public String maintenancelist(HttpServletRequest request,ModelMap model, Principal principal) {
+	public String maintenancelist(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal) {
+		session.removeAttribute("equipid");
+		session.removeAttribute("equipname");
+		
 		MaintenanceForm maintenanceForm= new MaintenanceForm(); 
 		model.addAttribute("menu","maintenance");
 	  	model.addAttribute("noofrows",5);
@@ -135,7 +127,7 @@ return "maintenance_list";
         model.addAttribute("button","viewall");
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
-		model.addAttribute("maintenanceForm",maintenanceForm);
+		//model.addAttribute("maintenanceForm",maintenanceForm);
 		
 		return "maintenance_list";
 	}
@@ -223,128 +215,7 @@ return "maintenance_list";
 	    return "maintenance_list";
 	}
 	
-	/*//Report generation
-	@RequestMapping(value = "/maintenances_report", method = RequestMethod.POST)
-		public ModelAndView generateMaintenance_Report(HttpServletRequest request, HttpServletResponse response,ModelMap model) {
-		//System.out.println("generateAudit_Report");
-		int no_of_days=0;
-		String[] fields={"equipment_id","equipment_name","equipment_model","serial_number","date_acquired","equipment_status","frequency_maintenance","calibration","type_of_maintenance","maintenance_frequency","reference","instructions","due_date","completion_date","completed_by","notes"};	
-		//String title = "internal_audit";
-		
-		java.util.List<Maintenance> maintenance=new ArrayList<Maintenance>();
-		 switch(Integer.parseInt(request.getParameter("maintenance_report_type")))
-				  {
-					  case 0:
-						
-			  maintenance=maintenanceDAO.getMaintenance_bytype("maintain_for_30",no_of_days);
-			//  title="Due Maintenance for next 30 days";
-			  break;
-		  case 1:
-			
-			  //no_of_days=request.getParameter("no_of_days");
-			  maintenance=maintenanceDAO.getMaintenance_bytype("upcoming_calibration",no_of_days);
-			  no_of_days=Integer.parseInt(request.getParameter("no_of_days"));
-				
-			  //title="Upcoming Calibration for next xx days";
-			  break;
-		  case 2:
-			 
-			  maintenance=maintenanceDAO.getMaintenance_bytype("maintenance_past_due",no_of_days);
-			  //title="Past Due Maintenance";
-			  break;
-		  case 3:
-			  System.out.println("case4");
-			  maintenance=maintenanceDAO.getMaintenance_bytype("calibration_past_due",no_of_days);
-			  //title="Past Due Calibration";
-			  break;
-			  default:
-			  break;
-				  
-		}		
-		 //System.out.println(title);
-	if(Integer.parseInt(request.getParameter("report_type"))==1)
-		{
-		if(request.getParameterValues("report_field[]")!=null)
-			
-			for (@SuppressWarnings("unused") String field : request.getParameterValues("report_field[]")) 
-			{
-				//title=request.getParameter("report_title");
-				//System.out.println(title);
-						
-				//fields=request.getParameterValues("report_type");
-				ModelAndView modelAndView=new ModelAndView("maintenanceDAO","maintenance",maintenance);
-
-				modelAndView.addObject("fields",request.getParameterValues("report_field[]"));
-				modelAndView.addObject("title",title);
-				return modelAndView ;
-			}
-		}
-		
-		
-	ModelAndView modelAndView=new ModelAndView("maintenanceDAO","maintenance",maintenance);
-
-		modelAndView.addObject("fields",fields);
-		modelAndView.addObject("title",title);
-		 
-		return modelAndView ;
-		
-	}
-
-		 if(Integer.parseInt(request.getParameter("report_type"))==1)
-			{
-			
-					System.out.println("now ok");
-					 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
-						
-					fields=request.getParameterValues("report_field[]");
-				
-			}
-			else
-				
-			response.setHeader("Content-Disposition","attachment;filename='NonConformance_Report'");
-			
-			
-			ModelAndView modelAndView=new ModelAndView("maintenanceDAO","maintenance",maintenance);
-			
-			modelAndView.addObject("fields",fields);
-			
-			System.out.println("now ok::::");
-			return modelAndView ;
-		}
-
-	//report page request passing
-	@RequestMapping(value = { "/maintenance_report" }, method = RequestMethod.GET)
-	public String view_maintenance_report(Maintenance maintenance,ModelMap model) {
-
-		model.addAttribute("report_table","no");
-		model.addAttribute("menu","maintenance");
-	    return "maintenance_report";
-	}
 	
-	//Report generation
-	@RequestMapping(value = "/maintanence_report", method = RequestMethod.POST)
-	public String getReport(HttpServletRequest request,ModelMap model) {
-
-		String[] fields={"equipment_id","equipment_name","equipment_model","serial_number","date_acquired","equipment_status","frequency_maintenance","calibration","type_of_maintenance","maintenance_frequency","reference","instructions","due_date","completion_date","completed_by","notes"};
-		String type=request.getParameter("type_of_report");
-	
-		
-		
-		
-		
-		//String no_of_days=request.getParameter("number_of_days");
-		
-		MaintenanceForm maintenanceForm= new MaintenanceForm();
-		int no_of_days = 0;
-		maintenanceForm.setMaintenance(maintenanceDAO.getMaintenance_bytype(type, no_of_days));
-		model.addAttribute("maintenanceForm",maintenanceForm);
-		
-		model.addAttribute("report_table","yes");
-		model.addAttribute("menu","maintenance");
-	    return "maintenance_report";
-	}
-*/	
-
 	//This is used for downloading Excel Sheet
 	@RequestMapping(value ={ "/maintenancereport" }, method = RequestMethod.GET)
 	  public ModelAndView getExcel_view() {
@@ -434,8 +305,8 @@ return "maintenance_list";
 	@RequestMapping(value = { "/maintenancedelete" }, method = RequestMethod.GET)
 	public String delete_maintenance(ModelMap model, Principal principal, HttpSession session) {
 	
-		session.removeAttribute("maintenance");
-		session.removeAttribute("maintenance1");
+		session.removeAttribute("equipid");
+		session.removeAttribute("equipname");
 		MaintenanceForm maintenanceForm= new MaintenanceForm();
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
 		//model.addAttribute("maintenanceForm",maintenanceForm);
@@ -449,8 +320,8 @@ return "maintenance_list";
 	{	
 
 	
-		session.removeAttribute("maintenances");
-		session.removeAttribute("maintenances1");
+		//session.removeAttribute("equipid");
+		//session.removeAttribute("equipname");
 
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");

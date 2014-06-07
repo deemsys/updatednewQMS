@@ -121,9 +121,15 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="8%">ID:</td>
-							    <td align="left" valign="middle" width="5%"><input type="text" name="equipment_id" class="input_txtbx2" id="equipment_id"></td>
+							    <td align="left" valign="middle" width="5%">
+							    <input type="text" name="equipment_id" class="input_txtbx2" id="equipment_id"  value="${equipid}">
+							    </td>
 							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx2" id="equipment_name"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx2" id="equipment_name"
+							    
+							     value="${equipname}">
+							    </td>
+							    
 							  	<td align="center" valign="middle" width="30%">
 							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenances"/></td>
 							 	<td align="center" valign="middle" width="30%">
@@ -141,7 +147,7 @@ else
 							<td valign="top" align="left" width="20%">Equipment Name</td>
 							<td valign="top" align="left" width="20%">Equipment Model</td>
 							<td valign="top" align="left" width="20%">Acquired Date </td>
-							<td valign="top" align="left" width="20%">Actions</td>
+							<td valign="top" align="left" width="20%">
 							</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
