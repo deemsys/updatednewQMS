@@ -572,12 +572,28 @@ public class SupplierPerformanceDAO extends AbstractExcelView {
 		List<SupplierPerformance> supplierPerformances = new ArrayList<SupplierPerformance>();
 		try {
 			
-			String cmd="";
+			if(!suppliername.equals("") && !phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"' and email_address='"+ email +"'");
+			}
+			else if(suppliername.equals("") && !phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where phone='"+ phone +"' and email_address='"+ email +"'");
+			}
+			else if(!suppliername.equals("") && phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and email_address='"+ email +"'");
+			}
+			else if(!suppliername.equals("") && !phone.equals("") && email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' or phone='"+ phone +"' or email_address='"+ email +"'");
+			}
 			
-			cmd = "select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' or phone='"+ phone +"' or email_address='"+ email +"'";
-			
-			resultSet = statement.executeQuery(cmd);
-		while (resultSet.next()) {
+			while (resultSet.next()) {
 			supplierPerformances.add(new SupplierPerformance(
 					resultSet.getString("supplier_id"), 
 					resultSet.getString("supplier_name"), 

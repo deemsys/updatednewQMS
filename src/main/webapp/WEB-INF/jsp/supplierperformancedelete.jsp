@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -122,17 +123,11 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Supplier Name:</td>
-							    <td align="left" valign="middle" width="10%">
-							   
-							    <input type="text" name="supplier_name" class="input_txtbox" id="suppliername"
-							     <c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
-        				       
-							     value="${supplierperformance.supplier_name}" <c:if test="${supplierperformance.supplier_name==supplier}"></c:if>
-			                  </c:forEach>> </td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbox" id="suppliername" value="${suppliername}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Phone:</td>
-								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox"></td>							    
+								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox" value="${phone}"></td>							    
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox" value="${email}"></td>
 							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Find" name="findsupplierperformances" ></td>
 							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Clear" name="welcome" ></td>
 							  
@@ -158,7 +153,7 @@ else
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							       	<c:if test="${fn:length(supplierPerformanceForm.supplierperformance) gt 0}">	
 									<c:forEach items="${supplierPerformanceForm.supplierperformance}" var="supplierperformance" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -185,6 +180,14 @@ else
 											</td>
 										</tr>
 							    	</c:forEach>
+							    	</c:if>
+							    	<c:if test="${fn:length(supplierPerformanceForm.supplierperformance) == 0}">
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
+						    	
+							    	
 						    				
 
 

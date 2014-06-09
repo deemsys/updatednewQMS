@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -128,25 +129,25 @@ else
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="review_id" class="input_txtbox" id="id"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="review_id" class="input_txtbox" id="id" value="${reviewid}"></td>
 							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx2" id="datepicker"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx2" id="datepicker" value="${managementreviewdate}"></td>
 							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
 							    <td align="left" valign="middle" width="10%">
 				                  
 							    <select name="category" class="input_cmbbx1">
 				                  		<option value="">--Select--</option>
 						                      
-						                  <option  value="audits" >audits</option>
-						                  <option  value="corrective and prev actions" >corrective and prev actions</option>
-										  <option value="cost of non conformance" >cost of nonconformance</option>
-										  <option  value="customer satisfaction" >customer satisfaction</option>
-										  <option  value="suppliers" >suppliers</option>
-										  <option  value="human resources" >human resources</option>
-										  <option  value="product/service conformity" >product/service conformity</option>
-										  <option  value="previous items" >previous items</option>
-										  <option  value="recommendations for improvement" >recommendations for improvement</option>
-										  <option  value="significant changes to the QMS" >significant changes to the QMS</option>	
+						                 <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>
+						                  <option <c:if test="${categoryvalue eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >Corrective and Prev Actions</option>
+										  <option <c:if test="${categoryvalue eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >Cost of NonConformance</option>
+										  <option  <c:if test="${categoryvalue eq 'customer satisfaction'}"><c:out value="Selected"/></c:if> value="customer satisfaction" >Customer Satisfaction</option>
+										  <option <c:if test="${categoryvalue eq 'suppliers'}"><c:out value="Selected"/></c:if>  value="suppliers" >Suppliers</option>
+										  <option  <c:if test="${categoryvalue eq 'human resources'}"><c:out value="Selected"/></c:if> value="human resources" >Human Resources</option>
+										  <option <c:if test="${categoryvalue eq 'product/service conformity'}"><c:out value="Selected"/></c:if>  value="product/service conformity" >Product/Service Conformity</option>
+										  <option <c:if test="${categoryvalue eq 'previous items'}"><c:out value="Selected"/></c:if>  value="previous items" >Previous Items</option>
+										  <option <c:if test="${categoryvalue eq 'recommendations for improvement'}"><c:out value="Selected"/></c:if>  value="recommendations for improvement" >Recommendations for Improvement</option>
+										  <option <c:if test="${categoryvalue eq 'significant changes to the QMS'}"><c:out value="Selected"/></c:if>  value="significant changes to the QMS" >Significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
@@ -172,7 +173,7 @@ else
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							       	<c:if test="${fn:length(managementreviewform.managementreviewdetails) gt 0}">	
 									<c:forEach items="${managementreviewform.managementreviewdetails}" var="managementreviewdetails" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -193,6 +194,13 @@ else
 											</td>
 										</tr>
 							    	</c:forEach>
+							    	</c:if>
+							    	<c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>	
 						    				
 
 

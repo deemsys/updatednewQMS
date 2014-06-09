@@ -142,12 +142,14 @@ public class CorrectiveAndPreventiveActionsController
 	//Search Operation		
 	@RequestMapping(value={"/search_correctiveactions"}, method = RequestMethod.GET)
 	
-	public String search_correctiveactions(@RequestParam("capa_requestor") String capa_requestor,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
+	public String search_correctiveactions(HttpSession session,@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
 	{
 	
-	
+		session.setAttribute("capa", capa_id);
+		session.setAttribute("date", request_date);
+		session.setAttribute("action", action);
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
-		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_requestor,request_date,action));
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id,request_date,action));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		return "correctiveactions_list";
 
@@ -285,14 +287,17 @@ public class CorrectiveAndPreventiveActionsController
 
 	//corrective and preventive actions report list page
 	@RequestMapping(value="/correctiveactions_list", method=RequestMethod.GET)
-	public String correctiveactionslist(HttpServletRequest request,ModelMap model, Principal principal) {
-		 
+	public String correctiveactionslist(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal) {
+		
+		session.removeAttribute("capa");
+		session.removeAttribute("date");
+		session.removeAttribute("action");
 		model.addAttribute("success","false");
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 
-		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
 	}
@@ -429,8 +434,11 @@ public class CorrectiveAndPreventiveActionsController
 
 	//view records
 	@RequestMapping(value = { "/view_correctiveandpreventive" }, method = RequestMethod.GET)
-	public String showInternalAudits(ModelMap model, Principal principal,@RequestParam("capa_id") String capa_id) {
-		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+	public String showInternalAudits(HttpSession session,ModelMap model, Principal principal,@RequestParam("capa_id") String capa_id) {
+		/*session.removeAttribute("capa");
+		session.removeAttribute("date");
+		session.removeAttribute("action");
+		*/CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions(capa_id));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
@@ -479,6 +487,9 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value={"/correctiveactionsdelete"}, method = RequestMethod.GET)
 	public String delete_correctiveactions(ModelMap model, Principal principal,HttpSession session )
 	{
+		session.removeAttribute("capa");
+		session.removeAttribute("date");
+		session.removeAttribute("action");
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 	//	model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
@@ -496,12 +507,15 @@ public class CorrectiveAndPreventiveActionsController
 
 	@RequestMapping(value={"/search_correctiveaction"}, method = RequestMethod.GET)
 	
-	public String search_correctiveaction(@RequestParam("capa_requestor") String capa_requestor,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
+	public String search_correctiveaction(HttpSession session,@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
 	{
 	
 	
+		session.setAttribute("capa", capa_id);
+		session.setAttribute("date", request_date);
+		session.setAttribute("action", action);
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
-		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_requestor,request_date,action));
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id,request_date,action));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		return "correctiveactionsdelete";
 
@@ -512,8 +526,6 @@ public class CorrectiveAndPreventiveActionsController
 		@RequestMapping(value={"/deletecorrectiveactions"}, method = RequestMethod.POST)
 	public String deleteSelectedcorrectiveactions(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
-		session.removeAttribute("correctiveAndPreventiveActions");
-		session.removeAttribute("correctiveAndPreventiveActions1");
 
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");

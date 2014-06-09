@@ -457,8 +457,26 @@ import qms.model.InternalAudits;
 			e1.printStackTrace();
 		}
 		try {
-			resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"'or process='"+process+"' or auditee_name='"+auditee_name+"'");
-
+			if(!id.equals("") && !process.equals("") && !auditee_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"'and process='"+process+"' and auditee_name='"+auditee_name+"'");
+			}
+			else if(id.equals("") && !process.equals("") && !auditee_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tb1_internalaudits where process='"+process+"' and auditee_name='"+auditee_name+"'");
+			}
+			else if(!id.equals("") && process.equals("") && !auditee_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"' and auditee_name='"+auditee_name+"'");
+			}
+			else if(!id.equals("") && !process.equals("") && auditee_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"' and process='"+process+"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"'or process='"+process+"' or auditee_name='"+auditee_name+"'");
+			}
 			while (resultSet.next()) {
 							
 								

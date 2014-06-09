@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -119,12 +120,12 @@ else
 			     <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">CAPA Requester</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_requestor" class="input_txtbx1" id="capa_requestor"></td>
+							    <td align="left" valign="middle" width="10%">CAPA Id</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx1" id="capa_id" value="${capa}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Request date</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx1" id="datepicker"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx1" id="datepicker" value="${date}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Actions</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1" value="${action}"></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
@@ -145,6 +146,7 @@ else
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
 							       		
+									<c:if test="${fn:length(correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions) gt 0}">
 									<c:forEach items="${correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions}" var="correctiveAndPreventiveActions" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -176,6 +178,13 @@ else
 											</td>
 										</tr>
 							    	</c:forEach>
+							    	</c:if>
+							    	<c:if test="${fn:length(correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>
 						    				
 
 

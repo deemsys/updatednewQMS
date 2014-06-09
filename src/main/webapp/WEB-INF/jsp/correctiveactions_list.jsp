@@ -63,12 +63,12 @@
 			     <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">CAPA Requester</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_requestor" class="input_txtbx1" id="capa_requestor"></td>
+							    <td align="left" valign="middle" width="10%">CAPA Id</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx1" id="capa_id" value="${capa}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Request date</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx1" id="datepicker"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx1" id="datepicker" value="${date}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Actions</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1" value="${action}"></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
@@ -81,7 +81,7 @@
 							<td valign="top" align="left" width="20%">CAPA Requester</td>
 							<td valign="top" align="left" width="20%">CAPA Due Date</td>
 							<td valign="top" align="left" width="20%">File</td>
-							<td valign="top" align="left" width="20%">Actions</td>
+						<!-- 	<td valign="top" align="left" width="20%">Actions</td> -->
 							</tr>
 							<c:if test="${fn:length(correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions) gt 0}">
         				  <c:forEach items="${correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions}" var="correctiveAndPreventiveActions" varStatus="status">
@@ -102,9 +102,9 @@
         				       				 <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.action}</td>
 
         				       					<td valign="top" align="left">
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" style="padding-right:10px;">Edit</a>
+											<%-- 	<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" onclick="return confirmation()">Remove</a>
-											</td>
+											 --%></td>
         				       				 </tr>
         				       				 </c:forEach>
         				       				 </c:if>

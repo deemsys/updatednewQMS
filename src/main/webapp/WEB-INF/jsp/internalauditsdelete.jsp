@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -87,6 +88,7 @@ else
 								<a href="internalauditsdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Audits
+						    	
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:-5px;text-transform:uppercase;">
@@ -122,11 +124,11 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">ID:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx1" id="id"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx1" id="id" value="${id}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Process:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx1" id="process"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Auditee name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="auditee_name" id="auditee_name" class="input_txtbx1"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="auditee_name" id="auditee_name" class="input_txtbx1" value="${name}"></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
@@ -138,7 +140,7 @@ else
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 							<td valign="top" align="left" width="5%">Select</td>
-							<td valign="top" align="left" width="5%">Audit Id</td>
+							<td valign="top" align="left" width="10%">Audit Id</td>
 									<td valign="top" align="left" width="10%">Process</td>
 									<td valign="top" align="left" width="15%">Audit Due Date</td>
 									<td valign="top" align="left" width="15%">Audit Start Date</td>
@@ -149,7 +151,7 @@ else
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							       	<c:if test = "${fn:length(internalAuditsForm.internalAudits) gt 0}">	
 									<c:forEach items="${internalAuditsForm.internalAudits}" var="internalAudits" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -175,7 +177,13 @@ else
 											</td>
 										</tr>
 							    	</c:forEach>
-						    				
+						    		</c:if>
+						    		<c:if test="${fn:length(internalAuditsForm.internalAudits)== 0}">
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
+						    			
 
 
 								</table>

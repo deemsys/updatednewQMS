@@ -321,10 +321,11 @@ import qms.forms.SupplierPerformanceForm;;
 
 	//delete a record for admin setup
 	@RequestMapping(value={"/supplierperformancedelete"}, method = RequestMethod.GET)
-	public String delete_supplierperformance(ModelMap model, Principal principal,HttpSession session )
+	public String delete_supplierperformance(HttpSession session, ModelMap model, Principal principal)
 	{
-		session.removeAttribute("supplier");
-		session.removeAttribute("supplier1");
+		session.removeAttribute("suppliername");
+		session.removeAttribute("phone");
+		session.removeAttribute("email");
 		SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
 	  //  model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);

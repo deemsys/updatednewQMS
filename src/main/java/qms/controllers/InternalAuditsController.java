@@ -3,6 +3,7 @@ package qms.controllers;
 import java.security.Principal;
 import java.util.ArrayList;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -194,7 +195,12 @@ public class InternalAuditsController {
 	
 	//view records
 	@RequestMapping(value = { "/view_internalaudits" }, method = RequestMethod.GET)
-	public String showInternalAudits(ModelMap model, Principal principal) {
+	public String showInternalAudits(HttpSession session,ModelMap model, Principal principal) {
+	
+	session.removeAttribute("id");
+	session.removeAttribute("process");
+	session.removeAttribute("name");
+		
 	InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 	//internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 	model.addAttribute("menu","audits");
@@ -205,7 +211,7 @@ public class InternalAuditsController {
 	 model.addAttribute("button","viewall");
      model.addAttribute("success","false");
      model.addAttribute("currentpage",1);
-     model.addAttribute("internalAuditsForm", internalAuditsForm);
+   //  model.addAttribute("internalAuditsForm", internalAuditsForm);
 
 		return "view_internalaudits";
 	}
@@ -290,9 +296,13 @@ public class InternalAuditsController {
 	
 	//search for record in view 
 	@RequestMapping(value={"/search_audits"}, method = RequestMethod.GET)
-	public String search_internalaudits(@RequestParam("id") String id,@RequestParam("process") String process,@RequestParam("auditee_name") String auditee_name,ModelMap model, Principal principal)
+	public String search_internalaudits(HttpSession session, @RequestParam("id") String id,@RequestParam("process") String process,@RequestParam("auditee_name") String auditee_name,ModelMap model, Principal principal)
 {
 	System.out.println(id);
+	
+	session.setAttribute("id", id);
+	session.setAttribute("process", process);
+	session.setAttribute("name", auditee_name);
 	
 	InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 	
@@ -308,8 +318,9 @@ public class InternalAuditsController {
 	@RequestMapping(value={"/internalauditsdelete"}, method = RequestMethod.GET)
 	public String delete_internalaudits(ModelMap model, Principal principal,HttpSession session )
 	{
-		session.removeAttribute("internalaudits");
-		session.removeAttribute("internalaudits1");
+		session.removeAttribute("id");
+		session.removeAttribute("process");
+		session.removeAttribute("name");
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 		//model.addAttribute("internalAuditsForm", internalAuditsForm);
@@ -327,9 +338,13 @@ public class InternalAuditsController {
 	}
 
 	@RequestMapping(value={"/search_audit"}, method = RequestMethod.GET)
-	public String search_internalaudit(@RequestParam("id") String id,@RequestParam("process") String process,@RequestParam("auditee_name") String auditee_name,ModelMap model, Principal principal)
+	public String search_internalaudit(HttpSession session,@RequestParam("id") String id,@RequestParam("process") String process,@RequestParam("auditee_name") String auditee_name,ModelMap model, Principal principal)
 {
 	System.out.println(id);
+	session.setAttribute("id", id);
+	session.setAttribute("process", process);
+	session.setAttribute("name", auditee_name);
+	
 	
 InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 	
@@ -345,8 +360,8 @@ InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 		@RequestMapping(value={"/deleteinternalaudits"}, method = RequestMethod.POST)
 	public String deleteSelectedinternalaudits(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
-		session.removeAttribute("internalaudits");
-		session.removeAttribute("internalaudits1");
+		//session.removeAttribute("internalaudits");
+		//session.removeAttribute("internalaudits1");
 
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
