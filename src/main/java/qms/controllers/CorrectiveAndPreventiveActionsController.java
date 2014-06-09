@@ -151,6 +151,7 @@ public class CorrectiveAndPreventiveActionsController
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id,request_date,action));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
 
 

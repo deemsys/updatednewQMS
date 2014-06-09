@@ -33,6 +33,7 @@ import qms.dao.CustomerFeedbackDAO;
 import qms.model.CustomerFeedback;
 import qms.forms.CustomerFeedbackForm;
 import qms.forms.CustomersForm;
+import qms.forms.MaintenanceForm;
 
 import qms.dao.FileHandlingDAO;
 
@@ -256,7 +257,7 @@ public class CustomerFeedbackController
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
         
-		model.addAttribute("customerFeedbackForm",customerFeedbackForm);
+	//	model.addAttribute("customerFeedbackForm",customerFeedbackForm);
 		//model.addAttribute("menu","customer");
 		return "view_customerfeedback";
 	}
@@ -347,6 +348,55 @@ public class CustomerFeedbackController
         model.addAttribute("menu","customer");
 		return "view_customerfeedback";		
 		}
+		}
+	
+	//delete a record for admin setup
+		@RequestMapping(value = { "/customersfeedbackdelete" }, method = RequestMethod.GET)
+		public String delete_maintenance(ModelMap model, Principal principal, HttpSession session) {
+		
+			session.removeAttribute("date");
+			session.removeAttribute("type");
+			CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
+			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
+		    model.addAttribute("menu","admin");
+			return "customersfeedbackdelete";
+			
+		}
+		
+		@RequestMapping(value={"/deletecustomersfeedback"}, method = RequestMethod.POST)
+		public String deleteSelectedcustomersfeedback(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+		{	
+			String[] SelectedIDs=new String[100];
+			SelectedIDs=request.getParameterValues("chkUser");
+			for(String id:SelectedIDs)
+			{
+			System.out.println(id);
+			
+			//formDAO.deleteParticipant(id,principal.getName());
+			customerFeedbackDAO.delete_customerfeedback(id);
+			}
+			CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
+			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
+		    model.addAttribute("menu","admin");
+			return "customersfeedbackdelete";
+			
+		}
+		
+		@RequestMapping(value="/findcustomerfeedbacks",method=RequestMethod.GET)		
+		public String findcustomerfeedbacks(HttpServletRequest request,HttpSession session,@RequestParam("date_of_feedback") String date,@RequestParam("type_of_feedback") String type,ModelMap model)
+		{
+		
+			System.out.println("find");
+			
+			session.setAttribute("date", date);
+			session.setAttribute("type",type);
+				CustomerFeedbackForm customerFeedbackForm = new CustomerFeedbackForm();
+				customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type));
+				model.addAttribute("customerFeedbackForm",customerFeedbackForm);
+				model.addAttribute("menu", "customer");
+				System.out.println("finding....");
+				return "customersfeedbackdelete";
+			
 		}
 
 }

@@ -244,6 +244,7 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 <jsp:include page="footer.jsp"></jsp:include> --%>
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
@@ -316,9 +317,19 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="25%">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker" class="input_txtbx1" ></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker"  value="${date}" class="input_txtbx1" ></td>
 							    <td align="left" valign="middle" width="25%">&nbsp;Type of Feedback: </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="type_of_feedback" id="type" class="input_txtbx1"></td>
+							    <td align="left" valign="middle" width="10%">
+							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx1"></td> -->
+							    
+							     <select name="type_of_feedback" class="input_cmbbx1" id="type">
+				                  		<option value="">--Select--</option>
+						                      
+						                  <option <c:if test="${type eq 'Complaint'}"><c:out value="Selected"/></c:if>  value="Complaint" >Complaint</option>
+						                  <option <c:if test="${type eq 'Suggestion'}"><c:out value="Selected"/></c:if> value="Suggestion" >Suggestion</option>
+										  <option <c:if test="${type eq 'Product Return'}"><c:out value="Selected"/></c:if> value="Product Return" >Product Return</option>
+								</select></td>
+							    
 							    <!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="feedback_details" class="input_txtbx1" id="details"></td>
 							     -->
@@ -338,13 +349,13 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 					         <!--  <td valign="top" align="left" width="20%">Feedback recorded by</td>
  							 -->	<td valign="top" align="left" width="20%">Feedback details</td> 
           						<td valign="top" align="left" width="15%">Attachments</td>
-          						<td valign="top" align="left" width="15%">Actions</td>
+          						 <td valign="top" align="left" width="15%">Action</td>
           						
         					</tr>
 						
 						
 						<% int i=1; %>
-							       		
+							       	<c:if test="${fn:length(customerFeedbackForm.customerFeedbacks) gt 0}">	
 									<c:forEach items="${customerFeedbackForm.customerFeedbacks}" var="customerFeedbacks" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -367,11 +378,17 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
 									    	 --%><td valign="top" align="left" width="15%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editfeedback?fid=${customerFeedbacks.feedback_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletefeedback?fid=${customerFeedbacks.feedback_id}"/>" onclick="return confirmation()">Remove</a>
-											
+											<%-- <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletefeedback?fid=${customerFeedbacks.feedback_id}"/>" onclick="return confirmation()">Remove</a>
+											 --%>
 											</td>
 										</tr>
 							    	</c:forEach>
+							    	</c:if>
+							    	<c:if test="${fn:length(customerFeedbackForm.customerFeedbacks)== 0}">
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
 							    	<td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">

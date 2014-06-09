@@ -76,7 +76,7 @@
                   											<option value="">--Select--</option>
 				                  									
                   										<option
-                  											<c:if test="${'Product Quality' eq qualifiedby}"><c:out value="Selected"/></c:if>
+                  											<c:if test="${'Education' eq qualifiedby}"><c:out value="Selected"/></c:if>
 															<c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
 															value="Education">Education</option>
 														<option

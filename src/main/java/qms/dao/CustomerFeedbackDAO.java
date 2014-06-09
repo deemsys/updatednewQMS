@@ -313,12 +313,22 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 		}
 		List<CustomerFeedback> customerFeedbacks = new ArrayList<CustomerFeedback>();
 		try {
-			
-			String cmd="";
-			
-			cmd = "select * from tbl_customerfeedback where date_of_feedback='"+ date +"' or type_of_feedback='"+ type +"'";
-			
-			resultSet = statement.executeQuery(cmd);
+			if(!date.equals("") && !type.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' and type_of_feedback='"+ type +"'");
+			}
+			else if(!date.equals("") && type.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"'");
+			}
+			else if(date.equals("") && !type.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where type_of_feedback='"+ type +"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' or type_of_feedback='"+ type +"'");
+			}
 		while (resultSet.next()) {
 			customerFeedbacks.add(new CustomerFeedback(resultSet.getString("feedback_id"),resultSet.getString("date_of_feedback"), resultSet.getString("type_of_feedback"), resultSet.getString("feedback_recorded_by"), resultSet.getString("feedback_details"), resultSet.getString("attachment_name"),resultSet.getString("attachement_type"),resultSet.getString("attachment_referrence")));
 			
