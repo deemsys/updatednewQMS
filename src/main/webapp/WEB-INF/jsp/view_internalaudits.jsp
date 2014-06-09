@@ -69,7 +69,7 @@
 									<td valign="top" align="left" width="10%">Auditor</td>									
 									<td valign="top" align="left" width="15%">Finding</td>
 									<td valign="top" align="left" width="15%">Completion Date</td>
-									<!-- <td valign="top" align="left" width="10%">Actions</td> -->
+									<td valign="top" align="left" width="10%">Actions</td>
 									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -91,11 +91,11 @@
 											<td valign="top" align="left" width="15%">${internalAudits.completion_date}</td>
 											
 											
-											<%-- <td valign="top" align="left" width="15%">
+											 <td valign="top" align="left" width="15%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="edit_internalaudit?id=<c:out value="${internalAudits.id}"/>">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_internalaudit?id=${internalAudits.id}"/>" onclick="return confirmation()">Delete</a>
+											<%-- <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_internalaudit?id=${internalAudits.id}"/>" onclick="return confirmation()">Delete</a> --%>
 											
-											</td> --%>
+											</td> 
 										</tr>
 							    	</c:forEach>
 							    	</c:if>

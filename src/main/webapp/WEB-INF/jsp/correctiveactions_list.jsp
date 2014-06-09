@@ -81,7 +81,7 @@
 							<td valign="top" align="left" width="20%">CAPA Requester</td>
 							<td valign="top" align="left" width="20%">CAPA Due Date</td>
 							<td valign="top" align="left" width="20%">File</td>
-						<!-- 	<td valign="top" align="left" width="20%">Actions</td> -->
+							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>
 							<c:if test="${fn:length(correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions) gt 0}">
         				  <c:forEach items="${correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions}" var="correctiveAndPreventiveActions" varStatus="status">
@@ -102,9 +102,9 @@
         				       				<%--  <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.action}</td>
  --%>
         				       					<td valign="top" align="left">
-											<%-- 	<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" onclick="return confirmation()">Remove</a>
-											 --%></td>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" style="padding-right:10px;">Edit</a>
+											<%-- <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_correctiveAndPreventiveActions?capa_id=${correctiveAndPreventiveActions.capa_id}"/>" onclick="return confirmation()">Remove</a> --%>
+											 </td>
         				       				 </tr>
         				       				 </c:forEach>
         				       				 </c:if>

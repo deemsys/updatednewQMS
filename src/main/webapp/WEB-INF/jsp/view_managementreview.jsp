@@ -108,13 +108,13 @@
 						-->	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						 		<tr class="title">
 							
-									<td valign="top" align="left" width="5%">Review id</td>
-									<td valign="top" align="left" width="14%">Management Review Date</td>
+									<td valign="top" align="left" width="10%">Review Id</td>
+									<td valign="top" align="left" width="20%">Management Review Date</td>
 									<td valign="top" align="left" width="10%">Category</td>
 									<td valign="top" align="left" width="10%">Responsibility</td>
-									<td valign="top" align="left" width="10%">Completion date</td>
-									<td valign="top" align="left" width="15%">Continuous Improvement project</td> 				
-									<!-- <td valign="top" align="left" width="15%">Actions</td> -->						
+									<td valign="top" align="left" width="15%">Completion Date</td>
+									<td valign="top" align="left" width="25%">Continuous Improvement Project</td> 				
+									<td valign="top" align="left" width="15%">Actions</td>						
 									</tr>
 
 					 <c:if test="${fn:length(managementreviewform.managementreviewdetails) gt 0}">
@@ -134,11 +134,11 @@
 											<td valign="top" align="left" width="10%">${managementreviewdetails.responsibility}</td>
 											<td valign="top" align="left" width="10%">${managementreviewdetails.completion_date}</td> 
 											<td valign="top" align="left" width="15%">${managementreviewdetails.continuous_improvement_project}</td> 
-										<%-- 	<td valign="top" align="left" width="15%">
+											<td valign="top" align="left" width="15%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_managementreview?review_id=${managementreviewdetails.review_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" onclick="return confirmation()" >Remove</a>
+											<%-- <a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" onclick="return confirmation()" >Remove</a> --%>
 											</td>	
-										 --%>	
+										 
 										</tr>
 							    </c:forEach>
 							    </c:if>	

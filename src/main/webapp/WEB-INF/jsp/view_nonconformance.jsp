@@ -215,7 +215,7 @@
 									<td valign="top" align="left" width="20%">Type of Non Conformance</td>
 									<td valign="top" align="left" width="10%">Product Id</td>
 									<td valign="top" align="left" width="10%">Quantity Suspect</td>
-									<!-- <td valign="top" align="left" width="25%">Action</td> -->
+									<td valign="top" align="left" width="25%">Action</td>
 									
 									</tr>
 
@@ -236,9 +236,9 @@
 											<td valign="top" align="left" width="20%">${nonconformance.product_id}</td>
 											<td valign="top" align="left" width="25%">${nonconformance.quantity_suspect}</td>
 											<td valign="top" align="left" width="15%">
-											<%-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_nonconformance?id=${nonconformance.id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_nonconformance?id=${nonconformance.id }"/>" onclick="return confirmation()">Remove</a>
-										 --%></td>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_nonconformance?id=${nonconformance.id}"/>" style="padding-right:10px;">Edit</a>
+										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_nonconformance?id=${nonconformance.id }"/>" onclick="return confirmation()">Remove</a> --%>
+										 </td>
 										</tr>
 							    	</c:forEach>
 						    		</c:if>

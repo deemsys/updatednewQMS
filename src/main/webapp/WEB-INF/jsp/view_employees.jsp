@@ -113,7 +113,7 @@
 								<td valign="top" align="left" width="10%">Qualified By</td>
 								<td valign="top" align="left" width="10%">Trainer</td>
           						<td valign="top" align="left" width="10%">Attachments</td>
-          						<!-- <td valign="top" align="left" width="15%">Actions</td> -->
+          						<td valign="top" align="left" width="15%">Actions</td>
           					</tr>
 						
 						
@@ -139,14 +139,14 @@
 										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>		
-												<%-- <td valign="top" align="left" width="15%">
+										 <td valign="top" align="left" width="15%">
 												
 												
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editemployee?empid=${employees.employee_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteemployee?empid=${employees.employee_id}"/>" onclick="return confirmation()">Remove</a>
+										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteemployee?empid=${employees.employee_id}"/>" onclick="return confirmation()">Remove</a> --%>
 											
 											
-											</td> --%>
+											</td> 
 										</tr>
 										</c:forEach>
 										</c:if>

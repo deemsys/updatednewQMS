@@ -95,7 +95,7 @@
           						<td valign="top" align="left" width="5%">Country</td>
           						<td valign="top" align="left" width="5%">Phone</td>
           						<td valign="top" align="left" width="10%" >e_mail address</td>
-          						<!-- <td valign="top" align="left" >Actions</td> -->
+          						<td valign="top" align="left" >Actions</td>
         					</tr>
 						
 						 <c:if test="${fn:length(supplierPerformanceForm.supplierperformance) gt 0}">
@@ -116,9 +116,9 @@
 										<td valign="top" align="left" width="15%">${supplierperformance.phone}</td>
 											<td valign="top" align="left" width="15%">${supplierperformance.email_address}</td>	
 										
-								<%-- 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editsupplierperformance?sid=${supplierperformance.supplier_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletesupplierperformance?sid=${supplierperformance.supplier_id}"/>" onclick="return confirmation()">Remove</a>
-								 --%>			</td>
+								 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editsupplierperformance?sid=${supplierperformance.supplier_id}"/>" style="padding-right:10px;">Edit</a>
+										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletesupplierperformance?sid=${supplierperformance.supplier_id}"/>" onclick="return confirmation()">Remove</a> --%>
+								 		</td>
 											</tr>
 							    	</c:forEach>
 						    	</c:if>

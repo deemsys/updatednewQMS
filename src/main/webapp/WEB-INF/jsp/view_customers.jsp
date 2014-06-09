@@ -96,7 +96,7 @@
 								<td valign="top" align="left" width="10%">Address</td>
 								<td valign="top" align="left" width="10%">City</td>
           						<td valign="top" align="left" width="15%">Email Address</td>
-          						<!-- <td valign="top" align="left" width="15%">Actions</td> -->
+          						<td valign="top" align="left" width="15%">Actions</td>
         					</tr>
 						
 						
@@ -113,12 +113,12 @@
 											<td valign="top" align="left" width="10%">${customers.address}</td>
 											<td valign="top" align="left" width="10%">${customers.city}</td>
 											<td valign="top" align="left" width="15%">${customers.email_address}</td>
-								<%-- 			<td valign="top" align="left" width="15%">
+											<td valign="top" align="left" width="15%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editcustomer?cid=${customers.customer_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletecustomer?cid=${customers.customer_id}"/>" onclick="return confirmation()">Remove</a>
+										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletecustomer?cid=${customers.customer_id}"/>" onclick="return confirmation()">Remove</a> --%>
 											</td>
-								 --%>		</tr>
+										</tr>
 							    	</c:forEach>
 							    	</c:if>
 							    	
