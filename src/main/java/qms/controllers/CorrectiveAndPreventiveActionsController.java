@@ -272,7 +272,7 @@ public class CorrectiveAndPreventiveActionsController
 
 				correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 
-				model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+				//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 				
 				return "correctiveactions_list";
 			}
@@ -404,7 +404,7 @@ public class CorrectiveAndPreventiveActionsController
 				}
 				if (correctiveAndPreventiveActionsDAO.update_correctiveAndPreventiveActions(correctiveAndPreventiveActions))
 			 	{
-					model.addAttribute("success", "true");
+					model.addAttribute("success", "update");
 					model.addAttribute("success_message", "updated Successfully");
 					flag = 1;
 			 	}
@@ -420,7 +420,7 @@ public class CorrectiveAndPreventiveActionsController
 	//	model.addAttribute("menu","audits");
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
-		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
 		}

@@ -41,13 +41,27 @@
 				</td>
 				</tr>
 				<tr>
-				
-		<c:if test="${success=='true'}">
+			<c:if test="${success=='true'}">
 			<tr>
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-								<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Success!</span>.
+						
+						
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Inserted!</span>.
+								<a title="Close" href="view_supplierperformance" style="color:red;">X</a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
+		<c:if test="${success=='update'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						
+						
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Updated..!</span>.
 								<a title="Close" href="view_supplierperformance" style="color:red;">X</a>
 						</p>
 					</div></td>
@@ -89,13 +103,13 @@
 								<!-- <td valign="center" align="left" width="5%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="10%">&nbsp;Supplier ID</td>
 					         	<td valign="top" align="left" width="10%">Supplier Name</td>
-					         	<td valign="top" align="left" width="5%">Address</td>
-					         	<td valign="top" align="left" width="5%">City</td>
-          						<td valign="top" align="left" width="5%">State</td>
-          						<td valign="top" align="left" width="5%">Country</td>
-          						<td valign="top" align="left" width="5%">Phone</td>
-          						<td valign="top" align="left" width="10%" >e_mail address</td>
-          						<td valign="top" align="left" >Actions</td>
+					         	<td valign="top" align="left" width="10%">Address</td>
+					         	<td valign="top" align="left" width="10%">City</td>
+          						<td valign="top" align="left" width="10%">State</td>
+          						<td valign="top" align="left" width="10%">Country</td>
+          						<td valign="top" align="left" width="10%">Phone</td>
+          						<td valign="top" align="left" width="15%" >e_mail address</td>
+          						<td valign="top" align="left" width="10%">Actions</td>
         					</tr>
 						
 						 <c:if test="${fn:length(supplierPerformanceForm.supplierperformance) gt 0}">
@@ -115,7 +129,7 @@
 									       <td valign="top" align="left" width="15%">${supplierperformance.country}</td>
 										<td valign="top" align="left" width="15%">${supplierperformance.phone}</td>
 											<td valign="top" align="left" width="15%">${supplierperformance.email_address}</td>	
-										
+										<td valign="top" align="left" width="15%">
 								 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editsupplierperformance?sid=${supplierperformance.supplier_id}"/>" style="padding-right:10px;">Edit</a>
 										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletesupplierperformance?sid=${supplierperformance.supplier_id}"/>" onclick="return confirmation()">Remove</a> --%>
 								 		</td>

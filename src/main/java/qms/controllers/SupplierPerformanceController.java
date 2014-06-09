@@ -160,9 +160,9 @@ import qms.forms.SupplierPerformanceForm;;
 			SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
 			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
 		//	model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
-			model.addAttribute("success","true");
+			model.addAttribute("success","update");
 			model.addAttribute("menu","supplier");
-			   model.addAttribute("success","true");
+			 
 			return "view_supplierperformance";
 
 	 	}

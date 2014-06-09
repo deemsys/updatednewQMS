@@ -41,6 +41,7 @@
               <h2>View Management Review </h2>
             </div>
             <div class="contentbox">
+            <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${managementreviewform.managementreviewdetails[0]}" var="managementreviewdetails"> </c:set>
                <tr class="row2">
@@ -112,6 +113,7 @@
                 </tr>
                 
             </table>
+            </div>
             </div>
             </td>
             </tr>

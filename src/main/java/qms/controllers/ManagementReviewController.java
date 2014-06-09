@@ -209,7 +209,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 	//model.addAttribute("managementreviewform", managementreviewform);
-	 model.addAttribute("success","true");
+	 model.addAttribute("success","update");
 	model.addAttribute("menu","managementreview");
 	return "view_managementreview";
 }

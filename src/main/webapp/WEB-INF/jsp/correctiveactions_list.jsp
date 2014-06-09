@@ -41,17 +41,34 @@
   </div>
       		</td>
       		</tr>
-		<%-- 	<tr>
-			<c:if test="${success==true}">
-        <tr>
-        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
-            <div id="success_statusbar" class="status success">
-            <p class="closestatus"><a title="Close" href="correctiveactions_list">x</a></p>
-            <p><img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.</p>
-          </div>
-      </tr>
-    </c:if>
-    </tr> --%>
+		 	<tr>
+		<c:if test="${success=='true'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						
+						
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Inserted!</span>.
+								<a title="Close" href="correctiveactions_list" style="color:red;">X</a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
+		<c:if test="${success=='update'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						
+						
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Updated..!</span>.
+								<a title="Close" href="correctiveactions_list" style="color:red;">X</a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
+    </tr> 
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
@@ -96,7 +113,7 @@
 											<c:when test="${correctiveAndPreventiveActions.attachment_name!='null'}">
 											<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc1?capa_id=${correctiveAndPreventiveActions.capa_id}"></c:out>">Download</a></td>
 										</c:when>
-										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
+										<c:otherwise><td valign="top" align="left" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>	
         				       				<%--  <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.action}</td>

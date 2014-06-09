@@ -105,7 +105,7 @@
 										  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
 										  <option  <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name3'}"><c:out value="Selected"/></c:if> value="name3">name3</option>
 				           </select> <span class="err"><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></span></td>	
-			  <td valign="top" align="left" class="input_txt"> Use 5 Whys's in system(Y/N)</td>
+			  <td valign="top" align="left" class="input_txt"> Use 5 Whys's in system(Y/N)<span>(*Optional)</span></td>
 		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system"/></td>					
 			</tr> 
 				
@@ -149,7 +149,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Analysis File</td>
                   
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.root_cause_analysis_file}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
-               <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)</td>
+               <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
 				<tr class="row2" id="upload" style="display:none;">
