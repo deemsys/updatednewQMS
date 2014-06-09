@@ -416,7 +416,7 @@ public class EmployeeController
 		employeeForm.setEmployees(employeeDAO.edit_employee(employee_id));
 		System.out.println("edit:"+employee_id);
 		model.addAttribute("employeeForm",employeeForm);
-		model.addAttribute("menu","employees");
+		model.addAttribute("menu","employee");
 		return "list_employee";
 	}
 
