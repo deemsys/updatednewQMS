@@ -128,7 +128,8 @@ public class InternalAuditsController {
 				InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 				internalAuditsForm.setInternalAudits(internalAuditsDAO
 						.get_internalaudits());
-				model.addAttribute("internalAuditsForm", internalAuditsForm);
+				model.addAttribute("success","true");
+				//model.addAttribute("internalAuditsForm", internalAuditsForm);
 
 			}
 
@@ -183,12 +184,13 @@ public class InternalAuditsController {
 		
 		internalAuditsDAO.update_internalaudits(internalAudits);
 		model.addAttribute("menu","audits");
+		model.addAttribute("success","update");
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 
-		model.addAttribute("internalAuditsForm", internalAuditsForm);
-		model.addAttribute("menu","audits");
+		//model.addAttribute("internalAuditsForm", internalAuditsForm);
+		
 		return "view_internalaudits";
 	}
 

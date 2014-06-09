@@ -133,7 +133,7 @@ public class EmployeeController
 		{
 			EmployeeForm employeeForm=new EmployeeForm();
 			employeeForm.setEmployees(employeeDAO.getEmployees());
-			model.addAttribute("employeeForm",employeeForm);	
+			//model.addAttribute("employeeForm",employeeForm);	
 			model.addAttribute("Success","true");
 			model.addAttribute("menu","employee");
 	        return "add_employee";
@@ -331,7 +331,7 @@ public class EmployeeController
 						}
 					
 					if (employeeDAO.update_employee(employee)) {
-						model.addAttribute("success", "true");
+						model.addAttribute("success", "update");
 						model.addAttribute("success_message", "Updated Successfully");
 						status = 1;
 					}
@@ -344,7 +344,7 @@ public class EmployeeController
 				{
 				EmployeeForm employeeForm=new EmployeeForm();
 				employeeForm.setEmployees(employeeDAO.getEmployees());
-				model.addAttribute("employeeForm", employeeForm);
+				//model.addAttribute("employeeForm", employeeForm);
 				model.addAttribute("menu","employee");
 				return "view_employees";
 				}
