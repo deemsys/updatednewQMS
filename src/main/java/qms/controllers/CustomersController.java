@@ -119,9 +119,10 @@ public class CustomersController
     customersDAO.insert_customer(customers);
     CustomersForm customersForm = new CustomersForm();
 	customersForm.setCustomers(customersDAO.getCustomers());
-	model.addAttribute("customersForm",customersForm);
+//	model.addAttribute("customersForm",customersForm);
 	model.addAttribute("id", customersDAO.getMax_customerID());
 	model.addAttribute("menu","customer");
+	model.addAttribute("success","true");
 	return "view_customers";
  	}
 	
@@ -146,8 +147,8 @@ public class CustomersController
 
     CustomersForm customersForm=new CustomersForm();
     customersForm.setCustomers(customersDAO.getCustomers());
-    model.addAttribute("customersForm",customersForm);
-    model.addAttribute("success","true");
+  //  model.addAttribute("customersForm",customersForm);
+    model.addAttribute("success","update");
     model.addAttribute("menu","customer");
 	return "view_customers";
 
