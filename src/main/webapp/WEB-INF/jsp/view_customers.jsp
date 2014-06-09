@@ -92,10 +92,11 @@
 							<tr class="title">
 								<!-- <td valign="center" align="left" width="5%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="10%">Customer&nbsp;ID</td>
-					         	<td valign="top" align="left" width="15%">Customer Name</td>
+					         	<td valign="top" align="left" width="10%">Customer Name</td>
 								<td valign="top" align="left" width="10%">Address</td>
+								<td valign="top" align="left" width="10%">City</td>
           						<td valign="top" align="left" width="15%">Email Address</td>
-          						<td valign="top" align="left" width="15%">Actions</td>
+          						<!-- <td valign="top" align="left" width="15%">Actions</td> -->
         					</tr>
 						
 						
@@ -107,16 +108,17 @@
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" ">
-								           	<td valign="top" align="left"  width="10%"><a href="list_customer?id=${customers.customer_id}">${customers.customer_id}</a></td>
-											<td valign="top" align="left" width="15%">${customers.customer_name}</td>
+								           	<td valign="top" align="left"  width="8%"><a href="list_customer?id=${customers.customer_id}">${customers.customer_id}</a></td>
+											<td valign="top" align="left" width="10%">${customers.customer_name}</td>
 											<td valign="top" align="left" width="10%">${customers.address}</td>
+											<td valign="top" align="left" width="10%">${customers.city}</td>
 											<td valign="top" align="left" width="15%">${customers.email_address}</td>
-											<td valign="top" align="left" width="15%">
+								<%-- 			<td valign="top" align="left" width="15%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editcustomer?cid=${customers.customer_id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletecustomer?cid=${customers.customer_id}"/>" onclick="return confirmation()">Remove</a>
 											</td>
-										</tr>
+								 --%>		</tr>
 							    	</c:forEach>
 							    	</c:if>
 							    	

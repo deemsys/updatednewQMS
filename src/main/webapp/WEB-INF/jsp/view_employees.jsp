@@ -108,12 +108,12 @@
 				        
 							<tr class="title">
 								<td valign="top" align="left" width="10%">Employee&nbsp;ID</td>
-					         	<td valign="top" align="left" width="15%">Name</td>
+					         	<td valign="top" align="left" width="10%">Name</td>
 					         	<td valign="top" align="left" width="10%">Type</td>
 								<td valign="top" align="left" width="10%">Qualified By</td>
 								<td valign="top" align="left" width="10%">Trainer</td>
           						<td valign="top" align="left" width="10%">Attachments</td>
-          						<td valign="top" align="left" width="15%">Actions</td>
+          						<!-- <td valign="top" align="left" width="15%">Actions</td> -->
           					</tr>
 						
 						
@@ -128,7 +128,7 @@
 							       		<tr class="row<%=i%>" ">
 								           	<td valign="top" align="left"  width="10%">
 								           	<a href="list_employee?id=${employees.employee_id}">${employees.employee_id}</td>
-											<td valign="top" align="left" width="15%">${employees.name}</td>
+											<td valign="top" align="left" width="10%">${employees.name}</td>
 											<td valign="top" align="left" width="10%">${employees.type_of_training}</td>											
 											<td valign="top" align="left" width="10%">${employees.qualified_by}</td>											
 											<td valign="top" align="left" width="10%">${employees.trainer}</td>
@@ -139,14 +139,14 @@
 										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>		
-												<td valign="top" align="left" width="15%">
+												<%-- <td valign="top" align="left" width="15%">
 												
 												
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editemployee?empid=${employees.employee_id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deleteemployee?empid=${employees.employee_id}"/>" onclick="return confirmation()">Remove</a>
 											
 											
-											</td>
+											</td> --%>
 										</tr>
 										</c:forEach>
 										</c:if>

@@ -101,7 +101,7 @@
 							<td valign="top" align="left" width="20%">Equipment Name</td>
 							<td valign="top" align="left" width="20%">Equipment Model</td>
 							<td valign="top" align="left" width="20%">Acquired Date </td>
-							<td valign="top" align="left" width="20%">Actions</td>
+							<!-- <td valign="top" align="left" width="20%">Actions</td> -->
 							</tr>
 							<c:if test="${fn:length(maintenanceForm.maintenance) gt 0}">
         				  <c:forEach items="${maintenanceForm.maintenance}" var="maintenance" varStatus="status">
@@ -113,9 +113,9 @@
         				       				 <td valign="top" align="left" width="15%">${maintenance.equipment_model}</td>
         				       				 <td valign="top" align="left" width="15%">${maintenance.date_acquired}</td>
         				       					<td valign="top" align="left">
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_maintenance?equipment_id=${maintenance.equipment_id}"/>" style="padding-right:10px;">Edit</a>
+												<%-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_maintenance?equipment_id=${maintenance.equipment_id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_maintenance?equipment_id=${maintenance.equipment_id}"/>" onclick="return confirmation()">Remove</a>
-											</td>
+											 --%></td>
         				       				 </tr>
         				       				 </c:forEach>
         				       				 </c:if>

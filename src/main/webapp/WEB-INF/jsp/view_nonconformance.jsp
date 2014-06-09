@@ -210,12 +210,12 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
 									<td valign="top" align="left" width="5%">Id</td>
-									<!-- <td valign="top" align="left" width="20%">Source of NonConformance</td>
-									<td valign="top" align="left" width="10%">External ID</td> -->
+									<td valign="top" align="left" width="20%">Source of NonConformance</td>
+									<td valign="top" align="left" width="10%">External ID</td> 
 									<td valign="top" align="left" width="20%">Type of Non Conformance</td>
 									<td valign="top" align="left" width="10%">Product Id</td>
 									<td valign="top" align="left" width="10%">Quantity Suspect</td>
-									<td valign="top" align="left" width="25%">Action</td>
+									<!-- <td valign="top" align="left" width="25%">Action</td> -->
 									
 									</tr>
 
@@ -229,16 +229,16 @@
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 								           	<td valign="top" align="left"  width="10%"><a href="list_nonconformance?id=${nonconformance.id}">${nonconformance.id}</a></td>
-								           	<%-- 
+								           	
 											<td valign="top" align="left" width="15%">${nonconformance.source_of_nonconformance}</td>
-											<td valign="top" align="left" width="10%">${nonconformance.external_id}</td> --%>
+											<td valign="top" align="left" width="10%">${nonconformance.external_id}</td> 
 											<td valign="top" align="left" width="10%">${nonconformance.type_of_nonconformance}</td>
-											<td valign="top" align="left" width="10%">${nonconformance.product_id}</td>
-											<td valign="top" align="left" width="15%">${nonconformance.quantity_suspect}</td>
+											<td valign="top" align="left" width="20%">${nonconformance.product_id}</td>
+											<td valign="top" align="left" width="25%">${nonconformance.quantity_suspect}</td>
 											<td valign="top" align="left" width="15%">
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_nonconformance?id=${nonconformance.id}"/>" style="padding-right:10px;">Edit</a>
+											<%-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_nonconformance?id=${nonconformance.id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_nonconformance?id=${nonconformance.id }"/>" onclick="return confirmation()">Remove</a>
-										</td>
+										 --%></td>
 										</tr>
 							    	</c:forEach>
 						    		</c:if>
