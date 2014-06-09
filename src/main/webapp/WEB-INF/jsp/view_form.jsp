@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <script src="/QMS_App/resources/js/jquery.js"></script>
 	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
@@ -63,7 +64,20 @@
 						<p class="closestatus">
 						
 						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Success!</span>.
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Inserted!</span>.
+								<a title="Close" href="view_form" style="color:red;">X</a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
+		<c:if test="${success=='update'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						
+						
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Updated..!</span>.
 								<a title="Close" href="view_form" style="color:red;">X</a>
 						</p>
 					</div></td>
@@ -115,7 +129,7 @@
 									<td valign="top" align="left" width="10%">Issuer</td>
 									<td valign="top" align="left" width="10%">Actions</td>
 									</tr>
-
+ 						<c:if test="${fn:length(formForm.form) gt 0}">	
 								
 								<% int i=1; %>
 							       		
@@ -152,46 +166,19 @@
 									
 										</table>
 										</c:forEach>
-						    			
+										</c:if>
+						    			 <c:if test="${fn:length(formForm.form) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>		
+						
 							    	
-						    	<%-- <table width="60%" align="right">
-						    	<tr class="header11">
-								
-									<td valign="top" align="center" width="10%">Form/Rec ID</td>
-									<td valign="top" align="center" width="10%">Effective Date</td>
-									<td valign="top" align="center" width="10%">Approver1</td>
-									<td valign="top" align="center" width="10%">Issuer</td>
-									<td valign="top" align="center" width="10%">Comments</td>
-									<td valign="top" align="center" width="10%">Revision No</td>
-									</tr>
-											<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
-										<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-								           	
-									        <td valign="top" align="center" width="10%"> ${revision.document_id}</td>
-											<td valign="top" align="center" width="10%">${revision.effective_date}</td>
-											<td valign="top" align="center" width="10%">${revision.approver1}</td>
-											<td valign="top" align="center" width="10%">${revision.issuer}</td>
-											<td valign="top" align="center" width="10%">${revision.comments}</td>
-											<td valign="top" align="center" width="10%">${revision.revision_id}</td>
-									
-											
-											
-											
-										</tr>
-										</c:forEach>
-										</table>
-
-						 --%>
+						    	
 								</table>
 							
-								<!-- <div style="clear: both;"></div>
-								</div>
-								</div>
-								</td>
-								</tr>
-								<tr>
-									<td valign="top" align="left">&nbsp;</td>
-								</tr><tr> -->
+								
 	<tr>	<td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">

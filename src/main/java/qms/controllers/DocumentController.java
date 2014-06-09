@@ -431,7 +431,7 @@ public class DocumentController {
 				model.addAttribute("documentMainForm", documentMainForm);
 				  model.addAttribute("menu","document");
 				  model.addAttribute("id", documentControlDAO.get_documentid());
-				  model.addAttribute("success","true");
+				  model.addAttribute("success","update");
 			    // revisionDocumentDAO.insert_revision(revisionDocument,documentMain1.getAuto_number(),documentMain1);
 					
 				

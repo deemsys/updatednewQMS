@@ -229,7 +229,7 @@
             <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
                <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" onblur="change_to_label_issuer();" style="width:80px;">
-               <option value="">--Select--</option>
+               <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>
@@ -275,7 +275,7 @@
                 <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="20%">
                <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" style="width:80px;">
-               <option value="">--Select--</option>
+               <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
               <option value="C">C</option>

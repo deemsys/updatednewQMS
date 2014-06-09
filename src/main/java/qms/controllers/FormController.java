@@ -321,7 +321,7 @@ public class FormController
 						
 					formDAO.update_form(form1,form1.getAuto_number(),principal.getName());
 					
-					model.addAttribute("success", "true");
+					model.addAttribute("success", "update");
 					model.addAttribute("success_message", "Updated Successfully");
 					flag = 1;
 					
@@ -340,7 +340,7 @@ public class FormController
 				FormForm formForm=new FormForm();
 			   // formForm.setForm(formDAO.getform());
 				formForm.setForm(formDAO.search_form(process));
-			  //  model.addAttribute("formForm",formForm);
+			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
 	             

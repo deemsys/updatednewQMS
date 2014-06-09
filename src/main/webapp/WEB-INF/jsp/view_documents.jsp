@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <script src="/QMS_App/resources/js/jquery.js"></script>
 	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
@@ -63,7 +64,20 @@
 						<p class="closestatus">
 						
 						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Success!</span>.
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Inserted!</span>.
+								<a title="Close" href="viewdocuments" style="color:red;">X</a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
+		<c:if test="${success=='update'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						
+						
+							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Updated..!</span>.
 								<a title="Close" href="viewdocuments" style="color:red;">X</a>
 						</p>
 					</div></td>
@@ -124,7 +138,7 @@
           						<td valign="top" align="center" width="15%">External Documents</td>
           						<td valign="top" align="left" width="20%">Actions</td>
         					</tr>
-						
+						 <c:if test="${fn:length(documentMainForm.documentMains) gt 0}">	
 						
 						<% int i=1; %>
 							       		
@@ -165,34 +179,16 @@
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_document?auto_number=${documentMains.auto_number}"></c:out>" style="padding-right:20px;">Edit</a>
 										    <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a class="toggles-popup" style="color:#7A3A3A;" href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/>" >View Revision History</a>
 									
-							<%-- 		<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">href="<c:out value="review_history_document?auto_number=${documentMains.auto_number}"/></a></p>
-    <div id="light" class="white_content">This is the lightbox content. <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a></div>
-    <div id="fade" class="black_overlay"></div> --%>
-											</td>
-										</tr>
-							    	
-									<%-- 	<c:forEach items="${revisionDocumentForm.revisionDocuments}" var="revision" varStatus="status">
-										<c:if test="${revision.auto_number == documentMains.auto_number}">
-									
-									
-										<tr class="row2" style="color:#0000A0; font-style: inherit;">
-										<a name="current">
-										 	 <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
-											<td valign="top" align="left" width="10%">${revision.issuer}</td>
-											<td valign="top" align="left" width="10%">${revision.revision_level}</td>
-											<td valign="top" align="left" width="10%">${revision.date}</td>
-											<td valign="top" align="left" width="10%">${revision.approver1}</td>
-											<td valign="top" align="left" width="10%">${revision.approver2}</td>
-											<td valign="top" align="left" width="10%">${revision.approver3}</td>
-											<td valign="top" align="center" width="10%">${revision.comments}</td>
-											<td valign="top" align="left" width="10%">${revision.status}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											${revision.revision_id}</td>
-												</a>
-										</tr>
-									
-									</c:if>
-										</c:forEach> --%>
+						
 										 </c:forEach>
+										 </c:if>
+										  <c:if test="${fn:length(documentMainForm.documentMains) == 0}">	
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    		
+							    	</tr>
+							    	</c:if>		
+						
 										</table>
 									   
 									    
