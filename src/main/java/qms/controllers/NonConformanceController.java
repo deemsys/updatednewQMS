@@ -135,8 +135,9 @@ public class NonConformanceController {
 		nonConformanceDAO.insert_nonconformance(nonConformance,correctiveAndPreventiveActions);
 		NonConformanceForm nonConformanceForm=new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
-	    model.addAttribute("nonConformanceForm",nonConformanceForm);
+	   // model.addAttribute("nonConformanceForm",nonConformanceForm);
 	    model.addAttribute("menu","nonconformance");
+	    model.addAttribute("success","true");
 		return "view_nonconformance";
 	}
 
@@ -168,8 +169,10 @@ public class NonConformanceController {
 	
 	// Update the values in the database
 	@RequestMapping(value = "/update_nonconformance", method = RequestMethod.POST)
-	public String editNonconformance_post(ModelMap model,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result) {
+	public String editNonconformance_post(ModelMap model,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result,HttpSession session) {
 
+		session.removeAttribute("id");
+		session.removeAttribute("type");
 		if (result.hasErrors())
 		{
 			
@@ -184,8 +187,9 @@ public class NonConformanceController {
 		nonConformanceDAO.update_nonconformance(nonConformance);
 		NonConformanceForm nonConformanceForm=new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
-		model.addAttribute("nonConformanceForm",nonConformanceForm);
+		//model.addAttribute("nonConformanceForm",nonConformanceForm);
 		model.addAttribute("menu","nonconformance");
+		model.addAttribute("success","update");
 		return "view_nonconformance";
 	}
 

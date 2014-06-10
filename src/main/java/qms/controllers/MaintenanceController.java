@@ -106,8 +106,9 @@ return "maintenance_list";
 		maintenanceDAO.insert_maintenance(maintenance);
 		MaintenanceForm maintenanceForm= new MaintenanceForm();
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
-		model.addAttribute("maintenanceForm",maintenanceForm);
+	//	model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","maintenance");
+		model.addAttribute("success","true");
 		return "maintenance_list";
 	}
 	
@@ -210,8 +211,9 @@ return "maintenance_list";
 		maintenanceDAO.update_maintenance(maintenance);
 	    MaintenanceForm maintenanceForm= new MaintenanceForm();
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
-		model.addAttribute("maintenanceForm",maintenanceForm);
+		//model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","maintenance");
+		model.addAttribute("success","update");
 	    return "maintenance_list";
 	}
 	
