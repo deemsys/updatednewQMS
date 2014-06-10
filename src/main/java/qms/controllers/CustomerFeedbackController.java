@@ -125,8 +125,10 @@ public class CustomerFeedbackController
 			
 			CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
 			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
-			model.addAttribute("customerFeedbackForm",customerFeedbackForm);		
+		//	model.addAttribute("customerFeedbackForm",customerFeedbackForm);		
 			model.addAttribute("menu","customer");
+		    model.addAttribute("success","true");
+
 			return "/view_customerfeedback";
 		}
 
@@ -223,7 +225,9 @@ public class CustomerFeedbackController
 		
 		CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
 		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
-		model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
+	//	model.addAttribute("customerFeedbackForm",customerFeedbackForm);
+	    model.addAttribute("success","update");
+
 		model.addAttribute("menu","customer");
 		return "view_customerfeedback";
 	}

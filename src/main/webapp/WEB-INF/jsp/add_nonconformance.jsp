@@ -54,26 +54,24 @@
       <tr> -->
 				<td valign="top" align="left">
 						<div class="headings altheading">
-							<h2>Non Conformance</h2>
+							<h2>Non Conformance Details</h2>
 						</div>
 						           <div class="contentbox">
-				
+											  <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 						
-																<table cellpadding="0" cellspacing="0" border="0"
-																	width="100%">
+																<table cellpadding="0" cellspacing="0" border="0" width="100%">
 																	<tr class="row1">
-																		<td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span>Non-Conformance (NC)ID</td>
-																		<td valign="top" align="left" class="input_txt">
+																		<td valign="middle" align="left" class="input_txt"width="20%">Non-Conformance (NC)ID</td>
+																		<td valign="top" align="left" class="input_txt"width="25%">
 
-																			<input type="hidden" name="id"
+																			<input type="hidden" name="id" class="input_txtbx1"
 																			value="<c:out value="${id }"/>" />
 																		<c:out value="${id}" /> <br/>
 																		<font color="Red" size="+1"></font></td>
 																	
-																		<td valign="middle" align="left" class="input_txt">
-																		<span class="err">*</span> External ID </td>
-																		<td valign="top" align="left" class="input_txt"><input
+																		<td valign="middle" align="left" class="input_txt"width="25%">
+																		 External ID </td>
+																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
@@ -86,8 +84,8 @@
 																	</tr>
 
 																	<tr class="row2">
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Source of NC </td>
+																		<td valign="top" align="left" class="input_txt">
+																			 Source of NC </td>
 						          										<td valign="top" align="left" class="input_txt">
 				                  									<select name="source_of_nonconformance" class="input_cmbbx1">
 				                  										<option value="">--Select--</option>
@@ -114,8 +112,7 @@
 																		<br/>
 																		<font color="Red" size="+1"></font>
 																		</td>
-																		<td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span> Product ID </td>
+																		<td valign="middle" align="left" class="input_txt">Product ID </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_product_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -130,8 +127,7 @@
 																	</tr>
 																	
 																	<tr class="row1">
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Type Of NC </td>
+																		<td valign="top" align="left" class="input_txt">Type Of NC </td>
 						          										<td valign="top" align="left" class="input_txt">
 				                  									<select name="type_of_nonconformance" class="input_cmbbx1">
 				                  										<option value="">--Select--</option>
@@ -154,8 +150,7 @@
 																	
 																	</td>
 
-																		<td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span> Quantity Suspect </td>
+																		<td valign="middle" align="left" class="input_txt">Quantity Suspect </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1"
 																			id="inp_quantity_suspect"
@@ -172,8 +167,7 @@
 																	
 
 																	<tr class="row2">
-																		<td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span> Nature of NC </td>
+																		<td valign="middle" align="left" class="input_txt">Nature of NC </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1"
 																			id="inp_nature_of_nonconformance"
@@ -186,8 +180,7 @@
 																		</span>
 																		</td>
 																	
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Disposition Required?(Y/N) </td>
+																		<td valign="top" align="left" class="input_txt">Disposition Required?(Y/N) </td>
 																		
 																		<%-- <td valign="top" align="left" class="input_txt"><input
 																			type="radio" name="disposition_required" value="0"
@@ -197,12 +190,11 @@
 																					path="Nonconformance.disposition_required"></form:errors>
 																		</span></td> --%>
 																		    <td valign="middle" align="left" class="input_txt"><input type="radio" name="disposition_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="disposition_required" value="1" class="input_txt">No
-                	          <td valign="middle" align="right" class="input_txt" width="20%"> 
+                	          <td valign="middle" align="left" class="input_txt" width="20%"> 
 																	</tr>
 																	
 																	<tr class="row1">
-																		<td valign="middle" align="left" class="input_txt"><span
-																			class="err">*</span> Date Found </td>
+																		<td valign="middle" align="left" class="input_txt">Date Found </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -214,8 +206,7 @@
 																		</td>
 
 																	
-																	<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Disposition </td>
+																	<td valign="top" align="left" class="input_txt">Disposition </td>
 						          										<td valign="middle" align="left" class="input_txt">
 				                  									<select name="disposition" class="input_cmbbx1">
 				                  										<option value="">--Select--</option>
@@ -233,8 +224,7 @@
 																	</tr>
 																	
 																	<tr class="row2">
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Reported By </td>
+																		<td valign="top" align="left" class="input_txt">Reported By </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_reported_by"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -246,8 +236,7 @@
 																		</span>
 																		</td>
 																		
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Disposition Complete Date:</td>
+																		<td valign="top" align="left" class="input_txt">Disposition Complete Date:</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="datepicker1"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -263,13 +252,12 @@
 															
 																	<tr class="row1">
 								
-																	<td valign="top" align="left" class="input_txt"><span class="err">*</span> Temporary Action </td>
+																	<td valign="top" align="left" class="input_txt"> Temporary Action </td>
                														<td valign="top" align="left"><textarea class="input_txtbx1" id="temporary_action"  name="temporary_action"  style="width:95%; height: 89px;" >${nonconformance.temporary_action}</textarea><br/><span class="err"></span></td>
          
 															
 															
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Disposition Responsibility </td>
+																		<td valign="top" align="left" class="input_txt">Disposition Responsibility </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -283,18 +271,11 @@
 																	</tr>
 																	
 																	<tr class="row2">
-																 	<td valign="middle" align="left" class="input_txt"> Corrective Action Required(Y/N)</td>
-													<!--	<td valign="top" align="left" class="input_txt"><input
-															type="radio" name="corrective_action_required" value="1"
-															class="input_txt" onchange="toggle2(this.value)">Yes&nbsp;&nbsp;&nbsp;<input
-															type="radio" name="corrective_action_required" value="0"
-															class="input_txt" checked onchange="toggle2(this.value)">No -->
-	
-											 		   <td valign="middle" align="left" class="input_txt"><input type="radio" name="corrective_action_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="corrective_action_required" value="1" class="input_txt">No
-                	          							<td valign="middle" align="right" class="input_txt" width="20%">
+																 	<td valign="middle" align="left" class="input_txt"width="70%"> Corrective Action Required(Y/N)</td>
+																	<td valign="middle" align="left" class="input_txt"width="30%"><input type="radio" name="corrective_action_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="corrective_action_required" value="1" class="input_txt">No
+                	          											</td>
 																	
-																		<td valign="top" align="left" class="input_txt"><span
-																			class="err">*</span> Cost of NC </td>
+																		<td valign="top" align="left" class="input_txt">Cost of NC </td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="inp_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -322,6 +303,7 @@
 														
 														</tr>
 														</table>
+														</div>
 														</div>
 														</td>
 														</tr>

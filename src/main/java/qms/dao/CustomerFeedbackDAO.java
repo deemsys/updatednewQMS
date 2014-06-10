@@ -217,8 +217,10 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 		try {
 			String attachment_name ="";
 			  String attachment_type="",attachment_reference="";
+			  System.out.println("feedback id = "+customerFeedback.getFeedback_id());
 			  if(customerFeedback.getAttachment_name() == null || customerFeedback.getAttachment_type() == null || customerFeedback.getAttachment_referrence() == null)
 				 {
+				  System.out.println("same file attached");
 					 resultSet=statement.executeQuery("select attachment_name,attachement_type,attachment_referrence from tbl_customerfeedback where feedback_id='"+customerFeedback.getFeedback_id()+"'");
 				  while(resultSet.next())
 				  {
@@ -231,7 +233,7 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 				  status=true;
 				 }
 			  else{
-				  
+				  System.out.println("else");
 			String cmd_update = "update tbl_customerfeedback set date_of_feedback='"+customerFeedback.getDate_of_feedback()+"',type_of_feedback='"+customerFeedback.getType_of_feedback()+"',feedback_recorded_by='"+customerFeedback.getFeedback_recorded_by()+"',feedback_details='"+customerFeedback.getFeedback_details()+"',attachment_name='"+customerFeedback.getAttachment_name()+"', attachement_type='"+customerFeedback.getAttachment_type()+"', attachment_referrence='"+customerFeedback.getAttachment_referrence()+"' where feedback_id='"+customerFeedback.getFeedback_id()+"'";
 			System.out.println(statement.execute(cmd_update));
 			System.out.println("update feedback="+status);

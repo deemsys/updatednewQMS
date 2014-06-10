@@ -4,7 +4,6 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
-<form method="post"  action="updatefeedback">
 <form method="post" enctype="multipart/form-data" action="updatefeedback">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -67,19 +66,20 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Update Customer Feedback</h2>
+              <h2>Customer Feedback Details</h2>
             </div>
             <div class="contentbox">
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                           <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+
               <c:set value="${customerFeedbackForm.customerFeedbacks[0]}" var="customerfeedbacks"></c:set>
                 <tr class="row1">
              
-                 <td valign="middle" align="right" class="input_txt" width="30%">    <input type="hidden" name="feedback_id" value="${customerfeedbacks.feedback_id }"/>
+                 <td valign="middle" align="left" class="input_txt" width="30%">    <input type="hidden" name="feedback_id" value="${customerfeedbacks.feedback_id }"/>
                Date of Feedback :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.date_of_feedback}"></c:out>' /></br><span class="err"><form:errors path="CustomerFeedback.date_of_feedback"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Type of Feedback :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Type of Feedback :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <select name="type_of_feedback" class="input_cmbbx1">
                   <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Complaint'}"><c:out value="Selected"/></c:if> value="Complaint">Complaint</option>
@@ -90,7 +90,7 @@
                   <br/><span class="err"></span></td>
                   </tr>
                   <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%"> Feedback Recorded by :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Feedback Recorded by :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <select name="feedback_recorded_by" class="input_cmbbx1">
                   <option <c:if test="${customerfeedbacks.feedback_recorded_by eq'name1'}"><c:out value="Selected"/></c:if> value="name1">Associate name1</option>
@@ -100,20 +100,20 @@
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Feedback Details :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Feedback Details :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <textarea class="input_txtbx1" name="feedback_details" id="id_feedback_details" style="width: 177px; height: 89px;"><c:out value="${customerfeedbacks.feedback_details}"></c:out></textarea>                  
                   
                   <br/><span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
                   </tr>
                   <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"> Attachment choosen:</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Attachment choosen:</td>
                 	<td valign="middle" align="left">${customerfeedbacks.attachment_name}
                  <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.attachments}"></c:out>'></br><span class="err"></span></td>
                  </tr> 
                   
                     <tr class="row1">
-                 <td valign="middle" align="right" class="input_txt" width="30%"></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"></td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="submit" class="submit_btn1" value="Update Feedback" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   </tr>
                   
