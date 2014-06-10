@@ -123,8 +123,9 @@ else
 						<p class="closestatus">
 						
 						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Deleted..!</span>.
-								<a title="Close" href="deletemaintenance" style="color:red;">X</a>
+							<img alt="Success" src="resources/images/icons/removed.png">
+								<a title="Close" href="maintenancedelete">
+								<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
 			</tr>

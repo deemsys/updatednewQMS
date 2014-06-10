@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
@@ -45,10 +46,9 @@
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-						
-						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Inserted!</span>.
-								<a title="Close" href="viewmanagementreview" style="color:red;">X</a>
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="viewmanagementreview">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>
 			</tr>
@@ -58,10 +58,9 @@
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-						
-						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Updated..!</span>.
-								<a title="Close" href="viewmanagementreview" style="color:red;">X</a>
+						<img alt="Success" src="resources/images/icons/success.png"/>
+						<a title="Close" href="viewmanagementreview">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
 			</tr>

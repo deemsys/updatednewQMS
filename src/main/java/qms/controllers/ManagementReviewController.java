@@ -182,6 +182,9 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	
 	System.out.println(managementreview.review_id);
 	session.setAttribute("managementreview",managementreview);
+	session.removeAttribute("categoryvalue");
+	session.removeAttribute("reviewid");
+	session.removeAttribute("managementreviewdate");
 	model.addAttribute("menu","managementreview");
 	
 	if(result.hasErrors())
