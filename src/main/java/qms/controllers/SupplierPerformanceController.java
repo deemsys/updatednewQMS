@@ -336,7 +336,7 @@ import qms.forms.SupplierPerformanceForm;;
 	    model.addAttribute("button","close");
 	      
 	    model.addAttribute("menu","admin");
-	    model.addAttribute("success","false");
+	   // model.addAttribute("success","false");
 	    model.addAttribute("button","close");
 	    return "supplierperformancedelete";
 	}
@@ -350,36 +350,23 @@ import qms.forms.SupplierPerformanceForm;;
 		session.setAttribute("phone", phone);
 		session.setAttribute("email",email);
 
-		if(suppliername=="" && phone=="" && email=="")
-		{
-			SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
+		SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
 			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
 
 			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-			model.addAttribute("menu", "supplierperformance");
+			model.addAttribute("menu", "admin");
 			System.out.println("finding....");
 			return "supplierperformancedelete";
-		}
-		else
-		{
-			System.out.println("searching.......");
-		SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
-		supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
-        model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
-        model.addAttribute("menu","supplierperformance");
-        System.out.println("finding result");
-        model.addAttribute("menu","supplier");
-		return "supplierperformancedelete";		
-		}
+		
 		}
 
 
 		@RequestMapping(value={"/deletesupplier"}, method = RequestMethod.POST)
 	public String deleteSelectedsupplierperformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
-		session.removeAttribute("supplier");
-		session.removeAttribute("supplier1");
-
+			session.removeAttribute("suppliername");
+			session.removeAttribute("phone");
+			session.removeAttribute("email");
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)
@@ -391,9 +378,10 @@ import qms.forms.SupplierPerformanceForm;;
 		}
 		SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
-	    model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+	 //   model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","delete");
 		return "supplierperformancedelete";
 		
 	}	

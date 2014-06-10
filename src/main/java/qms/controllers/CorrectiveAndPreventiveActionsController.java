@@ -499,10 +499,6 @@ public class CorrectiveAndPreventiveActionsController
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
-	      
-	    model.addAttribute("menu","admin");
-	    model.addAttribute("success","false");
-	    model.addAttribute("button","close");
 	    return "correctiveactionsdelete";
 	}
 
@@ -528,6 +524,10 @@ public class CorrectiveAndPreventiveActionsController
 	public String deleteSelectedcorrectiveactions(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
 
+			session.removeAttribute("capa");
+			session.removeAttribute("date");
+			session.removeAttribute("action");
+			
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)
@@ -539,9 +539,10 @@ public class CorrectiveAndPreventiveActionsController
 		}
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
-		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","delete");
 		return "correctiveactionsdelete";
 		
 	}	

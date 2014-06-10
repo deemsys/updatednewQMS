@@ -64,6 +64,7 @@ public class MaintenanceController {
     	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
     	
     	model.addAttribute("maintenanceForm",maintenanceForm);
+    	model.addAttribute("menu","maintenance");
 		
 	//return "view_maintenance";
 return "maintenance_list";
@@ -82,6 +83,7 @@ return "maintenance_list";
 	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
 	    	
 	    	model.addAttribute("maintenanceForm",maintenanceForm);
+	    	model.addAttribute("menu","admin");
 	    	
 		return "maintenancedelete";
 		}
@@ -322,9 +324,9 @@ return "maintenance_list";
 	{	
 
 	
-		//session.removeAttribute("equipid");
-		//session.removeAttribute("equipname");
-
+		session.removeAttribute("equipid");
+		session.removeAttribute("equipname");
+		
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)
@@ -339,6 +341,7 @@ return "maintenance_list";
 	//	model.addAttribute("maintenanceForm",maintenanceForm);
         
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","delete");
 		return "maintenancedelete";
 		
 	}

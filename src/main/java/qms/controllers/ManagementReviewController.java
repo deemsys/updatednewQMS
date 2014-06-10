@@ -361,8 +361,9 @@ public String searchmanagementreviews(HttpSession session,@RequestParam("review_
 @RequestMapping(value={"/managementdelete"}, method = RequestMethod.GET)
 public String delete_management(ModelMap model, Principal principal,HttpSession session )
 {
-	session.removeAttribute("managementreview");
-	session.removeAttribute("managementreview1");
+	session.removeAttribute("reviewid");
+	session.removeAttribute("categoryvalue");
+	session.removeAttribute("managementreviewdate");
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 	//model.addAttribute("managementreviewform", managementreviewform);
@@ -371,23 +372,22 @@ public String delete_management(ModelMap model, Principal principal,HttpSession 
    //narrativereportForm.getNarrativereport().size()
     model.addAttribute("menu","admin");
     model.addAttribute("button","close");
-      
-    model.addAttribute("menu","admin");
-    model.addAttribute("success","false");
-    model.addAttribute("button","close");
-    model.addAttribute("success","true");
+   // model.addAttribute("success","true");
     return "managementdelete";
 }
 
 @RequestMapping(value={"/search_reviews"}, method = RequestMethod.GET)
-public String searchreviews(@RequestParam("review_id") String review_id,@RequestParam("category") String category,@RequestParam("management_review_date") String management_review_date,ModelMap model, Principal principal)
+public String searchreviews(HttpSession session,@RequestParam("review_id") String review_id,@RequestParam("category") String category,@RequestParam("management_review_date") String management_review_date,ModelMap model, Principal principal)
 {
+	session.setAttribute("reviewid",review_id);
+	session.setAttribute("categoryvalue",category);
+	session.setAttribute("managementreviewdate",management_review_date);
 	System.out.println(review_id);
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
 	model.addAttribute("managementreviewform", managementreviewform);
 	model.addAttribute("menu","managementreview");
-	return "view_managementreview";
+	return "managementdelete";
 
 }
 
@@ -396,9 +396,9 @@ public String searchreviews(@RequestParam("review_id") String review_id,@Request
 	@RequestMapping(value={"/deletemanagement"}, method = RequestMethod.POST)
 public String deleteSelectedmanagement(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 {	
-	session.removeAttribute("managementreview");
-	session.removeAttribute("managementreview1");
-
+		session.removeAttribute("reviewid");
+		session.removeAttribute("categoryvalue");
+		session.removeAttribute("managementreviewdate");
 	String[] SelectedIDs=new String[100];
 	SelectedIDs=request.getParameterValues("chkUser");
 	for(String id:SelectedIDs)
@@ -410,9 +410,10 @@ public String deleteSelectedmanagement(HttpServletRequest request,ModelMap model
 	}
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
-	model.addAttribute("managementreviewform", managementreviewform);
+//	model.addAttribute("managementreviewform", managementreviewform);
 	
 	model.addAttribute("menu","admin");
+	model.addAttribute("success","delete");
 	return "managementdelete";
 	
 }	

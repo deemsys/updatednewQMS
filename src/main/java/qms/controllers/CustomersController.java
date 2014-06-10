@@ -191,26 +191,12 @@ public class CustomersController
 		session.setAttribute("name", name);
 		session.setAttribute("address", address);
 
-		if(id=="" && name=="" && address=="")
-		{
 			CustomersForm customersForm = new CustomersForm();
 			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
 			model.addAttribute("customersForm",customersForm);
 			model.addAttribute("menu", "customer");
 			System.out.println("finding....");
 			return "view_customers";
-		}
-		else
-		{
-			System.out.println("searching.......");
-		CustomersForm customersForm = new CustomersForm();
-		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
-        model.addAttribute("customersForm", customersForm);
-        model.addAttribute("menu","customer");
-        System.out.println("finding result");
-        model.addAttribute("menu","customer");
-		return "view_customers";		
-		}
 		}
 	
 	
@@ -244,10 +230,6 @@ public class CustomersController
 		   //narrativereportForm.getNarrativereport().size()
 		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
-		      
-		    model.addAttribute("menu","admin");
-		    model.addAttribute("success","false");
-		    model.addAttribute("button","close");
 		    return "customersdelete";
 		}	
 		
@@ -259,20 +241,22 @@ public class CustomersController
 			session.setAttribute("id", id);
 			session.setAttribute("name", name);
 			session.setAttribute("address", address);
+
 				CustomersForm customersForm = new CustomersForm();
 				customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
 				model.addAttribute("customersForm",customersForm);
-				model.addAttribute("menu", "customer");
+				model.addAttribute("menu", "admin");
 				System.out.println("finding....");
 				return "customersdelete";
-			
 			}
-
+		
+		
 			@RequestMapping(value={"/deletecustomers"}, method = RequestMethod.POST)
 		public String deleteSelectedcustomers(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
-			//session.removeAttribute("customer");
-			//session.removeAttribute("customer1");
+				session.removeAttribute("id");
+				session.removeAttribute("name");
+				session.removeAttribute("address");
 
 			String[] SelectedIDs=new String[100];
 			SelectedIDs=request.getParameterValues("chkUser");
@@ -285,9 +269,10 @@ public class CustomersController
 			}
 			CustomersForm customersForm = new CustomersForm();
 		    customersForm.setCustomers(customersDAO.getCustomers());
-		    model.addAttribute("customersForm",customersForm);
+		//    model.addAttribute("customersForm",customersForm);
 				
 			model.addAttribute("menu","admin");
+			model.addAttribute("success","delete");
 			return "customersdelete";
 			
 		}	

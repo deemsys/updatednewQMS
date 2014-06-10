@@ -332,10 +332,6 @@ public class InternalAuditsController {
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
-	      
-	    model.addAttribute("menu","admin");
-	    model.addAttribute("success","false");
-	    model.addAttribute("button","close");
 	    return "internalauditsdelete";
 	}
 
@@ -362,9 +358,7 @@ InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 		@RequestMapping(value={"/deleteinternalaudits"}, method = RequestMethod.POST)
 	public String deleteSelectedinternalaudits(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
-		//session.removeAttribute("internalaudits");
-		//session.removeAttribute("internalaudits1");
-
+			
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
 		for(String id:SelectedIDs)
@@ -373,11 +367,15 @@ InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 		
 		//formDAO.deleteParticipant(id,principal.getName());
 		internalAuditsDAO.delete_internalAudits(id);
+		session.removeAttribute("id");
+		session.removeAttribute("process");
+		session.removeAttribute("name");
+		
 		}
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
-		model.addAttribute("internalAuditsForm", internalAuditsForm);
-
+	//	model.addAttribute("internalAuditsForm", internalAuditsForm);
+	    model.addAttribute("success","delete");
 		model.addAttribute("menu","admin");
 		return "internalauditsdelete";
 		

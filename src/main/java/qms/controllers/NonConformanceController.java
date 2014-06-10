@@ -365,10 +365,6 @@ public class NonConformanceController {
 		   //narrativereportForm.getNarrativereport().size()
 		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
-		      
-		    model.addAttribute("menu","admin");
-		    model.addAttribute("success","false");
-		    model.addAttribute("button","close");
 		    return "nonconformancedelete";
 		}
 
@@ -385,7 +381,7 @@ public class NonConformanceController {
 				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
 
 				model.addAttribute("nonConformanceForm",nonConformanceForm);
-				model.addAttribute("menu", "nonconformance");
+				model.addAttribute("menu", "admin");
 				System.out.println("finding....");
 				return "nonconformancedelete";
 			
@@ -395,9 +391,9 @@ public class NonConformanceController {
 			@RequestMapping(value={"/deletenonconformance"}, method = RequestMethod.POST)
 		public String deleteSelectednonconformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
-			session.removeAttribute("nonconformance");
-			session.removeAttribute("nonconformance1");
-
+				session.removeAttribute("id");
+				session.removeAttribute("type");
+				
 			String[] SelectedIDs=new String[100];
 			SelectedIDs=request.getParameterValues("chkUser");
 			for(String id:SelectedIDs)
@@ -409,9 +405,10 @@ public class NonConformanceController {
 			}
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
-			model.addAttribute("nonConformanceForm",nonConformanceForm);
+			//model.addAttribute("nonConformanceForm",nonConformanceForm);
 	     
 			model.addAttribute("menu","admin");
+			model.addAttribute("success","delete");
 			return "nonconformancedelete";
 			
 		}	

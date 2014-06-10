@@ -375,6 +375,9 @@ public class CustomerFeedbackController
 		@RequestMapping(value={"/deletecustomersfeedback"}, method = RequestMethod.POST)
 		public String deleteSelectedcustomersfeedback(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
+			session.removeAttribute("date");
+			session.removeAttribute("type");
+			
 			String[] SelectedIDs=new String[100];
 			SelectedIDs=request.getParameterValues("chkUser");
 			for(String id:SelectedIDs)
@@ -387,6 +390,7 @@ public class CustomerFeedbackController
 			CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
 			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
 		    model.addAttribute("menu","admin");
+		    model.addAttribute("success","delete");
 			return "customersfeedbackdelete";
 			
 		}
@@ -402,7 +406,8 @@ public class CustomerFeedbackController
 				CustomerFeedbackForm customerFeedbackForm = new CustomerFeedbackForm();
 				customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type));
 				model.addAttribute("customerFeedbackForm",customerFeedbackForm);
-				model.addAttribute("menu", "customer");
+				model.addAttribute("menu", "admin");
+			//	model.addAttribute("success","delete");
 				System.out.println("finding....");
 				return "customersfeedbackdelete";
 			

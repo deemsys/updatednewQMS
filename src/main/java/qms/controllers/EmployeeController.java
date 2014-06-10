@@ -513,10 +513,6 @@ public class EmployeeController
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
-	      
-	    model.addAttribute("menu","admin");
-	    model.addAttribute("success","false");
-	    model.addAttribute("button","close");
 	    return "employeesdelete";
 	}
 
@@ -529,37 +525,25 @@ public class EmployeeController
 		session.setAttribute("type", type);
 		session.setAttribute("qualifiedby",qualifiedby);
 
-		if(type=="" && qualifiedby=="" && trainer=="")
-		{
 			EmployeeForm employeeForm = new EmployeeForm();
 			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
 			System.out.println(type);
 			System.out.println(qualifiedby);
 			System.out.println(trainer);
 			model.addAttribute("employeeForm",employeeForm);
-			model.addAttribute("menu", "employee");
+			model.addAttribute("menu", "admin");
 			System.out.println("finding....");
 			return "employeesdelete";
-		}
-		else
-		{
-			System.out.println("searching started.......");
-		EmployeeForm employeeForm = new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
-        model.addAttribute("employeeForm", employeeForm);
-        model.addAttribute("menu","employee");
-        System.out.println("finding result");
-        model.addAttribute("menu","employees");
-		return "employeesdelete";		
-		}
+		
 		}
 
 
 		@RequestMapping(value={"/deleteemployees"}, method = RequestMethod.POST)
 	public String deleteSelectedemployees(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
-		session.removeAttribute("employees");
-		session.removeAttribute("employees1");
+			session.removeAttribute("trainer");
+			session.removeAttribute("type");
+			session.removeAttribute("qualifiedby");
 
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
@@ -572,9 +556,10 @@ public class EmployeeController
 		}
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployees());
-		model.addAttribute("employeeForm",employeeForm);
+	//	model.addAttribute("employeeForm",employeeForm);
 
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","delete");
 		return "employeesdelete";
 		
 	}	
