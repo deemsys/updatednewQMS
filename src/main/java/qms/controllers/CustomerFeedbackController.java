@@ -202,8 +202,10 @@ public class CustomerFeedbackController
 			}
 			    
 			    if (customerFeedbackDAO.update_customerfeedback(customerFeedback)) {
-					model.addAttribute("success", "true");
+			    	//model.addAttribute("menu","customer");
+			    	model.addAttribute("success", "true");
 					model.addAttribute("success_message", "Updated Successfully");
+					
 					flag = 1;
 				}
 		} catch (Exception e) {
@@ -232,6 +234,7 @@ public class CustomerFeedbackController
 		return "view_customerfeedback";
 	}
 		else
+			model.addAttribute("menu","customer");
 			return "view_customerfeedback";
 	}	
 	
@@ -250,8 +253,10 @@ public class CustomerFeedbackController
 	
 	//view a record
 	@RequestMapping(value={"/viewfeedback"}, method = RequestMethod.GET)
-	public String view_customerfeedback(ModelMap model, Principal principal ) {
+	public String view_customerfeedback(HttpSession session, ModelMap model, Principal principal ) {
 		
+		session.removeAttribute("type");
+		session.removeAttribute("date");
 		CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
 		model.addAttribute("menu","customer");
 		model.addAttribute("noofrows",5);
