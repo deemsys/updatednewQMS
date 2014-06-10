@@ -54,7 +54,7 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 			DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
 			documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 			model.addAttribute("documentPrefixForm",documentPrefixForm);
-			model.addAttribute("Success","true");
+			//model.addAttribute("Success","insert");
 	        return "add_prefixdocument";
 		}
 	
@@ -63,6 +63,7 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 		documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 		model.addAttribute("documentPrefixForm",documentPrefixForm);
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","insert");
 	return "documentprefix_list";
 }
 	
@@ -148,6 +149,7 @@ public String update_documentprefix(ModelMap model,@ModelAttribute("DocumentPref
 	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
 	model.addAttribute("documentPrefixForm",documentPrefixForm);
 	model.addAttribute("menu","admin");
+	model.addAttribute("success","update");
     return "documentprefix_list";
 }
 

@@ -62,6 +62,7 @@ public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 		model.addAttribute("documentTypeForm",documentTypeForm);
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","true");
 	return "documenttype_list";
 }
 
@@ -96,7 +97,8 @@ public String update_documenttype(ModelMap model,@ModelAttribute("DocumentType")
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 	documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
 	model.addAttribute("documentTypeForm",documentTypeForm);
-	model.addAttribute("menu","documenttype");
+	model.addAttribute("menu","admin");
+	model.addAttribute("success","update");
 	System.out.println("updated successfully");
     return "documenttype_list";
 }

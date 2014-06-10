@@ -84,7 +84,8 @@ public String postrevisionlevel(HttpSession session,@ModelAttribute("DocumentRev
 		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());
 		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","set");
+		model.addAttribute("success","true");
+		//model.addAttribute("success","set");
 	return "documentrevisionlevel_list";
 }
 	
@@ -173,6 +174,7 @@ public String update_revisionlevel(HttpServletRequest request,@RequestParam("id"
 	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());	
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 	model.addAttribute("menu","admin");
+	model.addAttribute("success","update");
     return "documentrevisionlevel_list";
 }
 

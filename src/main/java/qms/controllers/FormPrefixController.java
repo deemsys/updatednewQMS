@@ -61,6 +61,7 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 		formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
 		model.addAttribute("formFormPrefix",formFormPrefix);
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","true");
 	return "formprefix_list";
 }
 	
@@ -143,6 +144,7 @@ public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Va
 	formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
 	model.addAttribute("formFormPrefix",formFormPrefix);
 	model.addAttribute("menu","admin");
+	model.addAttribute("success","update");
     return "formprefix_list";
 }
 

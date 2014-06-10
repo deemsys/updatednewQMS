@@ -62,6 +62,7 @@ public class ProcessController
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("menu","admin");
+			model.addAttribute("success","true");
 		return "process_list";
 	}
 
@@ -140,6 +141,7 @@ public class ProcessController
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm",processForm);
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","update");
 	    return "process_list";
 	}
 	//delete a record

@@ -56,17 +56,30 @@
   </div>
       		</td>
       		</tr>
+			<c:if test="${success=='true'}">
 			<tr>
-			<c:if test="${success==true}">
-        <tr>
-        <td valign="top" align="left" style="padding:5px 0 10px 0;">&nbsp;
-            <div id="success_statusbar" class="status success">
-            <p class="closestatus"><a title="Close" href="formprefix_list">x</a></p>
-            <p><img alt="Success" src="resources/images/icons/icon_success.png"><span>Success!</span>.</p>
-          </div>
-      </tr>
-    </c:if>
-    </tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="formprefix_list">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
+		<c:if test="${success=='update'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/success.png"/>
+						<a title="Close" href="formprefix_list">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">

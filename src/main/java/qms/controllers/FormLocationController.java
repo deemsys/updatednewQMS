@@ -63,6 +63,7 @@ public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @
 		formLocationForm.setFormLocations(formLocationDAO.getlocation());
 		model.addAttribute("formLocationForm",formLocationForm);
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","true");
 	return "formlocation_list";
 }
 
@@ -97,6 +98,7 @@ public String update_formlocation(ModelMap model,@ModelAttribute("FormLocation")
 	formLocationForm.setFormLocations(formLocationDAO.getlocation());
 	model.addAttribute("formLocationForm",formLocationForm);
 	model.addAttribute("menu","admin");
+	model.addAttribute("success","update");
     return "formlocation_list";
 }
 
