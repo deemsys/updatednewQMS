@@ -146,8 +146,16 @@ public String update_documentprefix(ModelMap model,@ModelAttribute("DocumentPref
 	
 	documentPrefixDAO.update_documentprefix(documentPrefix);
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
-	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+	
+  	model.addAttribute("noofrows",5);
+	
+	
+  	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getlimitedprefixreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(documentPrefixDAO.getnoofprefixreport() * 1.0 / 5));	 
+	   
+	model.addAttribute("button","viewall");
 	model.addAttribute("documentPrefixForm",documentPrefixForm);
+    model.addAttribute("currentpage",1);
 	model.addAttribute("menu","admin");
 	model.addAttribute("success","update");
     return "documentprefix_list";
