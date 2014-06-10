@@ -405,10 +405,6 @@ public class FormController
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
-	      
-	    model.addAttribute("menu","admin");
-	    model.addAttribute("success","false");
-	    model.addAttribute("button","close");
 	    return "formdelete";
 		
 		
@@ -432,8 +428,9 @@ public class FormController
 		}
 		FormForm formForm=new FormForm();
 		formForm.setForm(formDAO.getform());
-		model.addAttribute("formForm",formForm);
+	//	model.addAttribute("formForm",formForm);
         model.addAttribute("menu","admin");
+        model.addAttribute("success","delete");
 		return "formdelete";
 		
 	}	
@@ -722,7 +719,7 @@ public class FormController
 		
 		
 		model.addAttribute("formForm", formForm);
-		model.addAttribute("menu","document");
+		model.addAttribute("menu","admin");
      
 		 model.addAttribute("formForm",formForm);
 		

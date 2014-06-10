@@ -1,11 +1,14 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
-<head>
-<script  language="javascript">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" /> 	
 <script src="resources/js/jquery.min.js"></script>
- <script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/jquery-ui.js"></script> 
+
 
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 <script src="resources/js/jquery_checkbox.js" type="text/javascript"></script>
@@ -128,10 +131,9 @@ else
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-						
-						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Deleted..!</span>.
-								<a title="Close" href="managementdelete" style="color:red;">X</a>
+						<img alt="Success" src="resources/images/icons/removed.png">
+						<a title="Close" href="managementdelete">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
 			</tr>
@@ -146,17 +148,23 @@ else
 						<form action="search_reviews" name="dashboard" method="GET">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="review_id" class="input_txtbox" id="id" value="${reviewid}"></td>
+							     <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
+							    
+							
+							    
+							    <td align="left" valign="middle" width="10%">
+							    <input type="text" name="review_id" class="input_txtbox" id="id"  value="${reviewid}"> </td>
 							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx2" id="datepicker" value="${managementreviewdate}"></td>
+							    <td align="left" valign="middle" width="10%">
+							    
+							    <input type="text" name="management_review_date" class="input_txtbx2" id="datepicker" value="${managementreviewdate}"></td>
 							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
 							    <td align="left" valign="middle" width="10%">
 				                  
 							    <select name="category" class="input_cmbbx1">
 				                  		<option value="">--Select--</option>
 						                      
-						                 <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>
+						                  <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>
 						                  <option <c:if test="${categoryvalue eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >Corrective and Prev Actions</option>
 										  <option <c:if test="${categoryvalue eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >Cost of NonConformance</option>
 										  <option  <c:if test="${categoryvalue eq 'customer satisfaction'}"><c:out value="Selected"/></c:if> value="customer satisfaction" >Customer Satisfaction</option>
@@ -269,7 +277,6 @@ $(function () {
 	});
 </script>
 
-</script> 
  <script>
  $(function() {
            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});

@@ -168,7 +168,7 @@ public class DocumentController {
 
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
-		model.addAttribute("documentTypeForm",documentTypeForm);
+	//	model.addAttribute("documentTypeForm",documentTypeForm);
 		
 		ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getProcess());
@@ -178,10 +178,6 @@ public class DocumentController {
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
-	    model.addAttribute("button","close");
-	      
-	    model.addAttribute("menu","admin");
-	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");
 	    return "documentdelete";
 		
@@ -207,7 +203,7 @@ public class DocumentController {
 		}
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-		model.addAttribute("documentMainForm",documentMainForm);
+	//	model.addAttribute("documentMainForm",documentMainForm);
         
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
@@ -219,6 +215,7 @@ public class DocumentController {
 		
 		
 		model.addAttribute("menu","admin");
+		model.addAttribute("success","delete");
 		return "documentdelete";
 		
 	}	
@@ -802,7 +799,7 @@ public class DocumentController {
 		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
 		
 		model.addAttribute("documentMainForm", documentMainForm);
-		model.addAttribute("menu","document");
+		model.addAttribute("menu","admin");
 		return "documentdelete";
 		}
 			

@@ -121,10 +121,9 @@ else
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-						
-						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Deleted..!</span>.
-								<a title="Close" href="customersfeedbackdelete" style="color:red;">X</a>
+						<img alt="Success" src="resources/images/icons/removed.png">
+						<a title="Close" href="customersfeedbackdelete">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
 			</tr>
