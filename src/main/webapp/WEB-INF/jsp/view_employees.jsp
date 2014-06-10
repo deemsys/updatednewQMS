@@ -38,15 +38,15 @@
   </div>
       		</td>
       		</tr>
-      		<c:if test="${success=='true'}">
+      		
+			<c:if test="${success=='true'}">
 			<tr>
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-						
-						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Inserted!</span>.
-								<a title="Close" href="viewemployees" style="color:red;">X</a>
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="viewemployees">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>
 			</tr>
@@ -56,10 +56,9 @@
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
-						
-						
-							<img alt="Success" src="resources/images/icons/icon_success.png"><span style="color:green;">Successfully Updated..!</span>.
-								<a title="Close" href="viewemployees" style="color:red;">X</a>
+						<img alt="Success" src="resources/images/icons/success.png"/>
+						<a title="Close" href="viewemployees">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
 			</tr>
