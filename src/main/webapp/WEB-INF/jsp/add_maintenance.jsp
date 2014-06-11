@@ -45,11 +45,13 @@
             <div class="headings altheading">
               <h2>Maintenance and Calibration Details</h2>
             </div>
+            
     <div class="contentbox">
-      
-           <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
+       <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:15px;">
+        <div>
+           <table cellpadding="0" cellspacing="0" border="0" width="100%" >
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="top" width="50%" style="padding-right: 35px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Equipment Id :</td>
@@ -112,8 +114,8 @@
             
         </table>
         </div>
-      
-         <div class="contentbox">
+       
+         <div>
          <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
@@ -128,7 +130,7 @@
                  <td valign="middle" align="left" class="input_txt" width="50%"> Type of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
                   <select name="type_of_maintenance" class="input_cmbbx1">
-                  <option value="">--Select--</option>
+                 
                   <option value="Preventive">Preventive</option>
                   <option value="Corrective">Corrective</option>
                    <option value="Predictive">Predictive</option>
@@ -136,8 +138,14 @@
                 <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Maintenance Frequency :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="maintenance_frequency" class="input_txtbx1" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                  <input type="checkbox" name="weekly" value="yes" id="weekly"/>&nbsp;Weekly  <br/>               
+             	  <input type="checkbox" name="monthly" value="yes" id="monthly"/>&nbsp;Monthly<br/>
+                  <input type="checkbox" name="quarterly" value="yes" id="quarterly"/>&nbsp;Quarterly<br/>
+                  <input type="checkbox" name="semiannually" value="yes" id="semiannually"/>&nbsp;Semi-Annually<br/>
+                  <input type="checkbox" name="annually" value="yes" id="annually"/>&nbsp;Annually<br/>
+                 <%--  <span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span> --%></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Reference :</td>
@@ -185,7 +193,9 @@
             
            
          </div>  
-              </div>   
+              </div> 
+              </div>
+              </div>
           </table>
            </form>
        <script>

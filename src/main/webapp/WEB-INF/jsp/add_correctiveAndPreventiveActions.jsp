@@ -160,15 +160,26 @@
                   </td>       	
           
            </tr>
-                  <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Action</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="action" value="<c:out value="${correctiveAndPreventiveActions.action}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
-                <td valign="top" align="left" class="input_txt" width="30%">Due Date</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" id="datepicker6" name="due_date" value="<c:out value="${correctiveAndPreventiveActions.due_date}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
-                 </tr>
+                 
+                 
+                  </table>
+                <br>
+                <div>
+                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Action</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="action" value="<c:out value="${correctiveAndPreventiveActions.action}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Due Date</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" id="datepicker6" name="due_date" value="<c:out value="${correctiveAndPreventiveActions.due_date}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Verified By</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="verified_by" value="<c:out value="${correctiveAndPreventiveActions.verified_by}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
+               </tr>
                     <tr class="row2">
-                     <td valign="top" align="left" class="input_txt" width="30%">Responsibity</td>
-                     <td valign="top" align="left" class="input_txt">
+                     <td valign="middle" align="left" class="input_txt" width="30%">Responsibity</td>
+                     <td valign="top" align="left" class="input_txt"width="30%">
 				                  		<select name="responsibility" class="input_cmbbx1">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${correctiveAndPreventiveActions.responsibility eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
@@ -178,23 +189,17 @@
 				                 <span class="err"><form:errors path="CorrectiveAndPreventiveActions.responsibility"></form:errors></span>
 				                   	</td>	
                      
-                     <td valign="top" align="left" class="input_txt" width="30%">Completion Date</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" id="datepicker4" name="completion_date" value="<c:out value="${correctiveAndPreventiveActions.completion_date}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.completion_date"></form:errors></span></td>
-                    </tr>
-               <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Verified By</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="verified_by" value="<c:out value="${correctiveAndPreventiveActions.verified_by}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
-             	  <td valign="top" align="left" class="input_txt" width="30%">Verification Date</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" id="datepicker5" name="verification_date" value="<c:out value="${correctiveAndPreventiveActions.verification_date}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.verification_date"></form:errors></span></td>
-                
-             
-              </tr>
-                 
-                  </table>
-                
-                
-                
-                  <table align="center" width="100%">
+                     <td valign="middle" align="left" class="input_txt" width="30%">Completion Date</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" id="datepicker4" name="completion_date" value="<c:out value="${correctiveAndPreventiveActions.completion_date}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.completion_date"></form:errors></span></td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Verification Date</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" id="datepicker5" name="verification_date" value="<c:out value="${correctiveAndPreventiveActions.verification_date}"/>"/><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.verification_date"></form:errors></span></td>
+                 </tr>
+                </table>
+               </td>
+               </tr>
+               </table>
+                </div>
+                 <table align="center" width="100%">
                   <tr >
                   
                   <td valign="top" align="center"></td>

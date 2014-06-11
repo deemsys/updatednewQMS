@@ -57,9 +57,12 @@
         <td valign="top" align="left"><div>
             <div class="headings altheading">
               <h2>Maintenance & Calibration Details</h2>
-            </div>  <div class="contentbox">
-                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
-				  <c:set value="${maintenanceForm.maintenance[0]}" var="Maintenance"> </c:set>
+            </div>  
+            <div class="contentbox">
+       <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:15px;">
+       <div>
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+         <c:set value="${maintenanceForm.maintenance[0]}" var="Maintenance"> </c:set>
              
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
@@ -125,7 +128,7 @@
             
         </table>
         </div>
-         <div class="contentbox">
+         <div>
                      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 
         
@@ -152,7 +155,15 @@
                   </tr>
                    <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Maintenance Frequency :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="maintenance_frequency" class="input_txtbx" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.maintenance_frequency}" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                  
+                  <input type="checkbox" name="weekly" value="yes" id="weekly" <c:if test="${Maintenance.weekly=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Weekly  <br/>               
+             	  <input type="checkbox" name="monthly" value="yes" id="monthly"<c:if test="${Maintenance.monthly=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Monthly<br/>
+                  <input type="checkbox" name="quarterly" value="yes" id="quarterly"<c:if test="${Maintenance.quarterly=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Quarterly<br/>
+                  <input type="checkbox" name="semiannually" value="yes" id="semiannually"<c:if test="${Maintenance.semiannually=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Semi-Annually<br/>
+                  <input type="checkbox" name="annually" value="yes" id="annually"<c:if test="${Maintenance.annually=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Annually<br/>
+                  
+                <%--   <input type="text" name="maintenance_frequency" class="input_txtbx" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.maintenance_frequency}" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td> --%>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Reference :</td>
@@ -200,7 +211,7 @@
             
            
          </div>  
-            
+            </div>
              </td>
             </tr>
             </table></div>
