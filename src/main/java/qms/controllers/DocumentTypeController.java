@@ -59,7 +59,11 @@ public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType
 		//formprefixDAO.insert_PrefixForm(formPrefix);
 		documentTypeDAO.insert_DocumentType(documentType);
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
-		documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+		documentTypeForm.setDocumentTypes(documentTypeDAO.getlimiteddocumenttypereport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(documentTypeDAO.getnoofdocumenttypereport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
 		model.addAttribute("documentTypeForm",documentTypeForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","true");
@@ -95,7 +99,12 @@ public String update_documenttype(ModelMap model,@ModelAttribute("DocumentType")
 	
 	documentTypeDAO.update_documenttype(documentType);
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
-	documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+	documentTypeForm.setDocumentTypes(documentTypeDAO.getlimiteddocumenttypereport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(documentTypeDAO.getnoofdocumenttypereport() * 1.0 / 5));	 
+	   
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("documentTypeForm",documentTypeForm);
 	model.addAttribute("menu","admin");
 	model.addAttribute("success","update");
@@ -113,7 +122,11 @@ public String deletedocumenttype(@RequestParam("id") String id,DocumentType docu
 	//formprefixDAO.delete_formprefix(id);
 	documentTypeDAO.delete_documenttype(id);
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
-	documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+	documentTypeForm.setDocumentTypes(documentTypeDAO.getlimiteddocumenttypereport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(documentTypeDAO.getnoofdocumenttypereport() * 1.0 / 5));	 
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","delete");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("documentTypeForm",documentTypeForm);
 	model.addAttribute("menu","admin");
     return "documenttype_list";

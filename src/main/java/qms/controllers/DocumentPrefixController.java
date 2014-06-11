@@ -60,7 +60,11 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 	
 		documentPrefixDAO.insert_PrefixDocument(documentPrefix);
 		DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
-		documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+		documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getlimitedprefixreport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(documentPrefixDAO.getnoofprefixreport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
 		model.addAttribute("documentPrefixForm",documentPrefixForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","insert");
@@ -168,7 +172,11 @@ public String deletedocumentprefix(@RequestParam("id") String id,DocumentPrefix 
 	
 	documentPrefixDAO.delete_documentprefix(id);
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
-	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+	documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getlimitedprefixreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(documentPrefixDAO.getnoofprefixreport() * 1.0 / 5));	 
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","delete");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("documentPrefixForm",documentPrefixForm);
 	model.addAttribute("menu","admin");
     return "documentprefix_list";

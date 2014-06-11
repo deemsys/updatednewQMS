@@ -58,7 +58,11 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 	
 		formprefixDAO.insert_PrefixForm(formPrefix);
 		FormFormPrefix formFormPrefix = new FormFormPrefix();
-		formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
+		formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
 		model.addAttribute("formFormPrefix",formFormPrefix);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","true");
@@ -141,7 +145,11 @@ public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Va
 	
 	formprefixDAO.update_formprefix(formPrefix);
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
-	formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
+	formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));	 
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("formFormPrefix",formFormPrefix);
 	model.addAttribute("menu","admin");
 	model.addAttribute("success","update");

@@ -59,7 +59,11 @@ public class ProcessController
 		
 			processDAO.insert_Process(process);
 			ProcessForm processForm = new ProcessForm();
-			processForm.setProcesses(processDAO.getProcess());
+			processForm.setProcesses(processDAO.getlimitedprocessreport(1));
+			model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
+			model.addAttribute("button","viewall");
+		    model.addAttribute("success","false");
+		    model.addAttribute("currentpage",1);
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("menu","admin");
 			model.addAttribute("success","true");
@@ -138,7 +142,11 @@ public class ProcessController
 		
 		processDAO.update_Process(process);
 		ProcessForm processForm = new ProcessForm();
-		processForm.setProcesses(processDAO.getProcess());
+		processForm.setProcesses(processDAO.getlimitedprocessreport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
 		model.addAttribute("processForm",processForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","update");
@@ -151,7 +159,11 @@ public class ProcessController
     
 		processDAO.delete_process(employee_id);
 		ProcessForm processForm = new ProcessForm();
-		processForm.setProcesses(processDAO.getProcess());
+		processForm.setProcesses(processDAO.getlimitedprocessreport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
 		model.addAttribute("processForm",processForm);
 		model.addAttribute("menu","admin");
 		return "process_list";

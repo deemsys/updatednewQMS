@@ -81,8 +81,12 @@ public String postrevisionlevel(HttpSession session,@ModelAttribute("DocumentRev
 	
 		documentRevisionLevelDAO.insert_Documentrevision(documentRevisionLevel);
 		DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
-		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());
-		model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+		documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getlimitedrevisionlevelreport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(documentRevisionLevelDAO.getnoofrevisionlevelreport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);		
+	    model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","true");
 		//model.addAttribute("success","set");
@@ -171,7 +175,12 @@ public String update_revisionlevel(HttpServletRequest request,@RequestParam("id"
 	documentRevisionLevelDAO.update_documentrevisionlevel(documentRevisionLevel);
 	
 	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
-	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getFormattype());	
+	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getlimitedrevisionlevelreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(documentRevisionLevelDAO.getnoofrevisionlevelreport() * 1.0 / 5));	 
+	   
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 	model.addAttribute("menu","admin");
 	model.addAttribute("success","update");
@@ -185,7 +194,11 @@ public String deletedocumentrevisionlevel(@RequestParam("id") String id,Document
 	
 	documentRevisionLevelDAO.delete_documentrevisionlevel(id);
 	DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
-	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getDocumentRevisionLevels());
+	documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getlimitedrevisionlevelreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(documentRevisionLevelDAO.getnoofrevisionlevelreport() * 1.0 / 5));	 
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","delete");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 	model.addAttribute("menu","admin");
     return "documentrevisionlevel_list";

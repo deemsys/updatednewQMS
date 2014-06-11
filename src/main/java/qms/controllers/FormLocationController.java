@@ -60,7 +60,11 @@ public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @
 		//formprefixDAO.insert_PrefixForm(formPrefix);
 		formLocationDAO.insert_LocationForm(formLocation);
 		FormLocationForm formLocationForm = new FormLocationForm();
-		formLocationForm.setFormLocations(formLocationDAO.getlocation());
+	  	formLocationForm.setFormLocations(formLocationDAO.getlimitedlocationreport(1));
+		model.addAttribute("noofpages",(int) Math.ceil(formLocationDAO.getnooflocationreport() * 1.0 / 5));	 
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
 		model.addAttribute("formLocationForm",formLocationForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","true");
@@ -95,7 +99,11 @@ public String update_formlocation(ModelMap model,@ModelAttribute("FormLocation")
 	
 	formLocationDAO.update_formlocation(formLocation);
 	FormLocationForm formLocationForm = new FormLocationForm();
-	formLocationForm.setFormLocations(formLocationDAO.getlocation());
+  	formLocationForm.setFormLocations(formLocationDAO.getlimitedlocationreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(formLocationDAO.getnooflocationreport() * 1.0 / 5));	 
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("formLocationForm",formLocationForm);
 	model.addAttribute("menu","admin");
 	model.addAttribute("success","update");
@@ -110,7 +118,11 @@ public String deletelocation(@RequestParam("location_id") String location_id,For
 	//formprefixDAO.delete_formprefix(id);
 	formLocationDAO.delete_formlocation(location_id);
 	FormLocationForm formLocationForm = new FormLocationForm();
-	formLocationForm.setFormLocations(formLocationDAO.getlocation());
+	formLocationForm.setFormLocations(formLocationDAO.getlimitedlocationreport(1));
+	model.addAttribute("noofpages",(int) Math.ceil(formLocationDAO.getnooflocationreport() * 1.0 / 5));	 
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","delete");
+    model.addAttribute("currentpage",1);
 	model.addAttribute("formLocationForm",formLocationForm);
 	model.addAttribute("menu","admin");
     return "formlocation_list";
