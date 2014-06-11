@@ -46,8 +46,8 @@
               <h2>Maintenance and Calibration Details</h2>
             </div>
     <div class="contentbox">
-      <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+      
+           <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -112,9 +112,9 @@
             
         </table>
         </div>
-        </div>
+      
          <div class="contentbox">
-         <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+         <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
@@ -159,17 +159,17 @@
                   <td valign="middle" align="left" class="input_txt" width="50%"><input type="text" name="due_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx1" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Completion Date :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completion_date" class="input_txtbx1" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Completed By :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completed_by" class="input_txtbx1" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Completed By :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completed_by" class="input_txtbx1" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt">Notes:</td>
-               <td valign="top" align="left"  colspan="3"><textarea class="input_txtbx1"  name="notes"  style="width:85%; height: 89px;" ></textarea><br/><span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
+               <td valign="middle" align="left" class="input_txt"width="50%">Notes:</td>
+               <td valign="top" align="left"  class="input_txt"width="50%"><textarea class="input_txtbx1"  name="notes"  style="width:85%; height: 89px;" ></textarea><br/><span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
             </tr>
             <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
