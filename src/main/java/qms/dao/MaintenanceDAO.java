@@ -151,11 +151,6 @@ public class MaintenanceDAO extends AbstractExcelView
 				excelHeader.createCell(i).setCellValue("Type of maintenance");
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
-			}else if(field.equals("maintenance_frequency"))
-			{
-				excelHeader.createCell(i).setCellValue("Maintenace Frequency");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
 			}else if(field.equals("reference"))	
 			{
 				excelHeader.createCell(i).setCellValue("Reference");
@@ -243,6 +238,7 @@ public class MaintenanceDAO extends AbstractExcelView
 					{
 						excelRow.createCell(i).setCellValue(
 								maintenance.getFrequency_maintenance());
+						i++;
 					}else if(field.equals("calibration"))	
 					{
 						excelRow.createCell(i).setCellValue(
@@ -250,13 +246,24 @@ public class MaintenanceDAO extends AbstractExcelView
 						i++;
 					}else if(field.equals("type_of_maintenance"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getType_of_maintenance());
-						i++;
-					}else if(field.equals("maintenance_frequency"))	
-					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getWeekly());
+						String maintances =" ";
+						if(maintenance.getWeekly().equals("yes"))
+						{
+							maintances =maintances+"Weekly,";
+						}
+						if(maintenance.getMonthly().equals("yes")){
+							maintances =maintances+"Monthly,";
+						}
+						if(maintenance.getQuarterly().equals("yes")){
+							maintances =maintances+"Quarterly,";
+						}
+						if(maintenance.getSemiannually().equals("yes")){
+							maintances =maintances+"Semi-Annually,";
+						}
+						if(maintenance.getAnnually().equals("yes")){
+							maintances =maintances+"Annually";
+						}
+						excelRow.createCell(i).setCellValue(maintances);
 						i++;
 					}else if(field.equals("reference"))	
 					{
