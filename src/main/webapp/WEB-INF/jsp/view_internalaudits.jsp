@@ -79,7 +79,7 @@
 							    <td align="left" valign="middle" width="15%">&nbsp;Auditee name:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="auditee_name" id="auditee_name" class="input_txtbx1" value="${name}"></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 							</table>
 						</div>

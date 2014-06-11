@@ -22,7 +22,9 @@ import org.springframework.web.servlet.ModelAndView;
 //import com.sun.mail.iap.Response;
 
 import qms.dao.InternalAuditsDAO;
+import qms.dao.ProcessDAO;
 import qms.forms.InternalAuditsForm;
+import qms.forms.ProcessForm;
 
 import qms.model.InternalAudits;
 
@@ -32,6 +34,9 @@ public class InternalAuditsController {
 
 	@Autowired
 	InternalAuditsDAO internalAuditsDAO;
+	
+	@Autowired
+	ProcessDAO processDAO;
 
 	
 	//Internal Audit Report generation
@@ -42,7 +47,7 @@ public class InternalAuditsController {
 		String title = "internal_audit";
 		java.util.List<InternalAudits> internalAudits=new ArrayList<InternalAudits>();
 		
-		 switch(Integer.parseInt(request.getParameter("audit_report_type")))
+		 switch(Integer.parseInt(request.getParameter("doc_type")))
 				  {
 					  case 0:
 			  internalAudits=internalAuditsDAO.getAudit_bytype("past_due_audits");
@@ -97,9 +102,24 @@ public class InternalAuditsController {
 	}
 	
 	
+	
+	
+	
+	
+	
 	// getting unique id
 	@RequestMapping(value = { "/addinternalaudits" }, method = RequestMethod.GET)
-	public String add_internalaudits(ModelMap model, Principal principal) {
+	public String add_internalaudits(HttpSession session, ModelMap model, Principal principal) {
+	
+		session.removeAttribute("internalaudits");
+		
+	//	load_document_page_dropdowns(model);
+		
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
 		model.addAttribute("id", internalAuditsDAO.get_maxid());
 		model.addAttribute("menu","audits");
 		return "add_internalaudits";
@@ -125,6 +145,13 @@ public class InternalAuditsController {
 		} else {
 
 			if (!internalAuditsDAO.insert_internalAudits(internalAudits)) {
+				
+				ProcessForm processForm = new ProcessForm();
+				processForm.setProcesses(processDAO.getProcess());
+				model.addAttribute("processForm", processForm);
+				
+				
+				
 				InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 				internalAuditsForm.setInternalAudits(internalAuditsDAO
 						.get_internalaudits());
@@ -155,10 +182,17 @@ public class InternalAuditsController {
 	
 	// Internal audits edit page
 	@RequestMapping(value = "edit_internalaudit", method = RequestMethod.GET)
-	public String edit_internalaudits(@RequestParam("id") String id,
+	public String edit_internalaudits(HttpSession session,@RequestParam("id") String id,
 			ModelMap model, Principal principal) {
+	
+		session.removeAttribute("internalaudits");
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
+		
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
-
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.edit_internalaudit(id));
 
 		model.addAttribute("internalAuditsForm", internalAuditsForm);
@@ -185,8 +219,13 @@ public class InternalAuditsController {
 		internalAuditsDAO.update_internalaudits(internalAudits);
 		model.addAttribute("menu","audits");
 		model.addAttribute("success","update");
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
+		
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
-
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 
 		//model.addAttribute("internalAuditsForm", internalAuditsForm);

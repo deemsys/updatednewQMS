@@ -63,12 +63,19 @@
                 <tr class="row1">
 						         	<td valign="top" align="left" class="input_txt"> Process :</td>
 						          <td valign="top" align="left">
-				                  		<select name="process"  class="input_txtbx" style="height:20px;">
+				                  		<%-- <select name="process"  class="input_txtbx" style="height:20px;">
 				                  		<option value="">--Select--</option>
 						                  <option <c:if test="${internalaudits.process eq 'process1'}"><c:out value="Selected"/></c:if> value="process1" >Process1</option>
 											<option <c:if test="${internalaudits.process eq 'process2'}"><c:out value="Selected"/></c:if> value="process2">Process2</option>
 											<option  <c:if test="${internalaudits.process eq 'process3'}"><c:out value="Selected"/></c:if> value="process3">Process3</option>
-				                   	</select>
+				                   	</select> --%>
+				                   	
+				        	 <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
+               				<option value="">--Select--</option>
+               				<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
+               				<option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
+               				</c:forEach>
+               				</select>
 						           		<br/><span class="err"><form:errors path="InternalAudits.process"></form:errors></span>
 				                   	</td>	
 						         </tr> 
@@ -76,8 +83,15 @@
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditee Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <input type="text" name="auditee_name" class="input_txtbx" id="inp_auditee_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.auditee_name}"></c:out>' /><br/><span class="err"><form:errors path="InternalAudits.auditee_name"></form:errors></span>
-                  </td>         		</tr>
+                 <%--  <input type="text" name="auditee_name" class="input_txtbx" id="inp_auditee_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.auditee_name}"></c:out>' /><br/><span class="err"><form:errors path="InternalAudits.auditee_name"></form:errors></span>
+                  --%>  <select name="auditee_name" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
+               <option value="">--Select--</option>
+               <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
+               <option value="<c:out value="${processes.process_owner}"/>"><c:out value="${processes.process_owner}"/></option>
+               </c:forEach>
+               </select>
+               </td>         		
+               </tr>
                   
 
 								
@@ -143,9 +157,8 @@
                   <table align="center" width="100%">
                   <tr >
                   
-                  <td valign="top" align="center"></td>
-                  
-				  <td valign="top" align="center"><input type="submit"  value="Submit" class="submit_btn1">
+                  </br>
+				  <td><input type="submit"  value="Submit" class="submit_btn1">
 				 </td>
                   </tr>
                   </table>
@@ -158,7 +171,26 @@
                   </form>
                   
                   
-                  
+ <script>
+ function doAjaxPost_for_process() {
+
+		var proceee_name = $('#id_inpprocess').val();
+		/*   var education = $('#education').val();	 */		
+		$.ajax({
+			type : "POST",
+			url : "/QMS_App/ajax_getprocess",
+			data : "process=" + proceee_name,
+			success : function(response) {
+				
+				$('#process_owner_id').html(response);
+			
+			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	}
+ </script>                 
                   
                       
    <script>
