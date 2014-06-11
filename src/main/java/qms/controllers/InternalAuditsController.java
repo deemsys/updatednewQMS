@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -27,6 +28,7 @@ import qms.forms.InternalAuditsForm;
 import qms.forms.ProcessForm;
 
 import qms.model.InternalAudits;
+import qms.model.NonConformance;
 
 @Controller
 @SessionAttributes({ "internalaudits" })
@@ -44,10 +46,11 @@ public class InternalAuditsController {
 	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model) {
 		
 	String[] fields={"report_id","process","auditee_name","audit_start_date","audit_due_date","auditor","audit_notes","finding","completion_date","auditors_initial","type"};	
-		String title = "internal_audit";
+		//String title= "internal_audit";
+	String title="";
 		java.util.List<InternalAudits> internalAudits=new ArrayList<InternalAudits>();
 		
-		 switch(Integer.parseInt(request.getParameter("doc_type")))
+		 switch(Integer.parseInt(request.getParameter("audit_report_type")))
 				  {
 					  case 0:
 			  internalAudits=internalAuditsDAO.getAudit_bytype("past_due_audits");
@@ -101,8 +104,65 @@ public class InternalAuditsController {
 		
 	}
 	
+	/*@RequestMapping(value = "/internal_audit_report", method = RequestMethod.POST)
+	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response)
+	{
+		String start = null,end = null;
+		String[] fields={"report_id","process","auditee_name","audit_start_date","audit_due_date","auditor","audit_notes","finding","completion_date","auditors_initial","type"};
+		System.out.println(request.getParameter("type_of_report"));
+		
+		String title = "internal_audit";
+		java.util.List<InternalAudits> internalAudits=new ArrayList<InternalAudits>();
+		
+		switch(Integer.parseInt(request.getParameter("audit_report_type")))
+		  {
+			  case 0:
+	  internalAudits=internalAuditsDAO.getAudit_bytype("past_due_audits");
+	  title="past_due_audits";
+	  break;
+ case 1:
+	  internalAudits=internalAuditsDAO.getAudit_bytype("audits_with_nonconformance");
+	  title="audits_with_nonconformance";
+	  break;
+ case 2:
+	  internalAudits=internalAuditsDAO.getAudit_bytype("area_of_improvements");
+	  title="area_of_improvements";
+	  break;
+ case 3:
+	  internalAudits=internalAuditsDAO.getAudit_bytype("past_due_audits_by_auditor");
+	  title="past_due_audits_by_auditor";
+	  break;
+ case 4:
+	  internalAudits=internalAuditsDAO.getAudit_bytype("audit_schedule");
+	  title="audit_schedule";
+	  break;
+ default:
+	  break;
+		  
+}		
+		if(Integer.parseInt(request.getParameter("report_type"))==1)
+		{
+		
+				System.out.println("now ok");
+				 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("auditee_name")+"'");
+					
+				fields=request.getParameterValues("report_field[]");
+			
+		}
+		else
+			
+		response.setHeader("Content-Disposition","attachment;filename='internalaudit_report'");
+		
+		
+		ModelAndView modelAndView=new ModelAndView("internalauditsDAO","internalAudits",internalAudits);
+		
+		modelAndView.addObject("fields",fields);
+		
+		System.out.println("now ok::::");
+		return modelAndView ;
+	}
 	
-	
+	*/
 	
 	
 	

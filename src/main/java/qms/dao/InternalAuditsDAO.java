@@ -98,7 +98,7 @@ import qms.model.InternalAudits;
 			
 				for(String field:fields)
 				{
-					if (field.equals("audit_id")) 
+					if (field.equals("id")) 
 					{
 						
 						excelHeader.createCell(i).setCellValue("ID");
@@ -111,11 +111,7 @@ import qms.model.InternalAudits;
 						excelHeader.getCell(i).setCellStyle(style);
 						i++;
 						}
-					else if (field.equals("auditee_name")) {
-						excelHeader.createCell(i).setCellValue("AUDITEE NAME");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
-						} 
+					
 					else if (field.equals("audit_start_date")) {
 						excelHeader.createCell(i).setCellValue("AUDIT START DATE");
 						excelHeader.getCell(i).setCellStyle(style);
@@ -147,11 +143,16 @@ import qms.model.InternalAudits;
 						excelHeader.getCell(i).setCellStyle(style);
 						i++;
 						}
-					else if (field.equals("auditors_initial")) {
+					else if (field.equals("auditors_initials")) {
 						excelHeader.createCell(i).setCellValue("AUDITOR'S INITIALS");
 						excelHeader.getCell(i).setCellStyle(style);
 						i++;
 						}
+					else if(field.equals("auditee_name")){
+						excelHeader.createCell(i).setCellValue("AUDITEE NAME");
+						excelHeader.getCell(i).setCellStyle(style);
+						i++;
+					}
 				
 				}
 			}
@@ -168,7 +169,7 @@ import qms.model.InternalAudits;
 				i=0;
 				for(String field:fields)
 				{
-					if (field.equals("audit_id")) 
+					if (field.equals("id")) 
 					{						
 						excelRow.createCell(i).setCellValue(
 								internalAudit.getId());
@@ -181,12 +182,7 @@ import qms.model.InternalAudits;
 								internalAudit.getProcess());
 							i++;
 							}
-					else if (field.equals("auditee_name")) {
-						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAuditee_name());
-							i++;
-							} 
+				 
 					else if (field.equals("audit_start_date")) {
 						
 						excelRow.createCell(i).setCellValue(
@@ -222,10 +218,16 @@ import qms.model.InternalAudits;
 								internalAudit.getCompletion_date());
 							i++;
 							}
-					else if (field.equals("auditors_initial")) {
+					else if (field.equals("auditors_initials")) {
 						
 						excelRow.createCell(i).setCellValue(
 								internalAudit.getAuditors_initials());
+							i++;
+							}
+					else if (field.equals("auditee_name")) {
+						
+						excelRow.createCell(i).setCellValue(
+								internalAudit.getAuditee_name());
 							i++;
 							}
 								}
@@ -450,6 +452,7 @@ import qms.model.InternalAudits;
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		System.out.println("type"+type);
 		List<InternalAudits> internalAudits = new ArrayList<InternalAudits>();
 
 		try {
@@ -459,7 +462,7 @@ import qms.model.InternalAudits;
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_select = "select * from tb1_internalaudits";
+		/*	String cmd_select = "select * from tb1_internalaudits";
 			
 			if(type.equals("past_due_audits"))
 				cmd_select="select * from tb1_internalaudits where audit_due_date>now()";			
@@ -478,7 +481,34 @@ import qms.model.InternalAudits;
 		
 			else if (type.equals("audit_schedule")) {
 				cmd_select="select * from tb1_internalaudits";
-			}
+			}*/
+			String cmd_select = "select * from tb1_internalaudits";
+			//	String cmd_select;
+				if(type.equals("past_due_audits")){
+					//cmd_select="select * from tb1_internalaudits where audit_due_date > NOW() and completion_date < NOW";
+					String query ="select * from tb1_internalaudits where audit_due_date>now()";
+					System.out.println(query);
+					cmd_select="select * from tb1_internalaudits where audit_due_date>now()";
+				}
+				else if (type.equals("audits_with_nonconformance")) {
+					//cmd_select="select * from tb1_internalaudits where finding='nonconformance'";
+					String query ="select * from tb1_internalaudits where audit_start_date < NOW() AND completion_date > NOW()";
+					System.out.println(query);
+					cmd_select="select * from tb1_internalaudits where audit_start_date < NOW() AND completion_date > NOW()";
+				}
+				
+				else if (type.equals("area_of_improvements")) {
+					cmd_select="select * from tb1_internalaudits where audit_start_date < NOW() AND completion_date > NOW()";//doubts
+				}
+				
+				else if (type.equals("past_due_audits_by_auditor")) {
+					//cmd_select="select * from tb1_internalaudits where audit_due_date<completion_date";
+					cmd_select = "select * from tb1_internalaudits where audit_start_date < NOW() AND completion_date > NOW()";
+				}
+			
+				else if (type.equals("audit_schedule")) {
+					cmd_select="select * from tb1_internalaudits where audit_start_date < now() AND completion_date > now()";
+				}
 			System.out.println(cmd_select);
 			resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {			
