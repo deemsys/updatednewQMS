@@ -105,7 +105,8 @@
                    <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="50%">Calibration(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="50%">
-               <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+               <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes" checked>Yes&nbsp;&nbsp;&nbsp;
+               <input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);"  >No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </td>
                </table>
              </td>

@@ -119,7 +119,8 @@
                    <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="30%">Calibration(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="70%">
-               <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes" >Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);"  checked>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+               <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes"  <c:if test="${Maintenance.calibration=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+               <input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);" <c:if test="${Maintenance.calibration=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </td>
                </table>
              </td>

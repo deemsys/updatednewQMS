@@ -253,7 +253,7 @@ return "maintenance_list";
 			  break;
 		  case 1:
 			  no_of_days = Integer.parseInt(request.getParameter("no_of_days"));
-			  
+			  System.out.println("no_of_days controller="+no_of_days);
 			  maintenances=maintenanceDAO.getMaintenance_bytype("upcoming_calibration",no_of_days);
 			  break;
 		  case 2:

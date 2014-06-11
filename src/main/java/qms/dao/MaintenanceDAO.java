@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -151,7 +153,14 @@ public class MaintenanceDAO extends AbstractExcelView
 				excelHeader.createCell(i).setCellValue("Type of maintenance");
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
-			}else if(field.equals("reference"))	
+			}
+			else if(field.equals("maintenance_frequency"))	
+			{
+				excelHeader.createCell(i).setCellValue("Maintenance Frequency");
+				excelHeader.getCell(i).setCellStyle(style);
+				i++;
+			}
+			else if(field.equals("reference"))	
 			{
 				excelHeader.createCell(i).setCellValue("Reference");
 				excelHeader.getCell(i).setCellStyle(style);
@@ -245,6 +254,10 @@ public class MaintenanceDAO extends AbstractExcelView
 								maintenance.getCalibration());
 						i++;
 					}else if(field.equals("type_of_maintenance"))	
+					{
+						excelRow.createCell(i).setCellValue(maintenance.getType_of_maintenance());
+						i++;
+					}else if(field.equals("maintenance_frequency"))	
 					{
 						String maintances =" ";
 						if(maintenance.getWeekly().equals("yes"))
@@ -741,6 +754,30 @@ public class MaintenanceDAO extends AbstractExcelView
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		System.out.println("no of days = "+no_of_days);
+		System.out.println("type = "+type);
+		  Calendar c = Calendar.getInstance();
+		  Date date = c.getTime();
+		  c.setTime(date);
+		    System.out.println("Day of week = "+c.get(Calendar.DAY_OF_WEEK));
+		    System.out.println("first day of week = "+c.getFirstDayOfWeek());
+		    int i = c.get(Calendar.DAY_OF_WEEK);
+		    System.out.println("value 0f i = "+i);
+		    int currentDay = c.get(Calendar.DATE);
+		    int currentMonth = c.get(Calendar.MONTH) + 1;
+		    int currentYear = c.get(Calendar.YEAR);
+		    String currentdate = currentYear+"-"+currentMonth+"-"+currentDay;
+		    
+		    Date start = c.getTime();
+		    c.add(Calendar.DATE, +no_of_days);
+		    Date end = c.getTime();
+		    System.out.println(start + " - " + end);
+		    int oldDay = c.get(Calendar.DATE);
+		    int oldMonth = c.get(Calendar.MONTH) + 1;
+		    int oldYear = c.get(Calendar.YEAR);
+		    String olddate = oldYear+"-"+oldMonth+"-"+oldDay;
+		    System.out.println(olddate);
+		    System.out.println(currentdate);
 		List<Maintenance> maintenances = new ArrayList<Maintenance>();
 
 		try {
@@ -753,18 +790,19 @@ public class MaintenanceDAO extends AbstractExcelView
 			String cmd_select = null;
 			
 			if(type=="maintain_for_30")
-				cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id";
-			//cmd_select= "select * from tbl_nonconformance where disposition==0 AND disposition_complete_date==NULL" ;
-			
-				else if(type=="maintain_for_ndays")
-				//	cmd_select="select * from tbl_nonconformance where disposition_complete_date between now() and DATE_ADDNOW(), INTERVAL 30 DAYS";
-					cmd_select="select * from tbl_nonconformance  WHERE   disposition_complete_date BETWEEN NOW() + INTERVAL 30 DAY AND NOW()";
-					else if(type=="past_due_maintenance")
-						cmd_select="select * from tbl_maintenance where due_date<now()";
-					else if(type=="past_due_calibration")
-						cmd_select="select * from tbl_maintenance where due_date<now() and calibration='yes'";
-					else
-						cmd_select="select * from tbl_maintenance where due_date between now() and DATE_ADD(NOW())";
+			cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where (t1.due_date BETWEEN NOW() AND NOW()+INTERVAL 30 DAY)";
+
+				else if(type=="upcoming_calibration"){
+					String query = "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where (t2.calibration='Yes' AND t1.due_date BETWEEN '"+currentdate+"' AND '"+olddate+"')";
+					System.out.println(query);
+					cmd_select= "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t2.calibration='Yes' AND t1.due_date BETWEEN NOW() AND '"+olddate+"'";
+				
+				}
+					else if(type=="maintenance_past_due")
+						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t1.due_date<now()";
+				else if(type=="calibration_past_due")
+						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t1.due_date<now() and t2.calibration='yes'";
+				
 			resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {
 				System.out.println("came");

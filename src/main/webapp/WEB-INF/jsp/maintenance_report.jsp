@@ -86,7 +86,7 @@
 								
 							<tr class="row1" id="no_of_days" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-									Number Of Days:
+								Enter the Number Of Days Required:
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								
