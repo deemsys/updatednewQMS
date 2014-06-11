@@ -77,7 +77,7 @@
                   <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Attendee List With Titles :</td>
                   <td valign="middle" align="left" class="input_txt" width="70%">
-                  <textarea class="input_txtbx1" name="attendee_list_with_titles" id="id_attendee_list_with_titles" ><c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out></textarea>                  
+                  <textarea class="input_txtbx1" name="attendee_list_with_titles" id="id_attendee_list_with_titles" style="width:45%;" ><c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out></textarea>                  
                   
                   <br/><span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>
                  
@@ -86,8 +86,8 @@
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%">Category :</td>
-                  <td valign="middle" align="left" class="input_txt" width="70%">
-                  <select name="category" class="input_cmbbx1">
+                  <td valign="middle" align="left" class="input_txt" width="69%">
+                  <select name="category" class="input_cmbbx1" style="width:45%">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option <c:if test="${managementReviewdetails.category eq 'audits'}"><c:out value="Selected"/></c:if> value="audits" >Audits</option>

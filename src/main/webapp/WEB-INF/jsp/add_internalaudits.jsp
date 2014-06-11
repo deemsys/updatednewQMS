@@ -58,12 +58,12 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" value="<c:out value="${id}"/>"/><br/><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" class="input_txtbx" value="<c:out value="${id}"/>"/><br/><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
 						         	<td valign="top" align="left" class="input_txt"> Process :</td>
-						          <td valign="top" align="left" class="input_txt">
-				                  		<select name="process" class="input_cmbbx1">
+						          <td valign="top" align="left">
+				                  		<select name="process"  class="input_txtbx" style="height:20px;">
 				                  		<option value="">--Select--</option>
 						                  <option <c:if test="${internalaudits.process eq 'process1'}"><c:out value="Selected"/></c:if> value="process1" >Process1</option>
 											<option <c:if test="${internalaudits.process eq 'process2'}"><c:out value="Selected"/></c:if> value="process2">Process2</option>
@@ -95,7 +95,7 @@
 			<tr class="row1">
 							         	<td valign="middle" align="left" class="input_txt"> Auditor :</td>
 							           <td valign="top" align="left" class="input_txt">
-					                  		<select name="auditor" class="input_cmbbx1">
+					                  		<select name="auditor" class="input_txtbx" style="height:20px;">
 							                <option value="">--Select--</option>
 						                     <option <c:if test="${internalaudits.auditor eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >Name1</option>
 											<option <c:if test="${internalaudits.auditor eq 'name2'}"><c:out value="Selected"/></c:if> value="name2">Name2</option>
@@ -112,12 +112,12 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes"  style="width:70%; height: 70px;">${internalaudits.auditor_notes}</textarea><span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes"  style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea><span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
 						         	<td valign="middle" align="left" class="input_txt"> Finding :</td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="finding" class="input_cmbbx1">
+				                  		<select name="finding" class="input_txtbx" style="height:20px;">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${internalaudits.finding eq 'ok'}"><c:out value="Selected"/></c:if> value="ok" >Ok</option>
 											<option <c:if test="${internalaudits.finding eq 'area of improvement'}"><c:out value="Selected"/></c:if> value="area of improvement">Area Of Improvement </option>

@@ -103,11 +103,10 @@
          						<td valign="top" align="left" width="10%">&nbsp;Supplier ID</td>
 					         	<td valign="top" align="left" width="10%">Supplier Name</td>
 					         	<td valign="top" align="left" width="10%">Address</td>
-					         	<td valign="top" align="left" width="10%">City</td>
-          						<td valign="top" align="left" width="10%">State</td>
+					         	<td valign="top" align="left" width="10%">State</td>
           						<td valign="top" align="left" width="10%">Country</td>
           						<td valign="top" align="left" width="10%">Phone</td>
-          						<td valign="top" align="left" width="15%" >e_mail address</td>
+          						<td valign="top" align="left" width="10%" >e_mail address</td>
           						<td valign="top" align="left" width="10%">Actions</td>
         					</tr>
 						
@@ -120,13 +119,12 @@
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" ">
-								           	<td valign="top" align="left"  width="15%"><a href="list_supplierperformance?supplier_id=${supplierperformance.supplier_id}">${supplierperformance.supplier_id}</a></td>
-											<td valign="top" align="left" width="15%">${supplierperformance.supplier_name}</td>
-											<td valign="top" align="left" width="15%">${supplierperformance.address}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.city}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.state}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.country}</td>
-										<td valign="top" align="left" width="15%">${supplierperformance.phone}</td>
+								           	<td valign="top" align="left"  width="10%"><a href="list_supplierperformance?supplier_id=${supplierperformance.supplier_id}">${supplierperformance.supplier_id}</a></td>
+											<td valign="top" align="left" width="10%">${supplierperformance.supplier_name}</td>
+											<td valign="top" align="left" width="10%">${supplierperformance.address}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.state}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.country}</td>
+										<td valign="top" align="left" width="10%">${supplierperformance.phone}</td>
 											<td valign="top" align="left" width="15%">${supplierperformance.email_address}</td>	
 										<td valign="top" align="left" width="15%">
 								 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editsupplierperformance?sid=${supplierperformance.supplier_id}"/>" style="padding-right:10px;">Edit</a>

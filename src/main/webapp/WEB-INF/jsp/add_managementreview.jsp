@@ -88,7 +88,7 @@
 		  <tr class="row2" >
 						         	<td valign="middle" align="left" class="input_txt"width="20%">Category :</td>
 						          <td valign="middle" align="left" class="input_txt"width="20%">
-				                  		<select name="category" class="input_cmbbx1">
+				                  		<select name="category" class="input_cmbbx1" style="width:200px">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option value="audits" >Audits</option>

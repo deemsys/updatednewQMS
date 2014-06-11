@@ -131,20 +131,31 @@ public String editformprefix_get(@RequestParam("id") String id,FormPrefix formPr
 
 //Update a record
 @RequestMapping(value = "/update_formprefix", method = RequestMethod.POST)
-public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Valid FormPrefix formPrefix,BindingResult result) throws IOException {
+public String update_formprefix(ModelMap model,@RequestParam("page") int page,@ModelAttribute("FormPrefix") @Valid FormPrefix formPrefix,BindingResult result) throws IOException {
 
 	if (result.hasErrors())
 	{
 		
 		FormFormPrefix formFormPrefix = new FormFormPrefix();
 		formFormPrefix.setFormPrefixs(formprefixDAO.getformPrefixs(formPrefix.getId()));
-		model.addAttribute("formFormPrefix",formFormPrefix);
+	//	model.addAttribute("formFormPrefix",formFormPrefix);
         return "edit_formprefix";
 	}
+	model.addAttribute("noofrows",5);
 	
 	
 	formprefixDAO.update_formprefix(formPrefix);
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
+
+	formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(page));
+	model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));
+	model.addAttribute("formFormPrefix",formFormPrefix);	
+  	model.addAttribute("noofrows",5);   
+    model.addAttribute("currentpage",page);
+    model.addAttribute("menu","admin");
+    model.addAttribute("button","viewall");
+   
+
 	formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(1));
 	model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));	 
 	model.addAttribute("button","viewall");
@@ -152,8 +163,10 @@ public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Va
     model.addAttribute("currentpage",1);
 	model.addAttribute("formFormPrefix",formFormPrefix);
 	model.addAttribute("menu","admin");
+
 	model.addAttribute("success","update");
     return "formprefix_list";
+       
 }
 
 //delete a record
