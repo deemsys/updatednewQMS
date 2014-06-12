@@ -75,10 +75,25 @@
 							    <td align="left" valign="middle" width="10%">Audit ID:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx1" id="id" value="${id}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Process:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td>
+							    <td align="left" valign="middle" width="10%">
+							    <%-- <input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td> --%>
+							    <select name="process" id="search_process"  class="input_cmbbx1" style="width:200px;">
+               					 <option value="" >--Select--</option>
+              					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
+              					 <option value="${processes.process_name}" <c:if test="${processes.process_name==process}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
+             				  	</c:forEach>
+             				  </select>
+             				  	</td> 
 							    <td align="left" valign="middle" width="15%">&nbsp;Auditee name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="auditee_name" id="auditee_name" class="input_txtbx1" value="${name}"></td>
-							    <td align="center" valign="middle" width="38%">
+							    <td align="left" valign="middle" width="10%">
+							    <select name="auditee_name" id="id_inpprocess"  class="input_txtbx" style="height:20px;">
+               						<option value="">--Select--</option>
+               						<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
+               						<option value="<c:out value="${processes.process_owner}"/>" <c:if test="${processes.process_owner==name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_owner}"/></option>
+               						</c:forEach>
+               						</select>
+               					</td>
+                   <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn1" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 							</table>

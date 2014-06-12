@@ -301,6 +301,11 @@ public class InternalAuditsController {
 	session.removeAttribute("id");
 	session.removeAttribute("process");
 	session.removeAttribute("name");
+	
+	ProcessForm processForm = new ProcessForm();
+	processForm.setProcesses(processDAO.getProcess());
+	model.addAttribute("processForm", processForm);
+	
 		
 	InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 	//internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
@@ -405,6 +410,10 @@ public class InternalAuditsController {
 	session.setAttribute("process", process);
 	session.setAttribute("name", auditee_name);
 	
+	ProcessForm processForm = new ProcessForm();
+	processForm.setProcesses(processDAO.getProcess());
+	model.addAttribute("processForm", processForm);
+	
 	InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 	
 	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name));
@@ -422,6 +431,11 @@ public class InternalAuditsController {
 		session.removeAttribute("id");
 		session.removeAttribute("process");
 		session.removeAttribute("name");
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 		//model.addAttribute("internalAuditsForm", internalAuditsForm);
@@ -442,6 +456,10 @@ public class InternalAuditsController {
 	session.setAttribute("process", process);
 	session.setAttribute("name", auditee_name);
 	
+	ProcessForm processForm = new ProcessForm();
+	processForm.setProcesses(processDAO.getProcess());
+	model.addAttribute("processForm", processForm);
+	
 	
 InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 	
@@ -457,6 +475,11 @@ InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 		@RequestMapping(value={"/deleteinternalaudits"}, method = RequestMethod.POST)
 	public String deleteSelectedinternalaudits(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
+		
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+			
 			
 		String[] SelectedIDs=new String[100];
 		SelectedIDs=request.getParameterValues("chkUser");
