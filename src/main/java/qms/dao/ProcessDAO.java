@@ -113,8 +113,13 @@ public class ProcessDAO
 				cmd = "select count(*) as noofrecords from tbl_process";
 			System.out.println("command"+cmd);			
 			resultSet = statement.executeQuery(cmd);
+			int i=0;
 			if (resultSet.next())
+			{
 				noofRecords = resultSet.getInt("noofrecords");
+				i++;
+				System.out.println(i);
+			}
 
 		} catch (Exception e) {
 			releaseResultSet(resultSet);

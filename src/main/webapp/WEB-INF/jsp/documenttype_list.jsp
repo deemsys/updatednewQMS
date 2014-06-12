@@ -49,6 +49,13 @@
 									<span>Revision Level</span>
 								</a>
 							</li>
+							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+								<a href="sourceNC_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Source of NC</span>
+									
+								</a>
+							</li>	
 							</ul>
   </div>
       		</td>

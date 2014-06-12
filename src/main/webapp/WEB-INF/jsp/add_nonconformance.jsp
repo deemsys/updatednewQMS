@@ -74,6 +74,7 @@
 						          										<td valign="top" align="left" class="input_txt"width="50%">
 				                  									<select name="source_of_nonconformance" class="input_cmbbx1">
 				                  										<option value="">--Select--</option>
+				                  										
 				                  										<option
 				                  										<c:if test="${nonconformance.source_of_nonconformance eq 'Internal Audit'}"><c:out value="Selected"/></c:if>
 																		value="Internal Audit">Internal Audit</option>
@@ -89,6 +90,9 @@
 																						                  										<option
 				                  										<c:if test="${nonconformance.source_of_nonconformance eq 'Customer Complaint'}"><c:out value="Selected"/></c:if>
 																		value="Customer Complaint">Customer Complaint</option>
+																		 <c:forEach items="${conformance_SourceForm.conformance_Sources}" var="sources" varStatus="status">
+        				       <option value="${sources.source_of_nc}">${sources.source_of_nc}</option>
+			                  </c:forEach>
 																		</select><span class="err"><form:errors
 																					path="Nonconformance.source_of_nonconformance"></form:errors>
 																		</span>

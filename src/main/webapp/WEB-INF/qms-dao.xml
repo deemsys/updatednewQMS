@@ -80,7 +80,9 @@
 	<bean id="documentRevisionLevelDAO" class="qms.dao.DocumentRevisionLevelDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
+	<bean id="sourceNCDAO" class="qms.dao.Source_NCDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  <bean id="filehandlingDAO" class="qms.dao.FileHandlingDAO">
 	</bean>
 </beans>

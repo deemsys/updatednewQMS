@@ -70,9 +70,6 @@
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
                <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:60px;border:none;background-color:lightgrey;">
-            	 <%-- <c:forEach items="${prefix}" var="prefix" varStatus="true">
-               <option value="<c:out value="${prefix}"/>"><c:out value="${prefix}"/></option>
-               </c:forEach> --%>
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>

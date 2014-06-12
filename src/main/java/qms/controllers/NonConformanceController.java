@@ -22,7 +22,9 @@ import org.springframework.ui.ModelMap;
 import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.NonConformanceDAO;
+import qms.dao.Source_NCDAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
+import qms.forms.Non_Conformance_SourceForm;
 
 import qms.forms.NonConformanceForm;
 import qms.model.*;
@@ -39,7 +41,8 @@ public class NonConformanceController {
 	@Autowired
 	FileHandlingDAO fileHandlingDAO;
 	//private static final Logger logger = LoggerFactory.getLogger(MainController.class); // Logger
-
+	@Autowired
+	Source_NCDAO sourceNCDAO;
 	
 	// Request Method for view page
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
@@ -108,6 +111,9 @@ public class NonConformanceController {
 		model.addAttribute("id", nonConformanceDAO.get_maxid());
 		session.removeAttribute("nonconformance");
 		model.addAttribute("menu","nonconformance");
+		Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource());    
+		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
 		return "add_nonconformance";
 	}
 	
@@ -163,6 +169,10 @@ public class NonConformanceController {
 		nonConformanceForm.setNonconformance(nonConformanceDAO.edit_nonconformance(id));
 	    model.addAttribute("nonConformanceForm",nonConformanceForm);
 		
+	    Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource());    
+		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
+	    
 	    model.addAttribute("menu","nonconformance");
 	    return "edit_nonconformance";
 	}

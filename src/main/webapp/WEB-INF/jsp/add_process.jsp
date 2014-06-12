@@ -3,12 +3,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <html>
 <form method="post" action="add_process">
-  <!-- <div id="right_content" style="background-color:lightgrey;"> -->
-  
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
-      <!-- <tr>
-        <td valign="top" align="left" style="padding:5px 0 10px 0;"></td>
-      </tr> -->
       <tr>
       <td>
       <div>
@@ -61,6 +56,13 @@
 								<a href="setrevision" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Set Revision Format</span>
+									
+								</a>
+							</li>	
+							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+								<a href="addsourcenc" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Source of NC</span>
 									
 								</a>
 							</li>	

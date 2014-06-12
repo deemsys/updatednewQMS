@@ -50,7 +50,13 @@
 									<span>Revision Level</span>
 								</a>
 							</li>
-						
+						<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+								<a href="sourceNC_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Source of NC</span>
+									
+								</a>
+							</li>	
 				          
 							</ul>
   </div>
@@ -124,12 +130,7 @@
         				       				 </tr>
         				       				 </c:forEach>
         				       				 </c:if>
-        				       				<%--   <c:if test="${fn:length(formFormPrefix.formPrefixs) == 0}">	
-							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
-							    		
-							    	</tr>
-							    	</c:if> --%>
+        				       				
         				       				 </table>
         				       				</form>
         				       				<br><br><br><br><br>         

@@ -75,11 +75,11 @@ public class ProcessController
 	public String Processlist(HttpServletRequest request,ModelMap model, Principal principal) {
 		
 		ProcessForm processForm = new ProcessForm();
-		model.addAttribute("menu","admin");
-	  	model.addAttribute("noofrows",5);
+		
 	  	processForm.setProcesses(processDAO.getlimitedprocessreport(1));
 		model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
-		   
+		model.addAttribute("menu","admin");
+	  	model.addAttribute("noofrows",5);
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
