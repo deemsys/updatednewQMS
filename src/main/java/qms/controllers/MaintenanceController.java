@@ -245,6 +245,7 @@ return "maintenance_list";
 		int no_of_days=0;
 		String[] fields={"equipment_id","equipment_name","equipment_model","serial_number","date_acquired","equipment_status","frequency_maintenance","calibration","type_of_maintenance","maintenance_frequency","reference","instructions","due_date","completion_date","completed_by","notes"};
 		System.out.println(request.getParameter("type_of_report"));
+		System.out.println("switch = "+Integer.parseInt(request.getParameter("doc_type"))+"doc_type= "+request.getParameter("doc_type"));
 		java.util.List<Maintenance> maintenances=new ArrayList<Maintenance>();
 			switch(Integer.parseInt(request.getParameter("doc_type")))
 				  {

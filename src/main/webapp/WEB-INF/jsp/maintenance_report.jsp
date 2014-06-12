@@ -140,7 +140,7 @@
 								<td><input type="checkbox" name="report_field[]" value="type_of_maintenance" id="id_completion_date"/>Type of Maintenance </td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="maintenance_frequency" id="id_auditors_initial"/>Maintenance Frequency</td>
+								<td><input type="checkbox" name="report_field[]" value="weekly" id="id_auditors_initial"/>Maintenance Frequency</td>
 							<td><input type="checkbox" name="report_field[]" value="reference" id="id_auditors_initial"/>Reference</td>
 							<td><input type="checkbox" name="report_field[]" value="instructions" id="id_auditors_initial"/>Instructions</td>
 							</tr>
