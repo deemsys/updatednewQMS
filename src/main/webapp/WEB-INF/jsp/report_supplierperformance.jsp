@@ -66,6 +66,7 @@
 					<form method="post" action="generate_supplierperformance_report">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
+							<br></br>
 							<tr class="row1" id="document_type_table">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 								Select SupplierPerformance Type :
@@ -73,8 +74,6 @@
 								<td valign="middle" align="left" class="input_txt" width="100%">
 								<!-- <input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/> -->
 								
-								<br>
-								<br>
 								<input type="radio" onchange="validation1()" name="doc_type" value="0" id="id_open_supplierperformance" checked/>Open SupplierPerformance<br/>
 								<!-- <input type="radio"  onclick="validation1()"  name="doc_type" value="1" id="id_disposition"/>No Disposition Over 30 Days<br/>
 								 <input type="radio" onclick="validation()" name="doc_type" value="2" id="id_cost_of_nonconformance"/>Cost of Non-Conformance<br/> 

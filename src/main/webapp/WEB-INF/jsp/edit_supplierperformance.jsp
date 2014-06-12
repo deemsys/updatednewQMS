@@ -67,7 +67,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">SupplierName</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.supplier_name}" /><br/><span class="err"><form:errors path="SupplierPerformance.supplier_name"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%">Certified</td>
-				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_cmbbx1">
+				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" style="height:20px;">
                   										<option
 															<c:if test="${supplierperformance.certified_to eq 'ISO 9001'}"><c:out value="Selected"/></c:if>
 															value="ISO 9001">ISO 9001</option>
@@ -80,7 +80,7 @@
                 </tr>
 		        <tr class="row2">
 				  <td valign="middle" align="left" class="input_txt" width="30%">Category</td>
-				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_cmbbx1">
+				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_txtbx" style="height:20px;">
                   										<option
 															<c:if test="${supplierperformance.category eq 'Critical'}"><c:out value="Selected"/></c:if>
 															value="Critical">Critical</option>
@@ -124,6 +124,12 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">Country</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="country" class="input_txtbx" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span class="err"><form:errors path="SupplierPerformance.country"></form:errors></span></td>
                 </tr>
+                
+                <tr class="row2">
+                <td></td>
+                <td></td>
+                </tr>
+                
                  			      <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="center"><input type="submit" value="Update" class="submit_btn1"></td>

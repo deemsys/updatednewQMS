@@ -70,7 +70,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">Supplier Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.supplier_name}" /><br/><span class="err"><form:errors path="supplierperformance.supplier_name"></form:errors></span></td>
            		  <td valign="middle" align="left" class="input_txt" width="70%">Certified</td>
-				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_cmbbx1">
+				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" style="height:20px;">
 															<option value="">--Select--</option>			
                   										<option
 															<c:if test="${supplierperformance.certified_to eq 'ISO 9001'}"><c:out value="Selected"/></c:if>
@@ -84,7 +84,7 @@
                 </tr>
 		        <tr class="row2">
 				  <td valign="middle" align="left" class="input_txt" width="30%">Category :</td>
-				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_cmbbx1">
+				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_txtbx" style="height:20px;">
 					<option value="">--Select--</option>
 				                  									
                   										<option
@@ -132,8 +132,11 @@
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="country" class="input_txtbx" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span class="err"><form:errors path="supplierperformance.country"></form:errors></span></td>
                 </tr>
                
+               <tr class="row1">
+               <td></td><td></td>
+               </tr>
                  <tr class="row1">
-                  <td valign="top" align="right">&nbsp;</td>
+                  <td><br>
                   <td valign="top" align="center"><input type="submit" value="Add Supplier" class="submit_btn1"></td>
                 </tr>
               </table>

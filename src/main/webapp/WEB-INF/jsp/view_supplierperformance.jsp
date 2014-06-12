@@ -84,8 +84,8 @@
 								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox" value="${phone}"></td>							    
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox"value="${email}"></td>
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Find" name="findsupplierperformance" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Clear" name="welcome" ></td>
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findsupplierperformance" ></td>
+							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
 							  
 							  </tr>
 							  
