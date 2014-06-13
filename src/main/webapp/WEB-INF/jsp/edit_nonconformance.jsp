@@ -111,7 +111,9 @@
 											<option <c:if test="${nonconformance.type_of_nonconformance eq 'Service Quality'}"><c:out value="Selected"/></c:if>  value="Service Quality">Service Quality</option>
 											<option  <c:if test="${nonconformance.type_of_nonconformance eq 'Late Delivery'}"><c:out value="Selected"/></c:if>  value="Late Delivery">Late Delivery</option>
 											<option <c:if test="${nonconformance.type_of_nonconformance eq 'Early Delivery'}"><c:out value="Selected"/></c:if> value="Early Delivery">Early Delivery</option>
-				                	
+				                	<c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
+        				       <option value="${types.type_of_nc}"<c:if test="${types.type_of_nc == nonconformance.type_of_nonconformance}"><c:out value="selected"/></c:if>>${types.type_of_nc}</option>
+			                  </c:forEach>
 				                   		</select>
 				                   	</td>
 				                 	<td valign="middle" align="left" class="input_txt"> Quantity Suspect </td>

@@ -132,7 +132,9 @@
 																		<option
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Early Delivery'}"><c:out value="Selected"/></c:if>
 																		value="Early Delivery">Early Delivery</option>
-															
+															 <c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
+        				       <option value="${types.type_of_nc}">${types.type_of_nc}</option>
+			                  </c:forEach>
 																	</select><span class="err"><form:errors
 																					path="Nonconformance.type_of_nonconformance"></form:errors>
 																		</span>

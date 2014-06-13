@@ -83,6 +83,9 @@
 	<bean id="sourceNCDAO" class="qms.dao.Source_NCDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="typeNCDAO" class="qms.dao.Type_of_NC_DAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  <bean id="filehandlingDAO" class="qms.dao.FileHandlingDAO">
 	</bean>
 </beans>

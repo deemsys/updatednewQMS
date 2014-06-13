@@ -149,4 +149,20 @@ public String Update_Process(ModelMap model,@ModelAttribute("Non_Conformance_Sou
 	model.addAttribute("success","update");
     return "sourceNC_list";
 }
+@RequestMapping(value={"/delete_source"}, method = RequestMethod.GET)
+public String delete_process(@RequestParam("auto_id") String auto_id,ModelMap model, Principal principal )
+{
+
+	sourceNCDAO.delete_source(auto_id);
+	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
+	model.addAttribute("nooofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","delete");
+    model.addAttribute("currentpage",1);
+	model.addAttribute("conformance_SourceForm",conformance_SourceForm);
+	model.addAttribute("menu","admin");
+	return "sourceNC_list";
+	}
+
 }

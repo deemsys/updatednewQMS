@@ -23,8 +23,10 @@ import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.NonConformanceDAO;
 import qms.dao.Source_NCDAO;
+import qms.dao.Type_of_NC_DAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
 import qms.forms.Non_Conformance_SourceForm;
+import qms.forms.Type_of_NC_Form;
 
 import qms.forms.NonConformanceForm;
 import qms.model.*;
@@ -44,6 +46,9 @@ public class NonConformanceController {
 	@Autowired
 	Source_NCDAO sourceNCDAO;
 	
+	@Autowired
+	Type_of_NC_DAO typeNCDAO;
+	
 	// Request Method for view page
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
 	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
@@ -58,8 +63,10 @@ public class NonConformanceController {
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
-	 //	model.addAttribute("nonConformanceForm", nonConformanceForm);
-		//model.addAttribute("menu","nonconformance");
+	    
+	    Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 		return "view_nonconformance";
 	}
 	
@@ -111,9 +118,14 @@ public class NonConformanceController {
 		model.addAttribute("id", nonConformanceDAO.get_maxid());
 		session.removeAttribute("nonconformance");
 		model.addAttribute("menu","nonconformance");
+		
 		Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource());    
 		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
+		
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 		return "add_nonconformance";
 	}
 	
@@ -173,6 +185,10 @@ public class NonConformanceController {
 		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource());    
 		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
 	    
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
 	    model.addAttribute("menu","nonconformance");
 	    return "edit_nonconformance";
 	}
@@ -212,6 +228,9 @@ public class NonConformanceController {
 		session.setAttribute("id", id);
 		session.setAttribute("type", type_of_nonconformance);
 	
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 		if(id=="" && type_of_nonconformance=="")
 		{
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
