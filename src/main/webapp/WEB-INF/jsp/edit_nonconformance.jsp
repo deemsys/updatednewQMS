@@ -62,7 +62,7 @@
         <td valign="top" align="left">
         	
 	            <div class="headings altheading">
-	              <h2>Non Conformance</h2>
+	              <h2>Non Conformance Details</h2>
 	            </div>
             <div class="contentbox">
             <c:set value="${nonConformanceForm.nonconformance[0]}" var="nonconformance"></c:set>
@@ -122,9 +122,10 @@
 						
 				                <tr class="row2">
 									<td valign="top" align="left" class="input_txt"> Nature Of NC </td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.nature_of_nonconformance}"  class="input_txtbx1" id="inp_nature_of_nonconformance" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="nature_of_nonconformance" /><br><span class="err"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
+				                  	<td valign="top" align="left" class="input_txt">
 				               
-				                
+				                <textarea class="input_txtbx1" id="temporary_action"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style="width:20%; height: 50px;" >${nonconformance.nature_of_nonconformance}</textarea>
+<br><span class="err"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
 				                	
 			                  <td valign="top" align="left" class="input_txt"> Disposition Required(Y/N) </td>
 			        		        

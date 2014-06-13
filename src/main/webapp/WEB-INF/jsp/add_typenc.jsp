@@ -74,14 +74,16 @@
 									
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							 </ul>
+							 <ul class="horizmenu" style=" float:left;margin-left:205px;margin-bottom:5px;">
+							<li  style=" float:left;text-transform:uppercase;">
 								<a href="addtypenc" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									<span>Type of NC</span>
 									
 								</a>
 							</li>	
-				           </ul>
+				          </ul>
 				          
 				         
   </div>

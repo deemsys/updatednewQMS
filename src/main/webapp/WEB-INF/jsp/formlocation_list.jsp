@@ -57,7 +57,14 @@
 									<span>Source of NC</span>
 									
 								</a>
-							</li>	
+							</li>
+							 	<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+								<a href="typeNC_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Type of NC</span>
+									
+								</a>
+							</li>		
 							</ul>
   </div>
       		</td>

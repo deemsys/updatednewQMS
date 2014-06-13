@@ -142,4 +142,20 @@ public String Update_type(ModelMap model,@ModelAttribute("Type_of_NC") @Valid Ty
 	model.addAttribute("success","update");
     return "typeNC_list";
 }
+@RequestMapping(value={"/delete_type"}, method = RequestMethod.GET)
+public String delete_type(@RequestParam("auto_id") String auto_id,ModelMap model, Principal principal )
+{
+
+	
+	typeNCDAO.delete_type(auto_id);
+	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+	type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
+	model.addAttribute("nooofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","delete");
+    model.addAttribute("currentpage",1);
+	model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+	model.addAttribute("menu","admin");
+	return "typeNC_list";
+	}
 }
