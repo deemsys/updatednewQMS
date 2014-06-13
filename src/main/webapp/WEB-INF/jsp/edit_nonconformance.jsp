@@ -134,17 +134,55 @@
                 	           </tr>
 								 <tr class="row1">
 				                 	<td valign="middle" align="left" class="input_txt"> Date Found </td>
-				                  	                        	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.date_found}" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br><span class="err"><form:errors path="Nonconformance.date_found"></form:errors></span></td>
+				                  	                        	<td valign="middle" align="left" class="input_txt"><input type="text" value="${nonconformance.date_found}" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br><span class="err"><form:errors path="Nonconformance.date_found"></form:errors></span></td>
 				  
 				                
                 	          
-				                  	<td valign="middle" align="left" class="input_txt"> Disposition </td>
-				                  	<td valign="top" align="left" class="input_txt">
-				                  		<select name="disposition" class="input_cmbbx1">
-						                    <option <c:if test="${nonconformance.disposition eq 'Discard'}"><c:out value="Selected"/></c:if> value="Discard" >Discard</option>
-											<option <c:if test="${nonconformance.disposition eq 'Keep as is'}"><c:out value="Selected"/></c:if> value="Keep as is">Keep as is</option>
-										</select>
-				                   	</td> </tr>
+				                  	<td valign="top" align="left" class="input_txt"> Disposition </td>
+				                  	<td>
+				                  	<select name="disposition1"id="disid1" class="input_cmbbx1"onchange="show1();">
+				                  										<option value="">--Select--</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>
+																		value="Repair">Repair</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>
+																		value="Discard">Discard</option>
+																		<option
+				                  										<c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
+																		value="Keep as is">Keep as is</option>
+						                    						</select>
+						                    						<input type="text" name="quality1" id="quality1" value="${nonconformance.quality1}"  style="display:none;"/>
+						                    						<br>
+						                    						<select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
+				                  										<option value="">--Select--</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
+																		value="Repair">Repair</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Discard'}"><c:out value="Selected"/></c:if>
+																		value="Discard">Discard</option>
+																		<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
+																		value="Keep as is">Keep as is</option>
+						                    						</select>
+						                    						<input type="text" name="quality2" id="quality2" value="${nonconformance.quality2}" style="display:none;"/>
+						                    						<br>
+						                    						<select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
+				                  										<option value="">--Select--</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition3 eq 'Repair'}"><c:out value="Selected"/></c:if>
+																		value="Repair">Repair</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition3 eq 'Discard'}"><c:out value="Selected"/></c:if>
+																		value="Discard">Discard</option>
+																		<option
+				                  										<c:if test="${nonconformance.disposition3 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
+																		value="Keep as is">Keep as is</option>
+						                    						</select>
+						                    						<input type="text" name="quality3" id="quality3"  value="${nonconformance.quality3}" style="display:none;"/>
+						                    						</td>
+						                    						</tr>
 								<tr class="row2">
 				                	<td valign="top" align="left" class="input_txt"> Reported By </td>
 				                  	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.reported_by}"  class="input_txtbx1" id="inp_reported_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="reported_by" /><br><span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
@@ -188,6 +226,41 @@
             
       
  <script language="JavaScript">
+ function show1()
+ {
+ 	var val = document.getElementById('disid1').value;
+ 	
+ 	if(val !="")
+ 		{
+ 		document.getElementById('quality1').style.display='block';
+ 		}
+ 	else
+ 	document.getElementById('quality1').style.display='none';
+ 	}
+ 	
+ function show2()
+ {
+ 	var val = document.getElementById('disid2').value;
+ 	
+ 	if(val !="")
+ 		{
+ 		document.getElementById('quality2').style.display='block';
+ 		}
+ 	else
+ 	document.getElementById('quality2').style.display='none';
+ 	}	
+ 	
+ function show3()
+ {
+ 	var val = document.getElementById('disid3').value;
+ 	
+ 	if(val !="")
+ 		{
+ 		document.getElementById('quality3').style.display='block';
+ 		}
+ 	else
+ 	document.getElementById('quality3').style.display='none';
+ 	}	
 function CreateGroup()
 {
 	document.update.action = 'index.php?do=creategroup&type=1';
@@ -205,4 +278,10 @@ function CreateGroup()
            $( "#datepicker1" ).datepicker();
          });
 </script> 
+<script>
+	
+	window.onload = function(){
+		show1();show2();show3();
+	}
+		</script>
 <jsp:include page="footer.jsp"></jsp:include>

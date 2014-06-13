@@ -24,8 +24,13 @@ private String reported_by;
 private String temporary_action;
 private String corrective_action_required;
 private String disposition_required;
-@NotEmpty
-private String disposition;
+
+private String disposition1;
+private String quality1;
+private String disposition2;
+private String quality2;
+private String disposition3;
+private String quality3;
 @NotEmpty
 private String disposition_complete_date;
 @NotEmpty
@@ -41,7 +46,9 @@ public NonConformance(String id, String source_of_nonconformance,
 		String quantity_suspect, String nature_of_nonconformance,
 		String date_found, String reported_by, String temporary_action,
 		String corrective_action_required, String disposition_required,
-		String disposition, String disposition_complete_date,
+		String disposition1, String quality1, String disposition2,
+		String quality2, String disposition3, String quality3,
+		String disposition_complete_date,
 		String name_of_disposition_responsibility, String cost_of_nonconformance) {
 	super();
 	this.id = id;
@@ -56,7 +63,12 @@ public NonConformance(String id, String source_of_nonconformance,
 	this.temporary_action = temporary_action;
 	this.corrective_action_required = corrective_action_required;
 	this.disposition_required = disposition_required;
-	this.disposition = disposition;
+	this.disposition1 = disposition1;
+	this.quality1 = quality1;
+	this.disposition2 = disposition2;
+	this.quality2 = quality2;
+	this.disposition3 = disposition3;
+	this.quality3 = quality3;
 	this.disposition_complete_date = disposition_complete_date;
 	this.name_of_disposition_responsibility = name_of_disposition_responsibility;
 	this.cost_of_nonconformance = cost_of_nonconformance;
@@ -133,11 +145,41 @@ public String getDisposition_required() {
 public void setDisposition_required(String disposition_required) {
 	this.disposition_required = disposition_required;
 }
-public String getDisposition() {
-	return disposition;
+public String getDisposition1() {
+	return disposition1;
 }
-public void setDisposition(String disposition) {
-	this.disposition = disposition;
+public void setDisposition1(String disposition1) {
+	this.disposition1 = disposition1;
+}
+public String getQuality1() {
+	return quality1;
+}
+public void setQuality1(String quality1) {
+	this.quality1 = quality1;
+}
+public String getDisposition2() {
+	return disposition2;
+}
+public void setDisposition2(String disposition2) {
+	this.disposition2 = disposition2;
+}
+public String getQuality2() {
+	return quality2;
+}
+public void setQuality2(String quality2) {
+	this.quality2 = quality2;
+}
+public String getDisposition3() {
+	return disposition3;
+}
+public void setDisposition3(String disposition3) {
+	this.disposition3 = disposition3;
+}
+public String getQuality3() {
+	return quality3;
+}
+public void setQuality3(String quality3) {
+	this.quality3 = quality3;
 }
 public String getDisposition_complete_date() {
 	return disposition_complete_date;
@@ -159,6 +201,5 @@ public void setCost_of_nonconformance(String cost_of_nonconformance) {
 	this.cost_of_nonconformance = cost_of_nonconformance;
 }
 
-	
 	
 }

@@ -158,28 +158,36 @@
 																	
 
 																	<tr class="row2">
-																		<td valign="middle" align="left" class="input_txt"width="50%">Nature of NC </td>
-																		<td valign="top" align="left" class="input_txt"width="50%"><input
-																			type="text" class="input_txtbx1"
-																			id="inp_nature_of_nonconformance"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="nature_of_nonconformance"
-																			value="${nonconformance.nature_of_nonconformance}" /><br/>
+																		<td valign="top" align="left" class="input_txt"width="50%">Nature of NC </td>
+																		<td valign="top" align="left" class="input_txt"width="50%">
+																		<textarea class="input_txtbx1" id="temporary_action"  name="nature_of_nonconformance" value=""  style="width:75%; height: 89px;" ></textarea>
+																			<br/>
 																		<font color="Red" size="+1"></font><span class="err"><form:errors
 																					path="Nonconformance.nature_of_nonconformance"></form:errors>
 																		</span>
 																		</td>
 																	
-																		<td valign="top" align="left" class="input_txt"width="50%">Disposition Required?(Y/N) </td>
+																		<td valign="middle" align="left" class="input_txt"width="50%">Disposition Required?(Y/N) </td>
 																		
 																	
-																		    <td valign="middle" align="left" class="input_txt"width="50%"><input type="radio" name="disposition_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="disposition_required" value="1" class="input_txt">No
+																		    <td valign="middle" align="left" class="input_txt"width="50%">
+																		    <input type="radio" name="disposition_required"  value="Yes" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;
+																		    <input type="radio" name="disposition_required" value="No" class="input_txt">No
                 	          <td valign="middle" align="left" class="input_txt" width="20%"> 
 																	</tr>
 																	
 																	<tr class="row1">
-																		<td valign="middle" align="left" class="input_txt"width="50%">Date Found </td>
+																		
+
+																	
+																	
+						          										<td valign="middle" align="left" class="input_txt">
+				                  									
+						                    						</td>
+						                    						</tr>
+						                    						<tr class="row1">
+						                    						
+																		<td valign="top" align="left" class="input_txt"width="50%">Date Found </td>
 																		<td valign="top" align="left" class="input_txt"width="50%"><input
 																			type="text" class="input_txtbx1" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -189,19 +197,51 @@
 																					path="Nonconformance.date_found"></form:errors>
 																		</span>
 																		</td>
-
-																	
-																	<td valign="top" align="left" class="input_txt"width="50%">Disposition </td>
-						          										<td valign="middle" align="left" class="input_txt"width="50%">
-				                  									<select name="disposition" class="input_cmbbx1">
+																		<td valign="top" align="left" class="input_txt"width="50%">Disposition </td>
+						                    						<td>
+						                    						<select name="disposition1"id="disid1" class="input_cmbbx1"onchange="show1();">
 				                  										<option value="">--Select--</option>
-				                  									<option
-				                  										<c:if test="${nonconformance.disposition eq 'Discard'}"><c:out value="Selected"/></c:if>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>
+																		value="Repair">Repair</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>
 																		value="Discard">Discard</option>
-																	<option
-				                  										<c:if test="${nonconformance.disposition eq 'Keep as is'}"><c:out value="Selected"/></c:if>
+																		<option
+				                  										<c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select><span class="err"><form:errors
+						                    						</select>
+						                    						<input type="text" name="quality1" id="quality1" style="display:none;"/>
+						                    						<br>
+						                    						<select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
+				                  										<option value="">--Select--</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
+																		value="Repair">Repair</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Discard'}"><c:out value="Selected"/></c:if>
+																		value="Discard">Discard</option>
+																		<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
+																		value="Keep as is">Keep as is</option>
+						                    						</select>
+						                    						<input type="text" name="quality2" id="quality2" style="display:none;"/>
+						                    						<br>
+						                    						<select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
+				                  										<option value="">--Select--</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
+																		value="Repair">Repair</option>
+				                  										<option
+				                  										<c:if test="${nonconformance.disposition3 eq 'Discard'}"><c:out value="Selected"/></c:if>
+																		value="Discard">Discard</option>
+																		<option
+				                  										<c:if test="${nonconformance.disposition3 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
+																		value="Keep as is">Keep as is</option>
+						                    						</select>
+						                    						<input type="text" name="quality3" id="quality3" style="display:none;"/>
+						                    						
+						                    						<span class="err"><form:errors
 																					path="Nonconformance.disposition"></form:errors>
 																		</span>
 						           									
@@ -242,8 +282,8 @@
          
 															
 															
-																		<td valign="top" align="left" class="input_txt"width="50%">Disposition Responsibility </td>
-																		<td valign="top" align="left" class="input_txt"width="50%"><input
+																		<td valign="middle" align="left" class="input_txt"width="50%">Disposition Responsibility </td>
+																		<td valign="middle" align="left" class="input_txt"width="50%"><input
 																			type="text" class="input_txtbx1" id="inp_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
@@ -257,7 +297,9 @@
 																	
 																	<tr class="row2">
 																 	<td valign="middle" align="left" class="input_txt"width="50%"> Corrective Action Required(Y/N)</td>
-																	<td valign="middle" align="left" class="input_txt"width="50%"><input type="radio" name="corrective_action_required"  value="0" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;<input type="radio" name="corrective_action_required" value="1" class="input_txt">No
+																	<td valign="middle" align="left" class="input_txt"width="50%">
+																	<input type="radio" name="corrective_action_required"  value="Yes" class="input_txt" checked="true">Yes&nbsp;&nbsp;&nbsp;
+																	<input type="radio" name="corrective_action_required" value="No" class="input_txt">No
                 	          											</td>
 																	
 																		<td valign="top" align="left" class="input_txt"width="50%">Cost of NC </td>
@@ -338,5 +380,40 @@ function CreateGroup()
 	document.update.action = 'index.php?do=creategroup&type=1';
 	document.update.submit();
 }
+function show1()
+{
+	var val = document.getElementById('disid1').value;
+	
+	if(val !="")
+		{
+		document.getElementById('quality1').style.display='block';
+		}
+	else
+	document.getElementById('quality1').style.display='none';
+	}
+	
+function show2()
+{
+	var val = document.getElementById('disid2').value;
+	
+	if(val !="")
+		{
+		document.getElementById('quality2').style.display='block';
+		}
+	else
+	document.getElementById('quality2').style.display='none';
+	}	
+	
+function show3()
+{
+	var val = document.getElementById('disid3').value;
+	
+	if(val !="")
+		{
+		document.getElementById('quality3').style.display='block';
+		}
+	else
+	document.getElementById('quality3').style.display='none';
+	}	
 </script> <jsp:include page="footer.jsp"></jsp:include>
 

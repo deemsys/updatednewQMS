@@ -264,7 +264,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 					}else if(field.equals("disposition"))	
 					{
 						excelRow.createCell(i).setCellValue(
-								nonConformance.getDisposition());
+								nonConformance.getDisposition1());
 						i++;
 					}else if(field.equals("disposition_complete_date"))	
 					{
@@ -300,7 +300,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_insert_nonconformance = "insert into tbl_nonconformance(id,source_of_nonconformance,external_id,type_of_nonconformance,product_id,quantity_suspect,nature_of_nonconformance,date_found,reported_by,temporary_action,corrective_action_required,disposition_required,disposition,disposition_complete_date,name_of_disposition_responsibility,cost_of_nonconformance) values('"
+			String cmd_insert_nonconformance = "insert into tbl_nonconformance(id,source_of_nonconformance,external_id,type_of_nonconformance,product_id,quantity_suspect,nature_of_nonconformance,date_found,reported_by,temporary_action,corrective_action_required,disposition_required,disposition1,quality1,disposition2,quality2,disposition3,quality3,disposition_complete_date,name_of_disposition_responsibility,cost_of_nonconformance) values('"
 					+ nonConformance.getId()
 					+ "','"
 					+ nonConformance.getSource_of_nonconformance()
@@ -325,7 +325,16 @@ public class NonConformanceDAO extends AbstractExcelView {
 					+ "','"
 					+ nonConformance.getDisposition_required()
 					+ "','"
-					+ nonConformance.getDisposition()
+					+ nonConformance.getDisposition1()
+					+ "','"
+					+ nonConformance.getQuality1()
+					+ "','"
+					+ nonConformance.getDisposition2()
+					+ "','"
+					+ nonConformance.getQuality2()
+					+ "','"+ nonConformance.getDisposition3()
+					+ "','"
+					+ nonConformance.getQuality3()
 					+ "','"
 					+ nonConformance.getDisposition_complete_date()
 					+ "','"
@@ -366,7 +375,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 		}
 		try {
 			System.out.println("check");
-			String cmd_update = "update tbl_nonconformance set source_of_nonconformance='"+nonConformance.getSource_of_nonconformance()+"',external_id='"+nonConformance.getExternal_id()+"',type_of_nonconformance='"+nonConformance.getType_of_nonconformance()+"',product_id='"+nonConformance.getProduct_id()+"',quantity_suspect='"+nonConformance.getQuantity_suspect()+"',nature_of_nonconformance='"+nonConformance.getNature_of_nonconformance()+"',date_found='"+nonConformance.getDate_found()+"',reported_by='"+nonConformance.getReported_by()+"',temporary_action='"+nonConformance.getTemporary_action()+"',corrective_action_required='"+nonConformance.getCorrective_action_required()+"',disposition_required='"+nonConformance.getDisposition_required()+"',disposition='"+nonConformance.getDisposition()+"',disposition_complete_date='"+nonConformance.getDisposition_complete_date()+"',name_of_disposition_responsibility='"+nonConformance.getName_of_disposition_responsibility()+"',cost_of_nonconformance='"+nonConformance.getCost_of_nonconformance()+"' where id='"+nonConformance.getId()+"'";
+			String cmd_update = "update tbl_nonconformance set source_of_nonconformance='"+nonConformance.getSource_of_nonconformance()+"',external_id='"+nonConformance.getExternal_id()+"',type_of_nonconformance='"+nonConformance.getType_of_nonconformance()+"',product_id='"+nonConformance.getProduct_id()+"',quantity_suspect='"+nonConformance.getQuantity_suspect()+"',nature_of_nonconformance='"+nonConformance.getNature_of_nonconformance()+"',date_found='"+nonConformance.getDate_found()+"',reported_by='"+nonConformance.getReported_by()+"',temporary_action='"+nonConformance.getTemporary_action()+"',corrective_action_required='"+nonConformance.getCorrective_action_required()+"',disposition_required='"+nonConformance.getDisposition_required()+"',disposition1='"+nonConformance.getDisposition1()+"',quality1='"+nonConformance.getQuality1()+"',disposition2='"+nonConformance.getDisposition2()+"',quality2='"+nonConformance.getQuality2()+"',disposition3='"+nonConformance.getDisposition3()+"',quality3='"+nonConformance.getQuality3()+"',disposition_complete_date='"+nonConformance.getDisposition_complete_date()+"',name_of_disposition_responsibility='"+nonConformance.getName_of_disposition_responsibility()+"',cost_of_nonconformance='"+nonConformance.getCost_of_nonconformance()+"' where id='"+nonConformance.getId()+"'";
 			status = statement.execute(cmd_update);
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -444,7 +453,12 @@ public class NonConformanceDAO extends AbstractExcelView {
 						.getString("temporary_action"), resultSet
 						.getString("corrective_action_required"), resultSet
 						.getString("disposition_required"), resultSet
-						.getString("disposition"), resultSet
+						.getString("disposition1"),resultSet
+						.getString("quality1"),resultSet
+						.getString("disposition2"),resultSet
+						.getString("quality2"),resultSet
+						.getString("disposition3"),resultSet
+						.getString("quality3"), resultSet
 						.getString("disposition_complete_date"), resultSet
 						.getString("name_of_disposition_responsibility"),
 						resultSet.getString("cost_of_nonconformance")));
@@ -495,7 +509,12 @@ public class NonConformanceDAO extends AbstractExcelView {
 						.getString("temporary_action"), resultSet
 						.getString("corrective_action_required"), resultSet
 						.getString("disposition_required"), resultSet
-						.getString("disposition"), resultSet
+						.getString("disposition1"),resultSet
+						.getString("quality1"),resultSet
+						.getString("disposition2"),resultSet
+						.getString("quality2"),resultSet
+						.getString("disposition3"),resultSet
+						.getString("quality3"), resultSet
 						.getString("disposition_complete_date"), resultSet
 						.getString("name_of_disposition_responsibility"),
 						resultSet.getString("cost_of_nonconformance")));
@@ -598,9 +617,13 @@ public class NonConformanceDAO extends AbstractExcelView {
 						.getString("reported_by"), resultSet
 						.getString("temporary_action"), resultSet
 						.getString("corrective_action_required"), resultSet
-						.getString(
-								"disposition_required"), resultSet
-						.getString("disposition"), resultSet
+						.getString("disposition_required"), resultSet
+						.getString("disposition1"),resultSet
+						.getString("quality1"),resultSet
+						.getString("disposition2"),resultSet
+						.getString("quality2"),resultSet
+						.getString("disposition3"),resultSet
+						.getString("quality3"), resultSet
 						.getString("disposition_complete_date"), resultSet
 						.getString("name_of_disposition_responsibility"),
 						resultSet.getString("cost_of_nonconformance")));
@@ -664,7 +687,12 @@ public class NonConformanceDAO extends AbstractExcelView {
 						.getString("temporary_action"), resultSet
 						.getString("corrective_action_required"), resultSet
 						.getString("disposition_required"), resultSet
-						.getString("disposition"), resultSet
+						.getString("disposition1"),resultSet
+						.getString("quality1"),resultSet
+						.getString("disposition2"),resultSet
+						.getString("quality2"),resultSet
+						.getString("disposition3"),resultSet
+						.getString("quality3"), resultSet
 						.getString("disposition_complete_date"), resultSet
 						.getString("name_of_disposition_responsibility"),
 						resultSet.getString("cost_of_nonconformance")));
@@ -718,7 +746,12 @@ public class NonConformanceDAO extends AbstractExcelView {
 						.getString("temporary_action"), resultSet
 						.getString("corrective_action_required"), resultSet
 						.getString("disposition_required"), resultSet
-						.getString("disposition"), resultSet
+						.getString("disposition1"),resultSet
+						.getString("quality1"),resultSet
+						.getString("disposition2"),resultSet
+						.getString("quality2"),resultSet
+						.getString("disposition3"),resultSet
+						.getString("quality3"), resultSet
 						.getString("disposition_complete_date"), resultSet
 						.getString("name_of_disposition_responsibility"),
 						resultSet.getString("cost_of_nonconformance")));
@@ -912,8 +945,13 @@ public class NonConformanceDAO extends AbstractExcelView {
 						.getString("reported_by"), resultSet
 						.getString("temporary_action"), resultSet
 						.getString("corrective_action_required"), resultSet
-						.getString("disposition_required"), resultSet
-						.getString("disposition"), resultSet
+						.getString("disposition_required"),  resultSet
+						.getString("disposition1"),resultSet
+						.getString("quality1"),resultSet
+						.getString("disposition2"),resultSet
+						.getString("quality2"),resultSet
+						.getString("disposition3"),resultSet
+						.getString("quality3"), resultSet
 						.getString("disposition_complete_date"), resultSet
 						.getString("name_of_disposition_responsibility"),
 						resultSet.getString("cost_of_nonconformance")));
