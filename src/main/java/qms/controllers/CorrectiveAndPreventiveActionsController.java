@@ -9,6 +9,7 @@ import java.io.OutputStream;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,17 +24,23 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import qms.dao.CorrectiveAndPreventiveActionsDAO;
+import qms.dao.NonConformanceDAO;
 //import qms.dao.EmployeeDAO;
 import qms.dao.FileHandlingDAO;
 //import qms.dao.ProcessDAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
+import qms.forms.EmployeeForm;
+import qms.forms.NonConformanceForm;
 //import qms.forms.DocumentMainForm;
 import qms.model.CorrectiveAndPreventiveActions;
+import qms.model.Employee;
+import qms.model.NonConformance;
 
 
 
@@ -48,6 +55,9 @@ public class CorrectiveAndPreventiveActionsController
 
 	@Autowired
 	CorrectiveAndPreventiveActionsDAO correctiveAndPreventiveActionsDAO;
+	
+	@Autowired
+	NonConformanceDAO nonConformanceDAO;
 
 	
 	
@@ -148,6 +158,11 @@ public class CorrectiveAndPreventiveActionsController
 		session.setAttribute("capa", capa_id);
 		session.setAttribute("date", request_date);
 		session.setAttribute("action", action);
+		
+		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+		model.addAttribute("nonConformanceForm", nonConformanceForm);
+		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id,request_date,action));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
@@ -159,6 +174,11 @@ public class CorrectiveAndPreventiveActionsController
 	// getting unique id
 	@RequestMapping(value = { "/addcorrectiveAndPreventiveActions" }, method = RequestMethod.GET)
 	public String add_correctiveAndPreventiveActions(ModelMap model, Principal principal) {
+		
+		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+		model.addAttribute("nonConformanceForm", nonConformanceForm);
+		
 		model.addAttribute("capa_id",correctiveAndPreventiveActionsDAO.get_maxid());
 		model.addAttribute("menu","corrective");
 		return "add_correctiveAndPreventiveActions";
@@ -175,6 +195,10 @@ public class CorrectiveAndPreventiveActionsController
 
 		session.setAttribute("correctiveAndPreventiveActions",correctiveAndPreventiveActions);
 
+		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+		model.addAttribute("nonConformanceForm", nonConformanceForm);
+		
 		if (result.hasErrors()) 
 		{System.out.println("if");
 			// session.removeAttribute("audit_start_date");
@@ -294,10 +318,13 @@ public class CorrectiveAndPreventiveActionsController
 		session.removeAttribute("date");
 		session.removeAttribute("action");
 		model.addAttribute("success","false");
+
+		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+		model.addAttribute("nonConformanceForm", nonConformanceForm);
+		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
-
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
-
 		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
@@ -308,6 +335,12 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value = "edit_correctiveAndPreventiveActions", method = RequestMethod.GET)
 	public String edit_correctiveAndPreventiveActions(@RequestParam("capa_id") String capa_id,
 			ModelMap model, Principal principal) {
+		
+		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+		model.addAttribute("nonConformanceForm", nonConformanceForm);
+		
+		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		System.out.println(capa_id);
 
@@ -419,6 +452,11 @@ public class CorrectiveAndPreventiveActionsController
 		if(flag == 1)
 		{
 	//	model.addAttribute("menu","audits");
+		
+			NonConformanceForm nonConformanceForm = new NonConformanceForm();
+			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+			model.addAttribute("nonConformanceForm", nonConformanceForm);
+		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
@@ -546,5 +584,38 @@ public class CorrectiveAndPreventiveActionsController
 		return "correctiveactionsdelete";
 		
 	}	
-	
- 	}
+		
+	/*	//Post method for ajax get process 
+		@RequestMapping(value = { "/ajax_getncid" }, method = RequestMethod.POST)
+		public @ResponseBody
+		String ajax_source_of_nonconformance(HttpSession session,
+				HttpServletRequest request, ModelMap model, Principal principal) {
+			String resultHTML="";
+		
+			String nc_id=request.getParameter("nc_id");
+			
+			String source_of_nonconformance=nonConformanceDAO.getSource_of_nc(nc_id).get(0).getSource_of_nonconformance();
+			
+			
+			
+			resultHTML="<input type='hidden' name='source_of_nonconformance' id='hidden_source_of_nonconformance' value='"+source_of_nonconformance+"'/><label id='source_of_nonconformance_lbl'>"+source_of_nonconformance+"</label>";
+			
+			return resultHTML;
+		}	
+	*/
+ 
+
+//ajax get sourceofnc post method
+@RequestMapping(value = { "/ajax_getnc" }, method = RequestMethod.POST)
+public @ResponseBody List<String> insert_external_correctiveactions(HttpSession session,
+		HttpServletRequest request, @RequestParam("nc_id") String nc_id,ModelMap model, Principal principal,NonConformance nonConformance) {
+	List<String> resultHTML=new ArrayList<String>();
+	System.out.println(" source of nc:::: "+nc_id);
+	System.out.println("khhjjhhjhjhj"+nc_id);
+	resultHTML=nonConformanceDAO.filtersourceofnc(nc_id);
+	//resultHTML=resultHTML+"/n"+resultHTML+"\n"+resultHTML;
+	System.out.println("result html:::::"+resultHTML);
+	return resultHTML;
+}
+
+}

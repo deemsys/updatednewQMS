@@ -1007,6 +1007,50 @@ public class NonConformanceDAO extends AbstractExcelView {
 
 	}
 
+	public List<String> filtersourceofnc(String nc_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> nonConformances = new ArrayList<String>();
+	    try{
+	    	/*String cmd="select source_of_nonconformance from tbl_nonconformance where id='"+nc_id+"'";*/
+	    	String cmd = "select source_of_nonconformance from tbl_nonconformance where id='"+nc_id+"'";
+	    /*	String cmd1 = "select type_of_nonconformance from tbl_nonconformance where id='"+nc_id+"'";
+	    	String cmd2 = "select nature_of_nonconformance from tbl_nonconformance where id='"+nc_id+"'";
+	    */	resultSet = statement.executeQuery(cmd);
+	    /*	resultSet = statement.executeQuery(cmd1);
+	    	resultSet = statement.executeQuery(cmd2);
+		*/	System.out.println(cmd);
+		/*	System.out.println(cmd1);
+			System.out.println(cmd2);
+		*/	
+			//System.out.println("came");
+			while(resultSet.next()){
+				System.out.println("count");
+			//	employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachments"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes")));
+				nonConformances.add(resultSet.getString("source_of_nonconformance"));
+
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return nonConformances;
+		
+	}
+
 
 
 

@@ -60,13 +60,20 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="capa_id" value="<c:out value="${capa_id}"/>"/><br/><span class="err"></span></td>
-              	  <td valign="top" align="left" class="input_txt"> NC ID :</td>
+                <%--   <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>"/><br/><span class="err"></span></td>
+              	  --%> <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
-							<select name="nc_id" class="input_cmbbx1">
+				   <select name="nc_id" id="nc_id" class="input_txtbx" onchange="doAjaxPost();" style="height:20px;">
+               <option value="">--Select--</option>
+               <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
+               <option value="<c:out value="${nonconformance.id}"/>"><c:out value="${nonconformance.id}"/></option>
+               </c:forEach>
+               </select>
+               <!-- <select name="nc_id" class="input_txtbx" style="height:20px;">
 				                  		<option value="1111">11111</option>
-							</select><span class="err"><form:errors path="CorrectiveAndPreventiveActions.nc_id"></form:errors></span></td>			
+							</select>
+							 --><span class="err"><form:errors path="CorrectiveAndPreventiveActions.nc_id"></form:errors></span></td>			
               
                 </tr>
                 
@@ -77,29 +84,36 @@
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  		<input type="text" name="source_of_nonconformance" class="input_txtbx" id="sourceofnonconformance" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.source_of_nonconformance}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.source_of_nonconformance"></form:errors></span></td>
-                      		
+                  		 <input type="text" name="source_of_nonconformance" id="source_of_nonconformance"  class="input_txtbx" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.source_of_nonconformance}"></c:out>' /><br/> 
+                  		<%-- <select name="source_of_nonconformance" id="source_of_nonconformance_id"  class="input_txtbx" style="height:20px;">
+                  		<option value="">--Select--</option>
+                  		<c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
+                  		<option value="<c:out value="${nonconformance.source_of_nonconformance}"/>"><c:out value="${nonconformance.source_of_nonconformance}"/></option>
+                  		</c:forEach>
+                  		</select>
+                  		<span class="err"><form:errors path="CorrectiveAndPreventiveActions.source_of_nonconformance"></form:errors></span></td>
+                      	 --%>	
                 </tr>
                   			
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%">Date Found :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_found" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.date_found}" /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Type of NC :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="type_of_nonconformance" class="input_txtbx" id="typeofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.type_of_nonconformance}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.type_of_nonconformance"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="type_of_nc" class="input_txtbx" id="typeofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.type_of_nonconformance}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.type_of_nonconformance"></form:errors></span></td>
                  	
                 </tr>
 			<tr class="row2">
-				<td valign="top" align="left" class="input_txt" width="30%">Temporary Action :</td>               
-                <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="temporary_action"  style="width:70%; height: 70px;">${correctiveAndPreventiveActions.temporary_action}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span></td>
+				<td valign="middle" align="left" class="input_txt" width="30%">Temporary Action :</td>               
+                <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="temporary_action"  style="width:46%; height: 70px;">${correctiveAndPreventiveActions.temporary_action}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span></td>
             	
             	<td valign="middle" align="left" class="input_txt" width="30%">Nature of NC :</td>      
-				<td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="nature_of_nc"  style="width:70%; height: 70px;">${correctiveAndPreventiveActions.temporary_action}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="nature_of_nc" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.temporary_action}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span></td>
               
             </tr>
             <tr class="row2">
               <td valign="top" align="left" class="input_txt"> CAPA Requestor</td>
 			  <td valign="top" align="left" class="input_txt">
-				           <select name="capa_requestor" class="input_cmbbx1">
+				           <select name="capa_requestor" class="input_txtbx" style="height:20px;">
 						                  <option value="">--Select--</option>
 						                  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
 										  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
@@ -128,7 +142,7 @@
             <tr class="row1">
               <td valign="top" align="left" class="input_txt">Assigned Team Leader</td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="assigned_team_leader" class="input_cmbbx1">
+				                  		<select name="assigned_team_leader" class="input_txtbx" style="height:20px;">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
 											<option <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
@@ -139,10 +153,10 @@
 				                   	</td>	
                  </tr>
                   <tr class="row2">
-                 <td valign="top" align="left" class="input_txt" width="30%">Team Member(s)</td>      
-						         	 <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="team_members"  style="width:70%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
-                <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Statement</td>               
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="root_cause_statement"  style="width:70%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Team Member(s)</td>      
+						         	 <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="team_members"  style="width:46%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Statement</td>               
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="root_cause_statement"  style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
                
               </tr>
                  <tr class="row1">
@@ -164,7 +178,7 @@
                  
                   </table>
                 <br>
-                <div>
+                <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
                  <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
@@ -180,7 +194,7 @@
                     <tr class="row2">
                      <td valign="middle" align="left" class="input_txt" width="30%">Responsibity</td>
                      <td valign="top" align="left" class="input_txt"width="30%">
-				                  		<select name="responsibility" class="input_cmbbx1">
+				                  		<select name="responsibility" class="input_txtbx" style="width:72%; height:20px;">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${correctiveAndPreventiveActions.responsibility eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
 											<option <c:if test="${correctiveAndPreventiveActions.responsibility eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
@@ -199,11 +213,13 @@
                </tr>
                </table>
                 </div>
+                 
+                 <br>
                  <table align="center" width="100%">
                   <tr >
                   
                   <td valign="top" align="center"></td>
-				  <td valign="top" align="center"><input type="submit" class="submit_btn2" value="Submit" class="submit_btn1">
+				  <td valign="top" align="center"><input type="submit" value="Submit" class="submit_btn1">
 				 </td>
                   </tr>
                   </table>
@@ -217,6 +233,69 @@
                   
                   
                   
+<script>
+/*   function AjaxSourceOfNc() {
+	document.getElementById('filter_value1').style.display="none";
+	// document.getElementById("issuer_generate1").style.display="inline";
+	var filer_value1 = $('#filter_value1').val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getsourceofnc",
+		data : "filter_val=" + filer_value1,
+		success : function(response) {
+			
+			$('#filer_value1').html(response);
+			//$('#filter_value').hide();
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+} 
+function doAjaxPost_for_nc() {
+
+	var ncid = $('#id_inpncid').val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getncid",
+		data : "nc_id=" + ncid,
+		success : function(response) {
+			
+			$('#source_of_nonconformance_id').html(response);
+		
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+} 
+ */ function doAjaxPost() {
+	 alert("hi");
+	document.getElementById('nc_id').style.display="block";
+	 document.getElementById("source_of_nonconformance").style.display="inline";
+	var filer_value = $('#nc_id').val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getnc",
+		data : "nc_id=" + filer_value,
+		success : function(response) {
+			alert("response"+response);
+		document.getElementById("source_of_nonconformance").value=response;
+		/* document.getElementById("type_of_nc").value=response;
+		document.getElementById("nature_of_nc").value=response;
+			 */
+			//$('#filter_value').hide();
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
+ 
+</script>     
      
 <script>
 $('#externalfile').change(function() {
