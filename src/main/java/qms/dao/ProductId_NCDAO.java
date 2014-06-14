@@ -251,6 +251,8 @@ public class ProductId_NCDAO {
 			    return status;
 			
 		}
+		
+		
 	public void releaseConnection(Connection con) {
 		try {
 			if (con != null)

@@ -22,10 +22,12 @@ import org.springframework.ui.ModelMap;
 import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.NonConformanceDAO;
+import qms.dao.ProductId_NCDAO;
 import qms.dao.Source_NCDAO;
 import qms.dao.Type_of_NC_DAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
 import qms.forms.Non_Conformance_SourceForm;
+import qms.forms.ProductId_NC_Form;
 import qms.forms.Type_of_NC_Form;
 
 import qms.forms.NonConformanceForm;
@@ -49,6 +51,8 @@ public class NonConformanceController {
 	@Autowired
 	Type_of_NC_DAO typeNCDAO;
 	
+	@Autowired
+	ProductId_NCDAO productId_NCDAO;
 	// Request Method for view page
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
 	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
@@ -126,6 +130,11 @@ public class NonConformanceController {
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
+		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+		model.addAttribute("productId_NC_Form",productId_NC_Form);
+		
 		return "add_nonconformance";
 	}
 	
@@ -188,6 +197,10 @@ public class NonConformanceController {
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+
+		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+		model.addAttribute("productId_NC_Form",productId_NC_Form);
 		
 	    model.addAttribute("menu","nonconformance");
 	    return "edit_nonconformance";

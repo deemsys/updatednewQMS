@@ -102,12 +102,15 @@
 																		<font color="Red" size="+1"></font>
 																		</td>
 																		<td valign="middle" align="left" class="input_txt"width="50%">Product ID </td>
-																		<td valign="top" align="left" class="input_txt"width="50%"><input
-																			type="text" class="input_txtbx1" id="inp_product_id"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="product_id"
-																			value="${nonconformance.product_id}" /><br/>
+																		<td valign="top" align="left" class="input_txt"width="50%">
+																		
+																		<select name="product_id" class="input_cmbbx1">
+				                  										<option value="">--Select--</option>
+																		 <c:forEach items="${productId_NC_Form.productIDNCs}" var="products" varStatus="status">
+        				      												 <option value="${products.productid_nc}">${products.productid_nc}</option>
+			                 											 </c:forEach>
+																	</select>
+																		<br/>
 																		<font color="Red" size="+1"></font><span class="err"><form:errors
 																					path="Nonconformance.product_id"></form:errors>
 																		</span>
