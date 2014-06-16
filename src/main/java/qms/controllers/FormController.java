@@ -339,7 +339,7 @@ public class FormController
 				
 				FormForm formForm=new FormForm();
 			   // formForm.setForm(formDAO.getform());
-				formForm.setForm(formDAO.search_form(process));
+				formForm.setForm(formDAO.search_form(process,1));
 			    model.addAttribute("formForm",formForm);
 	             model.addAttribute("menu","document");
 	             model.addAttribute("id", formDAO.get_formid());
@@ -580,16 +580,17 @@ public class FormController
 	
 
 	@RequestMapping(value="/viewformreport_page", method=RequestMethod.GET)
-	public String viewformreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+	public String viewformreport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,@RequestParam("process") String process,ModelMap model) {	
+		
+		session.setAttribute("processarea",process);
 		FormForm formForm=new FormForm();
-		formForm.setForm(formDAO.getlimitedformreport(page));
-		model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	
-	//	model.addAttribute("formForm",formForm);
+		formForm.setForm(formDAO.search_form(process,page));
+		model.addAttribute("noofpages",(int) Math.ceil(formDAO.Search_form(process) * 1.0 / 5));	 
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","document");
 	    model.addAttribute("button","viewall");
-	    
+		model.addAttribute("formForm",formForm);
 	    ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm", processForm);
@@ -600,20 +601,16 @@ public class FormController
 
 
 	@RequestMapping(value={"/viewallformreport"}, method = RequestMethod.GET)
-	public String viewallformreport(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String viewallformreport(HttpServletRequest request,HttpSession session,ModelMap model, @RequestParam("process") String process,Principal principal ) {
+		
 		FormForm formForm=new FormForm();
-		formForm.setForm(formDAO.getform());
-	//	model.addAttribute("formForm",formForm);
-
-	  	model.addAttribute("noofrows",5);    
-	   //narrativereportForm.getNarrativereport().size()
+		formForm.setForm(formDAO.search_form(process,0));
 	    model.addAttribute("menu","maintenance");
 	    model.addAttribute("button","close");
-	      
 	    model.addAttribute("menu","document");
 	    model.addAttribute("success","false");
 	    model.addAttribute("button","close");
-	    
+		model.addAttribute("formForm",formForm);
 	    ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm", processForm);
@@ -692,15 +689,13 @@ public class FormController
 		
 		 FormForm formForm = new FormForm();
 		 session.setAttribute("processarea",process);
-		
-		formForm.setForm(formDAO.search_form(process));
-		
-		
-		model.addAttribute("formForm", formForm);
-		model.addAttribute("menu","document");
-        
-		 model.addAttribute("formForm",formForm);
-		
+		 formForm.setForm(formDAO.search_form(process,1));
+		 model.addAttribute("noofpages",(int) Math.ceil(formDAO.Search_form(process) * 1.0 / 5));	 
+			model.addAttribute("noofrows",5);   
+		    model.addAttribute("currentpage",1);
+		    model.addAttribute("menu","document");
+		    model.addAttribute("button","viewall");
+		    model.addAttribute("formForm",formForm);
 		 ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm", processForm);
@@ -715,7 +710,7 @@ public class FormController
 		 FormForm formForm = new FormForm();
 		 session.setAttribute("processarea",process);
 		
-		formForm.setForm(formDAO.search_form(process));
+		formForm.setForm(formDAO.search_form(process,1));
 		
 		
 		model.addAttribute("formForm", formForm);
@@ -737,7 +732,7 @@ public class FormController
 		 FormForm formForm = new FormForm();
 		 
 		
-		formForm.setForm(formDAO.search_form(process));
+		formForm.setForm(formDAO.search_form(process,1));
 		
 		
 		model.addAttribute("formForm", formForm);

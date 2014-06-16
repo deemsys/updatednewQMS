@@ -577,7 +577,7 @@ public class FormDAO extends AbstractExcelView{
 	}*/
 	
 	//Search operation for find a particular record
-	public List<Form> search_form(String process) {
+	public List<Form> search_form(String process,int page) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -592,7 +592,14 @@ public class FormDAO extends AbstractExcelView{
 			e1.printStackTrace();
 		}
 		try {
-			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where t1.process like'"+process+"'");
+			if(page >= 1){
+			int offset = 5 * (page - 1);
+			int limit = 5;
+		
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where t1.process like'"+process+"' limit " + offset + ","+ limit+"");
+			}
+			else
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where t1.process like'"+process+"'");
 
 		//	String cmd_select = "select * from tb1_internalaudits";
 			//resultSet = statement.executeQuery(cmd_select);
@@ -632,7 +639,37 @@ public class FormDAO extends AbstractExcelView{
 		}
 		return form;
 	}
-	
+	public int Search_form(String process) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords =0;
+		System.out.println("auto_number");
+		List<Form> form = new ArrayList<Form>();
+
+		try {
+			con = datasource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_form as t1 join tbl_form_child as t2 on t1.auto_number=t2.auto_no where t1.process like'"+process+"'");
+			
+			if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+	}
 	//Request method for human resources
 	public List<Form> gethuman_resources(String process){
 		Connection con = null;
