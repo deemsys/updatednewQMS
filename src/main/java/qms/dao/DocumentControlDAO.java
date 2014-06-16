@@ -925,7 +925,7 @@ public class DocumentControlDAO extends AbstractExcelView
 		
 	}
 	
-	public List<DocumentMain> findDocuments(String search_document_type,String search_process){
+	public List<DocumentMain> findDocuments(String search_document_type,String search_process,int page){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -937,28 +937,32 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
+	    	if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
 	    	if(!search_document_type.equals("") && !search_process.equals(""))
 	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' and process = '"+search_process+"'");
+	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' and process = '"+search_process+"' limit " + offset + ","+ limit+"");
 	    	}
 	    	else if(!search_document_type.equals("") || !search_process.equals(""))
 	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' or process = '"+search_process+"'");
+	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' or process = '"+search_process+"' limit " + offset + ","+ limit+"");
 	    	}
-	    	
-	    	/*else if((!search_document_type.equals(null)) && ((search_process.equals(null))))
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"'");
-	    	}
-	    	else if((search_document_type.equals(null)) && ((!search_process.equals(null))))
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where process = '"+search_process+"'");
 	    	}
 	    	else
 	    	{
-				resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' and process = '"+search_process+"'");
-
-	    	}*/
+	    		if(!search_document_type.equals("") && !search_process.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' and process = '"+search_process+"' ");
+		    	}
+		    	else if(!search_document_type.equals("") || !search_process.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"' or process = '"+search_process+"'");
+		    	}
+	    		
+	    	}
+	    	
 	    		System.out.println("came");
 			while(resultSet.next()){
 				System.out.println("count");
@@ -977,10 +981,11 @@ public class DocumentControlDAO extends AbstractExcelView
 	    return documentMains;
 		
 	}
-	/*public List<DocumentMain> findDocuments(String search_document_type,String search_process){
+	public int FindDocuments(String search_document_type,String search_process){
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		int noofRecords =0;
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -989,34 +994,33 @@ public class DocumentControlDAO extends AbstractExcelView
 		}
 		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
 	    try{
-	    	if(search_document_type=="" && search_process=="")
+	    	if(!search_document_type.equals("") && !search_process.equals(""))
 	    	{
-	    	resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_type = '"+search_document_type+"'");
+	    		resultSet = statement.executeQuery("select  count(*) as noofrecords from tbl_doccontrol_main where document_type = '"+search_document_type+"' and process = '"+search_process+"'");
+	    	}
+	    	else if(!search_document_type.equals("") || !search_process.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_doccontrol_main where document_type = '"+search_document_type+"' or process = '"+search_process+"'");
+	    	}
 	    	
-	    	}
-	    	else
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_doccontrol_main where process = '"+search_process+"' and document_type='"+search_document_type+"'");
-	    	}
-	    		
-	    	System.out.println("came");
-			while(resultSet.next()){
-				System.out.println("count");
-				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
-			}
-	    }catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-	    return documentMains;
-		
-	}*/
+	    	
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+
+	
+	}
+	
 
 	public List<DocumentMain> list_documents(String document_id){
 		Connection con = null;
@@ -1136,6 +1140,7 @@ public class DocumentControlDAO extends AbstractExcelView
 		return noofRecords;
 
 	}
+	
 	public boolean changeRevisionFormat(String auto_no)
 	{
 		Connection con = null;

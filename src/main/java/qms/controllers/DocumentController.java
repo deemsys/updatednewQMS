@@ -424,7 +424,7 @@ public class DocumentController {
 
 				DocumentMainForm documentMainForm = new DocumentMainForm();
 				//documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-				documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
+				documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,1));
 				model.addAttribute("documentMainForm", documentMainForm);
 				  model.addAttribute("menu","document");
 				  model.addAttribute("id", documentControlDAO.get_documentid());
@@ -649,13 +649,13 @@ public class DocumentController {
 		load_document_page_dropdowns(model);
 		
 		model.addAttribute("menu","document");
-	  	model.addAttribute("noofrows",5);
+	  	/*model.addAttribute("noofrows",5);*/
 	  	//narrativereportForm.getNarrativereport().size());       
 	  	documentMainForm.setDocumentMains(documentControlDAO.getlimiteddocumentreport(1));
-	    model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.getnoofdocumentreport() * 1.0 / 5));	 
-        model.addAttribute("button","viewall");
+	   // model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.getnoofdocumentreport() * 1.0 / 5));	 
+       /* model.addAttribute("button","viewall");
         model.addAttribute("success","false");
-        model.addAttribute("currentpage",1);
+        model.addAttribute("currentpage",1);*/
       //  model.addAttribute("documentMainForm", documentMainForm);
 		return "view_documents";
 
@@ -666,12 +666,18 @@ public class DocumentController {
 
 
 	@RequestMapping(value="/viewdocumentreport_page", method=RequestMethod.GET)
-	public String viewdocumentreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+	public String viewdocumentreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+			@RequestParam("documenttype") String search_document_type,
+			@RequestParam("processarea") String search_process,ModelMap model) {
+		
+		session.setAttribute("documentMain",search_document_type);
+		session.setAttribute("documentMain1",search_process);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
-	  	documentMainForm.setDocumentMains(documentControlDAO.getlimiteddocumentreport(page));
-		model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.getnoofdocumentreport() * 1.0 / 5));
-		//model.addAttribute("documentMainForm", documentMainForm);	
-	  	model.addAttribute("noofrows",5);   
+		load_document_page_dropdowns(model);
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,page));
+		model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+		model.addAttribute("documentMainForm", documentMainForm);	
+	  	model.addAttribute("noofrows",5);
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","document");
 	    model.addAttribute("button","viewall");
@@ -682,12 +688,18 @@ public class DocumentController {
 
 
 	@RequestMapping(value={"/viewalldocumentreport"}, method = RequestMethod.GET)
-	public String viewalldocumentreport(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String viewalldocumentreport(HttpServletRequest request,HttpSession session,ModelMap model,@RequestParam("documenttype") String search_document_type,
+			@RequestParam("processarea") String search_process,Principal principal ) 
+	{
+		
+		
 		DocumentMainForm documentMainForm = new DocumentMainForm();
-		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
-	//	model.addAttribute("documentMainForm", documentMainForm);
+		load_document_page_dropdowns(model);
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,0));
+	//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+		model.addAttribute("documentMainForm", documentMainForm);
 
-	  	model.addAttribute("noofrows",5);    
+	 // 	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","document");
 	    model.addAttribute("button","close");
@@ -770,7 +782,15 @@ public class DocumentController {
 		
 		load_document_page_dropdowns(model);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
-		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,1));
+		
+		
+			//documentMainForm.setDocumentMains(documentControlDAO.getlimiteddocumentreport(1));
+			model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+	        model.addAttribute("button","viewall");
+	        model.addAttribute("success","false");
+	        model.addAttribute("currentpage",1);
+		
 		
 		model.addAttribute("documentMainForm", documentMainForm);
 		model.addAttribute("menu","document");
@@ -796,7 +816,7 @@ public class DocumentController {
 		
 		load_document_page_dropdowns(model);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
-		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process));
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,1));
 		
 		model.addAttribute("documentMainForm", documentMainForm);
 		model.addAttribute("menu","admin");

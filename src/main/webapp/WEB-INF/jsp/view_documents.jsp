@@ -105,7 +105,10 @@
               					<option value="">--Select--</option>
                 				<c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}" <c:if test="${documenttype.document_type==documentMain}"><c:out value="selected"></c:out></c:if>>${documenttype.document_type}</option>
-			                  </c:forEach> </select></td>
+			                  </c:forEach> </select>
+			                  
+			                  <input type="hidden" id="document_id" value=""/>
+			                  </td>
                
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
 							    <td align="left" valign="middle" width="10%">
@@ -197,7 +200,7 @@
              <ul class="pagination">
         
              <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewdocumentreport_page?page=${currentpage - 1}" >Prev</a></li> 
+             <li class="page_unselect"><a href="viewdocumentreport_page?page=${currentpage - 1}&documenttype=${documentMain}&processarea=${documentMain1}" >Prev</a></li> 
                </c:if>
               
              <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
@@ -208,16 +211,17 @@
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewdocumentreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                   
+                        <li class="page_unselect"><a href="viewdocumentreport_page?page=${i}&documenttype=${documentMain}&processarea=${documentMain1}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewdocumentreport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdocumentreport_page?page=${currentpage+1}&documenttype=${documentMain}&processarea=${documentMain1}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewalldocumentreport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewalldocumentreport?&documenttype=${documentMain}&processarea=${documentMain1}" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="viewdocuments" class="paging_select">Back</a></li>
@@ -562,6 +566,7 @@ function subhide()
 {
 	document.getElementById('subrow').style.display="block";
 }
+
 </script>
 
 <jsp:include page="footer.jsp"></jsp:include>
