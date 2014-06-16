@@ -70,7 +70,23 @@
 									<span>Source of NC</span>
 									
 								</a>
-							</li>	
+							</li>
+							</ul>
+							  <ul class="horizmenu" style=" float:left;margin-left:205px;margin-bottom:5px;">
+							<li  style=" float:left;margin-right:4px;text-transform:uppercase;">
+								<a href="addtypenc" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Type of NC</span>
+									
+								</a>
+							</li>
+							<li  style=" float:left;text-transform:uppercase;">
+								<a href="addproductidnc" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Product ID</span>
+									
+								</a>
+							</li>			
 				           </ul>
   </div>
       </td>

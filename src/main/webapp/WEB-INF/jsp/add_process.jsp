@@ -75,6 +75,13 @@
 									
 								</a>
 							</li>	
+							<li  style=" float:left;text-transform:uppercase;">
+								<a href="addproductidnc" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Product ID</span>
+									
+								</a>
+							</li>		
 				          </ul>
   </div>
       </td>
