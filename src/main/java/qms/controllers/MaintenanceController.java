@@ -61,8 +61,9 @@ public class MaintenanceController {
 	
     
     	MaintenanceForm maintenanceForm=new MaintenanceForm();
-    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
-    	
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
+		model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.FindMaintenance(equipment_id, equipment_name) * 1.0 / 5));	 
+
     	model.addAttribute("maintenanceForm",maintenanceForm);
     	model.addAttribute("menu","maintenance");
 		
@@ -80,7 +81,7 @@ return "maintenance_list";
 		session.setAttribute("equipname",equipment_name);
 		
 			MaintenanceForm maintenanceForm=new MaintenanceForm();
-	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name));
+	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
 	    	
 	    	model.addAttribute("maintenanceForm",maintenanceForm);
 	    	model.addAttribute("menu","admin");
@@ -122,14 +123,14 @@ return "maintenance_list";
 		
 		MaintenanceForm maintenanceForm= new MaintenanceForm(); 
 		model.addAttribute("menu","maintenance");
-	  	model.addAttribute("noofrows",5);
+	  	//model.addAttribute("noofrows",5);
 		
 		
 		maintenanceForm.setMaintenance(maintenanceDAO.getlimitedmaintenancereport(1));
-		model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.getnoofmaintenancereport() * 1.0 / 5));	 
-        model.addAttribute("button","viewall");
-        model.addAttribute("success","false");
-        model.addAttribute("currentpage",1);
+		//model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.getnoofmaintenancereport() * 1.0 / 5));	 
+      //  model.addAttribute("button","viewall");
+      //  model.addAttribute("success","false");
+      //  model.addAttribute("currentpage",1);
 		//model.addAttribute("maintenanceForm",maintenanceForm);
 		
 		return "maintenance_list";
@@ -139,11 +140,14 @@ return "maintenance_list";
 
 
 	@RequestMapping(value="/viewmaintenancereport_page", method=RequestMethod.GET)
-	public String viewmaintenancereport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
-		MaintenanceForm maintenanceForm= new MaintenanceForm();
-		maintenanceForm.setMaintenance(maintenanceDAO.getlimitedmaintenancereport(page));
-		model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.getnoofmaintenancereport() * 1.0 / 5));
-		model.addAttribute("maintenanceForm",maintenanceForm);	
+	public String viewmaintenancereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model) {	
+		
+		session.setAttribute("equipid",equipment_id);
+		session.setAttribute("equipname",equipment_name);
+		MaintenanceForm maintenanceForm=new MaintenanceForm();
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,page));
+		model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.FindMaintenance(equipment_id, equipment_name) * 1.0 / 5));	 
+    	model.addAttribute("maintenanceForm",maintenanceForm);
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","maintenance");
@@ -155,13 +159,13 @@ return "maintenance_list";
 
 
 	@RequestMapping(value={"/viewallmaintenancereport"}, method = RequestMethod.GET)
-	public String viewallmaintenancereport(HttpServletRequest request,ModelMap model, Principal principal ) {
-		MaintenanceForm maintenanceForm= new MaintenanceForm();
-		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
+	public String viewallmaintenancereport(HttpServletRequest request,HttpSession session,@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal ) {
+		
+		session.setAttribute("equipid",equipment_id);
+		session.setAttribute("equipname",equipment_name);
+		MaintenanceForm maintenanceForm=new MaintenanceForm();
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
 		model.addAttribute("maintenanceForm",maintenanceForm);
-
-	  	model.addAttribute("noofrows",5);    
-	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","maintenance");
 	    model.addAttribute("button","close");
 	      

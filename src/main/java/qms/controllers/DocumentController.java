@@ -783,10 +783,7 @@ public class DocumentController {
 		load_document_page_dropdowns(model);
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,1));
-		
-		
-			//documentMainForm.setDocumentMains(documentControlDAO.getlimiteddocumentreport(1));
-			model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+		model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
 	        model.addAttribute("button","viewall");
 	        model.addAttribute("success","false");
 	        model.addAttribute("currentpage",1);

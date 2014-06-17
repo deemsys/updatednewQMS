@@ -25,6 +25,7 @@ import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
 
+import qms.model.DocumentMain;
 import qms.model.InternalAudits;
 import qms.model.Maintenance;
 
@@ -352,7 +353,7 @@ public class MaintenanceDAO extends AbstractExcelView
 	}
 	
 	//Search operation for find a particular record
-	public List<Maintenance>  search_maintenance(String equipment_id,String equipment_name) {
+	public List<Maintenance>  search_maintenance(String equipment_id,String equipment_name,int page) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -370,9 +371,29 @@ public class MaintenanceDAO extends AbstractExcelView
 		}
 		try {
 			
-
-		/*	String cmd_select = "select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where equipment_id='"+equipment_id+"'and equipment_name='"+equipment_name+"'";
-		*/	
+			if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
+			if(!equipment_id.equals("") && !equipment_name.equals(""))
+			{
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' and t1.equipment_name='"+equipment_name+"' limit " + offset + ","+ limit+"");  
+			}
+			else if(equipment_id.equals("") && !equipment_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_name='"+equipment_name+"' limit " + offset + ","+ limit+"");
+			}
+			else if(!equipment_id.equals("") && equipment_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' limit " + offset + ","+ limit+"");				
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' or t1.equipment_name='"+equipment_name+"' limit " + offset + ","+ limit+"");
+						
+			}
+	    	}
+			else{		
 			if(!equipment_id.equals("") && !equipment_name.equals(""))
 			{
 			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' and t1.equipment_name='"+equipment_name+"'");  
@@ -390,7 +411,8 @@ public class MaintenanceDAO extends AbstractExcelView
 				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' or t1.equipment_name='"+equipment_name+"'");
 						
 			}
-			
+			}
+	    	
 			
 			//resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {
@@ -432,7 +454,54 @@ public class MaintenanceDAO extends AbstractExcelView
 		}
 		return maintenance;
 	}
-		
+	public int FindMaintenance(String equipment_id,String equipment_name){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords =0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Maintenance> maintenance = new ArrayList<Maintenance>();
+	    try{
+	    	if(!equipment_id.equals("") && !equipment_name.equals(""))
+			{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' and t1.equipment_name='"+equipment_name+"'");  
+			}
+			else if(equipment_id.equals("") && !equipment_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords  from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_name='"+equipment_name+"'");
+			}
+			else if(!equipment_id.equals("") && equipment_name.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords  from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"'");				
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords  from tbl_maintenance as t1 join tbl_maintenancechild as t2 on t1.equipment_id=t2.equipmentid where t1.equipment_id='"+equipment_id+"' or t1.equipment_name='"+equipment_name+"'");
+						
+			}
+	    	
+	    	
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+
+	
+	}
 		
 	//Request method
 	public List<Maintenance> getmaintenance() {
