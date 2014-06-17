@@ -801,7 +801,6 @@ public class DocumentController {
 	@RequestMapping(value = "/findDocuments", method = RequestMethod.GET)
 	public String findDocuments(HttpSession session,
 			@RequestParam("document_type") String search_document_type,
-		//	@RequestParam("search_document_title") String search_document_title,
 			@RequestParam("search_process") String search_process,
 			ModelMap model) {
 		
@@ -818,11 +817,66 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,1));
 		
+		
+			//documentMainForm.setDocumentMains(documentControlDAO.getlimiteddocumentreport(1));
+			model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+	        model.addAttribute("button","viewall");
+	        model.addAttribute("success","false");
+	        model.addAttribute("currentpage",1);
+		
+		
 		model.addAttribute("documentMainForm", documentMainForm);
-		model.addAttribute("menu","admin");
+		model.addAttribute("menu","document");
 		return "documentdelete";
 		}
 			
+	
+	
+	@RequestMapping(value="/viewdocumentdelete_page", method=RequestMethod.GET)
+	public String viewdocumentdelete_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+			@RequestParam("documenttype") String search_document_type,
+			@RequestParam("processarea") String search_process,ModelMap model) {
+		
+		session.setAttribute("documentMain",search_document_type);
+		session.setAttribute("documentMain1",search_process);
+		DocumentMainForm documentMainForm = new DocumentMainForm();
+		load_document_page_dropdowns(model);
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,page));
+		model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+		model.addAttribute("documentMainForm", documentMainForm);	
+	  	model.addAttribute("noofrows",5);
+	    model.addAttribute("currentpage",page);
+	    model.addAttribute("menu","document");
+	    model.addAttribute("button","viewall");
+	    
+	    return "documentdelete";
+		
+	}
+
+
+	@RequestMapping(value={"/viewalldocumentdelete"}, method = RequestMethod.GET)
+	public String viewalldocumentdelete(HttpServletRequest request,HttpSession session,ModelMap model,@RequestParam("documenttype") String search_document_type,
+			@RequestParam("processarea") String search_process,Principal principal ) 
+	{
+		
+		
+		DocumentMainForm documentMainForm = new DocumentMainForm();
+		load_document_page_dropdowns(model);
+		documentMainForm.setDocumentMains(documentControlDAO.findDocuments(search_document_type,search_process,0));
+	//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+		model.addAttribute("documentMainForm", documentMainForm);
+
+	 // 	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","document");
+	    model.addAttribute("button","close");
+	      
+	    	model.addAttribute("menu","document");
+	        model.addAttribute("success","false");
+	        model.addAttribute("button","close");
+	        return "documentdelete";
+
+	}
 	// Document Control list page	
 	
 	@RequestMapping(value = "/list_documents", method = RequestMethod.GET)

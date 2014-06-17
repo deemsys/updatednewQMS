@@ -310,9 +310,10 @@ public class NonConformanceController {
 	public ModelAndView generatenonnonconformance_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response)
 	{
 		String start = null,end = null;
-		String[] fields={"id","source_of_nonconformance","external_id","type_of_nonconformance","product_id","quantity_suspect","nature_of_nonconformance","date_found","reported_by","temporary_action","corrective_action_required","disposition","disposition_complete_date","name_of_disposition_responsibility","cost_of_nonconformance"};
+		String[] fields={"id","source_of_nonconformance","external_id","type_of_nonconformance","product_id","quantity_suspect","nature_of_nonconformance","date_found","reported_by","temporary_action","corrective_action_required","disposition_required","disposition1","disposition_complete_date","name_of_disposition_responsibility","cost_of_nonconformance"};
 		System.out.println(request.getParameter("type_of_report"));
 		java.util.List<NonConformance> nonConformances=new ArrayList<NonConformance>();
+		System.out.println(Integer.parseInt(request.getParameter("doc_type")));
 			switch(Integer.parseInt(request.getParameter("doc_type")))
 				  {
 		  case 0:
@@ -322,10 +323,19 @@ public class NonConformanceController {
 			  nonConformances=nonConformanceDAO.get_nonconformance_type("nodispositionover30days","start","end");
 			  break;
 		  case 2:
-			  start=request.getParameter("start_date");
-				end=request.getParameter("end_date");
+			String  startdate=request.getParameter("start");
+			String	enddate=request.getParameter("end");
 				
-			  nonConformances=nonConformanceDAO.get_nonconformance_type("opennonconformance","start","end");
+				System.out.println(start);
+				System.out.println(end);
+				String[] split = startdate.split("/");
+				String[] split1 = enddate.split("/");
+				System.out.println(split1[2]+"-"+split1[0]+"-"+split1[1]);
+				System.out.println(split[2]+"-"+split[0]+"-"+split[1]);
+				start= split[2]+"-"+split[0]+"-"+split[1];
+				end = split1[2]+"-"+split1[0]+"-"+split1[1];
+				
+			  nonConformances=nonConformanceDAO.get_nonconformance_type("betweendates",start,end);
 			  break;
 		  
 		  default:

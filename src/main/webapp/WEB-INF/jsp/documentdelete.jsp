@@ -112,6 +112,7 @@ else
 									Review
 								</a>
 							</li>
+							</ul>
 							
   </div>
 </td>
@@ -233,11 +234,11 @@ else
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
 		<td colspan="6">  
-	<!-- <div class="extrabottom">
-      -->        <ul class="pagination">
+	 <div class="extrabottom">
+              <ul class="pagination">
         
-           <%--   <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewformreport_page?page=${currentpage - 1}" >Prev</a></li> 
+              <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdocumentdelete_page?page=${currentpage - 1}&documenttype=${documentMain}&processarea=${documentMain1}" >Prev</a></li> 
                </c:if>
               
            
@@ -247,22 +248,22 @@ else
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewformreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewdocumentdelete_page?page=${i}&documenttype=${documentMain}&processarea=${documentMain1}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewformreport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdocumentdelete_page?page=${currentpage+1}&documenttype=${documentMain}&processarea=${documentMain1}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewalldocumentdelete?documenttype=${documentMain}&processarea=${documentMain1}" class="paging_select">ViewAll</a></li>
              </c:when>
-                <c:otherwise> --%>
-                  <li class="page"><a href="view_form" class="paging_select">Back</a></li>
+                <c:otherwise> 
+                  <li class="page"><a href="documentdelete" class="paging_select">Back</a></li>
                   
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+               </c:otherwise>
+              </c:choose>			 	
 		 
 		</ul></div></td></table></div>
 		<table height="2%"><tr><td></td></tr></table>

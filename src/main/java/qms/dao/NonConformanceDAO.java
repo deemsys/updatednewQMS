@@ -154,7 +154,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 				excelHeader.createCell(i).setCellValue("Disposition Required");
 				excelHeader.getCell(i).setCellStyle(style);
 				i++;
-			}else if(field.equals("disposition"))	
+			}else if(field.equals("disposition1"))	
 			{
 				excelHeader.createCell(i).setCellValue("Disposition");
 				excelHeader.getCell(i).setCellStyle(style);
@@ -209,7 +209,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 					else if(field.equals("external_id"))
 					{
 						excelRow.createCell(i).setCellValue(
-								nonConformance.getSource_of_nonconformance());
+								nonConformance.getExternal_id());
 								i++;
 					}
 					else if(field.equals("type_of_nonconformance"))	
@@ -231,6 +231,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 					{
 						excelRow.createCell(i).setCellValue(
 								nonConformance.getNature_of_nonconformance());
+						i++;
 					}else if(field.equals("date_found"))	
 					{
 						excelRow.createCell(i).setCellValue(
@@ -248,7 +249,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 						i++;
 					}else if(field.equals("corrective_action_required"))	
 					{
-						if(nonConformance.getCorrective_action_required().equals("1"))
+						if(nonConformance.getCorrective_action_required().equals("Yes"))
 							excelRow.createCell(i).setCellValue("Yes");
 							else
 								excelRow.createCell(i).setCellValue("No");
@@ -256,15 +257,21 @@ public class NonConformanceDAO extends AbstractExcelView {
 					
 					}else if(field.equals("disposition_required"))	
 					{
-						if(nonConformance.getDisposition_required().equals("1"))
+						if(nonConformance.getDisposition_required().equals("Yes"))
 						excelRow.createCell(i).setCellValue("Yes");
 					else
 						excelRow.createCell(i).setCellValue("No");
 					i++;
-					}else if(field.equals("disposition"))	
+					}else if(field.equals("disposition1"))	
 					{
+						String dispositions = "";
+						dispositions += nonConformance.getDisposition1()+"  - "+nonConformance.getQuality1();
+						dispositions += "    ";
+						dispositions += nonConformance.getDisposition2()+"  - "+nonConformance.getQuality2();
+						dispositions += "    ";
+						dispositions += nonConformance.getDisposition3()+"  - "+nonConformance.getQuality3();
 						excelRow.createCell(i).setCellValue(
-								nonConformance.getDisposition1());
+								dispositions);
 						i++;
 					}else if(field.equals("disposition_complete_date"))	
 					{
@@ -277,7 +284,12 @@ public class NonConformanceDAO extends AbstractExcelView {
 								nonConformance.getName_of_disposition_responsibility());
 						i++;
 					}
-					
+					else if(field.equals("cost_of_nonconformance"))	
+					{
+						excelRow.createCell(i).setCellValue(
+								nonConformance.getCost_of_nonconformance());
+						i++;
+					}
 				}
 				
 		}
@@ -668,10 +680,15 @@ public class NonConformanceDAO extends AbstractExcelView {
 			
 				else if(type=="nodispositionover30days")
 				//	cmd_select="select * from tbl_nonconformance where disposition_complete_date between now() and DATE_ADDNOW(), INTERVAL 30 DAYS";
-					cmd_select="select * from tbl_nonconformance  WHERE   disposition_complete_date BETWEEN NOW() + INTERVAL 30 DAY AND NOW()";
-					else if(type=="defined")
-						cmd_select="select * from tbl_nonconformance where disposition_complete_date between start AND end";
+					cmd_select="select * from tbl_nonconformance  WHERE disposition_complete_date BETWEEN NOW() AND NOW() + INTERVAL 30 DAY";
+					else if(type=="betweendates")
+					{
+						
+						System.out.println("two dates");
+						cmd_select="select * from tbl_nonconformance where disposition_complete_date between '"+start+"' AND '"+end+"'";
+					}
 			resultSet = statement.executeQuery(cmd_select);
+			System.out.println("query = "+cmd_select);
 			while (resultSet.next()) {
 				System.out.println("came");
 				nonConformances.add(new NonConformance(resultSet

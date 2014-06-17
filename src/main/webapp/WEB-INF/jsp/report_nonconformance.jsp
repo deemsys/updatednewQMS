@@ -170,7 +170,7 @@
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="type_of_nonconformance" id="id_field_type_of_nonconformance"/>Type of NC</td>
 								<td><input type="checkbox" name="report_field[]" value="product_id" id="id_field_product_id"/>Product ID</td>
-								<td><input type="checkbox" name="report_field[]" value="disposition" id="id_field_disposition"/>Disposition</td>
+								<td><input type="checkbox" name="report_field[]" value="disposition1" id="id_field_disposition"/>Disposition</td>
 					      		</tr>
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="nature_of_nonconformance" id="id_field_nature_of_nonconformance"/>Nature of NC</td>

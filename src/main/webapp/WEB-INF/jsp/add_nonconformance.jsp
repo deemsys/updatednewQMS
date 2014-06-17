@@ -353,6 +353,7 @@
          });
  
  $(function() {
+	 var format="yy-mm-dd";
            $( "#datepicker1" ).datepicker();
          });
  
