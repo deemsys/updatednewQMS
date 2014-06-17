@@ -705,25 +705,64 @@ public class FormController
 	 @RequestMapping(value={"/search_forms"}, method = RequestMethod.GET)
 		
 		public String search_forms(HttpSession session,@RequestParam("process") String process,ModelMap model, Principal principal)
-	{
-		
-		 FormForm formForm = new FormForm();
-		 session.setAttribute("processarea",process);
-		
-		formForm.setForm(formDAO.search_form(process,1));
-		
-		
-		model.addAttribute("formForm", formForm);
-		model.addAttribute("menu","admin");
-     
-		 model.addAttribute("formForm",formForm);
-		
-		 ProcessForm processForm = new ProcessForm();
-			processForm.setProcesses(processDAO.getProcess());
-			model.addAttribute("processForm", processForm);
+		{
+			
+			 FormForm formForm = new FormForm();
+			 session.setAttribute("processarea",process);
+			 formForm.setForm(formDAO.search_form(process,1));
+			 System.out.println("search to delete");
+			 model.addAttribute("noofpages",(int) Math.ceil(formDAO.Search_form(process) * 1.0 / 5));	 
+				model.addAttribute("noofrows",5);   
+			    model.addAttribute("currentpage",1);
+			    model.addAttribute("menu","document");
+			    model.addAttribute("button","viewall");
+			    model.addAttribute("formForm",formForm);
+			 ProcessForm processForm = new ProcessForm();
+				processForm.setProcesses(processDAO.getProcess());
+				model.addAttribute("processForm", processForm);
 	    return "formdelete";
 
 	}
+	 //delete forms with page navigation 17-June-2014
+	 @RequestMapping(value="/viewformdelete_page", method=RequestMethod.GET)
+		public String viewformdelete_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,@RequestParam("process") String process,ModelMap model) {	
+			
+			session.setAttribute("processarea",process);
+			FormForm formForm=new FormForm();
+			formForm.setForm(formDAO.search_form(process,page));
+			model.addAttribute("noofpages",(int) Math.ceil(formDAO.Search_form(process) * 1.0 / 5));	 
+		  	model.addAttribute("noofrows",5);   
+		    model.addAttribute("currentpage",page);
+		    model.addAttribute("menu","document");
+		    model.addAttribute("button","viewall");
+			model.addAttribute("formForm",formForm);
+		    ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+		    
+		    return "formdelete";
+			
+		}
+
+
+		@RequestMapping(value={"/viewallformdelete"}, method = RequestMethod.GET)
+		public String viewallformdelete(HttpServletRequest request,HttpSession session,ModelMap model, @RequestParam("process") String process,Principal principal ) {
+			
+			FormForm formForm=new FormForm();
+			formForm.setForm(formDAO.search_form(process,0));
+		    model.addAttribute("menu","maintenance");
+		    model.addAttribute("button","close");
+		    model.addAttribute("menu","document");
+		    model.addAttribute("success","false");
+		    model.addAttribute("button","close");
+			model.addAttribute("formForm",formForm);
+		    ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+		        return "formdelete";
+
+		}
+
 	 @RequestMapping(value={"/search_todelete"}, method = RequestMethod.GET)
 		
 		public String search_formDelete(@RequestParam("process") String process,ModelMap model, Principal principal)
