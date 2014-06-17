@@ -54,7 +54,7 @@ public String postType(HttpSession session,@ModelAttribute("ProductIDNC") @Valid
 		productId_NCDAO.insert_Type(productIDNC);
 		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 		productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
-		model.addAttribute("nooofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
+		model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
@@ -70,7 +70,7 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
 	model.addAttribute("menu","admin");
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 	productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
 	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	model.addAttribute("button","viewall");
@@ -84,7 +84,7 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
 public String viewproductidreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 	productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
 	 model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
  	model.addAttribute("noofrows",5);   
@@ -132,7 +132,7 @@ public String Update_type(ModelMap model,@ModelAttribute("ProductIDNC") @Valid P
 	productId_NCDAO.update_ProductId(products);
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 	productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
      model.addAttribute("currentpage",1);
  	model.addAttribute("noofrows",5);   
 	model.addAttribute("productId_NC_Form",productId_NC_Form);
@@ -149,7 +149,7 @@ public String delete_type(@RequestParam("auto_id") String auto_id,ModelMap model
 	productId_NCDAO.delete_productid(auto_id);
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 	productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
   	model.addAttribute("button","viewall");
     model.addAttribute("success","delete");
     model.addAttribute("currentpage",1);

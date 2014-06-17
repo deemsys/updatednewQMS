@@ -55,7 +55,7 @@ public String postType(HttpSession session,@ModelAttribute("Type_of_NC") @Valid 
 		typeNCDAO.insert_Type(type_of_NC);
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
-		model.addAttribute("nooofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+		model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
@@ -71,7 +71,7 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
 	model.addAttribute("menu","admin");
 	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 	type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
 	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	model.addAttribute("button","viewall");
@@ -85,7 +85,7 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
 public String viewprocessreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
 	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 	type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
  	model.addAttribute("noofrows",5);   
@@ -133,7 +133,7 @@ public String Update_type(ModelMap model,@ModelAttribute("Type_of_NC") @Valid Ty
 	typeNCDAO.update_Type(types);
 	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 	type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
      model.addAttribute("currentpage",1);
  	model.addAttribute("noofrows",5);   
 	model.addAttribute("type_of_NC_Form",type_of_NC_Form);
@@ -150,7 +150,7 @@ public String delete_type(@RequestParam("auto_id") String auto_id,ModelMap model
 	typeNCDAO.delete_type(auto_id);
 	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 	type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
 	model.addAttribute("button","viewall");
     model.addAttribute("success","delete");
     model.addAttribute("currentpage",1);

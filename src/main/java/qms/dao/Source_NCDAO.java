@@ -92,7 +92,7 @@ public class Source_NCDAO {
 			String cmd;
 			int offset = 5 * (page - 1);
 			int limit = 5;
-					cmd="select * from tbl_source_nc where auto_id limit " + offset + ","+ limit+"" ;
+					cmd="select * from tbl_source_nc where auto_id limit "+offset+","+limit+"" ;
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next()){
 			

@@ -59,7 +59,7 @@ public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_S
 		sourceNCDAO.insert_Source(non_Conformance_Source);
 		Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
-		model.addAttribute("nooofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
+		model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
@@ -75,7 +75,7 @@ public String Sourcelist(HttpServletRequest request,ModelMap model, Principal pr
 	model.addAttribute("menu","admin");
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0 / 5));
+	model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0 / 5));
 	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
 	model.addAttribute("button","viewall");
@@ -89,7 +89,7 @@ public String Sourcelist(HttpServletRequest request,ModelMap model, Principal pr
 public String viewprocessreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0 / 5));
+	model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0 / 5));
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
  	model.addAttribute("noofrows",5);   
@@ -140,7 +140,7 @@ public String Update_Process(ModelMap model,@ModelAttribute("Non_Conformance_Sou
 	sourceNCDAO.update_Source(sources);
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
     model.addAttribute("currentpage",1);
  	model.addAttribute("noofrows",5);   
 	model.addAttribute("conformance_SourceForm",conformance_SourceForm);
@@ -156,7 +156,7 @@ public String delete_process(@RequestParam("auto_id") String auto_id,ModelMap mo
 	sourceNCDAO.delete_source(auto_id);
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
-	model.addAttribute("nooofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
+	model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
 	model.addAttribute("button","viewall");
     model.addAttribute("success","delete");
     model.addAttribute("currentpage",1);
