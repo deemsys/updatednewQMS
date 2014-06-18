@@ -164,7 +164,7 @@ return "maintenance_list";
 		session.setAttribute("equipid",equipment_id);
 		session.setAttribute("equipname",equipment_name);
 		MaintenanceForm maintenanceForm=new MaintenanceForm();
-    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,0));
 		model.addAttribute("maintenanceForm",maintenanceForm);
 	    model.addAttribute("menu","maintenance");
 	    model.addAttribute("button","close");

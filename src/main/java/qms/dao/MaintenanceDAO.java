@@ -859,7 +859,7 @@ public class MaintenanceDAO extends AbstractExcelView
 			String cmd_select = null;
 			
 			if(type=="maintain_for_30")
-			cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where (t1.due_date BETWEEN NOW() AND NOW()+INTERVAL 30 DAY)";
+			cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t2.calibration='No' and (t1.due_date BETWEEN NOW() AND NOW()+INTERVAL 30 DAY)";
 
 				else if(type=="upcoming_calibration"){
 					String query = "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where (t2.calibration='Yes' AND t1.due_date BETWEEN '"+currentdate+"' AND '"+olddate+"')";
@@ -868,7 +868,7 @@ public class MaintenanceDAO extends AbstractExcelView
 				
 				}
 					else if(type=="maintenance_past_due")
-						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t1.due_date<now()";
+						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t2.calibration='No' and t1.due_date<now()";
 				else if(type=="calibration_past_due")
 						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t1.due_date<now() and t2.calibration='yes'";
 				
