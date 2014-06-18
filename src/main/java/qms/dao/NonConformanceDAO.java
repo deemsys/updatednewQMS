@@ -1068,6 +1068,113 @@ public class NonConformanceDAO extends AbstractExcelView {
 		
 	}
 
+	
+	public List<String> filternatureofnc(String nc_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> nonConformances = new ArrayList<String>();
+	    try{
+	    	String cmd = "select nature_of_nonconformance from tbl_nonconformance where id='"+nc_id+"'";
+	    	resultSet = statement.executeQuery(cmd);
+	    	System.out.println(cmd);
+			while(resultSet.next()){
+				System.out.println("count");
+				nonConformances.add(resultSet.getString("nature_of_nonconformance"));
+
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return nonConformances;
+		
+	}
+
+	
+	public List<String> filtertypeofnc(String nc_id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> nonConformances = new ArrayList<String>();
+	    try{
+	    	String cmd1 = "select type_of_nonconformance from tbl_nonconformance where id='"+nc_id+"'";
+	    	resultSet = statement.executeQuery(cmd1);
+	    	System.out.println(cmd1);
+			while(resultSet.next()){
+				System.out.println("count");
+				nonConformances.add(resultSet.getString("type_of_nonconformance"));
+
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return nonConformances;
+		
+	}
+	
+	
+	public List<String> filteraction(String nc_id)
+	{
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try
+		{
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		List<String> nonConformances = new ArrayList<String>();
+		try
+		{
+			String cmd = "select temporary_action from tbl_nonconformance where id='"+nc_id+"'";
+			resultSet = statement.executeQuery(cmd);
+			while(resultSet.next())
+			{
+				nonConformances.add(resultSet.getString("temporary_action"));
+			}
+		}
+		catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return nonConformances;
+	}
 
 
 

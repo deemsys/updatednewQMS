@@ -6,6 +6,21 @@
 	type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
 <script src="resources/js/jquery-ui.js"></script>
+<script>
+
+ function validation()
+ {
+
+ document.getElementById("start").style.display="block";
+ 
+ }
+ function validation1()
+ {
+
+ document.getElementById("start").style.display="none";
+  }
+ 
+</script>
 
 <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table" >
 	<tr>
@@ -68,26 +83,28 @@
 								Type Of Report :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
-								<input type="radio"  name="actions_report_type" value="0" id="id_type_Open_Corrective_Actions" checked/>Open_Corrective_Actions<br/>
-								<input type="radio"  name="actions_report_type" value="1" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>Open_Corrective_Actions_for_Over_30_Days<br/>							
-							    <input type="radio"  name="actions_report_type" value="2" id="id_type_Corrective_Actions_for_A_Certain_Period"/>Corrective_Actions_for_A_Certain_Period<br/>
+								<input type="radio"  name="actions_report_type" value="0"  onclick="validation1()" id="id_type_Open_Corrective_Actions" checked/>Open_Corrective_Actions<br/>
+								<input type="radio"  name="actions_report_type" value="1"  onclick="validation1()" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>Open_Corrective_Actions_for_Over_30_Days<br/>							
+							    <input type="radio"  name="actions_report_type" value="2"  onclick="validation()" id="id_type_Corrective_Actions_for_A_Certain_Period"/>Corrective_Actions_for_A_Certain_Period<br/>
 								
 							
+								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display:none;">
+	
+    								<tr class="row2">
+    								<td valign="middle" align="left" class="input_txt"> Enter the Start Date : </td>
+    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txt1" id="datepicker" name="start" /><br></td>
+    								</tr>
+    								
+    								<tr class="row2">
+    								<td valign="middle" align="left" class="input_txt"> Enter the End Date : </td>
+    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txt1" id="datepicker1" name="end" /><br></td>
+    								</tr>
+    							</table>
+    							</td>
+    							</tr>
+    						
 							
 							
-							
-				<!-- 			
-								
-							<tr class="row1" id="no_of_days" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Number Of Days:
-									</td>
-								<td valign="top" align="left" class="input_txt" width="100%">
-								
-									<input type="text" name="no_of_days" class="input_txtbx1"  style="width:40%;" value=""/>
-							</td>
-								
-							</tr>	 -->
 							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Report Type:</td>
@@ -170,9 +187,9 @@
 						
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate Report" class="submit_btn2">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn"></td>
+              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
              </tr></table>
             
@@ -259,6 +276,20 @@ $('#select_all').change(function() {
 
 </script>
 <script>
+
+$(function() {
+	 var format="yy-mm-dd";
+         $( "#datepicker" ).datepicker();
+         
+       });
+$(function() {
+	 var format="yy-mm-dd";
+         $( "#datepicker1" ).datepicker();
+         
+       });
+       
+       
+       
 		function selectall(id) 
 		{
 			// var checkboxes1 = $(id).closest('form').find(':checkbox').not($('#select_all'));

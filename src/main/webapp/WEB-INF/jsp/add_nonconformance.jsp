@@ -214,7 +214,7 @@
 				                  										<c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
 						                    						</select>
-						                    						<input type="text" name="quality1" id="quality1" style="display:none;"/>
+						                    						<input type="text" name="quality1" id="quality1" style="display:none; width:50%"/>
 						                    						<br>
 						                    						<select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
 				                  										<option value="">--Select--</option>
@@ -228,7 +228,7 @@
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
 						                    						</select>
-						                    						<input type="text" name="quality2" id="quality2" style="display:none;"/>
+						                    						<input type="text" name="quality2" id="quality2" style="display:none; width:50%"/>
 						                    						<br>
 						                    						<select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
 				                  										<option value="">--Select--</option>
@@ -242,7 +242,7 @@
 				                  										<c:if test="${nonconformance.disposition3 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
 						                    						</select>
-						                    						<input type="text" name="quality3" id="quality3" style="display:none;"/>
+						                    						<input type="text" name="quality3" id="quality3" style="display:none; width:50%"/>
 						                    						
 						                    						<span class="err"><form:errors
 																					path="Nonconformance.disposition"></form:errors>

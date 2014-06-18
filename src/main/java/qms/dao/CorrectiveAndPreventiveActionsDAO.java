@@ -9,16 +9,21 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import qms.model.CorrectiveAndPreventiveActions;
 
@@ -37,18 +42,19 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 			HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		response.setHeader("Content-Disposition","attachment;filename='"+(String)model.get("title")+"'");
+		//response.setHeader("Content-Disposition","attachment;filename='"+(String)model.get("title")+"'");
 		
-		HSSFSheet excelSheet = workbook.createSheet((String)model.get("title"));
+		//HSSFSheet excelSheet = workbook.createSheet((String)model.get("title"));
+		HSSFSheet excelSheet = workbook.createSheet("Corrective & Preventive Actions Report");
 		excelSheet.setDefaultColumnWidth(20);
 		
-		@SuppressWarnings("unchecked")
+		/*@SuppressWarnings("unchecked")
 		List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions=(List<CorrectiveAndPreventiveActions>)model.get("correctiveAndPreventiveActions");
 		
 		
 		String[] fields=(String[])model.get("fields");
 		System.out.println(fields[0]);
-		
+		*/
 		//Style 1
 		CellStyle style = workbook.createCellStyle();
 	        Font font = workbook.createFont();
@@ -71,13 +77,19 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 	        font2.setColor(HSSFColor.WHITE.index);
 	        style2.setFont(font2); 
 	        
-		setExcelHeader(excelSheet,correctiveAndPreventiveActions,fields,style);
-		setExcelRows(excelSheet,correctiveAndPreventiveActions,fields,style2);
+	        @SuppressWarnings("unchecked")
+			List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions=(List<CorrectiveAndPreventiveActions>)model.get("correctiveAndPreventiveActions");
+			String[] fields=(String[])model.get("fields");
+			System.out.println(fields[0]);
+			HttpSession session = request.getSession();
+	        
+		setExcelHeader(excelSheet,correctiveAndPreventiveActions,fields,style,session);
+		setExcelRows(excelSheet,correctiveAndPreventiveActions,fields,style2,session);
 		
 	}
 	
 	//creating header records
-	public void setExcelHeader(HSSFSheet excelSheet,List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions,String[] fields,CellStyle style)
+	public void setExcelHeader(HSSFSheet excelSheet,List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions,String[] fields,CellStyle style,HttpSession session)
 	{
 		HSSFRow excelHeader = excelSheet.createRow(0);
 		int record = 0;
@@ -99,7 +111,38 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 			 String action,
 			String responsibility, String due_date, String completion_date,
 			String verified_by, String verification_date)*/
+		int i = 0;
+		String value= (String) session.getAttribute("option");
+		System.out.println("session option = "+value);
 		
+		if(value == "0" & value == "1")
+		{
+			for(String field:fields)
+			{
+			 if (field.equals("nc_id")) {
+					excelHeader.createCell(record).setCellValue(
+							"NON CONFORMANCE ID");
+
+					excelHeader.getCell(record++).setCellStyle(style);
+					
+					}
+				else if (field.equals("source_of_nonconformance")) {
+					excelHeader.createCell(record).setCellValue(
+							"SOURCE OF NON CONFORMANCE");
+
+					excelHeader.getCell(record++).setCellStyle(style);
+					}
+				else if (field.equals("root_cause_statement")) {
+					excelHeader.createCell(record++).setCellValue(
+							"ROOT CAUSE STATEMENT");
+					excelHeader.getCell(record++).setCellStyle(style);
+					}
+			
+
+			}
+		}
+		else
+		{
 			for(String field:fields)
 			{
 				if (field.equals("capa_id")) 
@@ -182,37 +225,43 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 				else if (field.equals("root_cause_analysis_file")) {
 					excelHeader.createCell(record++).setCellValue(
 							"ROOT CAUSE ANALYSIS FILE");
+					
 					}
 				else if (field.equals("use_5_why_in_system")) {
 					excelHeader.createCell(record++).setCellValue(
 							"USE 5 WHY IN SYSTEM");
+					
 					}
 				else if (field.equals("why")) {
 					excelHeader.createCell(record++).setCellValue(
 							"WHY");
+					// excelHeader.getCell(record++).setCellStyle(style);
 					}
 				else if (field.equals("root_cause_statement")) {
 					excelHeader.createCell(record++).setCellValue(
 							"ROOT CAUSE STATEMENT");
+					
 					}
 				else if (field.equals("upload_external_analysis")) {
 					excelHeader.createCell(record++).setCellValue(
 							"UPLOAD EXTERNAL ANALYSIS");
+					excelHeader.getCell(record++).setCellStyle(style);
 					}
 				
 				
 				else if (field.equals("action")) {
 					excelHeader.createCell(record++).setCellValue(
 							"ACTION");
+					excelHeader.getCell(record++).setCellStyle(style);
 					}
 				else if (field.equals("responsibility")) {
 					excelHeader.createCell(record++).setCellValue(
 							"RESPONSIBILITY");
+					excelHeader.getCell(record++).setCellStyle(style);
 					}
 				else if (field.equals("due_date")) {
 					excelHeader.createCell(record).setCellValue(
 							"DUE DATE");
-
 					excelHeader.getCell(record++).setCellStyle(style);
 					
 					}
@@ -238,34 +287,48 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 					
 					}
 			}
+		}
 			
 		}
-	
-	/*
-	public void sugges()
-	{
-		 if(!sr.equals("")) 
-		 { 
-		 sr=sr+"%"; 
-		 rs=s.executeQuery("select keyword from dictionary where keyword LIKE '"+sr+"'"); 
-		 while(rs.next()) 
-		 {
-		 name=rs.getString(1); %>
-		<%=name%>
-		<%}} else{%>
-		<%}%>
-	}
-*/
-	
+
 	//creating cell records
 		
-	public void setExcelRows(HSSFSheet excelSheet,List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions,String[] fields,CellStyle style){
+	public void setExcelRows(HSSFSheet excelSheet,List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions,String[] fields,CellStyle style,HttpSession session){
 		int record = 1,column=0;
-		
-		for (CorrectiveAndPreventiveActions correctiveandpreventiveactions:correctiveAndPreventiveActions){	
-			
+		int i=0;
+		String value= (String) session.getAttribute("option");
+		System.out.println("session option = "+value);
+		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
+	    int currentDay = localCalendar.get(Calendar.DATE);
+	    int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
+	    int currentYear = localCalendar.get(Calendar.YEAR);
+	    System.out.println("day  ="+currentDay+"month = "+currentMonth+"year = "+currentYear);
+	    String currentdate = currentDay+"/"+currentMonth+"/"+currentYear;
+	    for (CorrectiveAndPreventiveActions correctiveandpreventiveactions :correctiveAndPreventiveActions){	
 			HSSFRow excelRow = excelSheet.createRow(record++);
-			
+
+	    if(value == "0")
+		{
+			for (String field : fields) {
+				if (field.equals("nc_id")) {
+
+					excelRow.createCell(column++).setCellValue(
+							correctiveandpreventiveactions.getNc_id());
+					
+					}
+				else if (field.equals("source_of_nonconformance")) {
+					excelRow.createCell(column++).setCellValue(
+							correctiveandpreventiveactions.getSource_of_nonconformance());
+					}
+
+				else if (field.equals("root_cause_statement")) {
+					excelRow.createCell(column++).setCellValue(
+							correctiveandpreventiveactions.getRoot_cause_statement());
+					}
+				}
+		}
+	    else
+	    {
 			for(String field:fields)
 			{
 				if (field.equals("capa_id")) 
@@ -370,11 +433,11 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 							correctiveandpreventiveactions.getVerification_date());
 					}
 			}
-
+	    }
 			column=0;
 			}
-			
-	}
+	}	
+	
 	
 	public boolean insert_correctiveAndPreventiveActions(CorrectiveAndPreventiveActions correctiveAndPreventiveActions) {
 		Connection con = null;
@@ -761,11 +824,36 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 
 	}
 	
-	public List<CorrectiveAndPreventiveActions> getCorrectiveAndPreventiveActions_bytype(String type)
+	public List<CorrectiveAndPreventiveActions> getCorrectiveAndPreventiveActions_bytype(String type,String start,String end)
 	{
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
+		
+		List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions = new ArrayList<CorrectiveAndPreventiveActions>();
+		/*Date date = new Date();
+	    Calendar c = Calendar.getInstance();
+	    c.setTime(date);
+	    System.out.println("Day of week = "+c.get(Calendar.DAY_OF_WEEK));
+	    System.out.println("first day of week = "+c.getFirstDayOfWeek());
+	    int i = c.get(Calendar.DAY_OF_WEEK);
+	    System.out.println("value 0f i = "+i);
+	    int currentDay = c.get(Calendar.DATE);
+	    int currentMonth = c.get(Calendar.MONTH) + 1;
+	    int currentYear = c.get(Calendar.YEAR);
+	    String currentdate = currentYear+"-0"+currentMonth+"-0"+currentDay;
+	    
+	    Date start = c.getTime();
+	    c.add(Calendar.DATE, -13);
+	    Date end = c.getTime();
+	    System.out.println(start + " - " + end);
+	    int oldDay = c.get(Calendar.DATE);
+	    int oldMonth = c.get(Calendar.MONTH) + 1;
+	    int oldYear = c.get(Calendar.YEAR);
+	    String olddate = oldYear+"-0"+oldMonth+"-"+oldDay;
+	    System.out.println(olddate);
+	    System.out.println(currentdate);
+		*/
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -773,17 +861,21 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 			e1.printStackTrace();
 		}
 		
-		List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions = new ArrayList<CorrectiveAndPreventiveActions>();
+		
 	    try{
 	    	
+	    	
 	   if(type.equals("Open_Corrective_Actions"))
-		//resultSet = statement.executeQuery("select * from tbl_maintenance where due_date between now() and DATE_ADD(NOW(), INTERVAL 30 DAY)" );
-			resultSet = statement.executeQuery("select * from tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id" );
-	   
-		   else if(type.equals("Open_Corrective_Actions_for_Over_30_Days"))
-		   {}	//resultSet = statement.executeQuery("select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where due_date between now() and DATE_ADD(NOW(),INTERVAL no_of_days DAY)" );
+		   	resultSet = statement.executeQuery("select * from qms.tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where t2.completion_date< NOW()");
+	   else if(type.equals("Open_Corrective_Actions_for_Over_30_Days"))
+	   {
+		   resultSet = statement.executeQuery("select * from qms.tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where CURDATE() and DATE_SUB(CURDATE(),INTERVAL 30 DAY)");
+	   }
 	   else if(type.equals("Corrective_Actions_for_A_Certain_Period"))
-	   {}//resultSet = statement.executeQuery("select * from tbl_maintenance where due_date<now()");
+	   {
+		   resultSet = statement.executeQuery("select * from qms.tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where ( t2.completion_date BETWEEN '"+start+"' AND '"+end+"')");
+	   }
+	   
 	   else
 		   System.out.println("choose any one of the above");
 		 

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.hibernate.validator.cfg.context.ReturnValueTarget;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,6 +29,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.sun.mail.iap.Response;
 
 import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.NonConformanceDAO;
@@ -64,7 +67,7 @@ public class CorrectiveAndPreventiveActionsController
 	
 	//CorrectiveAndPreventiveActions Report generation
 	@RequestMapping(value = "/capas_report", method = RequestMethod.POST)
-	public ModelAndView generateActions_Report(HttpServletRequest request,ModelMap model) {
+	public ModelAndView generateActions_Report(HttpServletRequest request,ModelMap model,HttpSession session,HttpServletResponse response) {
 		
 	String[] fields={"capa_id","nc_id","source_of_nonconformance","external_id",
 			"type_of_nonconformance","date_found",
@@ -77,21 +80,45 @@ public class CorrectiveAndPreventiveActionsController
 			"responsibility","due_date","completion_date",
 			"verified_by","verification_date"};	
 		String title = "Corrective And Preventive Actions";
+		String[] option0 = {"nc_id","source_of_nonconformance","root_cause_statement"};
+		String[] option1 = {"nc_id","source_of_nonconformance","root_cause_statement"};
+		String start = null,end = null;
+		String option = "";
+		System.out.println(request.getParameter("type_of_report"));
+		System.out.println("start_date");
+		System.out.println("end_date");
+		
+		
 		java.util.List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions=new ArrayList<CorrectiveAndPreventiveActions>();
 		
 		 switch(Integer.parseInt(request.getParameter("actions_report_type")))
 				  {
 					  case 0:
-						  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Open_Corrective_Actions");
+						  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Open_Corrective_Actions", start, end);
 			  title="Open_Corrective_Actions";
+			  option = "0";
 			  break;
 		  case 1:
-			  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Open_Corrective_Actions_for_Over_30_Days");
+			  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Open_Corrective_Actions_for_Over_30_Days","start","end");
 			  title="Open_Corrective_Actions_for_Over_30_Days";
+			  option = "1";
 			  break;
+			  
 		  case 2:
-			  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Corrective_Actions_for_A_Certain_Period");
+			  String startdate = request.getParameter("start");
+				String enddate = request.getParameter("end");
+				System.out.println(start);
+				System.out.println(end);
+				String[] split = startdate.split("/");
+				String[] split1 = enddate.split("/");
+				System.out.println(split1[2]+"-"+split1[0]+"-"+split1[1]);
+				System.out.println(split[2]+"-"+split[0]+"-"+split[1]);
+				start= split[2]+"-"+split[0]+"-"+split[1];
+				end = split1[2]+"-"+split1[0]+"-"+split1[1];
+			  
+			  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Corrective_Actions_for_A_Certain_Period",start,end);
 			  title="Corrective_Actions_for_A_Certain_Period";
+			  option = "2";
 			  break;
 		  default:
 			  break;
@@ -100,29 +127,50 @@ public class CorrectiveAndPreventiveActionsController
 		 
 	if(Integer.parseInt(request.getParameter("report_type"))==1)
 		{
-		if(request.getParameterValues("report_field[]")!=null)
+		/*if(request.getParameterValues("report_field[]")!=null)
 			
 			for (@SuppressWarnings("unused") String field : request.getParameterValues("report_field[]")) 
 			{
-				title=request.getParameter("report_title");
+			*/ response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
+			fields = request.getParameterValues("report_field[]");
+				/*title=request.getParameter("report_title");
 				System.out.println(title);
 						
 				//fields=request.getParameterValues("report_type");
-				
-				ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
-				modelAndView.addObject("fields",request.getParameterValues("report_field[]"));
-				modelAndView.addObject("title",title);
-				return modelAndView ;
-			}
+				*/
 		}
-		
+	else
+			response.setHeader("Content-Disposition","attachment;filename='Corrective & Preventive Actions Report'");
+	if(option == "0")
+	{
+				ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
+				/*modelAndView.addObject("fields",request.getParameterValues("report_field[]"));
+				modelAndView.addObject("title",title);*/
+				session.setAttribute("option",option);
+				modelAndView.addObject("fields",option0);
+				return modelAndView ;
+	}
+	if(option == "1")
+	{
+		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
+		session.setAttribute("option",option);
+		modelAndView.addObject("fields",option1);
+		return modelAndView ;
+	}
+	else
+	{
+		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
+		modelAndView.addObject("fields",fields);
+		return modelAndView;
+	}
+		/*
 		
 		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
 		modelAndView.addObject("fields",fields);
 		modelAndView.addObject("title",title);
 		 
 		return modelAndView ;
-		
+		*/
 	}
 	
 	//downloading the attachements
@@ -503,8 +551,10 @@ public class CorrectiveAndPreventiveActionsController
 		
 		String type=request.getParameter("type_of_report");
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+		String enddate = null;
+		String startdate = null;
 		//InternalAuditsForm.setInternalAudits(internalAuditsDAO.get_report_internalaudits(type));
-		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype(type));
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype(type, startdate, enddate));
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("type",type);		
 		model.addAttribute("report_table","yes");
@@ -585,27 +635,8 @@ public class CorrectiveAndPreventiveActionsController
 		
 	}	
 		
-	/*	//Post method for ajax get process 
-		@RequestMapping(value = { "/ajax_getncid" }, method = RequestMethod.POST)
-		public @ResponseBody
-		String ajax_source_of_nonconformance(HttpSession session,
-				HttpServletRequest request, ModelMap model, Principal principal) {
-			String resultHTML="";
-		
-			String nc_id=request.getParameter("nc_id");
-			
-			String source_of_nonconformance=nonConformanceDAO.getSource_of_nc(nc_id).get(0).getSource_of_nonconformance();
-			
-			
-			
-			resultHTML="<input type='hidden' name='source_of_nonconformance' id='hidden_source_of_nonconformance' value='"+source_of_nonconformance+"'/><label id='source_of_nonconformance_lbl'>"+source_of_nonconformance+"</label>";
-			
-			return resultHTML;
-		}	
-	*/
- 
 
-//ajax get sourceofnc post method
+/*//ajax get sourceofnc post method
 @RequestMapping(value = { "/ajax_getnc" }, method = RequestMethod.POST)
 public @ResponseBody List<String> insert_external_correctiveactions(HttpSession session,
 		HttpServletRequest request, @RequestParam("nc_id") String nc_id,ModelMap model, Principal principal,NonConformance nonConformance) {
@@ -617,5 +648,63 @@ public @ResponseBody List<String> insert_external_correctiveactions(HttpSession 
 	System.out.println("result html:::::"+resultHTML);
 	return resultHTML;
 }
+*/
+//ajax get sourceofnc post method
+		@RequestMapping(value = { "/ajax_getnc" }, method = RequestMethod.POST)
+		public @ResponseBody String insert_external_correctiveactions(HttpSession session,
+				HttpServletRequest request, @RequestParam("nc_id") String nc_id,ModelMap model, Principal principal,NonConformance nonConformance) 
+				{
+			String returnText="";
+List <String> sourcenc=new ArrayList<String>();
+sourcenc=nonConformanceDAO.filtersourceofnc(nc_id);
+
+
+for(String sourceofnc:sourcenc)
+{
+	returnText=returnText+"<input type='text' class='input_txtbx' id='source_of_nonconformance' name='source_of_nonconformance' value='"+sourceofnc+"'/>";
+	
+}			
+System.out.println(" source of nc:::: "+returnText);
+ returnText=returnText+"<split>";
+ 
+ List <String> typenc=new ArrayList<String>();
+ typenc = nonConformanceDAO.filtertypeofnc(nc_id);
+	
+ for(String typeofnc:typenc)
+	{
+		returnText=returnText+"<input type='text' class='input_txtbx' id='type_of_nc' name='type_of_nonconformance' value='"+typeofnc+"'/>";
+		
+	}	
+ System.out.println("type of nc:::: "+returnText);
+ returnText=returnText+"<split>";
+ 
+ List <String> naturenc=new ArrayList<String>();
+ naturenc = nonConformanceDAO.filternatureofnc(nc_id);
+	
+ returnText  =returnText + "<textarea class='input_txtbx1'style='width:100%; height: 70px;' id='nature_of_ic' name='nature_of_nonconformance'>";
+ for(String natureofnc : naturenc)
+ {
+	 //returnText = returnText+"<input type = 'text' class='input_txtbx1' id='nature_of_nc' name='nature_of_nonconformance' value='"+natureofnc+"'/>";
+	 returnText=returnText+natureofnc;
+ }
+
+ returnText=returnText+"<split>";
+ 
+ List<String> action = new ArrayList<String>();
+ action = nonConformanceDAO.filteraction(nc_id);
+ returnText = returnText + "<textarea class='input_txtbx1' style='width:55%; height: 70px' id='action' name='temporay_action'>";
+ for(String tempaction:action)
+ {
+	 returnText=returnText+tempaction;
+
+ }
+ 
+ returnText = returnText + "</textarea>";
+ return returnText;
+				}
+		
+
 
 }
+
+
