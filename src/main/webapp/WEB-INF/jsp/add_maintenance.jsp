@@ -162,7 +162,12 @@
                 <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt">Instructions:</td>
-               <td valign="top" align="left"  colspan="3"><textarea class="input_txtbx1"  name="instructions"  style="width:96%; height: 89px;" ></textarea><br/><span class="err"><form:errors path="Maintenance.instructions"></form:errors></span></td>
+               <td valign="top" align="left"  colspan="3"><div id="instruction"></div>
+               <textarea class="input_txtbx1"  name="instructions"  style="width:96%; height: 89px;" ></textarea><br/><span class="err"><form:errors path="Maintenance.instructions"></form:errors></span>
+               
+               
+               </td>
+           
             </tr>
         </table>
         </td> 
@@ -334,10 +339,35 @@ $("#suggestion_box").html(html);
 	});
 }
  
-   
+   function instructionAjax() {
+		 
+		
+		var filer_value = $('#weekly').val();
+		
+		$.ajax({
+			type : "POST",
+			url : "/QMS_App/ajax_getinstruction",
+			data : "weekly=" + filer_value,
+			success : function(response) {
+	              
+	             // alert("response= "+response);
+	              
+		       $('#instruction').html(response);
+	      	    			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	}   
    
   
-</script>        
+</script>  
+<script>
+	
+	window.onload = function(){
+		instructionAjax();
+	}
+		</script>        
             
             <!--  <script type="text/javascript">
 function toggle3(value){

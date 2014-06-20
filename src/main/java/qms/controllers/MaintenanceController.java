@@ -23,6 +23,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
 import qms.dao.FileHandlingDAO;
+import qms.dao.InstructionMaintenanceDAO;
 import qms.dao.MaintenanceDAO;
 import qms.dao.ReferenceMaintenanceDAO;
 import qms.forms.DocumentMainForm;
@@ -43,6 +44,8 @@ public class MaintenanceController {
 	MaintenanceDAO maintenanceDAO;
 	@Autowired
 	ReferenceMaintenanceDAO referenceMaintenanceDAO;
+	@Autowired
+	InstructionMaintenanceDAO instructionMaintenanceDAO;
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@RequestMapping(value = { "/add_maintenance" }, method = RequestMethod.GET)
@@ -445,17 +448,36 @@ return returnText;
 	public String downloadFile(HttpServletResponse response,
 			@RequestParam("id") String auto_id, ModelMap model)
 			throws IOException {
-System.out.println("ajax attachement comes here");
-System.out.println("frequency = "+auto_id);
-		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
-		referenceMaintenance_Form.setReferences(referenceMaintenanceDAO.getReference(auto_id));
+			System.out.println("ajax attachement comes here");
+			System.out.println("frequency = "+auto_id);
+	    	ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+	    	referenceMaintenance_Form.setReferences(referenceMaintenanceDAO.getReference(auto_id));
 		
 
-		FileHandlingDAO.filedownload(response, referenceMaintenance_Form.getReferences()
+		    FileHandlingDAO.filedownload(response, referenceMaintenance_Form.getReferences()
 						.get(0).getAttachment_referrence(),  referenceMaintenance_Form.getReferences().get(0).getAttachment_name());
 
-		return "add_maintenance";
+		    return "add_maintenance";
 
 	}
+	@RequestMapping(value = { "/ajax_getinstruction" }, method = RequestMethod.POST)
+	public @ResponseBody String getInstructionAttachment(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+	
+			List <String> instructionmain=new ArrayList<String>();
+			String id = "1";
+			instructionmain= instructionMaintenanceDAO.filterInstruction(id);
+			System.out.println("attachment name"+instructionmain);
+			for(String weeklyinstr : instructionmain)
+			{
+				
+				returnText=returnText+"<a  href='downloadFileDown?id=1''><input type='hidden' class='input_txtbx' id='reference' name='instructionattach' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+
+			}			
+			System.out.println("Result string = "+returnText);
+			return returnText;
+			}	
 	
 }

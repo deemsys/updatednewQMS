@@ -335,7 +335,7 @@ public class MaintenanceDAO extends AbstractExcelView
 		}
 		try {
 			String cmd_insert = "insert into tbl_maintenance(equipment_id,equipment_name,equipment_model,serial_number,date_acquired,equipment_status,frequency_maintenance,calibration)values('"+maintenance.getEquipment_id()+"','"+maintenance.getEquipment_name()+"','"+maintenance.getEquipment_model()+"','"+maintenance.getSerial_number()+"','"+maintenance.getDate_acquired()+"','"+maintenance.getEquipment_status()+"','"+maintenance.getFrequency_maintenance()+"','"+maintenance.getCalibration()+"')";
-			String cmd_insert1 = "insert into tbl_maintenancechild(equipmentid,type_of_maintenance,weekly,monthly,quarterly,semiannually,annually,reference1,reference2,reference3,reference4,reference5,instructions,due_date,completion_date,completed_by,notes)values('"+maintenance.getEquipmentid()+"','"+maintenance.getType_of_maintenance()+"','"+maintenance.getWeekly()+"','"+maintenance.getMonthly()+"','"+maintenance.getQuarterly()+"','"+maintenance.getSemiannually()+"','"+maintenance.getAnnually()+"','"+maintenance.getReference1()+"','"+maintenance.getReference2()+"','"+maintenance.getReference3()+"','"+maintenance.getReference4()+"','"+maintenance.getReference5()+"','"+maintenance.getInstructions()+"','"+maintenance.getDue_date()+"','"+maintenance.getCompletion_date()+"','"+maintenance.getCompleted_by()+"','"+maintenance.getNotes()+"')";
+			String cmd_insert1 = "insert into tbl_maintenancechild(equipmentid,type_of_maintenance,weekly,monthly,quarterly,semiannually,annually,reference1,reference2,reference3,reference4,reference5,instructions,instructionattach,due_date,completion_date,completed_by,notes)values('"+maintenance.getEquipmentid()+"','"+maintenance.getType_of_maintenance()+"','"+maintenance.getWeekly()+"','"+maintenance.getMonthly()+"','"+maintenance.getQuarterly()+"','"+maintenance.getSemiannually()+"','"+maintenance.getAnnually()+"','"+maintenance.getReference1()+"','"+maintenance.getReference2()+"','"+maintenance.getReference3()+"','"+maintenance.getReference4()+"','"+maintenance.getReference5()+"','"+maintenance.getInstructions()+"','"+maintenance.getInstructionattach()+"','"+maintenance.getDue_date()+"','"+maintenance.getCompletion_date()+"','"+maintenance.getCompleted_by()+"','"+maintenance.getNotes()+"')";
 			statement.execute(cmd_insert);
 			statement.execute(cmd_insert1);
 		} catch (Exception e) {
@@ -436,9 +436,10 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("reference1"),resultSet
 						.getString("reference2"),resultSet
 						.getString("reference3"),resultSet
-						.getString("reference4"),resultSet
+						.getString("reference4"),resultSet 
 						.getString("reference5"), resultSet
-						.getString("instructions"), resultSet
+						.getString("instructions"),resultSet
+						.getString("instructionattach"), resultSet
 						.getString("due_date"), resultSet
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),
@@ -547,7 +548,8 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("reference3"),resultSet
 						.getString("reference4"),resultSet
 						.getString("reference5"), resultSet
-						.getString("instructions"), resultSet
+						.getString("instructions"),resultSet
+						.getString("instructionattach"), resultSet
 						.getString("due_date"), resultSet
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),
@@ -607,7 +609,8 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("reference3"),resultSet
 						.getString("reference4"),resultSet
 						.getString("reference5"), resultSet
-						.getString("instructions"), resultSet
+						.getString("instructions"),resultSet
+						.getString("instructionattach"), resultSet
 						.getString("due_date"), resultSet
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),
@@ -670,7 +673,8 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("reference3"),resultSet
 						.getString("reference4"),resultSet
 						.getString("reference5"), resultSet
-						.getString("instructions"), resultSet
+						.getString("instructions"),resultSet
+						.getString("instructionattach"), resultSet
 						.getString("due_date"), resultSet
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),
@@ -705,7 +709,7 @@ public class MaintenanceDAO extends AbstractExcelView
 		try {
 			
 			String cmd_update = "update tbl_maintenance set equipment_id='"+maintenance.getEquipment_id()+"',equipment_name='"+maintenance.getEquipment_name()+"',equipment_model='"+maintenance.getEquipment_model()+"',serial_number='"+maintenance.getSerial_number()+"',date_acquired='"+maintenance.getDate_acquired()+"',equipment_status='"+maintenance.getEquipment_status()+"',frequency_maintenance='"+maintenance.getFrequency_maintenance()+"',calibration='"+maintenance.getCalibration()+"' where equipment_id='"+maintenance.getEquipment_id()+"'";
-			String cmd_update1 = "update tbl_maintenancechild set equipmentid='"+maintenance.getEquipmentid()+"',type_of_maintenance='"+maintenance.getType_of_maintenance()+"',weekly='"+maintenance.getWeekly()+"',monthly='"+maintenance.getMonthly()+"',quarterly='"+maintenance.getQuarterly()+"',semiannually='"+maintenance.getSemiannually()+"',annually='"+maintenance.getAnnually()+"',reference1='"+maintenance.getReference1()+"',reference2='"+maintenance.getReference2()+"',reference3='"+maintenance.getReference3()+"',reference4='"+maintenance.getReference4()+"',reference5='"+maintenance.getReference5()+"',instructions='"+maintenance.getInstructions()+"',due_date='"+maintenance.getDue_date()+"',completion_date='"+maintenance.getCompletion_date()+"',completed_by='"+maintenance.getCompleted_by()+"',notes='"+maintenance.getNotes()+"' where equipmentid='"+maintenance.getEquipmentid()+"'";
+			String cmd_update1 = "update tbl_maintenancechild set equipmentid='"+maintenance.getEquipmentid()+"',type_of_maintenance='"+maintenance.getType_of_maintenance()+"',weekly='"+maintenance.getWeekly()+"',monthly='"+maintenance.getMonthly()+"',quarterly='"+maintenance.getQuarterly()+"',semiannually='"+maintenance.getSemiannually()+"',annually='"+maintenance.getAnnually()+"',reference1='"+maintenance.getReference1()+"',reference2='"+maintenance.getReference2()+"',reference3='"+maintenance.getReference3()+"',reference4='"+maintenance.getReference4()+"',reference5='"+maintenance.getReference5()+"',instructions='"+maintenance.getInstructions()+"',instructionattach='"+maintenance.getInstructionattach()+"',due_date='"+maintenance.getDue_date()+"',completion_date='"+maintenance.getCompletion_date()+"',completed_by='"+maintenance.getCompleted_by()+"',notes='"+maintenance.getNotes()+"' where equipmentid='"+maintenance.getEquipmentid()+"'";
 			
 			 statement.execute(cmd_update);
 			 statement.execute(cmd_update1);
@@ -912,7 +916,8 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("reference3"),resultSet
 						.getString("reference4"),resultSet
 						.getString("reference5"), resultSet
-						.getString("instructions"), resultSet
+						.getString("instructions"),resultSet
+						.getString("instructionattach"), resultSet
 						.getString("due_date"), resultSet
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),
@@ -978,7 +983,8 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("reference3"),resultSet
 						.getString("reference4"),resultSet
 						.getString("reference5"), resultSet
-						.getString("instructions"), resultSet
+						.getString("instructions"),resultSet
+						.getString("instructionattach"), resultSet
 						.getString("due_date"), resultSet
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),

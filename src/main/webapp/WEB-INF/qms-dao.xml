@@ -80,6 +80,9 @@
 	<bean id="referenceMaintenanceDAO" class="qms.dao.ReferenceMaintenanceDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="instructionMaintenanceDAO" class="qms.dao.InstructionMaintenanceDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 	<bean id="documentRevisionLevelDAO" class="qms.dao.DocumentRevisionLevelDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>

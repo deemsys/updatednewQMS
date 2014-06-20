@@ -181,7 +181,9 @@
                 <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt">Instructions:</td>
-               <td valign="top" align="left"  colspan="3"><textarea class="input_txtbx1"  name="instructions"  style="width:70%; height: 49px;" >${Maintenance.instructions}</textarea><br/><span class="err"><form:errors path="Maintenance.instructions"></form:errors></span></td>
+               <td valign="top" align="left"  colspan="3">
+               <div id="instruction"></div>
+               <textarea class="input_txtbx1"  name="instructions"  style="width:70%; height: 49px;" >${Maintenance.instructions}</textarea><br/><span class="err"><form:errors path="Maintenance.instructions"></form:errors></span></td>
             </tr>
         </table>
         </td> 
@@ -324,13 +326,34 @@ else
  
    
    
+   function instructionAjax() {
+		 
+		
+		var filer_value = $('#weekly').val();
+		
+		$.ajax({
+			type : "POST",
+			url : "/QMS_App/ajax_getinstruction",
+			data : "weekly=" + filer_value,
+			success : function(response) {
+	              
+	             // alert("response= "+response);
+	              
+		       $('#instruction').html(response);
+	      	    			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	}   
   
-</script> 
+ 
+</script>  
 <script>
 	
 	window.onload = function(){
-		toggleAjax();
+		instructionAjax();toggleAjax();
 	}
-		</script>       
+		</script>            
  <jsp:include page="footer.jsp"></jsp:include>
           

@@ -167,7 +167,7 @@
         				       				 
         				       					<td valign="top" align="left">
 												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_reference?id=${reference.auto_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_reference?id=${reference.auto_id}"/>" onclick="return confirmation()">Remove</a>
+											<%-- <a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_reference?id=${reference.auto_id}"/>" onclick="return confirmation()">Remove</a> --%>
 											</td>
         				       				 </tr>
         				       				 </c:forEach>

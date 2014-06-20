@@ -90,7 +90,14 @@
 									<span>Product ID</span>
 									
 								</a>
-							</li>			
+							</li>
+							<%-- <li  style=" float:left;text-transform:uppercase;">
+								<a href="add_referenceMaintenance" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Reference Attachment</span>
+									
+								</a>
+							</li>		 --%>		
 				          </ul>
   </div>
       </td>

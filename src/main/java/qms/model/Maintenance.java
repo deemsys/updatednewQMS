@@ -50,8 +50,9 @@ public class Maintenance
 	private String reference4;
 	private String reference5; 
 	
-	@NotEmpty
+	
 	private String instructions;
+	private String instructionattach;
 	@NotEmpty
 	private String due_date;
 	@NotEmpty
@@ -72,7 +73,7 @@ public class Maintenance
 			String weekly, String monthly, String quarterly,
 			String semiannually, String annually, String reference1,String reference2,String reference3,String reference4,
 			String reference5,
-			String instructions, String due_date, String completion_date,
+			String instructions,String instructionattach, String due_date, String completion_date,
 			String completed_by, String notes) {
 		super();
 		this.equipment_id = equipment_id;
@@ -96,6 +97,7 @@ public class Maintenance
 		this.reference4 = reference4;
 		this.reference5 = reference5;
 		this.instructions = instructions;
+		this.instructionattach = instructionattach;
 		this.due_date = due_date;
 		this.completion_date = completion_date;
 		this.completed_by = completed_by;
@@ -191,6 +193,7 @@ public class Maintenance
 	public void setAnnually(String annually) {
 		this.annually = annually;
 	}
+	
 	public String getReference1() {
 		return reference1;
 	}
@@ -227,6 +230,13 @@ public class Maintenance
 	}
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
+	}
+	
+	public String getInstructionattach() {
+		return instructionattach;
+	}
+	public void setInstructionattach(String instructionattach) {
+		this.instructionattach = instructionattach;
 	}
 	public String getDue_date() {
 		return due_date;
