@@ -343,6 +343,13 @@
 									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />Management Review</span>
 								</a>
 							</li>
+							<br>
+							<li>
+								<a href="addhr" class="<c:choose>
+								<c:when test="${menu=='hr'}">buttonsub blueactive</c:when><c:otherwise>buttonsub blue</c:otherwise></c:choose>">
+									<span><img src="<c:url value="/resources/images/icon_07.png" />" alt="" style="padding:5px 5px 0 0;" />HR and Training</span>
+								</a>
+							</li>
 							
 							</c:if>
 							<c:if test="${role==1}">

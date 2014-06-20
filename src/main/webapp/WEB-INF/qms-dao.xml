@@ -89,6 +89,9 @@
 	<bean id="productId_NCDAO" class="qms.dao.ProductId_NCDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="hRandTrainingDAO" class="qms.dao.HRandTrainingDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  <bean id="filehandlingDAO" class="qms.dao.FileHandlingDAO">
 	</bean>
 </beans>

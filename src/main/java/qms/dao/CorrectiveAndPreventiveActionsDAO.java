@@ -141,7 +141,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 
 			}
 		}
-		else
+		else if(value == "2")
 		{
 			for(String field:fields)
 			{
@@ -307,7 +307,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 	    for (CorrectiveAndPreventiveActions correctiveandpreventiveactions :correctiveAndPreventiveActions){	
 			HSSFRow excelRow = excelSheet.createRow(record++);
 
-	    if(value == "0")
+	    if(value == "0" && value == "1")
 		{
 			for (String field : fields) {
 				if (field.equals("nc_id")) {
@@ -327,7 +327,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 					}
 				}
 		}
-	    else
+	    else if(value == "2")
 	    {
 			for(String field:fields)
 			{
