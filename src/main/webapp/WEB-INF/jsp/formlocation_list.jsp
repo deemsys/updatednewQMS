@@ -58,6 +58,8 @@
 									
 								</a>
 							</li>
+							</ul>
+							<ul class="horizmenu" style="margin-bottom:5px;">
 							 	<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="typeNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
@@ -65,8 +67,6 @@
 									
 								</a>
 							</li>
-							</ul>
-							 <ul class="horizmenu" style="margin-bottom:5px;">	
 							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="productidNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
@@ -80,6 +80,13 @@
 									<span>Reference Attachment</span>
 								</a>
 							</li>			
+								<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+								<a href="reportNC_list" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Report NC</span>
+									
+								</a>
+							</li>	
 							</ul>
   </div>
       		</td>

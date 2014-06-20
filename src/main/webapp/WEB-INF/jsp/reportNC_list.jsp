@@ -64,35 +64,31 @@
 									
 								</a>
 							</li>	</ul>
-							<ul class="horizmenu" style="margin-bottom:5px;">
-				          	<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+				          	
+							 <ul class="horizmenu" style="margin-bottom:5px;">	
+							
+							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="typeNC_list" class="<c:choose>
-								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Type of NC</span>
 									
 								</a>
 							</li>	
+							
 							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="productidNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Product ID</span>
 									
 								</a>
-							</li>	
-							
-	<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							</li>
+							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="reportNC_list" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									<span>Report NC</span>
 									
 								</a>
 							</li>	
-								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
-								<a href="view_referenceMaintenance" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Reference Attachment</span>
-								</a>
-							</li>
 							</ul>
   </div>
       		</td>
@@ -103,7 +99,7 @@
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/inserted.png">
-						<a title="Close" href="typeNC_list">
+						<a title="Close" href="reportNC_list">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>
@@ -115,7 +111,7 @@
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/success.png"/>
-						<a title="Close" href="typeNC_list">
+						<a title="Close" href="reportNC_list">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
@@ -127,7 +123,7 @@
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/removed.png"/>
-						<a title="Close" href="typeNC_list">
+						<a title="Close" href="reportNC_list">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
 						</p>
 					</div></td>
@@ -143,22 +139,24 @@
 			      <form> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
-							<td valign="top" align="left" width="20%">Type Id</td>
+							<td valign="top" align="left" width="20%">NC Id</td>
 							<td valign="top" align="left" width="20%">Type of NC</td>
+							<td valign="top" align="left" width="20%">Group Person</td>
 							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>
-							<c:if test="${fn:length(type_of_NC_Form.type_of_NCs) gt 0}">
-        				  <c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
+							<c:if test="${fn:length(reportedByNCForm.reportedByNCs) gt 0}">
+							
+        				  <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
+        				
         				       				<tr class="row1">
         				       				
         				       				
-        				       				 <td valign="top" align="left"  width="10%">
-        				       				
-        				       				  ${types.auto_id}</td>
-        				       				 <td valign="top" align="left" width="15%">${types.type_of_nc}</td>
+        				       				 <td valign="top" align="left"  width="10%">${reportedByNCs.auto_id}</td>
+        				       				 <td valign="top" align="left" width="15%">${reportedByNCs.type_of_nc}</td>
+        				       				 <td valign="top" align="left" width="15%">${reportedByNCs.group_person}</td>
         				       				<td valign="top" align="left">
-												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_typenc?auto_id=${types.auto_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_source?auto_id=${types.auto_id}"/>" onclick="return confirmation()">Remove</a>
+												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_reportnc?auto_id=${reportedByNCs.auto_id}"/>" style="padding-right:10px;">Edit</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_reportnc?auto_id=${reportedByNCs.auto_id}"/>" onclick="return confirmation()">Remove</a>
 											</td>
         				       				 </tr>
         				       				 </c:forEach>
@@ -177,7 +175,7 @@
              <ul class="pagination">
         
              <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewtypereport_page?page=${currentpage - 1}" >Prev</a></li> 
+             <li class="page_unselect"><a href="viewreport_page?page=${currentpage - 1}" >Prev</a></li> 
                </c:if>
               
             
@@ -187,19 +185,19 @@
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewtypereport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>                   
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewtypereport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewreport_page?page=${currentpage+1}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewalltypereport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewallncreport" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
-                  <li class="page"><a href="typeNC_list" class="paging_select">Back</a></li>
+                  <li class="page"><a href="reportNC_list" class="paging_select">Back</a></li>
               </c:otherwise>
               </c:choose>					
 		 
@@ -223,6 +221,7 @@ function confirmation() {
 		return false;
 	}
 }
+
 
 
 </script> 

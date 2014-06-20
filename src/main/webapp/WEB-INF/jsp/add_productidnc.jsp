@@ -67,6 +67,10 @@
 									
 								</a>
 							</li>	
+							
+							 </ul>
+							
+							 <ul class="horizmenu" style=" float:left;margin-left:205px;margin-bottom:5px;">
 							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="addsourcenc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>"rel="ddsubmenu2">
@@ -74,8 +78,7 @@
 									
 								</a>
 							</li>
-							 </ul>
-							 <ul class="horizmenu" style=" float:left;margin-left:205px;margin-bottom:5px;">
+							
 							<li  style=" float:left;text-transform:uppercase;">
 								<a href="addtypenc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
@@ -89,6 +92,15 @@
 									<span>Product ID</span>
 									
 								</a>
+							</li>
+							
+							<li  style=" float:left;text-transform:uppercase;">
+								<a href="addreportnc" class="<c:choose>
+								<c:when test="${menu=='admin'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Report NC</span>
+									
+								</a>
+							</li>	
 							</li>
 							<%-- <li  style=" float:left;text-transform:uppercase;">
 								<a href="add_referenceMaintenance" class="<c:choose>

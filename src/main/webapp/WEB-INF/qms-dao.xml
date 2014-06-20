@@ -98,6 +98,9 @@
 	<bean id="hRandTrainingDAO" class="qms.dao.HRandTrainingDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="reportedByNCDAO" class="qms.dao.ReportedByNCDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
  <bean id="filehandlingDAO" class="qms.dao.FileHandlingDAO">
 	</bean>
 </beans>
