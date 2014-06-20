@@ -28,8 +28,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import qms.model.HRandTraining;
+import qms.forms.DocumentMainForm;
+import qms.forms.DocumentTypeForm;
 import qms.forms.EmployeeForm;
 import qms.forms.HRandTrainingForm;
+import qms.forms.ProcessForm;
 
 @Controller
 @SessionAttributes({"hr"})
@@ -212,6 +215,25 @@ public class HRandTainingController {
 						return "view_hr";
 					}
 					
+				//Search operation created on 20-june-14.(5.30pm)
+				@RequestMapping(value="/findadminhr",method=RequestMethod.GET)		
+				public String findadminhr(HttpServletRequest request,HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)
+				{
+				
+					System.out.println("find");
+					session.setAttribute("trainer", trainer);
+					session.setAttribute("type", type);
+					session.setAttribute("qualifiedby",qualifiedby);
+					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+						hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer));
+						System.out.println(type);
+						System.out.println(qualifiedby);
+						System.out.println(trainer);
+						model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+						model.addAttribute("menu", "hr");
+						System.out.println("finding....");
+						return "hrdelete";
+					}
 					
 				
 
@@ -228,6 +250,57 @@ public class HRandTainingController {
 					model.addAttribute("menu","hr");
 					return "view_hr";
 			 	}
+				//delete a record created on 20-june-14.(5.14pm)
+				@RequestMapping(value={"/hrdelete"}, method = RequestMethod.GET)
+				public String delete_adminhr(ModelMap model, Principal principal,HttpSession session )
+				{
+					session.removeAttribute("trainer");
+					session.removeAttribute("type");
+					session.removeAttribute("qualifiedby");
+
+					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
+					//model.addAttribute("hRandTrainingForm", hRandTrainingForm);
+
+				  	model.addAttribute("noofrows",5);    
+				   //narrativereportForm.getNarrativereport().size()
+				    model.addAttribute("menu","admin");
+				    model.addAttribute("button","close");
+				    return "hrdelete";
+					
+					
+			 	}
+				
+				@RequestMapping(value={"/deletehr"}, method = RequestMethod.POST)
+				public String deleteSelectedhr(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+				{	
+
+					
+					session.removeAttribute("trainer");
+					session.removeAttribute("type");
+					session.removeAttribute("qualifiedby");
+
+					String[] SelectedIDs=new String[100];
+					SelectedIDs=request.getParameterValues("chkUser");
+					for(String id:SelectedIDs)
+					{
+					System.out.println(id);
+					
+					//formDAO.deleteParticipant(id,principal.getName());
+					hRandTrainingDAO.delete_hr(id);
+					}
+
+					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
+					//model.addAttribute("hRandTrainingForm", hRandTrainingForm);
+					
+					
+					model.addAttribute("menu","admin");
+					model.addAttribute("success","delete");
+					return "hrdelete";
+					
+				}	
+
 				
 				//Edit a record
 				@RequestMapping(value={"/edithr"}, method = RequestMethod.GET)
