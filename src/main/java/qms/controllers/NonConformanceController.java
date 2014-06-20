@@ -2,6 +2,7 @@ package qms.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.FileHandlingDAO;
 import qms.dao.NonConformanceDAO;
 import qms.dao.ProductId_NCDAO;
+import qms.dao.ReferenceMaintenanceDAO;
 import qms.dao.Source_NCDAO;
 import qms.dao.Type_of_NC_DAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
@@ -53,6 +56,9 @@ public class NonConformanceController {
 	
 	@Autowired
 	ProductId_NCDAO productId_NCDAO;
+	
+	@Autowired
+	ReferenceMaintenanceDAO referenceMaintenanceDAO;
 	// Request Method for view page
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
 	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
@@ -465,4 +471,7 @@ public class NonConformanceController {
 			
 		}	
 		
+			
+			
+			
 	 	}

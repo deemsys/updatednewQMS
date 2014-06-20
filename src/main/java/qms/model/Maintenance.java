@@ -43,8 +43,13 @@ public class Maintenance
 	private String quarterly;
 	private String semiannually;
 	private String annually;
-	@NotEmpty
-	private String reference; 
+	
+	private String reference1; 
+	private String reference2; 
+	private String reference3; 
+	private String reference4;
+	private String reference5; 
+	
 	@NotEmpty
 	private String instructions;
 	@NotEmpty
@@ -65,7 +70,8 @@ public class Maintenance
 			String equipment_status, String frequency_maintenance,
 			String calibration, String equipmentid, String type_of_maintenance,
 			String weekly, String monthly, String quarterly,
-			String semiannually, String annually, String reference,
+			String semiannually, String annually, String reference1,String reference2,String reference3,String reference4,
+			String reference5,
 			String instructions, String due_date, String completion_date,
 			String completed_by, String notes) {
 		super();
@@ -84,7 +90,11 @@ public class Maintenance
 		this.quarterly = quarterly;
 		this.semiannually = semiannually;
 		this.annually = annually;
-		this.reference = reference;
+		this.reference1 = reference1;
+		this.reference2 = reference2;
+		this.reference3 = reference3;
+		this.reference4 = reference4;
+		this.reference5 = reference5;
 		this.instructions = instructions;
 		this.due_date = due_date;
 		this.completion_date = completion_date;
@@ -181,11 +191,36 @@ public class Maintenance
 	public void setAnnually(String annually) {
 		this.annually = annually;
 	}
-	public String getReference() {
-		return reference;
+	public String getReference1() {
+		return reference1;
 	}
-	public void setReference(String reference) {
-		this.reference = reference;
+	public void setReference1(String reference1) {
+		this.reference1 = reference1;
+	}
+	
+	public String getReference2() {
+		return reference2;
+	}
+	public void setReference2(String reference2) {
+		this.reference2 = reference2;
+	}
+	public String getReference3() {
+		return reference3;
+	}
+	public void setReference3(String reference3) {
+		this.reference3 = reference3;
+	}
+	public String getReference4() {
+		return reference4;
+	}
+	public void setReference4(String reference4) {
+		this.reference4 = reference4;
+	}
+	public String getReference5() {
+		return reference5;
+	}
+	public void setReference5(String reference5) {
+		this.reference5 = reference5;
 	}
 	public String getInstructions() {
 		return instructions;

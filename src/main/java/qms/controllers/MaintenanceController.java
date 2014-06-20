@@ -3,6 +3,7 @@ package qms.controllers;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,17 +15,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
+import qms.dao.FileHandlingDAO;
 import qms.dao.MaintenanceDAO;
+import qms.dao.ReferenceMaintenanceDAO;
 import qms.forms.DocumentMainForm;
 import qms.forms.DocumentTypeForm;
 import qms.forms.MaintenanceForm;
 import qms.forms.ProcessForm;
+import qms.forms.ReferenceMaintenance_Form;
 import qms.model.*;
 
 import org.slf4j.Logger;
@@ -36,6 +41,8 @@ import org.slf4j.LoggerFactory;
 public class MaintenanceController {
 	@Autowired
 	MaintenanceDAO maintenanceDAO;
+	@Autowired
+	ReferenceMaintenanceDAO referenceMaintenanceDAO;
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@RequestMapping(value = { "/add_maintenance" }, method = RequestMethod.GET)
@@ -350,7 +357,105 @@ return "maintenance_list";
 		return "maintenancedelete";
 		
 	}
+	//ajax get attachment post method
+	@RequestMapping(value = { "/ajax_getAttach" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactions(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("weekly") String weekly,@RequestParam("monthly") String monthly,@RequestParam("quarterly") String quarterly,@RequestParam("semiannually") String semiannually,@RequestParam("annually") String annually,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		
+if(weekly !="")
+{
+			List <String> referencemain=new ArrayList<String>();
+			referencemain=referenceMaintenanceDAO.filterReference(weekly);
+			/*referenceMaintenance_Form.setReferences(referenceMaintenanceDAO.getReference(weekly));
+			try {
+				FileHandlingDAO.filedownload(response, referenceMaintenance_Form.getReferences()
+						.get(0).getAttachment_referrence(),  referenceMaintenance_Form.getReferences().get(0).getAttachment_name());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+*/
+			for(String weeklyinstr:referencemain)
+			{
+				System.out.println("frequency maintenane = "+weekly);
+				returnText=returnText+"<a  href='downloadFrequencyFile?id=weekly''><input type='hidden' class='input_txtbx' id='reference' name='reference1' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+
+			}			
+			System.out.println(" source of nc:::: "+returnText);
+			returnText=returnText+"<split>";
+}
+if(monthly !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(monthly);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=monthly''><input type='hidden' class='input_txtbx' id='reference' name='reference2' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+if(quarterly !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(quarterly);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=quarterly''><input type='hidden' class='input_txtbx' id='reference' name='reference3' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+if(semiannually !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(semiannually);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=semi-annually''><input type='hidden' class='input_txtbx' id='reference' name='reference4' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+if(annually !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(annually);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=annually''><input type='hidden' class='input_txtbx' id='reference' name='reference5' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+System.out.println("Result string = "+returnText);
+return returnText;
+			}	
 	
 	
+	//download the Instruction file 19-JUNE-2014 
+	@RequestMapping(value = "/downloadFrequencyFile", method = RequestMethod.GET)
+	public String downloadFile(HttpServletResponse response,
+			@RequestParam("id") String auto_id, ModelMap model)
+			throws IOException {
+System.out.println("ajax attachement comes here");
+System.out.println("frequency = "+auto_id);
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		referenceMaintenance_Form.setReferences(referenceMaintenanceDAO.getReference(auto_id));
+		
+
+		FileHandlingDAO.filedownload(response, referenceMaintenance_Form.getReferences()
+						.get(0).getAttachment_referrence(),  referenceMaintenance_Form.getReferences().get(0).getAttachment_name());
+
+		return "add_maintenance";
+
+	}
 	
 }

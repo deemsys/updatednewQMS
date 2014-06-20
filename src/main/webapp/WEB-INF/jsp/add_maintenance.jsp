@@ -141,16 +141,23 @@
                    <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
-                  <input type="checkbox" name="weekly" value="yes" id="weekly"/>&nbsp;Weekly  <br/>               
-             	  <input type="checkbox" name="monthly" value="yes" id="monthly"/>&nbsp;Monthly<br/>
-                  <input type="checkbox" name="quarterly" value="yes" id="quarterly"/>&nbsp;Quarterly<br/>
-                  <input type="checkbox" name="semiannually" value="yes" id="semiannually"/>&nbsp;Semi-Annually<br/>
-                  <input type="checkbox" name="annually" value="yes" id="annually"/>&nbsp;Annually<br/>
+                  <input type="checkbox" name="weekly" value="weekly" id="weekly"/ onclick="toggleAjax()" >&nbsp;Weekly  <br/>               
+             	  <input type="checkbox" name="monthly" value="monthly" id="monthly"/onclick="toggleAjax()" >&nbsp;Monthly<br/>
+                  <input type="checkbox" name="quarterly" value="quarterly" id="quarterly"/onclick="toggleAjax()" >&nbsp;Quarterly<br/>
+                  <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually"/ onclick="toggleAjax()" >&nbsp;Semi-Annually<br/>
+                  <input type="checkbox" name="annually" value="annually" id="annually"/ onclick="toggleAjax()" >&nbsp;Annually<br/>
                  <%--  <span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span> --%></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Reference :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="reference" class="input_txtbx1" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.reference"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%">Reference :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                  <div id="reference1"></div><br>
+                  <div id="reference2"></div><br>
+                  <div id="reference3"></div><br>
+                  <div id="reference4"></div><br>
+                  <div id="reference5"></div>
+                  
+                  </td>
                 </tr>
                 <tr class="row2">
               
@@ -246,6 +253,91 @@ $("#suggestion_box").html(html);
 }); 
 });
 </script>
+  
+  <script>
+   function toggleAjax() {
+	 
+	   var weekly_main = document.getElementById('weekly').checked;
+	   var monthly_main = document.getElementById('monthly').checked;
+	   var quarterly_main = document.getElementById('quarterly').checked;
+	   var semiannually_main = document.getElementById('semiannually').checked;
+	   var annually_main = document.getElementById('annually').checked;
+	   var weekly ='',monthly='', quarterly='',semiannually='',annually='';
+	   		if(weekly_main)
+		   {
+			 weekly = $('#weekly').val();
+		   }
+		   if(monthly_main)
+		   {
+			 monthly = $('#monthly').val();
+		   }
+		   if(quarterly_main)
+			{
+	               quarterly = $('#quarterly').val();
+			}
+	        if(semiannually_main)
+	        {
+				 semiannually = $('#semiannually').val();
+	        }
+		    if(annually_main)
+			{
+				 annually = $('#annually').val();
+	        }
+	            	 
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getAttach",
+		data : "weekly="+weekly+"&monthly="+monthly+"&quarterly="+quarterly+"&semiannually="+semiannually+"&annually="+annually,
+		success : function(response) {
+		//	alert("response"+response);
+		var two_drop=response.split("<split>");
+		
+		
+    	 var size = two_drop.length-1;
+    	//alert("size = "+size);
+    	for(var i=0; i<= size; i++)
+    		{
+    		//alert("for loop");
+    		if(i == 0)
+    			{ 
+    		//	alert("if loop 0");
+    			$('#reference1').html(two_drop[i]).value=response;
+    			
+    			}
+    		
+    		if(i = 1){
+    	//		alert("if loop1");
+    		$('#reference2').html(two_drop[i]).value=response;
+    		}
+    		 if(i = 2){
+    	//		alert("if loop2");
+    			$('#reference3').html(two_drop[i]).value=response;
+    		}
+			if(i = 3){
+		//		alert("if loop3");
+    			$('#reference4').html(two_drop[i]).value=response;
+    		}
+			if(i = 4){
+		//		alert("if loop4");
+    			$('#reference5').html(two_drop[i]).value=response;
+    		} 
+			if(i = 5)
+				{
+				
+				}
+    		} 
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
+ 
+   
+   
+  
+</script>        
             
             <!--  <script type="text/javascript">
 function toggle3(value){

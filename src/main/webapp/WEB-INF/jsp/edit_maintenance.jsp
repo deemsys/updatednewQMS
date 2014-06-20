@@ -158,17 +158,25 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">Maintenance Frequency :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   
-                  <input type="checkbox" name="weekly" value="yes" id="weekly" <c:if test="${Maintenance.weekly=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Weekly  <br/>               
-             	  <input type="checkbox" name="monthly" value="yes" id="monthly"<c:if test="${Maintenance.monthly=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Monthly<br/>
-                  <input type="checkbox" name="quarterly" value="yes" id="quarterly"<c:if test="${Maintenance.quarterly=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Quarterly<br/>
-                  <input type="checkbox" name="semiannually" value="yes" id="semiannually"<c:if test="${Maintenance.semiannually=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Semi-Annually<br/>
-                  <input type="checkbox" name="annually" value="yes" id="annually"<c:if test="${Maintenance.annually=='yes'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Annually<br/>
+                  <input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax()" <c:if test="${Maintenance.weekly=='weekly'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Weekly  <br/>               
+             	  <input type="checkbox" name="monthly" value="monthly" id="monthly" onclick="toggleAjax()" <c:if test="${Maintenance.monthly=='monthly'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Monthly<br/>
+                  <input type="checkbox" name="quarterly" value="quarterly" id="quarterly" onclick="toggleAjax()" <c:if test="${Maintenance.quarterly=='quarterly'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Quarterly<br/>
+                  <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually" onclick="toggleAjax()" <c:if test="${Maintenance.semiannually=='semi-annually'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Semi-Annually<br/>
+                  <input type="checkbox" name="annually" value="annually" id="annually" onclick="toggleAjax()" <c:if test="${Maintenance.annually=='annually'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Annually<br/>
                   
                 <%--   <input type="text" name="maintenance_frequency" class="input_txtbx" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.maintenance_frequency}" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td> --%>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Reference :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="reference" class="input_txtbx" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.reference}" /><span class="err"><form:errors path="Maintenance.reference"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                  
+                  <%-- <input type="text" name="reference" class="input_txtbx" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.reference}" /> --%>
+                   <div id="reference1"></div><br>
+                  <div id="reference2"></div><br>
+                  <div id="reference3"></div><br>
+                  <div id="reference4"></div><br>
+                  <div id="reference5"></div>
+                  <span class="err"><form:errors path="Maintenance.reference"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
               
@@ -234,5 +242,95 @@ else
        
 }
 </script> -->
+ <script>
+   function toggleAjax() {
+	 
+	   var weekly_main = document.getElementById('weekly').checked;
+	   var monthly_main = document.getElementById('monthly').checked;
+	   var quarterly_main = document.getElementById('quarterly').checked;
+	   var semiannually_main = document.getElementById('semiannually').checked;
+	   var annually_main = document.getElementById('annually').checked;
+	   var weekly ='',monthly='', quarterly='',semiannually='',annually='';
+	   		if(weekly_main)
+		   {
+			 weekly = $('#weekly').val();
+		   }
+		   if(monthly_main)
+		   {
+			 monthly = $('#monthly').val();
+		   }
+		   if(quarterly_main)
+			{
+	               quarterly = $('#quarterly').val();
+			}
+	        if(semiannually_main)
+	        {
+				 semiannually = $('#semiannually').val();
+	        }
+		    if(annually_main)
+			{
+				 annually = $('#annually').val();
+	        }
+	            	 
+	
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getAttach",
+		data : "weekly="+weekly+"&monthly="+monthly+"&quarterly="+quarterly+"&semiannually="+semiannually+"&annually="+annually,
+		success : function(response) {
+		//	alert("response"+response);
+		var two_drop=response.split("<split>");
+		
+		
+    	 var size = two_drop.length-1;
+    	//alert("size = "+size);
+    	for(var i=0; i<= size; i++)
+    		{
+    		//alert("for loop");
+    		if(i == 0)
+    			{ 
+    		//	alert("if loop 0");
+    			$('#reference1').html(two_drop[i]).value=response;
+    			
+    			}
+    		
+    		if(i = 1){
+    	//		alert("if loop1");
+    		$('#reference2').html(two_drop[i]).value=response;
+    		}
+    		 if(i = 2){
+    	//		alert("if loop2");
+    			$('#reference3').html(two_drop[i]).value=response;
+    		}
+			if(i = 3){
+		//		alert("if loop3");
+    			$('#reference4').html(two_drop[i]).value=response;
+    		}
+			if(i = 4){
+		//		alert("if loop4");
+    			$('#reference5').html(two_drop[i]).value=response;
+    		} 
+			if(i = 5)
+				{
+				
+				}
+    		} 
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
+ 
+   
+   
+  
+</script> 
+<script>
+	
+	window.onload = function(){
+		toggleAjax();
+	}
+		</script>       
  <jsp:include page="footer.jsp"></jsp:include>
           
