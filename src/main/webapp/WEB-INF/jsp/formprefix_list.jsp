@@ -86,6 +86,12 @@
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Reference Attachment</span>
 								</a>
+							</li>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="view_instructionMaintenance" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Instruction Attachment</span>
+								</a>
 							</li>		
 							</ul>
   </div>

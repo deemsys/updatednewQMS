@@ -1,4 +1,6 @@
+<%@page import="qms.model.Maintenance"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="header.jsp"></jsp:include>
@@ -106,14 +108,49 @@
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="frequency_maintenance" class="input_cmbbx1">
-                  <option value="">--Select--</option>
-                  <option <c:if test="${Maintenance.frequency_maintenance eq 'Weekly'}"><c:out value="Selected"/></c:if> value="Weekly" >Weekly</option>
-                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Monthly'}"><c:out value="Selected"/></c:if> value="Monthly" >Monthly</option>
-                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Quarterly'}"><c:out value="Selected"/></c:if> value="Quarterly" >Quarterly</option>
-                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Semi-Annually'}"><c:out value="Selected"/></c:if> value="Semi-Annually" >Semi-Annually</option>
-                 <option <c:if test="${Maintenance.frequency_maintenance eq 'Annually'}"><c:out value="Selected"/></c:if> value="Active" >Annually</option>
+                  <%--  <%
+                  String values= (String) request.getAttribute("frequency");
+                   System.out.println("type of maintenance = "+request.getAttribute("frequency"));
+                   String[] list_of_values = values.split(",");
+                   int leng = list_of_values.length;
+                   for(int i=0; i < leng;i++)
+                   {
+                	   if(i == 0)
+                	   {
+                		   String weekly = list_of_values[i];
+                		   System.out.println("1 "+weekly);
+                	   }
+                	   if(i == 1)
+                	   {
+                		   String monthly = list_of_values[i];
+                		   System.out.println("2 "+monthly);
+                	   }
+                	   if(i == 3)
+                	   {
+                		   String quarterly = list_of_values[i];
+                	   }
+                	   if(i == 4)
+                	   {
+                		   String semiannually = list_of_values[i];
+                	   }
+                	   if(i == 5)
+                	   {
+                		   String annually = list_of_values[i];
+                	   }
+                   }
+                   %> --%>
+                   <select name="frequency_maintenance" class="input_cmbbx1" multiple>
+                   <c:set var="theString" value="${Maintenance.frequency_maintenance}"/>
+
+					
+   					<option  <c:if test="${fn:contains(theString, 'Weekly')}"><c:out value="Selected"/></c:if>  value="Weekly" >Weekly</option>
+               		<option  <c:if test="${fn:contains(theString, 'Monthly')}"><c:out value="Selected"/></c:if> value="Monthly" >Monthly</option>
+                    <option <c:if test="${fn:contains(theString, 'Quarterly')}"><c:out value="Selected"/></c:if> value="Quarterly" >Quarterly</option>
+               		<option <c:if test="${fn:contains(theString, 'Semi-Annually')}"><c:out value="Selected"/></c:if> value="Semi-Annually" >Semi-Annually</option>
+                    <option <c:if test="${fn:contains(theString, 'Annually')}"><c:out value="Selected"/></c:if> value="Annually" >Annually</option>
+                  
                   </select>
+                  
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row1">
@@ -167,7 +204,7 @@
                 <%--   <input type="text" name="maintenance_frequency" class="input_txtbx" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.maintenance_frequency}" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td> --%>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Reference :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Reference :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   
                   <%-- <input type="text" name="reference" class="input_txtbx" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.reference}" /> --%>
@@ -180,7 +217,7 @@
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt">Instructions:</td>
+               <td valign="top" align="left" class="input_txt">Instructions:</td>
                <td valign="top" align="left"  colspan="3">
                <div id="instruction"></div>
                <textarea class="input_txtbx1"  name="instructions"  style="width:70%; height: 49px;" >${Maintenance.instructions}</textarea><br/><span class="err"><form:errors path="Maintenance.instructions"></form:errors></span></td>
@@ -201,7 +238,14 @@
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Completed By :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completed_by" class="input_txtbx" id="searchbox" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.completed_by}" /><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                    <select name="completed_by" id="searchbox"  class="input_cmbbx1" style="width:200px;">
+							 
+			                <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="calibrationname" varStatus="status">
+        				       <option value="${calibrationname.name}"<c:if test="${calibrationname.name == Maintenance.completed_by}"><c:out value="selected"/></c:if>>${calibrationname.name}</option>
+			                  </c:forEach>
+			                 </select>
+                  <span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
               

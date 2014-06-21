@@ -295,7 +295,7 @@ public class HRandTrainingDAO {
 		    return status;
 	}
 	
-	//Getting the list of values created on 18-jun-14.
+	//Getting the list of values created on 18-June-14.
 	public List<HRandTraining> getHRandTrainings(){
 		Connection con = null;
 		Statement statement = null;
@@ -348,7 +348,58 @@ public class HRandTrainingDAO {
 		
 	}
 	
-	
+	//Getting the list of values created on 18-June-14.
+	public List<HRandTraining> getNameCalibration(){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<HRandTraining> hRandTrainings = new ArrayList<HRandTraining>();
+	    try{
+			resultSet = statement.executeQuery("select * from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t1.calibration='yes' ");
+			//System.out.println("came");
+			while(resultSet.next()){
+				System.out.println("count");
+//				
+				hRandTrainings.add(new HRandTraining(
+						
+						resultSet.getString("id"),
+						resultSet.getString("name"), 
+						resultSet.getString("job_title"), 
+						resultSet.getString("date_hired"), 
+						resultSet.getString("attachment_name"),
+						resultSet.getString("attachment_type"),
+						resultSet.getString("attachment_referrence"), 
+						resultSet.getString("calibration"),
+						resultSet.getString("responsibility"),
+						resultSet.getString("disposition"),
+						resultSet.getString("documented_in"), 
+						resultSet.getString("qualified_by"),
+						resultSet.getString("type_of_training"),
+						resultSet.getString("trainer"), 
+						resultSet.getString("training_due_date"),
+						resultSet.getString("training_completion_date"),
+						resultSet.getString("training_effectiveness_review_due_date"),
+						resultSet.getString("training_effectiveness_notes")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return hRandTrainings;
+		
+	}
 	
 	
 //	Find opertion created on 18-jun-14.

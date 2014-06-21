@@ -23,11 +23,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
 import qms.dao.FileHandlingDAO;
+import qms.dao.HRandTrainingDAO;
 import qms.dao.InstructionMaintenanceDAO;
 import qms.dao.MaintenanceDAO;
 import qms.dao.ReferenceMaintenanceDAO;
 import qms.forms.DocumentMainForm;
 import qms.forms.DocumentTypeForm;
+import qms.forms.HRandTrainingForm;
 import qms.forms.MaintenanceForm;
 import qms.forms.ProcessForm;
 import qms.forms.ReferenceMaintenance_Form;
@@ -46,11 +48,18 @@ public class MaintenanceController {
 	ReferenceMaintenanceDAO referenceMaintenanceDAO;
 	@Autowired
 	InstructionMaintenanceDAO instructionMaintenanceDAO;
+	@Autowired
+	HRandTrainingDAO hRandTrainingDAO;
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@RequestMapping(value = { "/add_maintenance" }, method = RequestMethod.GET)
 	
 	public String addMaintenance(HttpSession session,ModelMap model, Principal principal) {
+		
+		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getNameCalibration());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+		
 		session.removeAttribute("maintenances");
 		model.addAttribute("menu","maintenance");
 		return "add_maintenance";
@@ -201,11 +210,17 @@ return "maintenance_list";
 	
 	//Edit a record
 	@RequestMapping(value = "/edit_maintenance", method = RequestMethod.GET)
-	public String editmaintenance_get(@RequestParam("equipment_id") String equipment_id,Maintenance maintenance,ModelMap model) {
+	public String editmaintenance_get(HttpServletResponse response,HttpServletRequest request,@RequestParam("equipment_id") String equipment_id,Maintenance maintenance,ModelMap model) {
 
 		MaintenanceForm maintenanceForm= new MaintenanceForm();
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance(equipment_id));
 		model.addAttribute("maintenanceForm",maintenanceForm);
+		
+		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getNameCalibration());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+		String value = maintenanceForm.getMaintenance().get(0).getFrequency_maintenance();
+		request.setAttribute("frequency", value);
 		model.addAttribute("menu","maintenance");
 	    return "edit_maintenance";
 	}

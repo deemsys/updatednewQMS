@@ -92,13 +92,13 @@
                   <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" >Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt">
-                  <select name="frequency_maintenance" class="input_cmbbx1">
-                  <option value="">--Select--</option>
+                  <select name="frequency_maintenance" class="input_cmbbx1" multiple>
+                  
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
-                   <option value="Weekly">Quarterly</option>
-                   <option value="Weekly">Semi-Annually</option>
-                  <option value="Monthly">Annually</option>
+                   <option value="Quarterly">Quarterly</option>
+                   <option value="Semi-Annually">Semi-Annually</option>
+                  <option value="Annually">Annually</option>
                   </select>
                   <br/><span class="err"></span></td>
                   </tr>
@@ -185,7 +185,14 @@
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Completed By :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completed_by" class="input_txtbx1" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                  
+                   <select id="completed_by" name="completed_by" class="input_cmbbx1" style="width:200px;">
+              <option value = "">--Select --</option>
+			                <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="calibrationname" varStatus="status">
+        				       <option value="${calibrationname.name}">${calibrationname.name}</option>
+			                  </c:forEach> </select>
+                 <!--  <input type="text" name="completed_by" class="input_txtbx1" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /> --><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
               
