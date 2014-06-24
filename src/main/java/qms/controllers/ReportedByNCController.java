@@ -23,9 +23,11 @@ import qms.dao.ReportedByNCDAO;
 import qms.dao.Type_of_NC_DAO;
 import qms.forms.HRandTrainingForm;
 import qms.forms.Non_Conformance_SourceForm;
+import qms.forms.ProductId_NC_Form;
 import qms.forms.ReportedByNCForm;
 import qms.forms.Type_of_NC_Form;
 import qms.model.Non_Conformance_Source;
+import qms.model.ProductIDNC;
 import qms.model.ReportedByNC;
 import qms.model.Type_of_NC;
 
@@ -149,13 +151,16 @@ public String Editreport_get(@RequestParam("auto_id") String auto_id,ReportedByN
 	model.addAttribute("menu","admin");
     return "edit_report_nc";
 }
+
 //Update a record
 @RequestMapping(value = "/update_reportnc", method = RequestMethod.POST)
-public String Update_reportnc(ModelMap model,@ModelAttribute("ReportrdByNC") @Valid ReportedByNC reportedByNC,BindingResult result) throws IOException {
-	String auto_id =  Integer.toString(reportedByNC.getAuto_id());;
+public String Update_reportnc(HttpServletRequest request,ModelMap model,@ModelAttribute("ReportedByNC") @Valid ReportedByNC reportedByNC,BindingResult result) throws IOException {
+	//String auto_id = Integer.toString(reportedByNC.getAuto_id());
+	String auto_id = request.getParameter("auto_id");
+	System.out.println("auto id = "+auto_id);
+	System.out.println("method id = "+reportedByNC.getAuto_id());
 	if (result.hasErrors())
 	{
-		
 		ReportedByNCForm reportedByNCForm = new ReportedByNCForm();
 		reportedByNCForm.setReportedByNCs(reportedByNCDAO.reportedByNCs(auto_id));
 		model.addAttribute("reportedByNCForm",reportedByNCForm);
@@ -173,6 +178,7 @@ public String Update_reportnc(ModelMap model,@ModelAttribute("ReportrdByNC") @Va
 	model.addAttribute("success","update");
     return "reportNC_list";
 }
+
 //Search operation 
 @RequestMapping(value="/findreportnc",method=RequestMethod.GET)		
 public String findhr(HttpServletRequest request,HttpSession session,@RequestParam("type_of_nc") String type_of_nc,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)

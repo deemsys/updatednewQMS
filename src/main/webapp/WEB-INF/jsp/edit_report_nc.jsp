@@ -52,10 +52,10 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                <%-- <input type="hidden" name="auto_id" value="${reportedByNCs.auto_id}"/> --%>
+             
                   <td valign="middle" align="left" class="input_txt" width="30%">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                   
+                     <input type="hidden" name="auto_id" value="${reportedByNCs.auto_id}"/>
                   
 				                  		<select name="type_of_nc" class="input_cmbbx1">
 						                    <option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>

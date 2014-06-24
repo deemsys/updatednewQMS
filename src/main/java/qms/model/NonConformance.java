@@ -7,7 +7,6 @@ public class NonConformance
 private String id;
 private String source_of_nonconformance;
 
-@NotEmpty
 private String external_id;
 private String type_of_nonconformance;
 @NotEmpty

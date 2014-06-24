@@ -78,15 +78,15 @@
 				                   	<br><font color="Red" size="+1"></font>
 				                  </td>
 				                  
-				                	<td valign="middle" align="left" class="input_txt"> External ID </td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  class="input_txtbx1" id="inp_external_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" /><br><span class="err"><form:errors path="Nonconformance.external_id"></form:errors></span></td>
+				                	<td valign="middle" align="left" class="input_txt" id="external_label" style="display:none;"> External ID </td>
+				                  	<td valign="top" align="left" class="input_txt"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  class="input_txtbx1" style="display:none;" id="external_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" /><br></td>
 				                </tr>
 				                
 
 								 <tr class="row2">
 						         	<td valign="middle" align="left" class="input_txt"> Source of NC </td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="source_of_nonconformance" class="input_cmbbx1">
+				                  		<select name="source_of_nonconformance" class="input_cmbbx1" id="source_of_nonconformance" onclick="showDiv()">
 						                    <option <c:if test="${nonconformance.source_of_nonconformance eq 'Internal Audit'}"><c:out value="Selected"/></c:if> value="Internal Audit" >Internal Audit</option>
 											<option <c:if test="${nonconformance.source_of_nonconformance eq 'Customer Audit'}"><c:out value="Selected"/></c:if> value="Customer Audit">Customer Audit</option>
 											<option  <c:if test="${nonconformance.source_of_nonconformance eq 'Third Party Audit'}"><c:out value="Selected"/></c:if> value="Third Party Audit">Third Party Audit</option>
@@ -112,7 +112,7 @@
 								<tr class="row1">
 				                  	<td valign="middle" align="left" class="input_txt"> Type of NC </td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  		<select name="type_of_nonconformance" class="input_cmbbx1">
+				                  		<select name="type_of_nonconformance" class="input_cmbbx1" id="type_of_nonconformance" onchange="doAjaxPost();">
 						                    <option <c:if test="${nonconformance.type_of_nonconformance eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
 											<option <c:if test="${nonconformance.type_of_nonconformance eq 'Service Quality'}"><c:out value="Selected"/></c:if>  value="Service Quality">Service Quality</option>
 											<option  <c:if test="${nonconformance.type_of_nonconformance eq 'Late Delivery'}"><c:out value="Selected"/></c:if>  value="Late Delivery">Late Delivery</option>
@@ -146,22 +146,22 @@
 				                
                 	          
 				                  	<td valign="top" align="left" class="input_txt"> Disposition </td>
-				                  	<td>
-				                  	<select name="disposition1"id="disid1" class="input_cmbbx1"onchange="show1();">
+				                  	<td valign="top" align="left" class="input_txt" width="30%">
+						                    						<table><tr>
+						                    						<td style="vertical-align:top;"><select name="disposition1" id="disid1" class="input_cmbbx1" onchange="show1();">
 				                  										<option value="">--Select--</option>
-				                  										<option
-				                  										<c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>
-																		value="Repair">Repair</option>
-				                  										<option
-				                  										<c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>
-																		value="Discard">Discard</option>
-																		<option
-				                  										<c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
-																		value="Keep as is">Keep as is</option>
+				                  										<option <c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>="" value="Repair">Repair</option>
+				                  										<option <c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>="" value="Discard">Discard</option>
+																		<option <c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>="" value="Keep as is">Keep as is</option>
 						                    						</select>
-						                    						<input type="text" name="quality1" id="quality1" value="${nonconformance.quality1}"  style="display:none;"/>
-						                    						<br>
-						                    						<select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
+						                    							</td><td align="right">
+						                    						
+						                    				<input type="text" name="quality1" id="quality1" style="display:none; width:40px;" onchange="showbutton1();"  />
+						                    					</td><td align="left"><input type="button" class="number_btn1" name="No's" id="button1" value="No's" style="display:block;">
+						                    					</td></tr>
+						                    					<tr><td colspan="3"><span id="quality1err" style="color:red;"></span></td></tr>
+						                    					<tr>
+						                    						<td style="vertical-align:top;"><select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
 				                  										<option value="">--Select--</option>
 				                  										<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
@@ -172,13 +172,14 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select>
-						                    						<input type="text" name="quality2" id="quality2" value="${nonconformance.quality2}" style="display:none;"/>
-						                    						<br>
-						                    						<select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
+						                    						</select></td>
+						                    						<td align="right"><input type="text" name="quality2" id="quality2" style="display:none; width:40px;" onchange="showbutton2();" /></td>
+						                    						<td align="left"><input type="button" class="number_btn1" id="button2" name="No's" value="No's" style="display:none;"></td>
+						                    						</tr><tr><td colspan="3"><span id="quality2err" style="color:red;"></span></td></tr><tr>
+						                    						<td style="vertical-align:top;"><select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
 				                  										<option value="">--Select--</option>
 				                  										<option
-				                  										<c:if test="${nonconformance.disposition3 eq 'Repair'}"><c:out value="Selected"/></c:if>
+				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
 																		value="Repair">Repair</option>
 				                  										<option
 				                  										<c:if test="${nonconformance.disposition3 eq 'Discard'}"><c:out value="Selected"/></c:if>
@@ -187,14 +188,32 @@
 				                  										<c:if test="${nonconformance.disposition3 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
 						                    						</select>
-						                    						<input type="text" name="quality3" id="quality3"  value="${nonconformance.quality3}" style="display:none;"/>
+						                    					</td>
+						                    					<td  align="right"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" />
+						                    					</td><td  align="left"><input type="button" id="button3" class="number_btn1" name="No's" value="No's" onchange="showbutton3();" style="display:none;">
 						                    						</td>
-						                    						</tr>
+						                    						</tr><tr><td colspan="3"><span id="quality3err" style="color:red;"></span></td></tr></table>
+						                    						
+						                    						<span class="err"><form:errors
+																					path="Nonconformance.disposition"></form:errors>
+																		</span>
+						           									
+																		</td>
+																	</tr>
+						                    					        
 								<tr class="row2">
 				                	<td valign="top" align="left" class="input_txt"> Reported By </td>
-				                  	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.reported_by}"  class="input_txtbx1" id="inp_reported_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="reported_by" /><br><span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
+				                  	<td valign="top" align="left" class="input_txt">
+				                  	<input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
+				                  	<select name="reported_by" class="input_cmbbx1" id="reported_by">
+																			 <option value="">--Select--</option>
+																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
+        				       <option value="${reportedByNCs.group_person}" <c:if test="${reportedByNCs.group_person == nonconformance.reported_by}"><c:out value="selected"/></c:if>>${reportedByNCs.group_person}</option>
+			                  </c:forEach>
+			                 </select>
+																			 <span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
 				                  	<td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
-			                                	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span class="err"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
+			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span class="err"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
 				      
 			          
 				       	</tr>
@@ -203,8 +222,14 @@
 			   						<td valign="middle" align="left" class="input_txt"> Temporary Action </td>
                						<td valign="top" align="left" width="20%"><textarea class="input_txtbx1" id="temporary_action"  name="temporary_action"  style="width:20%; height: 50px;" >${nonconformance.temporary_action}</textarea><br/><span class="err"></span></td>
          							<td valign="top" align="left" class="input_txt"> Disposition Responsibility </td>
-			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.name_of_disposition_responsibility}" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="name_of_disposition_responsibility" /><br/><span class="err"><form:errors path="Nonconformance.name_of_disposition_responsibility"></form:errors></span></td>
-				        		</tr>
+			                        <td valign="top" align="left" class="input_txt">
+																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_cmbbx1" style="width:200px;">
+              																
+																			 <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="dispositionname" varStatus="status">
+        				       												<option value="${dispositionname.name}"<c:if test="${dispositionname.name == nonconformance.name_of_disposition_responsibility}"><c:out value="selected"/></c:if>>${dispositionname.name}</option>
+			                  												</c:forEach>
+			                 												</select>
+				        		
 		  					
 		  					<tr class="row2">
                   				   	<td valign="middle" align="left" class="input_txt"> Corrective Action Required(Y/N) </td>
@@ -231,6 +256,235 @@
    </form>
     </div>
             
+
+<script>
+   function doAjaxPost() {
+	 //alert("hi");
+	document.getElementById('type_of_nonconformance').style.display="block";
+	 document.getElementById("reported_by").style.display="inline";
+	var filer_value = $('#type_of_nonconformance').val();
+	var group_person=$('#group_person').val();
+	//alert(group_person);
+	//alert("hello");
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_gettypenc",
+		data : "type_of_nonconformance=" + filer_value+"&group_person="+group_person,
+		success : function(response) {
+	//	alert("response"+response);
+		$('#reported_by').html(response);
+			},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+}
+ 
+</script> 
+<script type="text/javascript">     
+$(document).ready(function() {     
+$('#source_of_nonconformance').change(function(){     
+	//if(($('#source_of_nonconformance').val() == 'Customer Audit') && ($('#source_of_nonconformance').val() == 'Third Party Audit') && ($('#source_of_nonconformance').val() == 'Customer Complaint'))
+	if($('#source_of_nonconformance').val() === 'Customer Audit')     
+   {     
+   $('#external_id').show();  
+   $('#external_label').show();
+   }     
+else if($('#source_of_nonconformance').val() === 'Third Party Audit')
+	{
+	$('#external_id').show();  
+	$('#external_label').show();
+	}
+else if($('#source_of_nonconformance').val() === 'Customer Complaint')
+{
+$('#external_id').show();  
+$('#external_label').show();
+}
+else    
+   {     
+   $('#external_id').hide();
+   $('#external_label').hide();
+   }     
+});     
+});     
+</script>     
+<script>
+function showDiv() {
+
+        	
+        	var element1 = document.getElementById('disposition').value;
+        	var element2 = document.getElementById('quality1').value;
+        
+            if (element1 == '') {
+            	document.getElementById('quality1').style.display="none";
+            	}
+            	else
+            	{
+            	document.getElementById('quality1').style.display="block";
+            	}
+            }
+           
+</script>
+      
+ <!-- <script>
+ $(window).load(function()
+		 {
+function showbutton1()
+{
+	var numbers = /^[0-9]+$/; 
+	var val = document.getElementById("quality1").value;
+if(val == numbers && val!="")  
+	{
+	document.getElementById("button1").style.display = 'block';
+	}
+
+else
+	{
+	document.getElementById("button1").style.display='none';
+	}
+}
+function showbutton2()
+{
+
+	var intgrt = /^[0-9]$/;
+	var val = document.getElementById("quality2").value;
+ if(val==intgrt)
+	
+	{
+	document.getElementById("button2").style.display = 'block';
+	} 
+  else
+	{
+	document.getElementById("button2").style.display='none';
+	} 
+	}
+function showbutton3()
+{
+	var intgrt = /^[0-9]$/;
+	var val = document.getElementById("quality3").value;
+if(val==intgrt)
+	{
+	document.getElementById("button3").style.display = 'block';
+	} 
+else
+	{
+	document.getElementById("button3").style.display = 'none';
+	}
+
+	}
+	
+});
+</script>
+ -->
+ 
+ <script>
+ $(window).load(function()
+		 {
+function showbutton1()
+{
+	var numbers = /^[0-9]+$/; 
+	var val = document.getElementById("quality1").value;
+if(val!="")  
+	{
+	document.getElementById("button1").style.display = 'block';
+	}
+
+else
+	{
+	document.getElementById("button1").style.display='none';
+	}
+}
+function showbutton2()
+{
+
+	var intgrt = /^[0-9]$/;
+	var val = document.getElementById("quality2").value;
+ if(val!="")
+	
+	{
+	document.getElementById("button2").style.display = 'block';
+	} 
+  else
+	{
+	document.getElementById("button2").style.display='none';
+	} 
+	}
+function showbutton3()
+{
+	//var intgrt = /^[0-9]$/;
+	var val = document.getElementById("quality3").value;
+if(val!="")
+	{
+	document.getElementById("button3").style.display = 'block';
+	} 
+else
+	{
+	document.getElementById("button3").style.display = 'none';
+	}
+
+	}
+	
+});
+</script>
+  
+<script>
+ $(window).load(function(){
+	 
+	  $("#quality1").keyup(function() {
+			
+			 $("#quality1err").html(''); 
+			/* var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/; */
+			var intRegex = /^\d+$/;
+			if(intRegex.test($(this).val())||$(this).val()=='') 
+			{
+				var $in = $(this).val();		 
+			}
+			else if($(this).val()!='')
+				{
+				
+				$("#quality1err").html(' enter a number!!!!');
+				}
+		}).keydown(function() {
+		    oldValue = $(this).val();
+		})
+ $("#quality2").keyup(function() {
+			
+			 $("#quality2err").html(''); 
+			/* var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/; */
+			var intRegex = /^\d+$/;
+			if(intRegex.test($(this).val())||$(this).val()=='') 
+			{
+				var $in = $(this).val();		 
+			}
+			else if($(this).val()!='')
+				{
+				
+				$("#quality2err").html(' enter a number!!!!');
+				}
+		}).keydown(function() {
+		    oldValue = $(this).val();
+		})
+ $("#quality3").keyup(function() {
+			
+			 $("#quality3err").html(''); 
+			/* var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/; */
+			var intRegex = /^\d+$/;
+			if(intRegex.test($(this).val())||$(this).val()=='') 
+			{
+				var $in = $(this).val();		 
+			}
+			else if($(this).val()!='')
+				{
+				
+				$("#quality3err").html('enter a number!!!!');
+				}
+		}).keydown(function() {
+		    oldValue = $(this).val();
+		})
+
+});
+
+</script>
       
  <script language="JavaScript">
  function show1()
@@ -273,9 +527,8 @@ function CreateGroup()
 	document.update.action = 'index.php?do=creategroup&type=1';
 	document.update.submit();
 }
-</script>
-<script>
- $(function() {
+
+$(function() {
 	 var format="yy-mm-dd";
            $( "#datepicker" ).datepicker();
            
@@ -288,7 +541,7 @@ function CreateGroup()
 <script>
 	
 	window.onload = function(){
-		show1();show2();show3();
+		show1();show2();show3();doAjaxPost();
 	}
 		</script>
 <jsp:include page="footer.jsp"></jsp:include>

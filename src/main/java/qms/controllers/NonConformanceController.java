@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.poi.hssf.util.HSSFColor.GOLD;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +24,15 @@ import org.springframework.ui.ModelMap;
 
 import qms.dao.CorrectiveAndPreventiveActionsDAO;
 import qms.dao.FileHandlingDAO;
+import qms.dao.HRandTrainingDAO;
 import qms.dao.NonConformanceDAO;
 import qms.dao.ProductId_NCDAO;
 import qms.dao.ReferenceMaintenanceDAO;
+import qms.dao.ReportedByNCDAO;
 import qms.dao.Source_NCDAO;
 import qms.dao.Type_of_NC_DAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
+import qms.forms.HRandTrainingForm;
 import qms.forms.Non_Conformance_SourceForm;
 import qms.forms.ProductId_NC_Form;
 import qms.forms.Type_of_NC_Form;
@@ -59,6 +63,13 @@ public class NonConformanceController {
 	
 	@Autowired
 	ReferenceMaintenanceDAO referenceMaintenanceDAO;
+	
+	@Autowired
+	HRandTrainingDAO hRandTrainingDAO;
+	
+	@Autowired
+	ReportedByNCDAO reportedByNCDAO;
+	
 	// Request Method for view page
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
 	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
@@ -141,6 +152,10 @@ public class NonConformanceController {
 		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
 		model.addAttribute("productId_NC_Form",productId_NC_Form);
 		
+		HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
+		
 		return "add_nonconformance";
 	}
 	
@@ -189,7 +204,7 @@ public class NonConformanceController {
 	
 	//Request Method for Edit Operation
 	@RequestMapping(value = "/edit_nonconformance", method = RequestMethod.GET)
-	public String editNonconformance_get(@RequestParam("id") String id,
+	public String editNonconformance_get(HttpServletRequest request,@RequestParam("id") String id,
 			NonConformance nonConformance,ModelMap model) {
 
 		NonConformanceForm nonConformanceForm=new NonConformanceForm();
@@ -207,6 +222,12 @@ public class NonConformanceController {
 		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
 		model.addAttribute("productId_NC_Form",productId_NC_Form);
+		
+		HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
+		
+		
 		
 	    model.addAttribute("menu","nonconformance");
 	    return "edit_nonconformance";
@@ -470,8 +491,59 @@ public class NonConformanceController {
 			return "nonconformancedelete";
 			
 		}	
-		
+			//ajax get typeofnc post method created on 22-june-2014.(1.53pm)
+			@RequestMapping(value = { "/ajax_gettypenc" }, method = RequestMethod.POST)
+			public @ResponseBody String insert_external_typenc(HttpSession session,
+					HttpServletRequest request, @RequestParam("type_of_nonconformance") String type_of_nonconformance,@RequestParam("group_person") String group_person,ModelMap model, Principal principal,ReportedByNC reportedByNC) {
+				List<String> resultHTML=new ArrayList<String>();
+				System.out.println(" type of nc:::: "+type_of_nonconformance);
+				System.out.println("khhjjhhjhjhj"+type_of_nonconformance);
+				resultHTML=(reportedByNCDAO.filtertypeofnc(type_of_nonconformance));
+				//resultHTML=resultHTML+"/n"+resultHTML+"\n"+resultHTML;
+				System.out.println("result html:::::"+resultHTML);
+				 
+				String returnText="";
+				returnText=returnText+"<select name='reported_by' class='input_cmbbx1' id='reported_by'>";
+			 	
+				System.out.println("Group Person"+group_person);
+				
+				for(String typenc:resultHTML)
+				{
+					returnText+="<option value='"+typenc+"'";
+					
+					if(typenc.equals(group_person))
+					{
+						returnText+=" selected";
+					}
+					returnText+=">"+typenc+"</option>";
+					}			
+				  
+			   returnText=returnText+"</select>";
 			
+				return returnText;
+			}
+
+			//ajax getting typeofnc post method for add page created on 23-june-2014.(7.07pm)
+			@RequestMapping(value = { "/ajax_getaddtypenc" }, method = RequestMethod.POST)
+			public @ResponseBody String insert_external_reportedby(HttpSession session,
+					HttpServletRequest request, @RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model, Principal principal,NonConformance nonConformance) {
+				List<String> resultHTML=new ArrayList<String>();
+				System.out.println(" type of nc:::: "+type_of_nonconformance);
+				System.out.println("khhjjhhjhjhj"+type_of_nonconformance);
+				resultHTML=(reportedByNCDAO.filtertypeofnc(type_of_nonconformance));
+				//resultHTML=resultHTML+"/n"+resultHTML+"\n"+resultHTML;
+				System.out.println("result html:::::"+resultHTML);
+				 
+				String returnText="";
+				returnText=returnText+"<select name='reported_by' class='input_cmbbx1' id='reported_by' >";
+				 for(String typenc:resultHTML)
+				
+					 returnText+="<option value='"+typenc+"'>"+typenc+"</option>";
+				//	}			
+				  
+			   returnText=returnText+"</select>";
 			
+				return returnText;
+			}
 			
 	 	}

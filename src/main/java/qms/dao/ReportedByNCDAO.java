@@ -79,7 +79,8 @@ public boolean update_nc(ReportedByNC reportedByNC)
 	}
 	try
 	{
-		String cmd_select = "update tbl_reportedby_nc set type_of_nc,group_person where auto_id = '"+reportedByNC.getAuto_id()+"'";
+		String cmd_select = "update tbl_reportedby_nc set type_of_nc='"+reportedByNC.getType_of_nc()+"',group_person='"+reportedByNC.getGroup_person()+"' where auto_id = '"+reportedByNC.getAuto_id()+"'";
+		
 		statement.execute(cmd_select);
 		System.out.println("update query executed successfully"+cmd_select);
 	}
@@ -315,6 +316,45 @@ public List<ReportedByNC> findreportnc(String type_of_nc){
     return reportedByNCs;
 	
 }
+
+//get the reported by values created on 22-june-2014(1.57pm).
+public List<String> filtertypeofnc(String type_of_nonconformance){
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<String> nonConformances = new ArrayList<String>();
+ try{
+ 
+ 	String cmd = "select group_person from tbl_reportedby_nc where type_of_nc='"+type_of_nonconformance+"'";
+ 	resultSet = statement.executeQuery(cmd);
+ 
+		System.out.println(cmd);
+		while(resultSet.next()){
+			System.out.println("count");
+	
+			nonConformances.add(resultSet.getString("group_person"));
+
+		}
+ }catch(Exception e){
+ 	System.out.println(e.toString());
+ 	releaseResultSet(resultSet);
+ 	releaseStatement(statement);
+ 	releaseConnection(con);
+ }finally{
+ 	releaseResultSet(resultSet);
+ 	releaseStatement(statement);
+ 	releaseConnection(con);	    	
+ }
+ return nonConformances;
+	
+}
+
 
 
 public void releaseConnection(Connection con) {

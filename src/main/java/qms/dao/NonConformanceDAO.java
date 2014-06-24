@@ -312,6 +312,13 @@ public class NonConformanceDAO extends AbstractExcelView {
 			e1.printStackTrace();
 		}
 		try {
+			if(nonConformance.getSource_of_nonconformance() !="")
+			{
+				String cmd_select = "insert into tbl_external_nc(id,external_id) values('"+nonConformance.getId()+"','"+nonConformance.getExternal_id()+"')";
+			status = statement.execute(cmd_select);
+			System.out.println("insert external query executed" + cmd_select);
+			}
+			
 			String cmd_insert_nonconformance = "insert into tbl_nonconformance(id,source_of_nonconformance,external_id,type_of_nonconformance,product_id,quantity_suspect,nature_of_nonconformance,date_found,reported_by,temporary_action,corrective_action_required,disposition_required,disposition1,quality1,disposition2,quality2,disposition3,quality3,disposition_complete_date,name_of_disposition_responsibility,cost_of_nonconformance) values('"
 					+ nonConformance.getId()
 					+ "','"
@@ -354,6 +361,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 					+ "','"
 					+ nonConformance.getCost_of_nonconformance() + "')";
 			status = statement.execute(cmd_insert_nonconformance);
+			
 			String cmd_insert_corrective="INSERT INTO tbl_corrective_and_preventive_actions(nc_id,capa_requestor,request_date,capa_due_date,assigned_team_leader,team_members,root_cause_analysis_file,use_5_why_in_system,why,root_cause_statement,upload_external_analysis,action,responsibility,due_date,completion_date,verified_by,verification_date) values('"+nonConformance.getId()+"','"+correctiveAndPreventiveActions.getCapa_requestor()+"','"+correctiveAndPreventiveActions.getRequest_date()+"','"+correctiveAndPreventiveActions.getCapa_due_date()+"','"+correctiveAndPreventiveActions.getAssigned_team_leader()+"','"+correctiveAndPreventiveActions.getTeam_members()+"','"+correctiveAndPreventiveActions.getRoot_cause_analysis_file()+"','"+correctiveAndPreventiveActions.getUse_5_why_in_system()+"','"+correctiveAndPreventiveActions.getWhy()+"','"+correctiveAndPreventiveActions.getRoot_cause_statement()+"','"+correctiveAndPreventiveActions.getUpload_external_analysis()+"','"+correctiveAndPreventiveActions.getAction()+"','"+correctiveAndPreventiveActions.getResponsibility()+"','"+correctiveAndPreventiveActions.getDue_date()+"','"+correctiveAndPreventiveActions.getCompletion_date()+"','"+correctiveAndPreventiveActions.getVerified_by()+"','"+correctiveAndPreventiveActions.getVerification_date()+"')";
 			status=statement.execute(cmd_insert_corrective);
 			
@@ -1176,6 +1184,41 @@ public class NonConformanceDAO extends AbstractExcelView {
 	    return nonConformances;
 	}
 
+//getting the reportedby names from nonconformance created on 23-june-2014(12.23).
+	public List<String> filterreported(String type_of_nonconformance){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<String> nonConformances = new ArrayList<String>();
+	    try{
+	    	
+	    	String cmd = "select reported_by from tbl_nonconformance where type_of_nonconformance='"+type_of_nonconformance+"'";
+	    	resultSet = statement.executeQuery(cmd);
+	    	System.out.println(cmd);
+			while(resultSet.next()){
+				System.out.println("count");
+				nonConformances.add(resultSet.getString("source_of_nonconformance"));
+
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return nonConformances;
+		
+	}
 
 
 	public void releaseConnection(Connection con) {
