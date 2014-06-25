@@ -48,12 +48,14 @@ public class FormDAO extends AbstractITextPdfView{
 		List<Form> form = (List<Form>) model.get("form");
 		String[] fields=(String[])model.get("fields");
 		int memolist = fields.length;
-		System.out.println(memolist);
-       PdfPTable table=new PdfPTable(memolist);
-       float[] width= new float[memolist];
+		System.out.println(memolist+1);
+       PdfPTable table=new PdfPTable(memolist+1);
+       float[] width= new float[memolist+1];
       
 		table.setWidthPercentage(100);
-		int i=0;
+		int i=1;
+		 table.addCell(createLabelCell("SNO"));
+		 width[0] = 1.0f;
 		for (String field : fields) {
 			
 			if(field.equals("auto_number"))
@@ -153,8 +155,11 @@ public class FormDAO extends AbstractITextPdfView{
 			}
 			
 		}
+		int j=1;
 			for (Form forms:form){	
-	
+				String sno = String.valueOf(j);
+				table.addCell(createValueCell(sno));
+				j++;
 				for (String field : fields) {
 					
 					if(field.equals("auto_number"))
