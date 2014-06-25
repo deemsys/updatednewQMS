@@ -38,6 +38,7 @@ import qms.dao.NonConformanceDAO;
 import qms.dao.FileHandlingDAO;
 //import qms.dao.ProcessDAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
+import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
 import qms.forms.NonConformanceForm;
 //import qms.forms.DocumentMainForm;
@@ -212,13 +213,63 @@ public class CorrectiveAndPreventiveActionsController
 		model.addAttribute("nonConformanceForm", nonConformanceForm);
 		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
-		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id,request_date,action));
-		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id, request_date, action, 1));
+		model.addAttribute("noofpages",(int) Math.ceil(correctiveAndPreventiveActionsDAO.Search_Correctiveactions(capa_id, request_date, action) * 1.0 / 5));	 
+	        model.addAttribute("button","viewall");
+	        model.addAttribute("success","false");
+	        model.addAttribute("currentpage",1);
+		
+		
+		model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";
-
-
 }
+	
+	@RequestMapping(value="/viewcorrectivereport_page", method=RequestMethod.GET)
+	public String viewcorrectivereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+			@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model) {
+		
+		session.setAttribute("capa", capa_id);
+		session.setAttribute("date", request_date);
+		session.setAttribute("action", action);
+		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id, request_date, action, page));
+		model.addAttribute("noofpages",(int) Math.ceil(correctiveAndPreventiveActionsDAO.Search_Correctiveactions(capa_id, request_date, action) * 1.0 / 5));
+		model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);	
+	  	model.addAttribute("noofrows",5);
+	    model.addAttribute("currentpage",page);
+	    model.addAttribute("menu","corrective");
+	    model.addAttribute("button","viewall");
+	    
+	    return "correctiveactions_list";
+		
+	}
+
+	
+	@RequestMapping(value={"/viewallcorrectivereport"}, method = RequestMethod.GET)
+	public String viewallcorrectivereport(HttpServletRequest request,HttpSession session,ModelMap model,@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,
+			@RequestParam("action") String action,Principal principal ) 
+	{
+		
+		
+		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id, request_date, action, 0));
+	//		 
+		model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
+
+	 // 	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","corrective");
+	    model.addAttribute("button","close");
+	      
+	    	model.addAttribute("menu","corrective");
+	        model.addAttribute("success","false");
+	        model.addAttribute("button","close");
+	        return "correctiveactions_list";
+
+	}
+
+	
 	// getting unique id
 	@RequestMapping(value = { "/addcorrectiveAndPreventiveActions" }, method = RequestMethod.GET)
 	public String add_correctiveAndPreventiveActions(ModelMap model, Principal principal) {
@@ -372,7 +423,8 @@ public class CorrectiveAndPreventiveActionsController
 		model.addAttribute("nonConformanceForm", nonConformanceForm);
 		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
-		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
+		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getlimitedcorrectivereport(1));
+		//	correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
 		return "correctiveactions_list";

@@ -302,6 +302,80 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 	    
 	    }
 	
+	public List<CustomerFeedback> getfindcustomerfeedback(String date, String type,int page) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<CustomerFeedback> customerFeedbacks = new ArrayList<CustomerFeedback>();
+		try {
+			if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
+			
+			if(!date.equals("") && !type.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' and type_of_feedback='"+ type +"' limit " + offset + ","+ limit+"");
+			}
+			else if(!date.equals("") && type.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' limit " + offset + ","+ limit+"");
+			}
+			else if(date.equals("") && !type.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where type_of_feedback='"+ type +"' limit " + offset + ","+ limit+"");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' or type_of_feedback='"+ type +"' limit " + offset + ","+ limit+"");
+			}
+	    	}
+			else
+			{
+
+				if(!date.equals("") && !type.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' and type_of_feedback='"+ type +"'");
+				}
+				else if(!date.equals("") && type.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"'");
+				}
+				else if(date.equals("") && !type.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customerfeedback where type_of_feedback='"+ type +"'");
+				}
+				else
+				{
+					resultSet = statement.executeQuery("select * from tbl_customerfeedback where date_of_feedback='"+ date +"' or type_of_feedback='"+ type +"'");
+				}
+			}
+		while (resultSet.next()) {
+			customerFeedbacks.add(new CustomerFeedback(resultSet.getString("feedback_id"),resultSet.getString("date_of_feedback"), resultSet.getString("type_of_feedback"), resultSet.getString("feedback_recorded_by"), resultSet.getString("feedback_details"), resultSet.getString("attachment_name"),resultSet.getString("attachement_type"),resultSet.getString("attachment_referrence")));
+			
+
+}
+		} catch (Exception e) {
+			//logger.info(e.toString());
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return customerFeedbacks;
+
+	}
 	public List<CustomerFeedback> getfindcustomerfeedback(String date, String type) {
 		Connection con = null;
 		Statement statement = null;
@@ -350,6 +424,51 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 		return customerFeedbacks;
 
 	}
+
+	public int getFindCustomerfeedback(String date, String type) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords =0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<CustomerFeedback> customerFeedbacks = new ArrayList<CustomerFeedback>();
+		try {
+			if(!date.equals("") && !type.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customerfeedback where date_of_feedback='"+ date +"' and type_of_feedback='"+ type +"'");
+			}
+			else if(!date.equals("") && type.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customerfeedback where date_of_feedback='"+ date +"'");
+			}
+			else if(date.equals("") && !type.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customerfeedback where type_of_feedback='"+ type +"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customerfeedback where date_of_feedback='"+ date +"' or type_of_feedback='"+ type +"'");
+			}
+			if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+	}
+
 	public  List<CustomerFeedback> getlimitedfeedbackreport(int page) {
 		Connection con = null;
 		Statement statement = null;

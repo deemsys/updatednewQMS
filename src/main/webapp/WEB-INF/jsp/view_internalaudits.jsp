@@ -169,7 +169,7 @@
              <ul class="pagination">
         
              <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewinternalreport_page?page=${currentpage - 1}" >Prev</a></li> 
+             <li class="page_unselect"><a href="viewinternalreport_page?page=${currentpage - 1}&id=${id}&process=${process}&auditee_name=${name}" >Prev</a></li> 
                </c:if>
               
              <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
@@ -179,16 +179,16 @@
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewinternalreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewinternalreport_page?page=${i}&id=${id}&process=${process}&auditee_name=${name}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewinternalreport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewinternalreport_page?page=${currentpage+1}&id=${id}&process=${process}&auditee_name=${name}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallinternalreport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewallinternalreport?&id=${id}&process=${process}&auditee_name=${name}" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="view_internalaudits" class="paging_select">Back</a></li>
@@ -197,24 +197,19 @@
               </ul>
               </div>
               </td>
-              </tr>
-        
-								
-							</table>
-							
-						</div>
-						
-						
+         </tr>
+         </table>
+         </div>
+         	
 <script>
 function confirmation() {
 	var answer = confirm("Are you Sure You Want to Delete Internal Audits Form ?")
 	if (answer){
 		return true;
 	}
-	else{
+	else
 		return false;
-	}
+	
 }
-
 </script>
 <jsp:include page="footer.jsp"></jsp:include>

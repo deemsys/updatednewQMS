@@ -473,6 +473,156 @@ public class HRandTrainingDAO {
 	    return hRandTrainings;
 		
 	}
+
+//	pagination for search operation results created on 25-jun-14(12.43pm)
+	public List<HRandTraining> findhr(String type,String qualifiedby,String trainer,int page){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<HRandTraining> hRandTrainings = new ArrayList<HRandTraining>();
+	    try{
+	    	if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
+	    	if(!type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else if(type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else if(!type.equals("") && !qualifiedby.equals("") && trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else if(!type.equals("") && qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' or t2.qualified_by='"+qualifiedby+"' or t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	}
+	    	else
+	    	{
+	    		if(!type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+		    	}
+		    	else if(type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+		    	}
+		    	else if(!type.equals("") && !qualifiedby.equals("") && trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"'");
+		    	}
+		    	else if(!type.equals("") && qualifiedby.equals("") && !trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.trainer='"+trainer+"'");
+		    	}
+		    	else
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' or t2.qualified_by='"+qualifiedby+"' or t2.trainer='"+trainer+"'");
+		    	}
+	    	}
+	    	while(resultSet.next()){
+				System.out.println("inside the search operation in database");
+				hRandTrainings.add(new HRandTraining(
+						resultSet.getString("id"),
+						resultSet.getString("name"), 
+						resultSet.getString("job_title"), 
+						resultSet.getString("date_hired"), 
+						resultSet.getString("attachment_name"),
+						resultSet.getString("attachment_type"),
+						resultSet.getString("attachment_referrence"), 
+						resultSet.getString("calibration"),
+						resultSet.getString("responsibility"),
+						resultSet.getString("disposition"),
+						resultSet.getString("documented_in"), 
+						resultSet.getString("qualified_by"),
+						resultSet.getString("type_of_training"),
+						resultSet.getString("trainer"), 
+						resultSet.getString("training_due_date"),
+						resultSet.getString("training_completion_date"),
+						resultSet.getString("training_effectiveness_review_due_date"),
+						resultSet.getString("training_effectiveness_notes")));
+			System.out.println("searching.....");
+			}
+	    }
+	    	catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return hRandTrainings;
+		
+	}
+
+//	pagination for search operation results created on 25-jun-14(12.55pm).
+	public int FindHR(String type,String qualifiedby,String trainer){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords=0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<HRandTraining> hRandTrainings = new ArrayList<HRandTraining>();
+	    try{
+	    	
+	    	if(!type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+	    	}
+	    	else if(type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+	    	}
+	    	else if(!type.equals("") && !qualifiedby.equals("") && trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"'");
+	    	}
+	    	else if(!type.equals("") && qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' and t2.trainer='"+trainer+"'");
+	    	}
+	    	else
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_hr_and_training_main as t1 join tbl_hr_and_training_child as t2 on t1.id=t2.id where t2.type_of_training='"+type+"' or t2.qualified_by='"+qualifiedby+"' or t2.trainer='"+trainer+"'");
+	    	}
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+	}
+
 	public  List<HRandTraining> getlimitedhrreport(int page) {
 		Connection con = null;
 		Statement statement = null;

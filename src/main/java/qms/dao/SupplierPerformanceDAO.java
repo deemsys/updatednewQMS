@@ -558,7 +558,106 @@ public class SupplierPerformanceDAO extends AbstractExcelView {
 	
 	//Search operation for find a particular records
 	public List<SupplierPerformance> getSupplierPerformances(String suppliername,
-			String phone, String email) {
+			String phone, String email, int page) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<SupplierPerformance> supplierPerformances = new ArrayList<SupplierPerformance>();
+		try {
+			if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
+		
+			if(!suppliername.equals("") && !phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"' and email_address='"+ email +"' limit " + offset + ","+ limit+"");
+			}
+			else if(suppliername.equals("") && !phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where phone='"+ phone +"' and email_address='"+ email +"' limit " + offset + ","+ limit+"");
+			}
+			else if(!suppliername.equals("") && phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and email_address='"+ email +"' limit " + offset + ","+ limit+"");
+			}
+			else if(!suppliername.equals("") && !phone.equals("") && email.equals(""))
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"' limit " + offset + ","+ limit+"");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' or phone='"+ phone +"' or email_address='"+ email +"' limit " + offset + ","+ limit+"");
+			}
+	    	}
+			else
+			{
+				if(!suppliername.equals("") && !phone.equals("") && !email.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"' and email_address='"+ email +"'");
+				}
+				else if(suppliername.equals("") && !phone.equals("") && !email.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_supplierperformance where phone='"+ phone +"' and email_address='"+ email +"'");
+				}
+				else if(!suppliername.equals("") && phone.equals("") && !email.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and email_address='"+ email +"'");
+				}
+				else if(!suppliername.equals("") && !phone.equals("") && email.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"'");
+				}
+				else
+				{
+					resultSet = statement.executeQuery("select * from tbl_supplierperformance where supplier_name='"+ suppliername +"' or phone='"+ phone +"' or email_address='"+ email +"'");
+				}
+				
+			}
+			while (resultSet.next()) {
+			supplierPerformances.add(new SupplierPerformance(
+					resultSet.getString("supplier_id"), 
+					resultSet.getString("supplier_name"), 
+					resultSet.getString("category"), 
+					resultSet.getString("address"), 
+					resultSet.getString("city"), 
+					resultSet.getString("state"), 
+					resultSet.getString("postalcode"), 
+					resultSet.getString("country"), 
+					resultSet.getString("website"), 
+					resultSet.getString("certified_to"), 
+					resultSet.getString("contact_name"), 
+					resultSet.getString("contact_title"), 
+					resultSet.getString("phone"), 
+					resultSet.getString("fax"), 
+					resultSet.getString("email_address")));
+			
+
+}
+		} catch (Exception e) {
+			//logger.info(e.toString());
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return supplierPerformances;
+
+	}
+
+	//Search operation for find a particular records
+	public List<SupplierPerformance> findSupplierPerformances(String suppliername,String phone, String email) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -627,7 +726,64 @@ public class SupplierPerformanceDAO extends AbstractExcelView {
 		return supplierPerformances;
 
 	}
+
+	//Search operation for find a particular records
+	public int FindSupplierPerformances(String suppliername,
+			String phone, String email) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords=0;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<SupplierPerformance> supplierPerformances = new ArrayList<SupplierPerformance>();
+		try {
+			
+			if(!suppliername.equals("") && !phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"' and email_address='"+ email +"'");
+			}
+			else if(suppliername.equals("") && !phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_supplierperformance where phone='"+ phone +"' and email_address='"+ email +"'");
+			}
+			else if(!suppliername.equals("") && phone.equals("") && !email.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_supplierperformance where supplier_name='"+ suppliername +"' and email_address='"+ email +"'");
+			}
+			else if(!suppliername.equals("") && !phone.equals("") && email.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_supplierperformance where supplier_name='"+ suppliername +"' and phone='"+ phone +"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_supplierperformance where supplier_name='"+ suppliername +"' or phone='"+ phone +"' or email_address='"+ email +"'");
+			}
+			
+	    	
+	    	
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+
 	
+	}
+
 	//REPORT GENERATION
 	public List<SupplierPerformance> get_supplierperformance_type(String type)
 	 {

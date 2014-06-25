@@ -148,23 +148,29 @@ public class HRandTainingController {
 				session.removeAttribute("trainer");
 				HRandTrainingForm hRandTrainingForm =  new HRandTrainingForm();
 				model.addAttribute("menu","hr");
-				model.addAttribute("noofrows",5);
+			//	model.addAttribute("noofrows",5);
 				hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getlimitedhrreport(1));
-				model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.getnoofhrreport() * 1.0 / 5));	 
+			/*	model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.getnoofhrreport() * 1.0 / 5));	 
 		        model.addAttribute("button","viewall");
 		        model.addAttribute("success","false");
 		        model.addAttribute("currentpage",1);
-		      //  model.addAttribute("employeeForm",employeeForm);
+		    */  //  model.addAttribute("employeeForm",employeeForm);
 				
 				return "view_hr";
 			}
 				
 
 				@RequestMapping(value="/viewhrreport_page", method=RequestMethod.GET)
-				public String viewhrreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+				public String viewhrreport_page(HttpServletRequest request,
+						@RequestParam("page") int page,
+						HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,
+						@RequestParam("qualified_by") String qualifiedby,ModelMap model) {	
+					session.setAttribute("trainer", trainer);
+					session.setAttribute("type", type);
+					session.setAttribute("qualifiedby",qualifiedby);
 					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
-					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getlimitedhrreport(page));
-				 	model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.getnoofhrreport() * 1.0 / 5));
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer,page));
+					model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.FindHR(type,qualifiedby,trainer) * 1.0 / 5));
 				 	model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
 				  	model.addAttribute("noofrows",5);   
 				    model.addAttribute("currentpage",page);
@@ -177,10 +183,17 @@ public class HRandTainingController {
 
 				
 				@RequestMapping(value={"/viewallhrreport"}, method = RequestMethod.GET)
-				public String viewallhrreport(HttpServletRequest request,ModelMap model, Principal principal ) {
-					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
-					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
-					model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+				public String viewallhrreport(HttpServletRequest request,
+						HttpSession session,@RequestParam("trainer") String trainer,
+						@RequestParam("type_of_training") String type,
+						@RequestParam("qualified_by") String qualifiedby,
+						ModelMap model, Principal principal ) {
+					session.setAttribute("trainer", trainer);
+					session.setAttribute("type", type);
+					session.setAttribute("qualifiedby",qualifiedby);HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer,0));
+			//		model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.FindHR(type,qualifiedby,trainer) * 1.0 / 5));
+				model.addAttribute("hRandTrainingForm",hRandTrainingForm);
 
 				  	model.addAttribute("noofrows",5);    
 				   //narrativereportForm.getNarrativereport().size()
@@ -205,10 +218,14 @@ public class HRandTainingController {
 					session.setAttribute("type", type);
 					session.setAttribute("qualifiedby",qualifiedby);
 					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
-						hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer));
+						hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer,1));
+						model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.FindHR(type,qualifiedby,trainer) * 1.0 / 5));
 						System.out.println(type);
 						System.out.println(qualifiedby);
 						System.out.println(trainer);
+						model.addAttribute("button","viewall");
+						model.addAttribute("success","false");
+						model.addAttribute("currentpage",1);
 						model.addAttribute("hRandTrainingForm",hRandTrainingForm);
 						model.addAttribute("menu", "hr");
 						System.out.println("finding....");

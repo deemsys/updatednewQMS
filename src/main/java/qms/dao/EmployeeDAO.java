@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import qms.model.CustomerFeedback;
+import qms.model.DocumentMain;
 import qms.model.Employee;
 
 
@@ -859,7 +860,146 @@ public class EmployeeDAO extends AbstractExcelView{
 	    return employees;		
 	}
 
+	public int FindEmployee(String type,String qualifiedby,String trainer){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords =0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Employee> employees = new ArrayList<Employee>();
+	    try{
+	    	if(!type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+	    	}
+	    	else if(type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+	    	}
+	    	else if(!type.equals("") && !qualifiedby.equals("") && trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"'");
+	    	}
+	    	else if(!type.equals("") && qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.trainer='"+trainer+"'");
+	    	}
+	    	else
+	    	{
+	    		resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' or t2.qualified_by='"+qualifiedby+"' or t2.trainer='"+trainer+"'");
+	    	}
+    	
+	    	
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+
 	
+	}
+	
+
+	
+	public List<Employee> findemployee(String type,String qualifiedby,String trainer,int page){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Employee> employees = new ArrayList<Employee>();
+	    try{
+
+	    	if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
+	    	
+	    	if(!type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else if(type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else if(!type.equals("") && !qualifiedby.equals("") && trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else if(!type.equals("") && qualifiedby.equals("") && !trainer.equals(""))
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	else
+	    	{
+	    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' or t2.qualified_by='"+qualifiedby+"' or t2.trainer='"+trainer+"' limit " + offset + ","+ limit+"");
+	    	}
+	    	}
+	    	else
+	    	{
+	    		if(!type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+		    	}
+		    	else if(type.equals("") && !qualifiedby.equals("") && !trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.qualified_by='"+qualifiedby+"' and t2.trainer='"+trainer+"'");
+		    	}
+		    	else if(!type.equals("") && !qualifiedby.equals("") && trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.qualified_by='"+qualifiedby+"'");
+		    	}
+		    	else if(!type.equals("") && qualifiedby.equals("") && !trainer.equals(""))
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' and t2.trainer='"+trainer+"'");
+		    	}
+		    	else
+		    	{
+		    		resultSet = statement.executeQuery("select t1.*,t2.* from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='"+type+"' or t2.qualified_by='"+qualifiedby+"' or t2.trainer='"+trainer+"'");
+		    	}
+	    	}
+	    		//cmd = "select * from tbl_employee_desc where type_of_training='"+type+"' or qualified_by='"+qualifiedby+"' or trainer='"+trainer+"'";
+			
+			
+//	    	resultSet = statement.executeQuery("select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where employee_id='"+id+"' or type_of_training='"+type+"' or qualified_by='"+qualifiedby+"'");
+			//System.out.println("came");
+			while(resultSet.next()){
+				System.out.println("inside the search operation in database");
+				employees.add(new Employee(resultSet.getString("employee_id"),resultSet.getString("name"), resultSet.getString("job_title"), resultSet.getString("date_hired"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence"), resultSet.getString("process"), resultSet.getString("process_name"), resultSet.getString("doc_control"), resultSet.getString("management_rep"), resultSet.getString("list_of_functions_needes"),resultSet.getString("documented_in"), resultSet.getString("qualified_by"),resultSet.getString("type_of_training"),resultSet.getString("trainer"), resultSet.getString("training_due_date"),resultSet.getString("training_completion_date"),resultSet.getString("training_effectiveness_review_due_date"),resultSet.getString("training_effectiveness_notes"),resultSet.getString("management"),resultSet.getString("process_owner"),resultSet.getString("document_control")));
+			System.out.println("searching.....");
+			}
+	    }
+	    	catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return employees;
+		
+	}
 	public List<Employee> findemployee(String type,String qualifiedby,String trainer){
 		Connection con = null;
 		Statement statement = null;

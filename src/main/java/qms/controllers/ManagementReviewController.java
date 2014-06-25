@@ -126,14 +126,14 @@ public String view_review(HttpSession session,ModelMap model, Principal principa
 		session.removeAttribute("managementreviewdate");
 	/*managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());*/	
 	model.addAttribute("menu","managementreview");
-	model.addAttribute("noofrows",5);     
+//	model.addAttribute("noofrows",5);     
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.getlimitedmanagementreport(1));
-	    model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.getnoofmanagementreport() * 1.0 / 5));	 
+/*	    model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.getnoofmanagementreport() * 1.0 / 5));	 
 	        model.addAttribute("button","viewall");
 	        model.addAttribute("success","false");
 	     
 	        model.addAttribute("currentpage",1);
-
+*/
 	       // model.addAttribute("managementreviewform", managementreviewform);
 
 	return "view_managementreview";
@@ -142,10 +142,14 @@ public String view_review(HttpSession session,ModelMap model, Principal principa
 
 
 @RequestMapping(value="/viewmanagementreport_page", method=RequestMethod.GET)
-public String viewmanagementreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+public String viewmanagementreport_page(HttpServletRequest request,
+		@RequestParam("review_id") String review_id,@RequestParam("category") String category,
+		@RequestParam("management_review_date") String management_review_date,
+		@RequestParam("page") int page,
+		ModelMap model,Principal principal) {	
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
-	managementreviewform.setManagementreviewdetails(managementreviewDAO.getlimitedmanagementreport(page));
-	model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.getnoofmanagementreport() * 1.0 / 5));
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id, category, management_review_date, page));
+	model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.Search_Managementreviews(review_id, category, management_review_date) * 1.0 /5));
 	model.addAttribute("managementreviewform",managementreviewform);	
 	model.addAttribute("noofrows",5);   
  model.addAttribute("currentpage",page);
@@ -158,10 +162,16 @@ public String viewmanagementreport_page(HttpServletRequest request,@RequestParam
 }
 
 
-@RequestMapping(value={"/", "/viewallmanagementreport"}, method = RequestMethod.GET)
-public String viewallmanagementreport(HttpServletRequest request,ModelMap model, Principal principal ) {
+@RequestMapping(value={"/viewallmanagementreport"}, method = RequestMethod.GET)
+public String viewallmanagementreport(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,
+		@RequestParam("review_id") String review_id,@RequestParam("category") String category,
+		@RequestParam("management_review_date") String management_review_date) {
+	session.setAttribute("reviewid",review_id);
+	session.setAttribute("categoryvalue",category);
+	session.setAttribute("managementreviewdate",management_review_date);
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
-	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id, category, management_review_date, 0));
+	
 	model.addAttribute("managementreviewform", managementreviewform);
 
 	model.addAttribute("noofrows",5);    
@@ -352,10 +362,13 @@ public String searchmanagementreviews(HttpSession session,@RequestParam("review_
 	session.setAttribute("categoryvalue",category);
 	session.setAttribute("managementreviewdate",management_review_date);
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
-	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
-	model.addAttribute("managementreviewform", managementreviewform);
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id, category, management_review_date,1));
+	model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.Search_Managementreviews(review_id, category, management_review_date) * 1.0 /5));
+	model.addAttribute("button","viewall");
+	model.addAttribute("success","false");
+	model.addAttribute("currentpage",1);
+	model.addAttribute("managementreviewform",managementreviewform);
 	model.addAttribute("menu","managementreview");
-	 
 	return "view_managementreview";
 
 }

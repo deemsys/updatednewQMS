@@ -33,6 +33,7 @@ import qms.dao.Source_NCDAO;
 import qms.dao.Type_of_NC_DAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
 import qms.forms.HRandTrainingForm;
+import qms.forms.MaintenanceForm;
 import qms.forms.Non_Conformance_SourceForm;
 import qms.forms.ProductId_NC_Form;
 import qms.forms.Type_of_NC_Form;
@@ -78,13 +79,13 @@ public class NonConformanceController {
 		session.removeAttribute("type");
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		model.addAttribute("menu","nonconformance");
-		model.addAttribute("noofrows",5);
+	//	model.addAttribute("noofrows",5);
 		nonConformanceForm.setNonconformance(nonConformanceDAO.getlimitednonconformancereport(1));
-		model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.getnoofnonconformancereport() * 1.0 /5));
+		/*model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.getnoofnonconformancereport() * 1.0 /5));
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
-	    
+	    */
 	    Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
@@ -96,13 +97,15 @@ public class NonConformanceController {
 	
 	
 
-
 	@RequestMapping(value="/viewnonconformancereport_page", method=RequestMethod.GET)
-	public String viewnonconformancereport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+	public String viewnonconformancereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model) {	
+		
+		session.setAttribute("id",id);
+		session.setAttribute("type",type_of_nonconformance);
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
-		nonConformanceForm.setNonconformance(nonConformanceDAO.getlimitednonconformancereport(page));
-		model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.getnoofnonconformancereport() * 1.0 /5));
-		model.addAttribute("nonConformanceForm", nonConformanceForm);	
+    	nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, page));
+		model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance)) * 1.0 / 5);	 
+    	model.addAttribute("nonConformanceForm",nonConformanceForm);
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","nonconformance");
@@ -113,12 +116,16 @@ public class NonConformanceController {
 	}
 
 
-	@RequestMapping(value={"/viewallnonconformancereport"}, method = RequestMethod.GET)
-	public String viewallnonconformanceport(HttpServletRequest request,ModelMap model, Principal principal ) {
-		NonConformanceForm nonConformanceForm = new NonConformanceForm();
-		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
-		model.addAttribute("nonConformanceForm", nonConformanceForm);
 
+	@RequestMapping(value={"/viewallnonconformancereport"}, method = RequestMethod.GET)
+	public String viewallnonconformanceport(HttpSession session, HttpServletRequest request,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model, Principal principal ) {
+		
+
+		session.setAttribute("id",id);
+		session.setAttribute("type",type_of_nonconformance);
+		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance,0));
+		model.addAttribute("nonConformanceForm", nonConformanceForm);
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","maintenance");
@@ -130,7 +137,6 @@ public class NonConformanceController {
 	        return "view_nonconformance";
 
 	}
-
 
 
 	//Request Method for Insert Operation
@@ -261,7 +267,7 @@ public class NonConformanceController {
 
 	//Find Operation
 	@RequestMapping(value="/findnonconformance",method=RequestMethod.GET)		
-	public String findemployee(HttpServletRequest request,HttpSession session,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model)
+	public String findnonconformanc(HttpServletRequest request,HttpSession session,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model)
 	{
 	
 		System.out.println("find");
@@ -271,29 +277,20 @@ public class NonConformanceController {
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
-		if(id=="" && type_of_nonconformance=="")
-		{
+		System.out.println("searching started.......");
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
-			nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
-
-			model.addAttribute("nonConformanceForm",nonConformanceForm);
-			model.addAttribute("menu", "nonconformance");
-			System.out.println("finding....");
-			return "view_nonconformance";
-		}
-		else
-		{
-			System.out.println("searching started.......");
-			NonConformanceForm nonConformanceForm = new NonConformanceForm();
-			nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
-
+			nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, 1));
+			model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance) * 1.0 / 5));
+			model.addAttribute("button","viewall");
+			model.addAttribute("success","false");
+			model.addAttribute("currentpage",1);
 			model.addAttribute("nonConformanceForm",nonConformanceForm);
 			model.addAttribute("menu", "nonconformance");
 			System.out.println("finding....");
 			return "view_nonconformance";
 					
 		}
-		}
+		
 
 
 // Nonconformance Report list page	
@@ -457,14 +454,17 @@ public class NonConformanceController {
 //			session.setAttribute("type_of_nonconformance", type_of_nonconformance);
 		
 				NonConformanceForm nonConformanceForm = new NonConformanceForm();
-				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance));
 
+				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, 1));
+				model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance) * 1.0 / 5));
 				model.addAttribute("nonConformanceForm",nonConformanceForm);
 				model.addAttribute("menu", "admin");
 				System.out.println("finding....");
 				return "nonconformancedelete";
 			
 			}
+
+
 
 
 			@RequestMapping(value={"/deletenonconformance"}, method = RequestMethod.POST)

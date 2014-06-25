@@ -591,7 +591,7 @@ public class NonConformanceDAO extends AbstractExcelView {
 	}
 
 	// Searching the values
-	public List<NonConformance> findnonconformance(String id,String type_of_nonconformance) {
+	public List<NonConformance> findnonconformance(String id,String type_of_nonconformance,int page) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -605,23 +605,46 @@ public class NonConformanceDAO extends AbstractExcelView {
 			e1.printStackTrace();
 		}
 		try {
-			
+			if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
 			
 			if(!id.equals("") && !type_of_nonconformance.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' and type_of_nonconformance='"+type_of_nonconformance+"'");
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' and type_of_nonconformance='"+type_of_nonconformance+"' limit " + offset + ","+ limit+"");
 			}
 			else if(!id.equals("") && type_of_nonconformance.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"'");
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' limit " + offset + ","+ limit+"");
 			}
 			else if(id.equals("") && !type_of_nonconformance.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_nonconformance where type_of_nonconformance='"+type_of_nonconformance+"'");
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where type_of_nonconformance='"+type_of_nonconformance+"' limit " + offset + ","+ limit+"");
 			}
 			else
 			{
-				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' or type_of_nonconformance='"+type_of_nonconformance+"'");
+				resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' or type_of_nonconformance='"+type_of_nonconformance+"' limit " + offset + ","+ limit+"");
+			}
+	    	}
+			else
+			{
+				if(!id.equals("") && !type_of_nonconformance.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' and type_of_nonconformance='"+type_of_nonconformance+"'");
+				}
+				else if(!id.equals("") && type_of_nonconformance.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"'");
+				}
+				else if(id.equals("") && !type_of_nonconformance.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_nonconformance where type_of_nonconformance='"+type_of_nonconformance+"'");
+				}
+				else
+				{
+					resultSet = statement.executeQuery("select * from tbl_nonconformance where id='"+id+"' or type_of_nonconformance='"+type_of_nonconformance+"'");
+				}
 			}
 			while (resultSet.next()) {
 				System.out.println("came");
@@ -662,7 +685,54 @@ public class NonConformanceDAO extends AbstractExcelView {
 		}
 		return nonConformances;
 	}
-	
+
+	// Searching the values
+		public int FindNonconformance(String id,String type_of_nonconformance) {
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			int noofRecords =0;			
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<NonConformance> nonConformances = new ArrayList<NonConformance>();
+			try {
+					if(!id.equals("") && !type_of_nonconformance.equals(""))
+					{
+						resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_nonconformance where id='"+id+"' and type_of_nonconformance='"+type_of_nonconformance+"'");
+					}
+					else if(!id.equals("") && type_of_nonconformance.equals(""))
+					{
+						resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_nonconformance where id='"+id+"'");
+					}
+					else if(id.equals("") && !type_of_nonconformance.equals(""))
+					{
+						resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_nonconformance where type_of_nonconformance='"+type_of_nonconformance+"'");
+					}
+					else
+					{
+						resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_nonconformance where id='"+id+"' or type_of_nonconformance='"+type_of_nonconformance+"'");
+					}
+					if (resultSet.next())
+						noofRecords = resultSet.getInt("noofrecords");
+
+				} catch (Exception e) {
+					releaseResultSet(resultSet);
+					releaseStatement(statement);
+					releaseConnection(con);
+				} finally {
+					releaseResultSet(resultSet);
+					releaseStatement(statement);
+					releaseConnection(con);
+				}
+				return noofRecords;
+
+			
+			}
+
 	
 	
 	//Report Generation

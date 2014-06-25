@@ -82,7 +82,9 @@ public class MaintenanceController {
     	MaintenanceForm maintenanceForm=new MaintenanceForm();
     	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
 		model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.FindMaintenance(equipment_id, equipment_name) * 1.0 / 5));	 
-
+		model.addAttribute("button","viewall");
+		model.addAttribute("success","false");
+		model.addAttribute("currentpage",1);
     	model.addAttribute("maintenanceForm",maintenanceForm);
     	model.addAttribute("menu","maintenance");
 		
@@ -100,8 +102,11 @@ return "maintenance_list";
 		session.setAttribute("equipname",equipment_name);
 		
 			MaintenanceForm maintenanceForm=new MaintenanceForm();
-	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
-	    	
+	    maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
+			model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.FindMaintenance(equipment_id, equipment_name) * 1.0 / 5));	 
+			model.addAttribute("button","viewall");
+			model.addAttribute("success","false");
+			model.addAttribute("currentpage",1);
 	    	model.addAttribute("maintenanceForm",maintenanceForm);
 	    	model.addAttribute("menu","admin");
 	    	

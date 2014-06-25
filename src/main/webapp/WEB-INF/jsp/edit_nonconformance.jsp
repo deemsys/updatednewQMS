@@ -157,7 +157,7 @@
 						                    							</td><td align="right">
 						                    						
 						                    				<input type="text" name="quality1" id="quality1" style="display:none; width:40px;" onchange="showbutton1();"  />
-						                    					</td><td align="left"><input type="button" class="number_btn1" name="No's" id="button1" value="No's" style="display:block;">
+						                    					</td><td align="left"><input type="button" class="number_btn1" name="No's" id="button1" value="No's" style="display:none;">
 						                    					</td></tr>
 						                    					<tr><td colspan="3"><span id="quality1err" style="color:red;"></span></td></tr>
 						                    					<tr>
@@ -382,7 +382,7 @@ else
 		 {
 function showbutton1()
 {
-	var numbers = /^[0-9]+$/; 
+
 	var val = document.getElementById("quality1").value;
 if(val!="")  
 	{

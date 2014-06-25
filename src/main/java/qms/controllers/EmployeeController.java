@@ -35,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 import qms.dao.EmployeeDAO;
 import qms.model.Employee;
 import qms.forms.CustomerFeedbackForm;
+import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
 import qms.forms.JobForm;
 
@@ -174,14 +175,14 @@ public class EmployeeController
 		session.removeAttribute("qualifiedby");
 		session.removeAttribute("trainer");
 		EmployeeForm employeeForm=new EmployeeForm();
-		model.addAttribute("menu","employee");
+	/*	model.addAttribute("menu","employee");
 		model.addAttribute("noofrows",5);
-		employeeForm.setEmployees(employeeDAO.getlimitedemployeereport(1));
-		model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.getnoofemployeereport() * 1.0 / 5));	 
+	*/	employeeForm.setEmployees(employeeDAO.getlimitedemployeereport(1));
+	/*	model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.getnoofemployeereport() * 1.0 / 5));	 
         model.addAttribute("button","viewall");
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
-      //  model.addAttribute("employeeForm",employeeForm);
+    */  //  model.addAttribute("employeeForm",employeeForm);
 		
 		return "view_employees";
 	}
@@ -191,15 +192,21 @@ public class EmployeeController
 
 
 	@RequestMapping(value="/viewemployeereport_page", method=RequestMethod.GET)
-	public String viewemployeereport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+	public String viewemployeereport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,
+			@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,
+			ModelMap model) {	
+		session.setAttribute("trainer", trainer);
+		session.setAttribute("type", type);
+		session.setAttribute("qualifiedby",qualifiedby);
 		EmployeeForm employeeForm=new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.getlimitedemployeereport(page));
-	 	model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.getnoofemployeereport() * 1.0 / 5));
+		employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby, trainer, page));
+	 	model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.FindEmployee(type, qualifiedby, trainer) * 1.0 / 5));
 	 	model.addAttribute("employeeForm",employeeForm);	
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","employee");
 	    model.addAttribute("button","viewall");
+	    
 	    return "view_employees";
 	    
 		
@@ -207,12 +214,14 @@ public class EmployeeController
 
 
 	@RequestMapping(value={"/viewallemployeereport"}, method = RequestMethod.GET)
-	public String viewallmanagementreport(HttpServletRequest request,ModelMap model, Principal principal ) {
+	public String viewallmanagementreport(HttpServletRequest request,ModelMap model,
+			@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,
+			Principal principal ) {
 		EmployeeForm employeeForm=new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.getEmployees());
+		employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby, trainer, 0));
 		model.addAttribute("employeeForm",employeeForm);
 
-	  	model.addAttribute("noofrows",5);    
+	  //	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","employee");
 	    model.addAttribute("button","close");
@@ -378,30 +387,23 @@ public class EmployeeController
 		session.setAttribute("trainer", trainer);
 		session.setAttribute("type", type);
 		session.setAttribute("qualifiedby",qualifiedby);
-
-		if(type=="" && qualifiedby=="" && trainer=="")
-		{
+		
 			EmployeeForm employeeForm = new EmployeeForm();
-			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
+			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer,1));
+			model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.FindEmployee(type, qualifiedby, trainer) * 1.0 /5));
 			System.out.println(type);
 			System.out.println(qualifiedby);
 			System.out.println(trainer);
-			model.addAttribute("employeeForm",employeeForm);
-			model.addAttribute("menu", "employee");
-			System.out.println("finding....");
+				 
+		        model.addAttribute("button","viewall");
+		        model.addAttribute("success","false");
+		        model.addAttribute("currentpage",1);
+			
+			
+			model.addAttribute("employeeForm", employeeForm);
+			model.addAttribute("menu","employee");
 			return "view_employees";
-		}
-		else
-		{
-			System.out.println("searching started.......");
-		EmployeeForm employeeForm = new EmployeeForm();
-		employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
-        model.addAttribute("employeeForm", employeeForm);
-        model.addAttribute("menu","employee");
-        System.out.println("finding result");
-        model.addAttribute("menu","employees");
-		return "view_employees";		
-		}
+			
 		}
 
 	

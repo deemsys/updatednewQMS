@@ -21,8 +21,9 @@ import qms.dao.CustomersDAO;
 import qms.model.Customers;
 import qms.forms.CustomersForm;
 
+
 @Controller
-@SessionAttributes({"customer"})
+@SessionAttributes({"customer","id","name","address"})
 public class CustomersController
 {
 	@Autowired
@@ -39,42 +40,51 @@ public class CustomersController
 	session.removeAttribute("address");
     CustomersForm customersForm=new CustomersForm();
     model.addAttribute("menu","customer");
-    model.addAttribute("noofrows",5); 
+  //  model.addAttribute("noofrows",5); 
     customersForm.setCustomers(customersDAO.getlimitedcustomerreport(1));
-    model.addAttribute("noofpages",(int) Math.ceil(customersDAO.getnoofcustomerreport() * 1.0 / 5));
+   /* model.addAttribute("noofpages",(int) Math.ceil(customersDAO.getnoofcustomerreport() * 1.0 / 5));
     model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
-  //  model.addAttribute("customersForm",customersForm);
+  *///  model.addAttribute("customersForm",customersForm);
     
 	return "view_customers";
  	}
 	
 	
-
-
-
 	@RequestMapping(value="/viewcustomerreport_page", method=RequestMethod.GET)
-	public String viewcustomerreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
-		CustomersForm customersForm=new CustomersForm();
-		customersForm.setCustomers(customersDAO.getlimitedcustomerreport(page));
-	 	model.addAttribute("noofpages",(int) Math.ceil(customersDAO.getnoofcustomerreport() * 1.0 / 5));
-	 	model.addAttribute("customersForm",customersForm);	
-	  	model.addAttribute("noofrows",5);   
+	public String viewcustomerreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+			@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,ModelMap model) {
+		
+		session.setAttribute("id",id);
+		session.setAttribute("name",name);
+		session.setAttribute("address", address);
+		CustomersForm customersForm = new CustomersForm();
+		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,page));
+		model.addAttribute("noofpages",(int) Math.ceil(customersDAO.FindCustomer(id, name, address) * 1.0 / 5));
+		model.addAttribute("customersForm", customersForm);	
+	  	model.addAttribute("noofrows",5);
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","customer");
 	    model.addAttribute("button","viewall");
 	    
 	    return "view_customers";
-	    
 		
 	}
 
 
-	@RequestMapping(value={"/", "/viewallcustomerreport"}, method = RequestMethod.GET)
-	public String viewallcustomerreport(HttpServletRequest request,ModelMap model, Principal principal ) {
+	@RequestMapping(value={"/viewallcustomerreport"}, method = RequestMethod.GET)
+	public String viewallcustomerreport(HttpServletRequest request,ModelMap model, 
+			@RequestParam("page") int page,HttpSession session,
+			@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,
+			Principal principal ) {
+		session.setAttribute("id",id);
+		session.setAttribute("name",name);
+		session.setAttribute("address", address);
 		CustomersForm customersForm=new CustomersForm();
 		customersForm.setCustomers(customersDAO.getCustomers());
+		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,0));
+	
 		model.addAttribute("customersForm",customersForm);
 
 	  	model.addAttribute("noofrows",5);    
@@ -192,7 +202,11 @@ public class CustomersController
 		session.setAttribute("address", address);
 
 			CustomersForm customersForm = new CustomersForm();
-			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
+			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,1));
+			model.addAttribute("noofpages",(int) Math.ceil(customersDAO.FindCustomer(id, name, address) * 1.0 / 5));
+			model.addAttribute("button","viewall");
+			model.addAttribute("success","false");
+			model.addAttribute("currentpage",1);
 			model.addAttribute("customersForm",customersForm);
 			model.addAttribute("menu", "customer");
 			System.out.println("finding....");

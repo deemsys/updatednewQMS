@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import qms.dao.InternalAuditsDAO;
 import qms.dao.ProcessDAO;
+import qms.forms.DocumentMainForm;
 import qms.forms.InternalAuditsForm;
 import qms.forms.ProcessForm;
 
@@ -310,56 +311,64 @@ public class InternalAuditsController {
 	InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
 	//internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 	model.addAttribute("menu","audits");
-	model.addAttribute("noofrows",5); 
+	//model.addAttribute("noofrows",5); 
 	
 	internalAuditsForm.setInternalAudits(internalAuditsDAO.getlimitedinternalreport(1));
-	 model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.getnoofinternalreport() * 1.0 / 5));	 
+	 /*model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.getnoofinternalreport() * 1.0 / 5));	 
 	 model.addAttribute("button","viewall");
      model.addAttribute("success","false");
-     model.addAttribute("currentpage",1);
+     model.addAttribute("currentpage",1);*/
    //  model.addAttribute("internalAuditsForm", internalAuditsForm);
 
 		return "view_internalaudits";
 	}
 
-	
-
-
 
 	@RequestMapping(value="/viewinternalreport_page", method=RequestMethod.GET)
-	public String viewinternalreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
+	public String viewinternalreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+			@RequestParam("id") String id,@RequestParam("process") String process,
+			@RequestParam("auditee_name") String auditee_name,ModelMap model) {
+		
+		session.setAttribute("id",id);
+		session.setAttribute("name",auditee_name);
+		session.setAttribute("process", process);
 		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
-		internalAuditsForm.setInternalAudits(internalAuditsDAO.getlimitedinternalreport(page));
-		model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.getnoofinternalreport() * 1.0 / 5));
-		 model.addAttribute("internalAuditsForm", internalAuditsForm);	
-	  	model.addAttribute("noofrows",5);   
+		internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id, process, auditee_name, page));
+		model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.FindAudits(id, process, auditee_name) * 1.0 / 5));	 
+		model.addAttribute("internalAuditsForm", internalAuditsForm);	
+	  	model.addAttribute("noofrows",5);
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","audits");
 	    model.addAttribute("button","viewall");
-	    
 	    return "view_internalaudits";
-	    
-		
 	}
 
 
-	@RequestMapping(value={"/", "/viewallinternalreport"}, method = RequestMethod.GET)
-	public String viewallinternalreport(HttpServletRequest request,ModelMap model, Principal principal ) {
-		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
-		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
-		model.addAttribute("internalAuditsForm", internalAuditsForm);
+	@RequestMapping(value={"/viewallinternalreport"}, method = RequestMethod.GET)
+	public String viewallinternalreport(HttpSession session,
+			HttpServletRequest request,ModelMap model,
+	@RequestParam("process") String process,@RequestParam("id") String id,
+	@RequestParam("auditee_name") String auditee_name,Principal principal ) 
+	{	
+		session.setAttribute("id", id);
+		session.setAttribute("name", auditee_name);
+		session.setAttribute("process", process);
+	InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
+	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id, process, auditee_name, 0));
+//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+	model.addAttribute("internalAuditsForm", internalAuditsForm);
 
-	  	model.addAttribute("noofrows",5);    
-	   //narrativereportForm.getNarrativereport().size()
-	    model.addAttribute("menu","audits");
-	    model.addAttribute("button","close");
-	      
-	    	model.addAttribute("menu","audits");
-	        model.addAttribute("success","false");
-	        model.addAttribute("button","close");
-	        return "view_internalaudits";
+ // 	model.addAttribute("noofrows",5);    
+   //narrativereportForm.getNarrativereport().size()
+    model.addAttribute("menu","audits");
+    model.addAttribute("button","close");
+      
+    	model.addAttribute("menu","audits");
+        model.addAttribute("success","false");
+        model.addAttribute("button","close");
+        return "view_internalaudits";
 
-	}
+}
 
 	
 	//delete a record 
@@ -416,10 +425,13 @@ public class InternalAuditsController {
 	
 	InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
 	
-	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name));
-	
-	model.addAttribute("internalAuditsForm",internalAuditsForm);
-	
+	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name,1));
+	model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.FindAudits(id, process, auditee_name) * 1.0 / 5));
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);
+    model.addAttribute("internalAuditsForm",internalAuditsForm);
+    model.addAttribute("menu","audits");
     return "view_internalaudits";
 
 }

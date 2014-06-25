@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import qms.model.Customers;
+import qms.model.DocumentMain;
 
 
 
@@ -210,7 +211,7 @@ public class CustomersDAO {
 		
 	}
 	
-	public List<Customers> getfindcustomer(String id,String name, String address) {
+	public List<Customers> getfindcustomer(String id,String name, String address,int page) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -223,28 +224,56 @@ public class CustomersDAO {
 		}
 		List<Customers> customers = new ArrayList<Customers>();
 		try {
-			
+			if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
 			if(!id.equals("") && !name.equals("") && !address.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' and address='"+ address +"'");
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' and address='"+ address +"' limit " + offset + ","+ limit+"");
 			}
 			else if(!id.equals("") && !name.equals("") && address.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"'");
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' limit " + offset + ","+ limit+"");
 			}
 			else if(!id.equals("") && name.equals("") && !address.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and address='"+ address +"'");
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and address='"+ address +"' limit " + offset + ","+ limit+"");
 			}
 			else if(id.equals("") && !name.equals("") && !address.equals(""))
 			{
-				resultSet = statement.executeQuery("select * from tbl_customer where customer_name='"+ name +"' and address='"+ address +"'");
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_name='"+ name +"' and address='"+ address +"' limit " + offset + ","+ limit+"");
 			}
 			else
 			{
-				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"'");
+				resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"' limit " + offset + ","+ limit+"");
 			}	
+	    	}
+			else 
+			{
+				if(!id.equals("") && !name.equals("") && !address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' and address='"+ address +"'");
+				}
+				else if(!id.equals("") && !name.equals("") && address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"'");
+				}
+				else if(!id.equals("") && name.equals("") && !address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and address='"+ address +"'");
+				}
+				else if(id.equals("") && !name.equals("") && !address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_name='"+ name +"' and address='"+ address +"'");
+				}
+				else
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"'");
+				}	
+				
 			
+			}
 		
 		while (resultSet.next()) {
 			customers.add(new Customers(resultSet.getString("customer_id"), resultSet.getString("customer_name"), resultSet.getString("address"), resultSet.getString("city"), resultSet.getString("state"), resultSet.getString("country"), resultSet.getString("zipcode"), resultSet.getString("website"), resultSet.getString("contact_name"), resultSet.getString("title_of_contact"), resultSet.getString("telephone"), resultSet.getString("fax"), resultSet.getString("email_address")));
@@ -264,6 +293,115 @@ public class CustomersDAO {
 		return customers;
 
 	}
+	
+
+	public int FindCustomer(String id,String name, String address){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		int noofRecords =0;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Customers> customers = new ArrayList<Customers>();
+	    try{if(!id.equals("") && !name.equals("") && !address.equals(""))
+		{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' and address='"+ address +"'");
+		}
+		else if(!id.equals("") && !name.equals("") && address.equals(""))
+		{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"'");
+		}
+		else if(!id.equals("") && name.equals("") && !address.equals(""))
+		{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customer where customer_id='"+ id +"' and address='"+ address +"'");
+		}
+		else if(id.equals("") && !name.equals("") && !address.equals(""))
+		{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customer where customer_name='"+ name +"' and address='"+ address +"'");
+		}
+		else
+		{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"'");
+		}	
+		
+		    	
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+
+	
+	}
+	
+
+	public List<Customers> getfindcustomer(String id,String name, String address) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Customers> customers = new ArrayList<Customers>();
+		try {
+				if(!id.equals("") && !name.equals("") && !address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"' and address='"+ address +"'");
+				}
+				else if(!id.equals("") && !name.equals("") && address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and customer_name='"+ name +"'");
+				}
+				else if(!id.equals("") && name.equals("") && !address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' and address='"+ address +"'");
+				}
+				else if(id.equals("") && !name.equals("") && !address.equals(""))
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_name='"+ name +"' and address='"+ address +"'");
+				}
+				else
+				{
+					resultSet = statement.executeQuery("select * from tbl_customer where customer_id='"+ id +"' or customer_name='"+ name +"' or address='"+ address +"'");
+				}	
+				
+		
+		while (resultSet.next()) {
+			customers.add(new Customers(resultSet.getString("customer_id"), resultSet.getString("customer_name"), resultSet.getString("address"), resultSet.getString("city"), resultSet.getString("state"), resultSet.getString("country"), resultSet.getString("zipcode"), resultSet.getString("website"), resultSet.getString("contact_name"), resultSet.getString("title_of_contact"), resultSet.getString("telephone"), resultSet.getString("fax"), resultSet.getString("email_address")));
+			
+}
+		} catch (Exception e) {
+			//logger.info(e.toString());
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return customers;
+
+	}
+	
+
 
 	
 	public List<Customers> listCustomers(String customer_id){

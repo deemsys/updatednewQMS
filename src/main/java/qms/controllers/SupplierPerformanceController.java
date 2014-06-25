@@ -44,15 +44,15 @@ import qms.forms.SupplierPerformanceForm;;
 			session.removeAttribute("email");
 	    SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 	    model.addAttribute("menu","supplier");
-	    model.addAttribute("noofrows",5); 
+	    //model.addAttribute("noofrows",5); 
 	    
 	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getlimitedsupplierreport(1));
-	    
+	    /*
 	    model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.getnoofsupplierreport() * 1.0 / 5));
 	    model.addAttribute("button","viewall");
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
-        
+        */
 	  //  model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 	    
 		return "view_supplierperformance";
@@ -63,12 +63,17 @@ import qms.forms.SupplierPerformanceForm;;
 
 
 		@RequestMapping(value="/viewsupplierreport_page", method=RequestMethod.GET)
-		public String viewsupplierreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
-			 SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
-			 supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getlimitedsupplierreport(page));
-			 
-		 	model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.getnoofsupplierreport() * 1.0 / 5));
-		 	model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+		public String viewsupplierreport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,
+				@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,
+				@RequestParam("email_address") String email,ModelMap model) {	
+			session.setAttribute("suppliername", suppliername);
+			session.setAttribute("phone", phone);
+			session.setAttribute("email",email);
+			
+			SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email, page));
+			model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.FindSupplierPerformances(suppliername, phone, email) * 1.0 / 5));	 
+			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 		  	model.addAttribute("noofrows",5);   
 		    model.addAttribute("currentpage",page);
 		    model.addAttribute("menu","supplier");
@@ -81,10 +86,16 @@ import qms.forms.SupplierPerformanceForm;;
 
 
 		@RequestMapping(value={ "/viewallsupplierreport"}, method = RequestMethod.GET)
-		public String viewallsupplierreport(HttpServletRequest request,ModelMap model, Principal principal )
+		public String viewallsupplierreport(HttpSession session,HttpServletRequest request,ModelMap model,
+				@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,
+				@RequestParam("email_address") String email,Principal principal )
 		{
+			session.setAttribute("suppliername", suppliername);
+			session.setAttribute("phone", phone);
+			session.setAttribute("email",email);
 			SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
-			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
+			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email, 0));
+			model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.FindSupplierPerformances(suppliername, phone, email) * 1.0 / 5));	 
 			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 
 		  	model.addAttribute("noofrows",5);    
@@ -204,28 +215,17 @@ import qms.forms.SupplierPerformanceForm;;
 			session.setAttribute("suppliername", suppliername);
 			session.setAttribute("phone", phone);
 			session.setAttribute("email",email);
-
-			if(suppliername=="" && phone=="" && email=="")
-			{
-				SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
-				supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
-
-				model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-				model.addAttribute("menu", "supplierperformance");
-				System.out.println("finding....");
-				return "view_supplierperformance";
-			}
-			else
-			{
-				System.out.println("searching.......");
+			System.out.println("searching.......");
 			SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
-			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
-	        model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
-	        model.addAttribute("menu","supplierperformance");
-	        System.out.println("finding result");
-	        model.addAttribute("menu","supplier");
+			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email, 1));
+			model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.FindSupplierPerformances(suppliername, phone, email) * 1.0 / 5));	 
+			model.addAttribute("button","viewall");
+			model.addAttribute("success","false");
+			model.addAttribute("currentpage",1);
+	    	model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+	    	model.addAttribute("menu","supplier");
 			return "view_supplierperformance";		
-			}
+			
 			}
 		
 		// Getting the Supplier Performance record's list
@@ -351,7 +351,7 @@ import qms.forms.SupplierPerformanceForm;;
 		session.setAttribute("email",email);
 
 		SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
-			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email));
+			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.findSupplierPerformances(suppliername, phone, email));
 
 			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 			model.addAttribute("menu", "admin");
@@ -362,7 +362,7 @@ import qms.forms.SupplierPerformanceForm;;
 
 
 		@RequestMapping(value={"/deletesupplier"}, method = RequestMethod.POST)
-	public String deleteSelectedsupplierperformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
+	public String deletesupplierperformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
 			session.removeAttribute("suppliername");
 			session.removeAttribute("phone");

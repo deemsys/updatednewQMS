@@ -717,6 +717,106 @@ public List<ManagementReview> get_managementreview(){
 	return managementreviewdetails;
 }
 // to SEARCH WITH ID.... 
+public List<ManagementReview> search_managementreviews(String review_id,String category,String management_review_date,int page) {
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	
+	System.out.println(review_id);
+	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
+
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	
+		try {
+
+			if(page >= 1)
+	    	{
+	    	int offset = 5 * (page - 1);
+			int limit = 5;
+			if(!review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+			{
+			resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'and t1.management_review_date='"+management_review_date+"' limit " + offset + ","+ limit+"");  
+			}
+			else if(!review_id.equals("") && !category.equals("") && management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"' limit " + offset + ","+ limit+"");  
+
+			}
+			else if(!review_id.equals("") && category.equals("") && !management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t1.management_review_date='"+management_review_date+"' limit " + offset + ","+ limit+"");  
+
+			}
+			else if(review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t2.category='"+category+"' and t1.management_review_date='"+management_review_date+"' limit " + offset + ","+ limit+"");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' or t2.category='"+category+"' or t1.management_review_date='"+management_review_date+"' limit " + offset + ","+ limit+"");
+			}
+	    	}
+			else
+			{
+				if(!review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+				{
+				resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'and t1.management_review_date='"+management_review_date+"'");  
+				}
+				else if(!review_id.equals("") && !category.equals("") && management_review_date.equals(""))
+				{
+					resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'");  
+
+				}
+				else if(!review_id.equals("") && category.equals("") && !management_review_date.equals(""))
+				{
+					resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t1.management_review_date='"+management_review_date+"'");  
+
+				}
+				else if(review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+				{
+					resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t2.category='"+category+"' and t1.management_review_date='"+management_review_date+"'");
+				}
+				else
+				{
+					resultSet = statement.executeQuery("select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' or t2.category='"+category+"' or t1.management_review_date='"+management_review_date+"'");
+				}
+
+			}
+			while (resultSet.next()) {
+			managementreviewdetails.add(new ManagementReview(resultSet
+						.getString("review_id"), resultSet
+						.getString("management_review_date"), resultSet.getString("attendee_list_with_titles"), resultSet
+						.getString("next_management_review_by"), resultSet.getString("category"),
+						 resultSet.getString("assessment"),
+						 resultSet.getString("report_link"),
+						 resultSet.getString("action_needed"),
+						 resultSet.getString("action_detail"),
+						 resultSet.getString("action_due_date"),
+						 resultSet.getString("responsibility"),
+						 resultSet.getString("completion_date"),
+						 resultSet.getString("continuous_improvement_project")));
+	
+			}
+	} catch (Exception e) {
+		
+		System.out.println(e.toString());
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	} finally {
+		releaseResultSet(resultSet);
+		releaseStatement(statement);
+		releaseConnection(con);
+	}
+	return managementreviewdetails;
+}
+
+//to SEARCH WITH ID.... 
 public List<ManagementReview> search_managementreviews(String review_id,String category,String management_review_date) {
 	Connection con = null;
 	Statement statement = null;
@@ -784,6 +884,65 @@ public List<ManagementReview> search_managementreviews(String review_id,String c
 	}
 	return managementreviewdetails;
 }
+
+
+//to SEARCH WITH ID.... 
+public int Search_Managementreviews(String review_id,String category,String management_review_date) {
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	int noofRecords=0;
+	System.out.println(review_id);
+	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
+
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	
+		try {
+			
+			if(!review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+			{
+			resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'and t1.management_review_date='"+management_review_date+"'");  
+			}
+			else if(!review_id.equals("") && !category.equals("") && management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t2.category='"+category+"'");  
+
+			}
+			else if(!review_id.equals("") && category.equals("") && !management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' and t1.management_review_date='"+management_review_date+"'");  
+
+			}
+			else if(review_id.equals("") && !category.equals("") && !management_review_date.equals(""))
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t2.category='"+category+"' and t1.management_review_date='"+management_review_date+"'");
+			}
+			else
+			{
+				resultSet = statement.executeQuery("select count(*) as noofrecords from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where t1.review_id='"+review_id+"' or t2.category='"+category+"' or t1.management_review_date='"+management_review_date+"'");
+			}
+	    	if (resultSet.next())
+				noofRecords = resultSet.getInt("noofrecords");
+
+		} catch (Exception e) {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return noofRecords;
+
+	}
+
+
 
 public  List<ManagementReview> getlimitedmanagementreport(int page) {
 	Connection con = null;
