@@ -20,10 +20,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import qms.dao.CustomersDAO;
 import qms.model.Customers;
 import qms.forms.CustomersForm;
+import qms.forms.MaintenanceForm;
 
 
 @Controller
-@SessionAttributes({"customer","id","name","address"})
+@SessionAttributes({"customer","cust_id","name","address"})
 public class CustomersController
 {
 	@Autowired
@@ -35,7 +36,7 @@ public class CustomersController
 	public String show_customers(HttpSession session,ModelMap model, Principal principal )
 	{
 		
-	session.removeAttribute("id");
+	session.removeAttribute("cust_id");
 	session.removeAttribute("name");
 	session.removeAttribute("address");
     CustomersForm customersForm=new CustomersForm();
@@ -56,7 +57,7 @@ public class CustomersController
 	public String viewcustomerreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
 			@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,ModelMap model) {
 		
-		session.setAttribute("id",id);
+		session.setAttribute("cust_id",id);
 		session.setAttribute("name",name);
 		session.setAttribute("address", address);
 		CustomersForm customersForm = new CustomersForm();
@@ -82,12 +83,10 @@ public class CustomersController
 		session.setAttribute("name",name);
 		session.setAttribute("address", address);
 		CustomersForm customersForm=new CustomersForm();
-		customersForm.setCustomers(customersDAO.getCustomers());
 		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,0));
 	
 		model.addAttribute("customersForm",customersForm);
-
-	  	model.addAttribute("noofrows",5);    
+    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","customer");
 	    model.addAttribute("button","close");
@@ -96,7 +95,6 @@ public class CustomersController
 	        model.addAttribute("success","false");
 	        model.addAttribute("button","close");
 	        return "view_customers";
-
 	}
 
 	

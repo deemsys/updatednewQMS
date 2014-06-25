@@ -96,7 +96,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${id}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${cust_id}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${name}"></td>
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address:</td>
@@ -164,34 +164,32 @@
 	<div class="extrabottom">
              <ul class="pagination">
         
-             <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewcustomerreport_page?page=${currentpage - 1}&customer_id=${id}&customer_name=${name}&address=${address}" >Prev</a></li> 
+      		 <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewcustomerreport_page?page=${currentpage - 1}&customer_id=${cust_id}&customer_name=${name}&address=${address}" >Prev</a></li> 
                </c:if>
               
-             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
-             
+            <%--  <c:forEach var="count" begin="1" end="${noofrows}">  --%>
                <c:forEach begin="1" end="${noofpages}" var="i">
                 <c:choose>
                     <c:when test="${currentpage eq i}">
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                   
-                        <li class="page_unselect"><a href="viewcustomerreport_page?page=${i}&customer_id=${id}&customer_name=${name}&address=${address}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewcustomerreport_page?page=${i}&customer_id=${cust_id}&customer_name=${name}&address=${address}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewcustomerreport_page?page=${currentpage+1}&customer_id=${id}&customer_name=${name}&address=${address}">Next</a></li> 
+              <li class="page_unselect"><a href="viewcustomerreport_page?page=${currentpage+1}&customer_id=${cust_id}&customer_name=${name}&address=${address}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                       <li class="page"><a href="viewallcustomerreport?&customer_id=${id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewallcustomerreport?&customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="viewcustomers" class="paging_select">Back</a></li>
               </c:otherwise>
-              </c:choose>					
+              </c:choose>						
 		 
 		  </ul>
 		  </div>
