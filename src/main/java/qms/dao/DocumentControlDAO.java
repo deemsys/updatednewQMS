@@ -23,13 +23,21 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+import qms.controllers.AbstractITextPdfView;
 import qms.model.DocumentMain;
 import qms.model.Employee;
 import qms.model.ExternalDocument;
 import qms.model.Form;
 import qms.model.NonConformance;
-
-public class DocumentControlDAO extends AbstractExcelView
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+public class DocumentControlDAO extends AbstractITextPdfView
 {
 	private DataSource dataSource;
 	 
@@ -38,48 +46,230 @@ public class DocumentControlDAO extends AbstractExcelView
 	}
 	
 	/**
-	 * Excel Sheet Generation
+	 * PDF Sheet Generation
 	 */
 	
-	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-
-		HSSFSheet excelSheet = workbook.createSheet("Document Report");
-		excelSheet.setDefaultColumnWidth(20);
-		  
-		//Style 1
-		CellStyle style = workbook.createCellStyle();
-	        Font font = workbook.createFont();
-	        font.setFontName("Arial");
-	        style.setFillForegroundColor(HSSFColor.BROWN.index);
-	        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-	        style.setWrapText(true);
-	        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-	        font.setColor(HSSFColor.WHITE.index);
-	        style.setFont(font);
+	 
+		@Override
+		protected void buildPdfDocument(Map<String, Object> model, Document doc,
+		PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
+		throws Exception {
 		
-	    //Style2
-	        CellStyle style2 = workbook.createCellStyle();
-	        Font font2 = workbook.createFont();
-	        font2.setFontName("Arial");
-	        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
-	        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
-	        style2.setWrapText(true);
-	        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-	        font2.setColor(HSSFColor.WHITE.index);
-	        style2.setFont(font2); 
-		
+       System.out.println("PDF REPORT");
 		@SuppressWarnings("unchecked")
 		List<DocumentMain> documentMains = (List<DocumentMain>) model.get("documentMains");
 		String[] fields=(String[])model.get("fields");
 		
+		int memolist = fields.length;
+		System.out.println(memolist);
+       PdfPTable table=new PdfPTable(memolist+1);
+       float[] width= new float[memolist+1];
+		table.setWidthPercentage(100);
+		int i=1;
+	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
+		 table.addCell(createLabelCell("SNO"));
+		 width[0] = 1.0f;
+		
+		for (String field : fields) {
+			
+			
+			if(field.equals("document_id"))
+			{
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Document ID"));
+				
+			}
+			else if(field.equals("document_title"))
+			{
+				width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Document Title"));
+			}
+			else if(field.equals("document_type"))
+		    {
+				width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Document Type"));
+		    }
+			else if(field.equals("media_type"))
+		    {
+				width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Media Type"));
+		    }
+			else if(field.equals("location"))
+		    {
+				width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Location"));
+		    }
+			else if(field.equals("process"))
+		    {
+				width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Process"));
+		    }else if(field.equals("external"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("External"));
+		    }else if(field.equals("issuer"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Issuer"));
+		    
+		    }
+		    else if(field.equals("revision_level"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Revision Level"));
+		    }
+		    else if(field.equals("date"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Date"));
+		    }
+		    else if(field.equals("approver1"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Approver1"));
+		    }
+		    else if(field.equals("approver2"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Approver2"));
+		    }
+		    else if(field.equals("approver3"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Approver3"));
+		    }
+		    else if(field.equals("status"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Status"));
+		    }
+		    else if(field.equals("comments"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Comments"));
+		    }else if(field.equals("revision_id"))
+		    {
+		    	width[i] = 1.0f;
+				 i++;
+				table.addCell(createLabelCell("Revision Id"));
+		    }
+		}
+		int j=1;
+		for (DocumentMain documentMain:documentMains){	
+			
+			String sno = String.valueOf(j);
+			table.addCell(createValueCell(sno));
+			j++;
+		for (String field : fields) {
+			
+			if(field.equals("document_id"))
+			{
+				
+				
+						table.addCell(createValueCell(documentMain.getDocument_id()));
+					
+			}      
+			else if(field.equals("document_title"))
+			{
+				
+				table.addCell(createValueCell(documentMain.getDocument_title()));
+			}
+			else if(field.equals("document_type"))
+			{
+				
+				table.addCell(createValueCell(documentMain.getDocument_type()));
+			}
+			else if(field.equals("media_type"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getMedia_type()));
+			}
+			else if(field.equals("location"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getLocation()));
+			}
+			else if(field.equals("process"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getProcess()));
+			}
+			else if(field.equals("external"))
+			{
+				
+				if(documentMain.getExternal().equals("Yes"))
+					table.addCell(createValueCell("Yes"));
+				else
+					table.addCell(createValueCell("No"));
+			
+			}
+			else if(field.equals("issuer"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getIssuer()));
+			}
+			else if(field.equals("revision_level"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getRevision_level()));
+			}
+			else if(field.equals("date"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getDate()));
+			}
+			else if(field.equals("approver1"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getApprover1()));
+			}
+			else if(field.equals("approver2"))	
+			{
+			
+				table.addCell(createValueCell(documentMain.getApprover2()));
+			}
+			else if(field.equals("approver3"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getApprover3()));
+			}
+			else if(field.equals("status"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getStatus()));
+			}
+			else if(field.equals("comments"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getComments()));
+			}
+			else if(field.equals("revision_id"))	
+			{
+				
+				table.addCell(createValueCell(documentMain.getRevision_id()));
+			}
+			
 
-        setExcelHeader(excelSheet,style,fields);
+  		}
+		}
+		table.setWidths(width);
 		
-		setExcelRows(excelSheet,documentMains,fields,style2);
-		
+		doc.add(table);
 	}
 	
 	
