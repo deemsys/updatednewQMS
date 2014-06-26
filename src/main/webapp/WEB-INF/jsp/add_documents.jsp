@@ -105,11 +105,11 @@
                 <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
                </c:when>
                </c:choose> --%>
-               <span id="exchange">
+               
                  <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy" id="id_hardcopy" <c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle1(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
                 <input type="radio" name="media_type"value="both"  id="id_both" onchange="toggle1(this.value);" <c:if test="${documentMain.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-                </span>
+               
                     <span class="err" style="color:red"><form:errors path="DocumentMain.media_type"></form:errors></span> 
                </td>
            <td valign="top" align="left" class="input_txt" width="20%"></td>
@@ -445,7 +445,7 @@ function toggle1(value){
 	}
 function validation()
 {
-	document.getElementById('exchange').style.display='none';
+	
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
 	 if(document.getElementById('id_hardcopy').checked)
@@ -657,7 +657,29 @@ document.getElementById("lable_td").style.display="none";
   	
   	}
   </script>
-       
+       <script>
+	alert("on load");
+	window.onload = function(){
+		if(document.getElementById('id_hardcopy').checked)
+			{
+			alert("hard");
+			var value1 = document.getElementById('id_hardcopy').value;
+			toggle1(value1);
+			}
+		if(document.getElementById('id_electronic').checked){
+			
+			
+			var value1 = document.getElementById('id_electronic').value;
+			toggle1(value1);
+		}
+		if(document.getElementById('id_both').checked){
+			
+			
+			var value1 = document.getElementById('id_both').value;
+			toggle1(value1);
+		}
+	}
+		</script>
  		
       <jsp:include page="footer.jsp"></jsp:include>
  
