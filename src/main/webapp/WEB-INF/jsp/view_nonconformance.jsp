@@ -182,7 +182,7 @@
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallnonconformancereport?&id=${id}&type_of_nonconformance=${type}" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewallnonconformancereport?id=${id}&type_of_nonconformance=${type}" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="view_nonconformance" class="paging_select">Back</a></li>

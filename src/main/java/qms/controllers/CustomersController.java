@@ -79,7 +79,7 @@ public class CustomersController
 			@RequestParam("page") int page,HttpSession session,
 			@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,
 			Principal principal ) {
-		session.setAttribute("id",id);
+		session.setAttribute("cust_id",id);
 		session.setAttribute("name",name);
 		session.setAttribute("address", address);
 		CustomersForm customersForm=new CustomersForm();

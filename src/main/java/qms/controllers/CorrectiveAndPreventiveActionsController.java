@@ -290,9 +290,7 @@ public class CorrectiveAndPreventiveActionsController
 			@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,
 			BindingResult result, ModelMap model, Principal principal) 
 	{
-		
-
-		session.setAttribute("correctiveAndPreventiveActions",correctiveAndPreventiveActions);
+				session.setAttribute("correctiveAndPreventiveActions",correctiveAndPreventiveActions);
 
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
@@ -733,7 +731,7 @@ System.out.println(" source of nc:::: "+returnText);
  List <String> naturenc=new ArrayList<String>();
  naturenc = nonConformanceDAO.filternatureofnc(nc_id);
 	
- returnText  =returnText + "<textarea class='input_txtbx1'style='width:100%; height: 70px;' id='nature_of_ic' name='nature_of_nonconformance'>";
+ returnText  =returnText + "<textarea class='input_txtbx1'style='width:100%; height: 70px;' id='nature_of_nc' name='nature_of_nc'>";
  for(String natureofnc : naturenc)
  {
 	 //returnText = returnText+"<input type = 'text' class='input_txtbx1' id='nature_of_nc' name='nature_of_nonconformance' value='"+natureofnc+"'/>";
@@ -744,7 +742,7 @@ System.out.println(" source of nc:::: "+returnText);
  
  List<String> action = new ArrayList<String>();
  action = nonConformanceDAO.filteraction(nc_id);
- returnText = returnText + "<textarea class='input_txtbx1' style='width:55%; height: 70px' id='action' name='temporay_action'>";
+ returnText = returnText + "<textarea class='input_txtbx1' style='width:55%; height: 70px' id='temporary_action' name='temporary_action'>";
  for(String tempaction:action)
  {
 	 returnText=returnText+tempaction;

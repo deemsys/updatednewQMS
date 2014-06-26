@@ -488,7 +488,8 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 			resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {
 				
-				correctiveAndPreventiveActions.add(new CorrectiveAndPreventiveActions(resultSet.getString("capa_id"),resultSet.getString("nc_id"), resultSet
+				correctiveAndPreventiveActions.add(new CorrectiveAndPreventiveActions(
+						resultSet.getString("capa_id"),resultSet.getString("nc_id"), resultSet
 						.getString("source_of_nonconformance"), resultSet
 						.getString("external_id"), resultSet
 						.getString("type_of_nonconformance"), resultSet

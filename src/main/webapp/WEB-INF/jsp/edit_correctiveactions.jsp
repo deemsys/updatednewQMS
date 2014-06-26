@@ -59,14 +59,15 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                <%--   <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>"/><br/><span class="err"></span></td>
-              	  --%> <td valign="top" align="left" class="input_txt"> NC ID :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>"/><br/><span class="err"></span></td>
+              	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
 				   <select name="nc_id" id="nc_id" class="input_txtbx" onchange="doAjaxPost();" style="height:20px;">
                <option value="">--Select--</option>
                <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
-               <option value="<c:out value="${nonconformance.id}"/>"><c:out value="${nonconformance.id}"/></option>
+               <%-- <option value="<c:out value="${nonconformance.id}"/>"><c:out value="${nonconformance.id}"/></option>
+                --%><option value="${nonconformance.id}"<c:if test="${nonconformance.id== correctiveAndPreventiveActions.nc_id}"><c:out value="selected"/></c:if>>${nonconformance.id}</option>
                </c:forEach>
                </select>
                <!-- <select name="nc_id" class="input_txtbx" style="height:20px;">
@@ -103,10 +104,11 @@
                   <select name="date_found" id="datepicker" class="input_txtbx" style="height:20px;">
                   <option valule="">--Select--</option>
                   <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
-                  <option value="<c:out value="${nonconformance.date_found}"/>"><c:out value="${nonconformance.date_found}"/></option>
+                     <option value="${nonconformance.date_found}"<c:if test="${nonconformance.date_found == correctiveAndPreventiveActions.date_found}"><c:out value="selected"/></c:if>>${nonconformance.date_found}</option>
                   </c:forEach>
                   </select><span class="err"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span>
                   </td>
+                  
 
                   <td valign="top" align="left" class="input_txt" width="30%"> Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><div id="type_of_nc"><input type="text" name="type_of_nonconformance" class="input_txtbx" id="type_of_nc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.type_of_nonconformance}"></c:out>' /><br/><span class="err"><form:errors path="CorrectiveAndPreventiveActions.type_of_nonconformance"></form:errors></span>
@@ -122,7 +124,7 @@
                 </td>
             	
             	<td valign="top" align="left" class="input_txt" width="30%">Nature of NC :</td>      
-				<td valign="top" align="left" class="input_txt" width="70%"><div id="nature_of_nc"><textarea class="input_txtbx1"  id="nature_of_nc" name="nature_of_nonconformance" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.temporary_action}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span>
+				<td valign="top" align="left" class="input_txt" width="70%"><div id="nature_of_nc"><textarea class="input_txtbx1"  id="nature_of_nc" name="nature_of_nc" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.nature_of_nc}</textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.nature_of_nc"></form:errors></span>
 				</div>
 				</td>
             </tr>

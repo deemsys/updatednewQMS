@@ -55,6 +55,7 @@ public class CorrectiveAndPreventiveActions
 		this.attachment_referrence = attachment_referrence;
 	
 	}
+	private String auto_id;
 	@NotEmpty
 	private String capa_id;
 	@NotEmpty

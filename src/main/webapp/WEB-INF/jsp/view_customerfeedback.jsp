@@ -172,7 +172,7 @@
 	<div class="extrabottom">
              <ul class="pagination">
              <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewfeedbackreport_page?page=${currentpage - 1}&date_of_feedback=${date}&type_of_feedback=${type} ">Prev</a></li>
+             <li class="page_unselect"><a href="viewfeedbackreport_page?page=${currentpage - 1}&feedbackdate=${date}&feedbacktype=${type}">Prev</a></li>
              </c:if>
               
              <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
@@ -182,12 +182,13 @@
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewfeedbackreport_page?page=${i}&date_of_feedback=${date}&type_of_feedback=${type}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewfeedbackreport_page?page=${i}&feedbackdate=${date}&feedbacktype=${type}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
               <li class="page_unselect"><a href="viewfeedbackreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li> 
+              <li class="page_unselect"><a href="viewhrreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li>
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">

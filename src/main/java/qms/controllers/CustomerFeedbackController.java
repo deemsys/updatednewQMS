@@ -281,7 +281,7 @@ public class CustomerFeedbackController
 		session.setAttribute("date", date);
 		session.setAttribute("type", type);
 		CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
-		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type, 1));
+		customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type, page));
 		model.addAttribute("noofpages",(int) Math.ceil(customerFeedbackDAO.getFindCustomerfeedback(date, type) * 1.0 / 5));
 		model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
 	  	model.addAttribute("noofrows",5);   
