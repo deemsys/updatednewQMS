@@ -61,7 +61,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>"/><br/><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>"/>${capa_id}<br/><span class="err"></span></td>
               	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
 				   <select name="nc_id" id="nc_id" class="input_txtbx" onchange="doAjaxPost();" style="height:20px;">
@@ -118,7 +118,7 @@
 			<tr class="row2">
 				<td valign="middle" align="left" class="input_txt" width="30%">Temporary Action :</td>               
                 <td valign="top" align="left" class="input_txt" width="70%">
-                <div id="action"><textarea class="input_txtbx1" id="action" name="temporary_action"  style="width:55%; height: 70px;" value=""></textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span>
+                <div id="temporary_action"><textarea class="input_txtbx1" id="temporary_action" name="temporary_action"  style="width:55%; height: 70px;" value=""></textarea><span class="err"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span>
                 </div>
                 </td>
             	
@@ -304,7 +304,7 @@
 		$('#source_of_nonconformance').html(two_drop[0]).value=response;
 		$('#type_of_nc').html(two_drop[1]).value=response;
 		$('#nature_of_nc').html(two_drop[2]).value=response;
-		$('#action').html(two_drop[3]).value=response;
+		$('#temporary_action').html(two_drop[3]).value=response;
 		
 		},
 		error : function(e) {

@@ -8,10 +8,10 @@ public class Form {
 	/*private String document_type_id;*/
 	private String auto_number;
 
-	
+	@NotEmpty
 	private String location;
 	
-  
+    @NotEmpty
 	private String form_or_rec_id;
 
     @NotEmpty
@@ -20,7 +20,7 @@ public class Form {
     @NotEmpty
 	private String form_or_rec_title;
 
-
+    @NotEmpty
 	private String process;
 	
 	
@@ -29,7 +29,7 @@ public class Form {
 	@NotEmpty
 	private String retention_time;
 	
-
+	@NotEmpty
 	private String form;
 	
     private CommonsMultipartFile attachments;
@@ -40,26 +40,30 @@ public class Form {
 	
 	private String attachment_referrence;
 	
+	
 	private String document_type_id;
 	
+	
 	private String document_type_id1;
+	
 	private String auto_no;
 	
 	@NotEmpty
 	private String effective_date;
 	
-	
+	@NotEmpty
 	private String document_id;
 	
 	@NotEmpty
 	private String approver1;
 	
-	@NotEmpty
+	
 	private String issuer;
 	
 	@NotEmpty
 	private String comments;
 
+	
     private String revision_id;
 	
 	public Form() {

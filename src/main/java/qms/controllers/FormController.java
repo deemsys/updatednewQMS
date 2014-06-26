@@ -107,7 +107,7 @@ public class FormController
 
 	//Insert a record
 	@RequestMapping(value={"/addform"}, method = RequestMethod.POST)
-	public String insert_form(HttpSession session,HttpServletRequest request,ModelMap model, @ModelAttribute("Form") @Valid Form form,@ModelAttribute("RevisionForm") @Valid RevisionForm revisionForm, BindingResult result, Principal principal)
+	public String insert_form(HttpSession session,HttpServletRequest request,ModelMap model, @ModelAttribute("Form") @Valid Form form,BindingResult result,@ModelAttribute("RevisionForm") @Valid RevisionForm revisionForm,BindingResult result2, Principal principal)
 
 	{	
 		int flag = 0;
@@ -234,7 +234,7 @@ public class FormController
 	
 	//Update a record
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
-	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result,ModelMap model,@RequestParam("process") String process, Principal principal)
+	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,BindingResult result,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result2,ModelMap model,@RequestParam("process") String process, Principal principal)
 	{
 		
 		int flag = 0;

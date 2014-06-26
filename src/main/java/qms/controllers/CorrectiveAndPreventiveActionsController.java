@@ -451,19 +451,19 @@ public class CorrectiveAndPreventiveActionsController
 	
 	//update a record
 	@RequestMapping(value = "/updatecorrectiveAndPreventiveActions", method = RequestMethod.POST)
-	public String update_correctiveAndPreventiveActions(ModelMap model, Principal principal,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,
+	public String update_correctiveAndPreventiveActions(HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,
 			BindingResult result) {
 		//NEW LINES
 		
 		
 		//END NEW LINE
+		String action_field = request.getParameter("action");
+		System.out.println("action value::::" + action_field);
 		
-		
-		
-		/*if (result.hasErrors())
+	/*	if (result.hasErrors())
 		{
 			
-			//System.out.println("output");
+			System.out.println("error occured");
 			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.edit_CorrectiveAndPreventiveActions(correctiveAndPreventiveActions.getCapa_id()));
 			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
@@ -534,8 +534,10 @@ public class CorrectiveAndPreventiveActionsController
 						inputStream.close();
 					}
 				}
+				System.out.println("before going to dao");
 				if (correctiveAndPreventiveActionsDAO.update_correctiveAndPreventiveActions(correctiveAndPreventiveActions))
 			 	{
+					System.out.println("after");
 					model.addAttribute("success", "update");
 					model.addAttribute("success_message", "updated Successfully");
 					flag = 1;
@@ -740,10 +742,10 @@ System.out.println(" source of nc:::: "+returnText);
 
  returnText=returnText+"<split>";
  
- List<String> action = new ArrayList<String>();
- action = nonConformanceDAO.filteraction(nc_id);
+ List<String> temporary_action = new ArrayList<String>();
+ temporary_action = nonConformanceDAO.filteraction(nc_id);
  returnText = returnText + "<textarea class='input_txtbx1' style='width:55%; height: 70px' id='temporary_action' name='temporary_action'>";
- for(String tempaction:action)
+ for(String tempaction:temporary_action)
  {
 	 returnText=returnText+tempaction;
 
