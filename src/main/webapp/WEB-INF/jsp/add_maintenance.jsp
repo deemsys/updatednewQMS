@@ -86,7 +86,7 @@
                   <option value="Active">Active</option>
                   <option value="Not Active">Not Active</option>
                   </select>
-                  <br/><span class="err"></span></td>
+                  <br/><span class="err"><form:errors path="Maintenance.equipment_status"></form:errors></span></td>
                   
                   </tr>
                   <tr class="row2">

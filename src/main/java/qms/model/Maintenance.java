@@ -27,7 +27,7 @@ public class Maintenance
 	private String serial_number;
 	@NotEmpty
 	private String date_acquired;
-
+	@NotEmpty
 	private String equipment_status;
 	
 	private String frequency_maintenance;

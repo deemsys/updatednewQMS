@@ -14,7 +14,7 @@ public class DocumentMain
 	@NotEmpty
 	private String document_id;
 	
-	
+
 	private String document_type_id;
 	
 	@NotEmpty
@@ -37,7 +37,7 @@ public class DocumentMain
 	@NotEmpty
 	private String issuer;
 	
-	
+	@NotEmpty
 	private String revision_level;
 	
 	@NotEmpty

@@ -41,7 +41,7 @@
   </div>
         </td>
       </tr>
-     
+    
       <tr>
         <td valign="top" align="left"><!-- <!-- 
             <div class="headings altheading">
@@ -61,7 +61,8 @@
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="15%">Document ID:
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/>
-              <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/>
+              <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/> 
+             
                </td>
                <td valign="top" align="left" class="input_txt1" width="15%" id="lable_td" style="display:none;">
                <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
@@ -75,23 +76,41 @@
 			                  </c:forEach>
                </select>
                <input type="text" value="" id="document_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="document_id" onblur="change_to_label();"/>
-               <!-- <a href="#" style="text-decoration: none;" onclick="show_userdefined()">&nbsp;&nbsp;User defined</a><br/><span class="err"></span>
-               </td>
+               
+              <c:if test="${fail=='fail'}">
+              <p class="closestatus">
+						<span style="color:red">Required Field Should not be Blank</span>
+						</p>
+              </c:if>
+              </td>
               
-              <td valign="top" align="left" class="input_txt1" width="15%" id="user_defined_td" style="display:none;">
-               <input type="text" id="user_def_document_id1" class="input_txtbx1" value="" style="width:70px;"/>-<input type="text" id="user_def_document_id2" class="input_txtbx1" value="" style="width:70px;" onblur="show_lable();"/>
-               <a href="#" style="text-decoration: none;" onclick="hide_userdefined()">&nbsp;&nbsp;Cancel</a>           
-               <br/>
-               </td> 
-               -->
               
                <td valign="top" align="left" class="input_txt" width="5%">Media Type:</td>
                <td valign="top" align="left" class="input_txt" width="89px;">
                
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" checked<c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-                    
+               <%--  <c:choose>
+               <c:when test="${documentMain.media_type=='hardcopy'}">
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${documentMain.media_type=='electronic'}">
+               <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${documentMain.media_type=='both'}">
+               <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               </c:choose> --%>
+               <span id="exchange">
+                 <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy" id="id_hardcopy" <c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle1(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
+                <input type="radio" name="media_type"value="both"  id="id_both" onchange="toggle1(this.value);" <c:if test="${documentMain.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+                </span>
+                    <span class="err" style="color:red"><form:errors path="DocumentMain.media_type"></form:errors></span> 
                </td>
            <td valign="top" align="left" class="input_txt" width="20%"></td>
               
@@ -105,7 +124,8 @@
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Title:</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txt1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txt1"  style="width:200px;" value="${documentMain.document_title}"/><br/>
+                <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
@@ -113,10 +133,13 @@
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value = "">--Select Location--</option>
 			                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
-        				       <option value="${formlocation.form_location}">${formlocation.form_location}</option>
-			                  </c:forEach> </select><br>
+        				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == documentMain.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
+			                  </c:forEach> </select>
+			            <span id="hard"style="color:red"></span>
+			                  <br>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
-              
+               <span id="attach" style="color:red"></span>
+          <%--   <span class="err"><form:errors path="DocumentMain.attachments"></form:errors></span> --%>
                </td>
           
            <td valign="middle" id="softcopy_file_label" style="display:none;" align="left" class="input_txt" width="20%"></td>
@@ -133,29 +156,17 @@
               <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
-        				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
+        				       <option value="${documenttype.document_type}"<c:if test="${documenttype.document_type == documentMain.document_type}"><c:out value="selected"/></c:if>>${documenttype.document_type}</option>
 			                  </c:forEach> </select>
-             <br/><span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span></td>
-              
-              <%--  <td valign="top" align="left" class="input_txt" width="20%">
-               <select name="document_type" class="input_cmbbx1" style="width:200px;">
-               <option value="">--Select--</option>
-               <option value="Manual" <c:if test="${documentMain.document_type=='Manual'}"><c:out value="Selected"/></c:if>>Manual</option>
-               <option value="Procedure" <c:if test="${documentMain.document_type=='Procedure'}"><c:out value="Selected"/></c:if>>Procedure</option>
-               <option value="Work Instruction" <c:if test="${documentMain.document_type=='Work Instruction'}"><c:out value="Selected"/></c:if>>Work Instruction</option>
-               <option value="Standard" <c:if test="${documentMain.document_type=='Standard'}"><c:out value="Selected"/></c:if>>Standard</option>
-               <option value="Goverment Reg" <c:if test="${documentMain.document_type=='Goverment Reg'}"><c:out value="Selected"/></c:if>>Goverment Reg</option>
-               <option value="Specification" <c:if test="${documentMain.document_type=='Specification'}"><c:out value="Selected"/></c:if>>Specification</option>
-               </select><br/>
-               <span class="err"><form:errors path="DocumentMain.document_type"></form:errors></span>
-               </td> --%>
-               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">Process:</td>
+             <br/>
+             <span class="err"style="color:red" ><form:errors path="DocumentMain.document_type"></form:errors></span></td>
+             <td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
-               <option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
+               <option value="<c:out value="${processes.process_name}"/>" <c:if test="${documentMain.process==processes.process_name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_name}"/></option>
                </c:forEach>
                
                
@@ -163,7 +174,7 @@
                </select>
                
                
-               <br/><span class="err"><form:errors path="DocumentMain.process"></form:errors></span></td>
+               <br/><span class="err"style="color:red"><form:errors path="DocumentMain.process"></form:errors></span></td>
             <td valign="top" align="left" class="input_txt" width="20%"></td>
               
              </tr> 
@@ -175,8 +186,8 @@
                <td valign="top" align="left" class="input_txt" width="25%">
                
               <input type="radio" name="external" value="Yes"  id="id_yesforexternal"checked>Yes&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="external" value="No" id="id_noforexternal"  >No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-               
+              <input type="radio" name="external" value="No" id="id_noforexternal"  >No&nbsp;&nbsp;&nbsp;<br/>
+               <span class="err" style="color:red"><form:errors path="DocumentMain.external"></form:errors></span>
                </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
               
@@ -210,14 +221,15 @@
                             <td valign="middle" align="left" class="input_txt">Document Id</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="documentid"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
 																			name="document_id"
 																			value="" /><br/>
+																		
+																		<span class="err" style="color:red"><form:errors path="DocumentMain.document_id"></form:errors></span> 
 																			</td>
 																			
 																		  <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"><form:errors path="DocumentMain.date"></form:errors></span></td>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/>
+               <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span> </td>
               	
 								
 </tr>             
@@ -225,7 +237,7 @@
            
             <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
-               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" onblur="change_to_label_issuer();" style="width:80px;">
+               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" <c:if test="${documentMain.issuer==employees.name}"><c:out value="Selected"/></c:if>onblur="change_to_label_issuer();" style="width:80px;">
                <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -256,19 +268,13 @@
               
                </select>
                 <span id="issuer_generate">
-               
+               <span class="err"style="color:red"><form:errors path="DocumentMain.issuer"></form:errors></span> 
                </span>
                 <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
                <br/>
-              </td>
-               <%--  <td valign="middle" align="left" class="input_txt" width="20%">Approver 1(Process Owner):</td>
-               <td valign="top" align="left" class="input_txt" width="25%">
-               <span id="process_owner_id"></span>
-                           
-               <br/><span class="err"><form:errors path="DocumentMain.approver1"></form:errors></span>
-               
-               
-               </td> --%>
+            
+             
+               </td> 
                 <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="20%">
                <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" style="width:80px;">
@@ -302,12 +308,12 @@
               
                </select>
                 <span id="issuer_generate1">
-               
+                <span class="err"style="color:red"><form:errors path="DocumentMain.approver1"></form:errors></span> 
                </span>
                 <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
                <br/>
               </td>
-              <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+              <td valign="top" align="left" class="input_txt" width="20%"></td>
                  </tr>  
               <tr class="row2" style="border:none;">
               
@@ -318,8 +324,9 @@
                 <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
         				       <option value="${revisionlevel.revision_level}">${revisionlevel.revision_level}</option>
 			                  </c:forEach> </select>
-             <br/><span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span></td>
-             --%> 
+             <br/>
+             <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span></td>--%>
+             
                  <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
@@ -330,32 +337,26 @@
                               <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
         				       <option value="${revisionlevel.combined_output}">${revisionlevel.combined_output}</option>
 			                  </c:forEach> </select>  --%>
-             <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span>
+              <span class="err"style="color:red"><form:errors path="DocumentMain.revision_level"></form:errors></span> 
              
             </td>
               
                <%-- <input type="text" id="revision_level" name="revision_level" class="input_txtbx1" style="width:200px;" value="${documentMain.revision_level }"/><br/>
-              <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span> --%>
+              <span class="err"style="color:red"><form:errors path="DocumentMain.revision_level"></form:errors></span> --%>
                <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
-               
- 			<!-- 	<select name="approver2" class="input_cmbbx1" id="approver2" style="width:200px;">
-             	  <option value="">--Select--</option>
-            	   <option value="Apporver name1">Approver name 1</option>
-            	   <option value="Approver name2">Approver name 2</option>
-            	   <option value="Approver name3">Approver name 3</option>
-               </select> -->
                 <select name="approver2" id="id_inpapprover2"  class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${employeeForm1.employees}" var="employees" varStatus="true">
-               <option value="<c:out value="${employees.name}"/>"><c:out value="${employees.name}"/></option>
+               <option value="<c:out value="${employees.name}"/>"<c:if test="${documentMain.approver2==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
                </c:forEach>
                
                
                
                </select>
                
-               <br/><span class="err"><form:errors path="DocumentMain.approver2"></form:errors></span></td>
+               <br/>
+                <span class="err"style="color:red"><form:errors path="DocumentMain.approver2"></form:errors></span></td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
              </tr>
              <tr class="row1" style="border:none;">
@@ -366,16 +367,17 @@
                <select name="approver3" id="id_inpapprover3"  class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${employeeForm2.employees}" var="employees" varStatus="true">
-               <option value="<c:out value="${employees.name}"/>"><c:out value="${employees.name}"/></option>
+               <option value="<c:out value="${employees.name}"/>"<c:if test="${employees.name == documentMain.approver3}"><c:out value="selected"/></c:if>><c:out value="${employees.name}"/></option>
                </c:forEach>
               </select>
                
-               <br/><span class="err"><form:errors path="DocumentMain.approver3"></form:errors></span></td>
+               <br/><span class="err"style="color:red"><form:errors path="DocumentMain.approver3"></form:errors></span> </td>
           
              </tr>  
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments:</td>
-               <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/><span class="err"></span></td>
+               <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
+                <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
                <td valign="top" align="left" class="input_txt" width="20%">Status:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -388,7 +390,7 @@
                <option value="Obsolete" <c:if test="${documentMain.status=='Obsolete'}"><c:out value="Selected"/></c:if>>Obsolete</option>
                </select>
                 
-               <br/><span class="err"><form:errors path="DocumentMain.status"></form:errors></span></td>
+               <br/><span class="err"style="color:red"><form:errors path="DocumentMain.status"></form:errors></span> </td>
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
              </tr>
              
@@ -396,7 +398,7 @@
              </div>
              <tr class="row1" >
              <td colspan="2" align="right">
-             <input align="left" class="submit_btn1" type="submit" id="submit"  name="submit" value="Submit" ></td>
+             <input align="left" class="submit_btn1" type="submit" id="submit" onclick="return validation();" name="submit" value="Submit" ></td>
              <td colspan="3">
               <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td>
             <!-- <td><a href="#" class="button blue">
@@ -409,37 +411,75 @@
 </td> -->
 </tr></table></div></form>
 <script type="text/javascript">
-function toggle2(value){
-  
-    var e = document.getElementById('location_label');
-    var e1 = document.getElementById('file_upload_label');
-    var e2=document.getElementById('location_text');
-    var e3=document.getElementById('id_file');
-if(value=='electronic')
-    {
-	e.style.display="none";
-	e1.style.display="block";
-	e2.style.display="none";
-	e3.style.display="block";
+
+function toggle1(value){
 	
-    }
-else if(value=='hardcopy')
-    {
-	e.style.display="block";
-	e1.style.display="none";
-	e2.style.display="block";
-	e3.style.display="none";
-  
-    }
-else if(value=='both')
-	{
-	e.style.display="block";
-	e1.style.display="block";
-	e2.style.display="block";
-	e3.style.display="block";
+	    var e = document.getElementById('location_label');
+	    var e1 = document.getElementById('file_upload_label');
+	    var e2=document.getElementById('location_text');
+	    var e3=document.getElementById('id_file');
+	if(value=='electronic')
+	    {
+		e.style.display="none";
+		e1.style.display="block";
+		e2.style.display="none";
+		e3.style.display="block";
+		
+	    }
+	else if(value=='hardcopy')
+	    {
+		e.style.display="block";
+		e1.style.display="none";
+		e2.style.display="block";
+		e3.style.display="none";
+	  
+	    }
+	else if(value=='both')
+		{
+		e.style.display="block";
+		e1.style.display="block";
+		e2.style.display="block";
+		e3.style.display="block";
+		}
+	    
 	}
-    
-}
+function validation()
+{
+	document.getElementById('exchange').style.display='none';
+	 var e2=document.getElementById('location_text').value;
+	 var e3=document.getElementById('id_file').value;
+	 if(document.getElementById('id_hardcopy').checked)
+	 {
+		if(e2=="")
+			{
+			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+			return false;
+			}
+		 
+		 
+	 }
+	 if(document.getElementById('id_electronic').checked)
+	{
+		 if(e3=="")
+			 {
+			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+			 return false;
+			 }
+	}
+	if(document.getElementById('id_both').checked)
+		{
+		if(e2=="")
+		{
+		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+		return false;
+		}
+		 if(e3=="")
+		 {
+		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+		}
+	}
 </script>
          <script>
          $(function() {

@@ -311,7 +311,7 @@ public class DocumentController {
 
 	//updating a record
 	@RequestMapping(value = { "/update_documents" }, method = RequestMethod.POST)
-	public String update_document(HttpServletRequest request,@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain1,@ModelAttribute("RevisionDocument")@Valid RevisionDocument revisionDocument,BindingResult result,HttpSession session, ModelMap model,@RequestParam("document_type") String search_document_type,@RequestParam("process") String search_process,Principal principal) {
+	public String update_document(HttpServletRequest request,@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain1,BindingResult result,@ModelAttribute("RevisionDocument")@Valid RevisionDocument revisionDocument,BindingResult result1,HttpSession session, ModelMap model,@RequestParam("document_type") String search_document_type,@RequestParam("process") String search_process,Principal principal) {
 
 		int flag = 0;
 		
@@ -321,14 +321,55 @@ public class DocumentController {
 		session.setAttribute("documentMain",documentMain1);
 		//System.out.println("attachment name= "+documentMain.getAttachment_name());
 		//System.out.println("attachments = "+documentMain.getAttachments()+request.getParameter("attachments"));
-		/*if(result.hasErrors())
+		if(result.hasErrors())
 		{
+			session.removeAttribute("documentMain");
+			String auto_number=documentMain1.getAuto_number();
+			System.out.println("auto number=" +auto_number);
+			documentControlDAO.changeRevisionFormat(auto_number);
+			DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+			documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getLevelFormat());
+			model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
 			
 			load_document_page_dropdowns(model);
+			
+			DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+			documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+			model.addAttribute("documentTypeForm",documentTypeForm);
+
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+
+			
+			RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
+			revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(auto_number));
+			model.addAttribute("revisionDocumentForm",revisionDocumentForm);
+			
+			DocumentMainForm documentMainForm=new DocumentMainForm();
+			documentMainForm.setDocumentMains(documentControlDAO.getDocument_byid(auto_number));
+			
+			
+			DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
+			documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+			model.addAttribute("documentPrefixForm",documentPrefixForm);
+			
+			FormLocationForm formLocationForm = new FormLocationForm();
+			formLocationForm.setFormLocations(formLocationDAO.getlocation());
+			model.addAttribute("formLocationForm",formLocationForm);
+			
+			
+			
+			
+			model.addAttribute("documentMainForm",documentMainForm);
+			
+			  model.addAttribute("menu","document");
+			//documentControlDAO.getDocument_byid(auto_number);
+			
 			return "edit_documents";
 		}
 		else
-		{*/
+		{
 		
 		
 		if(documentMain1.getMedia_type().equals("1"))
@@ -453,12 +494,13 @@ public class DocumentController {
 			
 			}
 		}
+	}
 	
 	//Insert a record
 	@RequestMapping(value = { "/insert_documents" }, method = RequestMethod.POST)
 	public String insert_document(HttpSession session,
 			HttpServletRequest request, ModelMap model, Principal principal,
-			@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain, @Valid RevisionDocument revisionDocument,BindingResult result) throws IOException {
+			@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain,BindingResult result,@ModelAttribute("revisionDocument") @Valid RevisionDocument revisionDocument,BindingResult result1) throws IOException {
 		
 		int flag = 0;
 		//documentMain.setDocument_id(request.getParameter("document_id_hidden"));
@@ -472,13 +514,33 @@ public class DocumentController {
 		System.out.println("Started Inserting documents");
 		session.setAttribute("documentMain",documentMain);
 		// Started to handle upload document
+		System.out.println(documentMain.getAttachment_name());
 		
 		
-		
-		if(result.hasErrors())
+		if(result.hasErrors() || doc_id.equals(""))
 		{
+			System.out.println("errors");
 			load_document_page_dropdowns(model);
-			model.addAttribute("id",documentControlDAO.get_documentid());
+			
+			DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+			documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getLevelFormat());
+			model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+			
+			DocumentMainForm documentMainForm=new DocumentMainForm();
+			model.addAttribute("documentMainForm",documentMainForm);
+			model.addAttribute("id", documentControlDAO.get_documentid());
+			
+			FormLocationForm formLocationForm = new FormLocationForm();
+			formLocationForm.setFormLocations(formLocationDAO.getlocation());
+			model.addAttribute("formLocationForm",formLocationForm);
+			
+			System.out.println("id"+documentControlDAO.get_documentid());
+			  model.addAttribute("menu","document");
+			if(doc_id.equals("")){
+			  model.addAttribute("fail","fail");
+			}
+			if(documentMain.getLocation().equals(""))
+				model.addAttribute("location","fail");
 			return "add_documents";
 		}
 		else
