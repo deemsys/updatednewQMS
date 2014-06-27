@@ -14,7 +14,7 @@
 $(window).load(function(){
 	//alert("yes");
 	   $(document).on("click", "label.mytxt", function () {
-		   alert("ok");
+		
 	        var txt = $(".mytxt").text();
 	        $(".mytxt").replaceWith("<input class='mytxt'/>");
 	        $(".mytxt").val(txt);
@@ -428,13 +428,12 @@ function validation()
 	 var documenttitle = document.getElementById('documenttitle').value;
 	 var revisionlevel = document.getElementById('revisionlevel').value;
 	 var comments = document.getElementById('comments').value;
-	 alert("validate");
 	 if(document.getElementById('id_hardcopy').checked)
 	 {
-		 alert("hard"+file);
-		if(e2=="")
+
+			if(e2=="")
 			{
-			 alert("hard"+file);
+			
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
@@ -447,8 +446,8 @@ function validation()
 	 }
 	 if(document.getElementById('id_electronic').checked)
 	{
-		 alert("file"+file);
-		 alert("choose"+choose);
+		 
+		
 		 if(file =="")
 		 {
 		 document.getElementById("attach").innerHTML="File No Uploaded";
@@ -473,7 +472,7 @@ function validation()
 	}
 	if(document.getElementById('id_both').checked)
 		{
-		 alert("both"+file);
+		
 		if(e2=="")
 		{
 			
@@ -569,7 +568,7 @@ function change_file(){
 
 function Approver1(){
 	var element = document.getElementById("approver").value();
-	alert(element);
+	
 	
 }
 
