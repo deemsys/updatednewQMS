@@ -480,7 +480,7 @@ function validation()
 		}
 	 if(documenttitle.charAt(0) ==" ")
 	 {
-		 alert("space");
+		
 		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
 		 return false;
 	 }
@@ -489,7 +489,7 @@ function validation()
 	 {
 	 }
 	 else{
-		 alert("exre");
+		
 	 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
 	 return false;
  	}

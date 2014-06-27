@@ -90,7 +90,7 @@ $(window).load(function(){
               
               
                <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="display:none;">
-               <option value = "">Select Doc Prefix</option>
+               
 			                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
@@ -135,7 +135,9 @@ $(window).load(function(){
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Document Title:</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1"  style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span></td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx1" id="documenttitle" style="width:200px;" value="${documentMain.document_title}"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
+               <span id="documenttitle1" style="color:red"></span>
+               </td>
               <c:choose>
                 <c:when test="${documentMain.media_type=='hardcopy'}">
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
@@ -314,6 +316,7 @@ $(window).load(function(){
         				       <option value="${revisionlevel.combined_output}"<c:if test="${revisionlevel.combined_output == documentMain.revision_level}"><c:out value="selected"/></c:if>>${revisionlevel.combined_output}</option>
 			                  </c:forEach>
 			                 </select> --%>
+			                  <span id="revisionlevel1" style="color:red"></span>
 			                 <span class="err"style="color:red"><form:errors path="DocumentMain.revision_level"></form:errors></span>
 			                 
    			    </td>
@@ -359,7 +362,9 @@ $(window).load(function(){
              </tr>  
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments:</td>
-               <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/><span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
+               <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
+                <span id="comments1" style="color:red"></span>
+               <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
                <td valign="top" align="left" class="input_txt" width="20%">Status:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -424,15 +429,22 @@ e3.style.display="block";
 }
 function validation()
 {
-	 
-	 var e1=document.getElementById('file_name').value;
+	
+	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
+	
+	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
+	 var documenttitle = document.getElementById('documenttitle').value;
+	 var revisionlevel = document.getElementById('revisionlevel').value;
+	 var comments = document.getElementById('comments').value;
+	 
 	 if(document.getElementById('id_hardcopy').checked)
 	 {
 		if(e2=="")
 			{
-			document.getElementById("hard").innerHTML="Required Field hard Should not be Empty";
+			
+			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
 		 
@@ -440,26 +452,57 @@ function validation()
 	 }
 	 if(document.getElementById('id_electronic').checked)
 	{
-		 if(e1=="")
+		 if(e3=="")
 			 {
-			 document.getElementById("attach").innerHTML="Required Field electro Should not be Empty";
+			
+			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 			 return false;
 			 }
-		 
 	}
 	if(document.getElementById('id_both').checked)
 		{
 		if(e2=="")
 		{
-		document.getElementById("hard").innerHTML="Required Field both Should not be Empty";
+			
+		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
 		 if(e3=="")
 		 {
-		 document.getElementById("attach").innerHTML="Required Field both Should not be Empty";
+			
+		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 		 return false;
 		 }
 		}
+	 if(documenttitle.charAt(0) ==" ")
+	 {
+		
+		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
+		 return false;
+	 }
+	 
+	 if(documenttitle.match(validate1))
+	 {
+	 }
+	 else{
+		
+	 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
+	 if(revisionlevel.match(dotnumber))
+	 { }
+	 else{
+		
+	 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
+	 if(comments.match(validate1))
+	 { 
+	 }
+	 else{
+	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
 	}
 function doAjaxPost_for_process() {
 
@@ -519,15 +562,23 @@ function show_edit()
 	function change_to_label()
 	{
 		
-	   
+		var numbers = /^[0-9]+$/; 
 		var type=document.getElementById('document_type_id');	
 		
 		var doc_id=document.getElementById('document_id');	
 		
 		
 		document.getElementById("changeafter").style.display="block";
+		if(doc_id.value.match(numbers))
+		{
+			document.getElementById("changeafter").innerHTML = type.value+-+doc_id.value;
+		}
+		else{
+			var color = "Please Enter numeric values";
+			var result = color.fontcolor("red");
+			document.getElementById("changeafter").innerHTML=result;
+		}
 		
-		document.getElementById("changeafter").innerHTML = type.value+-+doc_id.value;
 		
 		
 		var gen_id=document.getElementById("generated_id");
