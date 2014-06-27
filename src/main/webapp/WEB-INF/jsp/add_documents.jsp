@@ -65,7 +65,9 @@
              
                </td>
                <td valign="top" align="left" class="input_txt1" width="15%" id="lable_td" style="display:none;">
-               <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
+               <label id="document_id_full_lbl"></label>
+              
+               <a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
                <br/>
                </td>          
               
@@ -88,23 +90,7 @@
                <td valign="top" align="left" class="input_txt" width="5%">Media Type:</td>
                <td valign="top" align="left" class="input_txt" width="89px;">
                
-               <%--  <c:choose>
-               <c:when test="${documentMain.media_type=='hardcopy'}">
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
-               </c:when>
-               <c:when test="${documentMain.media_type=='electronic'}">
-               <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
-               </c:when>
-               <c:when test="${documentMain.media_type=='both'}">
-               <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" onchange="toggle1(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
-               </c:when>
-               </c:choose> --%>
+             
                
                  <input type="radio" name="media_type" onchange="toggle1(this.value);" value="hardcopy" id="id_hardcopy" <c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle1(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
@@ -124,7 +110,8 @@
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Title:</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txt1"  style="width:200px;" value="${documentMain.document_title}"/><br/>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txt1" id="documenttitle" style="width:200px;" value="${documentMain.document_title}"/><br/>
+                <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
@@ -331,7 +318,7 @@
            
                <td valign="top" align="left" class="input_txt1" width="20%">
                <input type="text" name="revision_level" class="input_txt1" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}"/><br/>
-               
+               <span id="revisionlevel1" style="color:red"></span>
         <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;height:18px;beckground:lightgrey;">
                				<option value="">--select--</option>
                               <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
@@ -377,6 +364,7 @@
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments:</td>
                <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
+              <span id="comments1" style="color:red"></span>
                 <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
                <td valign="top" align="left" class="input_txt" width="20%">Status:</td>
@@ -446,12 +434,20 @@ function toggle1(value){
 function validation()
 {
 	
+	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
+	
+	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
+	 var documenttitle = document.getElementById('documenttitle').value;
+	 var revisionlevel = document.getElementById('revisionlevel').value;
+	 var comments = document.getElementById('comments').value;
+	 
 	 if(document.getElementById('id_hardcopy').checked)
 	 {
 		if(e2=="")
 			{
+			
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
@@ -462,6 +458,7 @@ function validation()
 	{
 		 if(e3=="")
 			 {
+			
 			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 			 return false;
 			 }
@@ -470,15 +467,46 @@ function validation()
 		{
 		if(e2=="")
 		{
+			
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
 		 if(e3=="")
 		 {
+			
 		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 		 return false;
 		 }
 		}
+	 if(documenttitle.charAt(0) ==" ")
+	 {
+		 alert("space");
+		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
+		 return false;
+	 }
+	 
+	 if(documenttitle.match(validate1))
+	 {
+	 }
+	 else{
+		 alert("exre");
+	 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
+	 if(revisionlevel.match(dotnumber))
+	 { }
+	 else{
+		
+	 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
+	 if(comments.match(validate1))
+	 { 
+	 }
+	 else{
+	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
 	}
 </script>
          <script>
@@ -550,13 +578,20 @@ function doAjaxPost_for_process() {
 function change_to_label()
 {
 	
-    
+	var numbers = /^[0-9]+$/; 
 	var type=document.getElementById("document_type_id");	
 	var doc_id=document.getElementById("document_id");	
 	document.getElementById("lable_td").style.display="block";
 	document.getElementById("edit_td").style.display="none";
-	
+	if(doc_id.value.match(numbers))
+	{
 	document.getElementById("document_id_full_lbl").innerHTML=type.value+-+doc_id.value;
+	}
+	else{
+		var color = "Please Enter numeric values";
+		var result = color.fontcolor("red");
+		document.getElementById("document_id_full_lbl").innerHTML=result;
+	}
 	var gen_id=document.getElementById("generated_id");
 	gen_id.value=type.value+-+doc_id.value;
 	
