@@ -115,22 +115,26 @@
               <tr class="row2">	
 				  <td valign="middle" align="left" class="input_txt" width="30%"></span>Form/Rec Title :</td>
 				  <td valign="top" align="left" class="input_txt" width="70%"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
+																			type="text" class="input_txtbx1" id="form_or_rec_title"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="form_or_rec_title"
-																			value="${docform.form_or_rec_title }" /><br/><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
+																			value="${docform.form_or_rec_title }" />
+																			<br/>
+																			<span id="title" style="color:red"></span><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
 				
 				 													              <td valign="middle" align="left" class="input_txt" width="30%"><span
 																			class="err"></span>Responsibility:</td>
 																		<td valign="top" align="left" class="input_txt" width="70%"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
+																			type="text" class="input_txtbx1" id="responsibility"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility"
-																			value="${docform.responsibility }" /><br/><span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
+																			value="${docform.responsibility }" /><br/>
+																			<span id="responsibility" style="color:red"></span>
+																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
 																		</td>
 <!-- 																		<td valign="top" align="left" class="input_txt">																	
@@ -271,7 +275,9 @@
 												
 				<td valign="middle" align="right" class="input_txt">Comments :</td>
 				<td valign="top" align="left" class="input_txt" >
-				<textarea class="input_txtbx1"  name="comments"  style="width:150px; height: 50px;" >${docform.comments}</textarea><br/><span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
+				<textarea class="input_txtbx1" id="comments" name="comments"  style="width:150px; height: 50px;" >${docform.comments}</textarea><br/>
+				<span id="comments" style="color:red"></span>
+				<span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
 			
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -381,13 +387,21 @@ e3.style.display="block";
 <script>
 function validation()
 {
+var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
+var space = /\S/;
+	
 	
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
+	 var title = document.getElementById('form_or_rec_title').value;
+	 var responsibility = document.getElementById('responsibility').value;
+	 var comments = document.getElementById('comments').value;
+	 
 	 if(document.getElementById('id_hardcopy').checked)
 	 {
 		if(e2=="")
 			{
+			
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
@@ -398,6 +412,7 @@ function validation()
 	{
 		 if(e3=="")
 			 {
+			
 			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 			 return false;
 			 }
@@ -406,16 +421,63 @@ function validation()
 		{
 		if(e2=="")
 		{
+			
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
 		 if(e3=="")
 		 {
+			
 		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 		 return false;
 		 }
 		}
-	}
+	/*  if(title.charAt(0) ==" ")
+	 {
+		
+		 document.getElementById("title").innerHTML="spaces should not allowed";
+		 return false;
+	 }
+	 if(title.match(/\S/))
+	 {
+	 }
+	 else{
+		
+	 document.getElementById("title").innerHTML="spaces should not allowed";
+	 return false;
+ 	}
+	 
+	 if(responsibility.match(validate1)
+	 {
+	 }
+	 else{
+		
+	 document.getElementById("responsibility").innerHTML="spaces should not  allowed";
+	 return false;
+ 	}
+	
+	 if(comments.match(validate1))
+	 { 
+	 }
+	 else{
+	 document.getElementById("comments").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
+ */
+ if(!title.match(/\S/)) {
+     document.getElementById("title").innerHTML="Empty spaces should not allowed";
+     return false;
+ }
+ if(!responsibility.match(/\S/)) {
+     document.getElementById("responsibility").innerHTML="Empty spaces should not allowed";
+     return false;
+ }
+ if(!comments.match(/\S/)) {
+     document.getElementById("comments").innerHTML="Empty spaces should not allowed";
+     return false;
+ }
+}
+	
 
 window.onload = function(){
 	if(document.getElementById('id_hardcopy').checked)
@@ -602,6 +664,8 @@ document.getElementById("lable_td").style.display="none";
             	form_id.value=value;
             
             }
+ 
+
  </script>
  
  <script>
