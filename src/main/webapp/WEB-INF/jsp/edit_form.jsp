@@ -79,12 +79,12 @@
             
                
               <td valign="middle" align="left" class="input_txt">Responsibility :</td>
-			  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_external_id"
+			  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="responsibility"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility" style="width:90%"
 																			value="${form.responsibility}" /><br/>
-																			<span id="responsibility" style="color:red"></span>
+																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
 																		</td>
@@ -105,7 +105,7 @@
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="form_or_rec_title" style="width:100%"
 																			value="${form.form_or_rec_title}" /><br/>
-																			<span id="title" style="color:red"></span>
+																			<span id="title1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
@@ -261,18 +261,20 @@
 																		</td>
 																		              <td valign="middle" align="left" class="input_txt">Effective Date :</td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="datepicker"
+																			type="text" class="input_txtbx1" id="datepicker123"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');" style="width:70%"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="effective_date"
-																			value="${form.effective_date}" />
+																			value="${form.effective_date}" /><br/>
+																			<span id="datepicker1234" style="color:red"></span>
 																			<input
 																			type="hidden" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="auto_no"
 																			value="${form.auto_number}" />
-																			<br/><span style="color:red;"><form:errors path="Form.effective_date"></form:errors></span>
+																			<br/>
+																			<span style="color:red;"><form:errors path="Form.effective_date"></form:errors></span>
 																		</td>  
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -328,8 +330,8 @@
 																		
 																		 <td valign="middle" align="left" class="input_txt">Comments :</td>
 																		<td valign="top" align="left" class="input_txt">
-																	<textarea class="input_txtbx1"  name="comments"  style="width:70%; height: 50px;" >${form.comments}</textarea><br/>
-																	<span id="comments" style="color:red"></span>
+																	<textarea class="input_txtbx1"  name="comments" id="comments" style="width:70%; height: 50px;" >${form.comments}</textarea><br/>
+																	<span id="comments1" style="color:red"></span>
 																	<span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
@@ -342,7 +344,7 @@
                    
               <tr class="row1">
               <td colspan="2" align="right">
-             <input type="submit" id="export"  name="export" value="Submit" class="submit_btn1"></td>
+             <input type="submit" id="export"  name="export" value="Submit" onclick="return validation();"  class="submit_btn1"></td>
              <td colspan="3">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
 </tr>
@@ -663,12 +665,14 @@ function reset_form()
 
 });
  </script>
- 
- <script>
+
+<script>
 function validation()
 {
+	
 var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 var space = /\S/;
+var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	
 	
 	 var e2=document.getElementById('location_text').value;
@@ -676,6 +680,29 @@ var space = /\S/;
 	 var title = document.getElementById('form_or_rec_title').value;
 	 var responsibility = document.getElementById('responsibility').value;
 	 var comments = document.getElementById('comments').value;
+	 var datepicker123 = document.getElementById('datepicker123').value
+	 
+	
+	  if(!title.match(/\S/)) {
+	   
+		  document.getElementById("title1").innerHTML="Empty Space value is not allowed";
+	        return false;
+	    } 
+	  if(!comments.match(/\S/)) {
+		    //  alert("incorrect value"); 
+			  document.getElementById("comments1").innerHTML="Empty Space value is not allowed";
+		        return false;
+		    } 
+	  if(!responsibility.match(/\S/)) {
+		    //  alert("incorrect value"); 
+			  document.getElementById("responsibility1").innerHTML="Empty Space value is not allowed";
+		        return false;
+		    } 
+		 if(!datepicker123.match(date))
+			 {
+		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
+		 return false;
+		 }
 	 
 	 if(document.getElementById('id_hardcopy').checked)
 	 {
@@ -712,50 +739,11 @@ var space = /\S/;
 		 return false;
 		 }
 		}
-	/*  if(title.charAt(0) ==" ")
-	 {
-		
-		 document.getElementById("title").innerHTML="spaces should not allowed";
-		 return false;
-	 }
-	 if(title.match(/\S/))
-	 {
-	 }
-	 else{
-		
-	 document.getElementById("title").innerHTML="spaces should not allowed";
-	 return false;
- 	}
-	 
-	 if(responsibility.match(validate1)
-	 {
-	 }
-	 else{
-		
-	 document.getElementById("responsibility").innerHTML="spaces should not  allowed";
-	 return false;
- 	}
 	
-	 if(comments.match(validate1))
-	 { 
-	 }
-	 else{
-	 document.getElementById("comments").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
- */
- if(!title.match(/\S/)) {
-     document.getElementById("title").innerHTML="Empty spaces should not allowed";
-     return false;
- }
- if(!responsibility.match(/\S/)) {
-     document.getElementById("responsibility").innerHTML="Empty spaces should not allowed";
-     return false;
- }
- if(!comments.match(/\S/)) {
-     document.getElementById("comments").innerHTML="Empty spaces should not allowed";
-     return false;
- }
 }
+
+</script>
+
+
  <jsp:include page="footer.jsp"></jsp:include>   
       
