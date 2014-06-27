@@ -454,10 +454,12 @@ function validation()
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
-		else
-			document.getElementById("hard").innerHTML="";
-		 
 	 }
+	 
+	 
+	 
+	 
+	 
 	 if(document.getElementById('id_electronic').checked)
 	{
 		 if(e3=="")
@@ -466,9 +468,12 @@ function validation()
 			 document.getElementById("attach").innerHTML="File No Uploaded";
 			 return false;
 			 }
-		 else
-			 document.getElementById("attach").innerHTML="";
+		
 	}
+	 
+	 
+	 
+	 
 	if(document.getElementById('id_both').checked)
 		{
 		if(e2=="")
@@ -477,52 +482,81 @@ function validation()
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
-		else
-			document.getElementById("hard").innerHTML="";
+	
 		 if(e3=="")
 		 {
 			
 		 document.getElementById("attach").innerHTML="File No Uploaded";
 		 return false;
 		 }
-		 else
-			 document.getElementById("attach").innerHTML="";
+	
 		}
+	
+	
+	
+	
+	
 	 if(documenttitle.charAt(0) ==" ")
 	 {
-		
+		 
 		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
 		 return false;
 	 }
-	 else
-		 document.getElementById("documenttitle1").innerHTML="";
-	 
-	 if(documenttitle.match(validate1))
+	 else if(documenttitle.match(validate1))
 	 {
-		 ocument.getElementById("documenttitle1").innerHTML="";
-	 }
-	 else{
+		 document.getElementById("documenttitle1").innerHTML="";
+ 	 }
+	 else
+		 {
+		   document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
+		   	return false;
+		 }
+	 
+	 
+	 
+	 
+	 if(revisionlevel.charAt(0) ==" ")
+	 {
+		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+		 return false;
+	 }	 
+	 else if(revisionlevel.match(dotnumber))
+		 { 
+			 document.getElementById("revisionlevel1").innerHTML="";
+		 }
+	 else{	
+		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		}
 		
-	 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
-	 if(revisionlevel.match(dotnumber))
-	 { 
-		 document.getElementById("revisionlevel1").innerHTML="";
+	 
+	
+	 
+	 
+	 
+	 if(comments.charAt(0) ==" ")
+	 {
+		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
 	 }
-	 else{
+		 else if(comments.match(validate1))
+		 {
+			 if(comments.length < 5 || comments.length > 500 )
+				 {
+				 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
+				 return false;
+				 }
+			 else{
+			     document.getElementById("comments1").innerHTML="";
+			     }
+	   	 }
+	 	else{
+				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+				 return false;
+			    }
 		
-	 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
-	 if(comments.match(validate1))
-	 { 
-		 document.getElementById("comments1").innerHTML="";
-	 }
-	 else{
-	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
+	
+	 
+	 
 	 if(datepicker123.match(date))
 		 {
 		 document.getElementById("datepicker1234").innerHTML="";
@@ -533,6 +567,9 @@ function validation()
 		 return false;
 		 }
 	}
+	
+	
+	
 </script>
          <script>
          $(function() {
