@@ -462,7 +462,7 @@ function validation()
 		 if(e3=="")
 			 {
 			
-			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("attach").innerHTML="File No Uploaded";
 			 return false;
 			 }
 	}
@@ -477,7 +477,7 @@ function validation()
 		 if(e3=="")
 		 {
 			
-		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("attach").innerHTML="File No Uploaded";
 		 return false;
 		 }
 		}
