@@ -339,7 +339,9 @@ $(window).load(function(){
              <tr class="row1" style="border:none;">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/>
+                 <span id="datepicker1234"style="color:red"></span>
+               <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
                <td valign="middle" align="left" class="input_txt" width="70%">Approver 3(Mgmt Report):</td>
@@ -431,8 +433,9 @@ function validation()
 {
 	
 	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
-	
+	var date = /^(\d{2})(\/)(\d{2})\2(\d{4})\$/;
 	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
+	var datepicker123=document.getElementById('datepicker').value;
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
 	 var documenttitle = document.getElementById('documenttitle').value;
@@ -503,6 +506,15 @@ function validation()
 	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
 	 return false;
  	}
+	 if(datepicker123.match(date))
+	 {
+	 
+	 }
+ else
+	 {
+	 document.getElementById("datepicker1234").innerHTML="Please Select Date Picker";
+	 return false;
+	 }
 	}
 function doAjaxPost_for_process() {
 
