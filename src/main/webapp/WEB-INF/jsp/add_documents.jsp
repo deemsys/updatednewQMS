@@ -436,7 +436,7 @@ function validation()
 {
 	
 	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
-	var date = /^(\d{2})(\/)(\d{2})\2(\d{4})\$/;
+	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
 	
 	 var datepicker123=document.getElementById('datepicker123').value;
@@ -516,7 +516,7 @@ function validation()
 		 }
 	 else
 		 {
-		 document.getElementById("datepicker1234").innerHTML="Please Select Date Picker";
+		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
 		 return false;
 		 }
 	}
