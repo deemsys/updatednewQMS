@@ -108,8 +108,8 @@
                </select>
               </td>
                <td valign="top" align="left" class="input_txt" >
-							  <input type="submit" value="Find" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							  <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn" ></td>
+							  <input type="submit" value="Search" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn1" ></td>
 							  </tr>
 							</table>
 							

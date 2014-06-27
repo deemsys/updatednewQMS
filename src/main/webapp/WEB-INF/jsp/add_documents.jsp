@@ -122,7 +122,7 @@
 			                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
         				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == documentMain.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
 			                  </c:forEach> </select>
-			            <span id="hard"style="color:red"></span>
+			            <span id="hard" style="color:red"></span>
 			                  <br>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
                <span id="attach" style="color:red"></span>

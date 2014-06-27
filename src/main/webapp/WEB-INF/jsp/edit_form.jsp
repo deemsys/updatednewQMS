@@ -64,7 +64,7 @@
               
               
                <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="display:none;">
-               <option value = "">Select Form Prefix</option>
+      
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
@@ -72,19 +72,17 @@
               
                 <label id="changeafter" style="display:none;" ></label> 
                 
-                  <input type="text" value="" id="form_or_rec_id"  style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()"/>
+                  <input type="text" value="" id="form_or_rec_id"  style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()"/><span id="quality3err" style="color:red;"></span>
                 <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
             <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             
                
-              
-																		<td valign="middle" align="left" class="input_txt">Responsibility :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="inp_external_id"
+              <td valign="middle" align="left" class="input_txt">Responsibility :</td>
+			  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="responsibility"
+																			name="responsibility" style="width:90%"
 																			value="${form.responsibility}" /><br/><span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
 																		</td>
@@ -103,7 +101,7 @@
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title"
+																			name="form_or_rec_title" style="width:100%"
 																			value="${form.form_or_rec_title}" /><br/><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
@@ -111,7 +109,7 @@
                <td valign="top" align="left" class="input_txt" >
                
                
-                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
+                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:90%">
 							 
 			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
         				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
@@ -154,8 +152,8 @@
                </td>
                 <c:choose>
                 <c:when test="${form.media_type=='hardcopy'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
-               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;">Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
               <option value="">--Select--</option>
                 <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
@@ -170,7 +168,7 @@
                </c:choose>
                <c:choose>
                 <c:when test="${form.media_type=='electronic'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"><span class="err">*</span> Location:</label><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"> Location:</label><br><label id="file_upload_label">Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
               
@@ -208,7 +206,7 @@
                </c:choose>
                </tr>
                <tr class="row1">
-																		              <td valign="middle" align="left" class="input_txt">Retention Time:</td>
+																		 <td valign="middle" align="left" class="input_txt">Retention Time:</td>
 																		<td valign="top" align="left" class="input_txt"><%-- <input
 																			type="text" class="input_txtbx1" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -258,7 +256,7 @@
 																		              <td valign="middle" align="left" class="input_txt">Effective Date :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx1" id="datepicker"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');" style="width:70%"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="effective_date"
 																			value="${form.effective_date}" />
@@ -295,10 +293,8 @@
 				<input type="hidden" class="input_txtbx1" id="inp_external_id" name="approver1" onchange="Approver1();" value="${form.approver1}" /> ${form.approver1}
 																			
 																			 --%>
-																			  <select name="approver1" class="input_cmbbx1" id="approver" style="width:200px;">
-             	
-            	
-             																 <c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
+																			  <select name="approver1" class="input_cmbbx1" id="approver" style="width:70%">
+             																<c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
              															     <option value="<c:out value="${employeeowner.name}"/>" <c:if test="${form.approver1==employeeowner.name}"><c:out value="Selected"/></c:if>><c:out value="${employeeowner.name}"/></option>
               																 </c:forEach>    
                
@@ -326,14 +322,7 @@
 																		
 																		 <td valign="middle" align="left" class="input_txt">Comments :</td>
 																		<td valign="top" align="left" class="input_txt">
-																		<input
-																			type="text" class="input_txtbx1" id="comments"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="comments"
-																			value="${form.comments}" /><span style="color:red;"><form:errors path="Form.comments"></form:errors></span>
-																		
-																		</td>
+																	<textarea class="input_txtbx1"  name="comments"  style="width:70%; height: 50px;" >${form.comments}</textarea><br/><span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
 																		<td valign="top" align="left" class="input_txt">																	
@@ -642,7 +631,29 @@ function reset_form()
   
 }
 
-
 </script>
+ <script>
+
+ $(window).load(function(){
+ $("#form_or_rec_id").keyup(function() {
+		
+	 $("#quality3err").html(''); 
+	/* var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/; */
+	var intRegex = /^\d+$/;
+	if(intRegex.test($(this).val())||$(this).val()=='') 
+	{
+		var $in = $(this).val();		 
+	}
+	else if($(this).val()!='')
+		{
+		
+		$("#quality3err").html('enter a number!!!!');
+		}
+}).keydown(function() {
+    oldValue = $(this).val();
+})
+
+});
+ </script>
  <jsp:include page="footer.jsp"></jsp:include>   
       
