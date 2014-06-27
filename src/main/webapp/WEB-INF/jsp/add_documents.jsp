@@ -454,7 +454,8 @@ function validation()
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
-		 
+		else
+			document.getElementById("hard").innerHTML="";
 		 
 	 }
 	 if(document.getElementById('id_electronic').checked)
@@ -465,6 +466,8 @@ function validation()
 			 document.getElementById("attach").innerHTML="File No Uploaded";
 			 return false;
 			 }
+		 else
+			 document.getElementById("attach").innerHTML="";
 	}
 	if(document.getElementById('id_both').checked)
 		{
@@ -474,12 +477,16 @@ function validation()
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
+		else
+			document.getElementById("hard").innerHTML="";
 		 if(e3=="")
 		 {
 			
 		 document.getElementById("attach").innerHTML="File No Uploaded";
 		 return false;
 		 }
+		 else
+			 document.getElementById("attach").innerHTML="";
 		}
 	 if(documenttitle.charAt(0) ==" ")
 	 {
@@ -487,9 +494,12 @@ function validation()
 		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
 		 return false;
 	 }
+	 else
+		 document.getElementById("documenttitle1").innerHTML="";
 	 
 	 if(documenttitle.match(validate1))
 	 {
+		 ocument.getElementById("documenttitle1").innerHTML="";
 	 }
 	 else{
 		
@@ -497,7 +507,9 @@ function validation()
 	 return false;
  	}
 	 if(revisionlevel.match(dotnumber))
-	 { }
+	 { 
+		 document.getElementById("revisionlevel1").innerHTML="";
+	 }
 	 else{
 		
 	 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
@@ -505,6 +517,7 @@ function validation()
  	}
 	 if(comments.match(validate1))
 	 { 
+		 document.getElementById("comments1").innerHTML="";
 	 }
 	 else{
 	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
@@ -512,7 +525,7 @@ function validation()
  	}
 	 if(datepicker123.match(date))
 		 {
-		 
+		 document.getElementById("datepicker1234").innerHTML="";
 		 }
 	 else
 		 {
