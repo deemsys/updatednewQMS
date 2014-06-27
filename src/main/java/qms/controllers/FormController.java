@@ -236,6 +236,7 @@ public class FormController
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
 	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,BindingResult result,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result2,ModelMap model,@RequestParam("process") String process, Principal principal)
 	{
+		load_document_page_dropdowns(model);
 		
 		int flag = 0;
 		request.getAttribute("revision_id");
@@ -244,12 +245,29 @@ public class FormController
 		System.out.println("document id ****** "+form1.getDocument_id());
 		/*String attachments = request.getParameter("attachments");*/
 		/*System.out.println("attachments = "+form1.getAttachments()+request.getParameter("attachments"));*/
-		/*if(result.hasErrors())
+		if(result.hasErrors())
 		{
-			
+			String auto_no = form1.getAuto_no();
+			System.out.println("edit auto no = "+auto_no);
+			session.removeAttribute("docform");
 			load_document_page_dropdowns(model);
+			formDAO.change_RevisionFormat(form1,auto_no);
+			RevisionFormForm revisionFormForm = new RevisionFormForm();
+			revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(auto_no));
+			model.addAttribute("revisionFormForm", revisionFormForm);
+			
+			EmployeeForm employeeowner = new EmployeeForm();
+			employeeowner.setEmployees(employeeDAO.getEmployees_by_process_owner());
+			model.addAttribute("employeeowner", employeeowner); 
+			
+			FormForm formForm=new FormForm();
+			formForm.setForm(formDAO.getform(auto_no));
+			model.addAttribute("formForm",formForm);
+			  model.addAttribute("menu","document");
+		    model.addAttribute("menu","document");
 			return "edit_form";
-		}*/
+		}
+		
 		if(form1.getMedia_type().equals("1"))
 		{
 			form1.setLocation("Nil");

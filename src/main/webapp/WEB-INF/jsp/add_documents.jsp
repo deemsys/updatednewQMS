@@ -658,11 +658,10 @@ document.getElementById("lable_td").style.display="none";
   	}
   </script>
        <script>
-	alert("on load");
+
 	window.onload = function(){
 		if(document.getElementById('id_hardcopy').checked)
 			{
-			alert("hard");
 			var value1 = document.getElementById('id_hardcopy').value;
 			toggle1(value1);
 			}

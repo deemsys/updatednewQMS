@@ -93,8 +93,10 @@
 			               <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
                   			 <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == docform.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
 			                  </c:forEach></select><span style="color:red;"><form:errors path="Form.location"></form:errors></span>
+			                  <span id="hard"style="color:red"></span>
                <br>
 				 <input name="attachments" style="display:none;" id="id_file" type="file" />	
+				 <span id="attach" style="color:red"></span>
 				 </td>										
 				<td valign="top" align="left" class="input_txt"></td>
 				<td valign="top" align="right" class="input_txt"></td>
@@ -156,10 +158,15 @@
                <td valign="top" align="left" class="input_txt" width="70%;">
                
                   
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" checked<c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+             <%--    <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" checked<c:if test="${form.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${form.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;
                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${form.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;<br/><span style="color:red;"></span>
-                 
+                  --%>
+                  
+                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy" id="id_hardcopy" <c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
+                <input type="radio" name="media_type" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+               <span class="err" style="color:red"><form:errors path="Form.media_type"></form:errors></span>
                </td>
                </tr>
               
@@ -242,7 +249,7 @@
               
                </select>
                 <span id="issuer_generate1">
-              ${docform.approver1}" 
+              
                </span>
                <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
                <br/><span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
@@ -309,7 +316,7 @@
 					
               <tr class="row1">
               <td colspan="1" align="right">
-             <input type="submit" id="export"  name="export" value="Submit" class="submit_btn1"></td>
+             <input type="submit" id="export" onclick="return validation();"  name="export" value="Submit" class="submit_btn1"></td>
              <td colspan="1">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
 </tr>
@@ -334,7 +341,7 @@ if(value=='electronic')
 	e1.style.display="block";
 	e2.style.display="none";
 	e3.style.display="block";
-	document.getElementById('label1').style.display="block";
+	//document.getElementById('label1').style.display="block";
 	
     }
 else if(value=='hardcopy')
@@ -343,7 +350,7 @@ else if(value=='hardcopy')
 	e1.style.display="none";
 	e2.style.display="block";
 	e3.style.display="none";
-	document.getElementById('label1').style.display="none";
+	//document.getElementById('label1').style.display="none";
     }
 else if(value=='both')
 {
@@ -353,10 +360,71 @@ e2.style.display="block";
 e3.style.display="block";
 }
 
-    
+
 }
 </script>
 
+<script>
+function validation()
+{
+	
+	 var e2=document.getElementById('location_text').value;
+	 var e3=document.getElementById('id_file').value;
+	 if(document.getElementById('id_hardcopy').checked)
+	 {
+		if(e2=="")
+			{
+			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+			return false;
+			}
+		 
+		 
+	 }
+	 if(document.getElementById('id_electronic').checked)
+	{
+		 if(e3=="")
+			 {
+			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+			 return false;
+			 }
+	}
+	if(document.getElementById('id_both').checked)
+		{
+		if(e2=="")
+		{
+		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+		return false;
+		}
+		 if(e3=="")
+		 {
+		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+		}
+	}
+
+window.onload = function(){
+	if(document.getElementById('id_hardcopy').checked)
+		{
+	
+		var value1 = document.getElementById('id_hardcopy').value;
+		toggle2(value1);
+		}
+	if(document.getElementById('id_electronic').checked){
+		
+		
+		var value1 = document.getElementById('id_electronic').value;
+		toggle2(value1);
+	}
+	if(document.getElementById('id_both').checked){
+		
+		
+		var value1 = document.getElementById('id_both').value;
+		toggle2(value1);
+	}
+}
+	</script>
+</script>
 <script type="text/javascript">
 function doAjaxPost() {
 	document.getElementById('filter_value').style.display="none";
