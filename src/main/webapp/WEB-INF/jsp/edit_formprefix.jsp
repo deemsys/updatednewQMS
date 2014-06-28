@@ -16,7 +16,7 @@
 <title>Edit Form Prefix</title>
 </head>
 <body>
-<form method="post" action="update_formprefix">
+<form method="post" action="update_formpref">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
       <tr>
@@ -55,18 +55,22 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Form Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" /><span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
+                  <td valign="middle" align="right" class="input_txt" width="30%">Description :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
+                   <span id="formname1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
                   </td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" /><span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt" width="30%">Form Prefix :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
+                     <span id="formprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
              </table>
              </td>
@@ -80,7 +84,63 @@
              </div>
              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
              </form>
-                
+          <script type="text/javascript">
+ function validation()
+ {
+	
+	 var cap = /[A-Z]+$/;
+	 var desc = /[A-Za-z ]+$/;
+	 var formprefix = document.getElementById('formprefix').value;
+	 var formname= document.getElementById('formname').value;
+	 
+	
+	 
+	 if(formname =="")
+	 {
+	 document.getElementById("formname1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ else if(formname.charAt(0)==" ")
+	 {
+	 document.getElementById("formname1").innerHTML="Required Field Should not be Spaces";
+	 return false;
+	 }
+ else if(formname.match(desc))
+	 {
+	 	 document.getElementById("formname1").innerHTML="";
+	 }
+ else {
+	 
+	 document.getElementById("formname1").innerHTML="Required Field Should be only Letters";
+	 return false;
+    }
+	 
+	 
+	 
+	 
+	 if(formprefix =="")
+	 {
+	 document.getElementById("formprefix1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ else if(formprefix.charAt(0)==" ")
+	 {
+	 document.getElementById("formprefix1").innerHTML="Required Field Should not be Spaces";
+	 return false;
+	 }
+ else if(formprefix.match(cap))
+	 {
+	 	 document.getElementById("formprefix1").innerHTML="";
+	 }
+ else {
+	 
+	 document.getElementById("formprefix1").innerHTML="Required Field Should be Capital Letters";
+	 return false;
+ }
+ 
+ }
+ 
+ </script>
 </body>
 
   <jsp:include page="footer.jsp"></jsp:include> 

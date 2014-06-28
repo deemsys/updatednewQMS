@@ -556,12 +556,17 @@ function validation()
 		
 	
 	 
-	 
-	 if(datepicker123.match(date))
+		 if(datepicker123 == "")
+		 {
+		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 
+		 }
+		 else if(datepicker123.match(date))
 		 {
 		 document.getElementById("datepicker1234").innerHTML="";
 		 }
-	 else
+		 else
 		 {
 		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
 		 return false;

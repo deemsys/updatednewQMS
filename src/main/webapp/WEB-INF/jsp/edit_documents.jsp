@@ -168,9 +168,9 @@ $(window).load(function(){
         				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == documentMain.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
 			                  </c:forEach>
                </select><br>
-			         <span id="hard"style="color:red"></span>        
+			       <!--   <span id="hard"style="color:red"></span>       -->  
                <input name="filename" type="hidden" id="file_name"/ value="${documentMain.attachment_name}">${documentMain.attachment_name}
-               <span id="attach"style="color:red"></span>
+               <!-- <span id="attach"style="color:red"></span> -->
                <%session.setAttribute("attachmentname", request.getParameter("attachment_name")); %>
                <input name="attachments" id="id_file" type="file" style="display:none;" value="${documentMain.attachments}"/>
               <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
@@ -178,7 +178,7 @@ $(window).load(function(){
                </td>
               </c:when>
               <c:when test="${documentMain.media_type=='both'}">
-              <td valign="middle" id="id_location_lbl" align="right" class="input_txt" width="20%"><label id="location_label">Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+              <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label">Location:</label><br><br><label id="file_upload_label" align="left">Upload File:</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_cmbbx1" >
               <option value="">--Select --</option>
@@ -189,7 +189,7 @@ $(window).load(function(){
 			                <span id="hard"style="color:red"></span>
                <input name="filename" type="hidden" id="file_name"/>${documentMain.attachment_name}
                <input name="attachments" id="id_file" type="file" style="display:none;" value="${documentMain.attachment_name}"/>
-               <span id="attach"style="color:red"></span>
+             <!--   <span id="attach"style="color:red"></span> -->
               <label id="change_label" ><a href="#" onclick="change_file()">Change</a></label>
               <span class="err"style="color:red"><form:errors path="DocumentMain.location"></form:errors></span>
                </td>
@@ -461,18 +461,19 @@ function validation()
 	}
 	if(document.getElementById('id_both').checked)
 		{
+	
 		if(e2=="")
 		{
 			
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
-		 if(e3=="")
+		/*  if(e3=="")
 		 {
 			
 		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 		 return false;
-		 }
+		 } */
 		}
 	 if(documenttitle.charAt(0) ==" ")
 	 {

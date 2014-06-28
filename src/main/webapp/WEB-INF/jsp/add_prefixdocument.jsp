@@ -121,16 +121,20 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt">Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx1" id="docprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx1" id="docprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.id}" />
+                  <span id="docprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" >Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx1" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx1" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" />
+                    <span id="document_id1" style="color:red"></span>
+                  <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit"  onclick="return validation();" class="submit_btn1"></td>
                 </tr>
           
                 
@@ -143,6 +147,58 @@
  </tr>
  </table>
  </form>
+ <script type="text/javascript">
+ function validation()
+ {
+	
+	 var cap = /[A-Z]+$/;
+	 var desc = /[A-Za-z ]+$/;
+	 var docprefix = document.getElementById('docprefix').value;
+	 var document_id= document.getElementById('document_id').value;
+	 
+	 if(docprefix =="")
+		 {
+		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else if(docprefix.charAt(0)==" ")
+		 {
+		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
+		 return false;
+		 }
+	 else if(docprefix.match(cap))
+		 {
+		 	 document.getElementById("docprefix1").innerHTML="";
+		 }
+	 else {
+		 
+		 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
+		 return false;
+	 }
+	 
+	 
+	 if(document_id =="")
+	 {
+	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ else if(document_id.charAt(0)==" ")
+	 {
+	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
+	 return false;
+	 }
+ else if(document_id.match(desc))
+	 {
+	 	 document.getElementById("document_id").innerHTML="";
+	 }
+ else {
+	 
+	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
+	 return false;
+ }
+ }
+ 
+ </script>
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>
 </html>

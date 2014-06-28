@@ -56,17 +56,22 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Prefix:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" id="doc_prefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" /><span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" id="docprefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" />
                   <input type="hidden" name="id" id="id" value="${documentprefix.id}"/>
+                    <span id="docprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
+                  
                   </td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Document ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_id" class="input_txtbx" id="documentid" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" /><span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_id" class="input_txtbx" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" />
+                    <span id="document_id1" style="color:red"></span>
+                  <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
                 </tr>
              </table>
              </td>
@@ -79,6 +84,57 @@
              </table>
              </div>
              </form>
-                
+ <script type="text/javascript">
+  function validation()
+ {
+	
+	 var cap = /[A-Z]+$/;
+	 var desc = /[A-Za-z ]+$/;
+	 var docprefix = document.getElementById('docprefix').value;
+	 var document_id= document.getElementById('document_id').value;
+	 
+	 if(docprefix =="")
+		 {
+		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else if(docprefix.charAt(0)==" ")
+		 {
+		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
+		 return false;
+		 }
+	 else if(docprefix.match(cap))
+		 {
+		 	 document.getElementById("docprefix1").innerHTML="";
+		 }
+	 else {
+		 
+		 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
+		 return false;
+	 }
+	 
+	 
+	 if(document_id =="")
+	 {
+	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ else if(document_id.charAt(0)==" ")
+	 {
+	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
+	 return false;
+	 }
+ else if(document_id.match(desc))
+	 {
+	 	 document.getElementById("document_id").innerHTML="";
+	 }
+ else {
+	 
+	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
+	 return false;
+ }
+ }
+ 
+ </script>
 </body>
 </html>

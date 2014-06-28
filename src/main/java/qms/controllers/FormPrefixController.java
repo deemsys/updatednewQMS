@@ -130,9 +130,10 @@ public String editformprefix_get(@RequestParam("id") String id,FormPrefix formPr
 }
 
 //Update a record
-@RequestMapping(value = "/update_formprefix", method = RequestMethod.POST)
-public String update_formprefix(ModelMap model,@RequestParam("page") int page,@ModelAttribute("FormPrefix") @Valid FormPrefix formPrefix,BindingResult result) throws IOException {
-
+@RequestMapping(value = "/update_formpref", method = RequestMethod.POST)
+public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Valid FormPrefix formPrefix,BindingResult result) throws IOException {
+ 
+	int page =1;
 	if (result.hasErrors())
 	{
 		

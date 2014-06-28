@@ -125,15 +125,19 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt">Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" class="input_txtbx1" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" class="input_txtbx1" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
+                   <span id="document_id1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" >Form Prefix</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx1" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" >Form Prefix :</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx1" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
+                    <span id="docprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
           
                 
@@ -145,6 +149,65 @@
  </td>
  </tr>
  </table>
- </form><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ </form>
+ <script type="text/javascript">
+ function validation()
+ {
+	
+	 var cap = /[A-Z]+$/;
+	 var desc = /[A-Za-z ]+$/;
+	 var formprefix = document.getElementById('formprefix').value;
+	 var formname= document.getElementById('formname').value;
+	 
+	
+	 
+	 if(formname =="")
+	 {
+	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ else if(formname.charAt(0)==" ")
+	 {
+	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
+	 return false;
+	 }
+ else if(formname.match(desc))
+	 {
+	 	 document.getElementById("document_id1").innerHTML="";
+	 }
+ else {
+	 
+	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
+	 return false;
+    }
+	 
+	 
+	 
+	 
+	 if(formprefix =="")
+	 {
+	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ else if(formprefix.charAt(0)==" ")
+	 {
+	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
+	 return false;
+	 }
+ else if(formprefix.match(cap))
+	 {
+	 	 document.getElementById("docprefix1").innerHTML="";
+	 }
+ else {
+	 
+	 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
+	 return false;
+ }
+ 
+ }
+ 
+ </script>
+ 
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <jsp:include page="footer.jsp"></jsp:include> 
  </html>
