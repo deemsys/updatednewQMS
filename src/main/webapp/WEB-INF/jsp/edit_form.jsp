@@ -683,11 +683,27 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	 var datepicker123 = document.getElementById('datepicker123').value
 	 
 	
-	  if(!title.match(/\S/)) {
+	  /* if(!title.match(/\S/)) {
 	   
 		  document.getElementById("title1").innerHTML="Empty Space value is not allowed";
 	        return false;
-	    } 
+	    }  */
+	    
+		 if(title.charAt(0) ==" ")
+		 {
+			 
+			 document.getElementById("title1").innerHTML="Required Field Should not be space";
+			 return false;
+		 }
+		 else if(documenttitle.match(validate1))
+		 {
+			 document.getElementById("title1").innerHTML="";
+	 	 }
+		 else
+			 {
+			   document.getElementById("title1").innerHTML="Required Field Should not be Empty";
+			   	return false;
+			 }
 	 if(comments.charAt(0) ==" ")
 	 {
 		 alert("comments incorrect");
@@ -708,53 +724,67 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
 				 return false;
 			    }
-	  if(!responsibility.match(/\S/)) {
+	  /* if(!responsibility.match(/\S/)) {
 		    //  alert("incorrect value"); 
 			  document.getElementById("responsibility1").innerHTML="Empty Space value is not allowed";
 		        return false;
-		    } 
+		    }  */
+		    
+			 if(responsibility.charAt(0) ==" ")
+			 {
+				 
+				 document.getElementById("responsibility1").innerHTML="Required Field Should not be space";
+				 return false;
+			 }
+			 else if(responsibility.match(validate1))
+			 {
+				 document.getElementById("responsibility1").innerHTML="";
+		 	 }
+			 else
+				 {
+				   document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
+				   	return false;
+				 }
 		 if(!datepicker123.match(date))
 			 {
 		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
 		 return false;
 		 }
-	 
-	 if(document.getElementById('id_hardcopy').checked)
-	 {
-		if(e2=="")
+		 if(document.getElementById('id_hardcopy').checked)
+		 {
+			if(e2=="")
+				{
+				
+				document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+				return false;
+				}
+			 
+			 
+		 }
+		 if(document.getElementById('id_electronic').checked)
+		{
+			 if(e3=="")
+				 {
+				
+				 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+				 return false;
+				 }
+		}
+		if(document.getElementById('id_both').checked)
 			{
-			
+			if(e2=="")
+			{
+				
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
-		 
-		 
-	 }
-	 if(document.getElementById('id_electronic').checked)
-	{
-		 if(e3=="")
+			 if(e3=="")
 			 {
-			
+				
 			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 			 return false;
 			 }
-	}
-	if(document.getElementById('id_both').checked)
-		{
-		if(e2=="")
-		{
-			
-		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-		return false;
-		}
-		 if(e3=="")
-		 {
-			
-		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-		 return false;
-		 }
-		}
-	
+			}	
 }
 
 </script>
