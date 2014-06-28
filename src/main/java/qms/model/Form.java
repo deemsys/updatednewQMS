@@ -23,7 +23,7 @@ public class Form {
     @NotEmpty
 	private String process;
 	
-	
+	@NotEmpty
 	private String media_type;
 	
 	@NotEmpty
