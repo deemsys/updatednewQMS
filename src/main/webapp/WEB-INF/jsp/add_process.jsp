@@ -117,19 +117,25 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" >Process Id:</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_id" class="input_txtbx1" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_id" class="input_txtbx1" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}"/>
+                  <span id="processid1"></span>
+                  <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" >Process Name:</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_name" class="input_txtbx1" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_name" class="input_txtbx1" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" />
+                   <span id="processname1"></span>
+                  <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" >Process Owner:</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" class="input_txtbx1" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" class="input_txtbx1" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" />
+                   <span id="processowner1"></span>
+                  <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
           
                 
@@ -142,6 +148,114 @@
  </tr>
  </table>
  </form>
+ <script type="text/javascript">
+ function validation()
+ {
+	 var number = /^[A-Za-z0-9]+$/;
+	 var chars = /[A-Za-z ]+$/;
+	 var processid = document.getElementById('processid').value;
+	 var processname = document.getElementById('processname').value;
+	 var processowner = document.getElementById('processowner').value;
+	 var errord = "Required Field Should not be Empty";
+	 var space = "Required Field Should not be Spaces";
+	 var num = "Required Field Should be AlphaNumeric";
+	 var wds = "Required Field Should be Alphabate";
+	var msg = errord.fontcolor("red");
+	var spmsg = space.fontcolor("red");
+	var nummsg = num.fontcolor("red");
+	var wdmsg  = wds.fontcolor("red");
+	 if(processid==""&&processname==""&&processowner=="")
+		 {
+		 document.getElementById("processid1").innerHTML=msg;
+		 document.getElementById("processname1").innerHTML=msg;
+		 document.getElementById("processowner1").innerHTML=msg;
+		 return false;
+		 }
+	
+	 else
+		 {
+		 document.getElementById("processid1").innerHTML="";
+		 document.getElementById("processname1").innerHTML="";
+		 document.getElementById("processowner1").innerHTML="";
+		 
+		 }
+	 if(processid=="")
+		 {
+		 document.getElementById("processid1").innerHTML=msg;
+		 return false;
+		 }
+	 else if(processname=="")
+		 {
+		 document.getElementById("processname1").innerHTML=msg;
+		 return false;
+		 }
+	 else if(processowner=="")
+		 {
+		 document.getElementById("processowner1").innerHTML=msg;
+		 return false;
+		 }
+	 else
+	 {
+	 document.getElementById("processid1").innerHTML="";
+	 document.getElementById("processname1").innerHTML="";
+	 document.getElementById("processowner1").innerHTML="";
+	
+	 }
+	 
+	 if(processid.charAt(0)==" ")
+		 {
+		 document.getElementById("processid1").innerHTML=spmsg;
+		 return false;
+		 }
+	 else if(processname.charAt(0)==" ")
+		 {
+		 document.getElementById("processname1").innerHTML=spmsg;
+		 return false;
+		 }
+	 else if(processowner.charAt(0)==" ")
+		 {
+		 document.getElementById("processowner1").innerHTML=spmsg;
+		 return false;
+		 }
+	 else
+	 {
+	 document.getElementById("processid1").innerHTML="";
+	 document.getElementById("processname1").innerHTML="";
+	 document.getElementById("processowner1").innerHTML="";
+	
+	 }
+	 
+	 if(processid.match(number))
+		 {
+		 document.getElementById("processid1").innerHTML="";
+		 }
+	 else {
+		 document.getElementById("processid1").innerHTML=nummsg;
+		 return false;
+	 }
+	 
+	 if(processname.match(chars))
+	 {
+	 document.getElementById("processname1").innerHTML="";
+	 }
+ 	else {
+	 document.getElementById("processname1").innerHTML=wdmsg;
+	 return false;
+     } 
+	 
+	 
+	 if(processowner.match(chars))
+ 	{
+	 document.getElementById("processowner1").innerHTML="";
+	 }
+ 	else {
+	 document.getElementById("processowner1").innerHTML=wdmsg;
+	 return false;
+ 	}
+ }
+ 
+ 
+ </script>
   <br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br>    
 
 

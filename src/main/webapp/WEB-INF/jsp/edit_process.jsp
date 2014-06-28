@@ -63,15 +63,19 @@
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" /><span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" />
+                    <span id="processname1"></span>
+                  <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Process Owner :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" /><span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" />
+                     <span id="processowner1"></span>
+                  <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
              </table>
              </td>
@@ -84,7 +88,114 @@
              </table>
              </div>
              </form>
-                
+           <script type="text/javascript">
+ function validation()
+ {
+	 var number =  /^[A-Za-z0-9]+$/;
+	 var chars = /[A-Za-z ]+$/;
+	// var processid = document.getElementById('processid').value;
+	 var processname = document.getElementById('processname').value;
+	 var processowner = document.getElementById('processowner').value;
+	 var errord = "Required Field Should not be Empty";
+	 var space = "Required Field Should not be Spaces";
+	// var num = "Required Field Should be AlphaNumeric";
+	 var wds = "Required Field Should be Alphabate";
+	var msg = errord.fontcolor("red");
+	var spmsg = space.fontcolor("red");
+//	var nummsg = num.fontcolor("red");
+	var wdmsg  = wds.fontcolor("red");
+	 if(processname==""&&processowner=="")
+		 {
+		// document.getElementById("processid1").innerHTML=msg;
+		 document.getElementById("processname1").innerHTML=msg;
+		 document.getElementById("processowner1").innerHTML=msg;
+		 return false;
+		 }
+	
+	 else
+		 {
+		// document.getElementById("processid1").innerHTML="";
+		 document.getElementById("processname1").innerHTML="";
+		 document.getElementById("processowner1").innerHTML="";
+		 
+		 }
+	/*  if(processid=="")
+		 {
+		 document.getElementById("processid1").innerHTML=msg;
+		 return false;
+		 }
+	 else */ if(processname=="")
+		 {
+		 document.getElementById("processname1").innerHTML=msg;
+		 return false;
+		 }
+	 else if(processowner=="")
+		 {
+		 document.getElementById("processowner1").innerHTML=msg;
+		 return false;
+		 }
+	 else
+	 {
+	 //document.getElementById("processid1").innerHTML="";
+	 document.getElementById("processname1").innerHTML="";
+	 document.getElementById("processowner1").innerHTML="";
+	
+	 }
+	/*  
+	 if(processid.charAt(0)==" ")
+		 {
+		 document.getElementById("processid1").innerHTML=spmsg;
+		 return false;
+		 }
+	 else */ if(processname.charAt(0)==" ")
+		 {
+		 document.getElementById("processname1").innerHTML=spmsg;
+		 return false;
+		 }
+	 else if(processowner.charAt(0)==" ")
+		 {
+		 document.getElementById("processowner1").innerHTML=spmsg;
+		 return false;
+		 }
+	 else
+	 {
+	// document.getElementById("processid1").innerHTML="";
+	 document.getElementById("processname1").innerHTML="";
+	 document.getElementById("processowner1").innerHTML="";
+	
+	 }
+	 
+	/*  if(processid.match(number))
+		 {
+		 document.getElementById("processid1").innerHTML="";
+		 }
+	 else {
+		 document.getElementById("processid1").innerHTML=nummsg;
+		 return false;
+	 } */
+	 
+	 if(processname.match(chars))
+	 {
+	 document.getElementById("processname1").innerHTML="";
+	 }
+ 	else {
+	 document.getElementById("processname1").innerHTML=wdmsg;
+	 return false;
+     } 
+	 
+	 
+	 if(processowner.match(chars))
+ 	{
+	 document.getElementById("processowner1").innerHTML="";
+	 }
+ 	else {
+	 document.getElementById("processowner1").innerHTML=wdmsg;
+	 return false;
+ 	}
+ }
+ 
+ 
+ </script>     
 </body>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include> 

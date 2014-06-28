@@ -56,14 +56,16 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Location Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" /><span class="err"><form:errors path="FormLocation.form_location"></form:errors></span>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" />
+                 <span id="formlocation1" style="color:red">   </span>
+                  <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span>
                   <input type="hidden" name="location_id" id="locationid" value="${formlocation.location_id}"/>
                   </td>
                 </tr>
                 
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
              </table>
              </td>
@@ -76,6 +78,34 @@
              </table>
              </div>
              </form>
+             
+             <script type="text/javascript">
+ function validation()
+ {
+	 var  chars = /[A-Za-z ]+$/;
+	 var formlocation = document.getElementById('formlocation').value;
+	 if(formlocation == "")
+		 {
+		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else if(formlocation.charAt(0) == " ")
+		 {
+		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Spaces";
+		 return false;
+		 }
+	 else if(formlocation.match(chars))
+		 {
+		 document.getElementById("formlocation1").innerHTML="";
+		 }
+	 else
+		 {
+		 document.getElementById("formlocation1").innerHTML="Required Field Should be Alphabates";
+		 return false;
+		 }
+ }
+ 
+ </script>
        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>         
 
 

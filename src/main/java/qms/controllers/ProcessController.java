@@ -35,10 +35,11 @@ public class ProcessController
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	@RequestMapping(value = { "/add_process" }, method = RequestMethod.GET)
+	@RequestMapping(value = {"/add_process"}, method = RequestMethod.GET)
 		
 		public String addProcess(HttpSession session,ModelMap model, Principal principal) {
 			session.removeAttribute("controlprocess");
+			session.removeAttribute("process");
 			model.addAttribute("menu","admin");
 			return "add_process";
 		}
