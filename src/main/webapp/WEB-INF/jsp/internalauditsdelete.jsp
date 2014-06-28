@@ -230,16 +230,41 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	        <ul class="pagination">
+		<tr><td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-          
-                  <li class="page"><a href="view_internalaudits" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
-		 
-		</ul></div></td></table></div>
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeleteinternalreport_page?page=${currentpage - 1}&id=${id}&process=${process}&auditee_name=${name}" >Prev</a></li> 
+               </c:if>
+              
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                        <li class="page_unselect"><a href="viewdeleteinternalreport_page?page=${i}&id=${id}&process=${process}&auditee_name=${name}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewdeleteinternalreport_page?page=${currentpage+1}&id=${id}&process=${process}&auditee_name=${name}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewalldeleteinternalreport?&id=${id}&process=${process}&auditee_name=${name}" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="internalauditsdelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>		
+              </ul>
+              </div>
+              </td>
+         </tr>
+        </table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

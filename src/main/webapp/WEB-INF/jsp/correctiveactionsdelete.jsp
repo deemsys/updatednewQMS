@@ -145,7 +145,7 @@ else
 							    <td align="left" valign="middle" width="15%">&nbsp;Actions</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1" value="${action}"></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1"  value="Search" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 	</table></div></form>
 			     
@@ -217,16 +217,44 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	        <ul class="pagination">
+		<tr><td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-          
-                  <li class="page"><a href="correctiveactions_list" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletecorrectivereport_page?page=${currentpage - 1}&capa_id=${capa}&request_date=${date}&action=${action}" >Prev</a></li> 
+               </c:if>
+              
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
+             
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                   
+                        <li class="page_unselect"><a href="viewdeletecorrectivereport_page?page=${i}&capa_id=${capa}&request_date=${date}&action=${action}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewdeletecorrectivereport_page?page=${currentpage+1}&capa_id=${capa}&request_date=${date}&action=${action}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewalldeletecorrectivereport?&capa_id=${capa}&request_date=${date}&action=${action}" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="correctiveactionsdelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+        </td>
+        </tr>
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

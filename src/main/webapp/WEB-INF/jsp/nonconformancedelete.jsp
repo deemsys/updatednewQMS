@@ -132,9 +132,9 @@ else
 						<div class="headings altheading">
 							<h2>Delete NonConformance Records</h2>
 						</div>
-						 <div class="contentbox">
-						<form action="findnonconformances" method="get">
+	<div class="contentbox">
 							<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
+							<form action="findnonconformances" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%"> NC ID: </td>
@@ -159,21 +159,20 @@ else
 																		<c:if test="${'Early Delivery' eq type}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Early Delivery'}"><c:out value="Selected"/></c:if>
 																		value="Early Delivery">Early Delivery</option>
-															
+															<c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
+        				      										 <option value="${types.type_of_nc}"<c:if test="${types.type_of_nc eq type}"><c:out value="selected"/></c:if>>${types.type_of_nc}</option>
+			                  								</c:forEach>
 																	</select></td>
-							   
 							 <!--    <td align="left" valign="middle"><input type="text" name="type_of_nonconformance" id="type_of_nonconformance" class="input_text"></td>
 							  --><!--    <td align="left" valign="middle">Product Id:</td>
 							    <td align="left" valign="middle"><input type="text" name="product_id" id="product_id" class="input_text"></td>
 							   -->
-							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Find" name="findnonconformances"></td>
+							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Find" name="findnonconformance"></td>
 							    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
 							  </tr>
 							</table>
-							</div>
 							</form>
-
-			     
+						</div>
 							    	
 							    	<form action="deletenonconformance" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -238,16 +237,43 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	        <ul class="pagination">
+	<tr>
+	<td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-          
-                  <li class="page"><a href="view_nonconformance" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewnonconformancereport_page?page=${currentpage - 1}&id=${id}&type_of_nonconformance=${type}">Prev</a></li> 
+               </c:if>
+              
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                        <li class="page_unselect"><a href="viewdeletenonconformancereport_page?page=${i}&id=${id}&type_of_nonconformance=${type}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewdeletenonconformancereport_page?page=${currentpage+1}&id=${id}&type_of_nonconformance=${type}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewalldeletenonconformancereport?id=${id}&type_of_nonconformance=${type}" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="nonconformancedelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+		  </td>
+		  </tr>
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

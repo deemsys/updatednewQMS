@@ -394,6 +394,7 @@ public class CustomerFeedbackController
 			
 		}
 		
+		//Search operation for Admin's Setup created on 28-june-2014.
 		@RequestMapping(value="/findcustomerfeedbacks",method=RequestMethod.GET)		
 		public String findcustomerfeedbacks(HttpServletRequest request,HttpSession session,@RequestParam("date_of_feedback") String date,@RequestParam("type_of_feedback") String type,ModelMap model)
 		{
@@ -402,14 +403,62 @@ public class CustomerFeedbackController
 			
 			session.setAttribute("date", date);
 			session.setAttribute("type",type);
-				CustomerFeedbackForm customerFeedbackForm = new CustomerFeedbackForm();
-				customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type));
-				model.addAttribute("customerFeedbackForm",customerFeedbackForm);
-				model.addAttribute("menu", "admin");
-			//	model.addAttribute("success","delete");
-				System.out.println("finding....");
-				return "customersfeedbackdelete";
+			
+				System.out.println("searching.......");
+			
+			CustomerFeedbackForm customerFeedbackForm = new CustomerFeedbackForm();
+			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type, 1));
+			model.addAttribute("noofpages",(int) Math.ceil(customerFeedbackDAO.getFindCustomerfeedback(date, type) * 1.0 / 5));	 
+		
+			model.addAttribute("button","viewall");
+		        model.addAttribute("success","false");
+		        model.addAttribute("currentpage",1);
+		    	model.addAttribute("customerFeedbackForm", customerFeedbackForm);
+			
+			model.addAttribute("menu","customer");
+	        System.out.println("finding result");
+	        return "customersfeedbackdelete";		
+			}
+		@RequestMapping(value="/viewdeletefeedbackreport_page", method=RequestMethod.GET)
+		public String viewdeletefeedbackreport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,@RequestParam("feedbackdate") String date,
+				@RequestParam("feedbacktype") String type,ModelMap model) {	
+			session.setAttribute("date", date);
+			session.setAttribute("type", type);
+			CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
+			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type, page));
+			model.addAttribute("noofpages",(int) Math.ceil(customerFeedbackDAO.getFindCustomerfeedback(date, type) * 1.0 / 5));
+			model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
+		  	model.addAttribute("noofrows",5);   
+		    model.addAttribute("currentpage",page);
+		    model.addAttribute("menu","customer");
+		    model.addAttribute("button","viewall");
+		    
+		    return "customersfeedbackdelete";
 			
 		}
+
+
+		@RequestMapping(value={"/viewalldeletefeedbackreport"}, method = RequestMethod.GET)
+		public String viewalldeletefeedbackreport(HttpServletRequest request,@RequestParam("date_of_feedback") String date,
+				@RequestParam("type_of_feedback") String type,ModelMap model, Principal principal ) {
+			CustomerFeedbackForm customerFeedbackForm=new CustomerFeedbackForm();
+
+			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getfindcustomerfeedback(date, type, 0));
+			
+			model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
+
+		  	model.addAttribute("noofrows",5);    
+		   //narrativereportForm.getNarrativereport().size()
+		  	model.addAttribute("menu","customer");
+		    model.addAttribute("button","close");
+		      
+		    	model.addAttribute("menu","customer");
+		        model.addAttribute("success","false");
+		        model.addAttribute("button","close");
+		        return "customersfeedbackdelete";
+
+		}
+
+		
 
 }

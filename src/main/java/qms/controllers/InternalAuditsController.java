@@ -460,26 +460,77 @@ public class InternalAuditsController {
 	    return "internalauditsdelete";
 	}
 
+	//Admin Set up search operation created on 28-june-2014.
 	@RequestMapping(value={"/search_audit"}, method = RequestMethod.GET)
 	public String search_internalaudit(HttpSession session,@RequestParam("id") String id,@RequestParam("process") String process,@RequestParam("auditee_name") String auditee_name,ModelMap model, Principal principal)
-{
-	System.out.println(id);
-	session.setAttribute("id", id);
-	session.setAttribute("process", process);
-	session.setAttribute("name", auditee_name);
-	
-	ProcessForm processForm = new ProcessForm();
-	processForm.setProcesses(processDAO.getProcess());
-	model.addAttribute("processForm", processForm);
-	
-	
-InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
-	
-	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name));
-	
-	model.addAttribute("internalAuditsForm",internalAuditsForm);
+	{
+		System.out.println(id);
+		
+		session.setAttribute("id", id);
+		session.setAttribute("process", process);
+		session.setAttribute("name", auditee_name);
+		
+		ProcessForm processForm = new ProcessForm();
+		processForm.setProcesses(processDAO.getProcess());
+		model.addAttribute("processForm", processForm);
+		
+		InternalAuditsForm internalAuditsForm= new InternalAuditsForm();
+		
+		internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id,process,auditee_name,1));
+		model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.FindAudits(id, process, auditee_name) * 1.0 / 5));
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);
+	    model.addAttribute("internalAuditsForm",internalAuditsForm);
+	    model.addAttribute("menu","audits");
 	
     return "internalauditsdelete";
+
+}
+	//Pagination for Admin Setup's search operation results created on 28-june-2014. 
+	@RequestMapping(value="/viewdeleteinternalreport_page", method=RequestMethod.GET)
+	public String viewdeleteinternalreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+			@RequestParam("id") String id,@RequestParam("process") String process,
+			@RequestParam("auditee_name") String auditee_name,ModelMap model) {
+		
+		session.setAttribute("id",id);
+		session.setAttribute("name",auditee_name);
+		session.setAttribute("process", process);
+		InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
+		internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id, process, auditee_name, page));
+		model.addAttribute("noofpages",(int) Math.ceil(internalAuditsDAO.FindAudits(id, process, auditee_name) * 1.0 / 5));	 
+		model.addAttribute("internalAuditsForm", internalAuditsForm);	
+	  	model.addAttribute("noofrows",5);
+	    model.addAttribute("currentpage",page);
+	    model.addAttribute("menu","audits");
+	    model.addAttribute("button","viewall");
+	    return "internalauditsdelete";
+	}
+
+//Pagination for Admin Setup's search operation results created on 28-june-2014.
+	@RequestMapping(value={"/viewalldeleteinternalreport"}, method = RequestMethod.GET)
+	public String viewalldeleteinternalreport(HttpSession session,
+			HttpServletRequest request,ModelMap model,
+	@RequestParam("process") String process,@RequestParam("id") String id,
+	@RequestParam("auditee_name") String auditee_name,Principal principal ) 
+	{	
+		session.setAttribute("id", id);
+		session.setAttribute("name", auditee_name);
+		session.setAttribute("process", process);
+	InternalAuditsForm internalAuditsForm = new InternalAuditsForm();
+	internalAuditsForm.setInternalAudits(internalAuditsDAO.search_internalaudit(id, process, auditee_name, 0));
+//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+	model.addAttribute("internalAuditsForm", internalAuditsForm);
+
+ // 	model.addAttribute("noofrows",5);    
+   //narrativereportForm.getNarrativereport().size()
+    model.addAttribute("menu","audits");
+    model.addAttribute("button","close");
+      
+    	model.addAttribute("menu","audits");
+        model.addAttribute("success","false");
+        model.addAttribute("button","close");
+        return "internalauditsdelete";
 
 }
 

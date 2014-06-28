@@ -539,72 +539,7 @@ import qms.model.InternalAudits;
 		return internalAudits;
 	}
 	
-	//Search operation for find a particular record
-	public List<InternalAudits> search_internalaudit(String id,String process,String auditee_name) {
-		Connection con = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		//boolean status = false;
-		System.out.println("id");
-		List<InternalAudits> internalAudits = new ArrayList<InternalAudits>();
-
-		try {
-			con = dataSource.getConnection();
-			statement = con.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		try {
-			if(!id.equals("") && !process.equals("") && !auditee_name.equals(""))
-			{
-				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"'and process='"+process+"' and auditee_name='"+auditee_name+"'");
-			}
-			else if(id.equals("") && !process.equals("") && !auditee_name.equals(""))
-			{
-				resultSet = statement.executeQuery("select * from tb1_internalaudits where process='"+process+"' and auditee_name='"+auditee_name+"'");
-			}
-			else if(!id.equals("") && process.equals("") && !auditee_name.equals(""))
-			{
-				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"' and auditee_name='"+auditee_name+"'");
-			}
-			else if(!id.equals("") && !process.equals("") && auditee_name.equals(""))
-			{
-				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"' and process='"+process+"'");
-			}
-			else
-			{
-				resultSet = statement.executeQuery("select * from tb1_internalaudits where id='"+id+"'or process='"+process+"' or auditee_name='"+auditee_name+"'");
-			}
-			while (resultSet.next()) {
-							
-								
-				internalAudits.add(new InternalAudits(resultSet
-						.getString("id"), resultSet
-						.getString("process"), resultSet
-						.getString("audit_start_date"), resultSet
-						.getString("audit_due_date"), resultSet
-						.getString("auditor"), resultSet
-						.getString("auditor_notes"), resultSet
-						.getString("finding"), resultSet
-						.getString("completion_date"), resultSet
-						.getString("auditors_initials"), resultSet
-						.getString("auditee_name")));
-			}
-
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			releaseResultSet(resultSet);
-			releaseStatement(statement);
-			releaseConnection(con);
-		} finally {
-			releaseResultSet(resultSet);
-			releaseStatement(statement);
-			releaseConnection(con);
-		}
-		return internalAudits;
-	}
-
-	//Search operation for find a particular record
+		//Search operation for find a particular record
 	public List<InternalAudits> search_internalaudit(String id,String process,String auditee_name,int page) {
 		Connection con = null;
 		Statement statement = null;

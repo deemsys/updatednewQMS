@@ -518,26 +518,77 @@ public class EmployeeController
 	    return "employeesdelete";
 	}
 
-	@RequestMapping(value="/findemployees",method=RequestMethod.GET)		
-	public String findemployees(HttpServletRequest request,HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)
-	{
-	
-		System.out.println("find");
-		session.setAttribute("trainer", trainer);
-		session.setAttribute("type", type);
-		session.setAttribute("qualifiedby",qualifiedby);
-
-			EmployeeForm employeeForm = new EmployeeForm();
-			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer));
-			System.out.println(type);
-			System.out.println(qualifiedby);
-			System.out.println(trainer);
-			model.addAttribute("employeeForm",employeeForm);
-			model.addAttribute("menu", "admin");
-			System.out.println("finding....");
-			return "employeesdelete";
+	//Search operation for Admin's Setup created on 28-june-2014.
+		@RequestMapping(value="/findemployees",method=RequestMethod.GET)		
+		public String findemployees(HttpServletRequest request,HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)
+		{
 		
+			System.out.println("find");
+			session.setAttribute("trainer", trainer);
+			session.setAttribute("type", type);
+			session.setAttribute("qualifiedby",qualifiedby);
+			
+				EmployeeForm employeeForm = new EmployeeForm();
+				employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby,trainer,1));
+				model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.FindEmployee(type, qualifiedby, trainer) * 1.0 /5));
+				System.out.println(type);
+				System.out.println(qualifiedby);
+				System.out.println(trainer);
+					 
+			        model.addAttribute("button","viewall");
+			        model.addAttribute("success","false");
+			        model.addAttribute("currentpage",1);
+				
+				
+				model.addAttribute("employeeForm", employeeForm);
+				model.addAttribute("menu","employee");
+				return "employeesdelete";
+				
+			}
+		
+		//Admin Setup's Pagination for Search results created on 28-june-2014.
+		@RequestMapping(value="/viewdeleteemployeereport_page", method=RequestMethod.GET)
+		public String viewdeleteemployeereport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,
+				@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,
+				ModelMap model) {	
+			session.setAttribute("trainer", trainer);
+			session.setAttribute("type", type);
+			session.setAttribute("qualifiedby",qualifiedby);
+			EmployeeForm employeeForm=new EmployeeForm();
+			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby, trainer, page));
+		 	model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.FindEmployee(type, qualifiedby, trainer) * 1.0 / 5));
+		 	model.addAttribute("employeeForm",employeeForm);	
+		  	model.addAttribute("noofrows",5);   
+		    model.addAttribute("currentpage",page);
+		    model.addAttribute("menu","employee");
+		    model.addAttribute("button","viewall");
+		    
+		    return "employeesdelete";
+		    
+			
 		}
+
+		//Admin Setup's Pagination for Search results created on 28-june-2014.
+		@RequestMapping(value={"/viewalldeleteemployeereport"}, method = RequestMethod.GET)
+		public String viewalldeleteemployeereport(HttpServletRequest request,ModelMap model,
+				@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,
+				Principal principal ) {
+			EmployeeForm employeeForm=new EmployeeForm();
+			employeeForm.setEmployees(employeeDAO.findemployee(type, qualifiedby, trainer, 0));
+			model.addAttribute("employeeForm",employeeForm);
+
+		  //	model.addAttribute("noofrows",5);    
+		   //narrativereportForm.getNarrativereport().size()
+		    model.addAttribute("menu","employee");
+		    model.addAttribute("button","close");
+		      
+		    	model.addAttribute("menu","employee");
+		        model.addAttribute("success","false");
+		        model.addAttribute("button","close");
+		        return "employeesdelete";
+
+		}
+
 
 
 		@RequestMapping(value={"/deleteemployees"}, method = RequestMethod.POST)

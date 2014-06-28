@@ -642,19 +642,74 @@ public class CorrectiveAndPreventiveActionsController
 	    return "correctiveactionsdelete";
 	}
 
-	@RequestMapping(value={"/search_correctiveaction"}, method = RequestMethod.GET)
-	
-	public String search_correctiveaction(HttpSession session,@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
-	{
-	
-	
-		session.setAttribute("capa", capa_id);
-		session.setAttribute("date", request_date);
-		session.setAttribute("action", action);
-		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
-		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id,request_date,action));
-		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
-		return "correctiveactionsdelete";
+	//Search Operation for Admin's Setup created on 28-june-2014.
+		@RequestMapping(value={"/search_correctiveaction"}, method = RequestMethod.GET)
+		
+		public String search_correctiveaction(HttpSession session,@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model, Principal principal)
+		{
+		
+			session.setAttribute("capa", capa_id);
+			session.setAttribute("date", request_date);
+			session.setAttribute("action", action);
+			
+			NonConformanceForm nonConformanceForm = new NonConformanceForm();
+			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
+			model.addAttribute("nonConformanceForm", nonConformanceForm);
+			
+			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id, request_date, action, 1));
+			model.addAttribute("noofpages",(int) Math.ceil(correctiveAndPreventiveActionsDAO.Search_Correctiveactions(capa_id, request_date, action) * 1.0 / 5));	 
+		        model.addAttribute("button","viewall");
+		        model.addAttribute("success","false");
+		        model.addAttribute("currentpage",1);
+			
+			
+			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
+			model.addAttribute("menu","corrective");
+			return "correctiveactionsdelete";
+	}
+		//Search Operation Results pagination for Admin's Setup created on 28-june-2014. 
+		@RequestMapping(value="/viewdeletecorrectivereport_page", method=RequestMethod.GET)
+		public String viewdeletecorrectivereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+				@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,@RequestParam("action") String action,ModelMap model) {
+			
+			session.setAttribute("capa", capa_id);
+			session.setAttribute("date", request_date);
+			session.setAttribute("action", action);
+			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id, request_date, action, page));
+			model.addAttribute("noofpages",(int) Math.ceil(correctiveAndPreventiveActionsDAO.Search_Correctiveactions(capa_id, request_date, action) * 1.0 / 5));
+			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);	
+		  	model.addAttribute("noofrows",5);
+		    model.addAttribute("currentpage",page);
+		    model.addAttribute("menu","corrective");
+		    model.addAttribute("button","viewall");
+		    
+		    return "correctiveactionsdelete";
+			
+		}
+
+		//Search Operation Results pagination for Admin's Setup created on 28-june-2014.
+		@RequestMapping(value={"/viewalldeletecorrectivereport"}, method = RequestMethod.GET)
+		public String viewalldeletecorrectivereport(HttpServletRequest request,HttpSession session,ModelMap model,@RequestParam("capa_id") String capa_id,@RequestParam("request_date") String request_date,
+				@RequestParam("action") String action,Principal principal ) 
+		{
+			
+			
+			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
+			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.search_correctiveactions(capa_id, request_date, action, 0));
+		//		 
+			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
+
+		 // 	model.addAttribute("noofrows",5);    
+		   //narrativereportForm.getNarrativereport().size()
+		    model.addAttribute("menu","corrective");
+		    model.addAttribute("button","close");
+		      
+		    	model.addAttribute("menu","corrective");
+		        model.addAttribute("success","false");
+		        model.addAttribute("button","close");
+		        return "correctiveactionsdelete";
 
 
 }

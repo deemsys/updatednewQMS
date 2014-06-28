@@ -241,16 +241,11 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	        <ul class="pagination">
-        
-          
-                  <li class="page"><a href="viewmanagementreview" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
-		 
-		</ul></div></td></table></div>
+		
+		
+		
+		
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

@@ -164,7 +164,7 @@ else
 								<td valign="top" align="left" width="10%">Address</td>
 								<td valign="top" align="left" width="10%">City</td>
           						<td valign="top" align="left" width="15%">Email Address</td>
-          						<td valign="top" align="left" width="15%">Actions</td>
+          						
         					</tr>
 									</tr>
 
@@ -178,7 +178,7 @@ else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${customerFeedbacks.date_of_feedback}"/></td>
-					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
+								           	<td valign="top" align="left"  width="10%">${customerFeedbacks.date_of_feedback}</td>
 									      <td valign="top" align="left" width="10%">${customers.customer_name}</td>
 											<td valign="top" align="left" width="10%">${customers.address}</td>
 											<td valign="top" align="left" width="10%">${customers.city}</td>
@@ -206,39 +206,47 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	<!-- <div class="extrabottom">
-      -->        <ul class="pagination">
+		
+		
+<tr><td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-           <%--   <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewformreport_page?page=${currentpage - 1}" >Prev</a></li> 
+      		 <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${currentpage - 1}&customer_id=${cust_id}&customer_name=${name}&address=${address}" >Prev</a></li> 
                </c:if>
               
-           
+            <%--  <c:forEach var="count" begin="1" end="${noofrows}">  --%>
                <c:forEach begin="1" end="${noofpages}" var="i">
                 <c:choose>
                     <c:when test="${currentpage eq i}">
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewformreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${i}&customer_id=${cust_id}&customer_name=${name}&address=${address}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewformreport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${currentpage+1}&customer_id=${cust_id}&customer_name=${name}&address=${address}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
+                  <%-- <li class="page"><a href="viewallcustomerreport?&customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> --%>
+          <li class="page"><a href="viewalldeletecustomerreport?customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> 
              </c:when>
-                <c:otherwise> --%>
-                  <li class="page"><a href="view_customers" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+                <c:otherwise>
+                  <li class="page"><a href="customersdelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>						
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+ </td>
+		  </tr>
+		
+		
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

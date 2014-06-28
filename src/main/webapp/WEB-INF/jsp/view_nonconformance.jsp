@@ -157,6 +157,7 @@
 							    	</tr>
 							    	</c:if>
 
+<tr>
 								
                <td colspan="6">  
 	<div class="extrabottom">

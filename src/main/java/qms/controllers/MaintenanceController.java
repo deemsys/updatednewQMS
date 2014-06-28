@@ -98,21 +98,60 @@ return "maintenance_list";
 	{
 		System.out.println("equip id====" +equipment_id);
 		System.out.println("equip name==="+equipment_name);
+		System.out.println(equipment_id);
 		session.setAttribute("equipid",equipment_id);
 		session.setAttribute("equipname",equipment_name);
 		
-			MaintenanceForm maintenanceForm=new MaintenanceForm();
-	    maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
+		
+	    
+	    	MaintenanceForm maintenanceForm=new MaintenanceForm();
+	    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,1));
 			model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.FindMaintenance(equipment_id, equipment_name) * 1.0 / 5));	 
 			model.addAttribute("button","viewall");
 			model.addAttribute("success","false");
 			model.addAttribute("currentpage",1);
 	    	model.addAttribute("maintenanceForm",maintenanceForm);
-	    	model.addAttribute("menu","admin");
-	    	
+	    	model.addAttribute("menu","maintenance");	
 		return "maintenancedelete";
 		}
-			
+
+	//Search operation results pagination created on 28-june-2014.
+	@RequestMapping(value="/viewdeletemaintenancereport_page", method=RequestMethod.GET)
+	public String viewdeletemaintenancereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model) {	
+		
+		session.setAttribute("equipid",equipment_id);
+		session.setAttribute("equipname",equipment_name);
+		MaintenanceForm maintenanceForm=new MaintenanceForm();
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,page));
+		model.addAttribute("noofpages",(int) Math.ceil(maintenanceDAO.FindMaintenance(equipment_id, equipment_name) * 1.0 / 5));	 
+    	model.addAttribute("maintenanceForm",maintenanceForm);
+	  	model.addAttribute("noofrows",5);   
+	    model.addAttribute("currentpage",page);
+	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("button","viewall");
+	    
+	    return "maintenancedelete";
+		
+	}
+
+
+	@RequestMapping(value={"/viewalldeletemaintenancereport"}, method = RequestMethod.GET)
+	public String viewalldeletemaintenancereport(HttpServletRequest request,HttpSession session,@RequestParam("equipment_id") String equipment_id,@RequestParam("equipment_name") String equipment_name,ModelMap model, Principal principal ) {
+		
+		session.setAttribute("equipid",equipment_id);
+		session.setAttribute("equipname",equipment_name);
+		MaintenanceForm maintenanceForm=new MaintenanceForm();
+    	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,0));
+		model.addAttribute("maintenanceForm",maintenanceForm);
+	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("button","close");
+	      
+	    	model.addAttribute("menu","maintenance");
+	        model.addAttribute("success","false");
+	        model.addAttribute("button","close");
+	        return "maintenancedelete";
+
+	}
 
 	
 	

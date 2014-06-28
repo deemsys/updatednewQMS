@@ -247,22 +247,74 @@ public class CustomersController
 		    return "customersdelete";
 		}	
 		
+		//search a record for Admin's Setup created on 28-june-2014.
 		@RequestMapping(value="/findcustomers",method=RequestMethod.GET)		
 		public String findcustomers(HttpServletRequest request,HttpSession session,@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,ModelMap model)
 		{
 		
 			System.out.println("find");
-			session.setAttribute("id", id);
+			session.setAttribute("cust_id", id);
 			session.setAttribute("name", name);
 			session.setAttribute("address", address);
 
 				CustomersForm customersForm = new CustomersForm();
-				customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address));
+				customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,1));
+				model.addAttribute("noofpages",(int) Math.ceil(customersDAO.FindCustomer(id, name, address) * 1.0 / 5));
+				model.addAttribute("button","viewall");
+				model.addAttribute("success","false");
+				model.addAttribute("currentpage",1);
 				model.addAttribute("customersForm",customersForm);
-				model.addAttribute("menu", "admin");
+				model.addAttribute("menu", "customer");
 				System.out.println("finding....");
 				return "customersdelete";
 			}
+		
+		@RequestMapping(value="/viewdeletecustomerreport_page", method=RequestMethod.GET)
+		public String viewdeletecustomerreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
+				@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,ModelMap model) {
+			
+			session.setAttribute("cust_id",id);
+			session.setAttribute("name",name);
+			session.setAttribute("address", address);
+			CustomersForm customersForm = new CustomersForm();
+			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,page));
+			model.addAttribute("noofpages",(int) Math.ceil(customersDAO.FindCustomer(id, name, address) * 1.0 / 5));
+			model.addAttribute("customersForm", customersForm);	
+		  	model.addAttribute("noofrows",5);
+		    model.addAttribute("currentpage",page);
+		    model.addAttribute("menu","customer");
+		    model.addAttribute("button","viewall");
+		    
+		    return "customersdelete";
+			
+		}
+
+		@RequestMapping(value={"/viewalldeletecustomerreport"}, method = RequestMethod.GET)
+		public String viewalldeletecustomerreport(HttpServletRequest request,HttpSession session,ModelMap model,@RequestParam("customer_id") String id,
+				@RequestParam("customer_name") String name,@RequestParam("address") String address,
+				Principal principal ) 
+		{
+			
+
+			session.setAttribute("cust_id",id);
+			session.setAttribute("name",name);
+			session.setAttribute("address", address);
+			CustomersForm customersForm = new CustomersForm();
+			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address, 0));
+		//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+			model.addAttribute("customersForm", customersForm);
+
+		 // 	model.addAttribute("noofrows",5);    
+		   //narrativereportForm.getNarrativereport().size()
+		    model.addAttribute("menu","document");
+		    model.addAttribute("button","close");
+		      
+		    	model.addAttribute("menu","document");
+		        model.addAttribute("success","false");
+		        model.addAttribute("button","close");
+		        return "customersdelete";
+		}
+
 		
 		
 			@RequestMapping(value={"/deletecustomers"}, method = RequestMethod.POST)

@@ -168,6 +168,7 @@
 							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
+							    	<tr>
 							    	<td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">
@@ -188,7 +189,7 @@
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
               <li class="page_unselect"><a href="viewfeedbackreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li> 
-              <li class="page_unselect"><a href="viewhrreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li>
+             
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
@@ -202,6 +203,7 @@
 		  </ul>
 		  </div>
 		  </td>
+		  </tr>
 
 						</table>
 					</div>

@@ -233,39 +233,44 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	<!-- <div class="extrabottom">
-      -->        <ul class="pagination">
-        
-           <%--   <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewformreport_page?page=${currentpage - 1}" >Prev</a></li> 
-               </c:if>
+							    	<tr>
+							    	<td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletefeedbackreport_page?page=${currentpage - 1}&feedbackdate=${date}&feedbacktype=${type}">Prev</a></li>
+             </c:if>
               
-           
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
                <c:forEach begin="1" end="${noofpages}" var="i">
                 <c:choose>
                     <c:when test="${currentpage eq i}">
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewformreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewdeletefeedbackreport_page?page=${i}&feedbackdate=${date}&feedbacktype=${type}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewformreport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdeletefeedbackreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li> 
+              <li class="page_unselect"><a href="viewhrreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li>
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewalldeletefeedbackreport?&date_of_feedback=${date}&type_of_feedback=${type}" class="paging_select">ViewAll</a></li>
              </c:when>
-                <c:otherwise> --%>
-                  <li class="page"><a href="viewfeedback" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+                <c:otherwise>
+                  <li class="page"><a href="customersfeedbackdelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+		  </td>
+		  </tr>
+		
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

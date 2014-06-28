@@ -882,76 +882,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 		
 	}
 	
-	public List<CorrectiveAndPreventiveActions> search_correctiveactions(String capa_id,String request_date,String action) {
-		Connection con = null;
-		Statement statement = null;
-		ResultSet resultSet = null;
-		try {
-			con = dataSource.getConnection();
-			statement = con.createStatement();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		
-		List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions = new ArrayList<CorrectiveAndPreventiveActions>();
-	    try{
-	    	if(!capa_id.equals("") && !request_date.equals("") && !action.equals(""))
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where t1.capa_id='"+capa_id+"' and t2.action='"+action+"' and t1.request_date='"+request_date+"' ");
-	    	}
-	    	else if(!capa_id.equals("") && !request_date.equals("") && action.equals(""))
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where t1.capa_id='"+capa_id+"' and t1.request_date='"+request_date+"' ");
-	    	}
-	    	else if(!capa_id.equals("") && request_date.equals("") && !action.equals(""))
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where t1.capa_id='"+capa_id+"'and t2.action='"+action+"'");
-	    	}
-	    	else if(capa_id.equals("") && !request_date.equals("") && !action.equals(""))
-	    	{
-	    		resultSet = statement.executeQuery("select * from tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where t2.action='"+action+"' and t1.request_date='"+request_date+"' ");
-	    	}
-	    	else
-	    	{	   
-	    		resultSet = statement.executeQuery("select * from tbl_corrective_and_preventive_main as t1 join tbl_corrective_and_preventive_child as t2 on t1.capa_id=t2.capa_id where t1.capa_id='"+capa_id+"' or t2.action='"+action+"' or t1.request_date='"+request_date+"' ");
-	    	}
-	    	
-	   while(resultSet.next()){
-		   
-		   correctiveAndPreventiveActions.add(new CorrectiveAndPreventiveActions(resultSet.getString("capa_id"),resultSet.getString("nc_id"), resultSet
-					.getString("source_of_nonconformance"), resultSet
-					.getString("external_id"), resultSet
-					.getString("type_of_nonconformance"), resultSet
-					.getString("date_found"), resultSet
-					.getString("temporary_action"), resultSet
-					.getString("nature_of_nc"), resultSet
-					.getString("capa_requestor"), resultSet
-					.getString("request_date"),resultSet
-					.getString("capa_due_date"), resultSet
-					.getString("assigned_team_leader"), resultSet
-					.getString("team_members"), resultSet
-					.getString("root_cause_analysis_file"), resultSet
-					.getString("use_5_why_in_system"), resultSet
-					.getString("why"), resultSet
-					.getString("root_cause_statement"),resultSet
-					.getString("upload_external_analysis"),
-					resultSet.getString("action"),resultSet.getString("responsibility"),resultSet.getString("due_date"),resultSet.getString("completion_date"),resultSet.getString("verified_by"),resultSet.getString("verification_date"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
 	
-			}
-			
-	    }catch(Exception e){
-	    	System.out.println(e.toString());
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);
-	    }finally{
-	    	releaseResultSet(resultSet);
-	    	releaseStatement(statement);
-	    	releaseConnection(con);	    	
-	    }
-	    return correctiveAndPreventiveActions;
-		
-	}
 // pagination created on 24-june-2014(7.22pm).	
 	public  List<CorrectiveAndPreventiveActions> getlimitedcorrectivereport(int page) {
 		Connection con = null;

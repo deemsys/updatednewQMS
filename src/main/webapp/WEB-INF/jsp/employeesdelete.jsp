@@ -255,39 +255,43 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	<!-- <div class="extrabottom">
-      -->        <ul class="pagination">
+		<tr><td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-           <%--   <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewformreport_page?page=${currentpage - 1}" >Prev</a></li> 
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeleteemployeereport_page?page=${currentpage - 1}&type_of_training=${type}&trainer=${trainer}&qualified_by=${qualifiedby}" >Prev</a></li> 
                </c:if>
               
-           
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
                <c:forEach begin="1" end="${noofpages}" var="i">
                 <c:choose>
                     <c:when test="${currentpage eq i}">
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewformreport_page?page=${i}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewdeleteemployeereport_page?page=${i}&type_of_training=${type}&trainer=${trainer}&qualified_by=${qualifiedby}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewformreport_page?page=${currentpage+1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdeleteemployeereport_page?page=${currentpage+1}&type_of_training=${type}&trainer=${trainer}&qualified_by=${qualifiedby}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallformreport" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewalldeleteemployeereport?&type_of_training=${type}&trainer=${trainer}&qualified_by=${qualifiedby}" class="paging_select">ViewAll</a></li>
              </c:when>
-                <c:otherwise> --%>
-                  <li class="page"><a href="viewemployees" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+                <c:otherwise>
+                  <li class="page"><a href="employeesdelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+		  </td>
+		  </tr>
+		
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

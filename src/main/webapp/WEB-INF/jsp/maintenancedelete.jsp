@@ -214,16 +214,42 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	        <ul class="pagination">
+	<tr><td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-          
-                  <li class="page"><a href="maintenance_list" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletemaintenancereport_page?page=${currentpage - 1}&equipment_id=${equipid}&equipment_name=${equipname}" >Prev</a></li> 
+               </c:if>
+             
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                        <li class="page_unselect"><a href="viewdeletemaintenancereport_page?page=${i}&equipment_id=${equipid}&equipment_name=${equipname}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewdeletemaintenancereport_page?page=${currentpage+1}&equipment_id=${equipid}&equipment_name=${equipname}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewalldeletemaintenancereport?equipment_id=${equipid}&equipment_name=${equipname}" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="maintenancedelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+		  </td>
+		  </tr>
+		
+	</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">
