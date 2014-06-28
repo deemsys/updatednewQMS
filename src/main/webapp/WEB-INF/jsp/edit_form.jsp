@@ -688,11 +688,26 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 		  document.getElementById("title1").innerHTML="Empty Space value is not allowed";
 	        return false;
 	    } 
-	  if(!comments.match(/\S/)) {
-		    //  alert("incorrect value"); 
-			  document.getElementById("comments1").innerHTML="Empty Space value is not allowed";
-		        return false;
-		    } 
+	 if(comments.charAt(0) ==" ")
+	 {
+		 alert("comments incorrect");
+		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+	 }
+		 else if(comments.match(validate1))
+		 {
+			 if(comments.length < 5 || comments.length > 500 )
+				 {
+				 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
+				 return false;
+				 }
+			 else{
+			     document.getElementById("comments1").innerHTML="";
+			     }
+	   	 }
+	 	else{
+				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+				 return false;
+			    }
 	  if(!responsibility.match(/\S/)) {
 		    //  alert("incorrect value"); 
 			  document.getElementById("responsibility1").innerHTML="Empty Space value is not allowed";
