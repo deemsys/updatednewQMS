@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import qms.dao.CustomersDAO;
 import qms.model.Customers;
 import qms.forms.CustomersForm;
+import qms.forms.DocumentMainForm;
 import qms.forms.MaintenanceForm;
 
 
@@ -73,30 +74,31 @@ public class CustomersController
 		
 	}
 
-
 	@RequestMapping(value={"/viewallcustomerreport"}, method = RequestMethod.GET)
-	public String viewallcustomerreport(HttpServletRequest request,ModelMap model, 
-			@RequestParam("page") int page,HttpSession session,
-			@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,
-			Principal principal ) {
+	public String viewallcustomerreport(HttpServletRequest request,HttpSession session,ModelMap model,@RequestParam("customer_id") String id,
+			@RequestParam("customer_name") String name,@RequestParam("address") String address,
+			Principal principal ) 
+	{
+		
+
 		session.setAttribute("cust_id",id);
 		session.setAttribute("name",name);
 		session.setAttribute("address", address);
-		CustomersForm customersForm=new CustomersForm();
-		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,0));
-	
-		model.addAttribute("customersForm",customersForm);
-    
+		CustomersForm customersForm = new CustomersForm();
+		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address, 0));
+	//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
+		model.addAttribute("customersForm", customersForm);
+
+	 // 	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
-	    model.addAttribute("menu","customer");
+	    model.addAttribute("menu","document");
 	    model.addAttribute("button","close");
 	      
-	    	model.addAttribute("menu","customer");
+	    	model.addAttribute("menu","document");
 	        model.addAttribute("success","false");
 	        model.addAttribute("button","close");
 	        return "view_customers";
 	}
-
 	
 	//getting unique id
 	@RequestMapping(value={"/addcustomer"}, method = RequestMethod.GET)
@@ -195,7 +197,7 @@ public class CustomersController
 	{
 	
 		System.out.println("find");
-		session.setAttribute("id", id);
+		session.setAttribute("cust_id", id);
 		session.setAttribute("name", name);
 		session.setAttribute("address", address);
 

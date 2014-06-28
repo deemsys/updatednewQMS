@@ -14,7 +14,7 @@
 $(window).load(function(){
 	//alert("yes");
 	   $(document).on("click", "label.mytxt", function () {
-		
+		   alert("ok");
 	        var txt = $(".mytxt").text();
 	        $(".mytxt").replaceWith("<input class='mytxt'/>");
 	        $(".mytxt").val(txt);
@@ -109,10 +109,25 @@ $(window).load(function(){
                <option onclick="toggle2(this.value);" value="Hard Copy">Hard Copy</option>
                <option onclick="toggle2(this.value);" value="Electronic">Electronic</option>
                </select> -->
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy" id="id_hardcopy" <c:if test="${documentMain.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;&nbsp;&nbsp;
-                <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
-                <input type="radio" name="media_type"value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${documentMain.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-               <span class="err" style="color:red"><form:errors path="DocumentMain.media_type"></form:errors></span> 
+              
+               <c:choose>
+               <c:when test="${documentMain.media_type=='hardcopy'}">
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${documentMain.media_type=='electronic'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${documentMain.media_type=='both'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               </c:choose>
+                <span class="err" style="color:red"><form:errors path="DocumentMain.media_type"></form:errors></span> 
                </td>
            <td valign="top" align="left" class="input_txt" width="20%"></td>
               
@@ -135,7 +150,7 @@ $(window).load(function(){
 			                  </c:forEach>
 			                   </select><br>
 			 <span id="hard"style="color:red"></span>
-              <input name="attachments" style="display:none;" id="id_file" type="file"  value="${documentMain.attachments}"/> <br/>
+              <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
               <span id="attach"style="color:red"></span>
               
                </td>
@@ -324,9 +339,7 @@ $(window).load(function(){
              <tr class="row1" style="border:none;">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/>
-                 <span id="datepicker1234"style="color:red"></span>
-               <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
                <td valign="middle" align="left" class="input_txt" width="70%">Approver 3(Mgmt Report):</td>
@@ -418,150 +431,78 @@ function validation()
 {
 	
 	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
-	var date =/^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	
 	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
-	var datepicker123=document.getElementById('datepicker').value;
 	 var e2=document.getElementById('location_text').value;
-	 var choose=document.getElementById('id_file').value;
-	 var file=document.getElementById('file_name').value;
-	 
+	 var e3=document.getElementById('id_file').value;
 	 var documenttitle = document.getElementById('documenttitle').value;
 	 var revisionlevel = document.getElementById('revisionlevel').value;
 	 var comments = document.getElementById('comments').value;
+	 
 	 if(document.getElementById('id_hardcopy').checked)
 	 {
-
-			if(e2=="")
+		if(e2=="")
 			{
 			
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 			return false;
 			}
-		else{
-			
-			document.getElementById("hard").innerHTML="";
-		}
 		 
 		 
 	 }
 	 if(document.getElementById('id_electronic').checked)
 	{
-		 
-		
-		 if(file =="")
-		 {
-		 document.getElementById("attach").innerHTML="File No Uploaded";
-		 return false;
-		 }
-		 else
+		 if(e3=="")
 			 {
-			 document.getElementById("attach").innerHTML="";
-			 }
-		  if(file =="" && choose=="")
-			 {
-			 document.getElementById("attach").innerHTML="File No Uploaded";
+			
+			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 			 return false;
 			 }
-		  else
-			  {
-			  document.getElementById("attach").innerHTML="";
-			  }
-		  
-		 
-		 
 	}
 	if(document.getElementById('id_both').checked)
 		{
-		
 		if(e2=="")
 		{
 			
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
-		else
-			{
-			document.getElementById("hard").innerHTML="";
-			}
-		
-		 if(file =="")
+		 if(e3=="")
 		 {
-		 document.getElementById("attach").innerHTML="File No Uploaded";
+			
+		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 		 return false;
 		 }
-		 else{
-			 document.getElementById("attach").innerHTML="";
-		 }
 		}
-	
-	
 	 if(documenttitle.charAt(0) ==" ")
 	 {
-		 
+		
 		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
 		 return false;
 	 }
-	 else if(documenttitle.match(validate1))
+	 
+	 if(documenttitle.match(validate1))
 	 {
-		 document.getElementById("documenttitle1").innerHTML="";
- 	 }
-	 else
-		 {
-		   document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
-		   	return false;
-		 }
-	 
-	 
-	 
-	 
-	 
-	 
-	 if(revisionlevel.charAt(0) ==" ")
-	 {
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
-		 return false;
-	 }	 
-	 else if(revisionlevel.match(dotnumber))
-		 { 
-			 document.getElementById("revisionlevel1").innerHTML="";
-		 }
-	 else{	
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
-		 return false;
-		}
-	 
-	 
-	 
-	 
-	 if(comments.charAt(0) ==" ")
-	 {
-		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
 	 }
-		 else if(comments.match(validate1))
-		 {
-			 if(comments.length < 5 || comments.length > 500 )
-				 {
-				 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
-				 return false;
-				 }
-			 else{
-			     document.getElementById("comments1").innerHTML="";
-			     }
-	   	 }
-	 	else{
-				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
-				 return false;
-			    }
-	 
-	 if(datepicker123.match(date))
-	 {
-		 document.getElementById("datepicker1234").innerHTML="";
-	 }
- else
-	 {
-	 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
+	 else{
+		
+	 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
 	 return false;
+ 	}
+	 if(revisionlevel.match(dotnumber))
+	 { }
+	 else{
+		
+	 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
+	 if(comments.match(validate1))
+	 { 
 	 }
+	 else{
+	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+	 return false;
+ 	}
 	}
 function doAjaxPost_for_process() {
 
@@ -593,7 +534,7 @@ function change_file(){
 
 function Approver1(){
 	var element = document.getElementById("approver").value();
-	
+	alert(element);
 	
 }
 
@@ -842,28 +783,7 @@ function show_edit()
        });
 </script>	
 
- <!--  <script>
 
-	window.onload = function(){
-		if(document.getElementById('id_hardcopy').checked)
-			{
-			var value1 = document.getElementById('id_hardcopy').value;
-			toggle2(value1);
-			}
-		if(document.getElementById('id_electronic').checked){
-			
-			
-			var value1 = document.getElementById('id_electronic').value;
-			toggle2(value1);
-		}
-		if(document.getElementById('id_both').checked){
-			
-			
-			var value1 = document.getElementById('id_both').value;
-			toggle2(value1);
-		}
-	}
-		</script> -->
 
    <jsp:include page="footer.jsp"></jsp:include>   
              

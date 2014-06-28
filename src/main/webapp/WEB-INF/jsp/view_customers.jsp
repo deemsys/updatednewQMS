@@ -185,7 +185,7 @@
               <c:choose>
               <c:when test="${button=='viewall'}">
                   <%-- <li class="page"><a href="viewallcustomerreport?&customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> --%>
-          <li class="page"><a href="viewallcustomerreport?&customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> 
+          <li class="page"><a href="viewallcustomerreport?customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> 
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="viewcustomers" class="paging_select">Back</a></li>
