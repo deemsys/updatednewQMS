@@ -695,7 +695,7 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 			 document.getElementById("title1").innerHTML="Required Field Should not be space";
 			 return false;
 		 }
-		 else if(documenttitle.match(validate1))
+		 else if(title.match(validate1))
 		 {
 			 document.getElementById("title1").innerHTML="";
 	 	 }
@@ -708,10 +708,11 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	 {
 		 alert("comments incorrect");
 		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+		 return false;
 	 }
 		 else if(comments.match(validate1))
 		 {
-			 if(comments.length < 5 || comments.length > 500 )
+			 if((comments.length < 5) || (comments.length > 500) )
 				 {
 				 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
 				 return false;
@@ -763,15 +764,17 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 		 }
 		 if(document.getElementById('id_electronic').checked)
 		{
+			 alert("elec");
 			 if(e3=="")
 				 {
-				
+				alert("gfhg");
 				 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
 				 return false;
 				 }
 		}
 		if(document.getElementById('id_both').checked)
 			{
+			alert("file name"+e3);
 			if(e2=="")
 			{
 				
