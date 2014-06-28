@@ -43,12 +43,12 @@
 								<span>DocumentType</span>
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+							<%-- <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentrevisionlevel_list" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									<span>Revision Level</span>
 								</a>
-							</li>
+							</li> --%>
 						<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
 								<a href="sourceNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">

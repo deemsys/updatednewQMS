@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%-- <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <script type='text/javascript' src='http://code.jquery.com/jquery-2.1.0.js'></script>
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
@@ -100,13 +100,13 @@
 								</a>
 							</li>	
 							</li>	
-							<%-- <li  style=" float:left;text-transform:uppercase;">
+							<li  style=" float:left;text-transform:uppercase;">
 								<a href="add_referenceMaintenance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Reference Attachment</span>
 									
 								</a>
-							</li>		 --%>
+							</li>		
 				          </ul>
   </div>
       </td>
@@ -382,4 +382,4 @@ function myFunction1() {
 <jsp:include page="footer.jsp"></jsp:include>
 
 
-</html>
+</html> --%>

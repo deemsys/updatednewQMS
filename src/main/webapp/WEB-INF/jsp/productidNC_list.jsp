@@ -51,22 +51,20 @@
 								<span>Document Type</span>
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+							<%-- <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentrevisionlevel_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Revision Level</span>
 								</a>
-							</li>
-						<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							</li> --%>
+						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="sourceNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Source of NC</span>
 									
 								</a>
 							</li>	
-							</ul>
-							<ul class="horizmenu" style="margin-bottom:5px;">
-				          	<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="typeNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Type of NC</span>
@@ -74,26 +72,33 @@
 								</a>
 							</li>
 							
-							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="productidNC_list" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									<span>Product ID</span>
 									
 								</a>
 							</li>
-								<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							</ul>
+							<ul class="horizmenu" style="margin-bottom:5px;">
+				          	
+								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="reportNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Report NC</span>
 									
 								</a>
 							</li>		
-=======
-							</li>
-								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_referenceMaintenance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Reference Attachment</span>
+								</a>
+							</li>
+								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="view_instructionMaintenance" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span>Instruction Attachment</span>
 								</a>
 							</li>	
 							</ul>
