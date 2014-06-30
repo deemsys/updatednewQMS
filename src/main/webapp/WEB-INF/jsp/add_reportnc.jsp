@@ -123,25 +123,27 @@
        --%>          <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" >Type of NC</td>
                   <td valign="middle" align="left" class="input_txt" >
-                  <select name="type_of_nc"  class="input_cmbbx1" style="width:100%;border:none;background-color:lightgrey;">
+                  <select name="type_of_nc"  class="input_cmbbx1" id="typeofNc"style="width:100%;border:none;background-color:lightgrey;">
                                										<option value="">--Select--</option>
-						                    							<option value="Product Quality">Product Quality</option>
-																		<option value="Service Quality">Service Quality</option>
-																		<option value="Late Delivery">Late Delivery</option>
-																		<option value="Early Delivery">Early Delivery</option>
+						                    							<option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
+																		<option <c:if test="${reportedByNCs.type_of_nc eq 'Service Quality'}"><c:out value="Selected"/></c:if>value="Service Quality">Service Quality</option>
+																		<option <c:if test="${reportedByNCs.type_of_nc eq 'Late Delivery'}"><c:out value="Selected"/></c:if> value="Late Delivery">Late Delivery</option>
+																		<option <c:if test="${reportedByNCs.type_of_nc eq 'Early Delivery'}"><c:out value="Selected"/></c:if>value="Early Delivery">Early Delivery</option>
                <c:forEach items="${type_of_NC_Form.type_of_NCs}" var="type_of_NCs" varStatus="true">
         				       <option value="<c:out value="${type_of_NCs.type_of_nc}"/>"><c:out value="${type_of_NCs.type_of_nc}"/></option>
 			                  </c:forEach>
-               </select><span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
-                </tr>
-                
-                <tr class="row2">
+               </select>
+               <span id="typeofNc1" style="color:red"></span>
+               <span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
+               
                   <td valign="middle" align="left" class="input_txt" >Group Person</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" class="input_txtbx1" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" class="input_txtbx1" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                   <span id="groupperson1" style="color:red"></span>
+                  <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
                 </tr>
                </table>
                </td>
@@ -152,6 +154,44 @@
                </tr>
                </table>
                </form>
+               <script type="text/javascript">
+               function validation()
+               {
+            	   var chars = /[A-Za-z ]+$/;
+            	   var typeofNc = document.getElementById('typeofNc').value;
+            	   var groupperson = document.getElementById('groupperson').value;
+            	   if(typeofNc == "")
+            		   {
+            		   document.getElementById("typeofNc1").innerHTML="Please Select one";
+          			 	return false;
+            		   }
+            	   else{
+            		   document.getElementById("typeofNc1").innerHTML="";
+            	   }
+            	   
+            	 if(groupperson == "")
+            		   {
+            		   document.getElementById("groupperson1").innerHTML="Requried field should not be Empty";
+         			 	return false;
+            		   }
+            	   else if(groupperson.charAt(0)==" ")
+            		   {
+            		   document.getElementById("groupperson1").innerHTML="Requried field should not be Spaces";
+        			 	return false;
+            		   }
+            	   else if(groupperson.match(chars))
+            		   {
+            		   document.getElementById("groupperson1").innerHTML="";
+            		  
+            		   }
+            	   else
+            		   {
+            		   document.getElementById("groupperson1").innerHTML="Requried field should be letters";
+       			 		return false;
+            		   }
+            	   
+               }
+               </script>
    
 </body>
 </html>

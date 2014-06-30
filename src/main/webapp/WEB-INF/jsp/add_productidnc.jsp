@@ -147,7 +147,7 @@
     <script type="text/javascript">
                function validation()
                {
-            	   var number = /^[A-Za-z0-9]+$/;
+            	   var number = /^[A-Z0-9]+$/;
             	   var productidnc = document.getElementById('productidnc').value;
             	   if(productidnc == "")
             		   {
@@ -165,7 +165,7 @@
             		   }
             	   else
             		   {
-            		   document.getElementById("productidnc1").innerHTML="Required Field Should be AlphaNumeric";
+            		   document.getElementById("productidnc1").innerHTML="Required Field Should be Captial Alpha-Numeric";
             			 return false;
             		   
             		   }
