@@ -137,7 +137,7 @@ else
 							<form action="findnonconformances" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%"> NC ID: </td>
+							    	    <td align="left" valign="middle" width="10%"> NC ID: </td>
 							    <td align="left" valign="middle"><input type="text" name="id" class="input_text" id="id" value="${id}"></td>
 							    <td align="left" valign="middle">Type of Non Conformance:</td>
 							    <td valign="top" align="left" class="input_txt">
@@ -238,7 +238,7 @@ else
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
 	<tr>
-	<td colspan="6">  
+	<%-- <td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">
         
@@ -246,7 +246,7 @@ else
              <li class="page_unselect"><a href="viewnonconformancereport_page?page=${currentpage - 1}&id=${id}&type_of_nonconformance=${type}">Prev</a></li> 
                </c:if>
               
-             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
+             <c:forEach var="count" begin="1" end="${noofrows}"> 
                <c:forEach begin="1" end="${noofpages}" var="i">
                 <c:choose>
                     <c:when test="${currentpage eq i}">
@@ -272,7 +272,43 @@ else
 		  </ul>
 		  </div>
 		  </td>
-		  </tr>
+		  </tr> --%>
+		  
+		  
+		  <tr>	
+<td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
+        
+			<c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletenonconformancereport_page?page=${currentpage - 1}&id=${id}&type_of_nonconformance=${type}" >Prev</a></li> 
+               </c:if>
+             
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                        <li class="page_unselect"><a href="viewdeletenonconformancereport_page?page=${i}&id=${id}&type_of_nonconformance=${type}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewdeletenonconformancereport_page?page=${currentpage+1}&id=${id}&type_of_nonconformance=${type}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewalldeletenonconformancereport?&id=${id}&type_of_nonconformance=${type}" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="nonconformancedelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>							 
+		  </ul>
+</div></td>
+</tr>
+	
 		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								

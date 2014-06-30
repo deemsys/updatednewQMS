@@ -392,21 +392,72 @@ public String delete_management(ModelMap model, Principal principal,HttpSession 
     return "managementdelete";
 }
 
+//Search Operation for Admin's Setup created on 28-june-2014.
+
 @RequestMapping(value={"/search_reviews"}, method = RequestMethod.GET)
 public String searchreviews(HttpSession session,@RequestParam("review_id") String review_id,@RequestParam("category") String category,@RequestParam("management_review_date") String management_review_date,ModelMap model, Principal principal)
 {
+	System.out.println(review_id);
+	
 	session.setAttribute("reviewid",review_id);
 	session.setAttribute("categoryvalue",category);
 	session.setAttribute("managementreviewdate",management_review_date);
-	System.out.println(review_id);
 	ManagementReviewForm managementreviewform= new ManagementReviewForm();
-	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id,category,management_review_date));
-	model.addAttribute("managementreviewform", managementreviewform);
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id, category, management_review_date,1));
+	model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.Search_Managementreviews(review_id, category, management_review_date) * 1.0 /5));
+	model.addAttribute("button","viewall");
+	model.addAttribute("success","false");
+	model.addAttribute("currentpage",1);
+	model.addAttribute("managementreviewform",managementreviewform);
 	model.addAttribute("menu","managementreview");
 	return "managementdelete";
 
 }
+//Search Operation Results Pagination for Admin's Setup created on 28-june-2014.
+@RequestMapping(value="/viewdeletemanagementreport_page", method=RequestMethod.GET)
+public String viewdeletemanagementreport_page(HttpServletRequest request,
+		@RequestParam("review_id") String review_id,@RequestParam("category") String category,
+		@RequestParam("management_review_date") String management_review_date,
+		@RequestParam("page") int page,
+		ModelMap model,Principal principal) {	
+	ManagementReviewForm managementreviewform= new ManagementReviewForm();
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id, category, management_review_date, page));
+	model.addAttribute("noofpages",(int) Math.ceil(managementreviewDAO.Search_Managementreviews(review_id, category, management_review_date) * 1.0 /5));
+	model.addAttribute("managementreviewform",managementreviewform);	
+	model.addAttribute("noofrows",5);   
+ model.addAttribute("currentpage",page);
+ model.addAttribute("menu","managementreview");
+ model.addAttribute("button","viewall");
+ model.addAttribute("success","true");
+ return "managementdelete";
+ 
+	
+}
 
+//Search Operation Results Pagination for Admin's Setup created on 28-june-2014.
+@RequestMapping(value={"/viewalldeletemanagementreport"}, method = RequestMethod.GET)
+public String viewalldeletemanagementreport(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,
+		@RequestParam("review_id") String review_id,@RequestParam("category") String category,
+		@RequestParam("management_review_date") String management_review_date) {
+	session.setAttribute("reviewid",review_id);
+	session.setAttribute("categoryvalue",category);
+	session.setAttribute("managementreviewdate",management_review_date);
+	ManagementReviewForm managementreviewform= new ManagementReviewForm();
+	managementreviewform.setManagementreviewdetails(managementreviewDAO.search_managementreviews(review_id, category, management_review_date, 0));
+	
+	model.addAttribute("managementreviewform", managementreviewform);
+
+	model.addAttribute("noofrows",5);    
+//narrativereportForm.getNarrativereport().size()
+ model.addAttribute("menu","managementreview");
+ model.addAttribute("button","close");
+   
+ 	model.addAttribute("menu","managementreview");
+     model.addAttribute("success","false");
+     model.addAttribute("button","close");
+     return "managementdelete";
+
+}
 
 
 	@RequestMapping(value={"/deletemanagement"}, method = RequestMethod.POST)

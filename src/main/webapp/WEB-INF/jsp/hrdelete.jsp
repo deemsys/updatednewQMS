@@ -204,7 +204,7 @@ else
 								<td valign="top" align="left" width="10%">Qualified By</td>
 								<td valign="top" align="left" width="10%">Trainer</td>
           						<td valign="top" align="left" width="10%">Attachments</td>
-          						<td valign="top" align="left" width="15%">Actions</td><td valign="top" align="left" width="10%"></td>
+          						
 									
 									
 									</tr>
@@ -219,9 +219,8 @@ else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${hRandTrainings.id}"/></td>
-					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
-									       		           	<a href="list_hr?id=${hRandTrainings.id}">${hRandTrainings.id}</td>
-											<td valign="top" align="left" width="10%">${hRandTrainings.name}</td>
+								           	<td valign="top" align="left"  width="10%">${hRandTrainings.id}</td>
+									       	<td valign="top" align="left" width="10%">${hRandTrainings.name}</td>
 											<td valign="top" align="left" width="10%">${hRandTrainings.type_of_training}</td>											
 											<td valign="top" align="left" width="10%">${hRandTrainings.qualified_by}</td>											
 											<td valign="top" align="left" width="10%">${hRandTrainings.trainer}</td>
@@ -258,40 +257,42 @@ else
 								</tr>
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
-								</tr>
-		<td colspan="6">  
-	 <div class="extrabottom">
-              <ul class="pagination">
+												 <tr><td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-              <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewdocumentdelete_page?page=${currentpage - 1}&documenttype=${documentMain}&processarea=${documentMain1}" >Prev</a></li> 
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletehrreport_page?page=${currentpage - 1}&trainer=${trainer}&type_of_training=${type}&qualified_by=${qualifiedby}" >Prev</a></li> 
                </c:if>
               
-           
+            <%--  <c:forEach var="count" begin="1" end="${noofrows}">  --%>
                <c:forEach begin="1" end="${noofpages}" var="i">
                 <c:choose>
                     <c:when test="${currentpage eq i}">
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewdocumentdelete_page?page=${i}&documenttype=${documentMain}&processarea=${documentMain1}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewdeletehrreport_page?page=${i}&trainer=${trainer}&type_of_training=${type}&qualified_by=${qualifiedby}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewdocumentdelete_page?page=${currentpage+1}&documenttype=${documentMain}&processarea=${documentMain1}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdeletehrreport_page?page=${currentpage+1}&trainer=${trainer}&type_of_training=${type}&qualified_by=${qualifiedby}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewalldocumentdelete?documenttype=${documentMain}&processarea=${documentMain1}" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewalldeletehrreport?&trainer=${trainer}&type_of_training=${type}&qualified_by=${qualifiedby}" class="paging_select">ViewAll</a></li>
              </c:when>
-                <c:otherwise> 
-                  <li class="page"><a href="documentdelete" class="paging_select">Back</a></li>
-                  
-               </c:otherwise>
-              </c:choose>			 	
+                <c:otherwise>
+                  <li class="page"><a href="viewhr" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+		  </td>
+		  </tr>
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

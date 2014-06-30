@@ -102,6 +102,11 @@ public class NonConformanceController {
 		
 		session.setAttribute("id",id);
 		session.setAttribute("type",type_of_nonconformance);
+
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
     	nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, page));
 		model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance)) * 1.0 / 5);	 
@@ -123,6 +128,11 @@ public class NonConformanceController {
 
 		session.setAttribute("id",id);
 		session.setAttribute("type",type_of_nonconformance);
+
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance,0));
 		model.addAttribute("nonConformanceForm", nonConformanceForm);
@@ -274,9 +284,20 @@ public class NonConformanceController {
 		session.setAttribute("id", id);
 		session.setAttribute("type", type_of_nonconformance);
 	
+		
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
+		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+		model.addAttribute("productId_NC_Form",productId_NC_Form);
+		
+		HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
+		
+		
 		System.out.println("searching started.......");
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 			nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, 1));
@@ -433,6 +454,10 @@ public class NonConformanceController {
 		{
 			session.removeAttribute("id");
 			session.removeAttribute("type");
+
+		    Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+			model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 			nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
 		//	model.addAttribute("nonConformanceForm",nonConformanceForm);
@@ -455,6 +480,15 @@ public class NonConformanceController {
 			Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 			model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+			
+			ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+			productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+			model.addAttribute("productId_NC_Form",productId_NC_Form);
+			
+			HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
+			hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
+			model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
+			
 			System.out.println("searching started.......");
 				NonConformanceForm nonConformanceForm = new NonConformanceForm();
 				nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, 1));
@@ -476,6 +510,11 @@ public class NonConformanceController {
 			
 			session.setAttribute("id",id);
 			session.setAttribute("type",type_of_nonconformance);
+
+			Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+			model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+			
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 	    	nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, page));
 			model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance)) * 1.0 / 5);	 
@@ -497,6 +536,11 @@ public class NonConformanceController {
 
 			session.setAttribute("id",id);
 			session.setAttribute("type",type_of_nonconformance);
+
+			Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+			model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+			
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 			nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance,0));
 			model.addAttribute("nonConformanceForm", nonConformanceForm);

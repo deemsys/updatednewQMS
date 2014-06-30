@@ -232,7 +232,7 @@ public class HRandTainingController {
 						return "view_hr";
 					}
 					
-				//Search operation created on 20-june-14.(5.30pm)
+				//Search operation for AdminSetup created on 28-june-14.(6.30pm)
 				@RequestMapping(value="/findadminhr",method=RequestMethod.GET)		
 				public String findadminhr(HttpServletRequest request,HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,ModelMap model)
 				{
@@ -242,17 +242,67 @@ public class HRandTainingController {
 					session.setAttribute("type", type);
 					session.setAttribute("qualifiedby",qualifiedby);
 					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
-						hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer));
+						hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer,1));
+						model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.FindHR(type,qualifiedby,trainer) * 1.0 / 5));
 						System.out.println(type);
 						System.out.println(qualifiedby);
 						System.out.println(trainer);
+						model.addAttribute("button","viewall");
+						model.addAttribute("success","false");
+						model.addAttribute("currentpage",1);
 						model.addAttribute("hRandTrainingForm",hRandTrainingForm);
 						model.addAttribute("menu", "hr");
 						System.out.println("finding....");
 						return "hrdelete";
 					}
+								
+				@RequestMapping(value="/viewdeletehrreport_page", method=RequestMethod.GET)
+				public String viewdeletehrreport_page(HttpServletRequest request,
+						@RequestParam("page") int page,
+						HttpSession session,@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,
+						@RequestParam("qualified_by") String qualifiedby,ModelMap model) {	
+					session.setAttribute("trainer", trainer);
+					session.setAttribute("type", type);
+					session.setAttribute("qualifiedby",qualifiedby);
+					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer,page));
+					model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.FindHR(type,qualifiedby,trainer) * 1.0 / 5));
+				 	model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
+				  	model.addAttribute("noofrows",5);   
+				    model.addAttribute("currentpage",page);
+				    model.addAttribute("menu","hr");
+				    model.addAttribute("button","viewall");
+				    return "hrdelete";
+				    
 					
+				}
+
 				
+				@RequestMapping(value={"/viewalldeletehrreport"}, method = RequestMethod.GET)
+				public String viewalldeletehrreport(HttpServletRequest request,
+						HttpSession session,@RequestParam("trainer") String trainer,
+						@RequestParam("type_of_training") String type,
+						@RequestParam("qualified_by") String qualifiedby,
+						ModelMap model, Principal principal ) {
+					session.setAttribute("trainer", trainer);
+					session.setAttribute("type", type);
+					session.setAttribute("qualifiedby",qualifiedby);
+					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.findhr(type, qualifiedby, trainer,0));
+			//		model.addAttribute("noofpages",(int) Math.ceil(hRandTrainingDAO.FindHR(type,qualifiedby,trainer) * 1.0 / 5));
+				model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+
+				  	model.addAttribute("noofrows",5);    
+				   //narrativereportForm.getNarrativereport().size()
+				    model.addAttribute("menu","hr");
+				    model.addAttribute("button","close");
+				      
+				    	model.addAttribute("menu","hr");
+				        model.addAttribute("success","false");
+				        model.addAttribute("button","close");
+				        return "hrdelete";
+
+				}
 
 			
 				//delete a record

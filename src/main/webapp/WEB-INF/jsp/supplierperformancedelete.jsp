@@ -145,8 +145,8 @@ else
 								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox" value="${phone}"></td>							    
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox" value="${email}"></td>
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Find" name="findsupplierperformances" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn" value="Clear" name="welcome" ></td>
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformances" ></td>
+							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
 							  
 							  </tr>
 							  
@@ -219,16 +219,46 @@ else
 								<tr>
 									<td valign="top" align="left">&nbsp;</td>
 								</tr>
-		<td colspan="6">  
-	        <ul class="pagination">
+		<tr>
+				<td colspan="6">  
+	<div class="extrabottom">
+             <ul class="pagination">
         
-          
-                  <li class="page"><a href="view_supplierperformance" class="paging_select">Back</a></li>
-                  
-           <%--    </c:otherwise>
-              </c:choose>			 --%>		
+             <c:if test="${currentpage!=1&&currentpage!=null}">
+             <li class="page_unselect"><a href="viewdeletesupplierreport_page?page=${currentpage - 1}&supplier_name=${suppliername}&phone=${phone}&email_address=${email}" >Prev</a></li> 
+               </c:if>
+              
+             <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
+               <c:forEach begin="1" end="${noofpages}" var="i">
+                <c:choose>
+                    <c:when test="${currentpage eq i}">
+                      <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
+                     </c:when>
+                    <c:otherwise>
+                        <li class="page_unselect"><a href="viewdeletesupplierreport_page?page=${i}&supplier_name=${suppliername}&phone=${phone}&email_address=${email}"><c:out value="${i}"></c:out></a></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>          
+            <c:if test="${currentpage!=noofpages}">
+              <li class="page_unselect"><a href="viewdeletesupplierreport_page?page=${currentpage+1}&supplier_name=${suppliername}&phone=${phone}&email_address=${email}">Next</a></li> 
+                 </c:if>
+              <c:choose>
+              <c:when test="${button=='viewall'}">
+                  <li class="page"><a href="viewalldeletesupplierreport?&supplier_name=${suppliername}&phone=${phone}&email_address=${email}" class="paging_select">ViewAll</a></li>
+             </c:when>
+                <c:otherwise>
+                  <li class="page"><a href="supplierperformancedelete" class="paging_select">Back</a></li>
+              </c:otherwise>
+              </c:choose>					
 		 
-		</ul></div></td></table></div>
+		  </ul>
+		  </div>
+		  </td>
+				
+			</tr>
+	
+	
+		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">

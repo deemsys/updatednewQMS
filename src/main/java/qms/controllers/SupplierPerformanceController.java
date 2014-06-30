@@ -326,39 +326,84 @@ import qms.forms.SupplierPerformanceForm;;
 		session.removeAttribute("suppliername");
 		session.removeAttribute("phone");
 		session.removeAttribute("email");
-		SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+
+	    SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+	    model.addAttribute("menu","admin");
+	    //model.addAttribute("noofrows",5); 
 	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
-	  //  model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-	
-	  	model.addAttribute("noofrows",5);    
-	   //narrativereportForm.getNarrativereport().size()
-	    model.addAttribute("menu","admin");
-	    model.addAttribute("button","close");
-	      
-	    model.addAttribute("menu","admin");
-	   // model.addAttribute("success","false");
-	    model.addAttribute("button","close");
+	    //supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getlimitedsupplierreport(1));	    
 	    return "supplierperformancedelete";
 	}
 
-	@RequestMapping(value="/findsupplierperformances",method=RequestMethod.GET)		
-	public String findsupplierperformances(HttpServletRequest request,HttpSession session,@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,@RequestParam("email_address") String email,ModelMap model)
-	{
-	
-		System.out.println("find");
-		session.setAttribute("suppliername", suppliername);
-		session.setAttribute("phone", phone);
-		session.setAttribute("email",email);
-
-		SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
-			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.findSupplierPerformances(suppliername, phone, email));
-
-			model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-			model.addAttribute("menu", "admin");
-			System.out.println("finding....");
+	//Find Operation
+			@RequestMapping(value="/findsupplierperformances",method=RequestMethod.GET)		
+			public String findsupplierperformances(HttpServletRequest request,HttpSession session,@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,@RequestParam("email_address") String email,ModelMap model)
+			{
+				System.out.println("find");
+				session.setAttribute("suppliername", suppliername);
+				session.setAttribute("phone", phone);
+				session.setAttribute("email",email);
+				System.out.println("searching.......");
+				SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
+				supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email, 1));
+				model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.FindSupplierPerformances(suppliername, phone, email) * 1.0 / 5));	 
+				model.addAttribute("button","viewall");
+				model.addAttribute("success","false");
+				model.addAttribute("currentpage",1);
+		    	model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+		    	model.addAttribute("menu","supplier");
+			
 			return "supplierperformancedelete";
 		
 		}
+			//Search Operation Results Pagination for Admin Setup created on 28-june-2014.
+			@RequestMapping(value="/viewdeletesupplierreport_page", method=RequestMethod.GET)
+			public String viewdeletesupplierreport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,
+					@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,
+					@RequestParam("email_address") String email,ModelMap model) {	
+				session.setAttribute("suppliername", suppliername);
+				session.setAttribute("phone", phone);
+				session.setAttribute("email",email);
+				
+				SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+				supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email, page));
+				model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.FindSupplierPerformances(suppliername, phone, email) * 1.0 / 5));	 
+				model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+			  	model.addAttribute("noofrows",5);   
+			    model.addAttribute("currentpage",page);
+			    model.addAttribute("menu","supplier");
+			    model.addAttribute("button","viewall");
+			    model.addAttribute("success","true");
+			    return "supplierperformancedelete";
+			    
+				
+			}
+
+			//Search Operation Results Pagination for Admin Setup created on 28-june-2014.
+			@RequestMapping(value={ "/viewalldeletesupplierreport"}, method = RequestMethod.GET)
+			public String viewalldeletesupplierreport(HttpSession session,HttpServletRequest request,ModelMap model,
+					@RequestParam("supplier_name") String suppliername,@RequestParam("phone") String phone,
+					@RequestParam("email_address") String email,Principal principal )
+			{
+				session.setAttribute("suppliername", suppliername);
+				session.setAttribute("phone", phone);
+				session.setAttribute("email",email);
+				SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
+				supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getSupplierPerformances(suppliername, phone, email, 0));
+				model.addAttribute("noofpages",(int) Math.ceil(supplierPerformanceDAO.FindSupplierPerformances(suppliername, phone, email) * 1.0 / 5));	 
+				model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
+
+			  	model.addAttribute("noofrows",5);    
+			   //narrativereportForm.getNarrativereport().size()
+			    model.addAttribute("menu","admin");
+			    model.addAttribute("button","close");
+			    model.addAttribute("success","true");
+			    	model.addAttribute("menu","admin");
+			        model.addAttribute("success","false");
+			        model.addAttribute("button","close");
+			        return "supplierperformancedelete";
+			        
+			}
 
 
 		@RequestMapping(value={"/deletesupplier"}, method = RequestMethod.POST)
