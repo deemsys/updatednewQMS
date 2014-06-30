@@ -119,12 +119,14 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt">Add Document Type :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" class="input_txtbx1" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" class="input_txtbx1" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" />
+                  <span id="documenttype1" style="color:red"></span>
+                  <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
                 </tr>
                 
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit"onclick="return validation();" class="submit_btn1"></td>
                 </tr>
           
                 
@@ -137,6 +139,33 @@
  </tr>
  </table>
  </form>
+ <script type="text/javascript">
+ function validation()
+ {
+	 var  chars = /[A-Za-z ]+$/;
+	 var documenttype = document.getElementById('documenttype').value;
+	 if(documenttype == "")
+		 {
+		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else if(documenttype.charAt(0) == " ")
+		 {
+		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Spaces";
+		 return false;
+		 }
+	 else if(documenttype.match(chars))
+		 {
+		 document.getElementById("documenttype1").innerHTML="";
+		 }
+	 else
+		 {
+		 document.getElementById("documenttype1").innerHTML="Required Field Should be Alphabates";
+		 return false;
+		 }
+ }
+ 
+ </script>
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include>
  </html>

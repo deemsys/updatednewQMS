@@ -142,13 +142,13 @@
                <option value="alpha">Alphabet</option>
              <!--   <option value="romain">Romain</option> -->
                </select>
-																		
+												<span id="nullvalue" style="color:red"></span>						
 																		</td>
 </tr>
 </table>
  <tr class="row1">
               <td colspan="1" align="right">
-             <input type="submit" id="export"  name="export" value="Submit" class="submit_btn1"></td>
+             <input type="submit" id="export"  name="export" value="Submit" onclick="return validation();"class="submit_btn1"></td>
              <td colspan="1">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
 </tr>
@@ -158,6 +158,19 @@
 </tr>
 </table>
 </form>
+<script type="text/javascript">
+function validation()
+{
+
+  if((document.getElementById('decimalno').value =="")&&(document.getElementById('floorno').value =="") )
+	  {
+	  
+	  document.getElementById("nullvalue").innerHTML="Please Select Atleast one";
+		 return false;
+	  }
+}
+
+</script>
 </html>
 
 																		

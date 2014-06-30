@@ -56,14 +56,16 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Document Type :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" /><span class="err"><form:errors path="DocumentType.document_type"></form:errors></span>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" />
+                    <span id="documenttype1" style="color:red"></span>
+                  <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${documenttype.id}"/>
                   </td>
                 </tr>
                 
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
              </table>
              </td>
@@ -76,6 +78,32 @@
              </table>
              </div>
              </form>
-                
+             <script type="text/javascript">
+ function validation()
+ {
+	 var  chars = /[A-Za-z ]+$/;
+	 var documenttype = document.getElementById('documenttype').value;
+	 if(documenttype == "")
+		 {
+		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else if(documenttype.charAt(0) == " ")
+		 {
+		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Spaces";
+		 return false;
+		 }
+	 else if(documenttype.match(chars))
+		 {
+		 document.getElementById("documenttype1").innerHTML="";
+		 }
+	 else
+		 {
+		 document.getElementById("documenttype1").innerHTML="Required Field Should be Alphabates";
+		 return false;
+		 }
+ }
+ 
+ </script>   
 </body>
 </html>
