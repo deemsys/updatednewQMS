@@ -56,13 +56,15 @@
                   <td valign="middle" align="right" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${sources.auto_id}"/>
-                  <input type="text" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" /><span class="err"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span>
+                  <input type="text" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" />
+                    <span id="sourceofnc1" style="color:red"></span>
+                  <span class="err"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span>
                   
                   </td>
                 </tr>
                   <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
              </table>
              </td>
@@ -75,7 +77,35 @@
              </table>
              </div>
              </form>
-                
+              <script type="text/javascript">
+               function validation()
+               {
+            	   var chars = /[A-Za-z ]+$/;
+            	   var sourceofnc = document.getElementById('sourceofnc').value;
+            	   if(sourceofnc == "")
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Empty";
+            			 return false;
+            		   }
+            	   else if(sourceofnc.charAt(0)==" ")
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Spaces";
+          			 return false;
+            		   }
+            	   else if(sourceofnc.match(chars))
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="";
+            		   }
+            	   else
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should be Alphabates";
+            			 return false;
+            		   
+            		   }
+            	   
+            	   
+               }
+               </script>   
 </body>
 <jsp:include page="footer.jsp"></jsp:include> 
 </html>

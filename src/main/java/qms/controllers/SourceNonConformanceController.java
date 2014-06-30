@@ -52,7 +52,7 @@ public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_S
 			conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource());
 			model.addAttribute("conformance_SourceForm",conformance_SourceForm);
 			model.addAttribute("Success","true");
-	        return "add_process";
+	        return "Add_source_NC";
 		}
 	
 		
@@ -88,7 +88,7 @@ public String Sourcelist(HttpServletRequest request,ModelMap model, Principal pr
 @RequestMapping(value="/viewsourcereport_page", method=RequestMethod.GET)
 public String viewprocessreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
-	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
+	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(page));
 	model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0 / 5));
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);

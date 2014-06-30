@@ -123,11 +123,13 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" >Source of NC</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="source_of_nc" class="input_txtbx1" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Source.source_of_nc"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="source_of_nc" class="input_txtbx1" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <span id="sourceofnc1" style="color:red"></span>
+                  <span class="err" style="color:red"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
                </table>
                </td>
@@ -138,6 +140,36 @@
                </tr>
                </table>
                </form>
+               <script type="text/javascript">
+               function validation()
+               {
+            	   var chars = /[A-Za-z ]+$/;
+            	   var sourceofnc = document.getElementById('sourceofnc').value;
+            	   if(sourceofnc == "")
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Empty";
+            			 return false;
+            		   }
+            	   else if(sourceofnc.charAt(0)==" ")
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Spaces";
+          			 return false;
+            		   }
+            	   else if(sourceofnc.match(chars))
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="";
+            		   }
+            	   else
+            		   {
+            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should be Alphabates";
+            			 return false;
+            		   
+            		   }
+            	   
+            	   
+               }
+               </script>
+               
    
 </body>
 </html>
