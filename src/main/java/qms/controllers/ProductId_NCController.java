@@ -83,7 +83,7 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
 @RequestMapping(value="/viewproductidreport_page", method=RequestMethod.GET)
 public String viewproductidreport_page(HttpServletRequest request,@RequestParam("page") int page,ModelMap model) {	
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
-	productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
+	productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(page));
 	model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
 	 model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
@@ -112,7 +112,7 @@ public String viewallproductidreport(HttpServletRequest request,ModelMap model, 
 public String EditProductid_get(@RequestParam("auto_id") String auto_id,ProductIDNC products,ModelMap model) {
 
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
-	productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+	productId_NC_Form.setProductIDNCs(productId_NCDAO.products(auto_id));
 	model.addAttribute("productId_NC_Form",productId_NC_Form);
 	model.addAttribute("menu","admin");
     return "edit_productidnc";

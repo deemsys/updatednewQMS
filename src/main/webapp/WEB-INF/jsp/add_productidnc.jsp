@@ -127,11 +127,13 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" >Product Id</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" class="input_txtbx1" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" class="input_txtbx1" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                   <span id="productidnc1" style="color:red"></span>
+                  <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
                 </tr>
                </table>
                </td>
@@ -142,6 +144,35 @@
                </tr>
                </table>
                </form>
-   
+    <script type="text/javascript">
+               function validation()
+               {
+            	   var number = /^[A-Za-z0-9]+$/;
+            	   var productidnc = document.getElementById('productidnc').value;
+            	   if(productidnc == "")
+            		   {
+            		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Empty";
+            			 return false;
+            		   }
+            	   else if(productidnc.charAt(0)==" ")
+            		   {
+            		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Spaces";
+          			 return false;
+            		   }
+            	   else if(productidnc.match(number))
+            		   {
+            		   document.getElementById("productidnc1").innerHTML="";
+            		   }
+            	   else
+            		   {
+            		   document.getElementById("productidnc1").innerHTML="Required Field Should be AlphaNumeric";
+            			 return false;
+            		   
+            		   }
+            	   
+            	   
+               }
+               </script>
+               
 </body>
 </html>
