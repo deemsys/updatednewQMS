@@ -685,12 +685,18 @@ var spl =  /^[A-Za-z0-9]*$/;
 	
 	 if(title =="")
 	 {
-		 document.getElementById("title1").innerHTML="Required Field Should not be space";
+		 document.getElementById("title1").innerHTML="Required Field Should not be Blank";
 		 return false;
 	 } 
+	 else if(title.charAt(0)==" ")
+	 {
+	 alert("space");
+	 document.getElementById("title1").innerHTML="Spaces are not allowed"
+	 return false;
+	 }
 	 else if(!title.match(spl))
  		 {
- 		 document.getElementById("title1").innerHTML="Invalid Data";
+ 		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
  		return false;
  		 }
  	 else
@@ -698,14 +704,19 @@ var spl =  /^[A-Za-z0-9]*$/;
  		 document.getElementById("title1").innerHTML="";
  		 }
     
-	 if(comments ==" ")
+	 if(comments =="")
 	 {
-		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+		 document.getElementById("comments1").innerHTML="Required Field Should not be Blank";
+		 return false;
+	 }
+	 else if(comments.charAt(0)==" ")
+	 {
+		 document.getElementById("comments1").innerHTML="Spaces are Not allowed";
 		 return false;
 	 }
 	 else if(!comments.match(spl))
 		 {
-		 document.getElementById("comments1").innerHTML="Invalid Data";
+		 document.getElementById("comments1").innerHTML="Special Characters are Not allowed";
 		
 		 }
 	 else 
@@ -713,26 +724,32 @@ var spl =  /^[A-Za-z0-9]*$/;
 		document.getElementById("comments1").innerHTML="";
 		 }
   
-	    if(responsibility ==" ")
+	    if(responsibility =="")
 		 {
 			 
-			 document.getElementById("responsibility1").innerHTML="Required Field Should not be space";
+			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Blank";
 			 return false;
 		 }
+	    else if(responsibility.charAt(0)==" ")
+		 {
+			 document.getElementById("responsibility1").innerHTML="Spaces are Not allowed";
+			 return false;
+		 }
+	    
 	    else if(!responsibility.match(spl))
  		 {
- 		 document.getElementById("responsibility1").innerHTML="Invalid Data";
- 		
+ 		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
+ 		return false;
  		 }
  	 else
  		 {
  		document.getElementById("responsibility1").innerHTML="";
  		 }  
-	    
+	        
 	    
 	 if(!datepicker123.match(date))
 			 {
-		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
+		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
 		 return false;
 		 }
 		 if(document.getElementById('id_hardcopy').checked)

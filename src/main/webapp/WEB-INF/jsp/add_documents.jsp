@@ -228,7 +228,7 @@
             <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
                 <input type="hidden" value="${documentMain.issuer}" id="issu"/>
-               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost(this.value);" <c:if test="${documentMain.issuer == employee.getName()}">value="employee.getName()"<c:out value="Selected"/></c:if>onblur="change_to_label_issuer();" style="width:80px;">
+               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" style="width:80px;">
                <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>

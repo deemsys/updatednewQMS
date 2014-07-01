@@ -70,14 +70,16 @@
                <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:57px;border:none;background-color:lightgrey;">
                
              <!--   <option value = "">Select Form Prefix</option> -->
-			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
+			              <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
                </select>
                
-              <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value="" /> 
-              
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" value="${docform.form_or_rec_id}" onblur="change_to_label();"/>
+            
+               
+              <input type="hidden" value="${docform.form_or_rec_id}" id="generated_id90" /> 
+               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value="" /> 
+              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
               
               </br>
               <span id="quality3err" style="color:red;"></span>
@@ -215,7 +217,8 @@
 																		</td>
    			   <td valign="middle" align="right" class="input_txt" width="50%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" >
-               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" value="${approver.filter} style="width:80px;">
+               <input type="hidden" value="${docform.approver1}" id="appro">
+               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner(this.value);" onblur="change_to_label_issuer1();" style="width:80px;">
                <option value="">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -294,7 +297,8 @@
               	<tr class="row1">
                 <td valign="top" align="left" class="input_txt" >Issuer:</td>
                 <td valign="top" align="left" id="edit_td_issuer" class="input_txt">
-                 <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" onblur="change_to_label_issuer();" style="width:80px;">
+                 <input type="hidden" value="${docform.issuer}" id="issu"/>
+                 <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" style="width:80px;">
                  <option value="">--Select--</option>
                  <option value="A">A</option>
               	 <option value="B">B</option>
@@ -393,7 +397,6 @@ function validation()
 var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 var space = /\S/;
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-var spl =  /^[A-Za-z0-9]*$/;
 	
 	
 	 var e2=document.getElementById('location_text').value;
@@ -403,62 +406,73 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 var comments = document.getElementById('comments').value;
 	 var datepicker123 = document.getElementById('datepicker123').value
 	 
-	/* 
-	  if(!title.match(/\S/)) {
-	      alert("incorrect value"); 
-		  document.getElementById("title1").innerHTML="Empty Space value is not allowed";
-	        return false;
-	    }  */
-	    
-		 if(title =="")
+	 if(title =="")
+	 {
+		 document.getElementById("title1").innerHTML="Required Field Should not be Blank";
+		 return false;
+	 } 
+	 else if(title.charAt(0)==" ")
+	 {
+	 document.getElementById("title1").innerHTML="Spaces are not allowed"
+	 return false;
+	 }
+	 else if(!title.match(spl))
+ 		 {
+ 		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
+ 		return false;
+ 		 }
+ 	 else
+ 		 {
+ 		 document.getElementById("title1").innerHTML="";
+ 			
+ 		 }
+    
+	 if(comments =="")
+	 {
+		 document.getElementById("comments1").innerHTML="Required Field Should not be Blank";
+		 return false;
+	 }
+	 else if(comments.charAt(0)==" ")
+	 {
+		 document.getElementById("comments1").innerHTML="Spaces are Not allowed";
+		 return false;
+	 }
+	 else if(!comments.match(spl))
 		 {
-			 document.getElementById("title1").innerHTML="Required Field Should not be space";
-			 return false;
-		 } 
-		 else if(!title.match(spl))
-	 		 {
-	 		 document.getElementById("title1").innerHTML="Invalid Data";
-	 		return false;
-	 		 }
-	 	 else
-	 		 {
-	 		 document.getElementById("title1").innerHTML="";
-	 		 }
-	    
-		 if(comments ==" ")
+		 document.getElementById("comments1").innerHTML="Special Characters are Not allowed";
+		
+		 }
+	 else 
 		 {
-			 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+		document.getElementById("comments1").innerHTML="";
+		 }
+  
+	    if(responsibility =="")
+		 {
+			 
+			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Blank";
 			 return false;
 		 }
-		 else if(!comments.match(spl))
+	    else if(responsibility.charAt(0)==" ")
+		 {
+			 document.getElementById("responsibility1").innerHTML="Spaces are Not allowed";
+			 return false;
+		 }
+	    
+	    else if(!responsibility.match(spl))
  		 {
- 		 document.getElementById("comments1").innerHTML="Invalid Data";
- 		
+ 		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
+ 		return false;
  		 }
- 	 else 
+ 	 else
  		 {
- 		document.getElementById("comments1").innerHTML="";
- 		 }
-	  
-		    if(responsibility ==" ")
-			 {
-				 
-				 document.getElementById("responsibility1").innerHTML="Required Field Should not be space";
-				 return false;
-			 }
-		    else if(!responsibility.match(spl))
-	 		 {
-	 		 document.getElementById("responsibility1").innerHTML="Invalid Data";
-	 		
-	 		 }
-	 	 else
-	 		 {
-	 		document.getElementById("responsibility1").innerHTML="";
-	 		 }  
-		    
+ 		document.getElementById("responsibility1").innerHTML="";
+ 		 }  
+	
+	    
 		 if(!datepicker123.match(date))
 			 {
-		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
+		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
 		 return false;
 		 }
 	 
@@ -516,6 +530,23 @@ var spl =  /^[A-Za-z0-9]*$/;
 	
 <script>
 window.onload = function(){
+	var name = document.getElementById('appro').value;
+	var issu = document.getElementById('issu').value;
+	if(name=="")
+		{
+		
+		}
+	else{
+	AjaxProcessOwner(name.charAt(0));
+	}
+	if(issu == "")
+		{
+		
+		}
+	else{
+		
+		doAjaxPost(issu.charAt(0));
+	}
 	if(document.getElementById('id_hardcopy').checked)
 		{
 	
@@ -534,14 +565,25 @@ window.onload = function(){
 		var value1 = document.getElementById('id_both').value;
 		toggle2(value1);
 	}
+	var fomid= document.getElementById('generated_id90').value;
+	if(fomid=="")
+		{
+		
+		}
+	else{
+	var res = fomid.split("-");
+	document.getElementById("form_or_rec_id").focus();
+    document.getElementById("form_or_rec_id").value = res[1];
+	}
+
 }
 	</script>
-</script>
+
 <script type="text/javascript">
-function doAjaxPost() {
+function doAjaxPost(value) {
 	document.getElementById('filter_value').style.display="none";
 	 document.getElementById("issuer_generate").style.display="inline";
-	var filer_value = $('#filter_value').val();
+	var filer_value = value;
 	
 	$.ajax({
 		type : "POST",
@@ -557,10 +599,10 @@ function doAjaxPost() {
 		}
 	});
 }
-function AjaxProcessOwner() {
+function AjaxProcessOwner(value) {
 	document.getElementById('filter_value1').style.display="none";
 	 document.getElementById("issuer_generate1").style.display="inline";
-	var filer_value1 = $('#filter_value1').val();
+	var filer_value1 = value;
 	
 	$.ajax({
 		type : "POST",
