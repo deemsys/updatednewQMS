@@ -339,7 +339,9 @@ $(window).load(function(){
              <tr class="row1" style="border:none;">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/>
+               <span id="datepicker1" style="color:red"></span>
+               <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
                <td valign="middle" align="left" class="input_txt" width="70%">Approver 3(Mgmt Report):</td>
@@ -402,9 +404,11 @@ $(window).load(function(){
         	
         	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/;
         	 var numbers = /^[A-Za-z0-9]*$/;
+        	 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
         	 var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]*$/;
         	 var e2=document.getElementById('location_text').value;
         	 var e3=document.getElementById('id_file').value;
+        	 var datepicker=document.getElementById('datepicker').value;
         	 var documenttitle = document.getElementById('documenttitle').value;
         	 var revisionlevel = document.getElementById('revisionlevel').value;
         	 var comments = document.getElementById('comments').value;
@@ -473,6 +477,22 @@ $(window).load(function(){
    	 	document.getElementById("comments1").innerHTML="Required Field Should not be space";
    		 return false;
     		} 
+   		 
+   		 if(datepicker == "")
+		 {
+		 document.getElementById("datepicker1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 
+		 }
+		 else if(datepicker.match(date))
+		 {
+		 document.getElementById("datepicker1").innerHTML="";
+		 }
+		 else
+		 {
+		 document.getElementById("datepicker1").innerHTML="Invalid Date";
+		 return false;
+		 }
         	
         }	
         	/*  

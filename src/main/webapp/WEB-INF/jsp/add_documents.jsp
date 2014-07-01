@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="header.jsp"></jsp:include>
 <script src="/QMS_App/resources/js/jquery.js"></script>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
@@ -226,7 +227,8 @@
            
             <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
-               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" <c:if test="${documentMain.issuer == employee.getName()}">value="employee.getName()"<c:out value="Selected"/></c:if>onblur="change_to_label_issuer();" style="width:80px;">
+                <input type="hidden" value="${documentMain.issuer}" id="issu"/>
+               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost(this.value);" <c:if test="${documentMain.issuer == employee.getName()}">value="employee.getName()"<c:out value="Selected"/></c:if>onblur="change_to_label_issuer();" style="width:80px;">
                <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -266,7 +268,12 @@
                </td> 
                 <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="20%">
-               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" style="width:80px;">
+               <input type="hidden" value="${documentMain.approver1}" id="appro">
+               
+               
+               </input>
+               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner(this.value);" onblur="change_to_label_issuer1();" style="width:80px;">
+            
                <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -586,10 +593,11 @@ function validation()
 </script>
 
 <script type="text/javascript">
-function doAjaxPost() {
+function doAjaxPost(value) {
+
 	document.getElementById('filter_value').style.display="none";
 	 document.getElementById("issuer_generate").style.display="inline";
-	var filer_value = $('#filter_value').val();
+	var filer_value = value;
 	
 	$.ajax({
 		type : "POST",
@@ -605,10 +613,11 @@ function doAjaxPost() {
 		}
 	});
 }
-function AjaxProcessOwner() {
+function AjaxProcessOwner(value) {
+	
 	document.getElementById('filter_value1').style.display="none";
 	 document.getElementById("issuer_generate1").style.display="inline";
-	var filer_value1 = $('#filter_value1').val();
+	var filer_value1 = value;
 	
 	$.ajax({
 		type : "POST",
@@ -771,6 +780,23 @@ document.getElementById("lable_td").style.display="none";
        <script>
 
 	window.onload = function(){
+		var name = document.getElementById('appro').value;
+		var issu = document.getElementById('issu').value;
+		if(name=="")
+			{
+			
+			}
+		else{
+		AjaxProcessOwner(name.charAt(0));
+		}
+		if(issu == "")
+			{
+			
+			}
+		else{
+			
+			doAjaxPost(issu.charAt(0));
+		}
 		if(document.getElementById('id_hardcopy').checked)
 			{
 			var value1 = document.getElementById('id_hardcopy').value;
