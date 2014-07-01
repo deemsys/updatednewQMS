@@ -486,7 +486,7 @@ function validation()
 		{
 		if(e2=="")
 		{
-			alert("both");
+		
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
 		return false;
 		}
