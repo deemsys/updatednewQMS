@@ -445,7 +445,7 @@ function validation()
 	
 	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]*$/;
+	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
 	 var number = /^[A-Za-z0-9]*$/;
 	 var datepicker123=document.getElementById('datepicker123').value;
 	 var e2=document.getElementById('location_text').value;
@@ -533,7 +533,17 @@ function validation()
 	 }	 
 	 else if(revisionlevel.match(dotnumber))
 		 {
-		 document.getElementById("revisionlevel1").innerHTML="";
+		 if(revisionlevel.charAt(0) ==("@" ) || revisionlevel.charAt(0) ==("!")||  revisionlevel.charAt(0) ==("#")
+				 ||revisionlevel.charAt(0) ==("$")||revisionlevel.charAt(0) ==("%")||revisionlevel.charAt(0) ==("^")||revisionlevel.charAt(0) ==("&")
+				 ||revisionlevel.charAt(0) ==("*")||revisionlevel.charAt(0) ==(")")||revisionlevel.charAt(0) ==("(")||revisionlevel.charAt(0) ==("'")||revisionlevel.charAt(0) ==(":")
+						 ||revisionlevel.charAt(0) ==(";") || revisionlevel.charAt(0) ==('"'))
+			 {
+			 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
+			 return false;
+			 }
+		 else{
+			 document.getElementById("revisionlevel1").innerHTML="";
+			 }
 		 }
 	 
 		 
