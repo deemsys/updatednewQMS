@@ -151,7 +151,7 @@
  <script type="text/javascript">
  function validation()
  {
-	 var number = /^[A-Za-z0-9]+$/;
+	 var number = /^[A-Za-z0-9]*$/;
 	 var chars = /[A-Za-z ]+$/;
 	 var processid = document.getElementById('processid').value;
 	 var processname = document.getElementById('processname').value;

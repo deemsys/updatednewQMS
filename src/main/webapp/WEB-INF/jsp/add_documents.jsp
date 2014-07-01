@@ -77,8 +77,9 @@
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
                </select>
+                  <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
                <input type="text" value="" id="document_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="document_id" onblur="change_to_label();"/>
-               
+            
               <c:if test="${fail=='fail'}">
               <p class="closestatus">
 						<span style="color:red">Required Field Should not be Blank</span>
@@ -225,7 +226,7 @@
            
             <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
-               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" <c:if test="${documentMain.issuer==employees.name}"><c:out value="Selected"/></c:if>onblur="change_to_label_issuer();" style="width:80px;">
+               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost();" <c:if test="${documentMain.issuer == employee.getName()}">value="employee.getName()"<c:out value="Selected"/></c:if>onblur="change_to_label_issuer();" style="width:80px;">
                <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -437,8 +438,8 @@ function validation()
 	
 	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
-	
+	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]*$/;
+	 var number = /^[A-Za-z0-9]*$/;
 	 var datepicker123=document.getElementById('datepicker123').value;
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
@@ -496,38 +497,44 @@ function validation()
 	
 	
 	
-	 if(documenttitle.charAt(0) ==" ")
+	 if(documenttitle =="")
 	 {
-		 
-		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
+		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
 		 return false;
 	 }
-	 else if(documenttitle.match(validate1))
+	 else if(documenttitle.match(number))
 	 {
-		 document.getElementById("documenttitle1").innerHTML="";
+			 document.getElementById("documenttitle1").innerHTML="";
  	 }
 	 else
 		 {
-		   document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
+		   document.getElementById("documenttitle1").innerHTML="Required Field Should be Alpha-Numeric";
 		   	return false;
 		 }
 	 
 	 
 	 
-	 
-	 if(revisionlevel.charAt(0) ==" ")
+	 if(revisionlevel == "")
+		 {
+		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else if(revisionlevel.charAt(0) ==" ")
 	 {
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be spaces";
 		 return false;
 	 }	 
 	 else if(revisionlevel.match(dotnumber))
-		 { 
-			 document.getElementById("revisionlevel1").innerHTML="";
+		 {
+		 document.getElementById("revisionlevel1").innerHTML="";
 		 }
-	 else{	
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
+	 
+		 
+	 else{
+		 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
 		 return false;
-		}
+	 }
+
 		
 	 
 	
@@ -537,22 +544,16 @@ function validation()
 	 if(comments.charAt(0) ==" ")
 	 {
 		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+		 return false;
 	 }
 		 else if(comments.match(validate1))
 		 {
-			 if(comments.length < 5 || comments.length > 500 )
-				 {
-				 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
-				 return false;
-				 }
-			 else{
-			     document.getElementById("comments1").innerHTML="";
-			     }
-	   	 }
+			 document.getElementById("comments1").innerHTML="";
+		 }
 	 	else{
 				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
 				 return false;
-			    }
+		    }
 		
 	
 	 
@@ -568,7 +569,7 @@ function validation()
 		 }
 		 else
 		 {
-		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
+		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
 		 return false;
 		 }
 	}
@@ -652,7 +653,15 @@ function change_to_label()
 	document.getElementById("edit_td").style.display="none";
 	if(doc_id.value.match(numbers))
 	{
+		if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+			{
+			var color = "Required field should be a length of 4 to 32";
+			var result = color.fontcolor("red");
+			document.getElementById("document_id_full_lbl").innerHTML=result;
+			}
+		else{
 	document.getElementById("document_id_full_lbl").innerHTML=type.value+-+doc_id.value;
+			}
 	}
 	else{
 		var color = "Please Enter numeric values";
@@ -778,6 +787,16 @@ document.getElementById("lable_td").style.display="none";
 			
 			var value1 = document.getElementById('id_both').value;
 			toggle1(value1);
+		}
+		var docid= document.getElementById('document_id11').value;
+		if(docid=="")
+			{
+			
+			}
+		else{
+		var res = docid.split("-");
+		document.getElementById("document_id").focus();
+	    document.getElementById("document_id").value = res[1];
 		}
 	}
 		</script>

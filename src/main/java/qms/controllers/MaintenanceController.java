@@ -165,12 +165,23 @@ return "maintenance_list";
 				MaintenanceForm maintenanceForm= new MaintenanceForm();
 				maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
 				model.addAttribute("maintenanceForm",maintenanceForm);
-				model.addAttribute("Success","true");
+				
 		        return "add_maintenance";
 			}
-		
+			MaintenanceForm maintenanceForm= new MaintenanceForm();
+			
+			if(maintenanceDAO.edit_maintenance(maintenance.getEquipment_id()))
+			{
+				
+				maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
+				model.addAttribute("maintenanceForm",maintenanceForm);
+				model.addAttribute("success","exist");
+		        return "add_maintenance";
+			}
+			
+			
 		maintenanceDAO.insert_maintenance(maintenance);
-		MaintenanceForm maintenanceForm= new MaintenanceForm();
+		
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
 	//	model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","maintenance");

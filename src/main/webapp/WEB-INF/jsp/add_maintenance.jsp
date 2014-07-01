@@ -40,6 +40,18 @@
   </div>
       </td>
       </tr>
+     <%--  <c:if test="${success=='exist'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<span style="color:red">Equipment Id already Exist</span>
+						<a title="Close" href="add_maintenance">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if> --%>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
@@ -55,19 +67,28 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Equipment Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_id" class="input_txtbx1" id="equipment_id" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_id" class="input_txtbx1" id="equipment_id" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <span id="equipment_id1" style="color:red"></span>
+                  <c:if test="${success=='exist'}"><span style="color:red">Equipment Id already Exist</span></c:if>
+                  <span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Equipment Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_name" class="input_txtbx1" id="equipment_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_name" class="input_txtbx1" id="equipment_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                   <span id="equipment_name1" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Equipment Model :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_model" class="input_txtbx1" id="equipment_model" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_model" class="input_txtbx1" id="equipment_model" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                   <span id="equipment_model1" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Serial Number :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="serial_number" class="input_txtbx1" id="serial_number" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="serial_number" class="input_txtbx1" id="serial_number" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                   <span id="serial_number1" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
                 </table>
 						         </td>
@@ -76,23 +97,27 @@
                 
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Date Acquired :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="date_acquired" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="date_acquired" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                    <span id="datepicker11" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="50%"> Equipment Status :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
-                  <select name="equipment_status" class="input_cmbbx1">
+                  <select name="equipment_status" class="input_cmbbx1" id="equipment_status">
                   <option value="">--Select--</option>
                   <option value="Active">Active</option>
                   <option value="Not Active">Not Active</option>
                   </select>
-                  <br/><span class="err"><form:errors path="Maintenance.equipment_status"></form:errors></span></td>
+                  <br/>
+                   <span id="equipment_status1" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.equipment_status"></form:errors></span></td>
                   
                   </tr>
                   <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" >Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt">
-                  <select name="frequency_maintenance" class="input_cmbbx1" multiple>
+                  <select name="frequency_maintenance" class="input_cmbbx1" id="frequency_maintenance" multiple>
                   
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
@@ -100,7 +125,9 @@
                    <option value="Semi-Annually">Semi-Annually</option>
                   <option value="Annually">Annually</option>
                   </select>
-                  <br/><span class="err"></span></td>
+                  <br/>
+                  <span id="frequency_maintenance1" style="color:red"></span>
+                  <span class="err"></span></td>
                   </tr>
                    <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="50%">Calibration(Y/N):</td>
@@ -141,11 +168,12 @@
                    <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
-                  <input type="checkbox" name="weekly" value="weekly" id="weekly"/ onclick="toggleAjax()" >&nbsp;Weekly  <br/>               
-             	  <input type="checkbox" name="monthly" value="monthly" id="monthly"/onclick="toggleAjax()" >&nbsp;Monthly<br/>
-                  <input type="checkbox" name="quarterly" value="quarterly" id="quarterly"/onclick="toggleAjax()" >&nbsp;Quarterly<br/>
-                  <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually"/ onclick="toggleAjax()" >&nbsp;Semi-Annually<br/>
-                  <input type="checkbox" name="annually" value="annually" id="annually"/ onclick="toggleAjax()" >&nbsp;Annually<br/>
+                  <input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax()" />&nbsp;Weekly  <br/>               
+             	  <input type="checkbox" name="monthly" value="monthly" id="monthly"onclick="toggleAjax()" />&nbsp;Monthly<br/>
+                  <input type="checkbox" name="quarterly" value="quarterly" id="quarterly"onclick="toggleAjax()" />&nbsp;Quarterly<br/>
+                  <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually" onclick="toggleAjax()" />&nbsp;Semi-Annually<br/>
+                  <input type="checkbox" name="annually" value="annually" id="annually" onclick="toggleAjax()" />&nbsp;Annually<br/>
+                  <span id="frequencyofmaintenance1" style="color:red"></span>
                  <%--  <span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span> --%></td>
                 </tr>
                  <tr class="row1">
@@ -161,9 +189,12 @@
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt">Instructions:</td>
+               <td valign="middle" align="left" class="input_txt">Instructions:(optional)</td>
                <td valign="top" align="left"  colspan="3"><div id="instruction"></div>
-               <textarea class="input_txtbx1"  name="instructions"  style="width:96%; height: 89px;" ></textarea><br/><span class="err"><form:errors path="Maintenance.instructions"></form:errors></span>
+               <textarea class="input_txtbx1"  name="instructions" id="instructions" style="width:96%; height: 89px;" >${Maintenance.instructions}</textarea><br/>
+               
+              <span id="instructions1" style="color:red"></span> 
+               <span class="err"><form:errors path="Maintenance.instructions"></form:errors></span>
                
                
                </td>
@@ -177,11 +208,15 @@
            
             <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Due Date :</td>
-                  <td valign="middle" align="left" class="input_txt" width="50%"><input type="text" name="due_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.due_date"></form:errors></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%"><input type="text" name="due_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <span id="datepicker22" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completion_date" class="input_txtbx1" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completion_date" class="input_txtbx1" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <span id="datepicker33" style="color:red"></span>
+                  <span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Completed By :</td>
@@ -192,16 +227,19 @@
 			                <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="calibrationname" varStatus="status">
         				       <option value="${calibrationname.name}">${calibrationname.name}</option>
 			                  </c:forEach> </select>
+			                  <span id="completed_by1" style="color:red"></span>
                  <!--  <input type="text" name="completed_by" class="input_txtbx1" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /> --><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt"width="50%">Notes:</td>
-               <td valign="top" align="left"  class="input_txt"width="50%"><textarea class="input_txtbx1"  name="notes"  style="width:85%; height: 89px;" ></textarea><br/><span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
+               <td valign="top" align="left"  class="input_txt"width="50%"><textarea class="input_txtbx1"  name="notes" id="notes" style="width:85%; height: 89px;" ></textarea><br/>
+               <span id="notes1" style="color:red"></span>
+               <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
             </tr>
             <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
           
            </table>
@@ -368,7 +406,256 @@ $("#suggestion_box").html(html);
 	}   
    
   
-</script>  
+</script> 
+<script type="text/javascript">
+function validation()
+{
+	var chars =  /^[A-Z0-9]+$/;
+	var numbers =  /^[0-9]+$/;
+	var letters =  /^[A-Za-z]+$/;
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
+	
+	var equipment_id = document.getElementById('equipment_id').value;
+	var equipment_name =  document.getElementById('equipment_name').value;
+	var equipment_model = document.getElementById('equipment_model').value;
+	var serial_number = document.getElementById('serial_number').value;
+	var datepicker1 = document.getElementById('datepicker1').value;
+	var datepicker2 = document.getElementById('datepicker2').value;
+	var datepicker3 = document.getElementById('datepicker3').value;
+	var equipment_status = document.getElementById('equipment_status').value;
+	var frequency_maintenance = document.getElementById('frequency_maintenance').value;
+	 var weekly = document.getElementById('weekly').checked;
+	   var monthly = document.getElementById('monthly').checked;
+	   var quarterly = document.getElementById('quarterly').checked;
+	   var semiannually = document.getElementById('semiannually').checked;
+	   var annually = document.getElementById('annually').checked;
+	   var instructions=  document.getElementById('instructions').value;
+	  var completed_by = document.getElementById('completed_by').value;
+	  var notes = document.getElementById('notes').value;
+	  
+	if(equipment_id == "")
+		{
+		document.getElementById("equipment_id1").innerHTML="Required Field Should not be Empty";
+		return false;
+		}
+	else if(equipment_id.charAt(0)==" ")
+		{
+		document.getElementById("equipment_id1").innerHTML="Required Field Should not be Spaces";
+		return false;
+		}
+	else if(equipment_id.match(numbers))
+		{
+		document.getElementById("equipment_id1").innerHTML="";
+		}
+	else{
+		document.getElementById("equipment_id1").innerHTML="Required Field Should be Numeric";
+		return false;
+		}
+	
+	if(equipment_name == "")
+	{
+	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Empty";
+	return false;
+	}
+	else if(equipment_name.charAt(0)==" ")
+	{
+	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Spaces";
+	return false;
+	}
+	else if(equipment_name.match(letters))
+	{
+	document.getElementById("equipment_name1").innerHTML="";
+	}
+	else{
+	document.getElementById("equipment_name1").innerHTML="Required Field Should be Letters";
+	return false;
+	}
+	
+	
+	
+	if(equipment_model == "")
+	{
+	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Empty";
+	return false;
+	}
+	else if(equipment_model.charAt(0)==" ")
+	{
+	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Spaces";
+	return false;
+	}
+	else if(equipment_model.match(chars))
+	{
+	document.getElementById("equipment_model1").innerHTML="";
+	}
+	else{
+	document.getElementById("equipment_model1").innerHTML="Required Field Should be Capital Alpha-Numeric";
+	return false;
+	}
+
+	
+	
+	if(serial_number == "")
+	{
+	document.getElementById("serial_number1").innerHTML="Required Field Should not be Empty";
+	return false;
+	}
+	else if(serial_number.charAt(0)==" ")
+	{
+	document.getElementById("serial_number1").innerHTML="Required Field Should not be Spaces";
+	return false;
+	}
+	else if(serial_number.match(chars))
+	{
+	document.getElementById("serial_number1").innerHTML="";
+	}
+	else{
+	document.getElementById("serial_number1").innerHTML="Required Field Should be Capital Alpha-Numeric";
+	return false;
+	}
+	
+	 if(datepicker1 == "")
+	 {
+	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 
+	 }
+	 else if(datepicker1.match(date))
+	 {
+	 document.getElementById("datepicker11").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker11").innerHTML="YYYY-MM-DD";
+	 return false;
+	 }
+	 
+	 if(equipment_status == "")
+		 {
+		 document.getElementById("equipment_status1").innerHTML="Required Field Should not be Empty";
+		 return false;
+		 }
+	 else
+		 {
+		 document.getElementById("equipment_status1").innerHTML="";
+		 }
+	 
+	 
+	 if(frequency_maintenance == "")
+	 {
+	 document.getElementById("frequency_maintenance1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ 	else
+	 {
+	 document.getElementById("frequency_maintenance1").innerHTML="";
+	 }
+	 
+	 if((weekly) || (monthly) ||(quarterly)||(semiannually) || (annually))
+		 {
+		 document.getElementById("frequencyofmaintenance1").innerHTML="";
+		 }
+	 else{
+		 document.getElementById("frequencyofmaintenance1").innerHTML="Please Check atleast one";
+		 return false;
+		 
+	 }
+	 
+	 if(instructions == "")
+		{
+		 
+		document.getElementById("instructions1").innerHTML="";
+		
+		}
+		else if(instructions.match(dotnumber))
+		{
+		 if(instructions.length < 5 || instructions.length > 400 )
+			 {
+			 document.getElementById("instructions1").innerHTML="Should b/w 5 to 400 chars";
+			 return false;
+			 }
+		 else{
+		     document.getElementById("instructions1").innerHTML="";
+		     }
+  	 	}
+		else{
+			 document.getElementById("instructions1").innerHTML="Required Field Should not Spaces";
+			return false;
+		    }
+	 
+	 
+	 
+  if(datepicker2 == "")
+	 {
+	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 
+	 }
+	 else if(datepicker2.match(date))
+	 {
+	 document.getElementById("datepicker22").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker22").innerHTML="YYYY-MM-DD";
+	 return false;
+	 }
+	 
+	 
+	 if(datepicker3 == "")
+	 {
+	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 
+	 }
+	 else if(datepicker3.match(date))
+	 {
+	 document.getElementById("datepicker33").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker33").innerHTML="YYYY-MM-DD";
+	 return false;
+	 } 
+	 
+	 
+	 if(completed_by == "")
+	 {
+	 document.getElementById("completed_by1").innerHTML="Required Field Should not be Empty";
+	 return false;
+	 }
+ 	else
+	 {
+	 document.getElementById("completed_by1").innerHTML="";
+	 }
+	 
+	 
+	 if(notes == "")
+		{
+		 
+		document.getElementById("notes1").innerHTML="Required Field Should not Empty";
+		return false;
+		}
+		else if(notes.match(dotnumber))
+		{
+		 if(notes.length < 5 || notes.length > 400 )
+			 {
+			 document.getElementById("notes1").innerHTML="Should b/w 5 to 400 chars";
+			 return false;
+			 }
+		 else{
+		     document.getElementById("notes1").innerHTML="";
+		     }
+	 	}
+		else{
+			 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
+			return false;
+		    }
+	 
+}
+
+
+</script> 
 <script>
 	
 	window.onload = function(){

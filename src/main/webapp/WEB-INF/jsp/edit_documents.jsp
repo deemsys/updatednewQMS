@@ -395,6 +395,154 @@ $(window).load(function(){
         </div>
         </form>
         
+        <script type="text/javascript">
+        
+        function validation()
+        {
+        	alert("documenttitle");
+        	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/;
+        	 var numbers = /^[A-Za-z0-9]*$/;
+        	 var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]*$/;
+        	 var e2=document.getElementById('location_text').value;
+        	 var e3=document.getElementById('id_file').value;
+        	 var documenttitle = document.getElementById('documenttitle').value;
+        	 var revisionlevel = document.getElementById('revisionlevel').value;
+        	 var comments = document.getElementById('comments').value;
+        	
+        	 
+        	 if(documenttitle.match(numbers))
+        	 {
+        		
+        		 document.getElementById("documenttitle1").innerHTML="";
+        	 }
+        	 else{
+        		
+        	 document.getElementById("documenttitle1").innerHTML="Required Field Should be Alpha-Numeric";
+        	 return false;
+         	}
+        	 
+        	 if(document.getElementById('id_hardcopy').checked)
+        	 {
+        		if(e2=="")
+        			{
+        			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+        			return false;
+        			}
+        		 
+        		 
+        	 }
+        	 
+        	 if(document.getElementById('id_electronic').checked)
+        	{
+        		 if(e3=="")
+        			 {
+        			
+        			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+        			 return false;
+        			 }
+        	}
+        	if(document.getElementById('id_both').checked)
+        		{
+        	
+        		if(e2=="")
+        		{
+        			
+        		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+        		return false;
+        		}
+        	}
+        	
+        	if(revisionlevel.charAt(0) ==" ")
+   		 {
+   		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+   		 return false;
+   		 }
+   	 esle if(revisionlevel.match(dotnumber))
+   	 { 
+   		 document.getElementById("revisionlevel1").innerHTML="";
+   	 }
+   	 else{
+   		
+   	 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
+   	 return false;
+    	}
+   	 
+   	 
+   	 if(comments.match(validate1))
+   	 { 
+   	 }
+   	 else{
+   	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+   	 return false;
+    	} 
+        	
+        }	
+        	/*  
+        	
+        	 
+        	 
+        	 if(document.getElementById('id_hardcopy').checked)
+        	 {
+        		if(e2=="")
+        			{
+        			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+        			return false;
+        			}
+        		 
+        		 
+        	 }
+        	 
+        	 if(document.getElementById('id_electronic').checked)
+        	{
+        		 if(e3=="")
+        			 {
+        			
+        			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+        			 return false;
+        			 }
+        	}
+        	if(document.getElementById('id_both').checked)
+        		{
+        	
+        		if(e2=="")
+        		{
+        			
+        		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+        		return false;
+        		} */
+        		/*  if(e3=="")
+        		 {
+        			
+        		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+        		 return false;
+        		 } */
+        		
+        	/* 
+        	 if(revisionlevel.charAt(0) ==" ")
+        		 {
+        		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+        		 return false;
+        		 }
+        	 esle if(revisionlevel.match(dotnumber))
+        	 { 
+        		 document.getElementById("revisionlevel1").innerHTML="";
+        	 }
+        	 else{
+        		
+        	 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
+        	 return false;
+         	}
+        	 
+        	 
+        	 if(comments.match(validate1))
+        	 { 
+        	 }
+        	 else{
+        	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+        	 return false;
+         	} */
+        
+        </script>
 <script>
 function toggle2(value){
   
@@ -427,84 +575,7 @@ e3.style.display="block";
 }
     
 }
-function validation()
-{
-	
-	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
-	
-	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
-	 var e2=document.getElementById('location_text').value;
-	 var e3=document.getElementById('id_file').value;
-	 var documenttitle = document.getElementById('documenttitle').value;
-	 var revisionlevel = document.getElementById('revisionlevel').value;
-	 var comments = document.getElementById('comments').value;
-	 
-	 if(document.getElementById('id_hardcopy').checked)
-	 {
-		if(e2=="")
-			{
-			
-			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-			return false;
-			}
-		 
-		 
-	 }
-	 if(document.getElementById('id_electronic').checked)
-	{
-		 if(e3=="")
-			 {
-			
-			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-			 return false;
-			 }
-	}
-	if(document.getElementById('id_both').checked)
-		{
-	
-		if(e2=="")
-		{
-			
-		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-		return false;
-		}
-		/*  if(e3=="")
-		 {
-			
-		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-		 return false;
-		 } */
-		}
-	 if(documenttitle.charAt(0) ==" ")
-	 {
-		
-		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
-		 return false;
-	 }
-	 
-	 if(documenttitle.match(validate1))
-	 {
-	 }
-	 else{
-		
-	 document.getElementById("documenttitle1").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
-	 if(revisionlevel.match(dotnumber))
-	 { }
-	 else{
-		
-	 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
-	 if(comments.match(validate1))
-	 { 
-	 }
-	 else{
-	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
-	 return false;
- 	}
-	}
+
 function doAjaxPost_for_process() {
 
 	var proceee_name = $('#id_inpprocess').val();
@@ -572,7 +643,15 @@ function show_edit()
 		document.getElementById("changeafter").style.display="block";
 		if(doc_id.value.match(numbers))
 		{
+			if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+			{
+			var color = "Required field should be a length of 4 to 32";
+			var result = color.fontcolor("red");
+			document.getElementById("changeafter").innerHTML=result;
+			}
+		else{
 			document.getElementById("changeafter").innerHTML = type.value+-+doc_id.value;
+			}
 		}
 		else{
 			var color = "Please Enter numeric values";

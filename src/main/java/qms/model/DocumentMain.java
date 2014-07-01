@@ -1,5 +1,6 @@
 package qms.model;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -18,6 +19,7 @@ public class DocumentMain
 	private String document_type_id;
 	
 	@NotEmpty
+	@Length(min=4,max=32,message="Required Field should between 4 to 32 characters!!!")
 	private String document_title;
 	
 	@NotEmpty
@@ -38,6 +40,7 @@ public class DocumentMain
 	private String issuer;
 	
 	@NotEmpty
+	@Length(min=1,max=32,message="Required Field should between 1 to 32 characters!!!")
 	private String revision_level;
 	
 	@NotEmpty
@@ -53,6 +56,7 @@ public class DocumentMain
 	private String approver3;
 	
 	@NotEmpty
+	@Length(min=4,max=400,message="Required Field should between 4 to 400 characters!!!")
 	private String comments;
 	
 	@NotEmpty

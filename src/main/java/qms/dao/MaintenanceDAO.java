@@ -634,7 +634,7 @@ public class MaintenanceDAO extends AbstractExcelView
 	}
 	
 	//Edit operation
-	public List<Maintenance> edit_maintenance(String equipment_id) {
+	public boolean edit_maintenance(String equipment_id) {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -679,6 +679,7 @@ public class MaintenanceDAO extends AbstractExcelView
 						.getString("completion_date"),resultSet
 						.getString("completed_by"),
 						resultSet.getString("notes")));
+				status=true;
 			}
 
 		} catch (Exception e) {
@@ -691,7 +692,7 @@ public class MaintenanceDAO extends AbstractExcelView
 			releaseStatement(statement);
 			releaseConnection(con);
 		}
-		return maintenance;
+		return status;
 	}
 
 	//Update Operation
