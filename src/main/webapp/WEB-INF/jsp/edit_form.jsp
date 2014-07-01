@@ -690,7 +690,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 } 
 	 else if(title.charAt(0)==" ")
 	 {
-	 alert("space");
+	 
 	 document.getElementById("title1").innerHTML="Spaces are not allowed"
 	 return false;
 	 }
