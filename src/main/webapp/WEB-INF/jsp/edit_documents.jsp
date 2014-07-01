@@ -143,8 +143,8 @@ $(window).load(function(){
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
-             <!--  <option value="">--Select--</option>
-               -->  <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
+              <option value="">--Select--</option>
+                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
                   
         				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == documentMain.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
 			                  </c:forEach>
@@ -209,7 +209,7 @@ $(window).load(function(){
                <td valign="top" align="left" class="input_txt" width="20%">
            
                 <select name="document_type" id="id_document_type"  class="input_cmbbx1" style="width:200px;">
-							 
+							  <option value="">--Select--</option> 
 			                <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}"<c:if test="${documenttype.document_type == documentMain.document_type}"><c:out value="selected"/></c:if>>${documenttype.document_type}</option>
 			                  </c:forEach>
@@ -385,7 +385,7 @@ $(window).load(function(){
              <td colspan="2" align="right">
              <input type="submit" id="submit"  name="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
              <td colspan="3"> 
-            <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+            <input type="button" id="reset_export" name="reset_export" value="Reset" onclick="reset1();"class="submit_btn1"></td>
                        
       
         </tr>
@@ -882,6 +882,24 @@ function show_edit()
 		document.getElementById('approver3').value="";
 		document.getElementById('status').value="";
 	 
+	}
+	function reset1()
+	{
+		document.getElementById('location_text').value="";
+		document.getElementById('id_document_type').value="";
+		document.getElementById('id_inpprocess').value="";
+		document.getElementById('documenttitle').value="";
+		document.getElementById('revisionid').value="0";
+		document.getElementById('datepicker').value="";
+		document.getElementById('issuer').value="";
+		document.getElementById('comments').value="";
+		document.getElementById('revisionlevel').value="";
+		document.getElementById('approver').value="";
+		document.getElementById('approver2').value="";
+		document.getElementById('approver3').value="";
+		document.getElementById('status').value="";
+		
+			
 	}
 	
  $(function() {
