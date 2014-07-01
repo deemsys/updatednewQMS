@@ -55,7 +55,7 @@ import qms.forms.ProcessForm;
 
 @Controller
 //@SessionAttributes({"audit_id","audit_process","audit_start_date","audit_due_date","auditor","audit_notes","audit_finding","audit_completion_date","auditors_initials","auditee_name"})
-@SessionAttributes({"docform"})
+@SessionAttributes({"docform","approver","issuer"})
 public class FormController
 {
 	@Autowired
@@ -111,6 +111,11 @@ public class FormController
 
 	{	
 		int flag = 0;
+		String approver1 = request.getParameter("approver1");
+		String issuer1 = request.getParameter("issuer");
+		System.out.println("approver1"+approver1);
+		session.setAttribute("approver", approver1);
+		session.setAttribute("issuer", issuer1);
 		
 		String form_id=request.getParameter("document_id_hidden");
 		System.out.println("form id="+form_id);

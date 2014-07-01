@@ -96,7 +96,7 @@
         				       <option value="${sources.source_of_nc}"<c:if test="${sources.source_of_nc == nonconformance.source_of_nonconformance}"><c:out value="selected"/></c:if>>${sources.source_of_nc}</option>
 			                  </c:forEach>
 				                   		</select>
-				                   		<br><font color="Red" size="+1"></font></td>
+				                   		<br><span style="color:red;"><form:errors path="Nonconformance.source_of_nonconformance"></form:errors></td>
 						         	
 					            	<td valign="middle" align="left" class="input_txt"> Product ID </td>
 					                      	<td valign="top" align="left" class="input_txt">
@@ -120,18 +120,24 @@
 				                	<c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
         				       <option value="${types.type_of_nc}"<c:if test="${types.type_of_nc == nonconformance.type_of_nonconformance}"><c:out value="selected"/></c:if>>${types.type_of_nc}</option>
 			                  </c:forEach>
-				                   		</select>
+				                   		</select><span style="color:red;"><form:errors path="Nonconformance.type_of_nonconformance"></form:errors>
 				                   	</td>
 				                 	<td valign="middle" align="left" class="input_txt"> Quantity Suspect </td>
-				                                     	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.quantity_suspect}" class="input_txtbx1" id="inp_quantity_suspect" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br><span class="err"><form:errors path="Nonconformance.quantity_suspect"></form:errors></span></td>
+				                    <td valign="top" align="left" class="input_txt">
+				                    <input type="text" value="${nonconformance.quantity_suspect}" class="input_txtbx1" id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
+				                    <span id="quantitysuspect" style="color:red;"></span>
+				                    <span style="color:red;"><form:errors path="Nonconformance.quantity_suspect"></form:errors></span>
+				                    </td>
 				    	</tr>
 						
 				                <tr class="row2">
 									<td valign="top" align="left" class="input_txt"> Nature Of NC </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				               
-				                <textarea class="input_txtbx1" id="temporary_action"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style="width:20%; height: 50px;" >${nonconformance.nature_of_nonconformance}</textarea>
-<br><span class="err"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
+				                <textarea class="input_txtbx1" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style="width:20%; height: 50px;" >${nonconformance.nature_of_nonconformance}</textarea>
+								<br>
+								<span id="nature" style="color:red;"></span>
+								<span style="color:red;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
 				                	
 			                  <td valign="top" align="left" class="input_txt"> Disposition Required(Y/N) </td>
 			        		        
@@ -141,7 +147,10 @@
                 	           </tr>
 								 <tr class="row1">
 				                 	<td valign="middle" align="left" class="input_txt"> Date Found </td>
-				                  	                        	<td valign="middle" align="left" class="input_txt"><input type="text" value="${nonconformance.date_found}" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br><span class="err"><form:errors path="Nonconformance.date_found"></form:errors></span></td>
+				                  	<td valign="middle" align="left" class="input_txt">
+				                  	<input type="text" value="${nonconformance.date_found}" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br>
+				                  	<span id="datepicker2" style="color:red;"></span>
+				                  <span style="color:red;"><form:errors path="Nonconformance.date_found"></form:errors></span></td>
 				  
 				                
                 	          
@@ -153,7 +162,7 @@
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>="" value="Repair">Repair</option>
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>="" value="Discard">Discard</option>
 																		<option <c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>="" value="Keep as is">Keep as is</option>
-						                    						</select>
+						                    						</select><span style="color:red;"><form:errors path="Nonconformance.disposition1"></form:errors>
 						                    							</td><td align="right">
 						                    						
 						                    				<input type="text" name="quality1" id="quality1" style="display:none; width:40px;" onchange="showbutton1();"  />
@@ -172,7 +181,7 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select></td>
+						                    						</select><span style="color:red;"><form:errors path="Nonconformance.disposition2"></form:errors></td>
 						                    						<td align="right"><input type="text" name="quality2" id="quality2" style="display:none; width:40px;" onchange="showbutton2();" /></td>
 						                    						<td align="left"><input type="button" class="number_btn1" id="button2" name="No's" value="No's" style="display:none;"></td>
 						                    						</tr><tr><td colspan="3"><span id="quality2err" style="color:red;"></span></td></tr><tr>
@@ -187,17 +196,14 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition3 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select>
+						                    						</select><span style="color:red;"><form:errors path="Nonconformance.disposition3"></form:errors>
 						                    					</td>
 						                    					<td  align="right"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" />
 						                    					</td><td  align="left"><input type="button" id="button3" class="number_btn1" name="No's" value="No's" onchange="showbutton3();" style="display:none;">
 						                    						</td>
 						                    						</tr><tr><td colspan="3"><span id="quality3err" style="color:red;"></span></td></tr></table>
 						                    						
-						                    						<span class="err"><form:errors
-																					path="Nonconformance.disposition"></form:errors>
-																		</span>
-						           									
+						                    						
 																		</td>
 																	</tr>
 						                    					        
@@ -220,7 +226,10 @@
 						                 
    						  		<tr class="row1">
 			   						<td valign="middle" align="left" class="input_txt"> Temporary Action </td>
-               						<td valign="top" align="left" width="20%"><textarea class="input_txtbx1" id="temporary_action"  name="temporary_action"  style="width:20%; height: 50px;" >${nonconformance.temporary_action}</textarea><br/><span class="err"></span></td>
+               						<td valign="top" align="left"><textarea class="input_txtbx1" id="tempaction"  name="temporary_action"  style="width:75%; height: 89px;" >${nonconformance.temporary_action}</textarea><br/>
+               														<span id="temp" style="color:red;"></span>
+               														 <span style="color:red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
+         </td>
          							<td valign="top" align="left" class="input_txt"> Disposition Responsibility </td>
 			                        <td valign="top" align="left" class="input_txt">
 																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_cmbbx1" style="width:200px;">
@@ -228,7 +237,9 @@
 																			 <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="dispositionname" varStatus="status">
         				       												<option value="${dispositionname.name}"<c:if test="${dispositionname.name == nonconformance.name_of_disposition_responsibility}"><c:out value="selected"/></c:if>>${dispositionname.name}</option>
 			                  												</c:forEach>
-			                 												</select>
+			                 												</select><br/>
+			                 												<span id="temp" style="color:red;"></span>
+			                 												<span style="color:red;"><form:errors path="Nonconformance.name_of_disposition_responsibility"></form:errors>
 				        		
 		  					
 		  					<tr class="row2">
@@ -240,12 +251,14 @@
                 			 
                 			 
 			    	                <td valign="top" align="left" class="input_txt"> Cost of NC </td>
-			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/><span class="err"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
+			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" class="input_txtbx1" id="costofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/>
+			   	                 	<span id="cost" style="color:red;"></span>
+			   	                 <span style="color:red;"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
 				          </tr>
      
                 <tr class="row1">
                   <td valign="top" align="center">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Update" onclick="update.submit()"></td>
+                  <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Update" onclick="update.submit();return validation();"></td>
             </tr>
     </table>
     
@@ -326,56 +339,7 @@ function showDiv() {
            
 </script>
       
- <!-- <script>
- $(window).load(function()
-		 {
-function showbutton1()
-{
-	var numbers = /^[0-9]+$/; 
-	var val = document.getElementById("quality1").value;
-if(val == numbers && val!="")  
-	{
-	document.getElementById("button1").style.display = 'block';
-	}
 
-else
-	{
-	document.getElementById("button1").style.display='none';
-	}
-}
-function showbutton2()
-{
-
-	var intgrt = /^[0-9]$/;
-	var val = document.getElementById("quality2").value;
- if(val==intgrt)
-	
-	{
-	document.getElementById("button2").style.display = 'block';
-	} 
-  else
-	{
-	document.getElementById("button2").style.display='none';
-	} 
-	}
-function showbutton3()
-{
-	var intgrt = /^[0-9]$/;
-	var val = document.getElementById("quality3").value;
-if(val==intgrt)
-	{
-	document.getElementById("button3").style.display = 'block';
-	} 
-else
-	{
-	document.getElementById("button3").style.display = 'none';
-	}
-
-	}
-	
-});
-</script>
- -->
  
  <script>
  $(window).load(function()
@@ -384,7 +348,8 @@ function showbutton1()
 {
 
 	var val = document.getElementById("quality1").value;
-if(val!="")  
+	var numbers = /^[-+]?[0-9]+$/;
+if(val!="" && val.match(numbers))  
 	{
 	document.getElementById("button1").style.display = 'block';
 	}
@@ -397,9 +362,9 @@ else
 function showbutton2()
 {
 
-	var intgrt = /^[0-9]$/;
+	var numbers = /^[-+]?[0-9]+$/;
 	var val = document.getElementById("quality2").value;
- if(val!="")
+ if(val!="" && val.match(numbers))
 	
 	{
 	document.getElementById("button2").style.display = 'block';
@@ -411,9 +376,9 @@ function showbutton2()
 	}
 function showbutton3()
 {
-	//var intgrt = /^[0-9]$/;
+	var numbers = /^[-+]?[0-9]+$/;
 	var val = document.getElementById("quality3").value;
-if(val!="")
+if(val!="" && val.match(numbers))
 	{
 	document.getElementById("button3").style.display = 'block';
 	} 
@@ -544,4 +509,114 @@ $(function() {
 		show1();show2();show3();doAjaxPost();
 	}
 		</script>
+		
+<script>
+function validation()
+{
+	//update.submit();
+	
+   	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+   	var datefound = document.getElementById('datepicker').value;
+	var complete = document.getElementById('datepicker1').value;
+	var quantity = document.getElementById('quantity').value;
+	var costnc = document.getElementById('costofnc').value;
+	var action = document.getElementById('tempaction').value;
+	var naturenc = document.getElementById('natureofnc').value;
+	
+	
+
+ 	 if(!datefound.match(date))
+	 {
+
+	 document.getElementById("datepicker2").innerHTML="MM/DD/YYYY";
+	 return false;
+	}
+  	if(!complete.match(date))
+	 {
+
+	 document.getElementById("completedate").innerHTML="MM/DD/YYYY";
+	 return false;
+	} 
+
+  	 if(quantity.charAt(0) ==" ")
+	 {
+		 
+		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be space";
+		 return false;
+	 }
+	 else if(quantity.match(validate1))
+	 {
+		 document.getElementById("quantitysuspect").innerHTML="";
+ 	 }
+	 else
+		 {
+		   document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Empty";
+		   	return false;
+		 }
+
+  	 alert("before cost");
+ 	 if(costnc.charAt(0) ==" ")
+	 {
+		 alert("cost");
+		 document.getElementById("cost").innerHTML="Required Field Should not be space";
+		 return false;
+	 }
+	 else if(costnc.match(validate1))
+	 {
+		 document.getElementById("cost").innerHTML="";
+ 	 }
+	 else
+		 {
+		   document.getElementById("cost").innerHTML="Required Field Should not be Empty";
+		   	return false;
+		 }
+
+ 	 
+	 if(naturenc.charAt(0) ==" ")
+	 {
+		 alert("space");
+		 document.getElementById("nature").innerHTML="Required Field Should not be space";
+	 }
+		 else if(naturenc.match(validate1))
+		 {
+			 if((naturenc.length < 5) || (comments.length > 500) )
+				 {
+				 document.getElementById("nature").innerHTML="Should b/w 5 to 500 chars";
+				 return false;
+				 }
+			 else{
+			     document.getElementById("nature").innerHTML="";
+			     }
+	   	 }
+	 	else{
+				 document.getElementById("nature").innerHTML="Required Field Should not be Empty";
+				 return false;
+			    }
+
+	
+if(action.charAt(0) ==" ")
+{
+	alert("action"+action);
+	 
+	 document.getElementById("temp").innerHTML="Required Field Should not be space";
+}
+	 else if(action.match(validate1))
+	 {
+		 if((action.length < 5) || (comments.length > 500) )
+			 {
+			 document.getElementById("temp").innerHTML="Should b/w 5 to 500 chars";
+			 return false;
+			 }
+		 else{
+		     document.getElementById("temp").innerHTML="";
+		     }
+  	 }
+	else{
+			 document.getElementById("temp").innerHTML="Required Field Should not be Empty";
+			 return false;
+		    }
+
+}
+</script>
+
 <jsp:include page="footer.jsp"></jsp:include>

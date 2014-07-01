@@ -178,6 +178,20 @@ public class NonConformanceController {
 	// Insert the records into the Database
 	@RequestMapping(value = "/add_nonconformance", method = RequestMethod.POST)
 	public String addNonconformance_post(HttpSession session,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,BindingResult result2,ModelMap model) {
+		
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
+		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+		model.addAttribute("productId_NC_Form",productId_NC_Form);
+		
+		HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
+		
+		
 		session.setAttribute("nonconformance",nonConformance);
        System.out.println(nonConformance.getCost_of_nonconformance());
        System.out.println(correctiveAndPreventiveActions.getAssigned_team_leader());
@@ -252,6 +266,18 @@ public class NonConformanceController {
 	// Update the values in the database
 	@RequestMapping(value = "/update_nonconformance", method = RequestMethod.POST)
 	public String editNonconformance_post(ModelMap model,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result,HttpSession session) {
+
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+
+		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+		productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+		model.addAttribute("productId_NC_Form",productId_NC_Form);
+		
+		HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
 
 		session.removeAttribute("id");
 		session.removeAttribute("type");

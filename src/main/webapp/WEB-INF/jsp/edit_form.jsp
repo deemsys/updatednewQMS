@@ -673,7 +673,7 @@ function validation()
 var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 var space = /\S/;
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-	
+var spl =  /^[A-Za-z0-9]*$/;
 	
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
@@ -683,70 +683,54 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	 var datepicker123 = document.getElementById('datepicker123').value
 	 
 	
-	  /* if(!title.match(/\S/)) {
-	   
-		  document.getElementById("title1").innerHTML="Empty Space value is not allowed";
-	        return false;
-	    }  */
-	    
-		 if(title.charAt(0) ==" ")
-		 {
-			 
-			 document.getElementById("title1").innerHTML="Required Field Should not be space";
-			 return false;
-		 }
-		 else if(title.match(validate1))
-		 {
-			 document.getElementById("title1").innerHTML="";
-	 	 }
-		 else
-			 {
-			   document.getElementById("title1").innerHTML="Required Field Should not be Empty";
-			   	return false;
-			 }
-	 if(comments.charAt(0) ==" ")
+	 if(title =="")
 	 {
-		 
+		 document.getElementById("title1").innerHTML="Required Field Should not be space";
+		 return false;
+	 } 
+	 else if(!title.match(spl))
+ 		 {
+ 		 document.getElementById("title1").innerHTML="Invalid Data";
+ 		return false;
+ 		 }
+ 	 else
+ 		 {
+ 		 document.getElementById("title1").innerHTML="";
+ 		 }
+    
+	 if(comments ==" ")
+	 {
 		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
 		 return false;
 	 }
-		 else if(comments.match(validate1))
+	 else if(!comments.match(spl))
 		 {
-			 if((comments.length < 5) || (comments.length > 500) )
-				 {
-				 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
-				 return false;
-				 }
-			 else{
-			     document.getElementById("comments1").innerHTML="";
-			     }
-	   	 }
-	 	else{
-				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
-				 return false;
-			    }
-	  /* if(!responsibility.match(/\S/)) {
-		    //  alert("incorrect value"); 
-			  document.getElementById("responsibility1").innerHTML="Empty Space value is not allowed";
-		        return false;
-		    }  */
-		    
-			 if(responsibility.charAt(0) ==" ")
-			 {
-				 
-				 document.getElementById("responsibility1").innerHTML="Required Field Should not be space";
-				 return false;
-			 }
-			 else if(responsibility.match(validate1))
-			 {
-				 document.getElementById("responsibility1").innerHTML="";
-		 	 }
-			 else
-				 {
-				   document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
-				   	return false;
-				 }
-		 if(!datepicker123.match(date))
+		 document.getElementById("comments1").innerHTML="Invalid Data";
+		
+		 }
+	 else 
+		 {
+		document.getElementById("comments1").innerHTML="";
+		 }
+  
+	    if(responsibility ==" ")
+		 {
+			 
+			 document.getElementById("responsibility1").innerHTML="Required Field Should not be space";
+			 return false;
+		 }
+	    else if(!responsibility.match(spl))
+ 		 {
+ 		 document.getElementById("responsibility1").innerHTML="Invalid Data";
+ 		
+ 		 }
+ 	 else
+ 		 {
+ 		document.getElementById("responsibility1").innerHTML="";
+ 		 }  
+	    
+	    
+	 if(!datepicker123.match(date))
 			 {
 		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
 		 return false;

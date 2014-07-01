@@ -77,7 +77,7 @@
                
               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value="" /> 
               
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
+              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" value="${docform.form_or_rec_id}" onblur="change_to_label();"/>
               
               </br>
               <span id="quality3err" style="color:red;"></span>
@@ -215,7 +215,7 @@
 																		</td>
    			   <td valign="middle" align="right" class="input_txt" width="50%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" >
-               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" style="width:80px;">
+               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner();" onblur="change_to_label_issuer1();" value="${approver.filter} style="width:80px;">
                <option value="">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -393,6 +393,7 @@ function validation()
 var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 var space = /\S/;
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+var spl =  /^[A-Za-z0-9]*$/;
 	
 	
 	 var e2=document.getElementById('location_text').value;
@@ -409,66 +410,55 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	        return false;
 	    }  */
 	    
-		 if(title.charAt(0) ==" ")
+		 if(title =="")
 		 {
-			 
 			 document.getElementById("title1").innerHTML="Required Field Should not be space";
 			 return false;
-		 }
-		 else if(title.match(validate1))
+		 } 
+		 else if(!title.match(spl))
+	 		 {
+	 		 document.getElementById("title1").innerHTML="Invalid Data";
+	 		return false;
+	 		 }
+	 	 else
+	 		 {
+	 		 document.getElementById("title1").innerHTML="";
+	 		 }
+	    
+		 if(comments ==" ")
 		 {
-			 document.getElementById("title1").innerHTML="";
-	 	 }
-		 else
-			 {
-			   document.getElementById("title1").innerHTML="Required Field Should not be Empty";
-			   	return false;
-			 }
-	  
-		 if(comments.charAt(0) ==" ")
-		 {
-			 
 			 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+			 return false;
 		 }
-			 else if(comments.match(validate1))
-			 {
-				 if((comments.length < 5) || (comments.length > 500) )
-					 {
-					 document.getElementById("comments1").innerHTML="Should b/w 5 to 500 chars";
-					 return false;
-					 }
-				 else{
-				     document.getElementById("comments1").innerHTML="";
-				     }
-		   	 }
-		 	else{
-					 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
-					 return false;
-				    }
-	  /* if(!responsibility.match(/\S/)) {
-		    //  alert("incorrect value"); 
-			  document.getElementById("responsibility1").innerHTML="Empty Space value is not allowed";
-		        return false;
-		    } */
-		    
-		    if(responsibility.charAt(0) ==" ")
+		 else if(!comments.match(spl))
+ 		 {
+ 		 document.getElementById("comments1").innerHTML="Invalid Data";
+ 		
+ 		 }
+ 	 else 
+ 		 {
+ 		document.getElementById("comments1").innerHTML="";
+ 		 }
+	  
+		    if(responsibility ==" ")
 			 {
 				 
 				 document.getElementById("responsibility1").innerHTML="Required Field Should not be space";
 				 return false;
 			 }
-			 else if(responsibility.match(validate1))
-			 {
-				 document.getElementById("responsibility1").innerHTML="";
-		 	 }
-			 else
-				 {
-				   document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
-				   	return false;
-				 }
+		    else if(!responsibility.match(spl))
+	 		 {
+	 		 document.getElementById("responsibility1").innerHTML="Invalid Data";
+	 		
+	 		 }
+	 	 else
+	 		 {
+	 		document.getElementById("responsibility1").innerHTML="";
+	 		 }  
+		    
 		 if(!datepicker123.match(date))
 			 {
-		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
+		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
 		 return false;
 		 }
 	 
