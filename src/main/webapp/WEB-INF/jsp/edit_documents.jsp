@@ -185,8 +185,8 @@ $(window).load(function(){
                 <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
                   
         				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == documentMain.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
-			                  </c:forEach></select><br><br>
-			                <span id="hard"style="color:red"></span>
+			                  </c:forEach></select><br>
+			                <span id="hard"style="color:red"></span><br>
                <input name="filename" type="hidden" id="file_name"/>${documentMain.attachment_name}
                <input name="attachments" id="id_file" type="file" style="display:none;" value="${documentMain.attachment_name}"/>
              <!--   <span id="attach"style="color:red"></span> -->
@@ -399,7 +399,7 @@ $(window).load(function(){
         
         function validation()
         {
-        	alert("documenttitle");
+        	
         	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/;
         	 var numbers = /^[A-Za-z0-9]*$/;
         	 var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]*$/;
@@ -417,9 +417,9 @@ $(window).load(function(){
         	 }
         	 else{
         		
-        	 document.getElementById("documenttitle1").innerHTML="Required Field Should be Alpha-Numeric";
-        	 return false;
-         	}
+        		 document.getElementById("documenttitle1").innerHTML="Required Field Should be Alpha-Numeric";
+        		 return false;
+         		}
         	 
         	 if(document.getElementById('id_hardcopy').checked)
         	 {
@@ -428,19 +428,17 @@ $(window).load(function(){
         			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
         			return false;
         			}
-        		 
-        		 
         	 }
         	 
         	 if(document.getElementById('id_electronic').checked)
-        	{
+        		{
         		 if(e3=="")
         			 {
         			
         			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
         			 return false;
         			 }
-        	}
+        		}
         	if(document.getElementById('id_both').checked)
         		{
         	
@@ -453,28 +451,28 @@ $(window).load(function(){
         	}
         	
         	if(revisionlevel.charAt(0) ==" ")
-   		 {
-   		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
-   		 return false;
+   			 {
+   			 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
+   			 return false;
+   			 }
+   		 else if(revisionlevel.match(dotnumber))
+   		 { 
+   			 document.getElementById("revisionlevel1").innerHTML="";
    		 }
-   	 esle if(revisionlevel.match(dotnumber))
-   	 { 
-   		 document.getElementById("revisionlevel1").innerHTML="";
-   	 }
-   	 else{
+   		 else{
    		
-   	 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
-   	 return false;
-    	}
+   			 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
+   			 return false;
+    		}
    	 
    	 
-   	 if(comments.match(validate1))
-   	 { 
-   	 }
-   	 else{
-   	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
-   	 return false;
-    	} 
+   		 if(comments.match(validate1))
+   		 { 
+   		 }
+   		 else{
+   	 	document.getElementById("comments1").innerHTML="Required Field Should not be space";
+   		 return false;
+    		} 
         	
         }	
         	/*  
