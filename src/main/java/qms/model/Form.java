@@ -60,7 +60,7 @@ public class Form {
 	@NotEmpty
 	private String approver1;
 	
-	
+	@NotEmpty
 	private String issuer;
 	
 	@NotEmpty

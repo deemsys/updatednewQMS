@@ -282,14 +282,24 @@ return "maintenance_list";
 	
 	//Update a record
 	@RequestMapping(value = "/update_maintenance", method = RequestMethod.POST)
-	public String update_maintenance(ModelMap model,@ModelAttribute("Maintenance") @Valid Maintenance maintenance,BindingResult result) throws IOException {
+	public String update_maintenance(ModelMap model,HttpServletRequest request,@ModelAttribute("Maintenance") @Valid Maintenance maintenance,BindingResult result,@RequestParam("equipment_id") String equipment_id) throws IOException {
 
 		if (result.hasErrors())
 		{
 			
-			MaintenanceForm maintenanceForm= new MaintenanceForm();
+			/*MaintenanceForm maintenanceForm= new MaintenanceForm();
 			maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance(maintenance.getEquipment_id()));
+			model.addAttribute("maintenanceForm",maintenanceForm);*/
+			MaintenanceForm maintenanceForm= new MaintenanceForm();
+			maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance(equipment_id));
 			model.addAttribute("maintenanceForm",maintenanceForm);
+			
+			HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+			hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getNameCalibration());
+			model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+			String value = maintenanceForm.getMaintenance().get(0).getFrequency_maintenance();
+			request.setAttribute("frequency", value);
+			model.addAttribute("menu","maintenance");
             return "edit_maintenance";
 		}
 		

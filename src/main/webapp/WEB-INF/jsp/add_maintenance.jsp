@@ -526,7 +526,7 @@ function validation()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="YYYY-MM-DD";
+	 document.getElementById("datepicker11").innerHTML="Invalid Date";
 	 return false;
 	 }
 	 
@@ -597,7 +597,7 @@ function validation()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="YYYY-MM-DD";
+	 document.getElementById("datepicker22").innerHTML="Invalid Date";
 	 return false;
 	 }
 	 
@@ -614,7 +614,7 @@ function validation()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="YYYY-MM-DD";
+	 document.getElementById("datepicker33").innerHTML="Invalid Date";
 	 return false;
 	 } 
 	 
