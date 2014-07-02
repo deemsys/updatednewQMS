@@ -397,6 +397,7 @@ function validation()
 var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
 var space = /\S/;
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+var spl =  /^[A-Za-z0-9]*$/;
 	
 	
 	 var e2=document.getElementById('location_text').value;
@@ -406,6 +407,7 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	 var comments = document.getElementById('comments').value;
 	 var datepicker123 = document.getElementById('datepicker123').value
 	 
+
 	 if(title =="")
 	 {
 		 document.getElementById("title1").innerHTML="Required Field Should not be Blank";
@@ -413,6 +415,7 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	 } 
 	 else if(title.charAt(0)==" ")
 	 {
+	 
 	 document.getElementById("title1").innerHTML="Spaces are not allowed"
 	 return false;
 	 }
@@ -424,7 +427,6 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
  	 else
  		 {
  		 document.getElementById("title1").innerHTML="";
- 			
  		 }
     
 	 if(comments =="")
@@ -468,11 +470,12 @@ var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
  		 {
  		document.getElementById("responsibility1").innerHTML="";
  		 }  
-	
+	        
 	    
 		 if(!datepicker123.match(date))
 			 {
-		 document.getElementById("datepicker1234").innerHTML="MM/DD/YYYY";
+			 alert("date");
+		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
 		 return false;
 		 }
 	 
@@ -679,13 +682,24 @@ document.getElementById("filter_value1").style.display="block";
 function change_to_label()
 {
 	
-    
+	var numbers = /^[0-9]+$/; 
 	var type=document.getElementById("document_type_id");	
 	var doc_id=document.getElementById("form_or_rec_id");	
 	document.getElementById("lable_td").style.display="block";
 	document.getElementById("edit_td").style.display="none";
-	
+	if(doc_id.value.match(numbers))
+	{
+		if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+			{
+			var color = "Required field should be a length of 4 to 32";
+			var result = color.fontcolor("red");
+			document.getElementById("document_id_full_lbl").innerHTML=result;
+			}
+		else{
 	document.getElementById("document_id_full_lbl").innerHTML=type.value+-+doc_id.value;
+			}
+	}
+	//document.getElementById("document_id_full_lbl").innerHTML=type.value+-+doc_id.value;
 	var gen_id=document.getElementById("generated_id");
 	gen_id.value=type.value+-+doc_id.value;
 	 

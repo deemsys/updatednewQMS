@@ -13,6 +13,7 @@ public class Form {
 	private String location;
 	
     @NotEmpty
+    @Length(min=4,max=32,message="Required Field should between 4 to 32 characters!!!")
     private String form_or_rec_id;
 
     @NotEmpty
