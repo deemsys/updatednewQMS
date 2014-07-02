@@ -597,6 +597,7 @@ function validation()
 		document.getElementById("instructions1").innerHTML="";
 		
 		}
+	 
 		else if(instructions.match(dotnumber))
 		{
 		 if( (instructions.length < 5) || (instructions.length > 400) )
@@ -610,10 +611,9 @@ function validation()
 		  }
   	 	}
 		else{
-			 document.getElementById("instructions1").innerHTML="Required Field Should not Spaces";
+			 document.getElementById("instructions1").innerHTML="Special chars are not allowed at beginning";
 			return false;
 		    }
-	 
 	 
 	 
   if(datepicker2 == "")
@@ -667,6 +667,13 @@ function validation()
 		document.getElementById("notes1").innerHTML="Required Field Should not Empty";
 		return false;
 		}
+	 else if(notes.charAt(0)== " ")
+	 {
+	 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
+		return false;
+	 
+	 }
+ 
 		else if(notes.match(dotnumber))
 		{
 		 if((notes.length < 5) || (notes.length > 400) )
@@ -679,7 +686,7 @@ function validation()
 		     }
 	 	}
 		else{
-			 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
+			 document.getElementById("notes1").innerHTML="Special chars are not allowed at beginning";
 			return false;
 		    }
 	 

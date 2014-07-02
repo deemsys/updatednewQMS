@@ -543,7 +543,7 @@ function validation()
 	 
 	 if(frequency_maintenance == "")
 	 {
-	 document.getElementById("frequency_maintenance1").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("frequency_maintenance1").innerHTML="Select Atleast one. For more option hold ctrl and select";
 	 return false;
 	 }
  	else
@@ -567,7 +567,7 @@ function validation()
 		document.getElementById("instructions1").innerHTML="";
 		
 		}
-		else if(instructions.match(dotnumber))
+	  else if(instructions.match(dotnumber))
 		{
 		 if(instructions.length < 5 || instructions.length > 400 )
 			 {
@@ -579,8 +579,9 @@ function validation()
 		     }
   	 	}
 		else{
-			 document.getElementById("instructions1").innerHTML="Required Field Should not Spaces";
+			document.getElementById("instructions1").innerHTML="Required Field Should not Spaces";
 			return false;
+			
 		    }
 	 
 	 
@@ -636,6 +637,11 @@ function validation()
 		document.getElementById("notes1").innerHTML="Required Field Should not Empty";
 		return false;
 		}
+	 else if(notes.charAt(0)== " ")
+	 {
+	 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
+		return false;
+	 }
 		else if(notes.match(dotnumber))
 		{
 		 if(notes.length < 5 || notes.length > 400 )
@@ -648,8 +654,9 @@ function validation()
 		     }
 	 	}
 		else{
-			 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
-			return false;
+		
+			 document.getElementById("notes1").innerHTML="Special chars are not allowed at beginning";
+				return false;
 		    }
 	 
 }
