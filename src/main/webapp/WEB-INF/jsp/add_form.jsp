@@ -474,7 +474,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	    
 		 if(!datepicker123.match(date))
 			 {
-			 alert("date");
+			
 		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
 		 return false;
 		 }
