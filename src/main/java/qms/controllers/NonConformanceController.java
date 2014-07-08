@@ -621,7 +621,7 @@ public class NonConformanceController {
 				System.out.println("result html:::::"+resultHTML);
 				 
 				String returnText="";
-				returnText=returnText+"<select name='reported_by' class='input_cmbbx1' id='reported_by'>";
+				returnText=returnText+"<select name='reported_by' class='input_cmbbx1' id='reported_by' style='width:60%;'>";
 			 	
 				System.out.println("Group Person"+group_person);
 				

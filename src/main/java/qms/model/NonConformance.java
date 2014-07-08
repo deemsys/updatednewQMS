@@ -10,43 +10,32 @@ private String id;
 private String source_of_nonconformance;
 
 private String external_id;
-@NotEmpty
+
 private String type_of_nonconformance;
 @NotEmpty
 private String product_id;
-@NotEmpty
-@Length(min=3,max=32,message="Required Field should between 3 to 32 characters!!!")
+
 private String quantity_suspect;
-@NotEmpty
-@Length(min=3,max=500,message="Required Field should between 3 to 500 characters!!!")
+
 private String nature_of_nonconformance;
-@NotEmpty
 private String date_found;
-@NotEmpty
+
 private String reported_by;
-@NotEmpty
-@Length(min=3,max=500,message="Required Field should between 3 to 500 characters!!!")
+
 private String temporary_action;
 private String corrective_action_required;
 private String disposition_required;
-@NotEmpty
 private String disposition1;
 
 private String quality1;
-@NotEmpty
 private String disposition2;
 
 private String quality2;
-@NotEmpty
 private String disposition3;
 
 private String quality3;
-@NotEmpty
 private String disposition_complete_date;
-@NotEmpty
 private String name_of_disposition_responsibility;
-@NotEmpty
-@Length(min=3,max=32,message="Required Field should between 3 to 32 characters!!!")
 private String cost_of_nonconformance;
 public NonConformance() {
 	super();
