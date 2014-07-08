@@ -120,6 +120,7 @@ public class EmployeeController
 		
 			if (employeeDAO.insert_employee(employee)) {
 				//employeeDAO.insert(documentMain.getDocument_id().substring(0,documentMain.getDocument_id().lastIndexOf('-')));
+				model.addAttribute("id",employeeDAO.getMax_employeeID());
 				model.addAttribute("success", "true");
 				model.addAttribute("success_message", "Inserted Successfully");
 			//	flag = 1;
@@ -134,6 +135,7 @@ public class EmployeeController
 		{
 			EmployeeForm employeeForm=new EmployeeForm();
 			employeeForm.setEmployees(employeeDAO.getEmployees());
+			model.addAttribute("id",employeeDAO.getMax_employeeID());
 			//model.addAttribute("employeeForm",employeeForm);	
 			model.addAttribute("Success","true");
 			model.addAttribute("menu","employee");
@@ -143,6 +145,7 @@ public class EmployeeController
 		
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployees());
+		model.addAttribute("id",employeeDAO.getMax_employeeID());
 		model.addAttribute("employeeForm",employeeForm);		
 		model.addAttribute("menu","employee");
         return "view_employees";

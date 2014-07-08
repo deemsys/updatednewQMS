@@ -293,7 +293,7 @@ function validatename(id)
 		else if(document.getElementById("inp_supplier_name").value.length<4 || document.getElementById("inp_supplier_name").value.length>=32)
 	    {
 	    	
-	    	document.getElementById("nameerror").innerHTML="Name should be of length 4 to 32";
+	    	document.getElementById("nameerror").innerHTML="Should be of length 4 to 32";
 			error="true";
 	    }
 
