@@ -4,8 +4,10 @@
 
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
-
 <jsp:include page="header.jsp"></jsp:include>
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 
 <form method="post" action="add_internalaudits">
   <div id="right_content">
@@ -58,38 +60,35 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" class="input_txtbx" value="<c:out value="${id}"/>"/><br/><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" id="auditid"class="input_txtbx"onInput="return validatename3(id);" value="<c:out value="${id}" />"/><br/>
+                  <span id="auditiderror" style="color:red"class="err"></span></td>
                 </tr>
                 <tr class="row1">
 						         	<td valign="top" align="left" class="input_txt"> Process :</td>
 						          <td valign="top" align="left">
-				                  		<%-- <select name="process"  class="input_txtbx" style="height:20px;">
-				                  		<option value="">--Select--</option>
-						                  <option <c:if test="${internalaudits.process eq 'process1'}"><c:out value="Selected"/></c:if> value="process1" >Process1</option>
-											<option <c:if test="${internalaudits.process eq 'process2'}"><c:out value="Selected"/></c:if> value="process2">Process2</option>
-											<option  <c:if test="${internalaudits.process eq 'process3'}"><c:out value="Selected"/></c:if> value="process3">Process3</option>
-				                   	</select> --%>
-				                   	
+				                  		
 				        	 <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
                				<option value="">--Select--</option>
                				<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                				<option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
                				</c:forEach>
                				</select>
-						           		<br/><span class="err"><form:errors path="InternalAudits.process"></form:errors></span>
+						           		<br/>
+						           		<span id="inprocesserror" style="color:red"></span>
+						           		<span class="err"><form:errors path="InternalAudits.process"></form:errors></span>
 				                   	</td>	
 						         </tr> 
 			<tr class="row2">
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditee Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                 <%--  <input type="text" name="auditee_name" class="input_txtbx" id="inp_auditee_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.auditee_name}"></c:out>' /><br/><span class="err"><form:errors path="InternalAudits.auditee_name"></form:errors></span>
-                  --%>  <select name="auditee_name" id="id_inpprocess" class="input_cmbbx1" style="width:200px;">
+                 <select name="auditee_name" id="auditeename" class="input_cmbbx1" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                <option value="<c:out value="${processes.process_owner}"/>"><c:out value="${processes.process_owner}"/></option>
                </c:forEach>
                </select>
+               <br><span id="auditeenameerror" style="color:red"></span>
                </td>         		
                </tr>
                   
@@ -98,24 +97,30 @@
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit Start Date :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/><span class="err"><form:errors path="InternalAudits.audit_start_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
+                  <span id="datepicker11" style="color:red"></span>
+                  <span class="err"><form:errors path="InternalAudits.audit_start_date"></form:errors></span></td>
                
    
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/><span class="err"><form:errors path="InternalAudits.audit_due_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
+                   <span id="datepicker00" style="color:red"></span>
+                  <span class="err"><form:errors path="InternalAudits.audit_due_date"></form:errors></span></td>
                 </tr>
 			<tr class="row1">
 							         	<td valign="middle" align="left" class="input_txt"> Auditor :</td>
 							           <td valign="top" align="left" class="input_txt">
-					                  		<select name="auditor" class="input_txtbx" style="height:20px;">
+					                  		<select name="auditor"id="auditor" class="input_txtbx" style="height:20px;">
 							                <option value="">--Select--</option>
 						                     <option <c:if test="${internalaudits.auditor eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >Name1</option>
 											<option <c:if test="${internalaudits.auditor eq 'name2'}"><c:out value="Selected"/></c:if> value="name2">Name2</option>
 											<option  <c:if test="${internalaudits.auditor eq 'name3'}"><c:out value="Selected"/></c:if> value="name3">Name3</option>
 				                   	</select>
-				                   	<br/><span class="err"><form:errors path="InternalAudits.auditor"></form:errors></span>
+				                   	<br/>
+				                   	<span id="auditorerror" style="color:red"></span>
+				                   	<span class="err"><form:errors path="InternalAudits.auditor"></form:errors></span>
 					                   	</td>	
 							         </tr> 
 						         </table>
@@ -126,29 +131,37 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes"  style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea><span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes" id="auditor_notes" style="width:59%; height: 70px;"onInput="return validatename1(id);">${internalaudits.auditor_notes}</textarea>
+                 <br> <span id="auditornoteserror" style="color:red"></span>
+                  <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
 						         	<td valign="middle" align="left" class="input_txt"> Finding :</td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="finding" class="input_txtbx" style="height:20px;">
+				                  		<select name="finding" id="finding"class="input_txtbx" style="height:20px;">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${internalaudits.finding eq 'ok'}"><c:out value="Selected"/></c:if> value="ok" >Ok</option>
 											<option <c:if test="${internalaudits.finding eq 'area of improvement'}"><c:out value="Selected"/></c:if> value="area of improvement">Area Of Improvement </option>
 											<option  <c:if test="${internalaudits.finding eq 'nonconformance'}"><c:out value="Selected"/></c:if> value="nonconformance">NonConformance</option>
 				                 </select>
-				                 <br/><span class="err"><form:errors path="InternalAudits.finding"></form:errors></span>
+				                 <br/>
+				                 <span id="findingerror"style="color:red"></span>
+				                 <span class="err"><form:errors path="InternalAudits.finding"></form:errors></span>
 				                 
 				                   	</td>	
 						         </tr> 
 				
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" /><span class="err"><form:errors path="InternalAudits.completion_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
+                  <br> <span id="datepicker22" style="color:red"></span>
+                  <span class="err"><form:errors path="InternalAudits.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor's Initials :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" /><span class="err"><form:errors path="InternalAudits.auditors_initials"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onInput="return validatename(id);"/>
+                  <br><span id="auditorsinitialserror" style="color:red"></span>
+                  <span class="err"><form:errors path="InternalAudits.auditors_initials"></form:errors></span></td>
                 </tr>
                
                  
@@ -158,7 +171,7 @@
                   <tr >
                   
                   </br>
-				  <td><input type="submit"  value="Submit" class="submit_btn1">
+				  <td><input type="submit"  value="Submit" onclick="return validate();" class="submit_btn1">
 				 </td>
                   </tr>
                   </table>
@@ -169,8 +182,200 @@
                   </tr></table></div>
                  
                   </form>
-                  
-                  
+   <script>
+   
+   $(function() {
+		$("#auditid").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+   
+   $(function() {
+		$("#auditor_notes").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+   </script>               
+<script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+}   
+function validatename3(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+function validatename1(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[ ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
+<script type="text/javascript">
+
+function validate()
+{
+	var error="";
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+	var auditid= document.getElementById('auditid').value;
+	var auditornotes = document.getElementById('auditor_notes').value;
+	var id_inpprocess =  document.getElementById('id_inpprocess').value;
+	var auditeename = document.getElementById('auditeename').value;
+	var datepicker1 = document.getElementById('datepicker1').value;
+	var datepicker = document.getElementById('datepicker').value;
+	var datepicker2 = document.getElementById('datepicker2').value;
+	var finding =  document.getElementById('finding').value;
+	var auditor = document.getElementById('auditor').value;
+	var auditorsinitials = document.getElementById('inp_auditors_initials').value;
+	if(auditid == "")
+		{
+		 document.getElementById("auditiderror").innerHTML="Required Field Should not be Empty";
+			error="true";
+		}
+	else if((auditid.length<6)||(auditid.length>32))
+		{
+		
+		 document.getElementById("auditiderror").innerHTML="Required Field Should be length of 6 to 32";
+			error="true";
+		}
+	else{
+		 document.getElementById("auditiderror").innerHTML="";
+	}
+	
+	
+	if(auditornotes == "")
+	{
+	 document.getElementById("auditornoteserror").innerHTML="Required Field Should not be Empty";
+		error="true";
+	}
+else if((auditornotes.length<4)||(auditornotes.length>400))
+	{
+	
+	 document.getElementById("auditornoteserror").innerHTML="Required Field Should be length of 4 to 400";
+		error="true";
+	}
+else{
+	 document.getElementById("auditornoteserror").innerHTML="";
+}
+	
+	if(id_inpprocess =="")
+		{
+		 document.getElementById("inprocesserror").innerHTML="Please Select one";
+			error="true";
+		}
+	else{
+		 document.getElementById("inprocesserror").innerHTML="";
+	}
+	
+	
+	if(auditeename =="")
+	{
+	 document.getElementById("auditeenameerror").innerHTML="Please Select one";
+		error="true";
+	}
+else{
+	 document.getElementById("auditeenameerror").innerHTML="";
+}
+	
+	 if(datepicker1 == "")
+	 {
+	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datepicker1.match(date))
+	 {
+	 document.getElementById("datepicker11").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker11").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	 
+	 
+	 if(datepicker == "")
+	 {
+	 document.getElementById("datepicker00").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datepicker.match(date))
+	 {
+	 document.getElementById("datepicker00").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker00").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	 
+	 if(datepicker2 == "")
+	 {
+	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datepicker2.match(date))
+	 {
+	 document.getElementById("datepicker22").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	 if(finding =="")
+		 {
+		 document.getElementById("findingerror").innerHTML="Please Select One";
+		 error="true";
+		 }
+	 else{
+		 document.getElementById("findingerror").innerHTML="";
+	 }
+	 
+	 if(auditor =="")
+	 {
+	 document.getElementById("auditorerror").innerHTML="Please Select One";
+	 error="true";
+	 }
+ else{
+	 document.getElementById("auditorerror").innerHTML="";
+ }
+	 
+	 if(auditorsinitials == "")
+		{
+		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should not be Empty";
+			error="true";
+		}
+	else if((auditorsinitials.length<=0)||(auditorsinitials.length>10))
+		{
+		
+		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should be length of 1 to 10";
+			error="true";
+		}
+	else{
+		 document.getElementById("auditorsinitialserror").innerHTML="";
+	}
+	
+	if(error == "true")
+		{
+		return false;
+		}
+	
+	}
+
+
+</script>
  <script>
  function doAjaxPost_for_process() {
 

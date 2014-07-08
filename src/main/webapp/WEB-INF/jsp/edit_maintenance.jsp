@@ -427,7 +427,7 @@ function validation()
 	var letters =  /^[A-Za-z]+$/;
 	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
 	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
-	
+	var error="";
 /* 	var equipment_id = document.getElementById('equipment_id').value; */
 	var equipment_name =  document.getElementById('equipment_name').value;
 	
@@ -465,12 +465,12 @@ function validation()
 		{
 		alert("equ id");
 		document.getElementById("equipment_id1").innerHTML="Required Field Should not be Empty";
-		return false;
+		error="true";
 		}
 	else if(equipment_id.charAt(0)==" ")
 		{
 		document.getElementById("equipment_id1").innerHTML="Required Field Should not be Spaces";
-		return false;
+		error="true";
 		}
 	else if(equipment_id.match(numbers))
 		{
@@ -478,19 +478,19 @@ function validation()
 		}
 	else{
 		document.getElementById("equipment_id1").innerHTML="Required Field Should be Numeric";
-		return false;
+		error="true";
 		} */
 	
 	if(equipment_name == "")
 	{
 		
 	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Empty";
-	return false;
+	error="true";
 	}
 	else if(equipment_name.charAt(0)==" ")
 	{
 	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Spaces";
-	return false;
+	error="true";
 	}
 	else if(equipment_name.match(letters))
 	{
@@ -499,7 +499,7 @@ function validation()
 	}
 	else{
 	document.getElementById("equipment_name1").innerHTML="Required Field Should be Letters";
-	return false;
+	error="true";
 	}
 	
 	
@@ -507,12 +507,12 @@ function validation()
 	if(equipment_model == "")
 	{
 	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Empty";
-	return false;
+	error="true";
 	}
 	else if(equipment_model.charAt(0)==" ")
 	{
 	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Spaces";
-	return false;
+	error="true";
 	}
 	else if(equipment_model.match(chars))
 	{
@@ -520,7 +520,7 @@ function validation()
 	}
 	else{
 	document.getElementById("equipment_model1").innerHTML="Required Field Should be Capital Alpha-Numeric";
-	return false;
+	error="true";
 	}
 
 	
@@ -528,12 +528,12 @@ function validation()
 	if(serial_number == "")
 	{
 	document.getElementById("serial_number1").innerHTML="Required Field Should not be Empty";
-	return false;
+	error="true";
 	}
 	else if(serial_number.charAt(0)==" ")
 	{
 	document.getElementById("serial_number1").innerHTML="Required Field Should not be Spaces";
-	return false;
+	error="true";
 	}
 	else if(serial_number.match(chars))
 	{
@@ -541,13 +541,13 @@ function validation()
 	}
 	else{
 	document.getElementById("serial_number1").innerHTML="Required Field Should be Capital Alpha-Numeric";
-	return false;
+	error="true";
 	}
 	
 	 if(datepicker1 == "")
 	 {
 	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 
 	 }
 	 else if(datepicker1.match(date))
@@ -557,13 +557,13 @@ function validation()
 	 else
 	 {
 	 document.getElementById("datepicker11").innerHTML="Invalid Date";
-	 return false;
+	 error="true";
 	 }
 	 
 	 if(equipment_status == "")
 		 {
 		 document.getElementById("equipment_status1").innerHTML="Required Field Should not be Empty";
-		 return false;
+		 error="true";
 		 }
 	 else
 		 {
@@ -574,7 +574,7 @@ function validation()
 	 if(frequency_maintenance == "")
 	 {
 	 document.getElementById("frequency_maintenance1").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 }
  	else
 	 {
@@ -587,7 +587,7 @@ function validation()
 		 }
 	 else{
 		 document.getElementById("frequencyofmaintenance1").innerHTML="Please Check atleast one";
-		 return false;
+		 error="true";
 		 
 	 }
 	 
@@ -603,7 +603,7 @@ function validation()
 		 if( (instructions.length < 5) || (instructions.length > 400) )
 			 {
 			 document.getElementById("instructions1").innerHTML="Should b/w 5 to 400 chars";
-			 return false;
+			 error="true";
 			 }
 		 else
 		 {
@@ -612,14 +612,14 @@ function validation()
   	 	}
 		else{
 			 document.getElementById("instructions1").innerHTML="Special chars are not allowed at beginning";
-			return false;
+			error="true";
 		    }
 	 
 	 
   if(datepicker2 == "")
 	 {
 	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 
 	 }
 	 else if(datepicker2.match(date))
@@ -629,14 +629,14 @@ function validation()
 	 else
 	 {
 	 document.getElementById("datepicker22").innerHTML="Invalid Date";
-	 return false;
+	 error="true";
 	 }
 	 
 	 
 	 if(datepicker3 == "")
 	 {
 	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 
 	 }
 	 else if(datepicker3.match(date))
@@ -646,14 +646,14 @@ function validation()
 	 else
 	 {
 	 document.getElementById("datepicker33").innerHTML="Invalid Date";
-	 return false;
+	 error="true";
 	 } 
 	 
 	 
 	 if(completed_by == "")
 	 {
 	 document.getElementById("completed_by1").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 }
  	else
 	 {
@@ -665,12 +665,12 @@ function validation()
 		{
 		 
 		document.getElementById("notes1").innerHTML="Required Field Should not Empty";
-		return false;
+		error="true";
 		}
 	 else if(notes.charAt(0)== " ")
 	 {
 	 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
-		return false;
+		error="true";
 	 
 	 }
  
@@ -679,7 +679,7 @@ function validation()
 		 if((notes.length < 5) || (notes.length > 400) )
 			 {
 			 document.getElementById("notes1").innerHTML="Should b/w 5 to 400 chars";
-			 return false;
+			 error="true";
 			 }
 		 else{
 		     document.getElementById("notes1").innerHTML="";
@@ -687,8 +687,12 @@ function validation()
 	 	}
 		else{
 			 document.getElementById("notes1").innerHTML="Special chars are not allowed at beginning";
-			return false;
+			error="true";
 		    }
+	 if(error=="true")
+		 {
+		 return false;
+		 }
 	 
 }
 

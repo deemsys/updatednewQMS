@@ -4,7 +4,9 @@
 
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
-
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
 	<tr>
@@ -75,20 +77,26 @@
 	                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="review_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/></td>
       
                   <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review Date:</td>
-                  <td valign="top" align="left" class="input_txt1" width="10%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"/><br/><span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt1" width="10%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"/><br/>
+                  <span id="datepicker33" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
   				    </tr>
     					
                       <tr class="row1"  >
                   <td valign="middle" align="left" class="input_txt" width="20%"> &nbsp;Attendee List With Titles:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="attendee_list_with_titles" class="input_txtbx" id="inp_attendee_list_with_titles" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" /><br/><span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="attendee_list_with_titles" class="input_txtbx" id="attendeelistwithtitles" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" /><br/>
+                  <span id="attendeelistwithtitleserror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>                
                	 <td valign="middle" align="left" class="input_txt" width="20%">Next Management Review By :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="next_management_review_by" class="input_txtbx" id="inp_next_management_review_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/><span class="err"><form:errors path="ManagementReview.next_management_review_by"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" /><br/>
+                  <span id="nextmanagementreviewbyerror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.next_management_review_by"></form:errors></span></td>                
 		
 		 </tr>
 		  <tr class="row2" >
 						         	<td valign="middle" align="left" class="input_txt"width="20%">Category :</td>
 						          <td valign="middle" align="left" class="input_txt"width="20%">
-				                  		<select name="category" class="input_cmbbx1" style="width:200px">
+				                  		<select name="category" id="category"class="input_cmbbx1" style="width:200px">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option value="audits" >Audits</option>
@@ -102,7 +110,9 @@
 										  <option value="recommendations for improvement" >Recommendations for Improvement</option>
 										  <option value="significant changes to the QMS" >Significant Changes to the QMS</option>	
 				                   	</select>
-						           		<br/><span class="err"><form:errors path="ManagementReview.category"></form:errors></span>
+						           		<br/>
+						           		<span id="categoryerror" style="color:red"></span>
+						           		<span class="err"><form:errors path="ManagementReview.category"></form:errors></span>
 				                   	</td>	
 				                   	 
               
@@ -110,9 +120,13 @@
            
                 <tr class="row1" >
                   <td valign="middle" align="left" class="input_txt" width="20%">Assessment:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="assessment" class="input_txtbx" id="inp_assessment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/><span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="assessment" class="input_txtbx" id="assessment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename3();" /><br/>
+                  <span id="assessmenterror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>                
                   <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Report Link:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="inp_report_link" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" /><br/><span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" /><br/>
+                  <span id="reportlinkerror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
                   
                   </tr>
                 <tr class="row2">
@@ -124,16 +138,24 @@
                   
                       <tr class="row1" >
                   <td valign="middle" align="left" class="input_txt" width="20%">Action Detail :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_detail" class="input_txtbx" id="inp_action_detail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" /><br/><span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_detail" class="input_txtbx" id="actiondetail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1();" /><br/>
+                  <span id="actiondetailerror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>                
                   <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Action Due Date :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/><span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/>
+                  <span id="datepicker22" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>                
                   
                   </tr>
            	       <tr class="row2" >
                   <td valign="middle" align="left" class="input_txt" width="20%">Responsibility:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="responsibility" class="input_txtbx" id="inp_responsibility" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" /><br/><span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" /><br/>
+                   <span id="responsibilityerror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>                
                   <td valign="middle" align="left" class="input_txt" width="20%">Completion Date:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/><span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>                
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/>
+                  <span id="datepicker11" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>                
                   
                   </tr>
                   
@@ -154,7 +176,7 @@
                  <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="20%"></td>
                  <td colspan="1" align="left">
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">
               <td valign="middle" align="left" class="input_txt" width="20%">
                </tr>
@@ -172,6 +194,255 @@
 </tr>
 </table>
 
+<script>
+$(function() {
+	$("#attendeelistwithtitles").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+$(function() {
+	$("#nextmanagementreviewby").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+$(function() {
+	$("#assessment").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+
+$(function() {
+	$("#reportlink").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+
+$(function() {
+	$("#actiondetail").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+
+$(function() {
+	$("#responsibility").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+  </script>  
+     <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+} 
+function validatename1(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[ ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+function validatename3(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
+<script type="text/javascript">
+function validate()
+{
+	var error = "";
+	var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+	
+	var attendeelistwithtitles = document.getElementById('attendeelistwithtitles').value;
+	var datepicker3 = document.getElementById('datepicker3').value;
+	var nextmanagementreviewby  = document.getElementById('nextmanagementreviewby').value;
+	var category = document.getElementById('category').value;
+	var assessment= document.getElementById('assessment').value;
+	var reportlink = document.getElementById('reportlink').value;
+	var actiondetail = document.getElementById('actiondetail').value;
+	var datepicker2 = document.getElementById('datepicker2').value;
+	var responsibility = document.getElementById('responsibility').value;
+	var datepicker1 = document.getElementById('datepicker1').value;
+	if(attendeelistwithtitles =="")
+		{
+		 document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should not be Empty";
+			error="true";
+		}
+	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
+		{
+		document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should be length of 4 to 32";
+		error="true";
+		
+		}
+	else {
+		document.getElementById("attendeelistwithtitleserror").innerHTML="";
+		
+	}
+	
+	if(nextmanagementreviewby == "")
+		{
+		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should not be Empty";
+			error="true";
+		
+		}
+	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
+	{
+	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should be length of 4 to 32";
+	error="true";
+	
+	}
+	else {
+			document.getElementById("nextmanagementreviewbyerror").innerHTML="";
+	
+		}
+	if(datepicker3 == "")
+	 {
+	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datepicker3.match(date))
+	 {
+	 document.getElementById("datepicker33").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker33").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	  if(category == "")
+		  {
+		  document.getElementById("categoryerror").innerHTML="Required Field Should not be Empty";
+			 error="true";
+		  }
+	  else {
+		  document.getElementById("categoryerror").innerHTML="";
+	  }
+	
+	if(assessment == "")
+		{
+		 document.getElementById("assessmenterror").innerHTML="Required Field Should not be Empty";
+		 error="true";
+		
+		}
+	else if((assessment.length < 4) ||(assessment.length > 32))
+		{
+		document.getElementById("assessmenterror").innerHTML="Required Field Should be length of 4 to 32";
+		error="true";
+		
+		}
+	else
+		{
+		document.getElementById("assessmenterror").innerHTML="";
+		}
+	
+	
+	  if(reportlink == "")
+	  {
+	  document.getElementById("reportlinkerror").innerHTML="Required Field should not be Empty";
+	    	error="true";
+	  }
+  else  if(reportlink.match(website))
+	   {
+	  
+		   document.getElementById("reportlinkerror").innerHTML="";
+	   }
+	   
+   else
+	   {
+	   document.getElementById("reportlinkerror").innerHTML="Invalid URL";
+	    	error="true";
+	   }
+   
+	if(actiondetail == "")
+		{
+		
+		 document.getElementById("actiondetailerror").innerHTML="Required Field Should not be Empty";
+		 error="true";
+		
+		}
+	else if((actiondetail.length < 4) ||(actiondetail.length > 32))
+		{
+		document.getElementById("actiondetailerror").innerHTML="Required Field Should be length of 4 to 32";
+		error="true";
+		
+		}
+	else
+		{
+		document.getElementById("actiondetailerror").innerHTML="";
+		}
+	
+	if(datepicker2 == "")
+	 {
+	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datepicker2.match(date))
+	 {
+	 document.getElementById("datepicker22").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	
+	if(responsibility =="")
+	{
+		 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Empty";
+		 error="true";
+		
+		}
+	else if((responsibility.length < 4) ||(responsibility.length > 32))
+		{
+		document.getElementById("responsibilityerror").innerHTML="Required Field Should be length of 4 to 32";
+		error="true";
+		
+		}
+	else
+		{
+		document.getElementById("responsibilityerror").innerHTML="";
+		}
+	if(datepicker1 == "")
+	 {
+	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datepicker1.match(date))
+	 {
+	 document.getElementById("datepicker11").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepicker11").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	if(error=="true")
+		{
+		return false;
+		}
+	}
+
+
+
+</script>
    <script>
  $(function() {
 	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
