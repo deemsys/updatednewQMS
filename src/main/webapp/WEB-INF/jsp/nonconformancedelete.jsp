@@ -41,79 +41,88 @@ else
 <tr>
 <td>
 <div>
-  <ul class="horizmenu">
+   <ul class="horizmenu">
 						
 	
-						<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+				<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentdelete" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Document
 									
 								</a>
 							</li>
-							 <li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Forms
 									
 								</a>
 							</li>
-							 <li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="maintenancedelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Maintenance
 									
 								</a>
 							</li>
-							<li  style=" float:left;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="nonconformancedelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									NonConformance
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="customersdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Customers
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="customersfeedbackdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Feedback
+									Customers Feedback
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="employeesdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Employees
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							</ul>
+							<ul class="horizmenu" style="margin-bottom:5px;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="internalauditsdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Audits
+									Internal Audits
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="correctiveactionsdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Corrective
+									Corrective & Preventive Actions
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="supplierperformancedelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Supplier
+									Supplier Performance
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:-15px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="managementdelete" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Review
+									Management Review
 								</a>
 							</li>
-  </div>
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+								<a href="hrdelete" class="<c:choose>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									HR & Training
+								</a>
+							</li>
+							</ul>
+							  </div>
 </td>
 </tr>
 <c:if test="${success=='delete'}">

@@ -147,7 +147,7 @@ function doAjaxPost() {
                 <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;font-style:italic;"></span><form:errors path="Employee.employee_id"></form:errors></td>
                  <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                  <td valign="top" align="left" class="input_txt" width="20%">
-                 <select name="qualified_by" class="input_cmbbx1" id="qualifiedby" style="width:60%">
+                 <select name="qualified_by" class="input_cmbbx1" id="qualifiedby" style="width:60%"x>
                   			<option value="">--Select--</option>
                   		<option value="Education">Educationt</option>
 						<option value="Experience">Experience</option>
