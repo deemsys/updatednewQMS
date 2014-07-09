@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sun.mail.iap.Response;
 
 import qms.dao.CorrectiveAndPreventiveActionsDAO;
+import qms.dao.HRandTrainingDAO;
 import qms.dao.NonConformanceDAO;
 //import qms.dao.EmployeeDAO;
 import qms.dao.FileHandlingDAO;
@@ -40,6 +41,7 @@ import qms.dao.FileHandlingDAO;
 import qms.forms.CorrectiveAndPreventiveActionsForm;
 import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
+import qms.forms.HRandTrainingForm;
 import qms.forms.NonConformanceForm;
 //import qms.forms.DocumentMainForm;
 import qms.model.CorrectiveAndPreventiveActions;
@@ -62,7 +64,9 @@ public class CorrectiveAndPreventiveActionsController
 	
 	@Autowired
 	NonConformanceDAO nonConformanceDAO;
-
+	
+	@Autowired
+	HRandTrainingDAO hRandTrainingDAO;
 	
 	
 	
@@ -274,12 +278,21 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value = { "/addcorrectiveAndPreventiveActions" }, method = RequestMethod.GET)
 	public String add_correctiveAndPreventiveActions(ModelMap model, Principal principal) {
 		
+		System.out.println("name = ");
+		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRResposible());
+		int sixe = hRandTrainingDAO.getHRResposible().size();
+		System.out.println("length  ="+sixe);
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
+		
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
 		model.addAttribute("nonConformanceForm", nonConformanceForm);
 		
 		model.addAttribute("capa_id",correctiveAndPreventiveActionsDAO.get_maxid());
+		
 		model.addAttribute("menu","corrective");
+	
 		return "add_correctiveAndPreventiveActions";
 
 	}
