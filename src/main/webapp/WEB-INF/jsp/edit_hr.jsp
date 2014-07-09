@@ -313,7 +313,7 @@ function validate()
 {
 	
 	var error="";
-	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
 	var name = document.getElementById('name').value;
 	var trainer = document.getElementById('trainer').value;
 	var jobtitle = document.getElementById('jobtitle').value;
@@ -425,7 +425,7 @@ else
 	 error="true";
 	 }
 	 
-	 if(image == "" || image == "null")
+	 if(image == "")
 	  {
 	  document.getElementById("imageerror").innerHTML="Please Upload a File";
 		 error="true";

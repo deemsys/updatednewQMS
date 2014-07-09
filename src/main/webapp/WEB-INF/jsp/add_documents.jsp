@@ -447,6 +447,7 @@ function validation()
 	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
 	 var number = /^[A-Za-z0-9]*$/;
+	 var error ="";
 	 var datepicker123=document.getElementById('datepicker123').value;
 	 var e2=document.getElementById('location_text').value;
 	 var e3=document.getElementById('id_file').value;
@@ -460,7 +461,7 @@ function validation()
 			{
 			
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-			return false;
+			error ="true";
 			}
 	 }
 	 
@@ -474,7 +475,7 @@ function validation()
 			 {
 			
 			 document.getElementById("attach").innerHTML="File No Uploaded";
-			 return false;
+			 error ="true";
 			 }
 		
 	}
@@ -488,14 +489,14 @@ function validation()
 		{
 		
 		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-		return false;
+		error ="true";
 		}
 	
 		 if(e3=="")
 		 {
 			
 		 document.getElementById("attach").innerHTML="File No Uploaded";
-		 return false;
+		 error ="true";
 		 }
 	
 		}
@@ -507,7 +508,7 @@ function validation()
 	 if(documenttitle =="")
 	 {
 		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
-		 return false;
+		 error ="true";
 	 }
 	 else if(documenttitle.match(number))
 	 {
@@ -516,7 +517,7 @@ function validation()
 	 else
 		 {
 		   document.getElementById("documenttitle1").innerHTML="Required Field Should be Alpha-Numeric";
-		   	return false;
+		   	error ="true";
 		 }
 	 
 	 
@@ -524,12 +525,12 @@ function validation()
 	 if(revisionlevel == "")
 		 {
 		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
-		 return false;
+		 error ="true";
 		 }
 	 else if(revisionlevel.charAt(0) ==" ")
 	 {
 		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be spaces";
-		 return false;
+		 error ="true";
 	 }	 
 	 else if(revisionlevel.match(dotnumber))
 		 {
@@ -539,7 +540,7 @@ function validation()
 						 ||revisionlevel.charAt(0) ==(";") || revisionlevel.charAt(0) ==('"'))
 			 {
 			 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
-			 return false;
+			 error ="true";
 			 }
 		 else{
 			 document.getElementById("revisionlevel1").innerHTML="";
@@ -549,7 +550,7 @@ function validation()
 		 
 	 else{
 		 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
-		 return false;
+		 error ="true";
 	 }
 
 		
@@ -561,7 +562,7 @@ function validation()
 	 if(comments.charAt(0) ==" ")
 	 {
 		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
-		 return false;
+		 error ="true";
 	 }
 		 else if(comments.match(validate1))
 		 {
@@ -569,7 +570,7 @@ function validation()
 		 }
 	 	else{
 				 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
-				 return false;
+				 error ="true";
 		    }
 		
 	
@@ -577,7 +578,7 @@ function validation()
 		 if(datepicker123 == "")
 		 {
 		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
-		 return false;
+		 error ="true";
 		 
 		 }
 		 else if(datepicker123.match(date))
@@ -587,8 +588,12 @@ function validation()
 		 else
 		 {
 		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
-		 return false;
+		 error ="true";
 		 }
+		 if(error == "true")
+			 {
+		 return false;
+			 }
 	}
 	
 	

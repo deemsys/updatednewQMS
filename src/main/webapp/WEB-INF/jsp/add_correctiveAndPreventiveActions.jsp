@@ -213,11 +213,11 @@
                     <tr class="row2">
                      <td valign="middle" align="left" class="input_txt" width="30%">Responsibity</td>
                      <td valign="top" align="left" class="input_txt"width="30%">
-				                  		<select name="responsibility" class="input_txtbx" style="width:72%; height:20px;">
-						                  <option value="">--Select--</option>
-						                       <option value="name1" >name1</option>
-											<option value="name1">name2</option>
-											<option value="name3">name3</option>
+				                  		<select name="responsibility" id="responsibility" class="input_txtbx" style="width:72%; height:20px;">
+				                  		<option value="">-select-</option>
+						                  <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="true">
+               <option value="<c:out value="${hrandtrainings.name}"/>"><c:out value="${hrandtrainings.name}"/></option>
+               </c:forEach>
 				                 </select>
 				                 <span class="err"><form:errors path="CorrectiveAndPreventiveActions.responsibility"></form:errors></span>
 				                   	</td>	
