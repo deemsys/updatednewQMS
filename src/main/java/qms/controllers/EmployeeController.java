@@ -130,7 +130,7 @@ public class EmployeeController
 			System.out.println(e.toString());
 			e.printStackTrace();
 		}
-		session.setAttribute("employees",employee);
+		//session.setAttribute("employees",employee);
 		if (result.hasErrors())
 		{
 			EmployeeForm employeeForm=new EmployeeForm();
@@ -178,15 +178,9 @@ public class EmployeeController
 		session.removeAttribute("qualifiedby");
 		session.removeAttribute("trainer");
 		EmployeeForm employeeForm=new EmployeeForm();
-	/*	model.addAttribute("menu","employee");
-		model.addAttribute("noofrows",5);
-	*/	employeeForm.setEmployees(employeeDAO.getlimitedemployeereport(1));
-	/*	model.addAttribute("noofpages",(int) Math.ceil(employeeDAO.getnoofemployeereport() * 1.0 / 5));	 
-        model.addAttribute("button","viewall");
-        model.addAttribute("success","false");
-        model.addAttribute("currentpage",1);
-    */  //  model.addAttribute("employeeForm",employeeForm);
-		
+		model.addAttribute("menu","employee");
+		employeeForm.setEmployees(employeeDAO.getlimitedemployeereport(1));
+	
 		return "view_employees";
 	}
 	
