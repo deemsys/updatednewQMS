@@ -347,7 +347,53 @@ public class HRandTrainingDAO {
 	    return hRandTrainings;
 		
 	}
-	
+	public List<HRandTraining> getHRResposible(){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		System.out.println("responsible");
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<HRandTraining> hRandTrainings = new ArrayList<HRandTraining>();
+	    try{
+	    	String res = "select * from tbl_hr_and_training_main  where responsibility ='yes'";
+	    	System.out.println(res);
+			resultSet = statement.executeQuery("select * from tbl_hr_and_training_main where responsibility ='yes'");
+			//System.out.println("came");
+			while(resultSet.next()){
+				
+//				
+				hRandTrainings.add(new HRandTraining(
+						
+						resultSet.getString("id"),
+						resultSet.getString("name"), 
+						resultSet.getString("job_title"), 
+						resultSet.getString("date_hired"), 
+						resultSet.getString("attachment_name"),
+						resultSet.getString("attachment_type"),
+						resultSet.getString("attachment_referrence"), 
+						resultSet.getString("calibration"),
+						resultSet.getString("responsibility"),
+						resultSet.getString("disposition")
+						));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return hRandTrainings;
+		
+	}
 	//Getting the list of values created on 18-June-14.
 	public List<HRandTraining> getNameCalibration(){
 		Connection con = null;
