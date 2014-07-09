@@ -393,21 +393,28 @@ function validatename(id)
 		    	{
 		    	document.getElementById("countryerror").innerHTML="";
 		    	}
-		
+		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+	    
 		if(email=="")
 		{
 		document.getElementById("emailerror").innerHTML="Required Field Should not be Empty";
 		error="true";
 		}
-		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-	    
-	    if(document.getElementById("inp_email_address").value.match(mail)==null)
+		
+		else if(email.match(mail)==null)
 	    {
 	    	document.getElementById("emailerror").innerHTML="Invalid E-Mail Format";
 	    	error="true";
 	    }
+		else
+			{
+			document.getElementById("emailerror").innerHTML="";
+			}
 
 
+		var zipcode =/^\d{5}$/;
+		var zero = 00000;
+	    
 	    if(postal=="")	
 		{
 		document.getElementById("postalerror").innerHTML="Required Field Should not be Empty";
@@ -418,10 +425,7 @@ function validatename(id)
 	    	document.getElementById("postalerror").innerHTML="Should be of length 6";
 	    	 error="true";
 	    } 
-
-		var zipcode =/^\d{5}$/;
-		var zero = 00000;
-	    if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
+		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
 	    {
 	    	document.getElementById("postalerror").innerHTML="Invalid Postalcode Format";
 	    	error="true";
@@ -465,7 +469,7 @@ function validatename(id)
 
 	    var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 		  
-	    if(website=="")	
+	    if(document.getElementById("inp_website").value=="")	
 		{
 		document.getElementById("websiteerror").innerHTML="Required Field Should not be Empty";
 		error="true";

@@ -225,7 +225,7 @@
 			                 </select>
 																			 <span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
 				                  	<td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
-			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
+			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span style="color: red;font-style:italic;" id="completedate"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
 				      
 			          
 				       	</tr>
@@ -527,19 +527,38 @@ function validation()
 	var sourcenc = document.getElementById('source_of_nonconformance').value;
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
- 	 if(!datefound.match(date))
+	if(datefound == "")
 	 {
-
+	 document.getElementById("datepicker2").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datefound.match(date))
+	 {
+	 document.getElementById("datepicker2").innerHTML="";
+	 }
+	 else
+	 {
 	 document.getElementById("datepicker2").innerHTML="Invalid Date";
 	 error="true";
-	}
-  	if(!complete.match(date))
-	 {
+	 }
 
+
+	if(complete == "")
+	 {
+	 document.getElementById("completedate").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(complete.match(date))
+	 {
+	 document.getElementById("completedate").innerHTML="";
+	 }
+	 else
+	 {
 	 document.getElementById("completedate").innerHTML="Invalid Date";
 	 error="true";
-	} 
-
+	 }
   	if(typenc =="")
 	 {
 

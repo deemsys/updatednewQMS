@@ -99,7 +99,7 @@
 															</select>
 															<br/><span style="color: red;font-style:italic;" id="categoryerror"><form:errors path="SupplierPerformance.category"></form:errors></span></td>
                                   
-                  <td valign="top" align="left" class="input_txt" width="30%">ContactName :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">ContactName:</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;font-style:italic;" id="contacterror"><form:errors path="supplierperformance.contact_name"></form:errors></span></td>
                 
                 </tr>
@@ -412,18 +412,23 @@ function validatename(id)
 	
 
 		
+		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+	    
 		if(email=="")
 		{
 		document.getElementById("emailerror").innerHTML="Required Field Should not be Empty";
 		error="true";
 		}
-		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-	    
-	    if(email.match(mail)==null)
+		
+		else if(email.match(mail)==null)
 	    {
 	    	document.getElementById("emailerror").innerHTML="Invalid E-Mail Format";
 	    	error="true";
 	    }
+		else
+			{
+			document.getElementById("emailerror").innerHTML="";
+			}
 
 		var zipcode =/^\d{5}$/;
 		var zero = 00000;
@@ -454,9 +459,7 @@ function validatename(id)
 	    	}
 	    
 	    var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-	    //var faxreg= /^\+?[0-9]+$/;
-
-	    if(fax=="")	
+		    if(fax=="")	
 		{
 		document.getElementById("faxerror").innerHTML="Required Field Should not be Empty";
 		error="true";
@@ -484,7 +487,7 @@ function validatename(id)
 	    var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 		  
 	    
-	    if(website=="")	
+	    if(document.getElementById("inp_website").value=="")	
 		{
 		document.getElementById("websiteerror").innerHTML="Required Field Should not be Empty";
 		error="true";

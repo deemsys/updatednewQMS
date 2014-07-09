@@ -417,19 +417,39 @@ function validation()
 	var sourcenc = document.getElementById('source_of_nonconformance').value;
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
- 	 if(!datefound.match(date))
+ 	
+	if(datefound == "")
 	 {
-
+	 document.getElementById("datepicker2").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(datefound.match(date))
+	 {
+	 document.getElementById("datepicker2").innerHTML="";
+	 }
+	 else
+	 {
 	 document.getElementById("datepicker2").innerHTML="Invalid Date";
 	 error="true";
-	}
-  	if(!complete.match(date))
-	 {
+	 }
 
+
+	if(complete == "")
+	 {
+	 document.getElementById("completedate").innerHTML="Required Field Should not be Empty";
+	 error="true";
+	 
+	 }
+	 else if(complete.match(date))
+	 {
+	 document.getElementById("completedate").innerHTML="";
+	 }
+	 else
+	 {
 	 document.getElementById("completedate").innerHTML="Invalid Date";
 	 error="true";
-	} 
-
+	 }
   	if(typenc =="")
 	 {
 
