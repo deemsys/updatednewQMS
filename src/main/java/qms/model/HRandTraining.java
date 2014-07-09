@@ -57,6 +57,26 @@ public class HRandTraining {
 
 
 	public HRandTraining(String id, String name, String job_title,
+			String date_hired,
+			String attachment_name, String attachment_type,
+			String attachment_referrence, String calibration,
+			String responsibility, String disposition) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.job_title = job_title;
+		this.date_hired = date_hired;
+		
+		this.attachment_name = attachment_name;
+		this.attachment_type = attachment_type;
+		this.attachment_referrence = attachment_referrence;
+		this.calibration = calibration;
+		this.responsibility = responsibility;
+		this.disposition = disposition;
+	}
+
+
+	public HRandTraining(String id, String name, String job_title,
 			String date_hired, String attachment_name,
 			String attachment_type, String attachment_referrence, 
 			String calibration,String responsibility,
