@@ -189,11 +189,12 @@
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition1"></form:errors></span>
 						                    							</td><td align="right">
 						                    						
-						                    				<input type="text" name="quality1" id="quality1" style="display:none; width:40px;" onkeypress="return validate(event)"; onchange="showbutton1();" />
-						                    				<span style="color: red;font-style:italic;" id="qua1"><form:errors path="Nonconformance.quality1"></form:errors></span>
-						                    					</td><td align="left">
+						                    				<input type="text" name="quality1" id="quality1" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton1();" />
+						                    				</td>
+						                    					<td align="left">
 						                    					<label class="number_btn1"  id="button1"   style="display:none;" >No's</label>
 						                    					</td></tr>
+						                    					<tr><td colspan="3"><span style="color: red;font-style:italic;" id="qua1"><form:errors path="Nonconformance.quality1"></form:errors></span></td></tr>
 						                    					<tr><td colspan="3"><span id="quality1err" style="color: red;font-style:italic;"></span></td></tr>
 						                    					<tr>
 						                    						<td style="vertical-align:top;"><select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
@@ -207,13 +208,15 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select><br/>
-						                    						<span style="color: red;font-style:italic;" id="qua2"><form:errors path="Nonconformance.disposition2"></form:errors></span></td>
+						                    						</select>
+						                    						</td>
 						                    						<td align="right"><input type="text" name="quality2" id="quality2" style="display:none; width:40px;" onkeypress="return validate(event)"; onchange="showbutton2();" />
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.quality2"></form:errors></span></td>
 						                    						<td align="left">
 						                    						<label class="number_btn1"  id="button2"   style="display:none;">No's</label>
-						                    						</tr><tr><td colspan="3"><span id="quality2err" style="color: red;font-style:italic;"></span></td></tr><tr>
+						                    						</tr>
+						                    						<tr><td colspan="3"><span style="color: red;font-style:italic;" id="qua2"><form:errors path="Nonconformance.disposition2"></form:errors></span></td></tr>
+						                    						<tr><td colspan="3"><span id="quality2err" style="color: red;font-style:italic;"></span></td></tr><tr>
 						                    						<td style="vertical-align:top;"><select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
 				                  										<option value="">--Select--</option>
 				                  										<option
@@ -229,12 +232,14 @@
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition3"></form:errors></span>
 						                    					</td>
 						                    					<td  align="right"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" onkeypress="return validate(event)"; />
-						                    				 <span style="color: red;font-style:italic;" id="qua3"><form:errors path="Nonconformance.quality3"></form:errors></span>
+						                    				 
 						                    					</td>
 						                    					<td  align="left">
 						                    					<label class="number_btn1"  id="button3"   style="display:none;">No's</label>
 						                    						</td>
-						                    						</tr><tr><td colspan="3"><span id="quality3err" style="color: red;font-style:italic;"></span></td></tr></table>
+						                    						</tr>
+						                    						<tr><td colspan="3"><span style="color: red;font-style:italic;" id="qua3"><form:errors path="Nonconformance.quality3"></form:errors></span></td></tr>
+						                    						<tr><td colspan="3"><span id="quality3err" style="color: red;font-style:italic;"></span></td></tr></table>
 						                    						</td>
 																	</tr>
 																	
@@ -285,7 +290,7 @@
 			                  												</c:forEach>
 			                 												</select><br/>
 			                 												<span id="responsibilityerror" style="color: red;font-style:italic;"></span>
-			                 												<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.name_of_disposition_responsibility"></form:errors>
+			                 												<form:errors path="Nonconformance.name_of_disposition_responsibility"></form:errors>
 				        		
 																	</tr>
 																	
@@ -363,14 +368,13 @@
 	 document.getElementById("reported_by").style.display="inline";
 	var filer_value = $('#type_of_nonconformance').val();
 	var group_person=$('#group_person').val();
-	alert(group_person);
 	
 	$.ajax({
 		type : "POST",
 		url : "/QMS_App/ajax_gettypenc",
 		data : "type_of_nonconformance=" + filer_value+"&group_person="+group_person,
 		success : function(response) {
-	//	alert("response"+response);
+	
 		$('#reported_by').html(response);
 			},
 		error : function(e) {

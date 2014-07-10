@@ -100,7 +100,7 @@
 						         	
 					            	<td valign="top" align="left" class="input_txt" width="20%"> Product ID: </td>
 					                      	<td valign="top" align="left" class="input_txt" width="20%">
-					                      	<select name="product_id" class="input_cmbbx1" style="width:57%;" id="product_id">
+					                      	<select name="product_id" class="input_cmbbx1" style="width:53%;" id="product_id">
 				                  										<option value="">--Select--</option>
 																		 <c:forEach items="${productId_NC_Form.productIDNCs}" var="products" varStatus="status">
         				      												 <option value="${products.productid_nc}"<c:if test="${products.productid_nc == nonconformance.product_id}"><c:out value="selected"/></c:if>>${products.productid_nc}</option>
@@ -185,7 +185,7 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select><span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition2"></form:errors></td>
+						                    						</select><span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition2"></form:errors></span></td>
 						                    						<td align="right"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;"  onkeypress="return validate(event)";  value="${nonconformance.quality2}" onchange="showbutton2();" />
 						                    						<span style="color: red;font-style:italic;" id="qua2"><form:errors path="Nonconformance.quality2"></form:errors></span>
 						                    						</td>
@@ -221,7 +221,7 @@
 								<tr class="row2">
 				                	<td valign="top" align="left" class="input_txt"> Reported By: </td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	<input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
+				                  	<%-- <input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
 				                  	<select name="reported_by" class="input_cmbbx1" id="reported_by" style="width:60%;">
 																			 <option value="">--Select--</option>
 																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
@@ -229,7 +229,9 @@
 			                  </c:forEach>
 			                 </select>
 																			 <span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
-				                  	<td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
+				                  	 --%>
+				                  	 <div id="reported_by">	<select name="reported_by" class="input_cmbbx1" id="reported_by" style="width:60%;"></select></div>
+				                  	 <td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
 			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span style="color: red;font-style:italic;" id="completedate"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
 				      
 			          
