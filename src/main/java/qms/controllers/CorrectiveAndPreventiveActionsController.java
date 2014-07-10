@@ -311,6 +311,11 @@ public class CorrectiveAndPreventiveActionsController
 		
 		if (result.hasErrors()) 
 		{System.out.println("if");
+
+		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRResposible());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
+		
 			// session.removeAttribute("audit_start_date");
 			model.addAttribute("capa_id",correctiveAndPreventiveActionsDAO.get_maxid());
 			return "add_correctiveAndPreventiveActions";
@@ -451,6 +456,10 @@ public class CorrectiveAndPreventiveActionsController
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
 		model.addAttribute("nonConformanceForm", nonConformanceForm);
 		
+		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRResposible());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
+		
 		
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		System.out.println(capa_id);
@@ -473,15 +482,19 @@ public class CorrectiveAndPreventiveActionsController
 		String action_field = request.getParameter("action");
 		System.out.println("action value::::" + action_field);
 		
-	/*	if (result.hasErrors())
+		if (result.hasErrors())
 		{
+			HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+			hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRResposible());
+			model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
+			
 			
 			System.out.println("error occured");
 			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.edit_CorrectiveAndPreventiveActions(correctiveAndPreventiveActions.getCapa_id()));
 			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
 	        return "edit_correctiveactions";
-		}*/
+		}
 		byte[] buffer;
 		int flag =0;
 		try 
@@ -781,7 +794,7 @@ sourcenc=nonConformanceDAO.filtersourceofnc(nc_id);
 
 for(String sourceofnc:sourcenc)
 {
-	returnText=returnText+"<input type='text' class='input_txtbx' id='source_of_nonconformance' name='source_of_nonconformance' value='"+sourceofnc+"'/>";
+	returnText=returnText+"<input type='hidden' class='input_txtbx' id='source_of_nonconformance' name='source_of_nonconformance' value='"+sourceofnc+"'/>"+sourceofnc+"";
 	
 }			
 System.out.println(" source of nc:::: "+returnText);
@@ -792,7 +805,7 @@ System.out.println(" source of nc:::: "+returnText);
 	
  for(String typeofnc:typenc)
 	{
-		returnText=returnText+"<input type='text' class='input_txtbx' id='type_of_nc' name='type_of_nonconformance' value='"+typeofnc+"'/>";
+		returnText=returnText+"<input type='hidden' class='input_txtbx' id='type_of_nc' name='type_of_nonconformance' value='"+typeofnc+"'/>"+typeofnc+"";
 		
 	}	
  System.out.println("type of nc:::: "+returnText);
@@ -801,25 +814,23 @@ System.out.println(" source of nc:::: "+returnText);
  List <String> naturenc=new ArrayList<String>();
  naturenc = nonConformanceDAO.filternatureofnc(nc_id);
 	
- returnText  =returnText + "<textarea class='input_txtbx1'style='width:100%; height: 70px;' id='nature_of_nc' name='nature_of_nc'>";
+ 
  for(String natureofnc : naturenc)
  {
-	 //returnText = returnText+"<input type = 'text' class='input_txtbx1' id='nature_of_nc' name='nature_of_nonconformance' value='"+natureofnc+"'/>";
-	 returnText=returnText+natureofnc;
+	 returnText  =returnText + "<input type='hidden' class='input_txtbx'  id='nature_of_nc' name='nature_of_nc' value='"+natureofnc+"'/>"+natureofnc+"";
  }
 
  returnText=returnText+"<split>";
  
  List<String> temporary_action = new ArrayList<String>();
  temporary_action = nonConformanceDAO.filteraction(nc_id);
- returnText = returnText + "<textarea class='input_txtbx1' style='width:55%; height: 70px' id='temporary_action' name='temporary_action'>";
  for(String tempaction:temporary_action)
  {
-	 returnText=returnText+tempaction;
+	 returnText = returnText + "<input type='hidden' class='input_txtbx1  id='temporary_action' name='temporary_action' value='"+tempaction+"'/>"+tempaction+"";
 
  }
  
- returnText = returnText + "</textarea>";
+ //returnText = returnText ;
  return returnText;
 				}
 		

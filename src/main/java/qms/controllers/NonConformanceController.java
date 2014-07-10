@@ -77,7 +77,9 @@ public class NonConformanceController {
 		
 		session.removeAttribute("id");
 		session.removeAttribute("type");
-		NonConformanceForm nonConformanceForm = new NonConformanceForm();
+		
+		//model.addAttribute("success","false");
+	NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		model.addAttribute("menu","nonconformance");
 	//	model.addAttribute("noofrows",5);
 		nonConformanceForm.setNonconformance(nonConformanceDAO.getlimitednonconformancereport(1));

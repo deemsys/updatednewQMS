@@ -227,7 +227,7 @@
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition3"></form:errors></span>
 						                    					</td>
 						                    					<td  align="right"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" onkeypress="return validate(event)"; />
-						                    					<br/> <span style="color: red;font-style:italic;" id="qua3"><form:errors path="Nonconformance.quality3"></form:errors></span>
+						                    				 <span style="color: red;font-style:italic;" id="qua3"><form:errors path="Nonconformance.quality3"></form:errors></span>
 						                    					</td>
 						                    					<td  align="left"><input type="button" id="button3" class="number_btn1" name="No's" value="No's" onchange="showbutton3();" style="display:none;">
 						                    						</td>
@@ -258,8 +258,7 @@
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="disposition_complete_date"
 																			value="${nonconformance.disposition_complete_date}" /><br/>
-																		<span style="color: red;font-style:italic;" id="completedate"></span>
-																		 <span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition_complete_date"></form:errors>
+																		 <span style="color: red;font-style:italic;" id="completedate"><form:errors path="Nonconformance.disposition_complete_date"></form:errors>
 																		</span>
 																		</td>
 																	</tr>
@@ -794,6 +793,7 @@ function show1()
 		}
 	else
 	document.getElementById('quality1').style.display='none';
+	document.getElementById('button1').style.display='none';
 	}
 	
 function show2()
@@ -806,6 +806,7 @@ function show2()
 		}
 	else
 	document.getElementById('quality2').style.display='none';
+	document.getElementById('button2').style.display='none';
 	}	
 	
 function show3()
@@ -818,6 +819,7 @@ function show3()
 		}
 	else
 	document.getElementById('quality3').style.display='none';
+	document.getElementById('button3').style.display='none';
 	}	
 </script>
 <script>
