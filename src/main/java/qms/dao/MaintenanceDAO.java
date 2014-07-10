@@ -24,7 +24,12 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
+
+import qms.controllers.AbstractITextPdfView;
 import qms.model.DocumentMain;
 import qms.model.InternalAudits;
 import qms.model.Maintenance;
@@ -33,7 +38,7 @@ import qms.model.Maintenance;
 
 
 
-public class MaintenanceDAO extends AbstractExcelView
+public class MaintenanceDAO extends AbstractITextPdfView
 {
 	private DataSource dataSource;
 	 
@@ -53,212 +58,211 @@ public class MaintenanceDAO extends AbstractExcelView
 	 
 	
 	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	protected void buildPdfDocument(Map<String, Object> model, Document doc,
+	PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
+	
 		
 
-		HSSFSheet excelSheet = workbook.createSheet("NonConformance Report");
-		excelSheet.setDefaultColumnWidth(20);
-		  
-		//Style 1
-		CellStyle style = workbook.createCellStyle();
-	        Font font = workbook.createFont();
-	        font.setFontName("Arial");
-	        style.setFillForegroundColor(HSSFColor.BROWN.index);
-	        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-	        style.setWrapText(true);
-	        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-	        font.setColor(HSSFColor.WHITE.index);
-	        style.setFont(font);
 		
-	    //Style2
-	        CellStyle style2 = workbook.createCellStyle();
-	        Font font2 = workbook.createFont();
-	        font2.setFontName("Arial");
-	        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
-	        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
-	        style2.setWrapText(true);
-	        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-	        font2.setColor(HSSFColor.WHITE.index);
-	        style2.setFont(font2); 
-	        System.out.println("came inside report");
+		  
+		
 
 		@SuppressWarnings("unchecked")
 		List<Maintenance> maintenances = (List<Maintenance>) model.get("maintenances");
 		String[] fields=(String[])model.get("fields");
 		
-		//System.out.println("came inside report");
-        setExcelHeader(excelSheet,style,fields);
+		int memolist = fields.length;
+		System.out.println(memolist);
+       PdfPTable table=new PdfPTable(memolist+1);
+       float[] width= new float[memolist+1];
+		table.setWidthPercentage(100);
+		int i=1;
+		 table.addCell(createLabelCell("SNO"));
+		 width[0] = 1.0f;
 		
-		setExcelRows(excelSheet,maintenances,fields,style2);
+		for (String field : fields) {
+			
 		
-	}
+       
+	/*}
 	
 
 	//creating header records
 	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
 		HSSFRow excelHeader = excelSheet.createRow(0);	
 	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
-		int i=0;
-		for (String field : fields) {
+		int i=0;*/
+		
 			
 			if(field.equals("equipment_id"))
 			{
-				excelHeader.createCell(i).setCellValue("Equipement Id");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Equipement Id"));
+			
 			}
 			else if(field.equals("equipment_name"))
 			{
-				excelHeader.createCell(i).setCellValue("Equipement Name");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Equipement Name"));
+				
 			}
 			else if(field.equals("equipment_model"))
 			{
-				excelHeader.createCell(i).setCellValue("Equipement Model");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Equipement Model"));
+				
 			}
 			else if(field.equals("serial_number"))
 			{
-				excelHeader.createCell(i).setCellValue("Serial Number");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Serial Number"));
+				
 			}
 			else if(field.equals("date_acquired"))
 			{
-				excelHeader.createCell(i).setCellValue("Date Acquired");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Date Acquired"));
+				
 			}
 			else if(field.equals("equipment_status"))
 			{
-				excelHeader.createCell(i).setCellValue("Equipement Status");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Equipement Status"));
+				
 			}
 			else if(field.equals("frequency_maintenance"))	
 			{
-				excelHeader.createCell(i).setCellValue("Frequency Maintenance");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Frequency Maintenance"));
+				
 			}else if(field.equals("calibration"))	
 			{
-				excelHeader.createCell(i).setCellValue("Calibration");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Calibration"));
+				
 			}else if(field.equals("type_of_maintenance"))	
 			{
-				excelHeader.createCell(i).setCellValue("Type of maintenance");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Type of maintenance"));
+				
 			}
 			else if(field.equals("maintenance_frequency"))	
 			{
-				excelHeader.createCell(i).setCellValue("Maintenance Frequency");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Maintenance Frequency"));
+			
 			}
 			else if(field.equals("reference"))	
 			{
-				excelHeader.createCell(i).setCellValue("Reference");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
-			}else if(field.equals("instructions"))	
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("References"));
+				
+			}
+			else if(field.equals("instructions"))	
 			{
-				excelHeader.createCell(i).setCellValue("Instructions");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Instructions"));
+			
 			}else if(field.equals("due_date"))	
 			{
-				excelHeader.createCell(i).setCellValue("Due Date");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Due Date"));
+				
 			}else if(field.equals("completion_date"))	
 			{
-				excelHeader.createCell(i).setCellValue("Completion Date");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Completion Date"));
+				
 			}else if(field.equals("completed_by"))	
 			{
-				excelHeader.createCell(i).setCellValue("Completed By");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Completed By"));
+				
 			}else if(field.equals("notes"))	
 			{
-				excelHeader.createCell(i).setCellValue("Notes");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Notes"));
+				
 			}
 		}
 	
-	}
+	/*}
 	
 	
 	//End
 	
 	
 	//creating cell records
-	public void setExcelRows(HSSFSheet excelSheet, List<Maintenance> maintenances,String[] fields,CellStyle style2){
-		int record = 1;
-		int i=0;
+	public void setExcelRows(HSSFSheet excelSheet, List<Maintenance> maintenances,String[] fields,CellStyle style2){*/
+		int j=1;
 		for (Maintenance maintenance:maintenances){	
-			HSSFRow excelRow = excelSheet.createRow(record++);
-	//		excelRow.setRowStyle((HSSFCellStyle) style2);
-		i=0;
+			
+			String sno = String.valueOf(j);
+			table.addCell(createValueCell(sno));
+			j++;
 				for (String field : fields) {
 					
 					if(field.equals("equipment_id"))
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getEquipment_id());
-							i++;
+						table.addCell(createValueCell(maintenance.getEquipment_id()));
+							
 					}
 					else if(field.equals("equipment_name"))
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getEquipment_name());
+						table.addCell(createValueCell(maintenance.getEquipment_name()));
 
-						i++;
+						
 					}
 					else if(field.equals("equipment_model"))
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getEquipment_model());
-								i++;
+						table.addCell(createValueCell(maintenance.getEquipment_model()));
+							
 					}
 					else if(field.equals("serial_number"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getSerial_number());
-						i++;
+						table.addCell(createValueCell(maintenance.getSerial_number()));
+						
 					}else if(field.equals("date_acquired"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getDate_acquired());
-						i++;
-					}else if(field.equals("equipment_status"))	
+						table.addCell(createValueCell(maintenance.getDate_acquired()));
+					}
+					else if(field.equals("equipment_status"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getEquipment_status());
-						i++;
-					}else if(field.equals("frequency_maintenance"))
+						table.addCell(createValueCell(maintenance.getEquipment_status()));
+				
+					}
+					else if(field.equals("frequency_maintenance"))
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getFrequency_maintenance());
-						i++;
-					}else if(field.equals("calibration"))	
+						table.addCell(createValueCell(maintenance.getFrequency_maintenance()));
+					
+					}
+					else if(field.equals("calibration"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getCalibration());
-						i++;
-					}else if(field.equals("type_of_maintenance"))	
+						table.addCell(createValueCell(maintenance.getCalibration()));
+						
+					}
+					else if(field.equals("type_of_maintenance"))	
 					{
-						excelRow.createCell(i).setCellValue(maintenance.getType_of_maintenance());
-						i++;
-					}else if(field.equals("maintenance_frequency"))	
+						table.addCell(createValueCell(maintenance.getType_of_maintenance()));
+					}
+					else if(field.equals("maintenance_frequency"))	
 					{
 						String maintances =" ";
 						if(maintenance.getWeekly().equals("yes"))
@@ -277,45 +281,66 @@ public class MaintenanceDAO extends AbstractExcelView
 						if(maintenance.getAnnually().equals("yes")){
 							maintances =maintances+"Annually";
 						}
-						excelRow.createCell(i).setCellValue(maintances);
-						i++;
+						table.addCell(createValueCell(maintances));
+						
 					}else if(field.equals("reference"))	
 					{
-							excelRow.createCell(i).setCellValue(						
-									maintenance.getReference1());
-						i++;
+						String r1,r2,r3,r4,r5 ="";
+						System.out.println("reference ="+maintenance.getReference1());
+						if(maintenance.getReference1().equals("null"))
+							r1="";
+						else
+							r1 = maintenance.getReference1();
+						if(maintenance.getReference2().equals("null"))
+							r2="";
+						else
+							r2 = maintenance.getReference2();
+						if(maintenance.getReference3().equals("null"))
+							r3="";
+						else
+							r3 = maintenance.getReference3();
+						if(maintenance.getReference4().equals("null"))
+							r4="";
+						else
+							r4 = maintenance.getReference4();
+						if(maintenance.getReference5().equals("null"))
+							r5="";
+						else
+							r5 = maintenance.getReference5();
+						String refrence = r1+"\r"+r2+"\r"
+						+r3+"\r"+r4+"\r"+r5+"\r";
+						table.addCell(createValueCell(refrence));
+						
 					
 					}else if(field.equals("instructions"))	
 					{
-						excelRow.createCell(i).setCellValue(						
-							maintenance.getInstructions());
+						table.addCell(createValueCell(maintenance.getInstructions()));
 						
-						i++;
+						
 					}else if(field.equals("due_date"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getDue_date());
-						i++;
+						table.addCell(createValueCell(maintenance.getDue_date()));
+						
 					}else if(field.equals("completion_date"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getCompletion_date());
-						i++;
+						table.addCell(createValueCell(maintenance.getCompletion_date()));
+						
 					}else if(field.equals("completed_by"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getCompleted_by());
-						i++;
+						table.addCell(createValueCell(maintenance.getCompleted_by()));
+						
 					}
 					else if(field.equals("notes"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								maintenance.getNotes());
-						i++;
+						table.addCell(createValueCell(maintenance.getNotes()));
+						
 					}
 				}
 				
 		}
+		table.setWidths(width);
+		
+		doc.add(table);
 	}
 
 	
@@ -708,10 +733,11 @@ public class MaintenanceDAO extends AbstractExcelView
 			e1.printStackTrace();
 		}
 		try {
-			
+			String updat = "update tbl_maintenance set equipment_id='"+maintenance.getEquipment_id()+"',equipment_name='"+maintenance.getEquipment_name()+"',equipment_model='"+maintenance.getEquipment_model()+"',serial_number='"+maintenance.getSerial_number()+"',date_acquired='"+maintenance.getDate_acquired()+"',equipment_status='"+maintenance.getEquipment_status()+"',frequency_maintenance='"+maintenance.getFrequency_maintenance()+"',calibration='"+maintenance.getCalibration()+"' where equipment_id='"+maintenance.getEquipment_id()+"'";
+			System.out.println(updat);
 			String cmd_update = "update tbl_maintenance set equipment_id='"+maintenance.getEquipment_id()+"',equipment_name='"+maintenance.getEquipment_name()+"',equipment_model='"+maintenance.getEquipment_model()+"',serial_number='"+maintenance.getSerial_number()+"',date_acquired='"+maintenance.getDate_acquired()+"',equipment_status='"+maintenance.getEquipment_status()+"',frequency_maintenance='"+maintenance.getFrequency_maintenance()+"',calibration='"+maintenance.getCalibration()+"' where equipment_id='"+maintenance.getEquipment_id()+"'";
-			String cmd_update1 = "update tbl_maintenancechild set equipmentid='"+maintenance.getEquipmentid()+"',type_of_maintenance='"+maintenance.getType_of_maintenance()+"',weekly='"+maintenance.getWeekly()+"',monthly='"+maintenance.getMonthly()+"',quarterly='"+maintenance.getQuarterly()+"',semiannually='"+maintenance.getSemiannually()+"',annually='"+maintenance.getAnnually()+"',reference1='"+maintenance.getReference1()+"',reference2='"+maintenance.getReference2()+"',reference3='"+maintenance.getReference3()+"',reference4='"+maintenance.getReference4()+"',reference5='"+maintenance.getReference5()+"',instructions='"+maintenance.getInstructions()+"',instructionattach='"+maintenance.getInstructionattach()+"',due_date='"+maintenance.getDue_date()+"',completion_date='"+maintenance.getCompletion_date()+"',completed_by='"+maintenance.getCompleted_by()+"',notes='"+maintenance.getNotes()+"' where equipmentid='"+maintenance.getEquipmentid()+"'";
-			
+			String cmd_update1 = "update tbl_maintenancechild set equipmentid='"+maintenance.getEquipment_id()+"',type_of_maintenance='"+maintenance.getType_of_maintenance()+"',weekly='"+maintenance.getWeekly()+"',monthly='"+maintenance.getMonthly()+"',quarterly='"+maintenance.getQuarterly()+"',semiannually='"+maintenance.getSemiannually()+"',annually='"+maintenance.getAnnually()+"',reference1='"+maintenance.getReference1()+"',reference2='"+maintenance.getReference2()+"',reference3='"+maintenance.getReference3()+"',reference4='"+maintenance.getReference4()+"',reference5='"+maintenance.getReference5()+"',instructions='"+maintenance.getInstructions()+"',instructionattach='"+maintenance.getInstructionattach()+"',due_date='"+maintenance.getDue_date()+"',completion_date='"+maintenance.getCompletion_date()+"',completed_by='"+maintenance.getCompleted_by()+"',notes='"+maintenance.getNotes()+"' where equipmentid='"+maintenance.getEquipment_id()+"'";
+			System.out.println(cmd_update1);																																																																																																																																																																																																																								    				
 			 statement.execute(cmd_update);
 			 statement.execute(cmd_update1);
 		} catch (Exception e) {
@@ -879,9 +905,10 @@ public class MaintenanceDAO extends AbstractExcelView
 		try {
 			String cmd_select = null;
 			
-			if(type=="maintain_for_30")
+			if(type=="maintain_for_30"){
 			cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t2.calibration='No' and (t1.due_date BETWEEN NOW() AND NOW()+INTERVAL 30 DAY)";
-
+				System.out.println(cmd_select);
+			}
 				else if(type=="upcoming_calibration"){
 					String query = "select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where (t2.calibration='Yes' AND t1.due_date BETWEEN '"+currentdate+"' AND '"+olddate+"')";
 					System.out.println(query);

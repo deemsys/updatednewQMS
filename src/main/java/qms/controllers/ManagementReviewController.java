@@ -269,6 +269,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	{
 		String start = null,end = null;
 		String option = "";
+		int i=0;
 		String[] fields={"management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
 		String[] option0 = {"management_review_date","attendee_list_with_titles"};
 		String[] option2 = {"responsibility","action_due_date","completion_date"};
@@ -312,8 +313,8 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		{
 		
 				System.out.println("now ok");
-				 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
-					
+				 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("report_title")+"'");
+					i=1;
 				fields=request.getParameterValues("report_field[]");
 			
 		}
@@ -323,8 +324,13 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		if(option == "0")
 		{
 			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
-			session.setAttribute("option",option);
-			modelAndView.addObject("fields",option0);
+			
+			if(i == 1)
+				modelAndView.addObject("fields",fields);
+			else{
+				session.setAttribute("option",option);
+				modelAndView.addObject("fields",option0);
+			}
 			return modelAndView ;
 			
 		}
@@ -337,8 +343,13 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		if(option == "2")
 		{
 			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
-			session.setAttribute("option",option);
+			
+			if(i == 1)
+				modelAndView.addObject("fields",fields);
+			else{
+				session.setAttribute("option",option);
 			modelAndView.addObject("fields",option2);
+			}
 			return modelAndView ;
 		}
 		else{

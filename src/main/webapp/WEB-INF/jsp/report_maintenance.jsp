@@ -85,7 +85,8 @@
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								
-									<input type="text" name="no_of_days" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="no_of_days" class="input_txtbx" id="noofdays" onInput="return validatename2(id);" value=""/>
+									<br><span id="noofdayserror" style="color:red"></span>
 							</td>
 								
 							</tr>	
@@ -109,43 +110,44 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:</td>
+									Select Fields Required on the Report:
+									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="equipment_id" id="id_equipement_id"/>Equipment ID</td>
-								<td><input type="checkbox" name="report_field[]" value="equipment_name" id="id_equipement_name"/>Equipment Name</td>
-								<td><input type="checkbox" name="report_field[]" value="equipment_model" id="id_equipment_model"/>Equipment Model</td>
+								<td><input type="checkbox" name="report_field[]" value="equipment_id" id="1"/>Equipment ID</td>
+								<td><input type="checkbox" name="report_field[]" value="equipment_name" id="2"/>Equipment Name</td>
+								<td><input type="checkbox" name="report_field[]" value="equipment_model" id="3"/>Equipment Model</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="serial_number" id="id_serial_number"/>Serial Number</td>
-								<td><input type="checkbox" name="report_field[]" value="date_acquired" id="id_date_acquired"/>Date Acquired</td>
-								<td><input type="checkbox" name="report_field[]" value="equipment_status" id="id_equipment_status"/>Equipment Status</td>
+								<td><input type="checkbox" name="report_field[]" value="serial_number" id="4"/>Serial Number</td>
+								<td><input type="checkbox" name="report_field[]" value="date_acquired" id="5"/>Date Acquired</td>
+								<td><input type="checkbox" name="report_field[]" value="equipment_status" id="6"/>Equipment Status</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="frequency_maintenance" id="id_frequency_maintenance"/>Frequency of Maintenance</td>
-								<td><input type="checkbox" name="report_field[]" value="calibration" id="id_calibration"/>Calibration</td> 
+								<td><input type="checkbox" name="report_field[]" value="frequency_maintenance" id="7"/>Frequency of Maintenance</td>
+								<td><input type="checkbox" name="report_field[]" value="calibration" id="8"/>Calibration</td> 
 
-								<td><input type="checkbox" name="report_field[]" value="type_of_maintenance" id="id_type_of_maintenance"/>Type of Maintenance </td>
+								<td><input type="checkbox" name="report_field[]" value="type_of_maintenance" id="9"/>Type of Maintenance </td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="maintenance_frequency" id="id_maintenance_frequency"/>Maintenance Frequency</td>
-							<td><input type="checkbox" name="report_field[]" value="reference" id="id_reference"/>Reference</td>
-							<td><input type="checkbox" name="report_field[]" value="instructions" id="id_instructions"/>Instructions</td>
+								<td><input type="checkbox" name="report_field[]" value="maintenance_frequency" id="10"/>Maintenance Frequency</td>
+							<td><input type="checkbox" name="report_field[]" value="reference" id="11"/>Reference</td>
+							<td><input type="checkbox" name="report_field[]" value="instructions" id="12"/>Instructions</td>
 							</tr>
 							<tr>
-							<td><input type="checkbox" name="report_field[]" value="due_date" id="id_due_date"/>Due Date</td>
-							<td><input type="checkbox" name="report_field[]" value="completion_date" id="id_completion_date"/>Completion Date</td>
-							<td><input type="checkbox" name="report_field[]" value="completed_by" id="id_completed_by"/>Completed By</td>
+							<td><input type="checkbox" name="report_field[]" value="due_date" id="13"/>Due Date</td>
+							<td><input type="checkbox" name="report_field[]" value="completion_date" id="14"/>Completion Date</td>
+							<td><input type="checkbox" name="report_field[]" value="completed_by" id="15"/>Completed By</td>
 							</tr>
 							<tr>
-							<td><input type="checkbox" name="report_field[]" value="notes" id="id_notes"/>Notes</td>
+							<td><input type="checkbox" name="report_field[]" value="notes" id="16"/>Notes</td>
 								</table>
 								
 								</td>
@@ -153,9 +155,9 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate Report" class="submit_btn2">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validate();"class="submit_btn1">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn"></td>
+              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
              </tr></table>
             
@@ -172,7 +174,86 @@
 <table  width=300 height=200>
 			<tr height=30><td></td></tr></table>
 
+ <script type="text/javascript">
+ $(function() {
+		$("#noofdays").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+	
+	
+function validatename2(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^0-9]/g, "");
+    document.getElementById(id).value = textInput;
+} 
+</script>
+
 <script type="text/javascript">
+function validate()
+{
+	var error ="";
+	var id_type_upcomingcalibration = document.getElementById('id_type_upcomingcalibration').checked;
+	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+	var noofdays =  document.getElementById('noofdays').value;
+	var a1 = document.getElementById('1').checked;
+	var a2 = document.getElementById('2').checked;
+	var a3 = document.getElementById('3').checked;
+	var a4 = document.getElementById('4').checked;
+	var a5 = document.getElementById('5').checked;
+	var a6 = document.getElementById('6').checked;
+	var a7 = document.getElementById('7').checked;
+	var a8 = document.getElementById('8').checked;
+	var a9 = document.getElementById('9').checked;
+	var a10 = document.getElementById('10').checked;
+	var a11 = document.getElementById('11').checked;
+	var a12 = document.getElementById('12').checked;
+	var a13 = document.getElementById('13').checked;
+	var a14 = document.getElementById('14').checked;
+	var a15 = document.getElementById('15').checked;
+	var a16 = document.getElementById('16').checked;
+	if(id_type_upcomingcalibration)
+		{
+		if(noofdays == "")
+			{
+			document.getElementById("noofdayserror").innerHTML="Required Field Should not be Empty";
+			error = "true";
+			}
+		else
+			{
+			document.getElementById("noofdayserror").innerHTML="";
+			}
+		
+		
+		}
+	else
+		{
+		document.getElementById("noofdayserror").innerHTML="";
+		}
+	if(id_type_userdefined)
+		{
+		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14|| a15|| a16)
+			{
+			document.getElementById("userdefineerror").innerHTML="";
+			}
+		else{
+			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			error = "true";
+		}
+	}
+	else
+	{
+		document.getElementById("userdefineerror").innerHTML="";
+		}
+	
+	if(error == "true")
+		{
+		return false;
+		}
+}
 function toggle2(value){
     var e3=document.getElementById("document_type_table");
 if(value=="document_list_by_type")

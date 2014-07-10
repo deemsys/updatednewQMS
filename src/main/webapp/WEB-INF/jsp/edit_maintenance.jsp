@@ -77,19 +77,19 @@
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Equipment Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
                     <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Equipment Model :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
                     <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Serial Number :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onInput="return validatename3(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
                    <span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
@@ -297,22 +297,7 @@
             </table></div>
             </form>
               
-            <!--  <script type="text/javascript">
-function toggle3(value){
-     
-       var e = document.getElementById('child_table');
-      // var e1=document.getElementById('employee');
-if(value==0)
-       {
-	e.style.display="none";
-       }
-else
-       {
-	e.style.display="block";
-       }
-       
-}
-</script> -->
+           
  <script>
    function toggleAjax() {
 	 
@@ -418,17 +403,85 @@ else
   
  
 </script> 
+<script>
+$(function() {
+	$("#equipment_id").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+$(function() {
+	$("#equipment_name").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+$(function() {
+	$("#equipment_model").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+
+$(function() {
+	$("#serial_number").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+
+$(function() {
+	$("#instructions").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+
+$(function() {
+	$("#notes").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+</script>
+    <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+} 
+
+function validatename2(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+function validatename3(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
 <script type="text/javascript">
 function validation()
 {
+
 	
-	var chars =  /^[A-Z0-9]+$/;
-	var numbers =  /^[0-9]+$/;
-	var letters =  /^[A-Za-z]+$/;
+	
+
 	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
-	var dotnumber = /^[a-zA-Z0-9]|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
+	
 	var error="";
-/* 	var equipment_id = document.getElementById('equipment_id').value; */
+
 	var equipment_name =  document.getElementById('equipment_name').value;
 	
 	var equipment_model = document.getElementById('equipment_model').value;
@@ -461,46 +514,25 @@ function validation()
 	 
 	  var notes = document.getElementById('notes').value;
 	
-	/* if(equipment_id == "")
-		{
-		alert("equ id");
-		document.getElementById("equipment_id1").innerHTML="Required Field Should not be Empty";
-		error="true";
-		}
-	else if(equipment_id.charAt(0)==" ")
-		{
-		document.getElementById("equipment_id1").innerHTML="Required Field Should not be Spaces";
-		error="true";
-		}
-	else if(equipment_id.match(numbers))
-		{
-		document.getElementById("equipment_id1").innerHTML="";
-		}
-	else{
-		document.getElementById("equipment_id1").innerHTML="Required Field Should be Numeric";
-		error="true";
-		} */
-	
 	if(equipment_name == "")
 	{
-		
 	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Empty";
 	error="true";
 	}
-	else if(equipment_name.charAt(0)==" ")
+	else if(equipment_name.charAt(0) == " ")
 	{
-	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Spaces";
+	document.getElementById("equipment_name1").innerHTML="Required Field Should not Start with spaces";
 	error="true";
 	}
-	else if(equipment_name.match(letters))
+	else if((equipment_name.length < 4) || (equipment_name.length > 32))
 	{
-	
-	document.getElementById("equipment_name1").innerHTML="";
+	document.getElementById("equipment_name1").innerHTML="Required Field Should be length of 4 to 32";
+	error="true";
 	}
 	else{
-	document.getElementById("equipment_name1").innerHTML="Required Field Should be Letters";
-	error="true";
+	document.getElementById("equipment_name1").innerHTML="";
 	}
+
 	
 	
 	
@@ -509,19 +541,20 @@ function validation()
 	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Empty";
 	error="true";
 	}
-	else if(equipment_model.charAt(0)==" ")
+	else if(equipment_model.charAt(0) == " ")
 	{
-	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Spaces";
+	document.getElementById("equipment_model1").innerHTML="Required Field Should not Start with spaces";
 	error="true";
 	}
-	else if(equipment_model.match(chars))
+	else if((equipment_model.length < 4) || (equipment_model.length > 32))
 	{
-	document.getElementById("equipment_model1").innerHTML="";
+	document.getElementById("equipment_model1").innerHTML="Required Field Should be length of 4 to 32";
+	error="true";
 	}
 	else{
-	document.getElementById("equipment_model1").innerHTML="Required Field Should be Capital Alpha-Numeric";
-	error="true";
+	document.getElementById("equipment_model1").innerHTML="";
 	}
+
 
 	
 	
@@ -530,19 +563,20 @@ function validation()
 	document.getElementById("serial_number1").innerHTML="Required Field Should not be Empty";
 	error="true";
 	}
-	else if(serial_number.charAt(0)==" ")
+	else if(serial_number.charAt(0) == " ")
 	{
-	document.getElementById("serial_number1").innerHTML="Required Field Should not be Spaces";
+	document.getElementById("serial_number1").innerHTML="Required Field Should not Start with spaces";
 	error="true";
 	}
-	else if(serial_number.match(chars))
+	else if((serial_number.length < 4)|| (serial_number.length > 32))
 	{
-	document.getElementById("serial_number1").innerHTML="";
+	document.getElementById("serial_number1").innerHTML="Required Field Should be length of 4 to 32";
+	error="true";
 	}
 	else{
-	document.getElementById("serial_number1").innerHTML="Required Field Should be Capital Alpha-Numeric";
-	error="true";
+	document.getElementById("serial_number1").innerHTML="";
 	}
+	
 	
 	 if(datepicker1 == "")
 	 {
@@ -573,10 +607,10 @@ function validation()
 	 
 	 if(frequency_maintenance == "")
 	 {
-	 document.getElementById("frequency_maintenance1").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("frequency_maintenance1").innerHTML="Select Atleast one. For more option hold ctrl and select";
 	 error="true";
 	 }
- 	else
+	else
 	 {
 	 document.getElementById("frequency_maintenance1").innerHTML="";
 	 }
@@ -597,26 +631,25 @@ function validation()
 		document.getElementById("instructions1").innerHTML="";
 		
 		}
-	 
-		else if(instructions.match(dotnumber))
+	 else if(instructions.charAt(0) == " ")
 		{
-		 if( (instructions.length < 5) || (instructions.length > 400) )
+		document.getElementById("instructions1").innerHTML="Required Field Should not Start with spaces";
+		error="true";
+		}
+	  else if((instructions.length < 5) || (instructions.length > 400 ))
 			 {
 			 document.getElementById("instructions1").innerHTML="Should b/w 5 to 400 chars";
 			 error="true";
 			 }
-		 else
-		 {
+		 else{
 		     document.getElementById("instructions1").innerHTML="";
-		  }
-  	 	}
-		else{
-			 document.getElementById("instructions1").innerHTML="Special chars are not allowed at beginning";
-			error="true";
-		    }
+		     }
+	 	
+	
 	 
 	 
-  if(datepicker2 == "")
+	 
+if(datepicker2 == "")
 	 {
 	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
 	 error="true";
@@ -652,10 +685,10 @@ function validation()
 	 
 	 if(completed_by == "")
 	 {
-	 document.getElementById("completed_by1").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("completed_by1").innerHTML="Please Select";
 	 error="true";
 	 }
- 	else
+	else
 	 {
 	 document.getElementById("completed_by1").innerHTML="";
 	 }
@@ -667,16 +700,12 @@ function validation()
 		document.getElementById("notes1").innerHTML="Required Field Should not Empty";
 		error="true";
 		}
-	 else if(notes.charAt(0)== " ")
-	 {
-	 document.getElementById("notes1").innerHTML="Required Field Should not Spaces";
-		error="true";
-	 
-	 }
- 
-		else if(notes.match(dotnumber))
+	 else if(notes.charAt(0) == " ")
 		{
-		 if((notes.length < 5) || (notes.length > 400) )
+		document.getElementById("notes1").innerHTML="Required Field Should not Start with spaces";
+		error="true";
+		}
+		else if((notes.length < 5) || (notes.length > 400 ))
 			 {
 			 document.getElementById("notes1").innerHTML="Should b/w 5 to 400 chars";
 			 error="true";
@@ -684,16 +713,12 @@ function validation()
 		 else{
 		     document.getElementById("notes1").innerHTML="";
 		     }
-	 	}
-		else{
-			 document.getElementById("notes1").innerHTML="Special chars are not allowed at beginning";
-			error="true";
-		    }
+	 	
+		
 	 if(error=="true")
 		 {
 		 return false;
 		 }
-	 
 }
 
 

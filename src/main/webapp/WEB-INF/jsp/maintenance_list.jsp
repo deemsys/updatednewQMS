@@ -1,5 +1,13 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
+
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
@@ -69,41 +77,29 @@
 			          <h2>Maintenance List</h2>
 			        </div>
 			        <div class="contentbox">
-<!-- 		<form action="search_maintenance" name="dashboard" method="GET">
-<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							  <tr>
-							    <td align="left" valign="middle" width="8%">ID:</td>
-							    <td align="left" valign="middle" width="5%"><input type="text" name="equipment_id" class="input_txtbx2" id="equipment_id"></td>
-							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx2" id="equipment_name"></td>
-							  	<td align="center" valign="middle" width="30%">
-							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenance"/></td>
-							 	<td align="center" valign="middle" width="30%">
-							  <input type="button" class="submit_btn1" name="clear" id="id_clear" value="clear">
-							  </tr>
-							</table>
-						</div>
-</form>
-			  -->  
+
 			  			<form action="search_maintenance" name="dashboard" method="GET">
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="8%">ID:</td>
-							    <td align="left" valign="middle" width="5%">
-							    <input type="text" name="equipment_id" class="input_txtbx2" id="equipment_id" value="${equipid}"> 
-							   
+							     <td align="center" valign="middle" width="10%">
+							    <td align="left" valign="middle"width="2%">ID:</td>
+							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" value="${equipid}"onInput="return validatename2(id);">
+							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
-							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx2" id="equipment_name" value="${equipname}">
-							  
+							    <td align="center" valign="middle" width="15%">
+							    <td align="left" valign="middle" width="10%">Equipment Name:</td>
+							    <td align="left" valign="middle"width="2%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onInput="return validatename(id);">
+							     <br><span id="searcherror2" style="color:red"></span>
+							
 							    </td>
 							    
 							  	<td align="center" valign="middle" width="30%">
-							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenance"/></td>
-							 	<td align="center" valign="middle" width="30%">
-							  <input type="button" class="submit_btn1" name="clear" id="id_clear" value="clear">
+							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenance" onclick="return validatefind();"/>
+							  	  <br><span id="searcherror" style="color:red"></span>
+							  	</td>
+							 	
+							 
 							  </tr>
 							</table>
 						</div>
@@ -199,6 +195,84 @@ function confirmation() {
 
 
 </script>  
+<script>
+$(function() {
+	$("#equipment_id").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+$(function() {
+	$("#equipment_name").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+</script>
+  <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+} 
+
+function validatename2(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
+  <script type="text/javascript">
+  function validatefind()
+  {
+	  var error = "";
+	  var equipment_id = document.getElementById('equipment_id').value;
+	  var equipment_name  = document.getElementById('equipment_name').value;
+	
+	  if(equipment_id =="" && equipment_name == "" )
+		  {
+		  document.getElementById("searcherror").innerHTML="Input Empty";
+			error="true";
+		  }
+	 
+	  else if(equipment_id.length > 0)
+		  {
+		  alert(equipment_id.length);
+		  if((equipment_id.length < 4) || (equipment_id.length > 32))
+			  {
+			  document.getElementById("searcherror1").innerHTML="Required field should be length of 4 to 32";
+				error="true";
+			  }
+		  else{
+			  document.getElementById("searcherror1").innerHTML="";
+		 	 }
+		  }
+	  else if(equipment_name.length > 0)
+	  {
+	  if((equipment_name.length < 4) || (equipment_name.length > 32))
+		  {
+		  document.getElementById("searcherror2").innerHTML="Required field should be length of 4 to 32";
+			error="true";
+		  }
+	  else{
+		  document.getElementById("searcherror2").innerHTML="";
+	 	 }
+	  }
+	  else
+		  {
+		  document.getElementById("searcherror").innerHTML="";
+		  }
+	  
+	  if(error == "true")
+		  {
+		  return false;
+		  }
+  }
+  </script>
 <script>
    $(function() {
 		 var format="yy-mm-dd";

@@ -65,7 +65,7 @@
 							
 							<tr class="row1" id="report_type_table">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-								Type Of Report :
+								Types Of Report :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
 								<input type="radio" onchange="toggle4(this.value)" name="maintenance_report_type" value="0" id="id_type_duemaintenancenext" checked/>Due Maintenance for next 30 days<br/>
