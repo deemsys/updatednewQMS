@@ -45,7 +45,7 @@ import qms.model.*;
 //import org.slf4j.LoggerFactory;
 
 @Controller
-@SessionAttributes({"nonconformance"})
+@SessionAttributes({"nonconformance","id","type"})
 public class NonConformanceController {
 	@Autowired
 	NonConformanceDAO nonConformanceDAO;
@@ -75,7 +75,7 @@ public class NonConformanceController {
 	@RequestMapping(value = { "/view_nonconformance" }, method = RequestMethod.GET)
 	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
 		
-		session.removeAttribute("id");
+		session.removeAttribute("nc");
 		session.removeAttribute("type");
 		
 		//model.addAttribute("success","false");
@@ -102,7 +102,7 @@ public class NonConformanceController {
 	@RequestMapping(value="/viewnonconformancereport_page", method=RequestMethod.GET)
 	public String viewnonconformancereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model) {	
 		
-		session.setAttribute("id",id);
+		session.setAttribute("nc",id);
 		session.setAttribute("type",type_of_nonconformance);
 
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
@@ -128,7 +128,7 @@ public class NonConformanceController {
 	public String viewallnonconformanceport(HttpSession session, HttpServletRequest request,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model, Principal principal ) {
 		
 
-		session.setAttribute("id",id);
+		session.setAttribute("nc",id);
 		session.setAttribute("type",type_of_nonconformance);
 
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
@@ -309,7 +309,7 @@ public class NonConformanceController {
 	{
 	
 		System.out.println("find");
-		session.setAttribute("id", id);
+		session.setAttribute("nc", id);
 		session.setAttribute("type", type_of_nonconformance);
 	
 		
@@ -623,7 +623,7 @@ public class NonConformanceController {
 				System.out.println("result html:::::"+resultHTML);
 				 
 				String returnText="";
-				returnText=returnText+"<select name='reported_by' class='input_cmbbx1' id='reported_by' style='width:60%;'>";
+				returnText=returnText+"<select name='reported_by' class='input_txtbx' id='reported_by'>";
 			 	
 				System.out.println("Group Person"+group_person);
 				

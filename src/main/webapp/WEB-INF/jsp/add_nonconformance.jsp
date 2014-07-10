@@ -64,17 +64,17 @@
 					<tr class="row1">
 							<td valign="top" align="left" class="input_txt" width="25%">Non-Conformance (NC)ID:</td>
 							<td valign="top" align="left" class="input_txt" width="25%">
-							<input type="hidden" name="id" class="input_txtbx1" value="<c:out value="${id }"/>" /><c:out value="${id}" /> <br/><font color="Red" size="+1"></font></td>
+							<input type="hidden" name="id" class="input_txtbx" value="<c:out value="${id }"/>" /><c:out value="${id}" /> <br/><font color="Red" size="+1"></font></td>
 							<td valign="top" align="left" class="input_txt" id="external_label" style="display:none;"> External ID </td>
 							<td valign="top" align="left" class="input_txt">
-							<input type="text" class="input_txtbx1" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
+							<input type="text" class="input_txtbx" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
 										<font color="Red" size="+1"></font></td>
 				 </tr>
 				   <tr class="row2">
 		         
 							<td valign="top" align="left" class="input_txt">Source of NC: </td>
 						    <td valign="top" align="left" class="input_txt">
-				            <select name="source_of_nonconformance" class="input_cmbbx1" id="source_of_nonconformance" >
+				            <select name="source_of_nonconformance" class="input_txtbx" id="source_of_nonconformance">
 				             	<option value="">--Select--</option>
 				             	<option	<c:if test="${nonconformance.source_of_nonconformance eq 'Internal Audit'}"><c:out value="Selected"/></c:if> value="Internal Audit">Internal Audit</option>
 								<option 
@@ -95,7 +95,7 @@
 																		</td>
 																<td valign="top" align="left" class="input_txt"> Product ID: </td>
 					                      	<td valign="top" align="left" class="input_txt">
-					                      	<select name="product_id" class="input_cmbbx1" style="width:75%" id="product_id">
+					                      	<select name="product_id" class="input_txtbx" id="product_id">
 				                  										<option value="">--Select--</option>
 																		 <c:forEach items="${productId_NC_Form.productIDNCs}" var="products" varStatus="status">
         				      												 <option value="${products.productid_nc}"<c:if test="${products.productid_nc == nonconformance.product_id}"><c:out value="selected"/></c:if>>${products.productid_nc}</option>
@@ -107,7 +107,7 @@
 																	<tr class="row1">
 																		<td valign="top" align="left" class="input_txt">Type Of NC: </td>
 						          										<td valign="top" align="left" class="input_txt">
-				                  									<select name="type_of_nonconformance" class="input_cmbbx1" id="type_of_nonconformance" onchange="doAjaxPost();" style="width:139px;">
+				                  									<select name="type_of_nonconformance" class="input_txtbx" id="type_of_nonconformance" onchange="doAjaxPost();" >
 				                  										<option value="">--Select--</option>
 						                    							<option
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Product Quality'}"><c:out value="Selected"/></c:if>
@@ -132,7 +132,7 @@
 
 																		<td valign="top" align="left" class="input_txt">Quantity Suspect: </td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1"
+																			type="text" class="input_txtbx"
 																			id="quantity"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
@@ -149,10 +149,9 @@
 																	<tr class="row2">
 																		<td valign="top" align="left" class="input_txt">Nature of NC: </td>
 																		<td valign="top" align="left" class="input_txt">
-																		<textarea class="input_txtbx1" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" onInput="return validatename(id);" style="width:60%; height: 55px;" ></textarea>
+																		<textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" onInput="return validatename(id);" style= "height: 55px;" ></textarea>
 																			<br/><span id="nature" style="color: red;font-style:italic;"></span>
-																		<font color="Red" size="+1"></font> <span style="color: red;font-style:italic;"><form:errors
-																					path="Nonconformance.nature_of_nonconformance"></form:errors>
+																		<font color="Red" size="+1"></font> <span style="color: red;font-style:italic;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors>
 																		</span>
 																		</td>
 																	
@@ -168,7 +167,7 @@
 																	<tr class="row1">
 						                    							<td valign="top" align="left" class="input_txt">Date Found: </td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="datepicker"
+																			type="text" class="input_txtbx" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="date_found" value="${nonconformance.date_found}" /><br/>
@@ -179,7 +178,7 @@
 																		<td valign="top" align="left" class="input_txt" width="30%">Disposition: </td>
 						                    						<td valign="top" align="left" class="input_txt" width="30%">
 						                    						<table><tr>
-						                    						<td style="vertical-align:top;"><select name="disposition1" id="disid1" class="input_cmbbx1" onchange="show1();">
+						                    						<td style="vertical-align:top;"><select name="disposition1" id="disid1" class="input_txtbx" onchange="show1();" >
 				                  										<option value="">--Select--</option>
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>="" value="Repair">Repair</option>
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>="" value="Discard">Discard</option>
@@ -187,9 +186,10 @@
 						                    						</select>
 						                    						<br/>
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition1"></form:errors></span>
-						                    							</td><td align="right">
+						                    							</td>
+						                    							<td align="left">
 						                    						
-						                    				<input type="text" name="quality1" id="quality1" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton1();" />
+						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton1();" />
 						                    				</td>
 						                    					<td align="left">
 						                    					<label class="number_btn1"  id="button1"   style="display:none;" >No's</label>
@@ -197,7 +197,7 @@
 						                    					<tr><td colspan="3"><span style="color: red;font-style:italic;" id="qua1"><form:errors path="Nonconformance.quality1"></form:errors></span></td></tr>
 						                    					<tr><td colspan="3"><span id="quality1err" style="color: red;font-style:italic;"></span></td></tr>
 						                    					<tr>
-						                    						<td style="vertical-align:top;"><select name="disposition2" id="disid2" class="input_cmbbx1" onchange="show2();">
+						                    						<td style="vertical-align:top;"><select name="disposition2" id="disid2" class="input_txtbx" onchange="show2();">
 				                  										<option value="">--Select--</option>
 				                  										<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
@@ -210,14 +210,14 @@
 																		value="Keep as is">Keep as is</option>
 						                    						</select>
 						                    						</td>
-						                    						<td align="right"><input type="text" name="quality2" id="quality2" style="display:none; width:40px;" onkeypress="return validate(event)"; onchange="showbutton2();" />
+						                    						<td align="left"><input type="text" name="quality2" id="quality2" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event)"; onchange="showbutton2();" />
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.quality2"></form:errors></span></td>
 						                    						<td align="left">
 						                    						<label class="number_btn1"  id="button2"   style="display:none;">No's</label>
 						                    						</tr>
 						                    						<tr><td colspan="3"><span style="color: red;font-style:italic;" id="qua2"><form:errors path="Nonconformance.disposition2"></form:errors></span></td></tr>
 						                    						<tr><td colspan="3"><span id="quality2err" style="color: red;font-style:italic;"></span></td></tr><tr>
-						                    						<td style="vertical-align:top;"><select name="disposition3" id="disid3"class="input_cmbbx1" onchange="show3();">
+						                    						<td style="vertical-align:top;"><select name="disposition3" id="disid3"class="input_txtbx" onchange="show3();">
 				                  										<option value="">--Select--</option>
 				                  										<option
 				                  										<c:if test="${nonconformance.disposition3 eq 'Repair'}"><c:out value="Selected"/></c:if>
@@ -231,7 +231,7 @@
 						                    						</select><br/>
 						                    						<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.disposition3"></form:errors></span>
 						                    					</td>
-						                    					<td  align="right"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" onkeypress="return validate(event)"; />
+						                    					<td  align="left"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" onkeypress="return validate(event)"; />
 						                    				 
 						                    					</td>
 						                    					<td  align="left">
@@ -247,11 +247,11 @@
 																		<td valign="top" align="left" class="input_txt">Reported By: </td>
 																		<td valign="top" align="left" class="input_txt">
 																			<div id="reported_by">
-<%-- 																			<select name="reported_by" class="input_cmbbx1" id="reported_by"> </select></div>
+<%-- 																			<select name="reported_by" class="input_txtbx" id="reported_by"> </select></div>
 			                												<span style="color: red;font-style:italic;"><form:errors path="Nonconformance.reported_by"></form:errors>
 																		</span> --%>
 																			<input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}" />
-				                  											<select name="reported_by" class="input_cmbbx1" id="reported_by" style="width:60%;">
+				                  											<select name="reported_by" class="input_txtbx" id="reported_by">
 																			 <option value="">--Select--</option>
 																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
         				       													<option value="${reportedByNCs.group_person}" <c:if test="${reportedByNCs.group_person == nonconformance.reported_by}"><c:out value="selected"/></c:if>>${reportedByNCs.group_person}</option>
@@ -261,7 +261,7 @@
 				                  	
 																		<td valign="top" align="left" class="input_txt">Disposition Complete Date:</td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="datepicker1"
+																			type="text" class="input_txtbx" id="datepicker1"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="disposition_complete_date"
@@ -275,7 +275,7 @@
 																	<tr class="row1">
 								
 																	<td valign="top" align="left" class="input_txt"> Temporary Action: </td>
-               														<td valign="top" align="left"><textarea class="input_txtbx1" id="tempaction"  name="temporary_action" onInput="return validatename(id);" style="width:60%; height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
+               														<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" onInput="return validatename(id);" style="height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;font-style:italic;"></span>
                														 <span style="color: red;font-style:italic;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          
@@ -283,7 +283,7 @@
 															
 																		<td valign="top" align="left" class="input_txt">Disposition Responsibility: </td>
 																		<td valign="top" align="left" class="input_txt">
-																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_cmbbx1" style="width:139px;">
+																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_txtbx">
               																<option value="">--Select--</option>
 																			 <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="dispositionname" varStatus="status">
         				       												<option value="${dispositionname.name}"<c:if test="${dispositionname.name == nonconformance.name_of_disposition_responsibility}"><c:out value="selected"/></c:if>>${dispositionname.name}</option>
@@ -303,7 +303,7 @@
 																	
 																		<td valign="top" align="left" class="input_txt">Cost of NC: </td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="costofnc"
+																			type="text" class="input_txtbx" id="costofnc"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="cost_of_nonconformance"
