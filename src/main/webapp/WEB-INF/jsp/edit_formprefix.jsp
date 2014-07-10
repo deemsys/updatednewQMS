@@ -55,17 +55,17 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%">Description :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Description :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
-                   <span id="formname1" style="color:red"></span>
+                 <br>  <span id="document_id1" style="color:red"></span>  <span id="formname1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
                   </td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%">Form Prefix :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Form Prefix :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
-                     <span id="formprefix1" style="color:red"></span>
+                 <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
@@ -85,60 +85,91 @@
              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
              </form>
           <script type="text/javascript">
- function validation()
- {
-	
-	 var cap = /[A-Z]+$/;
-	 var desc = /[A-Za-z ]+$/;
-	 var formprefix = document.getElementById('formprefix').value;
-	 var formname= document.getElementById('formname').value;
-	 
-	
-	 
-	 if(formname =="")
-	 {
-	 document.getElementById("formname1").innerHTML="Required Field Should not be Empty";
-	 return false;
-	 }
- else if(formname.charAt(0)==" ")
-	 {
-	 document.getElementById("formname1").innerHTML="Required Field Should not be Spaces";
-	 return false;
-	 }
- else if(formname.match(desc))
-	 {
-	 	 document.getElementById("formname1").innerHTML="";
-	 }
- else {
-	 
-	 document.getElementById("formname1").innerHTML="Required Field Should be only Letters";
-	 return false;
-    }
-	 
-	 
-	 
-	 
-	 if(formprefix =="")
-	 {
-	 document.getElementById("formprefix1").innerHTML="Required Field Should not be Empty";
-	 return false;
-	 }
- else if(formprefix.charAt(0)==" ")
-	 {
-	 document.getElementById("formprefix1").innerHTML="Required Field Should not be Spaces";
-	 return false;
-	 }
- else if(formprefix.match(cap))
-	 {
-	 	 document.getElementById("formprefix1").innerHTML="";
-	 }
- else {
-	 
-	 document.getElementById("formprefix1").innerHTML="Required Field Should be Capital Letters";
-	 return false;
- }
- 
- }
+          $(function() {
+      		$("#formprefix").on("keypress", function(e) {
+      			if (e.which === 32 && !this.value.length)
+      		        e.preventDefault();
+      		});
+      		});
+      $(function() {
+      		$("#formname").on("keypress", function(e) {
+      			if (e.which === 32 && !this.value.length)
+      		        e.preventDefault();
+      		});
+      		});
+       function validation()
+       {
+      	
+      	var error="";
+      	 var cap = /[A-Z]+$/;
+      	 var desc = /[A-Za-z ]+$/;
+      	 var formprefix = document.getElementById('formprefix').value;
+      	 var formname= document.getElementById('formname').value;
+      	 
+      	
+      	 
+      	 if(formname =="")
+      	 {
+      	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
+      	 error="true";
+      	 }
+       else if(formname.charAt(0)==" ")
+      	 {
+      	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
+      	 error="true";
+      	 }
+      	
+       else if(formname.length<4)
+      	 {
+      	 document.getElementById("document_id1").innerHTML="Required & must be of length 4 to 32.";
+      	 error="true";
+      	 }
+      	 
+       else if(formname.match(desc))
+      	 {
+      	 	 document.getElementById("document_id1").innerHTML="";
+      	 }
+       else {
+      	 
+      	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
+      	 error="true";
+          }
+      	 
+      	 
+      	 
+      	 
+      	 if(formprefix =="")
+      	 {
+      	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
+      	 error="true";
+      	 }
+       else if(formprefix.charAt(0)==" ")
+      	 {
+      	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
+      	 error="true";
+      	 }
+       else if(formprefix.length<4)
+      	 {
+      	 document.getElementById("docprefix1").innerHTML="Required & must be of length 4 to 32.";
+      	 error="true";
+      	 }
+       else if(formprefix.match(cap))
+      	 {
+      	 	 document.getElementById("docprefix1").innerHTML="";
+      	 }
+      	 
+       else {
+      	 
+      	 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
+      	 error="true";
+       }
+      	 if(error=="true")
+      		 {
+      		 return false;
+      		 }
+       
+       }
+       
  
  </script>
 </body>

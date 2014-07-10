@@ -56,21 +56,21 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Process Id :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Process Id :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" />${process.process_id}<span class="err"><form:errors path="Process.process_id"></form:errors></span>
                   
                   </td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" />
-                    <span id="processname1"></span>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Process Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" maxlength="32" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" />
+                  <br>  <span id="processname1"></span>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Process Owner :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" />
-                     <span id="processowner1"></span>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Process Owner :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" maxlength="32"  class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" />
+               <br>      <span id="processowner1"></span>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
@@ -89,6 +89,18 @@
              </div>
              </form>
            <script type="text/javascript">
+           $(function() {
+       		$("#processname").on("keypress", function(e) {
+       			if (e.which === 32 && !this.value.length)
+       		        e.preventDefault();
+       		});
+       		});
+        $(function() {
+       		$("#processowner").on("keypress", function(e) {
+       			if (e.which === 32 && !this.value.length)
+       		        e.preventDefault();
+       		});
+       		});
  function validation()
  {
 	 var number =  /^[A-Za-z0-9]+$/;
@@ -100,10 +112,12 @@
 	 var space = "Required Field Should not be Spaces";
 	// var num = "Required Field Should be AlphaNumeric";
 	 var wds = "Required Field Should be Alphabate";
+	 var ermsg="Required and must be of length 4 to 32";
 	var msg = errord.fontcolor("red");
 	var spmsg = space.fontcolor("red");
 //	var nummsg = num.fontcolor("red");
 	var wdmsg  = wds.fontcolor("red");
+	ermsg=ermsg.fontcolor("red");
 	 if(processname==""&&processowner=="")
 		 {
 		// document.getElementById("processid1").innerHTML=msg;
@@ -165,15 +179,6 @@
 	
 	 }
 	 
-	/*  if(processid.match(number))
-		 {
-		 document.getElementById("processid1").innerHTML="";
-		 }
-	 else {
-		 document.getElementById("processid1").innerHTML=nummsg;
-		 return false;
-	 } */
-	 
 	 if(processname.match(chars))
 	 {
 	 document.getElementById("processname1").innerHTML="";
@@ -182,7 +187,11 @@
 	 document.getElementById("processname1").innerHTML=wdmsg;
 	 return false;
      } 
-	 
+	 if(processname.length<4)
+	 {
+		 document.getElementById("processname1").innerHTML=ermsg;
+		 return false;
+	 } 
 	 
 	 if(processowner.match(chars))
  	{
@@ -192,6 +201,11 @@
 	 document.getElementById("processowner1").innerHTML=wdmsg;
 	 return false;
  	}
+	 if(processowner.length<4)
+	 {
+		 document.getElementById("processowner1").innerHTML=ermsg;
+		 return false;
+	 }
  }
  
  

@@ -55,9 +55,9 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Location Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" />
-                 <span id="formlocation1" style="color:red">   </span>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Location Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" maxlength="32"  class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" />
+                <br> <span id="formlocation1" style="color:red">   </span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span>
                   <input type="hidden" name="location_id" id="locationid" value="${formlocation.location_id}"/>
                   </td>
@@ -80,6 +80,12 @@
              </form>
              
              <script type="text/javascript">
+             $(function() {
+         		$("#formlocation").on("keypress", function(e) {
+         			if (e.which === 32 && !this.value.length)
+         		        e.preventDefault();
+         		});
+         		});
  function validation()
  {
 	 var  chars = /[A-Za-z ]+$/;
@@ -94,6 +100,11 @@
 		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Spaces";
 		 return false;
 		 }
+	 else if(formlocation.length<4)
+	 {
+	 document.getElementById("formlocation1").innerHTML="Required & must be of length 4 to 32.";
+	 return false;
+	 }
 	 else if(formlocation.match(chars))
 		 {
 		 document.getElementById("formlocation1").innerHTML="";

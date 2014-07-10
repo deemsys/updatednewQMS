@@ -124,15 +124,15 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt">Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" class="input_txtbx1" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
-                   <span id="document_id1" style="color:red"></span>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Description :</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" maxlength="32" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
+                  <br> <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" >Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx1" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
-                    <span id="docprefix1" style="color:red"></span>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
+                   <br> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
@@ -151,9 +151,22 @@
  </table>
  </form>
  <script type="text/javascript">
+ $(function() {
+		$("#formprefix").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+$(function() {
+		$("#formname").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
  function validation()
  {
 	
+	var error="";
 	 var cap = /[A-Z]+$/;
 	 var desc = /[A-Za-z ]+$/;
 	 var formprefix = document.getElementById('formprefix').value;
@@ -164,13 +177,20 @@
 	 if(formname =="")
 	 {
 	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 }
  else if(formname.charAt(0)==" ")
 	 {
 	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
-	 return false;
+	 error="true";
 	 }
+	
+ else if(formname.length<4)
+	 {
+	 document.getElementById("document_id1").innerHTML="Required & must be of length 4 to 32.";
+	 error="true";
+	 }
+	 
  else if(formname.match(desc))
 	 {
 	 	 document.getElementById("document_id1").innerHTML="";
@@ -178,7 +198,7 @@
  else {
 	 
 	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
-	 return false;
+	 error="true";
     }
 	 
 	 
@@ -187,22 +207,32 @@
 	 if(formprefix =="")
 	 {
 	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 }
  else if(formprefix.charAt(0)==" ")
 	 {
 	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
-	 return false;
+	 error="true";
+	 }
+ else if(formprefix.length<4)
+	 {
+	 document.getElementById("docprefix1").innerHTML="Required & must be of length 4 to 32.";
+	 error="true";
 	 }
  else if(formprefix.match(cap))
 	 {
 	 	 document.getElementById("docprefix1").innerHTML="";
 	 }
+	 
  else {
 	 
 	 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
-	 return false;
+	 error="true";
  }
+	 if(error=="true")
+		 {
+		 return false;
+		 }
  
  }
  

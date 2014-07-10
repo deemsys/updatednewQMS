@@ -26,15 +26,15 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixdocument" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Prefix</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									Add Prefix</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentprefix_list" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Prefixes</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								View Prefixes</span>
 								</a>
 							</li>
 				          
@@ -55,22 +55,22 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Prefix:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" id="docprefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" />
+                  <td valign="middle" align="left"  >Prefix:</td>
+                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" />
                   <input type="hidden" name="id" id="id" value="${documentprefix.id}"/>
-                    <span id="docprefix1" style="color:red"></span>
+                 <br>   <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
                   
                   </td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Document ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_id" class="input_txtbx" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" />
-                    <span id="document_id1" style="color:red"></span>
+                  <td valign="middle" align="left" >Document ID :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_id" class="input_txtbx" maxlength="32" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" />
+                  <br>  <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="top" align="right">&nbsp;</td>
+                  <td valign="top" >&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
                 </tr>
              </table>
@@ -85,10 +85,23 @@
              </div>
              </form>
  <script type="text/javascript">
+ $(function() {
+		$("#docprefix").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+$(function() {
+		$("#document_id").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
   function validation()
  {
 	
-	 var cap = /[A-Z]+$/;
+	var error="";
+	  var cap = /[A-Z]+$/;
 	 var desc = /[A-Za-z ]+$/;
 	 var docprefix = document.getElementById('docprefix').value;
 	 var document_id= document.getElementById('document_id').value;
@@ -96,13 +109,18 @@
 	 if(docprefix =="")
 		 {
 		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
-		 return false;
+		 error="true";
 		 }
 	 else if(docprefix.charAt(0)==" ")
 		 {
 		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
-		 return false;
+		 error="true";
 		 }
+	 else if(docprefix.length<4)
+	 {
+	 document.getElementById("docprefix1").innerHTML="Required and must be of length 4 to 32.";
+	 error="true";
+	 }
 	 else if(docprefix.match(cap))
 		 {
 		 	 document.getElementById("docprefix1").innerHTML="";
@@ -110,20 +128,25 @@
 	 else {
 		 
 		 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
-		 return false;
+		 error="true";
 	 }
 	 
 	 
 	 if(document_id =="")
 	 {
 	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
-	 return false;
+	 error="true";
 	 }
  else if(document_id.charAt(0)==" ")
 	 {
 	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
-	 return false;
+	 error="true";
 	 }
+ else if(document_id.length<4)
+ {
+ document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 32";
+ error="true";
+ }
  else if(document_id.match(desc))
 	 {
 	 	 document.getElementById("document_id").innerHTML="";
@@ -131,8 +154,12 @@
  else {
 	 
 	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
-	 return false;
+	 error="true";
  }
+	 if(error=="true")
+		 {
+		 return false;
+		 }
  }
  
  </script>

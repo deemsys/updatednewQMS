@@ -1,6 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <html>
 <form method="post" action="add_formlocation">
   <!-- <div id="right_content" style="background-color:lightgrey;"> -->
@@ -117,9 +120,9 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt">Add Location :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_location" class="input_txtbx1" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
-                  <span id="formlocation1" style="color:red"></span>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Add Location :</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                <br>  <span id="formlocation1" style="color:red"></span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
                 </tr>
                 
@@ -140,8 +143,16 @@
   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
  </form>
  <script type="text/javascript">
+ $(function() {
+		$("#formlocation").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
  function validation()
  {
+	
+	 
 	 var  chars = /[A-Za-z ]+$/;
 	 var formlocation = document.getElementById('formlocation').value;
 	 if(formlocation == "")
@@ -152,6 +163,11 @@
 	 else if(formlocation.charAt(0) == " ")
 		 {
 		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Spaces";
+		 return false;
+		 }
+	 else if(formlocation.length<4)
+		 {
+		 document.getElementById("formlocation1").innerHTML="Required & must be of length 4 to 32.";
 		 return false;
 		 }
 	 else if(formlocation.match(chars))

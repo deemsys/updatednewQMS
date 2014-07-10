@@ -56,8 +56,8 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Document Type :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" />
-                    <span id="documenttype1" style="color:red"></span>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" />
+                  <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${documenttype.id}"/>
                   </td>
@@ -79,6 +79,12 @@
              </div>
              </form>
              <script type="text/javascript">
+             $(function() {
+         		$("#documenttype").on("keypress", function(e) {
+         			if (e.which === 32 && !this.value.length)
+         		        e.preventDefault();
+         		});
+         		});
  function validation()
  {
 	 var  chars = /[A-Za-z ]+$/;
@@ -93,6 +99,11 @@
 		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Spaces";
 		 return false;
 		 }
+	 else if(documenttype.length<4)
+	 {
+	 document.getElementById("documenttype1").innerHTML="Required and must be of length 4 to 32.";
+	 return false;
+	 }
 	 else if(documenttype.match(chars))
 		 {
 		 document.getElementById("documenttype1").innerHTML="";

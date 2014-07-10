@@ -2,6 +2,9 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -123,8 +126,8 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" >Source of NC</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="source_of_nc" class="input_txtbx1" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
-                  <span id="sourceofnc1" style="color:red"></span>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <br><span id="sourceofnc1" style="color:red"></span>
                   <span class="err" style="color:red"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
@@ -141,6 +144,12 @@
                </table>
                </form>
                <script type="text/javascript">
+               $(function() {
+             		$("#sourceofnc").on("keypress", function(e) {
+             			if (e.which === 32 && !this.value.length)
+             		        e.preventDefault();
+             		});
+             		});
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;
@@ -155,6 +164,11 @@
             		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Spaces";
           			 return false;
             		   }
+            	   else if(sourceofnc.length<4)
+        		   {
+        		   document.getElementById("sourceofnc1").innerHTML="Required and must be of length 4 to 32";
+      			 return false;
+        		   }
             	   else if(sourceofnc.match(chars))
             		   {
             		   document.getElementById("sourceofnc1").innerHTML="";

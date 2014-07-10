@@ -56,8 +56,8 @@
                   <td valign="middle" align="right" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${sources.auto_id}"/>
-                  <input type="text" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" />
-                    <span id="sourceofnc1" style="color:red"></span>
+                  <input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" />
+                   <br> <span id="sourceofnc1" style="color:red"></span>
                   <span class="err"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span>
                   
                   </td>
@@ -78,6 +78,12 @@
              </div>
              </form>
               <script type="text/javascript">
+              $(function() {
+          		$("#sourceofnc").on("keypress", function(e) {
+          			if (e.which === 32 && !this.value.length)
+          		        e.preventDefault();
+          		});
+          		});
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;
@@ -92,6 +98,11 @@
             		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Spaces";
           			 return false;
             		   }
+            	   else if(sourceofnc.length<4)
+        		   {
+        		   document.getElementById("sourceofnc1").innerHTML="Required and must be of length 4 to 32";
+      			 return false;
+        		   }
             	   else if(sourceofnc.match(chars))
             		   {
             		   document.getElementById("sourceofnc1").innerHTML="";
