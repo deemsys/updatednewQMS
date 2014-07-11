@@ -119,7 +119,7 @@
 				 -->				<td align="right" valign="middle" width="12%"> Trainer:&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
 							  
-							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Find"></td>
+							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search"></td>
 							  <!--    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
 							   --></tr>
 							  </table>
@@ -175,7 +175,7 @@
 										</c:if>
 										<c:if test="${fn:length(employeeForm.employees) == 0}">
 										<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Records Found!!!</b></span></center></td>
 							    		
 							    	</tr>
 							    	</c:if>

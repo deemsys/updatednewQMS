@@ -84,7 +84,7 @@
 								<td align="left" valign="middle"><input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
 							    <td align="left" valign="middle">&nbsp;&nbsp;Email:</td>
 							    <td align="left" valign="middle"><input type="text" name="email_address" id="email" class="input_txtbx"value="${email}"></td>
-							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Find" name="findsupplierperformance" ></td>
+							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformance" ></td>
 							  	
 							  
 							  </tr>
@@ -135,7 +135,7 @@
 						    	</c:if>
 						 <c:if test="${fn:length(supplierPerformanceForm.supplierperformance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Records Found!!!</b></span></center></td>
 							    		
 							    	</tr>
 							    	</c:if>		

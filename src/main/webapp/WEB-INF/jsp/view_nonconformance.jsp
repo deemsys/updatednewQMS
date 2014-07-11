@@ -32,7 +32,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="nonconformance_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Nonconformance Report</span>
+									<span>Reports</span>
 									
 								</a>
 							</li>
@@ -105,7 +105,7 @@
 							  --><!--    <td align="left" valign="top">Product Id:</td>
 							    <td align="left" valign="top"><input type="text" name="product_id" id="product_id" class="input_text"></td>
 							   -->
-							    <td align="center" valign="top"><input type="submit" class="submit_btn1" value="Find" name="findnonconformance"></td>
+							    <td align="center" valign="top"><input type="submit" class="submit_btn1" value="Search" name="findnonconformance"></td>
 							    
 							  </tr>
 							</table>
@@ -151,7 +151,7 @@
 
   									<c:if test="${fn:length(nonConformanceForm.nonconformance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Participants Found!!!</b></span></center></td>
 							    		
 							    	</tr>
 							    	</c:if>

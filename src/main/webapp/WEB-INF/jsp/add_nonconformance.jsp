@@ -307,7 +307,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="cost_of_nonconformance"
-																			value="${nonconformance.cost_of_nonconformance}" onInput="return validatename(id);" /><br/>
+																			value="${nonconformance.cost_of_nonconformance}" onkeypress="return validate(event)"; /><br/>
 																		<span id="cost" style="color: red;"></span>
 																		 <span style="color: red;"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors>
 																		</span>
@@ -699,9 +699,8 @@ function validatename(id)
 	document.getElementById(id).value = textInput;
 }
 </script>
-
-<script type="text/javascript">
-// Numbers only validation for disposition field
+<script>
+/* // Numbers only validation for disposition field */
        function validate(event) {
           
            var regex = new RegExp("^[0-9]+$");
@@ -721,6 +720,18 @@ function validatealphanumeric(){
     textInput = textInput.replace(/[^A-Z0-9]/g, "");
     document.getElementById("external_id").value = textInput;
 }
+</script>
+<script>
+function validate(event) {
+	   
+    var regex = new RegExp("^[0-9.]+$");
+    var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+      // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+        event.preventDefault();
+        return false;
+    }
+}  
 
 </script>
 

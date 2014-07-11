@@ -86,7 +86,7 @@
 							    <td align="left" valign="middle" width="15%">&nbsp;Actions</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1" value="${action}"></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 	</table></div></form>
 			      <form action="correctiveactions_list" method="POST"> 
@@ -126,7 +126,7 @@
         				       				 </c:if>
         				       				  <c:if test="${fn:length(correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Records Found!!!</b></span></center></td>
 							    		
 							    	</tr>
 							    	</c:if>

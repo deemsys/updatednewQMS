@@ -265,7 +265,7 @@
                 			 
                 			 
 			    	                <td valign="top" align="left" class="input_txt"> Cost of NC: </td>
-			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" onInput="return validatename(id);"  class="input_txtbx" id="costofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/>
+			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" onkeypress="return validate(event)";  class="input_txtbx" id="costofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/>
 			   	                 	<span id="cost" style="color: red;"></span>
 			   	                 <span style="color: red;"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
 				          </tr>
@@ -909,6 +909,20 @@ function validatealphanumeric(){
     textInput = textInput.replace(/[^A-Z0-9]/g, "");
     document.getElementById("external_id").value = textInput;
 }
+
+</script>
+
+<script>
+function validate(event) {
+	   
+    var regex = new RegExp("^[0-9.]+$");
+    var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+    if (!regex.test(key)) {
+      // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+        event.preventDefault();
+        return false;
+    }
+}  
 
 </script>
 
