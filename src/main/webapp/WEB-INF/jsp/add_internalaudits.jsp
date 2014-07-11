@@ -67,7 +67,7 @@
 						         	<td valign="top" align="left" class="input_txt"> Process :</td>
 						          <td valign="top" align="left">
 				                  		
-				        	 <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
+				        	 <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" style="width:200px;">
                				<option value="">--Select--</option>
                				<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                				<option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
@@ -82,7 +82,7 @@
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditee Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                 <select name="auditee_name" id="auditeename" class="input_cmbbx1" style="width:200px;">
+                 <select name="auditee_name" id="auditeename" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                <option value="<c:out value="${processes.process_owner}"/>"><c:out value="${processes.process_owner}"/></option>
@@ -131,7 +131,7 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes" id="auditor_notes" style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx"  name="auditor_notes" id="auditor_notes" style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea>
                  <br> <span id="auditornoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
