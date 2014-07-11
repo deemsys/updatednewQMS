@@ -1,13 +1,11 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <jsp:include page="header.jsp"></jsp:include>
 
-<form method="post" action="managementreviewdetails">
-  <div id="right_content">
-    <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
-      	<tr>
+<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
+	<tr>
 		<td>
 			<div>
-				<ul class="horizmenu" >
+				<ul class="horizmenu" style=" float:left;margin-left:215px; margin-top:8px;">
 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addmanagementreview" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
@@ -36,93 +34,96 @@
 	</tr>
 	<tr>
 
-        <td valign="top" align="left">
+ <div id="right_content">
+    <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table" >
+      <tr>
+        <td valign="top" align="left" style="padding:5px 0 10px 0;"></td>
+      </tr>
+      <tr>
+        <td valign="top" align="left"><div>
+         <font color="Red" size="+1"></font>
             <div class="headings altheading">
-              <h2>View Management Review </h2>
+              <h2>Management Review Details</h2>
             </div>
             <div class="contentbox">
-            <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
+            <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
-               <c:set value="${managementreviewform.managementreviewdetails[0]}" var="managementreviewdetails"> </c:set>
-               <tr class="row2">
+                
+              <c:set value="${managementreviewform.managementreviewdetails[0]}" var="managementreviewdetails"> </c:set>
+                <tr class="row2" valign="right">
 			    <td valign="middle" align="left" class="input_txt" width="20%">Review Id: </td>
-			    <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.review_id}
+			    <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.review_id}
 			    <br/><span class="err"></span></td>
-                </tr>
-                 <tr class="row1">
+               
                   <td valign="middle" align="left" class="input_txt" width="20%">Management Review Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.management_review_date}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.management_review_date}
                   <br/><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Attendee List With TITLES :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.attendee_list_with_titles}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.attendee_list_with_titles}
                   <br/><span class="err"></span></td>
-                </tr>
-                 <tr class="row1">
+               
                   <td valign="middle" align="left" class="input_txt" width="20%">Next Management Review By :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.next_management_review_by}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.next_management_review_by}
                   <br/><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Category :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.category}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.category}
                   <br/><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="20%"> Assessment :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.assessment}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.assessment}
  			        <br/><span class="err"></span></td>
-                  </tr>
-                   <tr class="row2">
+                  
                  <td valign="middle" align="left" class="input_txt" width="20%"> Report_link :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.report_link}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.report_link}
                   <br/><span class="err"></span></td>
                   </tr>
                   <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="20%">Action Needed:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.action_needed}
-               </td></td>
-                </tr>
-             
-               <tr class="row2">
+               <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.action_needed}
+               </td>
+               
                  <td valign="middle" align="left" class="input_txt" width="20%">Action Detail :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.action_detail}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.action_detail}
                    <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Action Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.action_due_date}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.action_due_date}
                   <br/><span class="err"></span></td>
-                </tr>
-                 <tr class="row2">
+              
                   <td valign="middle" align="left" class="input_txt" width="20%">Responsibility :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.responsibility}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.responsibility}
                   <br/><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
               
                <td valign="middle" align="left" class="input_txt">Completion Date:</td>
-               <td valign="top" align="left"  colspan="3">${managementreviewdetails.completion_date}
+               <td valign="top" align="left">${managementreviewdetails.completion_date}
                <br/><span class="err"></span></td>
-            </tr>
-            <tr class="row2">
+          
                   <td valign="middle" align="left" class="input_txt" width="20%">Continuous Improvement Project :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${managementreviewdetails.continuous_improvement_project}
+                  <td valign="top" align="left" class="input_txt" width="20%">${managementreviewdetails.continuous_improvement_project}
                   <br/><span class="err"></span></td>
                 </tr>
+                </table>
+                </div>
+                </div>
+                </div>
+                </td>
+                </tr>
+                </table>
+               </div>
+               </tr>
+               </table>
+               
                 
-            </table>
-            </div>
-            </div>
-            </td>
-            </tr>
-            </table>
-            </div>
-          
+                
            
-          
-            </form>
             <!--  <script type="text/javascript">
 function toggle3(value){
      

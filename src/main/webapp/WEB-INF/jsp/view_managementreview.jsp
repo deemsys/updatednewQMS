@@ -81,21 +81,18 @@
 						
 							  <tr>
 							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
-							    
-							
-							    
+							    <td align="left" valign="middle" width="10%"> <input type="text" name="review_id" class="input_txtbx" id="id" style="height:13px" value="${reviewid}" onInput="return validatename(id);"> 
+							     <br> <span id="iderror" style="color:red"></span>
+							    </td>
+							     <td align="left" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="10%"><b>Management Review Date:</b></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker"style="height:13px" value="${managementreviewdate}">
+							     <br> <span id="datepicker11" style="color:red"></span>
+							    </td>
 							    <td align="left" valign="middle" width="10%">
-							    <input type="text" name="review_id" class="input_txtbox" id="id"  value="${reviewid}"> </td>
-							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
-							    <td align="left" valign="middle" width="10%">
-							    
-							    <input type="text" name="management_review_date" class="input_txtbx2" id="datepicker" value="${managementreviewdate}"></td>
-							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
-							    <td align="left" valign="middle" width="10%">
-				                  
-							    <select name="category" class="input_cmbbx1">
-				                  		<option value="">--Select--</option>
-						                      
+							    <td align="left" valign="middle" width="8%"><b>Category:</b></td>
+							    <td align="left" valign="middle" width="10%"> <select name="category" id="category" class="input_txtbx">
+				                  		  <option value="">--Select--</option>
 						                  <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>
 						                  <option <c:if test="${categoryvalue eq 'corrective and prev actions'}"><c:out value="Selected"/></c:if> value="corrective and prev actions" >Corrective and Prev Actions</option>
 										  <option <c:if test="${categoryvalue eq 'cost of non conformance'}"><c:out value="Selected"/></c:if> value="cost of non conformance" >Cost of NonConformance</option>
@@ -108,10 +105,10 @@
 										  <option <c:if test="${categoryvalue eq 'significant changes to the QMS'}"><c:out value="Selected"/></c:if>  value="significant changes to the QMS" >Significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							   <!--  <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="Clear" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							   -->
+							  <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation();" onmouseover="showTooltip('tooltip_id','inp_id3');" />
+							  <br> <span id="searcherror" style="color:red"></span>
+							  </td>
+							
 							  </tr>
 							</table>
 						</form>
@@ -158,7 +155,7 @@
 							    </c:if>	
 							    <c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>		
@@ -229,6 +226,69 @@
 						}
 						
 
+
+</script>
+<script>
+$(function() {
+	$("#id").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+</script>
+  <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^0-9]/g, "");
+    document.getElementById(id).value = textInput;
+} 
+</script>
+<script type="text/javascript">
+function validation()
+{
+ var error = "";
+ var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+ var id = document.getElementById('id').value;
+ var datepicker = document.getElementById('datepicker').value;
+ var category = document.getElementById('category').value;
+ document.getElementById('searcherror').innerHTML = "";
+ document.getElementById('iderror').innerHTML ="";
+ document.getElementById("datepicker11").innerHTML="";
+ 	if((id =="") && (datepicker == "") && (category == ""))
+	{
+		document.getElementById('searcherror').innerHTML = "Input is Empty";
+		error = "true";
+	}
+ 	else
+ 	{
+ 		if(id.length > 0)
+ 		{
+ 			if((id.length > 32))
+ 			{
+ 				document.getElementById('iderror').innerHTML = "Required Field Should be Length 4 to 32";
+ 				error = "true";	
+ 			}
+ 		}
+ 		if(datepicker.length > 0)
+ 		{
+ 			if(datepicker.match(date))
+ 			 {
+ 				 document.getElementById("datepicker11").innerHTML="";
+ 			 }
+ 			 else
+ 			 {
+ 				 document.getElementById("datepicker11").innerHTML="Invalid Date";
+ 				 error="true";
+ 			 }
+ 		}	
+ 	}
+ 	if(error == "true")
+ 		{
+ 		return false;
+ 		}
+}
 
 </script>
  <script>

@@ -334,12 +334,12 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 			return modelAndView ;
 			
 		}
-		if(option == "1")
+		/*if(option == "1")
 		{
 			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
 			modelAndView.addObject("fields",fields);
 			return modelAndView ;
-		}
+		}*/
 		if(option == "2")
 		{
 			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);

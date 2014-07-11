@@ -74,10 +74,14 @@
 								<input type="radio" name="management_report_type" value="1" id="id_type_upcomingmanagementreviewmemo"onclick="two_dates()"/>Upcoming Management Review Memo<br/>
 								<input type="radio"  name="management_report_type" value="2" id="id_type_actionlistbetweendates" onclick="two_dates()"/>Action List Between Dates<br/>
 								<lable id ="twodates"style="display:none;">Start Date:
-                  				<input type="text" name="start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />                
-                  				End Date:
+                  				<input type="text" name="start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
+                  				  <br><span id="datepicker11" style="color:red"></span>   <br>  <br>    
+                  				End Date:&nbsp;&nbsp;
                   				<input type="text" name="end_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
+                  				 <br><span id="datepicker22" style="color:red"></span>
+                  				 <br><span id="dateerror" style="color:red"></span><br>   
                   				</lable>
+                  				
 								<input type="radio"  name="management_report_type" value="3" id="id_type_pastdueactionlist"/onclick="two_dates()">Past Due Action List<br/>
 								<input type="radio" name="management_report_type" value="4" id="id_type_listofcontinuousimprovementprojects"/onclick="two_dates()">List of Continuous Improvement Projects<br/>
 							</td>
@@ -111,7 +115,10 @@
 								<tr>
 								
 								
-								<td><input type="checkbox" id="select_all"/>Select All</td>
+								<td><input type="checkbox" id="select_all"/>Select All
+								<br><span id="reporterror" style="color:red"></span>
+								
+								</td>
 								</tr> 
 								<tr>
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="review_id" id="0"/>Review id:</td>
@@ -142,7 +149,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validation();"class="submit_btn">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn"></td>
             
@@ -162,6 +169,80 @@
 			<tr height=30><td></td></tr></table>
 
 <script type="text/javascript">
+function validation()
+{
+	var error = "";
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+	
+	var id_type_actionlistbetweendates = document.getElementById('id_type_actionlistbetweendates').checked;
+	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+	var datepicker1 = document.getElementById('datepicker1').value;
+	var datepicker2 = document.getElementById('datepicker2').value;
+	var a0 = document.getElementById('0').checked;
+	var a1 = document.getElementById('1').checked;
+	var a2 = document.getElementById('2').checked;
+	var a3 = document.getElementById('3').checked;
+	var a4 = document.getElementById('4').checked;
+	var a5 = document.getElementById('5').checked;
+	var a6 = document.getElementById('6').checked;
+	var a7 = document.getElementById('7').checked;
+	var a8 = document.getElementById('8').checked;
+	var a9 = document.getElementById('9').checked;
+	var a10 = document.getElementById('10').checked;
+	var a11 = document.getElementById('11').checked;
+	
+	
+	document.getElementById('dateerror').innerHTML = "";
+	document.getElementById("datepicker11").innerHTML = "";
+	document.getElementById("datepicker22").innerHTML= "";
+	document.getElementById("reporterror").innerHTML= "";
+	
+ 	if(id_type_actionlistbetweendates)
+	{
+		if((datepicker1 == "") || (datepicker2 == ""))
+		{
+			document.getElementById('dateerror').innerHTML = "Please Pickup the Start and End Date";
+				error = "true";	
+		}
+		else 
+		{
+			if(!datepicker1.match(date))
+				{
+				 document.getElementById("datepicker11").innerHTML="Invalid Date";
+ 				 error="true";
+				}
+			if(!datepicker2.match(date))
+			{
+			 document.getElementById("datepicker22").innerHTML="Invalid Date";
+				 error="true";
+			}
+		}
+		
+	}
+ 	else
+ 	{
+ 		document.getElementById('dateerror').innerHTML = "";
+ 	}
+ 	
+ 	if(id_type_userdefined)
+ 	{
+ 		if(a0 || a1 || a2 || a3 || a4 || a5 || a6 || a7 || a8 || a9 || a10 || a11)
+ 		{
+ 			document.getElementById("reporterror").innerHTML= "";
+ 		}
+ 		else
+ 		{
+ 			document.getElementById("reporterror").innerHTML= "Please Select Atleast one";
+ 			error = "true";	
+ 		}
+ 		
+ 	}
+	if(error == "true")
+	{
+		return false;
+	}
+
+}
 function toggle2(value){
     var e3=document.getElementById("report_type_table");
 if(value=="report_list_by_type")

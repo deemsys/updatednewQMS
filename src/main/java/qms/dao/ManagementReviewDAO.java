@@ -61,6 +61,7 @@ public class ManagementReviewDAO extends AbstractITextPdfView
 			@SuppressWarnings("unchecked")
 	    List<ManagementReview> managementReviews = (List<ManagementReview>) model.get("managementReviews");
 		String[] fields=(String[])model.get("fields");
+		
 		int memolist = fields.length;
 		System.out.println(memolist);
        PdfPTable table=new PdfPTable(memolist+1);
@@ -75,6 +76,7 @@ public class ManagementReviewDAO extends AbstractITextPdfView
 			if(value == "0")
 			{
 				for (String field : fields) {
+					System.out.println("fiellds"+field);
 					if(field.equals("management_review_date"))
 					{
 						width[i] = 1.0f;
@@ -96,6 +98,7 @@ public class ManagementReviewDAO extends AbstractITextPdfView
 			{
 				for (String field : fields)
 				{
+					System.out.println("fiellds"+field);
 					if(field.equals("responsibility"))	
 					{
 						width[i] = 1.0f;
@@ -119,6 +122,7 @@ public class ManagementReviewDAO extends AbstractITextPdfView
 			}
 			else{
 				for (String field : fields) {
+					System.out.println("fiellds"+field);
 					 if(field.equals("review_id"))
 						{
 								width[i] = 1.0f;
@@ -1171,7 +1175,7 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date ='"+currentdate+"')";			
 		
 		else if (type.equals("upcoming_management_review_memo")) {
-			String s = "select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '+olddate+' AND '+currentdate+')" ;
+			String s = "select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '"+olddate+"' AND '"+currentdate+"')" ;
 			System.out.println(s);
 			cmd_select="select t1.*,t2.* from tbl_managementreviewmain as t1 join tbl_managementreviewchild as t2 on t1.review_id=t2.review_id where ( t1.management_review_date BETWEEN '"+olddate+"' AND '"+currentdate+"')" ;				
 		}

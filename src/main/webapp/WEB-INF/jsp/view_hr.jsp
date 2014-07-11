@@ -74,9 +74,8 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="right" valign="middle" width="10%"> Type&nbsp;</td>
-							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
-							     -->
-							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+							 
+							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" id="type"class="input_txtbx">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
@@ -89,8 +88,8 @@
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
-							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+							     <td align="right" valign="middle" width="12%">QualifiedBy: </td>
+							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx" id="qualified">
                   											<option value="">--Select--</option>
 				                  									
                   										<option
@@ -107,15 +106,18 @@
 															value="Training">Training</option>
 														
 															</select><span class="err"><form:errors path="HRandTraining.qualified_by"></form:errors></span></td>
-                <!-- 
-							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
-				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer" value="${trainer}"></td>
+               				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}" onInput="return  validatename(id);">
+							     <br><span id="trainererror" style="color:red"></span>
+							    </td>
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
 	 -->						  
-							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Find"></td>
-							     <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
+							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search" onclick="return validation();">
+							    <br><span id="searcherror" style="color:red"></span>
+							    
+							    </td>
+							  <!--    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td> -->
 							  </tr>
 							  </table>
 							  </form>
@@ -170,7 +172,7 @@
 										</c:if>
 										<c:if test="${fn:length(hRandTrainingForm.hRandTrainings) == 0}">
 										<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>
@@ -219,7 +221,57 @@
 						    	</table>
 						    	</div>
 						 
+<script>
+$(function() {
 
+	$("#trainer").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+	</script>
+  <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
+<script type="text/javascript">
+function validation()
+{
+	var error ="";
+  var type= document.getElementById('type').value;
+  var trainer = document.getElementById('trainer').value;
+  var qualified = document.getElementById('qualified').value;
+  document.getElementById("trainererror").innerHTML="";
+  document.getElementById("searcherror").innerHTML="";
+  if(type == "" && trainer == "" && qualified == "")
+	  {
+	  document.getElementById("searcherror").innerHTML="Input is Empty";
+		 error="true";
+	  }
+  else
+	 {
+	   if(trainer.length > 0)
+		{
+		   if(trainer.length < 4  || trainer.length > 32)
+			   {
+			   document.getElementById("trainererror").innerHTML="Required Field Should be Length 4 to 32";
+				 error="true";
+			   }
+		}   
+	 }
+  	if(error == "true")
+  		{
+  		alert("ssfsdf");
+  		return false;
+  		}
+}
+
+</script>
 <script>
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?")

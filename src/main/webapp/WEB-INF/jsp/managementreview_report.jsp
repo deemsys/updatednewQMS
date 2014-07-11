@@ -155,6 +155,7 @@
 
 
 <script type="text/javascript">
+
 function toggle2(value){
     var e3=document.getElementById("report_type_table");
 if(value=="report_list_by_type")
