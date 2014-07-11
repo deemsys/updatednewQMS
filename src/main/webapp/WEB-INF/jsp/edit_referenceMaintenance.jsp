@@ -24,8 +24,8 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_referenceMaintenance" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Reference Attachment</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add Reference Attachment</span>
 									
 								</a>
 							</li>

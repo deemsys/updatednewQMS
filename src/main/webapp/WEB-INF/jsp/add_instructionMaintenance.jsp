@@ -81,28 +81,28 @@
 							</li>	
 				           </ul>
 				           <ul class="horizmenu" style=" float:left;margin-left:205px;margin-bottom:5px;">
-							<li  style=" float:left;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addtypenc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Type of NC</span>
 									
 								</a>
 							</li>	
-							<li  style=" float:left;text-transform:uppercase;">
+						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addproductidnc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Product ID</span>
 									
 								</a>
 							</li>	
-							<li  style=" float:left;text-transform:uppercase;">
+						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_referenceMaintenance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Reference Attachment</span>
 									
 								</a>
 							</li>
-							<li  style=" float:left;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_instructionMaintenance" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									<span>Instruction Attachment</span>
@@ -136,7 +136,7 @@
              <td align="right">
              <input align="left" class="submit_btn1" type="submit" id="submit"  name="submit" value="Submit" ></td>
              <td>
-              <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td>
+             <!--  <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td> -->
            
               </tr>
                </table>

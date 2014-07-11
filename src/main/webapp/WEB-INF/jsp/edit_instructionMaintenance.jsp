@@ -24,8 +24,8 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_instructionMaintenance" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Reference Attachment</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add Reference Attachment</span>
 									
 								</a>
 							</li>
@@ -61,16 +61,16 @@
               		<td></td>
               		</tr>
               		<tr class="row1">
-              		<td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%"></td>
-              		<td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
+              	
+              		<td valign="middle" align="right" id="id_location_txt" class="input_txt" width="55%">
               		<input type="hidden" name="auto_id" value="${reference.auto_id}"/>
               		<input name="filename" type="hidden" id="file_name"/>${reference.attachment_name}
                <input name="attachments" id="id_file" type="file" value="${reference.attachment_name }"/>
                
                 </tr>
                   <tr class="row1">
-                  <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" class="submit_btn1"></td>
+                 
+                  <td valign="top" align="right"><input type="submit" value="Submit" class="submit_btn1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 </tr>
              </table>
              </td>

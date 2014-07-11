@@ -6,7 +6,7 @@
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet"  type="text/css" />
 <style>
 .errorblock {
-	color: #eaeaea;
+	color: #eaeaea; 
 	background-color: #eaeaea;
 	border: 3px solid #eaeaea;
 	padding: 8px;
@@ -47,7 +47,7 @@
 		        <p><font color="#993300">Email ID &nbsp;&nbsp;&nbsp;:</font></p>
 		     </td>
 		     
-		       <td valign="top" align="left"> <input type="text" class="inputbx1" style="border:solid 1px brown;" name="j_username" value=''>
+		       <td valign="top" align="left">&nbsp;<input type="text" class="inputbx1" style="border:solid 1px brown;" name="j_username" value=''>
 		       
 				<p><font color="#993300"></font></p></td>
 		      </table>

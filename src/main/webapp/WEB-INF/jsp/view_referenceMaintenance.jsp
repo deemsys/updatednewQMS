@@ -59,21 +59,21 @@
 									<span>Revision Level</span>
 								</a>
 							</li> --%>
-							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="sourceNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Source of NC</span>
 									
 								</a>
 							</li>	
-				          <li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="typeNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Type of NC</span>
 									
 								</a>
 							</li>
-							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="productidNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Product ID</span>
@@ -82,7 +82,7 @@
 							</li>	
 							</ul>
 							 <ul class="horizmenu" style="margin-bottom:5px;">	
-								<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="reportNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Report NC</span>
@@ -188,7 +188,7 @@
         				       				 </c:if>
         				       				   <c:if test="${fn:length(referenceMaintenance_Form.references) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>
