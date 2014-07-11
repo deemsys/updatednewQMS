@@ -265,20 +265,21 @@ public class MaintenanceDAO extends AbstractITextPdfView
 					else if(field.equals("maintenance_frequency"))	
 					{
 						String maintances =" ";
-						if(maintenance.getWeekly().equals("yes"))
+						System.out.println(maintenance.getWeekly()+" "+maintenance.getMonthly()+" ");
+						if(maintenance.getWeekly().equals("weekly"))
 						{
-							maintances =maintances+"Weekly,";
+							maintances =maintances+"Weekly"+"\r";
 						}
-						if(maintenance.getMonthly().equals("yes")){
-							maintances =maintances+"Monthly,";
+						if(maintenance.getMonthly().equals("monthly")){
+							maintances =maintances+"Monthly"+"\r";
 						}
-						if(maintenance.getQuarterly().equals("yes")){
-							maintances =maintances+"Quarterly,";
+						if(maintenance.getQuarterly().equals("quarterly")){
+							maintances =maintances+"Quarterly"+"\r";
 						}
-						if(maintenance.getSemiannually().equals("yes")){
-							maintances =maintances+"Semi-Annually,";
+						if(maintenance.getSemiannually().equals("semi-annually")){
+							maintances =maintances+"Semi-Annually"+"\r";
 						}
-						if(maintenance.getAnnually().equals("yes")){
+						if(maintenance.getAnnually().equals("annually")){
 							maintances =maintances+"Annually";
 						}
 						table.addCell(createValueCell(maintances));
@@ -286,7 +287,7 @@ public class MaintenanceDAO extends AbstractITextPdfView
 					}else if(field.equals("reference"))	
 					{
 						String r1,r2,r3,r4,r5 ="";
-						System.out.println("reference ="+maintenance.getReference1());
+						
 						if(maintenance.getReference1().equals("null"))
 							r1="";
 						else

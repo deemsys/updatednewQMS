@@ -7,7 +7,7 @@
       <tr>
       <td>
       <div>
-  <ul class="horizmenu">
+  <ul class="horizmenu" style=" float:left;margin-left:205px; margin-top:8px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_maintenance" class="<c:choose>
@@ -35,12 +35,19 @@
       </tr>
      
       <tr>
-        <td valign="top" align="left"><div>
+        <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>View Maintenance & Callibration</h2>
+              <h2>Maintenance and Calibration Details</h2>
             </div>
-            <div class="contentbox">
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            
+    <div class="contentbox">
+       <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:15px;">
+        <div>
+           <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+              <tr>
+			<td align="left" valign="top" width="50%" style="padding-right: 35px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+               
                <c:set value="${maintenanceForm.maintenance[0]}" var="maintenance"> </c:set>
                <tr class="row2">
 
@@ -60,6 +67,11 @@
                   <td valign="middle" align="left" class="input_txt" width="20%">Serial Number :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${maintenance.serial_number}</br><span class="err"></span></td>
                 </tr>
+                  </table>
+						         </td>
+						         <td align="left" valign="top">
+						         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Date Acquired :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${maintenance.date_acquired}</br><span class="err"></span></td>
@@ -81,17 +93,20 @@
                <td valign="top" align="left" class="input_txt" width="70%">${maintenance.calibration}
                </td>
                 </tr>
-              
-
-                <tr>
-             <td colspan="4">
-            <!--  <div id="child_table" style="display:none;"> -->
-             <table cellpadding="0" cellspacing="0" border="0" width="100%" >
+                 </table>
+             </td>
+              </tr>
             
-        <!--  <tr class="row2">
-                  <td valign="middle" align="right" class="input_txt" width="30%">Equipment Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"></span></td>
-                </tr> -->
+            
+        </table>
+        </div>
+       
+         <div>
+         <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="20%"> Type of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${maintenance.type_of_maintenance}
@@ -100,17 +115,29 @@
                   </tr>
                    <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Maintenance Frequency :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.maintenance_frequency}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.weekly}</br>${Maintenance.monthly}</br>${maintenance.quarterly}<br>
+                  ${maintenance.semiannually}<br>${maintenance.annually}
+                  
+                  
+                  
+                  
+                  <span class="err"></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Reference :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.reference}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.reference1}</br>${maintenance.reference2}</br>
+                  ${maintenance.reference3}</br>${maintenance.reference4}</br>${maintenance.reference5}</br><span class="err"></span></td>
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt">Instructions:</td>
+               <td valign="middle" align="left" class="input_txt">Instructions(Optional):</td>
                <td valign="top" align="left"  colspan="3">${maintenance.instructions}<br/><span class="err"></span></td>
             </tr>
+              </table>
+        </td> 
+           <td>
+           <table>
+           
             <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">${maintenance.due_date}</br><span class="err"></span></td>
@@ -128,19 +155,22 @@
                <td valign="middle" align="left" class="input_txt">Notes:</td>
                <td valign="top" align="left"  colspan="3">${maintenance.notes}<br/><span class="err"></span></td>
             </tr>
+         </table>
+         </td>
+         </tr>
+         </table>
+         </div>
+         </div>
+         </div>
+         </div>
+         </td>
+         </tr>
+         </table>
+         </div>
+         </form>
             
                 
-            </table>
-            </div>
-            </td>
-            </tr>
-            </table>
-            </div>
-            </div>
-            </td>
-            </tr>
-            </table></div>
-            </form>
+         
             <!--  <script type="text/javascript">
 function toggle3(value){
      

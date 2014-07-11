@@ -96,9 +96,9 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${cust_id}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" onInput="return validatename2(id);"value="${cust_id}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${name}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${name}"onInput="return validatename(id);"></td>
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2" value="${address}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
@@ -200,7 +200,45 @@
 		</table> 
 
 </div>
+ <script>
+$(function() {
 
+	$("#id").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+	
+$(function() {
+	$("#name").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+$(function() {
+	$("#address").on("keypress", function(e) {
+	
+	if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+});
+});
+</script>
+ <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+function validatename2(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[A-Z0-9]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
 <script>
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?")
