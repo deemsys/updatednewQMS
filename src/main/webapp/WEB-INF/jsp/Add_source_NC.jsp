@@ -125,8 +125,8 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" >Source of NC</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="50%" >Source of NC :</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="validateAlpha4()" value="" />
                   <br><span id="sourceofnc1" style="color:red"></span>
                   <span class="err" style="color:red"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span></td>
                 </tr>
@@ -150,6 +150,12 @@
              		        e.preventDefault();
              		});
              		});
+              
+                 function validateAlpha4(){
+               	    var textInput = document.getElementById("sourceofnc").value;
+               	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+               	    document.getElementById("sourceofnc").value = textInput;
+               	}
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;

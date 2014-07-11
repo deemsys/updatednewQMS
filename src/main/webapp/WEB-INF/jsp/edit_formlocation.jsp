@@ -26,15 +26,15 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_formlocation" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Location</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add Location</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formlocation_list" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Locations</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span>View Locations</span>
 								</a>
 							</li>
 				          
@@ -56,7 +56,7 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="left" class="input_txt" width="30%">Location Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" maxlength="32"  class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" maxlength="32"  class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" onInput="validateAlpha4()" />
                 <br> <span id="formlocation1" style="color:red">   </span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span>
                   <input type="hidden" name="location_id" id="locationid" value="${formlocation.location_id}"/>
@@ -86,6 +86,11 @@
          		        e.preventDefault();
          		});
          		});
+             function validateAlpha4(){
+         	    var textInput = document.getElementById("formlocation").value;
+         	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+         	    document.getElementById("formlocation").value = textInput;
+         	}
  function validation()
  {
 	 var  chars = /[A-Za-z ]+$/;
@@ -120,4 +125,4 @@
        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>         
 
 
- <jsp:include page="footer.jsp"></jsp:include>    
+   

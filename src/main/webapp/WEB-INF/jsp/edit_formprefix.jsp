@@ -26,15 +26,15 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_prefixform" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Prefix</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add Prefix</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="formprefix_list" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Prefixes</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span >View Prefixes</span>
 								</a>
 							</li>
 				          
@@ -56,7 +56,7 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="left" class="input_txt" width="30%">Description :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
                  <br>  <span id="document_id1" style="color:red"></span>  <span id="formname1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
@@ -64,7 +64,7 @@
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
                  <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
@@ -97,6 +97,16 @@
       		        e.preventDefault();
       		});
       		});
+      function validateAlpha(){
+    	    var textInput = document.getElementById("formprefix").value;
+    	    textInput = textInput.replace(/[^A-Z ]/g, "");
+    	    document.getElementById("formprefix").value = textInput;
+    	}
+    	function validateAlpha1(){
+    	    var textInput = document.getElementById("formname").value;
+    	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    	    document.getElementById("formname").value = textInput;
+    	}
        function validation()
        {
       	
@@ -174,5 +184,5 @@
  </script>
 </body>
 
-  <jsp:include page="footer.jsp"></jsp:include> 
+ 
 </html>

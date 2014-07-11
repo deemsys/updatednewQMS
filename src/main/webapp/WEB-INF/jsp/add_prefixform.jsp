@@ -125,13 +125,13 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" maxlength="32" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" maxlength="32" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
                   <br> <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" >Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" />
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
                    <br> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
@@ -163,6 +163,16 @@ $(function() {
 		        e.preventDefault();
 		});
 		});
+function validateAlpha(){
+    var textInput = document.getElementById("formprefix").value;
+    textInput = textInput.replace(/[^A-Z ]/g, "");
+    document.getElementById("formprefix").value = textInput;
+}
+function validateAlpha1(){
+    var textInput = document.getElementById("formname").value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById("formname").value = textInput;
+}
  function validation()
  {
 	

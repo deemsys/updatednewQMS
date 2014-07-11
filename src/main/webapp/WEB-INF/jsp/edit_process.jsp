@@ -27,15 +27,15 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_process" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Process</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add Process</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="process_list" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View Process</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span >View Process</span>
 								</a>
 							</li>
 				          
@@ -63,13 +63,13 @@
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" maxlength="32" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" maxlength="32" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onInput="validateAlpha1()" />
                   <br>  <span id="processname1"></span>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Process Owner :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" maxlength="32"  class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" maxlength="32"  class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onInput="validateAlpha2()" />
                <br>      <span id="processowner1"></span>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
@@ -101,6 +101,22 @@
        		        e.preventDefault();
        		});
        		});
+       		function validateAlpha(){
+	    var textInput = document.getElementById("processid").value;
+	    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+	    document.getElementById("processid").value = textInput;
+	}
+ function validateAlpha1(){
+	    var textInput = document.getElementById("processname").value;
+	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+	    document.getElementById("processname").value = textInput;
+	}
+ function validateAlpha2(){
+	    var textInput = document.getElementById("processowner").value;
+	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+	    document.getElementById("processowner").value = textInput;
+	}
+ 
  function validation()
  {
 	 var number =  /^[A-Za-z0-9]+$/;

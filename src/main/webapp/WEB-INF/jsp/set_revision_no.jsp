@@ -126,7 +126,7 @@
                 <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" >Revision Format:</td>
 																		<td valign="top" align="left" class="input_txt">
-																		 <select id="decimalno" name="first" class="input_cmbbx1" style="width:200px;">
+																		 <select id="decimalno" name="first" class="input_txtbx" style="width:200px;">
              
               <option value="">--Select--</option>
                <option value="integer">Integer</option>
@@ -136,7 +136,7 @@
 																		
 																		</td>
 																		<td valign="top" align="left" class="input_txt">
-																		 <select id="floorno" name="second" class="input_cmbbx1" style="width:200px;">
+																		 <select id="floorno" name="second" class="input_txtbx" style="width:200px;">
              <option value="">--Select--</option>
                <option value="integer">Integer</option>
                <option value="alpha">Alphabet</option>

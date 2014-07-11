@@ -26,15 +26,15 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_documenttype" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add DocumentType</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add DocumentType</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documenttype_list" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">View DocumentType</span>
+								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span >View DocumentType</span>
 								</a>
 							</li>
 				          
@@ -55,8 +55,8 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Document Type :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" />
+                  <td valign="top" align="left" class="input_txt" width="30%">Document Type&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" onInput="validateAlpha4();"/>
                   <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${documenttype.id}"/>
@@ -85,6 +85,11 @@
          		        e.preventDefault();
          		});
          		});
+             function validateAlpha4(){
+         	    var textInput = document.getElementById("documenttype").value;
+         	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+         	    document.getElementById("documenttype").value = textInput;
+         	}
  function validation()
  {
 	 var  chars = /[A-Za-z ]+$/;

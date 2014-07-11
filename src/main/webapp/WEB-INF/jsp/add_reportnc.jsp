@@ -114,16 +114,16 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
-			<table cellpadding="0" cellspacing="0" border="0">
+			<table cellpadding="0" cellspacing="0" border="0" >
       <%--           <tr class="row2">
                 <!--   <td valign="middle" align="left" class="input_txt" >ID</td> -->
                   <td valign="top" align="left" class="input_txt" ><input type="hidden" name="id" class="input_txtbx1" id="id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${id}" /><span class="err"><form:errors path="ReportedByNC.id"></form:errors></span></td>
                 </tr>
                 
        --%>          <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" >Type of NC</td>
-                  <td valign="middle" align="left" class="input_txt" >
-                  <select name="type_of_nc"  class="input_cmbbx1" id="typeofNc"style="width:100%;border:none;background-color:lightgrey;">
+                  <td valign="top" align="left" class="input_txt" width="20%">Type of NC :</td>
+                  <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;">
+                  <select name="type_of_nc"  class="input_txtbx" id="typeofNc" style="border:none;background-color:lightgrey;">
                                										<option value="">--Select--</option>
 						                    							<option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
 																		<option <c:if test="${reportedByNCs.type_of_nc eq 'Service Quality'}"><c:out value="Selected"/></c:if>value="Service Quality">Service Quality</option>
@@ -133,21 +133,25 @@
         				       <option value="<c:out value="${type_of_NCs.type_of_nc}"/>"><c:out value="${type_of_NCs.type_of_nc}"/></option>
 			                  </c:forEach>
                </select>
-               <span id="typeofNc1" style="color:red"></span>
+             <br>  <span id="typeofNc1" style="color:red"></span>
                <span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
                
-                  <td valign="middle" align="left" class="input_txt" >Group Person</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" class="input_txtbx1" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
-                   <span id="groupperson1" style="color:red"></span>
+                  <td valign="top" align="left" class="input_txt" width="20%">Group Person :</td>
+                  <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()"/>
+                 <br>  <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
+                <tr height="10"></tr>
                  <tr class="row1">
-                  <td valign="top" align="left">&nbsp;</td>
+                  <td valign="top" align="left" width="20%">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
+              <td></td><td></td> <td width="40%"></td>
                 </tr>
+               <tr style="height: 250%"><td ></td></tr>
                </table>
                </td>
                </tr>
+               
                </table>
                </div>
                </td>
@@ -155,6 +159,11 @@
                </table>
                </form>
                <script type="text/javascript">
+               function validateAlpha4(){
+            	    var textInput = document.getElementById("groupperson").value;
+            	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+            	    document.getElementById("groupperson").value = textInput;
+            	}
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;
@@ -171,12 +180,17 @@
             	   
             	 if(groupperson == "")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Requried field should not be Empty";
+            		   document.getElementById("groupperson1").innerHTML="Required field should not be Empty";
          			 	return false;
             		   }
+            	 else if(groupperson.length<4)
+      		   {
+      		   document.getElementById("groupperson1").innerHTML="Required and must be of length 4 to 32";
+  			 	return false;
+      		   }
             	   else if(groupperson.charAt(0)==" ")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Requried field should not be Spaces";
+            		   document.getElementById("groupperson1").innerHTML="Required field should not be Spaces";
         			 	return false;
             		   }
             	   else if(groupperson.match(chars))
@@ -186,7 +200,7 @@
             		   }
             	   else
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Requried field should be letters";
+            		   document.getElementById("groupperson1").innerHTML="Required field should be letters";
        			 		return false;
             		   }
             	   
@@ -195,4 +209,3 @@
    
 </body>
 </html>
-<jsp:include page="footer.jsp"></jsp:include>

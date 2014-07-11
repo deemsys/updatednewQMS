@@ -119,7 +119,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Add Document Type :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" />
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"  onInput="validateAlpha4();"/>
                 <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
                 </tr>
@@ -140,6 +140,11 @@
  </table>
  </form>
  <script type="text/javascript">
+ function validateAlpha4(){
+	    var textInput = document.getElementById("documenttype").value;
+	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+	    document.getElementById("documenttype").value = textInput;
+	}
  $(function() {
 		$("#documenttype").on("keypress", function(e) {
 			if (e.which === 32 && !this.value.length)

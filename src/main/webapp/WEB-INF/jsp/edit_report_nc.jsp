@@ -53,11 +53,11 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
              
-                  <td valign="middle" align="left" class="input_txt" width="30%">Type of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Type of NC&nbsp;:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                      <input type="hidden" name="auto_id" value="${reportedByNCs.auto_id}"/>
                   
-				                  		<select name="type_of_nc" id="typeofNc" class="input_cmbbx1">
+				                  		<select name="type_of_nc" id="typeofNc" class="input_txtbx" style="border:none;background-color:lightgrey;">
 						                    <option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
 											<option <c:if test="${reportedByNCs.type_of_nc eq 'Service Quality'}"><c:out value="Selected"/></c:if>  value="Service Quality">Service Quality</option>
 											<option  <c:if test="${reportedByNCs.type_of_nc eq 'Late Delivery'}"><c:out value="Selected"/></c:if>  value="Late Delivery">Late Delivery</option>
@@ -72,8 +72,8 @@
 		<tr class="row1">
                   
                 
-                  <td valign="middle" align="left" class="input_txt" >Group Person</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" class="input_txtbx1" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reportedByNCs.group_person}" />
+                  <td valign="middle" align="left" class="input_txt" >Group Person&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" maxlength="32" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reportedByNCs.group_person}" onInput="validateAlpha4()"/>
                      <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
@@ -93,6 +93,11 @@
              </div>
              </form>
                  <script type="text/javascript">
+                 function validateAlpha4(){
+             	    var textInput = document.getElementById("groupperson").value;
+             	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+             	    document.getElementById("groupperson").value = textInput;
+             	}
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;
@@ -117,6 +122,11 @@
             		   document.getElementById("groupperson1").innerHTML="Requried field should not be Spaces";
         			 	return false;
             		   }
+            	   else if(groupperson.length<4)
+          		   {
+          		   document.getElementById("groupperson1").innerHTML="Required and must be of length 4 to 32";
+      			 	return false;
+          		   }
             	   else if(groupperson.match(chars))
             		   {
             		   document.getElementById("groupperson1").innerHTML="";
@@ -131,5 +141,5 @@
                }
                </script>
 </body>
-<jsp:include page="footer.jsp"></jsp:include> 
+
 </html>

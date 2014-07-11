@@ -124,14 +124,14 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" width="50%" class="input_txt">Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.id}" />
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.id}" onInput="validateAlpha();"/>
                 <br>  <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" >Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx3" maxlength="32" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx3" maxlength="32" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" onInput="validateAlpha1();"/>
                  <br>   <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
@@ -163,9 +163,22 @@
 		        e.preventDefault();
 		});
 		});
+ 
+ 
+ function validateAlpha(){
+	    var textInput = document.getElementById("docprefix").value;
+	    textInput = textInput.replace(/[^A-Z ]/g, "");
+	    document.getElementById("docprefix").value = textInput;
+	}
+ function validateAlpha1(){
+	    var textInput = document.getElementById("document_id").value;
+	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+	    document.getElementById("document_id").value = textInput;
+	}
  function validation()
  {
 	
+	 
 	 var error="";
 	 var cap = /[A-Z]+$/;
 	 var desc = /[A-Za-z ]+$/;

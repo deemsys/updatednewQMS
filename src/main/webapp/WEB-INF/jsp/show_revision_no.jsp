@@ -68,7 +68,6 @@
 								<a href="addtypenc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Type of NC</span>
-									
 								</a>
 							</li>
 								<%-- 	<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
@@ -122,14 +121,14 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
-			<table cellpadding="0" cellspacing="0" border="0">
+			<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
       
         <c:set value="${revision_No_Form.revision_Nos[0]}" var="revision"/>   
               <tr class="row2">
                
-																		              <td valign="middle" align="left" class="input_txt" >Revision Format:</td>
+																		              <td valign="middle" align="left" class="input_txt"  >Revision Format :</td>
 																		<td valign="top" align="left" class="input_txt">
-																		 <select id="decimalno" name="first" class="input_cmbbx1" style="width:200px;">
+																		 <select id="decimalno" name="first" class="input_txtbx" style="width:200px;">
              
               <option value="">--Select--</option>
                <option value="integer"<c:if test="${revision.first=='integer'}"><c:out value="Selected"/></c:if>>Integer</option>
@@ -139,7 +138,7 @@
 																		
 																		</td>
 																		<td valign="top" align="left" class="input_txt">
-																		 <select id="floorno" name="second" class="input_cmbbx1" style="width:200px;">
+																		 <select id="floorno" name="second" class="input_txtbx" style="width:200px;">
              <option value="">--Select--</option>
                <option value="integer"<c:if test="${revision.second=='integer'}"><c:out value="Selected"/></c:if>>Integer</option>
                <option value="alpha"<c:if test="${revision.second=='alpha'}"><c:out value="Selected"/></c:if>>Alphabet</option>
@@ -149,12 +148,13 @@
 																		</td>
      
      </tr>
-       </table>
+      
        <tr class="row1">
-              <td colspan="1" align="right">
-             <input type="submit" id="export"  name="export" value="Submit" onclick="return validation();"class="submit_btn1"></td>
-             <td colspan="1">
-            <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+            <td></td>  <td >
+             <input type="submit" id="export" style="align:center;"  name="export" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+            <!--  <td colspan="1">
+            <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td> -->
+<td></td><td></td>
 </tr>
        </td>
        </tr>

@@ -2,6 +2,9 @@
     pageEncoding="ISO-8859-1"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
+ <link rel="stylesheet" href="resources/css/jquery-ui.css"type="text/css" />
 <jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -126,9 +129,9 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" >Product Id</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" class="input_txtbx1" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
-                   <span id="productidnc1" style="color:red"></span>
+                  <td valign="top" align="left" class="input_txt"  width="50%">Product Id :</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" maxlength="32" class="input_txtbx" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()" />
+                  <br> <span id="productidnc1" style="color:red"></span>
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
@@ -145,6 +148,17 @@
                </table>
                </form>
     <script type="text/javascript">
+    $(function() {
+  		$("#productidnc").on("keypress", function(e) {
+  			if (e.which === 32 && !this.value.length)
+  		        e.preventDefault();
+  		});
+  		});
+      function validateAlpha4(){
+    	    var textInput = document.getElementById("productidnc").value;
+    	    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+    	    document.getElementById("productidnc").value = textInput;
+    	}
                function validation()
                {
             	   var number = /^[A-Z0-9]+$/;
@@ -154,11 +168,17 @@
             		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Empty";
             			 return false;
             		   }
+            	   
             	   else if(productidnc.charAt(0)==" ")
             		   {
             		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Spaces";
           			 return false;
             		   }
+            	   else if(productidnc.length<4)
+        		   {
+        		   document.getElementById("productidnc1").innerHTML="Required and must be of length 4 to 32";
+        			 return false;
+        		   }
             	   else if(productidnc.match(number))
             		   {
             		   document.getElementById("productidnc1").innerHTML="";

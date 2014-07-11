@@ -24,15 +24,15 @@
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addtypenc" class="<c:choose>
-								<c:when test="${menu==''}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blue">Add Type of NC</span>
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+									<span >Add Type of NC</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="typeNC_list" class="<c:choose>
-								<c:when test="${menu=='admin'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>">
-									<span class="buttonsub blueactive">View Type of NC</span>
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									<span >View Type of NC</span>
 								</a>
 							</li>
 				          
@@ -53,11 +53,11 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%">Type of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${types.auto_id}"/>
-                  <input type="text" name="type_of_nc" class="input_txtbx" id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${types.type_of_nc}" />
-                  <span id="typeofnc1" style="color:red"></span>
+                  <input type="text" name="type_of_nc"  maxlength="32" class="input_txtbx"  id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${types.type_of_nc}" onInput="validateAlpha4()" />
+                 <br> <span id="typeofnc1" style="color:red"></span>
                   <span class="err"><form:errors path="Type_of_NC.type_of_nc"></form:errors></span>
                   
                   </td>
@@ -74,10 +74,22 @@
              </div>
              </td>
              </tr>
+             <tr><td height="350"></td></tr>
              </table>
              </div>
              </form>
             <script type="text/javascript">
+            $(function() {
+          		$("#typeofnc").on("keypress", function(e) {
+          			if (e.which === 32 && !this.value.length)
+          		        e.preventDefault();
+          		});
+          		});
+              function validateAlpha4(){
+            	    var textInput = document.getElementById("typeofnc").value;
+            	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+            	    document.getElementById("typeofnc").value = textInput;
+            	}
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;
@@ -92,6 +104,11 @@
             		   document.getElementById("typeofnc1").innerHTML="Required Field Should not be Spaces";
           			 return false;
             		   }
+            	   else if(typeofnc.length<4)
+        		   {
+        		   document.getElementById("typeofnc1").innerHTML="Required and must be of length 4 to 32";
+      			 return false;
+        		   }
             	   else if(typeofnc.match(chars))
             		   {
             		   document.getElementById("typeofnc1").innerHTML="";

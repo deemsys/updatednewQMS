@@ -121,7 +121,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Add Location :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4();"/>
                 <br>  <span id="formlocation1" style="color:red"></span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
                 </tr>
@@ -149,6 +149,12 @@
 		        e.preventDefault();
 		});
 		});
+ function validateAlpha4(){
+	    var textInput = document.getElementById("formlocation").value;
+	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+	    document.getElementById("formlocation").value = textInput;
+	}
+ 
  function validation()
  {
 	
