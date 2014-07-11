@@ -60,7 +60,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" id="auditid"class="input_txtbx"onInput="return validatename3(id);" value="<c:out value="${id}" />"/><br/>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" id="auditid"class="input_txtbx" readonly="readonly" value="<c:out value="${id}" />"/><br/>
                   <span id="auditiderror" style="color:red"class="err"></span></td>
                 </tr>
                 <tr class="row1">
@@ -131,7 +131,7 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes" id="auditor_notes" style="width:59%; height: 70px;"onInput="return validatename1(id);">${internalaudits.auditor_notes}</textarea>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes" id="auditor_notes" style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea>
                  <br> <span id="auditornoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
@@ -185,14 +185,6 @@
    <script>
    
    $(function() {
-		$("#auditid").on("keypress", function(e) {
-		
-		if (e.which === 32 && !this.value.length)
-	        e.preventDefault();
-	});
-	});
-   
-   $(function() {
 		$("#auditor_notes").on("keypress", function(e) {
 		
 		if (e.which === 32 && !this.value.length)
@@ -226,7 +218,6 @@ function validate()
 {
 	var error="";
 	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
-	var auditid= document.getElementById('auditid').value;
 	var auditornotes = document.getElementById('auditor_notes').value;
 	var id_inpprocess =  document.getElementById('id_inpprocess').value;
 	var auditeename = document.getElementById('auditeename').value;
@@ -236,20 +227,6 @@ function validate()
 	var finding =  document.getElementById('finding').value;
 	var auditor = document.getElementById('auditor').value;
 	var auditorsinitials = document.getElementById('inp_auditors_initials').value;
-	if(auditid == "")
-		{
-		 document.getElementById("auditiderror").innerHTML="Required Field Should not be Empty";
-			error="true";
-		}
-	else if((auditid.length<6)||(auditid.length>32))
-		{
-		
-		 document.getElementById("auditiderror").innerHTML="Required Field Should be length of 6 to 32";
-			error="true";
-		}
-	else{
-		 document.getElementById("auditiderror").innerHTML="";
-	}
 	
 	
 	if(auditornotes == "")
@@ -257,6 +234,11 @@ function validate()
 	 document.getElementById("auditornoteserror").innerHTML="Required Field Should not be Empty";
 		error="true";
 	}
+	else if(auditornotes.charAt(0) == " ")
+		{
+		 document.getElementById("auditornoteserror").innerHTML="Initial Spaces not Allowed";
+			error="true";
+		}
 else if((auditornotes.length<4)||(auditornotes.length>400))
 	{
 	
@@ -355,6 +337,11 @@ else{
 	 if(auditorsinitials == "")
 		{
 		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should not be Empty";
+			error="true";
+		}
+	 else if(auditorsinitials.charAt(0) == " ")
+		{
+		 document.getElementById("auditorsinitialserror").innerHTML="Initial Spaces not Allowed";
 			error="true";
 		}
 	else if((auditorsinitials.length<=0)||(auditorsinitials.length>10))

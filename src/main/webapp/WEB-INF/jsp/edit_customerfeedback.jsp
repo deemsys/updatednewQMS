@@ -175,7 +175,7 @@ function validate()
 		 }
 	 else if(feedbackdetails.charAt(0) == " ")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Required Field Should not Start with Spaces";
+		 document.getElementById("feedbackdetailserror").innerHTML="Initial Spaces not Alloweds";
 			error="true";
 		 }
 	 else  if((feedbackdetails.length < 4) ||(feedbackdetails.length > 400))

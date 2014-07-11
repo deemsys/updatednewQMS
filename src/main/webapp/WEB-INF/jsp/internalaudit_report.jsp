@@ -112,25 +112,25 @@
 								<tr>
 								
 								
-								<td><input type="checkbox" id="select_all"/>Select All</td>
+								<td><input type="checkbox" id="select_all"/>Select All<br><span id="reporterror" style="color:red"> </span></td>
 								</tr> 
 								<tr>
-								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="report_id" id="id_report_id"/>ID</td>
-								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="process" id="id_process"/>Process</td>
-								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="auditee_name" id="id_auditee_name"/>Auditee Name</td>
+								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="report_id" id="1"/>ID</td>
+								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="process" id="2"/>Process</td>
+								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="auditee_name" id="3"/>Auditee Name</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="audit_start_date" id="id_audit_start_date"/>Audit Start Date</td>
-								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="audit_due_date" id="id_audit_due_date"/>Audit Start Date</td>
-								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="auditor" id="id_auditor"/>Auditor</td>
+								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="audit_start_date" id="4"/>Audit Start Date</td>
+								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="audit_due_date" id="5"/>Audit Start Date</td>
+								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="auditor" id="6"/>Auditor</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="audit_notes" id="id_audit_notes"/>Auditor Notes</td>
-								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="finding" id="id_finding"/>Finding</td>
-								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="id_completion_date"/>Completion Date</td>
+								<td><input type="checkbox" onclick="selectall(this.id)"  name="report_field[]" value="audit_notes" id="7"/>Auditor Notes</td>
+								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="finding" id="8"/>Finding</td>
+								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="9"/>Completion Date</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox"  onclick="selectall(this.id)"  name="report_field[]" value="auditors_initial" id="id_auditors_initial"/>Auditor's Initial</td>
+								<td><input type="checkbox"  onclick="selectall(this.id)"  name="report_field[]" value="auditors_initial" id="10"/>Auditor's Initial</td>
 							
 								</table>
 								
@@ -139,7 +139,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate"onclick="return validation();" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -158,6 +158,42 @@
 			<tr height=30><td></td></tr></table>
 
 <script type="text/javascript">
+function validation()
+{
+	
+ var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+ var a1 = document.getElementById('1').checked;
+ var a2 = document.getElementById('2').checked;
+ var a3 = document.getElementById('3').checked;
+ var a4 = document.getElementById('4').checked;
+ var a5 = document.getElementById('5').checked;
+ var a6 = document.getElementById('6').checked;
+ var a7 = document.getElementById('7').checked;
+ var a8 = document.getElementById('8').checked;
+ var a9 = document.getElementById('9').checked;
+ var a10 = document.getElementById('10').checked;
+
+ if(id_type_userdefined)
+	{
+	 
+	  if(a1 || a2 || a3 || a4 || a5 || a6 || a7 || a8 || a9 || a10)
+		  {
+		  document.getElementById('reporterror').innerHTML ="";
+		  }
+	  else
+		  {
+		  document.getElementById('reporterror').innerHTML = "Please Select Atleast One";
+		  return false;
+		  
+		  }
+	}
+ else
+ {
+	 document.getElementById('reporterror').innerHTML ="";
+ }
+
+
+}
 function toggle2(value){
     var e3=document.getElementById("report_type_table");
 if(value=="report_list_by_type")

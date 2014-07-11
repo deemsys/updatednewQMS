@@ -524,7 +524,7 @@ function validation()
 		}
 	else if(equipment_id.charAt(0) == " ")
 		{
-		document.getElementById("equipment_id1").innerHTML="Required Field Should not Start with spaces";
+		document.getElementById("equipment_id1").innerHTML="Initial Spaces not Allowed";
 		error="true";
 		}
 	else if(equipment_id.length < 4 || equipment_id.length > 32)
@@ -543,7 +543,7 @@ function validation()
 	}
 	else if(equipment_name.charAt(0) == " ")
 	{
-	document.getElementById("equipment_name1").innerHTML="Required Field Should not Start with spaces";
+	document.getElementById("equipment_name1").innerHTML="Initial Spaces not Allowed";
 	error="true";
 	}
 	else if(equipment_name.length < 4 || equipment_name.length > 32)
@@ -565,7 +565,7 @@ function validation()
 	}
 	else if(equipment_model.charAt(0) == " ")
 	{
-	document.getElementById("equipment_model1").innerHTML="Required Field Should not Start with spaces";
+	document.getElementById("equipment_model1").innerHTML="Initial Spaces not Allowed";
 	error="true";
 	}
 	else if(equipment_model.length < 4 || equipment_model.length > 32)
@@ -587,7 +587,7 @@ function validation()
 	}
 	else if(serial_number.charAt(0) == " ")
 	{
-	document.getElementById("serial_number1").innerHTML="Required Field Should not Start with spaces";
+	document.getElementById("serial_number1").innerHTML="Initial Spaces not Allowed";
 	error="true";
 	}
 	else if(serial_number.length < 4 || serial_number.length > 32)
@@ -655,7 +655,7 @@ function validation()
 		}
 	 else if(instructions.charAt(0) == " ")
 		{
-		document.getElementById("instructions1").innerHTML="Required Field Should not Start with spaces";
+		document.getElementById("instructions1").innerHTML="Initial Spaces not Allowed";
 		error="true";
 		}
 	  else if(instructions.length < 5 || instructions.length > 400 )
@@ -724,7 +724,7 @@ function validation()
 		}
 	 else if(notes.charAt(0) == " ")
 		{
-		document.getElementById("notes1").innerHTML="Required Field Should not Start with spaces";
+		document.getElementById("notes1").innerHTML="Initial Spaces not Allowed";
 		error="true";
 		}
 		else if(notes.length < 5 || notes.length > 400 )

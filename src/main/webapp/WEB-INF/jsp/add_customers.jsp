@@ -282,7 +282,7 @@ function validatename2(id){
     		  }
     	  else if(customername.charAt(0) ==" ") 
 		   {
-		   document.getElementById("customernameerror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("customernameerror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
     	  else  if((customername.length < 4) ||(customername.length > 32))
@@ -303,7 +303,7 @@ function validatename2(id){
     		  }
     	  else if(inp_website.charAt(0) ==" ") 
 		   {
-		   document.getElementById("websiteerror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("websiteerror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
     	  else  if(inp_website.match(website))
@@ -328,7 +328,7 @@ function validatename2(id){
 		  }
     	  else if(inp_contact_name.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contactnameerror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("contactnameerror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
 	  else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
@@ -350,7 +350,7 @@ function validatename2(id){
 		  }
     	  else if(address.charAt(0) ==" ") 
 		   {
-		   document.getElementById("addresserror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("addresserror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
 	  else  if((address.length < 4) ||(address.length > 400))
@@ -372,7 +372,7 @@ function validatename2(id){
 		  }
     	  else if(city.charAt(0) ==" ") 
 		   {
-		   document.getElementById("cityerror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("cityerror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
 		  else  if((city.length < 4) ||(city.length > 32))
@@ -393,7 +393,7 @@ function validatename2(id){
 		  }
     	  else if(contact.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contacterror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("contacterror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
 	  else  if((contact.length < 4) ||(contact.length > 32))
@@ -414,7 +414,7 @@ function validatename2(id){
 		  }
     	  else if(state.charAt(0) ==" ") 
 		   {
-		   document.getElementById("stateerror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("stateerror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
 	  else  if((state.length < 4) ||(state.length > 32))
@@ -434,7 +434,7 @@ function validatename2(id){
 		  }
     	  else if(telephone.charAt(0) ==" ") 
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Required Field should be Start with Space";
+		   document.getElementById("telephoneerror").innerHTML="Initial Spaces not Allowed";
 	    	error="true";
 			}
 	  else if(telephone.match(mobile)){  
@@ -461,7 +461,7 @@ function validatename2(id){
 	  }
 	  else if(country.charAt(0) ==" ") 
 	   {
-	   document.getElementById("countryerror").innerHTML="Required Field should be Start with Space";
+	   document.getElementById("countryerror").innerHTML="Initial Spaces not Allowed";
    	error="true";
 		}
   else  if((country.length < 4) ||(country.length > 32))
@@ -482,7 +482,7 @@ function validatename2(id){
 	  }
 	  else if(fax.charAt(0) ==" ") 
 	   {
-	   document.getElementById("faxerror").innerHTML="Required Field should be Start with Space";
+	   document.getElementById("faxerror").innerHTML="Initial Spaces not Allowed";
   	error="true";
 		}
   else if(fax.match(faxreg))
@@ -507,7 +507,7 @@ function validatename2(id){
 	  }
 	  else if(inpzipcode.charAt(0) ==" ") 
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Required Field should be Start with Space";
+	   document.getElementById("zipcodeerror").innerHTML="Initial Spaces not Allowed";
  	error="true";
 		}
   else if(inpzipcode.match(zipcode)){  
@@ -528,7 +528,7 @@ function validatename2(id){
 	  }
 	  else if(emailaddress.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerror").innerHTML="Required Field should be Start with Space";
+	   document.getElementById("emailerror").innerHTML="Initial Spaces not Allowed";
 	error="true";
 		}
   else if(emailaddress.match(mail)){  

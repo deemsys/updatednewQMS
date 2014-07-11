@@ -137,7 +137,7 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes"  onInput="return validatename1(id);"id="auditor_notes"style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx1"  name="auditor_notes"  id="auditor_notes"style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea>
                     <br> <span id="auditornoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
@@ -240,7 +240,12 @@ function validate()
 	 document.getElementById("auditornoteserror").innerHTML="Required Field Should not be Empty";
 		error="true";
 	}
-else if((auditornotes.length<4)||(auditornotes.length>400))
+	else if(auditornotes.charAt(0) == " ")
+	{
+	 document.getElementById("auditornoteserror").innerHTML="Initial Spaces not Allowed";
+		error="true";
+	}
+	else if((auditornotes.length<4)||(auditornotes.length>400))
 	{
 	
 	 document.getElementById("auditornoteserror").innerHTML="Required Field Should be length of 4 to 400";
@@ -340,7 +345,12 @@ else{
 		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should not be Empty";
 			error="true";
 		}
-	else if((auditorsinitials.length<=0)||(auditorsinitials.length>10))
+	 else if(auditorsinitials.charAt(0) == " ")
+		{
+		 document.getElementById("auditorsinitialserror").innerHTML="Initial Spaces not Allowed";
+			error="true";
+		}
+	else if((auditorsinitials.length>10))
 		{
 		
 		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should be length of 1 to 10";

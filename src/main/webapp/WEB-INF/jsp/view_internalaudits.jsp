@@ -72,21 +72,25 @@
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">Audit ID:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx1" id="id" value="${id}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;Process:</td>
+							    <td align="left" valign="middle" width="8%">Audit ID:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" onInput="return validatename2(id);" value="${id}">
+							    <br><span id="iderror" style="color:red"></span>
+							    </td>
+							     <td align="left" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="8%">Process:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <%-- <input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td> --%>
-							    <select name="process" id="search_process"  class="input_cmbbx1" style="width:200px;">
+					
+							    <select name="process" id="process"  class="input_txtbx" style="width:200px;">
                					 <option value="" >--Select--</option>
               					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
               					 <option value="${processes.process_name}" <c:if test="${processes.process_name==process}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
              				  	</c:forEach>
              				  </select>
              				  	</td> 
-							    <td align="left" valign="middle" width="15%">&nbsp;Auditee name:</td>
+             				  	 <td align="left" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="15%">Auditee name:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <select name="auditee_name" id="id_inpprocess"  class="input_txtbx" style="height:20px;">
+							    <select name="auditee_name" id="auditee"  class="input_txtbx" style="height:20px;">
                						<option value="">--Select--</option>
                						<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                						<option value="<c:out value="${processes.process_owner}"/>" <c:if test="${processes.process_owner==name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_owner}"/></option>
@@ -94,7 +98,9 @@
                						</select>
                					</td>
                    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1" value="Search" onclick="return validation();"id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" />
+							  <br><span id="searcherror" style="color:red"></span>
+							  </td>
 							  </tr>
 							</table>
 						</div>
@@ -142,7 +148,7 @@
 							    	
 							    	<c:if test="${fn:length(internalAuditsForm.internalAudits)== 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b style="color:red">No Records Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
 						    	
@@ -200,7 +206,24 @@
          </tr>
          </table>
          </div>
-         	
+ <script>
+   
+ $(function() {
+		$("#id").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+  </script>               
+<script type="text/javascript">  
+function validatename2(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
+    document.getElementById(id).value = textInput;
+} 
+</script>
 <script>
 function confirmation() {
 	var answer = confirm("Are you Sure You Want to Delete Internal Audits Form ?")
@@ -210,6 +233,48 @@ function confirmation() {
 	else
 		return false;
 	
+}
+</script>
+<script type="text/javascript">
+function validation()
+{
+	var error = "";
+	var id = document.getElementById('id').value;
+	var process = document.getElementById('process').value;
+	var auditee = document.getElementById('auditee').value;
+	document.getElementById('searcherror').innerHTML = "";
+	document.getElementById('iderror').innerHTML = "";
+	
+	if((id == "") && (process == "") && (auditee == ""))
+	{
+		document.getElementById('searcherror').innerHTML = "Input is Empty";
+		error = "true";
+	}
+	else
+	{
+		if(id.length > 0 )
+		{
+			if((id.length < 4) || (id.length > 32))
+			{
+				document.getElementById('iderror').innerHTML = "Required Field should of length 4 to 32";
+				error = "true";
+			}
+			else
+			{
+				document.getElementById('iderror').innerHTML = "";
+			}
+		}
+		else
+		{
+			document.getElementById('iderror').innerHTML = "";
+		}
+		
+	}	
+	
+	if(error == "true")
+	{
+		return false;
+	}
 }
 </script>
 <jsp:include page="footer.jsp"></jsp:include>

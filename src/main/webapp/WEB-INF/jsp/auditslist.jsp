@@ -41,68 +41,84 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Internal Audits List</h2>
+              <h2>Internal Audits Details</h2>
             </div>
             <div class="contentbox">
+              
+            
+                <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
-              <c:set value="${internalAuditsForm.internalAudits[0]}" var="internalaudits"></c:set>
-               <tr class="row2">
+              <tr>
+			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+			  <c:set value="${internalAuditsForm.internalAudits[0]}" var="internalaudits"></c:set>
+                <tr class="row2">
 
                   <td valign="middle" align="left" class="input_txt" width="20%">Audit  Id: </td>
-					<td valign="top" align="left" class="input_txt" width="70%">${internalaudits.id}</br><span class="err"></span></td>
+					<td valign="top" align="left" class="input_txt" width="20%">${internalaudits.id}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Process :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.process}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.process}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Audit Start Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.audit_start_date}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Audit Start Date:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.audit_start_date}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Audit Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.audit_due_date}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Audit Due Date:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.audit_due_date}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%"> Auditor :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.auditor}</br><span class="err"></span></td>
-                </tr>
-                <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="20%"> Audit Notes :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.auditor_notes}
+                  <td valign="middle" align="left" class="input_txt" width="20%"> Auditor:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.auditor}</br><span class="err"></span></td>
+              </tr> 
+						         </table>
+						         </td>
+						         <td align="left" valign="top">
+ <table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr class="row1">
+               <td valign="middle" align="left" class="input_txt" width="20%">Auditee Name:</td>
+               <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.auditee_name}
+               </td>
+                </tr>	
+                      <tr class="row2">
+                 <td valign="middle" align="left" class="input_txt" width="20%"> Audit Notes:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.auditor_notes}
                   
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="20%">  Finding :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.finding}
+                 <td valign="middle" align="left" class="input_txt" width="20%">  Finding:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.finding}
                   
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="20%"> Completion Date:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.completion_date}
+               <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.completion_date}
                </td>
                 </tr>
                  <tr class="row1">
                <td valign="middle" align="left" class="input_txt" width="20%">Auditors Initials:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.auditors_initials}
+               <td valign="top" align="left" class="input_txt" width="20%">${internalaudits.auditors_initials}
                </td>
                 </tr>
-                <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Auditee Name:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${internalaudits.auditee_name}
-               </td>
-                </tr>
+                
+              </table>
+              </td>
+              </tr>
+              </table>
+              </div>
+              </div>
+              </div>
+              </td>
+              </tr>
+              </table>
+              </div>
+              </form>
               
 
-                         </table>
-            </div>
-            </td>
-            </tr>
-            </table>
-            </div>
-            
-            </form>
+                       
            
             
