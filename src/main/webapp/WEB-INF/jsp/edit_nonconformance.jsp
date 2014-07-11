@@ -79,7 +79,9 @@
 				                  </td>
 				                  
 				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID: </td>
-				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  class="input_txtbx" style="display:block;" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" /><br></td>
+				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  class="input_txtbx" style="display:block;" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" />
+				                  	<span style="color:red;" id="externalerror"></span>
+				                  	</td>
 				                </tr>
 				                
 
@@ -308,7 +310,32 @@
 }
  
 </script> 
-<script type="text/javascript">     
+<script type="text/javascript">   
+$(function() {   
+	
+	//if(($('#source_of_nonconformance').val() == 'Customer Audit') && ($('#source_of_nonconformance').val() == 'Third Party Audit') && ($('#source_of_nonconformance').val() == 'Customer Complaint'))
+	if($('#source_of_nonconformance').val() === 'Customer Audit')     
+   {     
+   $('#external_id').show();  
+   $('#external_label').show();
+   }     
+else if($('#source_of_nonconformance').val() === 'Third Party Audit')
+	{
+	$('#external_id').show();  
+	$('#external_label').show();
+	}
+else if($('#source_of_nonconformance').val() === 'Customer Complaint')
+{
+$('#external_id').show();  
+$('#external_label').show();
+}
+else    
+   {     
+   $('#external_id').hide();
+   $('#external_label').hide();
+   }     
+  
+});     
 $(document).ready(function() {     
 $('#source_of_nonconformance').change(function(){     
 	//if(($('#source_of_nonconformance').val() == 'Customer Audit') && ($('#source_of_nonconformance').val() == 'Third Party Audit') && ($('#source_of_nonconformance').val() == 'Customer Complaint'))
@@ -579,6 +606,21 @@ function validation()
 	var sourcenc = document.getElementById('source_of_nonconformance').value;
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
+	var external = document.getElementById('external_id').value;
+	
+	 if((sourcenc=="Customer Complaint") || (sourcenc=="Customer Audit") || (sourcenc=="Third Party Audit"))
+	{
+	
+	if(external=="")
+		{
+	document.getElementById("externalerror").innerHTML="Required Field Should not be Empty";
+	error="true";
+	}
+	else
+		{
+		document.getElementById("externalerror").innerHTML="";
+		}
+	}
 	/* var disposition1 = document.getElementById('disposition1').value;
 	var disposition2 = document.getElementById('disposition2').value;
 	var disposition3 = document.getElementById('disposition3').value;
@@ -644,7 +686,7 @@ else
   	if(typenc =="")
 	 {
 
-		 document.getElementById("typencerr").innerHTML="Required Field Should not be Blank";
+		 document.getElementById("typencerr").innerHTML="Required Field Should not be Empty";
 		 error="true";
 	 } 
   	else
@@ -654,7 +696,7 @@ else
 		if(sourcenc =="")
 		 {
 		
-			 document.getElementById("sourcencerr").innerHTML="Required Field Should not be Blank";
+			 document.getElementById("sourcencerr").innerHTML="Required Field Should not be Empty";
 			 error="true";
 		 }
 		else{
@@ -663,7 +705,7 @@ else
 			if(product =="")
 			 {
 			
-				 document.getElementById("producterr").innerHTML="Required Field Should not be Blank";
+				 document.getElementById("producterr").innerHTML="Required Field Should not be Empty";
 				 error="true";
 			 }
 			else
@@ -675,7 +717,7 @@ else
   	if(quantity =="")
 	 {
 	
-		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Blank";
+		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Empty";
 		 error="true";
 	 } 
 		
@@ -700,7 +742,7 @@ else
 	 	if(costnc =="")
 		 {
 		
-			 document.getElementById("cost").innerHTML="Required Field Should not be Blank";
+			 document.getElementById("cost").innerHTML="Required Field Should not be Empty";
 			 error="true";
 		 } 
 			
@@ -726,7 +768,7 @@ else
 		 	if(naturenc =="")
 			 {
 			
-				 document.getElementById("nature").innerHTML="Required Field Should not be Blank";
+				 document.getElementById("nature").innerHTML="Required Field Should not be Empty";
 				 error="true";
 			 } 
 				
@@ -750,7 +792,7 @@ else
 			 	if(action =="")
 				 {
 				
-					 document.getElementById("temp").innerHTML="Required Field Should not be Blank";
+					 document.getElementById("temp").innerHTML="Required Field Should not be Empty";
 					 error="true";
 				 } 
 					
@@ -775,7 +817,7 @@ else
 			 	if(responsibility =="")
 				 {
 				
-					 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Blank";
+					 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Empty";
 					 error="true";
 				 } 
 					
@@ -800,7 +842,7 @@ else
 				 	if(quality1 =="")
 					 {
 					
-						 document.getElementById("qua1").innerHTML="Required Field Should not be Blank";
+						 document.getElementById("qua1").innerHTML="Required Field Should not be Empty";
 						 error="true";
 					 } 
 						
@@ -817,7 +859,7 @@ else
 						 if(quality2 =="")
 						 {
 						
-							 document.getElementById("qua2").innerHTML="Required Field Should not be Blank";
+							 document.getElementById("qua2").innerHTML="Required Field Should not be Empty";
 							 error="true";
 						 } 
 						 else
@@ -828,7 +870,7 @@ else
 						 	if(quality3 =="")
 							 {
 							
-								 document.getElementById("qua3").innerHTML="Required Field Should not be Blank";
+								 document.getElementById("qua3").innerHTML="Required Field Should not be Empty";
 								 return false;
 							 } 
 						 	else{

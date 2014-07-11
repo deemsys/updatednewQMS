@@ -68,7 +68,7 @@
 							<td valign="top" align="left" class="input_txt" id="external_label" style="display:none;"> External ID </td>
 							<td valign="top" align="left" class="input_txt">
 							<input type="text" class="input_txtbx" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
-										<font color="Red" size="+1"></font></td>
+										<font color="Red" size="+1"></font><br/><span style="color:red;" id="externalerror"></span></td>
 				 </tr>
 				   <tr class="row2">
 		         
@@ -408,7 +408,7 @@ function showDiv() {
 
 <script>
 function validation()
-{
+{alert("hi");
 	//update.submit();
 	var error="";
    	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
@@ -421,12 +421,25 @@ function validation()
 	var quality1 = document.getElementById('quality1').value;
 	var quality2 = document.getElementById('quality2').value;
 	var quality3 = document.getElementById('quality3').value;
-	var spl =  /^[A-Za-z0-9]*$/;
 	var typenc = document.getElementById('type_of_nonconformance').value;
 	var sourcenc = document.getElementById('source_of_nonconformance').value;
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
- 	
+ 	var external = document.getElementById('external_id').value;
+	
+	 if((sourcenc=="Customer Complaint") || (sourcenc=="Customer Audit") || (sourcenc=="Third Party Audit"))
+	{
+	
+	if(external=="")
+		{
+	document.getElementById("externalerror").innerHTML="Required Field Should not be Empty";
+	error="true";
+	}
+	else
+		{
+		document.getElementById("externalerror").innerHTML="";
+		}
+	}
 	if(datefound == "")
 	 {
 	 document.getElementById("datepicker2").innerHTML="Required Field Should not be Empty";
@@ -462,7 +475,7 @@ function validation()
   	if(typenc =="")
 	 {
 
-		 document.getElementById("typencerr").innerHTML="Required Field Should not be Blank";
+		 document.getElementById("typencerr").innerHTML="Required Field Should not be Empty";
 		 error="true";
 	 } 
   	else
@@ -472,7 +485,7 @@ function validation()
 		if(sourcenc =="")
 		 {
 		
-			 document.getElementById("sourcencerr").innerHTML="Required Field Should not be Blank";
+			 document.getElementById("sourcencerr").innerHTML="Required Field Should not be Empty";
 			 error="true";
 		 }
 		else{
@@ -481,7 +494,7 @@ function validation()
 			if(product =="")
 			 {
 			
-				 document.getElementById("producterr").innerHTML="Required Field Should not be Blank";
+				 document.getElementById("producterr").innerHTML="Required Field Should not be Empty";
 				 error="true";
 			 }
 			else
@@ -493,7 +506,7 @@ function validation()
   	if(quantity =="")
 	 {
 	
-		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Blank";
+		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Empty";
 		 error="true";
 	 } 
 		
@@ -518,7 +531,7 @@ function validation()
 	 	if(costnc =="")
 		 {
 		
-			 document.getElementById("cost").innerHTML="Required Field Should not be Blank";
+			 document.getElementById("cost").innerHTML="Required Field Should not be Empty";
 			 error="true";
 		 } 
 			
@@ -544,7 +557,7 @@ function validation()
 		 	if(naturenc =="")
 			 {
 			
-				 document.getElementById("nature").innerHTML="Required Field Should not be Blank";
+				 document.getElementById("nature").innerHTML="Required Field Should not be Empty";
 				 error="true";
 			 } 
 				
@@ -562,7 +575,7 @@ function validation()
 			 	if(action =="")
 				 {
 				
-					 document.getElementById("temp").innerHTML="Required Field Should not be Blank";
+					 document.getElementById("temp").innerHTML="Required Field Should not be Empty";
 					 error="true";
 				 } 
 					
@@ -587,7 +600,7 @@ function validation()
 			 	if(responsibility =="")
 				 {
 				
-					 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Blank";
+					 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Empty";
 					 error="true";
 				 } 
 					
@@ -612,7 +625,7 @@ function validation()
 				 	if(quality1 =="")
 					 {
 					
-						 document.getElementById("qua1").innerHTML="Required Field Should not be Blank";
+						 document.getElementById("qua1").innerHTML="Required Field Should not be Empty";
 						 error="true";
 					 } 
 						
@@ -629,7 +642,7 @@ function validation()
 						 if(quality2 =="")
 						 {
 						
-							 document.getElementById("qua2").innerHTML="Required Field Should not be Blank";
+							 document.getElementById("qua2").innerHTML="Required Field Should not be Empty";
 							 error="true";
 						 } 
 						 else
@@ -640,7 +653,7 @@ function validation()
 						 	if(quality3 =="")
 							 {
 							
-								 document.getElementById("qua3").innerHTML="Required Field Should not be Blank";
+								 document.getElementById("qua3").innerHTML="Required Field Should not be Empty";
 								 return false;
 							 } 
 						 	else{
@@ -739,7 +752,9 @@ function validate(event) {
 
 
 <script type="text/javascript">     
-$(document).ready(function() {     
+$(function() {   
+	
+alert("hi");
 $('#source_of_nonconformance').change(function(){     
 	//if(($('#source_of_nonconformance').val() == 'Customer Audit') && ($('#source_of_nonconformance').val() == 'Third Party Audit') && ($('#source_of_nonconformance').val() == 'Customer Complaint'))
 	if($('#source_of_nonconformance').val() === 'Customer Audit')     
