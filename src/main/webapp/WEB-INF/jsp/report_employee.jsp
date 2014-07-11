@@ -129,38 +129,40 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Enter the Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="name" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="name" class="input_txtbx"  style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report:</td>
+									Enter the Fields Required on the Report:
+									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="employee_id" id="id_employee_id"/>Employee id</td>
-								<td><input type="checkbox" name="report_field[]" value="name" id="id_name"/>name</td>
-								<td><input type="checkbox" name="report_field[]" value="job_title" id="id_job_title"/>Job Title</td>
-					      		<td><input type="checkbox" name="report_field[]" value="date_hired" id="id_date_hired"/>Date Hired</td>
+								<td><input type="checkbox" name="report_field[]" value="employee_id" id="1"/>Employee id</td>
+								<td><input type="checkbox" name="report_field[]" value="name" id="2"/>name</td>
+								<td><input type="checkbox" name="report_field[]" value="job_title" id="3"/>Job Title</td>
+					      		
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="attachments" id="id_attachments"/>Attachments</td>
-								<td><input type="checkbox" name="report_field[]" value="list_of_function_needs" id="id_list_of_function_needs"/>List of function needs</td>
-								<td><input type="checkbox" name="report_field[]" value="documented_in" id="id_documented_in"/>documented In</td>
+								<td><input type="checkbox" name="report_field[]" value="attachments" id="4"/>Attachments</td>
+								<td><input type="checkbox" name="report_field[]" value="list_of_function_needs" id="5"/>List of function needs</td>
+								<td><input type="checkbox" name="report_field[]" value="documented_in" id="6"/>documented In</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="qualified_by" id="id_qualified_by"/>Qualified By</td>
-								<td><input type="checkbox" name="report_field[]" value="type_of_training" id="id_type_of_training"/>Type of Training</td>
-								<td><input type="checkbox" name="report_field[]" value="trainer" id="id_trainer"/>Trainer</td>
+								<td><input type="checkbox" name="report_field[]" value="qualified_by" id="7"/>Qualified By</td>
+								<td><input type="checkbox" name="report_field[]" value="type_of_training" id="8"/>Type of Training</td>
+								<td><input type="checkbox" name="report_field[]" value="trainer" id="9"/>Trainer</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="training_due_date" id="id_training_due_date"/>Training Due Date</td>
-								<td><input type="checkbox" name="report_field[]" value="training_completion_date" id="id_training_completion_date"/>Completion Date</td>
-								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_review_due_date" id="id_training_effectiveness_review_due_date"/>Review Due Date</td>
+								<td><input type="checkbox" name="report_field[]" value="training_due_date" id="10"/>Training Due Date</td>
+								<td><input type="checkbox" name="report_field[]" value="training_completion_date" id="11"/>Completion Date</td>
+								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_review_due_date" id="12"/>Review Due Date</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_notes" id="id_training_effectiveness_notes"/>Effectiveness Notes</td>
+								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_notes" id="13"/>Effectiveness Notes</td>
+								<td><input type="checkbox" name="report_field[]" value="date_hired" id="14"/>Date Hired</td>
 								</tr>
 								</table>
 								
@@ -169,7 +171,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate Report" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -184,6 +186,53 @@
 					</div>
 				</td></tr>
 </table></td></tr></table>
+
+<script type="text/javascript">
+
+function validate()
+{
+	var error ="";
+	
+	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+	
+	var a1 = document.getElementById('1').checked;
+	var a2 = document.getElementById('2').checked;
+	var a3 = document.getElementById('3').checked;
+	var a4 = document.getElementById('4').checked;
+	var a5 = document.getElementById('5').checked;
+	var a6 = document.getElementById('6').checked;
+	var a7 = document.getElementById('7').checked;
+	var a8 = document.getElementById('8').checked;
+	var a9 = document.getElementById('9').checked;
+	var a10 = document.getElementById('10').checked;
+	var a11 = document.getElementById('11').checked;
+	var a12 = document.getElementById('12').checked;
+	var a13 = document.getElementById('13').checked;
+	var a14 = document.getElementById('14').checked;
+	
+	if(id_type_userdefined)
+		{
+		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14)
+			{
+			document.getElementById("userdefineerror").innerHTML="";
+			}
+		else{
+			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			error = "true";
+		}
+	}
+	else
+	{
+		document.getElementById("userdefineerror").innerHTML="";
+		}
+	
+	if(error == "true")
+		{
+		return false;
+		}
+}
+</script>
+
 
 <script type="text/javascript">
 

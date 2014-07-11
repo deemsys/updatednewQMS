@@ -125,7 +125,7 @@
               	<td valign="top" align="left" class="input_txt" width="30%"> State :</td>
               	<td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="state" class="input_txtbx" id="inp_state" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;font-style:italic;" id="stateerror"><form:errors path="supplierperformance.state"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="fax" class="input_txtbx" id="inp_fax"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;font-style:italic;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="fax" maxlength="10" class="input_txtbx" id="inp_fax"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;font-style:italic;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
 
               	</tr>
                 <tr class="row2">
@@ -145,7 +145,7 @@
                </tr>
                  <tr class="row1">
                   <td><br>
-                  <td valign="top" align="center"><input type="submit" value="Add Supplier" onclick="return checkSubmit();" class="submit_btn1"></td>
+                  <td valign="top" align="center"><input type="submit" value="Submit" onclick="return checkSubmit();" class="submit_btn1"></td>
                 </tr>
               </table>
 
@@ -498,7 +498,8 @@ function validatename(id)
 	    
 	    //var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
 var letters = /^[A-Za-z]+$/;  
-	    var faxreg = /^\+?[0-9]+$/;  
+    var faxreg = /^\+?[0-9]+$/;
+//	   var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
 	    if(document.getElementById("inp_fax").value=="")	
 		{
 		document.getElementById("faxerror").innerHTML="Required Field Should not be Empty";

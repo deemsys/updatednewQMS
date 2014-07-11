@@ -76,10 +76,10 @@ $(function() {
                  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 					<tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%"><label>Employee ID :</label></td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${employee.employee_id }"/>"/><c:out value="${employee.employee_id }"/><br/><span style="color: red;font-style:italic;" ></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${employee.employee_id }"/>"/><c:out value="${employee.employee_id }"/><br/><span style="color: red;" ></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <select	name="qualified_by" class="input_cmbbx1" style="width:60%">
+                  <select	name="qualified_by" class="input_txtbx">
                   					
                   										<option
 															<c:if test="${employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
@@ -91,15 +91,15 @@ $(function() {
 															<c:if test="${employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if>
 															value="Training">Training</option>
 														
-															</select><span style="color: red;font-style:italic;" ><form:errors path="Employee.qualified_by"></form:errors></span></td>
+															</select><span style="color: red;" ><form:errors path="Employee.qualified_by"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx1" id="inp_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.name }" /><br><span style="color: red;font-style:italic;" id="nameerror"><form:errors path="Employee.name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="inp_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.name }" /><br><span style="color: red;" id="nameerror"><form:errors path="Employee.name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Type :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <select	name="type_of_training" class="input_cmbbx1" id="type" style="width:60%">
+                  <select	name="type_of_training" class="input_txtbx" id="type">
 
 				                  									
                   										<option
@@ -114,7 +114,7 @@ $(function() {
 		<tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Job Title :</td>
                	<td valign="top" align="left" class="input_txt" width="20%">
-               	<select class="student_txtbx_height_right_ddl" name="job_title" id="org_id" style="width:55%">
+               	<select class="input_txtbx" name="job_title" id="org_id">
 							    <option>-- Select Job title --</option>
         				    <option value="${employee.job_title }" selected>${employee.job_title }</option>
 			                <c:forEach items="${jobForm.jobs}" var="Jobs" varStatus="status">
@@ -122,16 +122,16 @@ $(function() {
 			                  </c:forEach>
 			                 </select>
                	<td valign="top" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx1" id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.trainer }" /><br><span style="color: red;font-style:italic;" id="trainererror" ><form:errors path="Employee.trainer"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.trainer }" /><br><span style="color: red;" id="trainererror" ><form:errors path="Employee.trainer"></form:errors></span></td>
                 </tr>
                 
 				<tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="date_hired" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.date_hired }" /><br><span style="color: red;font-style:italic;" id="datepickererror" ><form:errors path="Employee.date_hired"></form:errors></span></td>
+                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.date_hired }" /><br><span style="color: red;" id="datepickererror" ><form:errors path="Employee.date_hired"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_due_date" class="input_txtbx1" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_due_date }" /><br><span id="datepicker1error" style="color: red;font-style:italic;" ><form:errors path="Employee.training_due_date"></form:errors></span></td>
+                  <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_due_date }" /><br><span id="datepicker1error" style="color: red;" ><form:errors path="Employee.training_due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Attachments :</td>
@@ -139,7 +139,7 @@ $(function() {
                   <td valign="top" align="left" class="input_txt" width="20%">
                   <span style= "color:#009900;"><c:out value="${employee.attachment_name}"></c:out></span><br/>
                     <input type="hidden" value="${employee.attachment_name}" id="image"/>
-                  <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br>
+                  <input type="file" name="attachments" class="input_txt" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br>
                   <span id="imageerror" style="color:red"></span></td>
                    <td valign="top" align="left" class="input_txt" width="20%">Working as :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
@@ -147,20 +147,20 @@ $(function() {
                    <input type="checkbox" name="process_owner" value="yes" onclick="toggle1()" id="processowner"<c:if test="${employee.process_owner=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Process Owner                 
                    <input type="checkbox" name="document_control" value="yes" onclick="toggle2()" id="documentcontrol"<c:if test="${employee.document_control=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Document Control<br/><br/>
                    <input type="checkbox" name="management" value="yes" onclick="toggle3()"  id="managementrep"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
-                  <span id="workingerror" style="color: red;font-style:italic;" ></span>
+                  <span id="workingerror" style="color: red;" ></span>
                   
                    </tr>
                    <tr class="row1">
                    <td valign="top" align="left" class="input_txt" width="20%">Completion Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_completion_date }" /><br><span id="datepicker2error" style="color: red;font-style:italic;" ><form:errors path="Employee.training_completion_date"></form:errors></span>
+                  <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_completion_date }" /><br><span id="datepicker2error" style="color: red;" ><form:errors path="Employee.training_completion_date"></form:errors></span>
                   </td>
                 </tr>
                  <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Process :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process" class="input_txtbx1" id="inp_process" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process}" /><br><span id="processerror" style="color: red;font-style:italic;" ><form:errors path="Employee.process"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process" class="input_txtbx" id="inp_process" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process}" /><br><span id="processerror" style="color: red;" ><form:errors path="Employee.process"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process_name" class="input_txtbx1" id="inp_process_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process_name}" /><br><span id="processnameerror" style="color: red;font-style:italic;" ><form:errors path="Employee.process_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process_name" class="input_txtbx" id="inp_process_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process_name}" /><br><span id="processnameerror" style="color: red;" ><form:errors path="Employee.process_name"></form:errors></span></td>
                 
                 </tr>
                 
@@ -170,29 +170,29 @@ $(function() {
                   <input type="radio" name="doc_control" value="yes"  class="input_txt"   <c:if test="${employee.doc_control=='yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
 				  <input type="radio" name="doc_control" value="no"  class="input_txt"  <c:if test="${employee.doc_control=='no'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				
-                  <span style="color: red;font-style:italic;" ><form:errors path="Employee.doc_control"></form:errors></span></td>
+                  <span style="color: red;" ><form:errors path="Employee.doc_control"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Management Rep :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
                 
                    <input type="radio" name="management_rep" value="yes"  class="input_txt"   <c:if test="${employee.management_rep=='yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
 				  <input type="radio" name="management_rep" value="no"  class="input_txt"  <c:if test="${employee.management_rep=='no'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				
-                  <span style="color: red;font-style:italic;" ><form:errors path="Employee.management_rep"></form:errors></span></td>
+                  <span style="color: red;" ><form:errors path="Employee.management_rep"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">List of Functions Needs :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="list_of_functions_needes" class="input_txtbx1" id="inp_list_of_functions_needes" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.list_of_functions_needes}" /><br><span id="functionneedserror" style="color: red;font-style:italic;" ><form:errors path="Employee.list_of_functions_needes"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="list_of_functions_needes" class="input_txtbx" id="inp_list_of_functions_needes" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.list_of_functions_needes}" /><br><span id="functionneedserror" style="color: red;" ><form:errors path="Employee.list_of_functions_needes"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Training Effective Review Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx1" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_review_due_date }" /><br><span id="datepicker3error" style="color: red;font-style:italic;" ><form:errors path="Employee.training_effectiveness_review_due_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_review_due_date }" /><br><span id="datepicker3error" style="color: red;" ><form:errors path="Employee.training_effectiveness_review_due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx1" onInput="return validatename(id);" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;font-style:italic;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" onInput="return validatename(id);" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
-                 <td valign="top" class="input_txt" width="20%"><textarea class="input_txtbx11" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onInput="return validatename(id);" onmouseout="hideTooltip('tooltip_id');"  style="width: 60%; height: 55px;"><c:out value="${employee.training_effectiveness_notes  }"/> </textarea><br><span style="color: red;font-style:italic;" id="inp_job_titleerror" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
+                 <td valign="top" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onInput="return validatename(id);" onmouseout="hideTooltip('tooltip_id');"  style="height: 55px;"><c:out value="${employee.training_effectiveness_notes  }"/> </textarea><br><span style="color: red;" id="inp_job_titleerror" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
 
-                 <%--  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_notes" class="input_txtbx1" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_notes }" /><br><span style="color: red;font-style:italic;" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
+                 <%--  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_notes" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_notes }" /><br><span style="color: red;" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
                  --%></tr>    
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>

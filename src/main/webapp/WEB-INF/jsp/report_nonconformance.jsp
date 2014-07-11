@@ -103,13 +103,13 @@
 	
     								<tr class="row2">
     								<td valign="middle" align="left" class="input_txt"> Enter the Start Date : </td>
-    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker" name="start"/><br><span id="starterr"></span></td>
+    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker" name="start"/><br><span style="color:red;" id="starterr"></span></td>
     								</tr>
     								
     								
     								<tr class="row2">
     								<td valign="middle" align="left" class="input_txt"> Enter the End Date : </td>
-    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker1" name="end" /><br><span id="enderr"></span></td>
+    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker1" name="end" /><br><span style="color:red;" id="enderr"></span></td>
     								</tr>
     							</table>
     							
@@ -124,7 +124,6 @@
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
-									
 								</td>
 								
 							</tr>
@@ -154,7 +153,8 @@
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report:</td>
+									Enter the Fields Required on the Report:
+									<br><span style="color: red;" id="error"></span></td>	
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
@@ -189,7 +189,7 @@
 					      		<td><input type="checkbox" name="report_field[]" value="quality2" id="id_quality2"/>Quality2</td>
 					      		<td><input type="checkbox" name="report_field[]" value="quality3" id="id_quality3"/>Quality3</td>
 					      		</tr>
-					      		<span style="color: red;font-style:italic;" id="error"></span>
+					      		
 								</table>
 								
 								</td>
@@ -197,7 +197,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1" onclick="return checkboxvalid();">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" onclick="return submit();"></td>
             
@@ -215,57 +215,6 @@
 
 <table  width=300 height=200>
 			<tr height=30><td></td></tr></table>
-
-<script>
-function submit()
-{
-	alert("hi");
-	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-	var startdate = document.getElementById('datepicker').value;
-	var enddate = document.getElementById('datepicker1').value;
-	var cost = document.getElementById('id_cost_of_nonconformance').checked;
-	var error="";
-	if(!cost=="" && startdate=="")
-		{
-		alert("asfdfdg");
-	 document.getElementById("starterr").innerHTML="Required Field Should not be Empty";
-	 error="true";
-	 
-	 }
-	 else if(startdate.match(date))
-	 {
-		 alert("match");
-	 document.getElementById("starterr").innerHTML="";
-	 }
-	 else
-	 {
-	 document.getElementById("starterr").innerHTML="Invalid Date";
-	 error="true";
-	 }
-	if(!cost=="" && enddate == "")
-	 {
-		alert("end");
-	 document.getElementById("enderr").innerHTML="Required Field Should not be Empty";
-	 error="true";
-	 
-	 }
-	 else if(enddate.match(date))
-	 {
-		 alert("match2");
-	 document.getElementById("enderr").innerHTML="";
-	 }
-	 else
-	 {
-	 document.getElementById("enderr").innerHTML="Invalid Date";
-	 error="true";
-	 }
-
-	if(error == "true")
-		{
-		return false;
-		}
-	}
-</script>
 
 <script type="text/javascript">
 
@@ -325,7 +274,7 @@ if(value==0)
     
 if(value==2)
     {
-	alert("jhsghjsa");
+	
 	document.getElementById("reportdate").style.display="block";
 
     }
@@ -343,18 +292,20 @@ if(value==0)
 <script>
 function checkboxvalid()
 {
+	
+	var user = document.getElementById('id_type_userdefined').checked;
 	var id = document.getElementById('id_field_id').checked;
 	var reported_by = document.getElementById('id_field_reported_by').checked;
 	var action_required = document.getElementById('id_field_corrective_action_required').checked;
-	var cost = document.getElementById('id_field_cost_of_nonconformance').checked;
+	var costofnc = document.getElementById('id_field_cost_of_nonconformance').checked;
 	var source = document.getElementById('id_field_source_of_nonconformance').checked;
 	var external = document.getElementById('id_field_external_id').checked;
 	var disposition_required = document.getElementById('id_field_disposition_required').checked;
 	var type = document.getElementById('id_field_type_of_nonconformance').checked;	
 	var product = document.getElementById('id_field_product_id').checked;
-	var disposition1 = document.getElementById('docid_field_disposition1').checked;
-	var disposition2 = document.getElementById('docid_field_disposition2').checked;
-	var disposition3 = document.getElementById('docid_field_disposition3').checked;
+	var disposition1 = document.getElementById('id_field_disposition1').checked;
+	var disposition2 = document.getElementById('id_field_disposition2').checked;
+	var disposition3 = document.getElementById('id_field_disposition3').checked;
 	var quality1 = document.getElementById('id_quality1').checked;
 	var quality2 = document.getElementById('id_quality2').checked;
 	var quality3 = document.getElementById('id_quality3').checked;
@@ -364,19 +315,73 @@ function checkboxvalid()
 	var datefound = document.getElementById('id_field_date_found').checked;
 	var tempaction = document.getElementById('id_field_temporary_action').checked;
 	var responsibility = document.getElementById('id_field_disposition_responsibility').checked;
-	
-if(!id && !reported_by  && !action_required && !cost && !source && !external && !disposition_required && !type && !product && !disposition1
-		&& !disposition2 && !disposition3 && !quality1 && !quality2 && !quality3 && !nature && !quantity && !complete_date && !datefound && !tempaction && !responsibility)
-	{
-	 document.getElementById("error").innerHTML="Please Select Atleast One";
+	//var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var datepicker = document.getElementById('datepicker').value;
+	var datepicker1 = document.getElementById('datepicker1').value;
+	var cost = document.getElementById('id_cost_of_nonconformance').checked;
+	var error="";
+	 if(!cost=="")
+		{
+		if(datepicker=="")
+		{	
+		
+	 document.getElementById("starterr").innerHTML="Required Field Should not be Empty";
+	 error="true";
+		}
+		
+	else if(!datepicker.match(date))
+	 {
+		
+	 document.getElementById("starterr").innerHTML="Invalid Date";
 	 error="true";
 	 }
- else
+		
+	 else
 	 {
+		
+	 document.getElementById("starterr").innerHTML="";
+	 
+	 } 
+		}
+	 if(cost)
+		{
+		if(datepicker1=="")
+		{	
+		
+	 document.getElementById("enderr").innerHTML="Required Field Should not be Empty";
+	 error="true";
+		}
+	
+	else if(!datepicker1.match(date))
+	 {
+		
+	 document.getElementById("enderr").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	 else
+	 {
+		 
+	 document.getElementById("enderr").innerHTML="";
+	 } 
+	 } 
+	if(user)
+		{
+if(id || reported_by  || action_required || costofnc || source || external || disposition_required || type || product || disposition1 || disposition2 || disposition3 || quality1 || quality2 || quality3 || nature || quantity || complete_date || datefound || tempaction || responsibility)
+	{
 	 document.getElementById("error").innerHTML="";
 	 }
-	 
-	 if(error="true")
+	 else
+	 {
+	 document.getElementById("error").innerHTML="Please Select atleast One";
+	 error="true";
+	 }
+		}
+	else
+		{
+		document.getElementById("error").innerHTML="";
+		}
+	 if(error=="true")
 		 {
 		 return false;
 		 }

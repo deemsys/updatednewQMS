@@ -76,11 +76,10 @@
 							<form action="findnonconformance" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%"> NC ID: </td>
+							    <td align="left" valign="middle"> NC ID: </td>
 							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" value="${nc}"></td>
 							    <td align="left" valign="middle">Type of Non Conformance:</td>
-							    <td valign="top" align="left" class="input_txt">
-				                  									<select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
+							    <td valign="middle" align="left"><select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
 				                  										<option value="">--Select--</option>
 						                    							<option
 						                    							<c:if test="${'Product Quality' eq type}"><c:out value="Selected"/></c:if>
@@ -102,11 +101,11 @@
         				      										 <option value="${types.type_of_nc}"<c:if test="${types.type_of_nc eq type}"><c:out value="selected"/></c:if>>${types.type_of_nc}</option>
 			                  								</c:forEach>
 																	</select></td>
-							 <!--    <td align="left" valign="middle"><input type="text" name="type_of_nonconformance" id="type_of_nonconformance" class="input_text"></td>
-							  --><!--    <td align="left" valign="middle">Product Id:</td>
-							    <td align="left" valign="middle"><input type="text" name="product_id" id="product_id" class="input_text"></td>
+							 <!--    <td align="left" valign="top"><input type="text" name="type_of_nonconformance" id="type_of_nonconformance" class="input_text"></td>
+							  --><!--    <td align="left" valign="top">Product Id:</td>
+							    <td align="left" valign="top"><input type="text" name="product_id" id="product_id" class="input_text"></td>
 							   -->
-							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Find" name="findnonconformance"></td>
+							    <td align="center" valign="top"><input type="submit" class="submit_btn1" value="Find" name="findnonconformance"></td>
 							    
 							  </tr>
 							</table>

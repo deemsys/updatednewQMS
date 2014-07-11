@@ -28,7 +28,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="employee_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Employee Report</span>
+									<span>Reports</span>
 									
 								</a>
 							</li>
@@ -80,10 +80,10 @@
 							<form action="findemployee" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="right" valign="middle" width="10%"> Type&nbsp;</td>
+							    <td align="right" valign="middle" width="10%"> Type:&nbsp;</td>
 							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
 							     -->
-							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_txtbx">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
@@ -96,8 +96,8 @@
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
-							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+							     <td align="right" valign="middle" width="12%">QualifiedBy:&nbsp; </td>
+							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
                   										<option
@@ -116,14 +116,12 @@
 															</select><span class="err"><form:errors path="Employee.qualified_by"></form:errors></span></td>
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
-				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer" value="${trainer}"></td>
+				 -->				<td align="right" valign="middle" width="12%"> Trainer:&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
 							  
-	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
-	 -->						  
 							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Find"></td>
-							     <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
-							  </tr>
+							  <!--    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
+							   --></tr>
 							  </table>
 							  </form>
 							  </div>
@@ -177,7 +175,7 @@
 										</c:if>
 										<c:if test="${fn:length(employeeForm.employees) == 0}">
 										<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>

@@ -38,6 +38,8 @@ import qms.forms.CustomerFeedbackForm;
 import qms.forms.DocumentMainForm;
 import qms.forms.EmployeeForm;
 import qms.forms.JobForm;
+import qms.forms.MaintenanceForm;
+import qms.forms.NonConformanceForm;
 
 
 import qms.dao.JobDAO;
@@ -183,11 +185,7 @@ public class EmployeeController
 	
 		return "view_employees";
 	}
-	
-	
-
-
-
+		
 	@RequestMapping(value="/viewemployeereport_page", method=RequestMethod.GET)
 	public String viewemployeereport_page(HttpSession session,HttpServletRequest request,@RequestParam("page") int page,
 			@RequestParam("trainer") String trainer,@RequestParam("type_of_training") String type,@RequestParam("qualified_by") String qualifiedby,
@@ -395,13 +393,10 @@ public class EmployeeController
 		        model.addAttribute("button","viewall");
 		        model.addAttribute("success","false");
 		        model.addAttribute("currentpage",1);
-			
-			
-			model.addAttribute("employeeForm", employeeForm);
-			model.addAttribute("menu","employee");
-			return "view_employees";
-			
-		}
+		        model.addAttribute("employeeForm", employeeForm);
+		        model.addAttribute("menu","employee");
+		        return "view_employees";
+			}
 
 	
 // Employee report list page	

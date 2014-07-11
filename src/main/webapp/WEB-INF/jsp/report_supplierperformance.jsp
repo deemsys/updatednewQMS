@@ -115,39 +115,41 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Enter the Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="supplier_name" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="supplier_name" class="input_txtbx"  style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report:</td>
+									Enter the Fields Required on the Report:
+									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="supplier_id" id="id_supplier_id"/>ID</td>
-								<td><input type="checkbox" name="report_field[]" value="supplier_name" id="id_name"/>Name</td>
-								<td><input type="checkbox" name="report_field[]" value="category" id="id_category"/>category</td>
-					      		<td><input type="checkbox" name="report_field[]" value="address" id="id_address"/>address</td>
+								<td><input type="checkbox" name="report_field[]" value="supplier_id" id="1"/>ID</td>
+								<td><input type="checkbox" name="report_field[]" value="supplier_name" id="2"/>Name</td>
+								<td><input type="checkbox" name="report_field[]" value="category" id="3"/>category</td>
+					      		
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="city" id="id_city"/>city</td>
-								<td><input type="checkbox" name="report_field[]" value="state" id="id_state"/>state</td>
-								<td><input type="checkbox" name="report_field[]" value="postalcode" id="id_postalcode"/>postalcode</td>
+								<td><input type="checkbox" name="report_field[]" value="city" id="4"/>city</td>
+								<td><input type="checkbox" name="report_field[]" value="state" id="5"/>state</td>
+								<td><input type="checkbox" name="report_field[]" value="postalcode" id="6"/>postalcode</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="country" id="id_country"/>Country</td>
-								<td><input type="checkbox" name="report_field[]" value="website" id="id_website"/>Website</td>
-								<td><input type="checkbox" name="report_field[]" value="certified_to" id="id_certified_to"/>Certified To</td>
+								<td><input type="checkbox" name="report_field[]" value="country" id="7"/>Country</td>
+								<td><input type="checkbox" name="report_field[]" value="website" id="8"/>Website</td>
+								<td><input type="checkbox" name="report_field[]" value="certified_to" id="9"/>Certified To</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="contact_name" id="id_contact_name"/>Contact Name</td>
-								<td><input type="checkbox" name="report_field[]" value="contact_title" id="id_contact_title"/>Contact Title</td>
-								<td><input type="checkbox" name="report_field[]" value="phone" id="id_phone"/>Phone</td>
+								<td><input type="checkbox" name="report_field[]" value="contact_name" id="10"/>Contact Name</td>
+								<td><input type="checkbox" name="report_field[]" value="contact_title" id="11"/>Contact Title</td>
+								<td><input type="checkbox" name="report_field[]" value="phone" id="12"/>Phone</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="fax" id="id_fax"/>Fax</td>
-								<td><input type="checkbox" name="report_field[]" value="email_address" id="id_email_address"/>Email Address</td>
+								<td><input type="checkbox" name="report_field[]" value="fax" id="13"/>Fax</td>
+								<td><input type="checkbox" name="report_field[]" value="email_address" id="14"/>Email Address</td>
+								<td><input type="checkbox" name="report_field[]" value="address" id="15"/>address</td>
 								</tr>
 								</table>
 								
@@ -156,7 +158,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validate();" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -174,6 +176,50 @@
 <table  width="50%" height="50%">
 			<tr><td></td></tr></table>
 
+
+<script type="text/javascript">
+function validate()
+{
+	var error ="";
+	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+	var a1 = document.getElementById('1').checked;
+	var a2 = document.getElementById('2').checked;
+	var a3 = document.getElementById('3').checked;
+	var a4 = document.getElementById('4').checked;
+	var a5 = document.getElementById('5').checked;
+	var a6 = document.getElementById('6').checked;
+	var a7 = document.getElementById('7').checked;
+	var a8 = document.getElementById('8').checked;
+	var a9 = document.getElementById('9').checked;
+	var a10 = document.getElementById('10').checked;
+	var a11 = document.getElementById('11').checked;
+	var a12 = document.getElementById('12').checked;
+	var a13 = document.getElementById('13').checked;
+	var a14 = document.getElementById('14').checked;
+	var a15 = document.getElementById('15').checked;
+	
+	if(id_type_userdefined)
+		{
+		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14|| a15)
+			{
+			document.getElementById("userdefineerror").innerHTML="";
+			}
+		else{
+			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			error = "true";
+		}
+	}
+	else
+	{
+		document.getElementById("userdefineerror").innerHTML="";
+		}
+	
+	if(error == "true")
+		{
+		return false;
+		}
+}
+</script>
 
 <script type="text/javascript">
 
