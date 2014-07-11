@@ -75,14 +75,14 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                  <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Date of Feedback :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br>
                   <span id="datepicker1" style="color:red"></span>
                   <span class="err"><form:errors path="CustomerFeedback.date_of_feedback"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Type of Feedback :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="type_of_feedback" class="input_cmbbx1">
+                  <select name="type_of_feedback" class="input_txtbx">
                   <option value="Complaint">Complaint</option>
                   <option value="Suggestion">Suggestion</option>
                   <option value="Product Return">Product Return</option>                  
@@ -93,7 +93,7 @@
                   <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Feedback Recorded by :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="feedback_recorded_by" class="input_cmbbx1">
+                  <select name="feedback_recorded_by" class="input_txtbx">
                   <option value="name1">Associate name1</option>
                   <option value="name2">Associate name2</option>
                   <option value="name3">Associate name3</option>                  
@@ -101,9 +101,9 @@
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Feedback Details :</td>
+                 <td valign="top" align="left" class="input_txt" width="30%"> Feedback Details :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <textarea class="input_txtbx1" name="feedback_details" id="id_feedback_details" style="width: 177px; height: 89px;"></textarea><br/>
+                  <textarea class="input_txtbx" name="feedback_details" id="id_feedback_details" style="height: 89px;"></textarea><br/>
                   <span id="feedbackdetailserror" style="color:red"></span>
                   <span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
                   </tr>
@@ -130,6 +130,16 @@
       </div>
       
 </form>
+ <script>
+$(function() {
+
+	$("#id_feedback_details").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+	</script>
 <script>
 $(function() {
 	$("#id_feedback_details").on("keypress", function(e) {
@@ -177,6 +187,12 @@ function validate()
 		 document.getElementById("feedbackdetailserror").innerHTML="Required Field Should not be Empty";
 			error="true";
 		 }
+	 else if(feedbackdetails.charAt(0) == " ")
+		 {
+		 document.getElementById("feedbackdetailserror").innerHTML="Required Field Should not Start with Spaces";
+			error="true";
+		 }
+	 
 	 else  if((feedbackdetails.length < 4) ||(feedbackdetails.length > 400))
 	   {
 		   document.getElementById("feedbackdetailserror").innerHTML="Required Field should be Length of 4 to 400";

@@ -95,13 +95,17 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="25%">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker"  value="${date}" class="input_txtbx1" ></td>
-							    <td align="left" valign="middle" width="25%">&nbsp;Type of Feedback: </td>
-							    <td align="left" valign="middle" width="10%">
-							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx1"></td> -->
+							 <td align="center" valign="middle" width="5%">
+							    <td align="left" valign="middle" width="2%">Date of Feedback: </td>
+							    <td align="left" valign="middle" width="20%"><input type="text" name="date_of_feedback" id="datepicker"  value="${date}" class="input_txtbx" >
+							    <br><span id="datepicker11" style="color:red"></span>
+							    </td>
+							   
+							    <td align="left" valign="middle" width="2%">&nbsp;Type of Feedback: </td>
+							    <td align="left" valign="middle" width="20%">
+							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx"></td> -->
 							    
-							     <select name="type_of_feedback" class="input_cmbbx1" id="type">
+							     <select name="type_of_feedback" class="input_txtbx" id="type">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option <c:if test="${type eq 'Complaint'}"><c:out value="Selected"/></c:if>  value="Complaint" >Complaint</option>
@@ -112,9 +116,11 @@
 							    <!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="feedback_details" class="input_txtbx1" id="details"></td>
 							     -->
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomerfeedback" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
-							  </tr>
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomerfeedback" onclick="return validation();">
+							    <br><span id="searcherror" style="color:red"></span>
+							    </td>
+<!-- 							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
+ -->							  </tr>
 							</table>
 							</form>
 						</div>
@@ -212,7 +218,46 @@
 		</table> 
 	
 </div>
+<script type="text/javascript">
+function validation()
+{
+	var error = "";
+	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var datepicker = document.getElementById('datepicker').value;
+	var type = document.getElementById('type').value; 
+	
+	if((datepicker == "") && (type == ""))
+	{
+		 document.getElementById("searcherror").innerHTML="Input is Empty";
+			error="true";		
+	}
+	else if(datepicker.length > 0)
+	 {
+		if(datepicker.match(date))
+		 {
+			 document.getElementById("datepicker11").innerHTML="";
+		 }
+		 else
+		 {
+			 document.getElementById("datepicker11").innerHTML="Invalid Date";
+			 error="true";
+		 }
+	 }
 
+ else
+	  {
+	  document.getElementById("searcherror").innerHTML="";
+	  }
+ 
+ if(error == "true")
+	  {
+	  return false;
+	  }
+	
+}
+
+
+</script>
 <script>
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete CustomerFeedback Form ?")

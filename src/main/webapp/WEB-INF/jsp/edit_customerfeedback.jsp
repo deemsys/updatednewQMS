@@ -76,14 +76,14 @@
              
                  <td valign="middle" align="left" class="input_txt" width="30%">    <input type="hidden" name="feedback_id" value="${customerfeedbacks.feedback_id }"/>
                Date of Feedback :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx1" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.date_of_feedback}"></c:out>' /></br>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.date_of_feedback}"></c:out>' /></br>
                   <span id="datepicker1" style="color:red"></span>
                   <span class="err"><form:errors path="CustomerFeedback.date_of_feedback"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Type of Feedback :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="type_of_feedback" class="input_cmbbx1">
+                  <select name="type_of_feedback" class="input_txtbx">
                   <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Complaint'}"><c:out value="Selected"/></c:if> value="Complaint">Complaint</option>
                   <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Suggestion'}"><c:out value="Selected"/></c:if> value="Suggestion">Suggestion</option>
                   <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Product Return'}"><c:out value="Selected"/></c:if> value="Product Return">Product Return</option>                  
@@ -94,7 +94,7 @@
                   <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Feedback Recorded by :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="feedback_recorded_by" class="input_cmbbx1">
+                  <select name="feedback_recorded_by" class="input_txtbx">
                   <option <c:if test="${customerfeedbacks.feedback_recorded_by eq'name1'}"><c:out value="Selected"/></c:if> value="name1">Associate name1</option>
                   <option <c:if test="${customerfeedbacks.feedback_recorded_by eq'name2'}"><c:out value="Selected"/></c:if> value="name2">Associate name2</option>
                   <option <c:if test="${customerfeedbacks.feedback_recorded_by eq'name3'}"><c:out value="Selected"/></c:if> value="name3">Associate name3</option>                  
@@ -104,9 +104,9 @@
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Feedback Details :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                  <textarea class="input_txtbx1" name="feedback_details" id="id_feedback_details" onInput="return validatename1(id);" style="width: 177px; height: 89px;"><c:out value="${customerfeedbacks.feedback_details}"></c:out></textarea>                  
-                  <span id="feedbackdetailserror" style="color:red"></span>
-                  <br/><span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
+                  <textarea class="input_txtbx" name="feedback_details" id="id_feedback_details" style="height: 89px;"><c:out value="${customerfeedbacks.feedback_details}"></c:out></textarea>                  
+                 <br/> <span id="feedbackdetailserror" style="color:red"></span>
+                  <span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
                   </tr>
                   <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Attachment choosen:</td>
@@ -117,8 +117,8 @@
                  </tr> 
                   
                     <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="30%"></td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="submit" class="submit_btn1" value="Update Feedback" id="id_submit" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
+               
+                  <td colspan="2"valign="top" align="center" class="input_txt" width="70%"><input type="submit" class="submit_btn1" value="Update Feedback" id="id_submit"style="width:170px;" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   </tr>
                   
                   
@@ -139,12 +139,7 @@ $(function() {
         e.preventDefault();
 });
 });
-function validatename1(id){
-	
-    var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[ ]/g, "");
-    document.getElementById(id).value = textInput;
-}  
+
 
 </script>
 <script type="text/javascript">
@@ -176,6 +171,11 @@ function validate()
 	 if(feedbackdetails == "")
 		 {
 		 document.getElementById("feedbackdetailserror").innerHTML="Required Field Should not be Empty";
+			error="true";
+		 }
+	 else if(feedbackdetails.charAt(0) == " ")
+		 {
+		 document.getElementById("feedbackdetailserror").innerHTML="Required Field Should not Start with Spaces";
 			error="true";
 		 }
 	 else  if((feedbackdetails.length < 4) ||(feedbackdetails.length > 400))
@@ -216,4 +216,5 @@ function validate()
          });
  
 </script>
+<br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>

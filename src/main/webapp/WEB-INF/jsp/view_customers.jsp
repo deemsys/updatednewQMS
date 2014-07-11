@@ -1,7 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
-
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <script type="text/javascript" src="js/ajaxpaging.js"></script>
 
 <div id="right_content">
@@ -95,17 +97,26 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" onInput="return validatename2(id);"value="${cust_id}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${name}"onInput="return validatename(id);"></td>
-							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2" value="${address}"></td>
-							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
-							     -->
-							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomer" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
+							    <td align="left" valign="middle" width="5%">Id:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" onInput="return validatename2(id);"value="${cust_id}">
+							     <br><span id="searcherror1" style="color:red"></span>
+							    </td>
+							     <td align="center" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="6%">Name:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${name}" onInput="return validatename(id);">
+							     <br><span id="searcherror2" style="color:red"></span>
+							    </td>
+							     <td align="center" valign="middle" width="10%">
+							    <td align="left" valign="middle" width="8%">Address:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${address}">
+							     <br><span id="searcherror3" style="color:red"></span>
+							    </td>
 							  
+							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomer" onclick="return validation();">
+							       <br><span id="searcherror" style="color:red"></span>
+							      </td>
+							<!--   	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
+							   -->
 							  </tr>
 							</table>
 							</form>
@@ -235,7 +246,7 @@ function validatename(id){
 function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[A-Z0-9]/g, "");
+    textInput = textInput.replace(/[^A-Z0-9]/g, "");
     document.getElementById(id).value = textInput;
 }  
 </script>
@@ -250,7 +261,70 @@ function confirmation(val) {
 	}
 }
 </script>
+<script language="javascript">
+function validation()
+{
+	var error = "";
+	var id= document.getElementById('id').value;
+	var name = document.getElementById('name').value;
+	var address =  document.getElementById('address').value;
+	 document.getElementById("searcherror").innerHTML="";
+	 document.getElementById("searcherror1").innerHTML="";
+	 document.getElementById("searcherror2").innerHTML="";
+	 document.getElementById("searcherror3").innerHTML="";
+	if((id =="") &&(name == "") && (address == ""))
+		{
+		  document.getElementById("searcherror").innerHTML="Input is Empty";
+	    	error="true";
+		}
+	  else if(id.length > 0)
+	  {
+	 
+	  if((id.length < 4) || (id.length > 32))
+		  {
+		  document.getElementById("searcherror1").innerHTML="Required field should be length of 4 to 32";
+			error="true";
+		  }
+	  else{
+		  document.getElementById("searcherror1").innerHTML="";
+	 	 }
+	  }
+ 	 else if(name.length > 0)
+  	{
+ 	 if((name.length < 4) || (name.length > 32))
+	  {
+	  document.getElementById("searcherror2").innerHTML="Required field should be length of 4 to 32";
+		error="true";
+	  }
+  else{
+	  document.getElementById("searcherror2").innerHTML="";
+ 	 }
+  }
+ 	 else if(address.length > 0)
+   	{
+  	 if((address.length < 4) || (address.length > 32))
+ 	  {
+ 	  document.getElementById("searcherror3").innerHTML="Required field should be length of 4 to 32";
+ 		error="true";
+ 	  }
+   else{
+ 	  document.getElementById("searcherror3").innerHTML="";
+  	 }
+   }
+  else
+	  {
+	  document.getElementById("searcherror").innerHTML="";
+	  }
+  
+  if(error == "true")
+	  {
+	  return false;
+	  }
+	
+	}
 
+
+</script>
 <script language="javascript">
 
 function selectall(field)

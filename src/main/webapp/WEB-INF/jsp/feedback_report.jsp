@@ -67,71 +67,92 @@
             <div class="contentbox">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <tr class="row2">
-               <td valign="middle" align="left" class="input_txt" width="30%"> Type of Feedback :<!-- </td> -->
-                  <!-- <td valign="top" align="left" class="input_txt" width="70%"> -->
-                  <select name="type_of_feedback" class="input_cmbbx1">
+               <td valign="middle" align="left" class="input_txt" width="2%"> Type of Feedback:</td>
+               <td valign="top" width="10%"><span class="err">
+                  <select name="type_of_feedback" id="feedback" class="input_txtbx">
+                  <option value="">-select-</option>
                   <option value="Complaint"<c:if test="${feedback=='Complaint'}"><c:out value="selected"/></c:if>>Complaint</option>
                   <option value="Suggestion"<c:if test="${feedback=='Suggestion'}"><c:out value="selected"/></c:if>>Suggestion</option>
                   
                   </select>
-                  <td></td>
-                  
-                  <td></td><td></td>
+                     <br><span id="generateerror" style="color:red"></span>
+                  <td>
                    </tr>
                   <tr class="row1">
-                  <td valign="top" width="30%"><span class="err">*</span>From Date:
-                  <input type="text" name="from_date" class="input_txtbx1" id="datepicker"  value="${fromdate}" /><br><span class="err"></span></td>
-                   <td width="30%"><span class="err">*</span>To Date:
-                  <input type="text" name="to_date" class="input_txtbx1" id="datepicker1" value="${todate}" /><br><span class="err"></span></td>
-                  <td  valign="top" align="right">&nbsp;</td><!-- 
-                  <td valign="top" align="left"><input type="submit" value="Generate" class="submit_btn1" id="button" ></td> -->
-                   <td valign="top" align="left"  colspan="3"><input type="submit" value="Generate" class="submit_btn1" id="button" ></td>
+                  <td valign="top" width="2%"><span class="err"></span>From Date:
+                  <input type="text" name="from_date" class="input_txtbx" id="datepicker"  value="${fromdate}" /><br>
+                  
+                  <span id="datepicker11"style="color:red"></span></td>
+                   <td width="2%"><span class="err"></span>To Date:
+                  <input type="text" name="to_date" class="input_txtbx" id="datepicker1" value="${todate}" /><br>
+                  <span id="datepicker22"style="color:red"></span>
+                  <span class="err"></span></td>
+                  <tr class="row2">
+                  <td> <span id="dateerror"style="color:red"></span></td>
+                  </tr>
+                  <td  valign="top" align="right">&nbsp;</td>
+                   <td valign="top" align="left"  colspan="3"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" >
+                
+                   </td>
      				                     
 </tr>
 <tr class="row2">
 <td></td>
-<td></td> <td valign="top" align="right"> <a href="./feedbackexport?type=${type}">Generate All</a></td>
-</tr>
-</table>
-<%--  <table cellpadding="0" cellspacing="0" border="0" width="100%" id="feedbacktable" style="display:none" >
-
-							<tr class="title">
-								
-         						<td valign="top" align="left" width="15%">Date of Feedback</td>
-					         	<td valign="top" align="left" width="15%">Type of Feedback</td>
-					         	<td valign="top" align="left" width="20%">Feedback recorded by</td>
-								<td valign="top" align="left" width="20%">Feedback details</td>
-          						<td valign="top" align="left" width="15%">Attachments</td>
-          						<td valign="top" align="left" width="20%">Actions</td>
-          						
-        					</tr>
-        					
-        					<c:forEach items="${customerFeedbackForm.customerFeedbacks}" var="customerFeedbacks" varStatus="status">
-        							
-        								<tr class="row2" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-								  
-        						<td valign="top" align="left"  width="10%">${customerFeedbacks.date_of_feedback}</td>
-											<td valign="top" align="left" width="15%">${customerFeedbacks.type_of_feedback}</td>
-											<td valign="top" align="left" width="10%">${customerFeedbacks.feedback_recorded_by}</td>
-											<td valign="top" align="left" width="10%">${customerFeedbacks.feedback_details }
-											<td valign="top" align="left" width="15%"><a href="download_attachment?fid=<c:out value="${customerFeedbacks.feedback_id}"/>">Download</a></td></td>
-									    	<td valign="top" align="left" width="15%">
-											
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editfeedback?fid=${customerFeedbacks.feedback_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletefeedbackr?fid=${customerFeedbacks.feedback_id}"/>" onclick="return confirmation()">Remove</a>
-											
-											</td>
-											</tr>
-											
-        					</c:forEach> --%>
-        					                
-        					
-<%-- <tr class="row1">
-                  <td valign="top" align="right">&nbsp;</td>
-                  <td valign="top" align="right"  colspan="3"><a href="./feedbackexport?type=${type}">Export</a></td>
-                </tr> --%>
+<td></td> 
 </div></div></form></div></td></tr>
 </table> 
+<script type="text/javascript">
+function validation()
+{
+var error = "";
+var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+var feedback  = document.getElementById('feedback').value;
+var datepicker = document.getElementById('datepicker').value;
+var datepicker1 = document.getElementById('datepicker1').value;
+document.getElementById("datepicker11").innerHTML="";
+document.getElementById("datepicker22").innerHTML="";
+document.getElementById("generateerror").innerHTML="";
+document.getElementById("dateerror").innerHTML="";
+
+	if(feedback == "")
+	{
+		 document.getElementById("generateerror").innerHTML="Please Select one";
+			error="true";
+	}
+	else 
+	{
+		if((datepicker == "") || (datepicker1 == ""))
+			{
+			
+			 document.getElementById("dateerror").innerHTML="Please Pickup the From and To Date";
+				error="true";
+			}
+		else
+		{
+			if(!datepicker.match(date))
+			{
+				 document.getElementById("datepicker11").innerHTML="Invalid Date";
+			 	error="true";
+		 	}
+		
+			if(!datepicker1.match(date))
+			{
+		 	document.getElementById("datepicker22").innerHTML="Invalid Date";
+		 	error="true";
+			}
+		}
+		
+	}
+	if(error == "true")
+		{
+		return false;
+		
+		}
+	
+		
+	
+}
+</script>
 <script>
  $(function() {
            $( "#datepicker" ).datepicker();

@@ -150,11 +150,11 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${id}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${cusid}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${name}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${cusname}"></td>
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2" value="${address}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2" value="${cusaddress}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
 							     -->
 							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomers" ></td>
@@ -223,7 +223,7 @@ else
              <ul class="pagination">
         
       		 <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${currentpage - 1}&customer_id=${cust_id}&customer_name=${name}&address=${address}" >Prev</a></li> 
+             <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${currentpage - 1}&customer_id=${custid}&customer_name=${cusname}&address=${cusaddress}" >Prev</a></li> 
                </c:if>
               
             <%--  <c:forEach var="count" begin="1" end="${noofrows}">  --%>
@@ -233,17 +233,17 @@ else
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${i}&customer_id=${cust_id}&customer_name=${name}&address=${address}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${i}&customer_id=${custid}&customer_name=${cusname}&address=${cusaddress}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${currentpage+1}&customer_id=${cust_id}&customer_name=${name}&address=${address}">Next</a></li> 
+              <li class="page_unselect"><a href="viewdeletecustomerreport_page?page=${currentpage+1}&customer_id=${custid}&customer_name=${cusname}&address=${cusaddress}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
                   <%-- <li class="page"><a href="viewallcustomerreport?&customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> --%>
-          <li class="page"><a href="viewalldeletecustomerreport?customer_id=${cust_id}&customer_name=${name}&address=${address}" class="paging_select">ViewAll</a></li> 
+          <li class="page"><a href="viewalldeletecustomerreport?customer_id=${custid}&customer_name=${cusname}&address=${cusaddress}" class="paging_select">ViewAll</a></li> 
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="customersdelete" class="paging_select">Back</a></li>

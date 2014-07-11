@@ -241,7 +241,7 @@ function validatename2(id){
 	 
 	  else if(equipment_id.length > 0)
 		  {
-		  alert(equipment_id.length);
+		
 		  if((equipment_id.length < 4) || (equipment_id.length > 32))
 			  {
 			  document.getElementById("searcherror1").innerHTML="Required field should be length of 4 to 32";

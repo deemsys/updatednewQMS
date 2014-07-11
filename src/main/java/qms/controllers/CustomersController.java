@@ -25,7 +25,7 @@ import qms.forms.MaintenanceForm;
 
 
 @Controller
-@SessionAttributes({"customer","cust_id","name","address"})
+@SessionAttributes({"customer","cust_id","cusid","cusname","cusaddress"})
 public class CustomersController
 {
 	@Autowired
@@ -60,7 +60,7 @@ public class CustomersController
 		
 		session.setAttribute("cust_id",id);
 		session.setAttribute("name",name);
-		session.setAttribute("address", address);
+		session.setAttribute("address",address);
 		CustomersForm customersForm = new CustomersForm();
 		customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,page));
 		model.addAttribute("noofpages",(int) Math.ceil(customersDAO.FindCustomer(id, name, address) * 1.0 / 5));
@@ -233,9 +233,9 @@ public class CustomersController
 		@RequestMapping(value={"/customersdelete"}, method = RequestMethod.GET)
 		public String delete_customers(ModelMap model, Principal principal,HttpSession session )
 		{
-			session.removeAttribute("id");
-			session.removeAttribute("name");
-			session.removeAttribute("address");
+			session.removeAttribute("cusid");
+			session.removeAttribute("cusname");
+			session.removeAttribute("cusaddress");
 			CustomersForm customersForm = new CustomersForm();
 		    customersForm.setCustomers(customersDAO.getCustomers());
 		  //  model.addAttribute("customersForm",customersForm);
@@ -253,9 +253,9 @@ public class CustomersController
 		{
 		
 			System.out.println("find");
-			session.setAttribute("cust_id", id);
-			session.setAttribute("name", name);
-			session.setAttribute("address", address);
+			session.setAttribute("cusid", id);
+			session.setAttribute("cusname", name);
+			session.setAttribute("cusaddress", address);
 
 				CustomersForm customersForm = new CustomersForm();
 				customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,1));
@@ -273,9 +273,9 @@ public class CustomersController
 		public String viewdeletecustomerreport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,
 				@RequestParam("customer_id") String id,@RequestParam("customer_name") String name,@RequestParam("address") String address,ModelMap model) {
 			
-			session.setAttribute("cust_id",id);
-			session.setAttribute("name",name);
-			session.setAttribute("address", address);
+			session.setAttribute("cusid",id);
+			session.setAttribute("cusname",name);
+			session.setAttribute("cusaddress", address);
 			CustomersForm customersForm = new CustomersForm();
 			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address,page));
 			model.addAttribute("noofpages",(int) Math.ceil(customersDAO.FindCustomer(id, name, address) * 1.0 / 5));
@@ -296,9 +296,9 @@ public class CustomersController
 		{
 			
 
-			session.setAttribute("cust_id",id);
-			session.setAttribute("name",name);
-			session.setAttribute("address", address);
+			session.setAttribute("cusid",id);
+			session.setAttribute("cusname",name);
+			session.setAttribute("cusaddress", address);
 			CustomersForm customersForm = new CustomersForm();
 			customersForm.setCustomers(customersDAO.getfindcustomer(id, name, address, 0));
 		//	model.addAttribute("noofpages",(int) Math.ceil(documentControlDAO.FindDocuments(search_document_type, search_process) * 1.0 / 5));	 
@@ -320,9 +320,9 @@ public class CustomersController
 			@RequestMapping(value={"/deletecustomers"}, method = RequestMethod.POST)
 		public String deleteSelectedcustomers(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
-				session.removeAttribute("id");
-				session.removeAttribute("name");
-				session.removeAttribute("address");
+				session.removeAttribute("cusid");
+				session.removeAttribute("cusname");
+				session.removeAttribute("cusaddress");
 
 			String[] SelectedIDs=new String[100];
 			SelectedIDs=request.getParameterValues("chkUser");
