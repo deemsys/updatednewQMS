@@ -180,8 +180,8 @@
 							    	</tr>
 							    	</c:if>
 										
-										 <tr><td colspan="6">  
-	<div class="extrabottom">
+										 <tr><td colspan="9" class="extrabottom">  
+	<!-- <div class="extrabottom"> -->
              <ul class="pagination">
         
              <c:if test="${currentpage!=1&&currentpage!=null}">
@@ -212,7 +212,7 @@
               </c:choose>					
 		 
 		  </ul>
-		  </div>
+
 		  </td>
 		  </tr>
 										
@@ -224,7 +224,7 @@
 						    	</table>
 						    	</div>
 						 
-
+<table ><tr><td   width="100%" height="520px;"></td></tr></table>
 <script>
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?")
@@ -255,7 +255,8 @@ function selectall(field)
 			field[i].checked = false;
 	}
 }
-
+</script>
+<script>
 function validate(fname)
 {
 // alert(fname);

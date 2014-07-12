@@ -33,6 +33,7 @@ import qms.forms.DocumentTypeForm;
 import qms.forms.EmployeeForm;
 import qms.forms.HRandTrainingForm;
 import qms.forms.ProcessForm;
+import qms.forms.SupplierPerformanceForm;
 
 @Controller
 @SessionAttributes({"hr"})
@@ -482,5 +483,17 @@ public class HRandTainingController {
 					return "view_hr";
 				}
 				
+				// Getting the Supplier Performance record's list
+				@RequestMapping(value = "list_hr", method = RequestMethod.GET)
+				public String list_hr(@RequestParam("id") String id,
+						ModelMap model, Principal principal) 
+				{
+					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getParticular_HR(id));
+					model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+					model.addAttribute("menu","hr");
+					System.out.println("list result.......");
+					return "list_hr";
+				}
 
 }

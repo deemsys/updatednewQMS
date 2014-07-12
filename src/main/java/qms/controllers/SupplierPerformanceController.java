@@ -234,7 +234,6 @@ import qms.forms.SupplierPerformanceForm;;
 				ModelMap model, Principal principal) 
 		{
 			SupplierPerformanceForm supplierPerformanceForm = new SupplierPerformanceForm();
-
 			supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.list_supplierperformance(supplier_id));
 			System.out.println("list:"+supplier_id);
 			model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);

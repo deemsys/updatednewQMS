@@ -189,7 +189,7 @@
 						                    							</td>
 						                    							<td align="left">
 						                    						
-						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton1();" />
+						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event);" />
 						                    				</td>
 						                    					<td align="left">
 						                    					<label class="number_btn1"  id="button1"   style="display:none;" >No's</label>
@@ -210,7 +210,7 @@
 																		value="Keep as is">Keep as is</option>
 						                    						</select>
 						                    						</td>
-						                    						<td align="left"><input type="text" name="quality2" id="quality2" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event)"; onchange="showbutton2();" />
+						                    						<td align="left"><input type="text" name="quality2" id="quality2" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event)"; />
 						                    						<span style="color: red;"><form:errors path="Nonconformance.quality2"></form:errors></span></td>
 						                    						<td align="left">
 						                    						<label class="number_btn1"  id="button2"   style="display:none;">No's</label>
@@ -231,7 +231,7 @@
 						                    						</select><br/>
 						                    						<span style="color: red;"><form:errors path="Nonconformance.disposition3"></form:errors></span>
 						                    					</td>
-						                    					<td  align="left"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onchange="showbutton3();" onkeypress="return validate(event)"; />
+						                    					<td  align="left"><input type="text" name="quality3" id="quality3" style="display:none; width:40px;" onkeypress="return validate(event)"; />
 						                    				 
 						                    					</td>
 						                    					<td  align="left">
@@ -246,19 +246,8 @@
 																	<tr class="row2">
 																		<td valign="top" align="left" class="input_txt">Reported By: </td>
 																		<td valign="top" align="left" class="input_txt">
-																			<div id="reported_by">
-<%-- 																			<select name="reported_by" class="input_txtbx" id="reported_by"> </select></div>
-			                												<span style="color: red;"><form:errors path="Nonconformance.reported_by"></form:errors>
-																		</span> --%>
-																			<input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}" />
-				                  											<select name="reported_by" class="input_txtbx" id="reported_by">
-																			 <option value="">--Select--</option>
-																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
-        				       													<option value="${reportedByNCs.group_person}" <c:if test="${reportedByNCs.group_person == nonconformance.reported_by}"><c:out value="selected"/></c:if>>${reportedByNCs.group_person}</option>
-			                  												</c:forEach>
-			                 												</select>
-																			 <br/><span class="err" style="color: red;"><form:errors path="Nonconformance.reported_by"></form:errors></span></td>
-				                  	
+								 										 <div id="reported_by"></div><span style="color:red;" id="reporterr"></span>
+ 														  
 																		<td valign="top" align="left" class="input_txt">Disposition Complete Date:</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx" id="datepicker1"
@@ -426,7 +415,19 @@ function validation()
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
  	var external = document.getElementById('external_id').value;
-	
+ 	var reported_by = document.getElementById('reported_id').value;
+	alert("before"+typenc);
+ 	 if(typenc!="")
+		{alert("jsdhfksdjhflsdhflk"+reported_by);
+ 		 if(reported_by=="")
+		{		
+ 		alert("typenc");
+ 		document.getElementById('reporterr').innerHTML="Required Field Should not be Empty";
+ 	error="true";
+ 		}
+}
+
+		 
 	 if((sourcenc=="Customer Complaint") || (sourcenc=="Customer Audit") || (sourcenc=="Third Party Audit"))
 	{
 	
@@ -753,8 +754,7 @@ function validate(event) {
 
 <script type="text/javascript">     
 $(function() {   
-	
-alert("hi");
+
 $('#source_of_nonconformance').change(function(){     
 	//if(($('#source_of_nonconformance').val() == 'Customer Audit') && ($('#source_of_nonconformance').val() == 'Third Party Audit') && ($('#source_of_nonconformance').val() == 'Customer Complaint'))
 	if($('#source_of_nonconformance').val() === 'Customer Audit')     
@@ -825,7 +825,11 @@ function show1()
 	
 	if(val !="")
 		{
-		document.getElementById('quality1').style.display='block';
+		alert("show1");
+		
+	document.getElementById('button1').style.display='block';
+	document.getElementById('quality1').style.display='block';
+	retu
 		}
 	else
 	document.getElementById('quality1').style.display='none';
@@ -839,6 +843,7 @@ function show2()
 	if(val !="")
 		{
 		document.getElementById('quality2').style.display='block';
+		document.getElementById('button2').style.display='block';
 		}
 	else
 	document.getElementById('quality2').style.display='none';
@@ -852,6 +857,7 @@ function show3()
 	if(val !="")
 		{
 		document.getElementById('quality3').style.display='block';
+		document.getElementById('button3').style.display='block';
 		}
 	else
 	document.getElementById('quality3').style.display='none';

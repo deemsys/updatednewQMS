@@ -49,7 +49,7 @@
 								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="nonconformance_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Nonconformance Report</span>
+									<span>Reports</span>
 									
 								</a>
 							</li>
@@ -222,16 +222,17 @@
 								<tr class="row2">
 				                	<td valign="top" align="left" class="input_txt"> Reported By: </td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  	 <input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
+				                  				 <div id="reported_by">
+				                    <input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
 				                  	<select name="reported_by" class="input_txtbx" id="reported_by">
 																			 <option value="">--Select--</option>
 																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
         				       <option value="${reportedByNCs.group_person}" <c:if test="${reportedByNCs.group_person == nonconformance.reported_by}"><c:out value="selected"/></c:if>>${reportedByNCs.group_person}</option>
 			                  </c:forEach>
-			                 </select>
+			                 </select></div><span style="color:red;" id="reporterr"></span>
 				                  	
 																			 <span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td> 
-				                  	 <!-- <div id="reported_by">	
+				                  	  <!-- <div id="reported_by">	
 				                  	 <select name="reported_by" class="input_txtbx" id="reported_by" style="width:60%;"></select>
 				                  	 </div>  -->
 				                  	 <td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
@@ -607,7 +608,18 @@ function validation()
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
 	var external = document.getElementById('external_id').value;
-	
+	var reported_by = document.getElementById('reported_id').value;
+	alert("before"+typenc);
+ 	 if(typenc!="")
+		{alert("jsdhfksdjhflsdhflk"+reported_by);
+ 		 if(reported_by=="")
+		{		
+ 		alert("typenc");
+ 		document.getElementById('reporterr').innerHTML="Required Field Should not be Empty";
+ 	error="true";
+ 		}
+}
+
 	 if((sourcenc=="Customer Complaint") || (sourcenc=="Customer Audit") || (sourcenc=="Third Party Audit"))
 	{
 	

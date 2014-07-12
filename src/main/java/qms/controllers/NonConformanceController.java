@@ -623,10 +623,10 @@ public class NonConformanceController {
 				System.out.println("result html:::::"+resultHTML);
 				 
 				String returnText="";
-				returnText=returnText+"<select name='reported_by' class='input_txtbx' id='reported_by'>";
+				returnText=returnText+"<select name='reported_by' class='input_txtbx' id='reported_id'>";
 			 	
 				System.out.println("Group Person"+group_person);
-				
+				returnText+="<option value=''>-select-</option>";
 				for(String typenc:resultHTML)
 				{
 					returnText+="<option value='"+typenc+"'";
@@ -639,7 +639,7 @@ public class NonConformanceController {
 					}			
 				  
 			   returnText=returnText+"</select>";
-			
+			   returnText=returnText+"<span id='reporterr' style='color:red;'></span>";
 				return returnText;
 			}
 
