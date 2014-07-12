@@ -50,12 +50,12 @@
 	<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 	
 	          <tr class="row2">
-                            <td valign="middle" align="left" class="input_txt">Form/Rec ID :</td>
-			<td valign="top" align="left" class="input_txt" >
+                            <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
+			<td valign="top" align="left" class="input_txt" width="30%" >
 			
 			<a id="formid">
 			
-					<input type="hidden" id="formid"class="input_txtbx1"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
+					<input type="hidden" id="formid"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');"
 					name="form_or_rec_id" />${form.form_or_rec_id}</a>
 																		
@@ -63,7 +63,7 @@
                         
               
               
-               <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="display:none;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;">
       
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
@@ -78,11 +78,11 @@
             <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             
                
-              <td valign="middle" align="left" class="input_txt">Responsibility :</td>
-			  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="responsibility"
+              <td valign="top" align="left" class="input_txt" width="30%">Responsibility :</td>
+			  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" class="input_txtbx" id="responsibility"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="responsibility" style="width:90%"
+																			name="responsibility" 
 																			value="${form.responsibility}" /><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
@@ -91,29 +91,29 @@
 																		              
 				
 																		
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
 																		
 
              </tr>
               
               <tr class="row1">
-               <td valign="middle" align="left" class="input_txt">Form/Rec Title:</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="form_or_rec_title"
+               <td valign="top" align="left" class="input_txt" width="30%">Form/Rec Title:</td>
+																		<td valign="top" align="left" class="input_txt" width="30%"><input
+																			type="text" class="input_txtbx" id="form_or_rec_title"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title" style="width:100%"
+																			name="form_or_rec_title"
 																			value="${form.form_or_rec_title}" /><br/>
 																			<span id="title1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
-																		<td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
-               <td valign="top" align="left" class="input_txt" >
+																		<td valign="top" align="left" class="input_txt" width="30%" width="20%">Process:</td>
+               <td valign="top" align="left" class="input_txt" width="30%" >
                
                
-                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:90%">
+                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx">
 							 
 			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
         				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
@@ -122,18 +122,18 @@
          
                
 																		
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td> 
-               <td valign="top" align="left" class="input_txt" width="20%"></td>
+               <td valign="top" align="left" class="input_txt" width="30%" width="20%"></td>
 																		
 				             </tr>
               
               <tr class="row2"> 
                
-			   <td valign="middle" align="left" class="input_txt" width="40%">Media Type:</td>
-               <td valign="middle" align="left" class="input_txt">
+			   <td valign="top" align="left" class="input_txt" width="30%" width="40%">Media Type:</td>
+               <td valign="top" align="left" class="input_txt" width="30%">
                
                 
                  <c:choose>
@@ -156,9 +156,9 @@
                </td>
                 <c:choose>
                 <c:when test="${form.media_type=='hardcopy'}">
-               <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;">Upload File:</label></td>
-               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="25%">
-               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
+               <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="30%" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;">Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="30%" width="25%">
+               <select id="location_text" name="location" class="input_txtbx" style="width:200px;">
               <option value="">--Select--</option>
                 <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
                   
@@ -174,9 +174,9 @@
                </c:choose>
                <c:choose>
                 <c:when test="${form.media_type=='electronic'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" style="display:none"> Location:</label><br><label id="file_upload_label">Upload File:</label></td>
-               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
-               <select id="location_text" name="location" class="input_cmbbx1" style="display:none;width:200px;">
+               <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="30%" width="20%"><label id="location_label" style="display:none"> Location:</label><br><label id="file_upload_label">Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="30%" width="25%">
+               <select id="location_text" name="location" class="input_txtbx" style="display:none;width:200px;">
               
               <option value="">--Select--</option>
                   <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
@@ -195,9 +195,9 @@
               </c:when>
              
               <c:when test="${form.media_type=='both'}">
-              <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label"> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
-               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
-               <select id="location_text" name="location" class="input_cmbbx1">
+              <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="30%" width="20%"><label id="location_label"> Location:</label><br><br><label id="file_upload_label"><span class="err">*</span> Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="30%" width="25%">
+               <select id="location_text" name="location" class="input_txtbx">
               <option value="">--Select--</option>
                 <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
                   
@@ -212,14 +212,14 @@
                </c:choose>
                </tr>
                <tr class="row1">
-																		 <td valign="middle" align="left" class="input_txt">Retention Time:</td>
-																		<td valign="top" align="left" class="input_txt"><%-- <input
-																			type="text" class="input_txtbx1" id="inp_external_id"
+																		 <td valign="top" align="left" class="input_txt" width="30%">Retention Time:</td>
+																		<td valign="top" align="left" class="input_txt" width="30%"><%-- <input
+																			type="text" class="input_txtbx" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="retention_time"
 																			value="${form.retention_time}" /> --%>
-																			 <select id="retention" name="retention_time" class="input_cmbbx1" style="width:200px;">
+																			 <select id="retention" name="retention_time" class="input_txtbx" style="width:200px;">
               
                <option value="1Week" <c:if test="${form.retention_time=='1Week'}"><c:out value="Selected"/></c:if>>1Week</option>
                <option value="1Month" <c:if test="${form.retention_time=='1Month'}"><c:out value="Selected"/></c:if>>1Month</option>
@@ -228,12 +228,12 @@
                <span style="color:red;"><form:errors path="Form.retention_time"></form:errors></span>
 																		
 																		</td>
-																		<td valign="middle" align="left" class="input_txt">Is this a Form?</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Is this a Form?</td>
 														
-																		<td valign="top" align="left" class="input_txt">
+																		<td valign="top" align="left" class="input_txt" width="30%">
 
-															<input type="radio" name="form" value="Yes"  class="input_txt"   <c:if test="${form.form=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
-				  											<input type="radio" name="form" value="No"  class="input_txt"  <c:if test="${form.form=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
+															<input type="radio" name="form" value="Yes"  class="input_txt" width="30%"   <c:if test="${form.form=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
+				  											<input type="radio" name="form" value="No"  class="input_txt" width="30%"  <c:if test="${form.form=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;
 				  </td>
 			     </tr>
          </table>
@@ -250,25 +250,25 @@
              </tr>
               <tr class="row1">
                          
-																		  <td valign="middle" align="left" class="input_txt">Revision No. (optional):</td>
-																		<td valign="top" align="left" class="input_txt">
+																		  <td valign="top" align="left" class="input_txt" width="30%">Revision No. (optional):</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">
 																		<span id="valueTempe" style="font-weight: bold; width:28px;">${form.revision_id}</span>
 																		<button id="plus" href="#" style="height: 18px; width:18px;" value="">+</button>
-																   <input type="hidden" name="revision_id" id="revisionid" value=""  class="input_cmbbx1" >
+																   <input type="hidden" name="revision_id" id="revisionid" value=""  class="input_txtbx" >
 																  
 																   
                   													<br/><span style="color:red;"><form:errors path="Form.revision_id"></form:errors></span>
 																		</td>
-																		              <td valign="middle" align="left" class="input_txt">Effective Date :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="datepicker123"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');" style="width:70%"
+																		              <td valign="top" align="left" class="input_txt" width="30%">Effective Date :</td>
+																		<td valign="top" align="left" class="input_txt" width="30%"><input
+																			type="text" class="input_txtbx" id="datepicker123"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="effective_date"
 																			value="${form.effective_date}" /><br/>
 																			<span id="datepicker1234" style="color:red"></span>
 																			<input
-																			type="hidden" class="input_txtbx1" id="inp_external_id"
+																			type="hidden" class="input_txtbx" id="inp_external_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="auto_no"
@@ -276,17 +276,17 @@
 																			<br/>
 																			<span style="color:red;"><form:errors path="Form.effective_date"></form:errors></span>
 																		</td>  
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>      
 																		  
 																		</tr>
               
               <tr class="row2">
-              																	 <td valign="middle" align="left" class="input_txt">Form/Rec ID :</td>
-																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="form_id"
+              																	 <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
+																		<td valign="top" align="left" class="input_txt" width="30%"><input
+																			type="text" class="input_txtbx" id="form_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="document_id"
@@ -294,14 +294,14 @@
 																			<b id="hide_id">${form.form_or_rec_id}</b><br/><span class="err"> <form:errors path="Form.document_id"></form:errors></span>
 																		</td>
                           
-																		              <td valign="middle" align="left" class="input_txt">Approver1(Process Owner) :</td>
-																		<td valign="top" align="left" class="input_txt">
+																		              <td valign="top" align="left" class="input_txt" width="30%">Approver1(Process Owner) :</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">
 																		
 																		<%-- <span id="process_owner_id"></span>
-				<input type="hidden" class="input_txtbx1" id="inp_external_id" name="approver1" onchange="Approver1();" value="${form.approver1}" /> ${form.approver1}
+				<input type="hidden" class="input_txtbx" id="inp_external_id" name="approver1" onchange="Approver1();" value="${form.approver1}" /> ${form.approver1}
 																			
 																			 --%>
-																			  <select name="approver1" class="input_cmbbx1" id="approver" style="width:70%">
+																			  <select name="approver1" class="input_txtbx" id="approver">
              																<c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
              															     <option value="<c:out value="${employeeowner.name}"/>" <c:if test="${form.approver1==employeeowner.name}"><c:out value="Selected"/></c:if>><c:out value="${employeeowner.name}"/></option>
               																 </c:forEach>    
@@ -309,15 +309,15 @@
              															  </select>  
 																			<br/><span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td> </tr>
               
               <tr class="row1">
-                            <td valign="middle" align="left" class="input_txt">Issuer :</td>
-																		<td valign="top" align="left" class="input_txt">
-																			 <select name="issuer" id="issuer" class="input_cmbbx1" style="width:200px;">
+                            <td valign="top" align="left" class="input_txt" width="30%">Issuer :</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">
+																			 <select name="issuer" id="issuer" class="input_txtbx" >
                <option value="">--Select--</option> 
                <c:forEach items="${employeeForm.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>" <c:if test="${form.issuer==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
@@ -328,14 +328,14 @@
 																		</td>
 																		
 																		
-																		 <td valign="middle" align="left" class="input_txt">Comments :</td>
-																		<td valign="top" align="left" class="input_txt">
-																	<textarea class="input_txtbx1"  name="comments" id="comments" style="width:70%; height: 50px;" >${form.comments}</textarea><br/>
+																		 <td valign="top" align="left" class="input_txt" width="30%">Comments :</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">
+																	<textarea class="input_txtbx"  name="comments" id="comments" style="height: 50px;" >${form.comments}</textarea><br/>
 																	<span id="comments1" style="color:red"></span>
 																	<span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
 																		
               </tr>
@@ -344,10 +344,10 @@
                    
               <tr class="row1">
               <td colspan="2" align="right">
-             <input type="submit" id="export"  name="export" value="Submit" onclick="return validation();"  class="submit_btn1"></td>
-             <td colspan="3">
+             <input type="submit" id="export"  name="export" value="Update" onclick="return validation();"  class="submit_btn1"></td>
+            <!--  <td colspan="3">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
-</tr>
+ --></tr>
      </table>
      </div>
      </div>

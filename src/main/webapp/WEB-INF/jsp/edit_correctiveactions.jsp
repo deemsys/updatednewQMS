@@ -229,13 +229,19 @@ onclick="Upload();"
                     <tr class="row2">
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
                      <td valign="top" align="left" class="input_txt"width="20%">
-				                  		<select name="responsibility" class="input_txtbx" style="width:99%; height:19.5px;" id="responsibility">
-						                 <option value="">-select-</option>
-						                  <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="true">
+				                  		<select name="responsibility" class="input_txtbx" id="responsibility">
+<%-- 						        <!--          <option value="">-select-</option>
+						         -->          <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="true">
                <option value="<c:out value="${hrandtrainings.name}"/>"><c:out value="${hrandtrainings.name}"/></option>
                </c:forEach>
 				                 </select>
-				           				                 <span style="color: red;" id="responsibilityerror"></span><form:errors path="CorrectiveAndPreventiveActions.responsibility"></form:errors>
+				                 
+				                 
+ --%>				                 
+				                 <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="status">
+                  
+        				       <option value="${hrandtrainings.name}"<c:if test="${hrandtrainings.name == correctiveAndPreventiveActions.responsibility}"><c:out value="selected"/></c:if>>${hrandtrainings.name}</option>
+			                  </c:forEach></select><span style="color: red;" id="responsibilityerror"></span><form:errors path="CorrectiveAndPreventiveActions.responsibility"></form:errors>
 				                   	</td>	
                      
                      <td valign="top" align="left" class="input_txt" width="20%">Completion Date :</td>
@@ -491,32 +497,41 @@ function validation()
 	var upload = document.getElementById('externalfile').checked;
 	var file = document.getElementById('id_file').value;
 	
- 	if(!usewhy=="" && why=="")
- 		{
- 		
- 		document.getElementById('whyerr').innerHTML="Required Field Should Not be Empty";
- 		error="true";
- 		}
- 	else if((why.length < 4) || (why.length > 45))
-	{
+ 	if(usewhy!="")
+		{
+			if(why=="")
+				{
 	
-	document.getElementById("whyerr").innerHTML="Should be of length 4 to 32";	
-	error="true";
-	}
- 	 else if(why.substring(0,1)==" ")
- 	{
- 	document.getElementById("whyerror").innerHTML="Initial space not allowed";
- 	 error="true";
- 	}
- 	else
- 		{
- 		document.getElementById('whyerr').innerHTML="";
- 		}
+		document.getElementById('whyerr').innerHTML="Required Field Should Not be Empty";
+		error="true";
+		}
+		
+	else if((why.length < 4) || (why.length > 32))
+{
+
+document.getElementById('whyerr').innerHTML="Should be of length 4 to 32";	
+error="true";
+}
+else if(why.substring(0,1)==" ")
+{
+	alert("space");
+document.getElementById('whyerr').innerHTML="Initial space not allowed";
+ error="true";
+}
+			}
+	else
+		{
+		document.getElementById('whyerr').innerHTML="";
+		}
+ 	
  	if(!upload=="" )
  		{
- 		
+ 		if(file="")
+ 			{
+ 			alert("file");
  		document.getElementById('fileerror').innerHTML="Please Upload a File";
  		error="true";
+ 		}
  		}
  	else
  		{

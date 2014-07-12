@@ -157,6 +157,11 @@
 									<br><span style="color: red;" id="error"></span></td>	
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								
+								<tr>
+								<td><input type="checkbox" id="select_all"/>Select All</td>
+								</tr>
+								
 								<tr>
 								<td><input type="checkbox" name="report_field[]" value="id" id="id_field_id"/>NC ID</td>
 								<td><input type="checkbox" name="report_field[]" value="reported_by" id="id_field_reported_by"/>Reported By</td>
@@ -386,6 +391,18 @@ if(id || reported_by  || action_required || costofnc || source || external || di
 		 return false;
 		 }
 	 }
+	 
+$('#select_all').change(function() {
+    var checkboxes = $(this).closest('form').find(':checkbox');
+
+    if($(this).is(':checked')) {
+        checkboxes.attr('checked','checked');
+    } else {
+        checkboxes.removeAttr('checked');
+    }
+   
+});
+
 </script>
 
   <jsp:include page="footer.jsp"></jsp:include>

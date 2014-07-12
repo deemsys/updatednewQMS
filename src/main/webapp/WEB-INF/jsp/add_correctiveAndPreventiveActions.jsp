@@ -186,7 +186,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
-               <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
+               <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
 				<tr class="row2" id="upload" style="display:none;">
@@ -485,36 +485,43 @@ function validation()
 	var upload = document.getElementById('externalfile').checked;
 	var file = document.getElementById('id_file').value;
 	
- 	if(!usewhy=="" && why=="")
+ 	if(usewhy!="")
  		{
- 			
+ 			if(why=="")
+ 				{
+ 	
  		document.getElementById('whyerr').innerHTML="Required Field Should Not be Empty";
  		error="true";
  		}
- 	else if((why.length < 4) || (why.length > 45))
+ 		
+ 	else if((why.length < 4) || (why.length > 32))
 	{
 	
-	document.getElementById("whyerr").innerHTML="Should be of length 4 to 32";	
+	document.getElementById('whyerr').innerHTML="Should be of length 4 to 32";	
 	error="true";
 	}
     else if(why.substring(0,1)==" ")
 	{
-	document.getElementById("whyerror").innerHTML="Initial space not allowed";
+    	
+	document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	 error="true";
 	}
- 	
+ 		}
  	else
  		{
  		document.getElementById('whyerr').innerHTML="";
  		}
- 	if(!upload=="")
+ 	if(upload!="")
  		{
- 	
+ 	if(file=="")
+ {
  		document.getElementById('fileerror').innerHTML="Please Upload a File";
  		error="true";
  		}
+}
  	else
  		{
+ 	
  		document.getElementById('fileerror').innerHTML="";
  		}
 

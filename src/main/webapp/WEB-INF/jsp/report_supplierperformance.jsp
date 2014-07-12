@@ -125,6 +125,12 @@
 									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								
+								<tr>
+								<td><input type="checkbox" id="select_all"/>Select All</td>
+								</tr>
+								
+								
 								<tr>
 								<td><input type="checkbox" name="report_field[]" value="supplier_id" id="1"/>ID</td>
 								<td><input type="checkbox" name="report_field[]" value="supplier_name" id="2"/>Name</td>
@@ -292,5 +298,16 @@ if(value==0)
     }
     
 }
+ $('#select_all').change(function() {
+	    var checkboxes = $(this).closest('form').find(':checkbox');
+
+	    if($(this).is(':checked')) {
+	        checkboxes.attr('checked','checked');
+	    } else {
+	        checkboxes.removeAttr('checked');
+	    }
+	   
+	});
+
 </script>
   <jsp:include page="footer.jsp"></jsp:include>

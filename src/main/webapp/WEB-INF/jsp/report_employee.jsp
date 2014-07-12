@@ -139,6 +139,10 @@
 									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								
+								<tr>
+								<td><input type="checkbox" id="select_all"/>Select All</td>
+								</tr>
 								<tr>
 								<td><input type="checkbox" name="report_field[]" value="employee_id" id="1"/>Employee id</td>
 								<td><input type="checkbox" name="report_field[]" value="name" id="2"/>name</td>
@@ -305,5 +309,39 @@ if(value==0)
     }
     
 }
+ 
+ $('#select_all').change(function() {
+	    var checkboxes = $(this).closest('form').find(':checkbox');
+
+	    if($(this).is(':checked')) {
+	        checkboxes.attr('checked','checked');
+	    } else {
+	        checkboxes.removeAttr('checked');
+	    }
+	   
+	});
+ 
+ 
+	function selectall(id) 
+	{
+		// var checkboxes1 = $(id).closest('form').find(':checkbox').not($('#select_all'));
+	
+if(($('#id').is(':checked')))
+//if(!$(id).closest('form').find(':checkbox').not($('#select_all').is(':checked')))
+
+ {  $("#select_all").attr('checked','checked'); 
+	
+	//if(!$id.closest('form').find(':checkbox').not($("#select_all")))
+		
+		
+     
+		
+ }
+ else 
+ {$("#select_all").removeAttr('checked');
+	 
+ }
+ 
+	}
 </script>
   <jsp:include page="footer.jsp"></jsp:include>

@@ -126,6 +126,9 @@
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
+								<tr>
+								<td><input type="checkbox" id="select_all"/>Select All</td>
+								</tr>
 								
 								<td><input type="checkbox" name="report_field[]" value="location" id="id_field_document_title"/>Location</td>
 								<td><input type="checkbox" name="report_field[]" value="form_or_rec_id" id="id_field_document_type"/>Form/Rec Id</td>
@@ -158,7 +161,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate Report" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -177,12 +180,6 @@
              	
            <table  width=300 height=30>
 			<tr height=30><td></td></tr></table>
- 
-           
-             
-			
- <jsp:include page="footer.jsp"></jsp:include> 			
-							
 							
 							
 <script type="text/javascript">
@@ -223,7 +220,20 @@ if(value==0)
     }
     
 }
- </script>
  
 
-				
+ $('#select_all').change(function() {
+	    var checkboxes = $(this).closest('form').find(':checkbox');
+
+	    if($(this).is(':checked')) {
+	        checkboxes.attr('checked','checked');
+	    } else {
+	        checkboxes.removeAttr('checked');
+	    }
+	   
+	});
+ 
+ </script>
+			
+ <jsp:include page="footer.jsp"></jsp:include> 			
+ 
