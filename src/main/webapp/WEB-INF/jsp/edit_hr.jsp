@@ -75,11 +75,11 @@ $(function() {
                  </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" style="width:150px;"class="input_txtbx1" id="name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.name }" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.name }" /><br>
                		<span id="nameerror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.name"></form:errors></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer"style="width:150px;" class="input_txtbx1" id="trainer"onInput="return validatename(id);"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.trainer }" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer"onInput="return validatename(id);"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.trainer }" /><br>
                   <span id="trainererror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.trainer"></form:errors></span></td>
                 
@@ -89,7 +89,7 @@ $(function() {
                   <td valign="middle" align="left" class="input_txt" width="20%">Job Title</td>
                	<td valign="top" align="left" class="input_txt" width="20%">
               
-			                 <select	name="job_title" id="jobtitle"class="input_cmbbx1" style="width:150px;">
+			                 <select	name="job_title" id="jobtitle"class="input_txtbx" >
 			                 <option value="">--Select--</option>
 			                 <option <c:if test="${hRandTrainings.job_title eq 'Job Title1'}"><c:out value="Selected"/></c:if> value="Job Title1">Job Title1</option>
 							<option <c:if test="${hRandTrainings.job_title eq 'Job Title2'}"><c:out value="Selected"/></c:if> value="Job Title2">Job Title2</option>
@@ -100,7 +100,7 @@ $(function() {
 
 			                 
             <td valign="middle" align="left" class="input_txt" width="20%">Qualified By:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><select	name="qualified_by" id="qualifiedby" class="input_cmbbx1" style="width:150px;">
+                  <td valign="top" align="left" class="input_txt" width="20%"><select	name="qualified_by" id="qualifiedby" class="input_txtbx" >
                   					
                   										<option
 															<c:if test="${hRandTrainings.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
@@ -122,12 +122,12 @@ $(function() {
                	
                	<tr class="row1">
                 <td valign="middle" align="left" class="input_txt" width="20%">Training Effectiveness Notes:</td>
-                 <td><textarea class="input_txtbx1" style="width:150px;height: 40px;" id="effectivenessnotes" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1(id);"  style="width: 177px; height: 89px;" name="note"><c:out value="${hRandTrainings.training_effectiveness_notes  }"/> </textarea><br>
+                 <td><textarea class="input_txtbx" style="height:40px;" id="effectivenessnotes" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" style="height: 89px;" name="note"><c:out value="${hRandTrainings.training_effectiveness_notes  }"/> </textarea><br>
                  <span id="effectivenessnoteserror" style="color:red"></span>
                  <span class="err"><form:errors path="HRandTraining.training_effectiveness_notes"></form:errors></span></td>
  <td valign="middle" align="left" class="input_txt" width="20%">Type:</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">
-                  <select  name="type_of_training" id="typeoftraining" class="input_cmbbx1" style="width:150px;">
+                  <select  name="type_of_training" id="typeoftraining" class="input_txtbx" >
 
 				                  									
                   										<option
@@ -145,12 +145,12 @@ $(function() {
 				<tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Date Hired</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="date_hired" class="input_txtbx1" id="datepicker"style="width:150px;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.date_hired }" /><br>
+                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.date_hired }" /><br>
                    <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.date_hired"></form:errors></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%">Due Date</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_due_date" class="input_txtbx1" id="datepicker1"style="width:150px;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_due_date }" /><br>
+                  <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_due_date }" /><br>
                   <br> <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_due_date"></form:errors></span></td>
                 </tr>
@@ -168,7 +168,7 @@ $(function() {
                   
                    <td valign="middle" align="left" class="input_txt" width="20%">Completion Date</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_completion_date" class="input_txtbx1" id="datepicker2" style="width:150px;"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_completion_date }" /><br>
+                  <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_completion_date }" /><br>
                    <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_completion_date"></form:errors></span>
                   </td>
@@ -187,11 +187,11 @@ $(function() {
                   
                   <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Training Effective Review Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" style="width:150px;"class="input_txtbx1" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_effectiveness_review_due_date }" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_effectiveness_review_due_date }" /><br>
                   <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">Documented In:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx1" style="width:150px;"id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" /><br>
                    <span id="documentedinerror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
                   </tr>
@@ -336,6 +336,11 @@ function validate()
 	 error="true";
 	
 	}
+	else if(name.charAt(0) == " ")
+	{
+		document.getElementById("nameerror").innerHTML="Initail Spaces not Allowed";
+		 error="true";
+	}
 else if((name.length < 4) ||(name.length > 32))
 	{
 	document.getElementById("nameerror").innerHTML="Required Field Should be length of 4 to 32";
@@ -353,13 +358,18 @@ else
 	 error="true";
 	
 	}
-else if((trainer.length < 4) ||(trainer.length > 32))
+	else if(trainer.charAt(0) == " ")
+	{
+		document.getElementById("trainererror").innerHTML="Initail Spaces not Allowed";
+		 error="true";
+	}
+	else if((trainer.length < 4) ||(trainer.length > 32))
 	{
 	document.getElementById("trainererror").innerHTML="Required Field Should be length of 4 to 32";
 	error="true";
 	
 	}
-else
+	else
 	{
 	document.getElementById("trainererror").innerHTML="";
 	}
@@ -378,14 +388,20 @@ else
 	  document.getElementById("qualifiedbyerror").innerHTML="Required Field Should not be Empty";
 		 error="true";
 	  }
- else {
-	  document.getElementById("qualifiedbyerror").innerHTML="";
- }
+ 	else
+ 	{
+		  document.getElementById("qualifiedbyerror").innerHTML="";
+	}
 	 if(effectivenessnotes == "")
 		{
 		 document.getElementById("effectivenessnoteserror").innerHTML="Required Field Should not be Empty";
 		 error="true";
 		
+		}
+		else if(effectivenessnotes.charAt(0) == " ")
+		{
+			document.getElementById("effectivenessnoteserror").innerHTML="Initail Spaces not Allowed";
+			 error="true";
 		}
 	else if((effectivenessnotes.length < 4) ||(effectivenessnotes.length > 400))
 		{
@@ -498,6 +514,11 @@ else
 		 document.getElementById("documentedinerror").innerHTML="Required Field Should not be Empty";
 		 error="true";
 		
+		}
+	 else if(documentedin.charAt(0) == " ")
+		{
+			document.getElementById("documentedinerror").innerHTML="Initail Spaces not Allowed";
+			 error="true";
 		}
 	else if((documentedin.length < 4) ||(documentedin.length > 400))
 		{

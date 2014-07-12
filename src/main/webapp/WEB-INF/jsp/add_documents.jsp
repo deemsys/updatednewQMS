@@ -61,7 +61,7 @@
     		
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="15%">Document ID:
-               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx1" style="width:200px;" value=""/>
+               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx" style="width:200px;" value=""/>
               <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/> 
              
                </td>
@@ -73,13 +73,13 @@
                </td>          
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
-               <select name="document_type_id" id="document_type_id" class="input_cmbbx1" style="width:60px;border:none;background-color:lightgrey;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:140px;">
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
                </select>
                   <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
-               <input type="text" value="" id="document_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="document_id" onblur="change_to_label();"/>
+               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;" name="document_id" onblur="change_to_label();"/>
             
               <c:if test="${fail=='fail'}">
               <p class="closestatus">
@@ -111,15 +111,15 @@
               
               <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Document Title:</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txt1" id="documenttitle" style="width:200px;" value="${documentMain.document_title}"/><br/>
+               <td valign="middle" align="left" class="input_txt" width="25%">Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle" style="width:200px;" value="${documentMain.document_title}"/><br/>
                 <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                
-               <select id="location_text" name="location" class="input_cmbbx1" style="width:200px;">
+               <select id="location_text" name="location" class="input_txtbx">
               <option value = "">--Select Location--</option>
 			                <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
         				       <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == documentMain.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
@@ -128,7 +128,7 @@
 			                  <br>
               <input name="attachments" style="display:none;" id="id_file" type="file" /> <br/>
                <span id="attach" style="color:red"></span>
-          <%--   <span class="err"><form:errors path="DocumentMain.attachments"></form:errors></span> --%>
+         
                </td>
           
            <td valign="middle" id="softcopy_file_label" style="display:none;" align="left" class="input_txt" width="20%"></td>
@@ -142,7 +142,7 @@
               
                <td valign="middle" align="left" class="input_txt" width="25%">Document Type:</td>
               <td valign="top" align="left" class="input_txt" width="25%">
-              <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
+              <select name="document_type" id="documenttype" class="input_txtbx">
               <option value="">--Select--</option>
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}"<c:if test="${documenttype.document_type == documentMain.document_type}"><c:out value="selected"/></c:if>>${documenttype.document_type}</option>
@@ -152,7 +152,7 @@
              <td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
-               <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_cmbbx1" style="width:200px;">
+               <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                <option value="<c:out value="${processes.process_name}"/>" <c:if test="${documentMain.process==processes.process_name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_name}"/></option>
@@ -209,7 +209,7 @@
     <tr class="row2">
                             <td valign="middle" align="left" class="input_txt">Document Id</td>
 																		<td valign="top" align="left" class="input_txt"><input
-																			type="text" class="input_txtbx1" id="documentid"
+																			type="text" class="input_txtbx" readonly="readonly" id="documentid"
 																			name="document_id"
 																			value="" /><br/>
 																		
@@ -217,7 +217,7 @@
 																			</td>
 																			
 																		  <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx1" style="width:200px;" value="${documentMain.date}"/><br/>
+               <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker123" name="date" class="input_txtbx" style="width:200px;" value="${documentMain.date}"/><br/>
                <span id="datepicker1234"style="color:red"></span>
                <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span> </td>
               	
@@ -228,7 +228,7 @@
             <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
                 <input type="hidden" value="${documentMain.issuer}" id="issu"/>
-               <select name="filter" id="filter_value" class="input_cmbbx1" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" style="width:80px;">
+               <select name="filter" id="filter_value" class="input_txtbx" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" >
                <option value="-">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -272,7 +272,7 @@
                
                
                </input>
-               <select name="filter" id="filter_value1" class="input_cmbbx1" onchange="AjaxProcessOwner(this.value);" onblur="change_to_label_issuer1();" style="width:80px;">
+               <select name="filter" id="filter_value1" class="input_txtbx" onchange="AjaxProcessOwner(this.value);" onblur="change_to_label_issuer1();" >
             
                <option value="-">--Select--</option>
                <option value="A">A</option>
@@ -326,7 +326,7 @@
                  <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
-               <input type="text" name="revision_level" class="input_txt1" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}"/><br/>
+               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}"/><br/>
                <span id="revisionlevel1" style="color:red"></span>
         <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;height:18px;beckground:lightgrey;">
                				<option value="">--select--</option>
@@ -341,7 +341,7 @@
               <span class="err"style="color:red"><form:errors path="DocumentMain.revision_level"></form:errors></span> --%>
                <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
-                <select name="approver2" id="id_inpapprover2"  class="input_cmbbx1" style="width:200px;">
+                <select name="approver2" id="id_inpapprover2"  class="input_txtbx" >
                <option value="">--Select--</option>
                <c:forEach items="${employeeForm1.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>"<c:if test="${documentMain.approver2==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
@@ -360,7 +360,7 @@
               <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
-               <select name="approver3" id="id_inpapprover3"  class="input_cmbbx1" style="width:200px;">
+               <select name="approver3" id="id_inpapprover3"  class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${employeeForm2.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>"<c:if test="${employees.name == documentMain.approver3}"><c:out value="selected"/></c:if>><c:out value="${employees.name}"/></option>
@@ -372,7 +372,7 @@
              </tr>  
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments:</td>
-               <td valign="top" align="left"><textarea class="input_txtbx1" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
+               <td valign="top" align="left"><textarea class="input_txtbx" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
               <span id="comments1" style="color:red"></span>
                 <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
@@ -380,7 +380,7 @@
                <td valign="top" align="left" class="input_txt" width="25%">
               
                
-              <select name="status" id="status" class="input_cmbbx1" style="width:200px;">
+              <select name="status" id="status" class="input_txtbx" style="width:200px;">
               <option value="">--Select--</option>
                <option value="Draft" <c:if test="${documentMain.status=='Draft'}"><c:out value="Selected"/></c:if>>Draft</option>
                <option value="Active" <c:if test="${documentMain.status=='Active'}"><c:out value="Selected"/></c:if>>Active</option>
@@ -407,6 +407,56 @@
 </a>        
 </td> -->
 </tr></table></div></form>
+<script>
+$(function() {
+
+	$("#document_id").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+$(function() {
+
+	$("#documenttitle").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+
+$(function() {
+
+	$("#revisionlevel").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+
+$(function() {
+
+	$("#comments").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
+	</script>
+  <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+function validatename1(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[ ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+</script>
 <script type="text/javascript">
 
 function toggle1(value){
