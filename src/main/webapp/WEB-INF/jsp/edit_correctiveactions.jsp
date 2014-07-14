@@ -792,15 +792,29 @@ function externalchecked()
 	 }
 
 }
+function use5whychecked()
+{
+	var use_5_why_in_system = document.getElementById('use_5_why_in_system').checked; 
+	var e4=document.getElementById("5why");
+	 var e5=document.getElementById("why?");
+	 if(use_5_why_in_system)
+{
+		 e4.style.display="table-cell";
+	 e5.style.display="table-cell";
+ 
+ } else {
+	 e4.style.display="none";
+	 e5.style.display="none";
+	    	 
+		 }
 
-
+	}
 </script>
 <script>
 window.onload = function() {
 	doAjaxPost();
 	externalchecked();
-
-	
-	};
+	use5whychecked();
+};
 </script>
 <jsp:include page="footer.jsp"></jsp:include>
