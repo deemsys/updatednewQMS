@@ -134,7 +134,7 @@
 										  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
 										  <option  <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name3'}"><c:out value="Selected"/></c:if> value="name3">name3</option>
 				           </select> <span style="color: red;" id="capaerror"></span><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></td>	
-			  <td valign="top" align="left" class="input_txt"> Use 5 Whys's in system(Y/N)<span>(*Optional)</span> :</td>
+			  <td valign="top" align="left" class="input_txt"> Use 5 Why's in system(Y/N)<span>(*Optional)</span> :</td>
 		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system"/></td>					
 			</tr> 
 				
@@ -144,7 +144,7 @@
                   
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's?'
 				   	 <input type="checkbox" name="why1" value="why1" id="0"/></td>
-				  <td valign="top" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
+				  <td valign="top" align="left" class="input_txt" width="70% " id="5why">
 					  <textarea class="input_txtbx"  name="why" id="why" style="width:98%; height: 70px;">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
              </tr>	
              
@@ -792,23 +792,27 @@ function externalchecked()
 	 }
 
 }
+</script>
+<script>
 function use5whychecked()
 {
+	
 	var use_5_why_in_system = document.getElementById('use_5_why_in_system').checked; 
 	var e4=document.getElementById("5why");
-	 var e5=document.getElementById("why?");
-	 if(use_5_why_in_system)
-{
-		 e4.style.display="table-cell";
-	 e5.style.display="table-cell";
- 
- } else {
+	var e5=document.getElementById("why?");
+	
+	 if(!use_5_why_in_system)
+		{
+		 	e4.style.display="block";
+	 		e5.style.display="block";
+ 		}
+	 else 
+	 {
+		 alert("notchecked");
 	 e4.style.display="none";
 	 e5.style.display="none";
-	    	 
-		 }
-
-	}
+	 }
+}
 </script>
 <script>
 window.onload = function() {
