@@ -76,7 +76,7 @@ public class NonConformanceController {
 	public String showNonconformance(HttpSession session, ModelMap model, Principal principal) {
 		
 		session.removeAttribute("nc");
-		session.removeAttribute("type");
+		session.removeAttribute("typenc");
 		
 		//model.addAttribute("success","false");
 	NonConformanceForm nonConformanceForm = new NonConformanceForm();
@@ -103,7 +103,7 @@ public class NonConformanceController {
 	public String viewnonconformancereport_page(HttpServletRequest request,HttpSession session,@RequestParam("page") int page,@RequestParam("id") String id,@RequestParam("type_of_nonconformance") String type_of_nonconformance,ModelMap model) {	
 		
 		session.setAttribute("nc",id);
-		session.setAttribute("type",type_of_nonconformance);
+		session.setAttribute("typenc",type_of_nonconformance);
 
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
@@ -129,7 +129,7 @@ public class NonConformanceController {
 		
 
 		session.setAttribute("nc",id);
-		session.setAttribute("type",type_of_nonconformance);
+		session.setAttribute("typenc",type_of_nonconformance);
 
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
@@ -310,7 +310,7 @@ public class NonConformanceController {
 	
 		System.out.println("find");
 		session.setAttribute("nc", id);
-		session.setAttribute("type", type_of_nonconformance);
+		session.setAttribute("typenc", type_of_nonconformance);
 	
 		
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
@@ -639,10 +639,43 @@ public class NonConformanceController {
 					}			
 				  
 			   returnText=returnText+"</select>";
-			   returnText=returnText+"<span id='reporterr' style='color:red;'></span>";
+			   returnText=returnText+"<br>"+"<span id='reporterr' style='color:red;'></span>";
 				return returnText;
 			}
 
+/*			//ajax get typeofnc post method created on 22-june-2014.(1.53pm)
+			@RequestMapping(value = { "/ajax_edittypenc" }, method = RequestMethod.POST)
+			public @ResponseBody String edit_external_typenc(HttpSession session,
+					HttpServletRequest request, @RequestParam("type_of_nonconformance") String type_of_nonconformance,@RequestParam("group_person") String group_person,ModelMap model, Principal principal,ReportedByNC reportedByNC) {
+				List<String> resultHTML=new ArrayList<String>();
+				System.out.println(" type of nc:::: "+type_of_nonconformance);
+				System.out.println("khhjjhhjhjhj"+type_of_nonconformance);
+				resultHTML=(reportedByNCDAO.filtertypeofnc(type_of_nonconformance));
+				//resultHTML=resultHTML+"/n"+resultHTML+"\n"+resultHTML;
+				System.out.println("result html:::::"+resultHTML);
+				 
+				String returnText="";
+				returnText=returnText+"<select name='reported_by' class='input_txtbx' id='report'>";
+			 	
+				System.out.println("Group Person"+group_person);
+				//returnText+="<option value=''>-select-</option>";
+				for(String typenc:resultHTML)
+				{
+					returnText+="<option value='"+typenc+"'";
+					
+					if(typenc.equals(group_person))
+					{
+						returnText+=" selected";
+					}
+					returnText+=">"+typenc+"</option>";
+					}			
+				  
+			   returnText=returnText+"</select>";
+			   returnText=returnText+"<br>"+"<span id='reporterr' style='color:red;'></span>";
+				return returnText;
+			}
+*/
+			
 			//ajax getting typeofnc post method for add page created on 23-june-2014.(7.07pm)
 			@RequestMapping(value = { "/ajax_getaddtypenc" }, method = RequestMethod.POST)
 			public @ResponseBody String insert_external_reportedby(HttpSession session,

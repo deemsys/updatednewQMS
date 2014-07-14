@@ -82,23 +82,23 @@
 							    <td valign="middle" align="left"><select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
 				                  										<option value="">--Select--</option>
 						                    							<option
-						                    							<c:if test="${'Product Quality' eq type}"><c:out value="Selected"/></c:if>
+						                    							<c:if test="${'Product Quality' eq typenc}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Product Quality'}"><c:out value="Selected"/></c:if>
 																		value="Product Quality">Product Quality</option>
 																		<option
-																		<c:if test="${'Service Quality' eq type}"><c:out value="Selected"/></c:if>
+																		<c:if test="${'Service Quality' eq typenc}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Service Quality'}"><c:out value="Selected"/></c:if>
 																		value="Service Quality">Service Quality</option>
 																		<option
-																		<c:if test="${'Late Delivery' eq type}"><c:out value="Selected"/></c:if>
+																		<c:if test="${'Late Delivery' eq typenc}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Late Delivery'}"><c:out value="Selected"/></c:if>
 																		value="Late Delivery">Late Delivery</option>
 																		<option
-																		<c:if test="${'Early Delivery' eq type}"><c:out value="Selected"/></c:if>
+																		<c:if test="${'Early Delivery' eq typenc}"><c:out value="Selected"/></c:if>
 				                  										<c:if test="${nonconformance.type_of_nonconformance eq 'Early Delivery'}"><c:out value="Selected"/></c:if>
 																		value="Early Delivery">Early Delivery</option>
 															<c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
-        				      										 <option value="${types.type_of_nc}"<c:if test="${types.type_of_nc eq type}"><c:out value="selected"/></c:if>>${types.type_of_nc}</option>
+        				      										 <option value="${types.type_of_nc}"<c:if test="${types.type_of_nc eq typenc}"><c:out value="selected"/></c:if>>${types.type_of_nc}</option>
 			                  								</c:forEach>
 																	</select></td>
 							 <!--    <td align="left" valign="top"><input type="text" name="type_of_nonconformance" id="type_of_nonconformance" class="input_text"></td>
@@ -158,12 +158,12 @@
 
 <tr>
 								
-               <td colspan="6">  
-	<div class="extrabottom">
+               <td colspan="6"  class="extrabottom">  
+	<div>
              <ul class="pagination">
         
              <c:if test="${currentpage!=1&&currentpage!=null}">
-             <li class="page_unselect"><a href="viewnonconformancereport_page?page=${currentpage - 1}&id=${nc}&type_of_nonconformance=${type}">Prev</a></li> 
+             <li class="page_unselect"><a href="viewnonconformancereport_page?page=${currentpage - 1}&id=${nc}&type_of_nonconformance=${typenc}">Prev</a></li> 
                </c:if>
               
              <%-- <c:forEach var="count" begin="1" end="${noofrows}"> --%> 
@@ -173,16 +173,16 @@
                       <li class="page"><a class="paging_select"><c:out value="${i}"></c:out></a></li>
                      </c:when>
                     <c:otherwise>
-                        <li class="page_unselect"><a href="viewnonconformancereport_page?page=${i}&id=${nc}&type_of_nonconformance=${type}"><c:out value="${i}"></c:out></a></li>
+                        <li class="page_unselect"><a href="viewnonconformancereport_page?page=${i}&id=${nc}&type_of_nonconformance=${typenc}"><c:out value="${i}"></c:out></a></li>
                     </c:otherwise>
                 </c:choose>
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
-              <li class="page_unselect"><a href="viewnonconformancereport_page?page=${currentpage+1}&id=${nc}&type_of_nonconformance=${type}">Next</a></li> 
+              <li class="page_unselect"><a href="viewnonconformancereport_page?page=${currentpage+1}&id=${nc}&type_of_nonconformance=${typenc}">Next</a></li> 
                  </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
-                  <li class="page"><a href="viewallnonconformancereport?id=${nc}&type_of_nonconformance=${type}" class="paging_select">ViewAll</a></li>
+                  <li class="page"><a href="viewallnonconformancereport?id=${nc}&type_of_nonconformance=${typenc}" class="paging_select">ViewAll</a></li>
              </c:when>
                 <c:otherwise>
                   <li class="page"><a href="view_nonconformance" class="paging_select">Back</a></li>
@@ -205,7 +205,7 @@
 
 <script>
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete NonConformance Form ?")
+	var answer = confirm("Are you Sure You Want to Delete NonConformance Form ?");
 	if (answer){
 		return true;
 	}

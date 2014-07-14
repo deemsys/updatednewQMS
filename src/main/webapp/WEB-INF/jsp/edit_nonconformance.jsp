@@ -202,7 +202,7 @@
 						                    						<td style="vertical-align:top;"><select name="disposition3" id="disid3"class="input_txtbx" onchange="show3();">
 				                  										<option value="">--Select--</option>
 				                  											<option
-				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
+				                  										<c:if test="${nonconformance.disposition3 eq 'Repair'}"><c:out value="Selected"/></c:if>
 																		value="Repair">Repair</option>
 				                  										<option
 				                  										<c:if test="${nonconformance.disposition3 eq 'Discard'}"><c:out value="Selected"/></c:if>
@@ -223,23 +223,34 @@
 						                    						
 																		</td>
 																	</tr>
-						                    					        
+						                     					        
 								<tr class="row2">
 				                	<td valign="top" align="left" class="input_txt"> Reported By: </td>
 				                  	<td valign="top" align="left" class="input_txt">
-				                  				 <div id="reported_by">
-				                    <input type="hidden" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
+				                  	<div id="reported_by">
+				                    <input type="text" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
 				                  	<select name="reported_by" class="input_txtbx" id="reported_by">
 																			 <option value="">--Select--</option>
 																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
         				       <option value="${reportedByNCs.group_person}" <c:if test="${reportedByNCs.group_person == nonconformance.reported_by}"><c:out value="selected"/></c:if>>${reportedByNCs.group_person}</option>
 			                  </c:forEach>
 			                 </select></div><span style="color:red;" id="reporterr"></span>
+			                 
+			                <%--  
+			                 <tr class="row2">
+																		<td valign="top" align="left" class="input_txt" width="30%">Reported By: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">
+								 										 <div id="reported_by">
+								 										 <select name="reported_by" id="reported_by">
+								 										  <option value="">--Select--</option>
+																			 <c:forEach items="${reportedByNCForm.reportedByNCs}" var="reportedByNCs" varStatus="status">
+        				       <option value="${reportedByNCs.reported_by}" <c:if test="${reportedByNCs.reported_by == nonconformance.reported_by}"><c:out value="selected"/></c:if>>${reportedByNCs.reported_by}</option>
+			                  </c:forEach>
+								 										 
+								 										 </select></div><br><span style="color:red;" id="reporterr"></span>
+ 														  
+				              --%>     	</td> 
 				                  	
-																			 <span class="err"><form:errors path="Nonconformance.reported_by"></form:errors></span></td> 
-				                  	  <!-- <div id="reported_by">	
-				                  	 <select name="reported_by" class="input_txtbx" id="reported_by" style="width:60%;"></select>
-				                  	 </div>  -->
 				                  	 <td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
 			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span style="color: red;" id="completedate"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
 				      
@@ -369,11 +380,54 @@ else
 });     
 </script>     
 <script>
+function showbutton1()
+{
+	var val = document.getElementById("quality1").value;
+	var numbers = /^[-+]?[0-9]+$/; 
+if(val!="" && val.match(numbers))
+	{
+	document.getElementById("button1").style.display = 'block';
+	}
+else
+	{
+	document.getElementById("button1").style.display='none';
+	}	
+	}
+
+function showbutton2()
+{
+	var val = document.getElementById("quality2").value;
+	var numbers = /^[-+]?[0-9]+$/; 
+if(val!="" && val.match(numbers))
+	{
+	document.getElementById("button2").style.display = 'block';
+	}
+else
+	{
+	document.getElementById("button2").style.display='none';
+	}
+	}
+function showbutton3()
+{
+	var val = document.getElementById("quality3").value;
+	var numbers = /^[-+]?[0-9]+$/; 
+if(val!="" && val.match(numbers))
+	{
+	document.getElementById("button3").style.display = 'block';
+	}
+else
+	{
+	document.getElementById("button3").style.display='none';
+	}
+	}
+</script>
+
+<script>
 function showDiv() {
 
         	
         	var element1 = document.getElementById('disposition').value;
-        	var element2 = document.getElementById('quality1').value;
+        //	var element2 = document.getElementById('quality1').value;
         
             if (element1 == '') {
             	document.getElementById('quality1').style.display="none";
@@ -455,7 +509,7 @@ function showDiv() {
  	if(val !="")
  		{
  		document.getElementById('quality1').style.display='block';
- 	//	document.getElementById('button1').style.display='block';
+ 		document.getElementById('button1').style.display='block';
  		}
  	
  	else
@@ -472,7 +526,7 @@ function showDiv() {
  	if(val !="")
  		{
  		document.getElementById('quality2').style.display='block';
- 		//document.getElementById("button2").style.display='block';
+ 		document.getElementById("button2").style.display='block';
  		}
  	else
  		{
@@ -487,7 +541,7 @@ function showDiv() {
  	if(val !="")
  		{
  		document.getElementById('quality3').style.display='block';
- 	//	document.getElementById("button3").style.display='block';
+ 		document.getElementById("button3").style.display='block';
  		}
  	else
  		{
@@ -514,8 +568,8 @@ $(function() {
 <script>
 	
 	window.onload = function(){
-		show1();show2();show3();showbutton1();showbutton2();showbutton3();doAjaxPost();
-	}
+		show1();show2();show3();doAjaxPost();showbutton1();showbutton2();showbutton3();
+	};
 		</script>
 		
 <script>
@@ -535,32 +589,38 @@ function validation()
 	var quality1 = document.getElementById('quality1').value;
 	var quality2 = document.getElementById('quality2').value;
 	var quality3 = document.getElementById('quality3').value;
-	var spl =  /^[A-Za-z0-9]*$/;
+	
 	
 	var typenc = document.getElementById('type_of_nonconformance').value;
 	var sourcenc = document.getElementById('source_of_nonconformance').value;
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
 	var external = document.getElementById('external_id').value;
-	
-	//var reported_by = document.getElementById('reported_id').value;
-	
+	alert("dskjfds");
+	var reported_by = document.getElementById('reported_id').value;
+	alert("hello");
 	var dispid1 = document.getElementById('disid1').value;
  	var dispid2 = document.getElementById('disid2').value;
 	var dispid3 = document.getElementById('disid3').value; 
  
 	
- 	 /* if(typenc!="")
+	 if(typenc!="")
 		{
- 		 alert("jsdhfksdjhflsdhflk"+reported_by);
- 		 if(reported_by=="")
+		 alert("hrdgfdg");
+		 if(reported_by=="")
 		{		
- 		alert("typenc");
- 		document.getElementById('reporterr').innerHTML="Required Field Should not be Empty";
- 		error="true";
- 		}
-}
- */
+
+		document.getElementById('reporterr').innerHTML="Required Field Should not be Empty";
+	error="true";
+		}
+
+	 else
+		 {
+		 document.getElementById('reporterr').innerHTML="";
+		 }
+		}
+	 
+ 
 	 if((sourcenc=="Customer Complaint") || (sourcenc=="Customer Audit") || (sourcenc=="Third Party Audit"))
 	{
 	
@@ -605,7 +665,7 @@ else
 	document.getElementById('disp3').innerHTML="";
 	}
 */	
- if(dispid1=="")
+/*  if(dispid1=="")
 	 {
 	 document.getElementById('disid1err').innerHTML="Required Field Should not be Empty";
 	 error="true";
@@ -639,7 +699,98 @@ else
 	 {
 	 document.getElementById('disid3err').innerHTML="";
 	 }
-	 
+ */
+ if(dispid1=="")
+ {
+ document.getElementById('disid1err').innerHTML="Required Field Should not be Empty";
+ error="true";
+ }
+
+else
+	 {
+	 document.getElementById('disid1err').innerHTML="";
+	 }
+	if(dispid1!="")
+		{
+	if(quality1=="")
+		{
+					
+		 document.getElementById("qua1").innerHTML="Required Field Should not be Empty";
+		 error="true";
+	 } 
+		
+	    
+		else if(document.getElementById("quality1").value.substring(0,1)==" ")
+		{
+		document.getElementById("qua1").innerHTML="Initial space not allowed";
+		 error="true";
+		}
+		else if(quality1!="")
+			{
+			document.getElementById("qua1").innerHTML="";
+			}
+		}
+
+if(dispid2=="")
+ {
+ document.getElementById('disid2err').innerHTML="Required Field Should not be Empty";
+ error="true";
+ }
+else
+ {
+ document.getElementById('disid2err').innerHTML="";
+ }
+if(dispid2!="")
+{
+if(quality2=="")
+{
+					
+ document.getElementById("qua2").innerHTML="Required Field Should not be Empty";
+ error="true";
+} 
+
+
+else if(document.getElementById("quality2").value.substring(0,1)==" ")
+{
+document.getElementById("qua2").innerHTML="Initial space not allowed";
+ error="true";
+}
+else if(quality2!="")
+	{
+	document.getElementById("qua2").innerHTML="";
+	}
+}
+
+if(dispid3=="")
+ {
+ document.getElementById('disid3err').innerHTML="Required Field Should not be Empty";
+ error="true";
+ }
+else
+ {
+ document.getElementById('disid3err').innerHTML="";
+ }
+if(dispid3!="")
+{
+if(quality3=="")
+{
+				
+ document.getElementById("qua3").innerHTML="Required Field Should not be Empty";
+ error="true";
+} 
+
+
+else if(document.getElementById("quality3").value.substring(0,1)==" ")
+{
+document.getElementById("qua3").innerHTML="Initial space not allowed";
+ error="true";
+}
+else if(quality3!="")
+	{
+	document.getElementById("qua3").innerHTML="";
+	}
+}
+
 if(datefound == "")
 	 {
 	 document.getElementById("datepicker2").innerHTML="Required Field Should not be Empty";

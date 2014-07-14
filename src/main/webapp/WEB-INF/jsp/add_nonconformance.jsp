@@ -1232,7 +1232,7 @@ else
 															 <c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
         				       <option value="${types.type_of_nc}">${types.type_of_nc}</option>
 			                  </c:forEach>
-																	</select><br><span style="color: red;" id="typencerr"></span>
+																	</select><br><span style="color:red;" id="typencerr"></span>
 																	<form:errors path="Nonconformance.type_of_nonconformance"></form:errors>
 																	
 																	
@@ -1273,6 +1273,7 @@ else
 																	</tr>
 																	
 																	<tr class="row1">
+																	
 						                    							<td valign="top" align="left" class="input_txt" width="30%">Date Found: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="datepicker"
@@ -1354,7 +1355,9 @@ else
 																	<tr class="row2">
 																		<td valign="top" align="left" class="input_txt" width="30%">Reported By: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
-								 										 <div id="reported_by"></div><span style="color:red;" id="reporterr"></span>
+								 										 <div id="reported_by">
+								 										 <select name="reported_by" id="reported_by" class="input_txtbx">
+								 										 <option value="">--Select--</option></select></div><br><span style="color:red;" id="reporterr"></span>
  														  
 																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Complete Date:</td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
@@ -1490,7 +1493,7 @@ function showDiv() {
 
         	
         	var element1 = document.getElementById('disposition').value;
-        	var element2 = document.getElementById('quality1').value;
+        	//var element2 = document.getElementById('quality1').value;
             if (element1 == '') {
             	document.getElementById('quality1').style.display="none";
             	}
@@ -1505,7 +1508,7 @@ function showDiv() {
 
 <script>
 function validation()
-
+{
 	//update.submit();
 	var error="";
    	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
