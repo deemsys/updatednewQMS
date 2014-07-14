@@ -100,8 +100,8 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="15%"> Document Type: </td>
-							    <td><select name="document_type" id="search_document_type" class="input_cmbbx1" style="width:200px;">
+							    <td align="left" valign="middle" width="10%"> Document Type: </td>
+							    <td align="left" valign="middle" width="10%"><select name="document_type" id="search_document_type" class="input_txtbx" >
               					<option value="">--Select--</option>
                 				<c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}" <c:if test="${documenttype.document_type==documentMain}"><c:out value="selected"></c:out></c:if>>${documenttype.document_type}</option>
@@ -109,18 +109,20 @@
 			                  
 			                  <input type="hidden" id="document_id" value=""/>
 			                  </td>
-               
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
+             					  <td align="left" valign="middle" width="15%">
+							    <td align="left" valign="middle" width="10%">Process Area:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <select name="search_process" id="search_process"  class="input_cmbbx1" style="width:200px;">
+							    <select name="search_process" id="search_process"  class="input_txtbx">
                					<option value="">--Select--</option>
               					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
               					 <option value="${processes.process_name}" <c:if test="${processes.process_name==documentMain1}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
              				  </c:forEach>
                					</select></td>   
-							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  "></td>
-							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
-							 </tr>
+							    <td align="center" valign="middle" width="38%"><input type="submit" value="Search" class="submit_btn1" onclick="return validation();">
+							    <br><span id="searcherror" style="color:red"></span>
+							    </td>
+<!-- 							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
+ -->							 </tr>
 							</table>
 							
 						</div></form>
@@ -565,6 +567,23 @@ function subhide()
 
 {
 	document.getElementById('subrow').style.display="block";
+}
+
+</script>
+<<script type="text/javascript">
+function validation()
+{
+	var search_document_type = document.getElementById('search_document_type').value;
+	var search_process = document.getElementById('search_process').value;
+	if( (search_document_type == "") && (search_process == ""))
+	{
+		document.getElementById('searcherror').innerHTML = "Input is Empty";
+		return false;
+	}
+	else
+	{
+		document.getElementById('searcherror').innerHTML ="";
+	}
 }
 
 </script>
