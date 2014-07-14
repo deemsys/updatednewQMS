@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import qms.controllers.AbstractITextPdfView;
 import qms.model.CustomerFeedback;
 import qms.model.DocumentMain;
 import qms.model.Employee;
@@ -27,11 +28,16 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import qms.model.Employee;
 
 
 
-public class EmployeeDAO extends AbstractExcelView{
+public class EmployeeDAO extends AbstractITextPdfView{
 	private DataSource dataSource;
 	 
 	
@@ -48,259 +54,243 @@ public class EmployeeDAO extends AbstractExcelView{
 		 * Excel Sheet Generation
 		 */
 		
-		@Override
-		protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
-				HttpServletRequest request, HttpServletResponse response)
-				throws Exception {
-
-			HSSFSheet excelSheet = workbook.createSheet("Employee Report");
-			excelSheet.setDefaultColumnWidth(20);
-			  
-			//Style 1
-			CellStyle style = workbook.createCellStyle();
-		        Font font = workbook.createFont();
-		        font.setFontName("Arial");
-		        style.setFillForegroundColor(HSSFColor.BROWN.index);
-		        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-		        style.setWrapText(true);
-		        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-		        font.setColor(HSSFColor.WHITE.index);
-		        style.setFont(font);
-			
-		    //Style2
-		        CellStyle style2 = workbook.createCellStyle();
-		        Font font2 = workbook.createFont();
-		        font2.setFontName("Arial");
-		        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
-		        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
-		        style2.setWrapText(true);
-		        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-		        font2.setColor(HSSFColor.WHITE.index);
-		        style2.setFont(font2); 
-			
-			@SuppressWarnings("unchecked")
+	protected void buildPdfDocument(Map<String, Object> model, Document doc,
+			PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+				 @SuppressWarnings("unchecked")
 			List<Employee> employees = (List<Employee>) model.get("employees");
 			String[] fields=(String[])model.get("fields");
 			
-
-	        setExcelHeader(excelSheet,style,fields);
+			int memolist = fields.length;
+			System.out.println(memolist);
+	       PdfPTable table=new PdfPTable(memolist+1);
+	       float[] width= new float[memolist+1];
+			table.setWidthPercentage(100);
+			int i=1;
+			 table.addCell(createLabelCell("SNO"));
+			 width[0] = 1.0f;
 			
-			setExcelRows(excelSheet,employees,fields,style2);
-			
-		}
-		
-		
-		public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
-			HSSFRow excelHeader = excelSheet.createRow(0);	
-		//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
-			int i=0;
 			for (String field : fields) {
 				
 				if(field.equals("employee_id"))
 				{
-					excelHeader.createCell(i).setCellValue("ID");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("ID"));
+					
 				}
 				else if(field.equals("name"))	
 				{
-					excelHeader.createCell(i).setCellValue("Name");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Name"));
+					
 				}
 				else if(field.equals("job_title"))	
 				{
-					excelHeader.createCell(i).setCellValue("Job Title");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Job Title"));
+				
 				}
 				else if(field.equals("date_hired"))	
 				{
-					excelHeader.createCell(i).setCellValue("Date Hired");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Date Hired"));
 				}
+					
 				else if(field.equals("attachments"))	
 				{
-					excelHeader.createCell(i).setCellValue("Attachments");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Attachments"));
+					
 				}
 				
 				else if(field.equals("list_of_functions_needes"))
 				{
-					excelHeader.createCell(i).setCellValue("List Of Function Needes");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("List Of Function Needes"));
+					
 				}
 				else if(field.equals("qualified_by"))
 				{
-					excelHeader.createCell(i).setCellValue("Qualified By");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Qualified By"));
+					
 				}
 				else if(field.equals("type_of_training"))	
 				{
-					excelHeader.createCell(i).setCellValue("Type of Training");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Type of Training"));
+				
 				}else if(field.equals("trainer"))	
 				{
-					excelHeader.createCell(i).setCellValue("Trainer");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Trainer"));
+				
 				}else if(field.equals("training_due_date"))	
 				{
-					excelHeader.createCell(i).setCellValue("Training Due Date");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Training Due Date"));
+					
 				}else if(field.equals("training_completion_date"))
 				{
-					excelHeader.createCell(i).setCellValue("Training Completion Date");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Training Completion Date"));
+					
 				}else if(field.equals("training_effectiveness_review_due_date"))	
 				{
-					excelHeader.createCell(i).setCellValue("Training Effectiveness Review Due Date");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Training Effectiveness Review Due Date"));
+				
 				}else if(field.equals("training_effectiveness_notes"))	
 				{
-					excelHeader.createCell(i).setCellValue("Effectiveness Notes");
-					excelHeader.getCell(i).setCellStyle(style);
-					i++;
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Effectiveness Notes"));
+					
 				}		
 			}
 		
-		}
+		
 		
 		
 		//End
 		
 		
-		public void setExcelRows(HSSFSheet excelSheet, List<Employee> employees,String[] fields,CellStyle style2){
-			int record = 1;
-			int i=0;
+	int j=1;
 			for (Employee employee:employees){	
-				HSSFRow excelRow = excelSheet.createRow(record++);
-		//		excelRow.setRowStyle((HSSFCellStyle) style2);
-			i=0;
+				String sno = String.valueOf(j);
+				table.addCell(createValueCell(sno));
+				j++;
 					for (String field : fields) {
 						
 						if(field.equals("employee_id"))
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getEmployee_id());
-								i++;
+							table.addCell(createValueCell(
+									employee.getEmployee_id()));
+							
 						}
 						else if(field.equals("name"))
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getName());
+							table.addCell(createValueCell(
+									employee.getName()));
 
-							i++;
+							
 						}
 						else if(field.equals("job_title"))
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getJob_title()
-									);	i++;
+							table.addCell(createValueCell(
+									employee.getJob_title())
+									);
 						}
 						else if(field.equals("date_hired"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getDate_hired());
-							i++;
+							table.addCell(createValueCell(
+									employee.getDate_hired()));
+							
 						}else if(field.equals("attachment_name"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getAttachment_name());
-							i++;
+							table.addCell(createValueCell(
+									employee.getAttachment_name()));
+						
 						}else if(field.equals("attachment_type"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getAttachment_type());
-							i++;
+							table.addCell(createValueCell(
+									employee.getAttachment_type()));
+							
 						}else if(field.equals("attachment_referrence"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getAttachment_referrence());
-							i++;
+							table.addCell(createValueCell(
+									employee.getAttachment_referrence()));
+							
 						}
 						else if(field.equals("process"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getProcess());
-							i++;
+							table.addCell(createValueCell(
+									employee.getProcess()));
+							
 						}
 						else if(field.equals("process_name"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getProcess_name());
-							i++;
+							table.addCell(createValueCell(
+									employee.getProcess_name()));
+						
 						}
 						else if(field.equals("doc_control"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getDoc_control());
-							i++;
+							table.addCell(createValueCell(
+									employee.getDoc_control()));
+							
 						}
 						else if(field.equals("management_rep"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getManagement_rep());
-							i++;
+							table.addCell(createValueCell(
+									employee.getManagement_rep()));
+						
 						}
 						
 						else if(field.equals("list_of_functions_needes"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getList_of_functions_needes());
-							i++;
+							table.addCell(createValueCell(
+									employee.getList_of_functions_needes()));
+							
 						}else if(field.equals("documented_in"))
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getDocumented_in());
-							i++;
+							table.addCell(createValueCell(
+									employee.getDocumented_in()));
+						
 						}else if(field.equals("qualified_by"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getQualified_by());
-							i++;
+							table.addCell(createValueCell(
+									employee.getQualified_by()));
+						
 						}else if(field.equals("type_of_training"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getType_of_training());
-							i++;
+							table.addCell(createValueCell(
+									employee.getType_of_training()));
+						
 						}else if(field.equals("trainer"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getTrainer());
-							i++;
+							table.addCell(createValueCell(
+									employee.getTrainer()));
+					
 						}else if(field.equals("training_due_date"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getTraining_due_date());
-							i++;
+							table.addCell(createValueCell(
+									employee.getTraining_due_date()));
+							
 						}else if(field.equals("training_completion_date"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getTraining_completion_date());
-							i++;
+							table.addCell(createValueCell(
+									employee.getTraining_completion_date()));
+						
 						}else if(field.equals("training_effectiveness_review_due_date"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getTraining_effectiveness_review_due_date());
-							i++;
+							table.addCell(createValueCell(
+									employee.getTraining_effectiveness_review_due_date()));
+						
 						}else if(field.equals("training_effectiveness_notes"))	
 						{
-							excelRow.createCell(i).setCellValue(
-									employee.getTraining_effectiveness_notes());
-							i++;
+							table.addCell(createValueCell(
+									employee.getTraining_effectiveness_notes()));
+							
 						}	
 					}					
 					
 			}
+			table.setWidths(width);
+			
+			doc.add(table);
 		}
 
 
@@ -822,21 +812,18 @@ public class EmployeeDAO extends AbstractExcelView{
 	    try{
 	    	String cmd_select="null";
 	    	if(type=="trainingneeds")
-				cmd_select= "select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where type_of_training='"+type+"'";
-			//cmd_select= "select * from tbl_nonconformance where disposition==0 AND disposition_complete_date==NULL" ;
-			
-/*				else if(type=="training_reports_for_each_employee")
-				//	cmd_select="select * from tbl_nonconformance where disposition_complete_date between now() and DATE_ADDNOW(), INTERVAL 30 DAYS";
-					cmd_select="select * from tbl_employee_desc ";
-					else if(type=="qualification_for_each_employee")
-						cmd_select="select * from tbl_employee_desc";
-*/					else if(type=="opentraining")
-						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where type_of_training='"+type+"'";
-/*					else if(type=="opentrainingeffectiveness")
-						cmd_select="select * from tbl_employee_desc";
-					else if(type=="past_due_training_by_trainer")
-						cmd_select="select * from tbl_employee_desc";
-*/				resultSet = statement.executeQuery(cmd_select);
+						cmd_select= "select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='Classroom'";
+			else if(type=="training_reports_for_each_employee")
+						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.management='yes'";
+			else if(type=="qualification_for_each_employee")
+						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.process_owner='yes'";
+			else if(type=="opentraining")
+						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='Hands on'";
+			else if(type=="opentrainingeffectiveness")
+						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.process_owner='yes' and t1.document_control='yes'";
+			else if(type=="past_due_training_by_trainer")
+						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.training_due_date < NOW()";
+				resultSet = statement.executeQuery(cmd_select);
 			
 				
 	    	
