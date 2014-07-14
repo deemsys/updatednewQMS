@@ -38,13 +38,14 @@ function validation()
 	        return false;
 	    }
 
-	  
+	    document.getElementById("ferr").innerHTML="";
 	   if(document.getElementById("fullname").value.substring(0,1)==' ')
 	{  		
 	document.getElementById("ferr").innerHTML="Initial space not allowed";
 	return false;
 	}
 	  
+	   document.getElementById("uerr").innerHTML="";
 	  if(document.getElementById("username").value=="")
 		{
 		
@@ -62,14 +63,14 @@ function validation()
 	        return false;
 	    }
 	  
-	    
+	    document.getElementById("uerr").innerHTML="";
 	    if(document.getElementById("username").value.substring(0,1)==' ')
 		{  		
 		document.getElementById("uerr").innerHTML="Initial space not allowed";
 		 return false;
 		}
 	  
-	    
+	    document.getElementById("perr").innerHTML="";
 	    if(document.getElementById("password").value=="")
 	{
 	
@@ -77,7 +78,7 @@ function validation()
 	return false;
 	}
 	
-	    
+	    document.getElementById("perr").innerHTML="";
 	    if(document.getElementById("password").value.length<6 || document.getElementById("password").value.length>=32 )
 		{
 		
@@ -85,13 +86,14 @@ function validation()
 		return false;
 		}
 	 
-	    
+	    document.getElementById("perr").innerHTML="";
 	    if(document.getElementById("password").value.substring(0,1)==' ')
 	{  		
 	document.getElementById("perr").innerHTML="Initial space not allowed";
 	return false;
 	}
 	  
+	    document.getElementById("emailerr").innerHTML="";
 	    if(document.getElementById("email").value=="")
 	{
 	
@@ -99,6 +101,7 @@ function validation()
 	return false;
 	}
 	
+	    document.getElementById("emailerr").innerHTML="";
 	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     
     if(document.getElementById("email").value.match(mail)==null)
@@ -109,7 +112,7 @@ function validation()
     }
 	 
 	  
-	  
+    document.getElementById("emailerr").innerHTML="";
 	  if(document.getElementById("email").value.substring(0,1)==' ')
 	{  		
 	document.getElementById("emailerr").innerHTML="Initial space not allowed";
