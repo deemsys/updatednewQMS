@@ -101,9 +101,9 @@ function validation()
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
 		      <td valign="top" align="right">
 		      <a href="#">
-		        <input type="submit" value="Submit" style="width:70px;height:30px;" name="submit" onclick="return validation()">
+		        <input type="submit" value="Submit" style="width:70px;height:30px;" name="submit" class="submit_btn1" onclick="return validation()">
 		        </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		          <input type="reset" value="Reset" onclick="clear123()" style="width:70px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		          <input type="reset" value="Reset" onclick="clear123()" class="submit_btn1" style="width:70px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;
 		  </td><Td width="20%"> </td></table></li>
 		      
 		      
