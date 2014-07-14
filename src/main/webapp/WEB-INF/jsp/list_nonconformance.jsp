@@ -28,7 +28,7 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="nonconformance_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Nonconformance Report</span>
+									<span>Reports</span>
 									
 								</a>
 							</li>

@@ -156,19 +156,20 @@
 				  
 				                
                 	          
-				                  	<td valign="top" align="left" class="input_txt" width="10%"> Dispositions: </td>
+				                  	<td valign="top" align="left" class="input_txt" width="10%"> Disposition: </td>
 				                  	
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
-						                    						<table><tr>
+						                    						<table cellpadding="0" cellspacing="0"><tr>
 						                    						
-						                    						<td style="vertical-align:top;"><select name="disposition1" id="disid1" class="input_txtbx" onchange="show1();">
+						                    						<td style="vertical-align:top;padding:0px;"><select name="disposition1" id="disid1" class="input_txtbx" onchange="show1();">
 				                  										<option value="">--Select--</option>
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>="" value="Repair">Repair</option>
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>="" value="Discard">Discard</option>
 																		<option <c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>="" value="Keep as is">Keep as is</option>
 						                    						</select><br/><span style="color: red;" id="disid1err"></span>
-						                    						<%-- <span style="color: red;" id="disp1"><form:errors path="Nonconformance.disposition1"></form:errors> --%>
-						                    							</td><td align="right">
+						                    							</td>
+						                    							<td width="1%"></td>
+						                    							<td align="left" style="padding:0px;">
 						                    						
 						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:block; width:40px;" onkeypress="return validate(event)"; value="${nonconformance.quality1}" onchange="showbutton1();" />
 						                    					</td><td align="left">
@@ -177,7 +178,7 @@
 						                    					<tr><td colspan="3">
 						                    					<span style="color: red;" id="qua1"></span></td></tr>
 						                    					<tr>
-						                    						<td style="vertical-align:top;"><select name="disposition2" id="disid2" class="input_txtbx" onchange="show2();" >
+						                    						<td style="vertical-align:top;padding:0px;"><select name="disposition2" id="disid2" class="input_txtbx" onchange="show2();" >
 				                  										<option value="">--Select--</option>
 				                  										<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Repair'}"><c:out value="Selected"/></c:if>
@@ -189,17 +190,16 @@
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
 						                    						</select><br><span style="color: red;" id="disid2err"></span>
-						                    						<%-- <span style="color: red;"><form:errors path="Nonconformance.disposition2"></form:errors></span></td> --%>
-						                    						<td align="right"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event)";  value="${nonconformance.quality2}" onchange="showbutton2();" />
+						                    						<td width="1%"></td>
+						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event)";  value="${nonconformance.quality2}" onchange="showbutton2();" />
 						                    						
 						                    						</td>
 						                    						<td align="left">
-						                    						<!-- <input type="button" class="number_btn1" id="button2" name="No's" value="No's" style="display:block;"> -->
 						                    						<label class="number_btn1"  id="button2"   style="display:block;">No's</label></td>
 						                    						</tr><tr><td colspan="3"><span id="qua2" style="color: red;"></span></td></tr><tr>
 						                    						
 						                    						
-						                    						<td style="vertical-align:top;"><select name="disposition3" id="disid3"class="input_txtbx" onchange="show3();">
+						                    						<td style="vertical-align:top;padding:0px;"><select name="disposition3" id="disid3"class="input_txtbx" onchange="show3();">
 				                  										<option value="">--Select--</option>
 				                  											<option
 				                  										<c:if test="${nonconformance.disposition3 eq 'Repair'}"><c:out value="Selected"/></c:if>
@@ -212,10 +212,9 @@
 																		value="Keep as is">Keep as is</option>
 						                    						</select><br/><span style="color: red;" id="disid3err"></span>
 						                    						</td>
-						                    					<td  align="right"><input type="text" name="quality3" id="quality3" style="display:block; width:40px;" class="input_txtbx" value="${nonconformance.quality3}" onkeypress="return validate(event)"; onchange="showbutton3();"/>
-						                    					<%-- <span id="qua3" style="color: red;"><form:errors path="Nonconformance.quality3"></form:errors></span> --%>
+						                    						<td width="1%"></td>
+						                    					<td  align="left" style="padding:0px;"><input type="text" name="quality3" id="quality3" style="display:block; width:40px;" class="input_txtbx" value="${nonconformance.quality3}" onkeypress="return validate(event)"; onchange="showbutton3();"/>
 						                    					</td><td  align="left">
-						                    					<!-- <input type="button" id="button3" class="number_btn1" name="No's" value="No's" style="display:block;"> -->
 						                    					<label class="number_btn1"  id="button3"   style="display:block;">No's</label>
 						                    						</td>
 						                    						</tr><tr><td colspan="3"><span id="qua3" style="color: red;"></span></td></tr></table>
@@ -575,7 +574,7 @@ $(function() {
 <script>
 function validation()
 {
-	alert("hi");
+	
 	//update.submit();
 	var error="";
    	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
@@ -596,9 +595,9 @@ function validation()
 	var product = document.getElementById('product_id').value;
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
 	var external = document.getElementById('external_id').value;
-	alert("dskjfds");
+	
 	var reported_by = document.getElementById('reported_id').value;
-	alert("hello");
+	
 	var dispid1 = document.getElementById('disid1').value;
  	var dispid2 = document.getElementById('disid2').value;
 	var dispid3 = document.getElementById('disid3').value; 
@@ -606,7 +605,7 @@ function validation()
 	
 	 if(typenc!="")
 		{
-		 alert("hrdgfdg");
+		 
 		 if(reported_by=="")
 		{		
 
@@ -634,72 +633,7 @@ function validation()
 		document.getElementById("externalerror").innerHTML="";
 		}
 	}
-	/* var disposition1 = document.getElementById('disposition1').value;
-	var disposition2 = document.getElementById('disposition2').value;
-	var disposition3 = document.getElementById('disposition3').value;
-	if(disposition1="")
-		{
-		document.getElementById('disp1').innerHTML="Please Select Any One";
-		error="true";
-		}
-	else
-		{
-		document.getElementById('disp1').innerHTML="";
-		}
-	if(disposition2="")
-	{
-	document.getElementById('disp2').innerHTML="Please Select Any One";
-	error="true";
-	}
-else
-	{
-	document.getElementById('disp2').innerHTML="";
-	}
-	if(disposition3="")
-	{
-	document.getElementById('disp3').innerHTML="Please Select Any One";
-	error="true";
-	}
-else
-	{
-	document.getElementById('disp3').innerHTML="";
-	}
-*/	
-/*  if(dispid1=="")
-	 {
-	 document.getElementById('disid1err').innerHTML="Required Field Should not be Empty";
-	 error="true";
-	 }
-else
-	 {
-	 document.getElementById('disid1err').innerHTML="";
-	 }
-	 
 
-if(dispid2=="")
-	 {
-	 alert("disp2");
-	 
-	 document.getElementById('disid2err').innerHTML="Required Field Should not be Empty";
-	 error="true";
-	 }
-else
-	 {
-	 document.getElementById('disid2err').innerHTML="";
-	 }
-
-if(dispid3=="")
-	 {
-	 alert("disp3");
-	 
-	 document.getElementById('disid3err').innerHTML="Required Field Should not be Empty";
-	 error="true";
-	 }
-else
-	 {
-	 document.getElementById('disid3err').innerHTML="";
-	 }
- */
  if(dispid1=="")
  {
  document.getElementById('disid1err').innerHTML="Required Field Should not be Empty";
@@ -715,7 +649,7 @@ else
 	if(quality1=="")
 		{
 					
-		 document.getElementById("qua1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("qua1").innerHTML="Required No's Field Should not be Empty";
 		 error="true";
 	 } 
 		
@@ -745,7 +679,7 @@ if(dispid2!="")
 if(quality2=="")
 {
 					
- document.getElementById("qua2").innerHTML="Required Field Should not be Empty";
+ document.getElementById("qua2").innerHTML="Required No's Field Should not be Empty";
  error="true";
 } 
 
@@ -775,7 +709,7 @@ if(dispid3!="")
 if(quality3=="")
 {
 				
- document.getElementById("qua3").innerHTML="Required Field Should not be Empty";
+ document.getElementById("qua3").innerHTML="Required No's Field Should not be Empty";
  error="true";
 } 
 
