@@ -79,10 +79,10 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="report_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="top" align="right" class="input_txt" width="30%">
 								Type Of Report :
 								</td>
-								<td valign="middle" align="left" class="input_txt" width="100%">
+								<td valign="top" align="left" class="input_txt" width="100%">
 								<input type="radio"  name="actions_report_type" value="0"  onclick="validation1()" id="id_type_Open_Corrective_Actions" checked/>Open_Corrective_Actions<br/>
 								<input type="radio"  name="actions_report_type" value="1"  onclick="validation1()" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>Open_Corrective_Actions_for_Over_30_Days<br/>							
 							    <input type="radio"  name="actions_report_type" value="2"  onclick="validation()" id="id_type_Corrective_Actions_for_A_Certain_Period"/>Corrective_Actions_for_A_Certain_Period<br/>
@@ -91,13 +91,13 @@
 								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display:none;">
 	
     								<tr class="row2">
-    								<td valign="middle" align="left" class="input_txt"> Enter the Start Date : </td>
-    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txt1" id="datepicker" name="start" /><br></td>
+    								<td valign="top" align="left" class="input_txt"> Enter the Start Date : </td>
+    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker" name="start" /><br><span style="color:red;" id="starterr"></span></td>
     								</tr>
     								
     								<tr class="row2">
-    								<td valign="middle" align="left" class="input_txt"> Enter the End Date : </td>
-    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txt1" id="datepicker1" name="end" /><br></td>
+    								<td valign="top" align="left" class="input_txt"> Enter the End Date : </td>
+    								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker1" name="end" /><br><span style="color:red;" id="enderr"></span></td>
     								</tr>
     							</table>
     							</td>
@@ -106,7 +106,7 @@
 							
 							
 							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="top" align="right" class="input_txt" width="30%">
 									Select Report Type:</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
@@ -122,7 +122,7 @@
 						
 							
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="top" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
 									<input type="text" name="report_title" class="input_txtbx"  value=""/>
@@ -239,6 +239,62 @@ function validate()
 	var a22 = document.getElementById('22').checked;
 	var a23 = document.getElementById('23').checked;
 	var a24 = document.getElementById('24').checked;
+	var datepicker = document.getElementById('datepicker').value;
+	var datepicker1 = document.getElementById('datepicker1').value;
+	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var certainperiod = document.getElementById('id_type_Corrective_Actions_for_A_Certain_Period').checked;
+	
+	var error="";
+	 if(certainperiod)
+		{
+		if(datepicker=="")
+		{	
+		
+	 document.getElementById("starterr").innerHTML="Required Field Should not be Empty";
+	 error="true";
+		}
+		
+	else if(!datepicker.match(date))
+	 {
+		
+	 document.getElementById("starterr").innerHTML="Invalid Date";
+	 error="true";
+	 }
+
+	else if(datepicker > datepicker1)
+			{
+		
+				 document.getElementById("starterr").innerHTML="Please Pickup the StartDate not More than EndDate";
+					error="true";
+			}	
+		else
+	 {
+		
+	 document.getElementById("starterr").innerHTML="";
+	 
+	 } 
+		}
+	 if(certainperiod)
+		{
+		if(datepicker1=="")
+		{	
+		
+	 document.getElementById("enderr").innerHTML="Required Field Should not be Empty";
+	 error="true";
+		}
+	
+	else if(!datepicker1.match(date))
+	 {
+		
+	 document.getElementById("enderr").innerHTML="Invalid Date";
+	 error="true";
+	 }
+	 else
+	 {
+		 
+	 document.getElementById("enderr").innerHTML="";
+	 } 
+	 } 
 	
 	
 	if(id_type_userdefined)

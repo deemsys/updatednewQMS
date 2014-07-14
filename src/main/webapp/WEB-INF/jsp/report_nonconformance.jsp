@@ -326,7 +326,7 @@ function checkboxvalid()
 	var datepicker1 = document.getElementById('datepicker1').value;
 	var cost = document.getElementById('id_cost_of_nonconformance').checked;
 	var error="";
-	 if(!cost=="")
+	 if(cost)
 		{
 		if(datepicker=="")
 		{	
@@ -341,8 +341,14 @@ function checkboxvalid()
 	 document.getElementById("starterr").innerHTML="Invalid Date";
 	 error="true";
 	 }
+
+	else if(datepicker > datepicker1)
+			{
 		
-	 else
+				 document.getElementById("starterr").innerHTML="Please Pickup the StartDate not More than EndDate";
+					error="true";
+			}	
+		else
 	 {
 		
 	 document.getElementById("starterr").innerHTML="";
@@ -370,7 +376,7 @@ function checkboxvalid()
 	 document.getElementById("enderr").innerHTML="";
 	 } 
 	 } 
-	if(user)
+		if(user)
 		{
 if(id || reported_by  || action_required || costofnc || source || external || disposition_required || type || product || disposition1 || disposition2 || disposition3 || quality1 || quality2 || quality3 || nature || quantity || complete_date || datefound || tempaction || responsibility)
 	{

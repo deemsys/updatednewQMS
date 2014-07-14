@@ -115,7 +115,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Enter the Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="supplier_name" class="input_txtbx"  style="width:40%;" value=""/>
+									<input type="text" name="supplier_name" class="input_txtbx" value=""/>
 								</td>
 								
 							</tr>
