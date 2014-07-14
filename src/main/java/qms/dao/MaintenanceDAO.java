@@ -41,34 +41,18 @@ import qms.model.Maintenance;
 public class MaintenanceDAO extends AbstractITextPdfView
 {
 	private DataSource dataSource;
-	 
-	
-	
-		
 	public DataSource getDataSource() {
 		return dataSource;
 	}
-
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-	
-     
 	 // Excel Sheet Generation
-	 
-	
-	@Override
+	 @Override
 	protected void buildPdfDocument(Map<String, Object> model, Document doc,
 	PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
 	throws Exception {
-	
-		
-
-		
-		  
-		
-
-		@SuppressWarnings("unchecked")
+		 @SuppressWarnings("unchecked")
 		List<Maintenance> maintenances = (List<Maintenance>) model.get("maintenances");
 		String[] fields=(String[])model.get("fields");
 		
@@ -82,19 +66,6 @@ public class MaintenanceDAO extends AbstractITextPdfView
 		 width[0] = 1.0f;
 		
 		for (String field : fields) {
-			
-		
-       
-	/*}
-	
-
-	//creating header records
-	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
-		HSSFRow excelHeader = excelSheet.createRow(0);	
-	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
-		int i=0;*/
-		
-			
 			if(field.equals("equipment_id"))
 			{
 				width[i] = 1.0f;
@@ -202,15 +173,7 @@ public class MaintenanceDAO extends AbstractITextPdfView
 				
 			}
 		}
-	
-	/*}
-	
-	
-	//End
-	
-	
-	//creating cell records
-	public void setExcelRows(HSSFSheet excelSheet, List<Maintenance> maintenances,String[] fields,CellStyle style2){*/
+
 		int j=1;
 		for (Maintenance maintenance:maintenances){	
 			

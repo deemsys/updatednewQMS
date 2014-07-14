@@ -12,15 +12,14 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.springframework.web.servlet.view.document.AbstractExcelView;
-
+import qms.controllers.AbstractITextPdfView;
 import qms.model.*;
 
-public class CustomerFeedbackDAO extends AbstractExcelView
+public class CustomerFeedbackDAO extends AbstractITextPdfView
 {
 	private DataSource dataSource; 
 
@@ -29,48 +28,90 @@ public class CustomerFeedbackDAO extends AbstractExcelView
 	 */
 	
 	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook,
-			HttpServletRequest request, HttpServletResponse response)
+	protected void buildPdfDocument(Map<String, Object> model, Document doc,
+			PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-
-		HSSFSheet excelSheet = workbook.createSheet("Animal List");
-		setExcelHeader(excelSheet);
 		
+		 @SuppressWarnings("unchecked")
 		List<CustomerFeedback> customerFeedbacks = (List<CustomerFeedback>) model.get("customerFeedbacks");
-		setExcelRows(excelSheet,customerFeedbacks);
+		String[] fields=(String[])model.get("fields");
+		int memolist = fields.length;
+		System.out.println(memolist);
+       PdfPTable table=new PdfPTable(memolist+1);
+       float[] width= new float[memolist+1];
+		table.setWidthPercentage(100);
+		int i=1;
+		 table.addCell(createLabelCell("SNO"));
+		 width[0] = 1.0f;
 		
+		 for (String field : fields) {
+				if(field.equals("date_of_feedback"))
+				{
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Date of Feedback"));
+				
+				}
+				else if(field.equals("type_of_feedback"))
+				{
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Type of Feedback"));
+					
+				}
+				else if(field.equals("feedback_recorded_by"))
+				{
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Feedback recorded by"));
+					
+				}
+				else if(field.equals("feedback_details"))
+				{
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("Feedback Details"));
+					
+				}
+				
+		 }
+		 
+		 int j=1;
+		 for (CustomerFeedback customerFeedback:customerFeedbacks) {
+				
+				String sno = String.valueOf(j);
+				table.addCell(createValueCell(sno));
+				j++;
+					for (String field : fields) {
+						
+						if(field.equals("date_of_feedback"))
+						{
+							table.addCell(createValueCell(customerFeedback.getDate_of_feedback()));
+								
+						}
+						else if(field.equals("type_of_feedback"))
+						{
+							table.addCell(createValueCell(customerFeedback.getType_of_feedback()));
+
+							
+						}
+						else if(field.equals("feedback_recorded_by"))
+						{
+							table.addCell(createValueCell(customerFeedback.getFeedback_recorded_by()));
+								
+						}
+						else if(field.equals("feedback_details"))	
+						{
+							table.addCell(createValueCell(customerFeedback.getFeedback_details()));
+							
+						}
+					
+					}
+		 }	
+			table.setWidths(width);
+			
+			doc.add(table);
 	}
-	
-	
-	public void setExcelHeader(HSSFSheet excelSheet) {
-		HSSFRow excelHeader = excelSheet.createRow(0);
-		excelHeader.createCell(0).setCellValue("Date of Feedback");
-		excelHeader.createCell(1).setCellValue("Type of Feedback");
-		excelHeader.createCell(2).setCellValue("Feedback recorded by");
-		excelHeader.createCell(3).setCellValue("Feedback Details");
-		/*excelHeader.createCell(4).setCellValue("Attachments");*/
-	}
-	
-	
-	//End
-	
-	
-	public void setExcelRows(HSSFSheet excelSheet, List<CustomerFeedback> customerFeedbacks){
-		int record = 1;
-		for (CustomerFeedback customerFeedback:customerFeedbacks) {
-			HSSFRow excelRow = excelSheet.createRow(record++);
-			excelRow.createCell(0).setCellValue(customerFeedback.getDate_of_feedback());
-			excelRow.createCell(1).setCellValue(customerFeedback.getType_of_feedback());
-			excelRow.createCell(2).setCellValue(customerFeedback.getFeedback_recorded_by());
-			excelRow.createCell(3).setCellValue(customerFeedback.getFeedback_details());
-			/*excelRow.createCell(4).setCellValue(customerFeedback.getAttachments());*/
-		}
-	}
-	
-	
-	
-	
-	
 	
 	public boolean insert_customerfeedback(CustomerFeedback customerFeedback) {
 		Connection con = null;
