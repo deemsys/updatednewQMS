@@ -69,7 +69,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									<select name="type_of_report" class="input_cmbbx_big"
+									<select name="type_of_report" class="input_cmbbx_big" id="reporttype"
 									onchange="toggle2(this.value)">
 										<option value="document_list_by_type">Document List by type</option>
 										<option value="external_document">External Document</option>
@@ -98,6 +98,7 @@
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
 			                  </c:forEach> </select>
+			                  <br><span id="reporterror" style="color:red"></span>
                </td>
                
 							</tr>
@@ -136,33 +137,35 @@
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:</td>
+									Select Fields Required on the Report:
+									<br><span id="checkerror" style="color:red"></span>
+									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="document_id" id="id_field_document_id"/>Document ID</td>
-								<td><input type="checkbox" name="report_field[]" value="document_title" id="id_field_document_title"/>Document Title</td>
-								<td><input type="checkbox" name="report_field[]" value="document_type" id="id_field_document_type"/>Document Type</td>
+								<td><input type="checkbox" name="report_field[]" value="document_id" id="1"/>Document ID</td>
+								<td><input type="checkbox" name="report_field[]" value="document_title" id="2"/>Document Title</td>
+								<td><input type="checkbox" name="report_field[]" value="document_type" id="3"/>Document Type</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="media_type" id="id_field_media_type"/>Media Type</td>
-								<td><input type="checkbox" name="report_field[]" value="location" id="id_field_location"/>Location(s)</td>
-								<td><input type="checkbox" name="report_field[]" value="process" id="id_field_process"/>Process</td>
+								<td><input type="checkbox" name="report_field[]" value="media_type" id="4"/>Media Type</td>
+								<td><input type="checkbox" name="report_field[]" value="location" id="5"/>Location(s)</td>
+								<td><input type="checkbox" name="report_field[]" value="process" id="6"/>Process</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="external" id="id_field_external"/>Is an External Document</td>
-								<td><input type="checkbox" name="report_field[]" value="issuer" id="id_field_issuer"/>Issuer</td>
-								<td><input type="checkbox" name="report_field[]" value="revision_level" id="id_field_revision_level"/>Revision Level</td>
+								<td><input type="checkbox" name="report_field[]" value="external" id="7"/>Is an External Document</td>
+								<td><input type="checkbox" name="report_field[]" value="issuer" id="8"/>Issuer</td>
+								<td><input type="checkbox" name="report_field[]" value="revision_level" id="9"/>Revision Level</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="date" id="id_field_date"/>Date</td>
-								<td><input type="checkbox" name="report_field[]" value="approver1" id="id_field_approver1"/>Approver 1</td>
-								<td><input type="checkbox" name="report_field[]" value="approver2" id="id_field_approver2"/>Approver 2</td>
+								<td><input type="checkbox" name="report_field[]" value="date" id="10"/>Date</td>
+								<td><input type="checkbox" name="report_field[]" value="approver1" id="11"/>Approver 1</td>
+								<td><input type="checkbox" name="report_field[]" value="approver2" id="12"/>Approver 2</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="approver3" id="id_field_approver3"/>Approver 3</td>
-								<td><input type="checkbox" name="report_field[]" value="status" id="id_field_status"/>Status</td>
-								<td><input type="checkbox" name="report_field[]" value="comments" id="id_field_comment"/>Comment/Changes</td>
+								<td><input type="checkbox" name="report_field[]" value="approver3" id="13"/>Approver 3</td>
+								<td><input type="checkbox" name="report_field[]" value="status" id="14"/>Status</td>
+								<td><input type="checkbox" name="report_field[]" value="comments" id="15"/>Comment/Changes</td>
 					      		</tr>
 								</table>
 								
@@ -171,7 +174,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate"onclick="return validation();" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -189,6 +192,61 @@
 <table  width=300 height=140>
 			<tr height=30><td></td></tr></table>
 <script type="text/javascript">
+function validation()
+{
+ var reporttype = document.getElementById('reporttype').value;
+ var documenttype = document.getElementById('documenttype').value;
+ 
+ var error ="";
+ var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+ var a1 = document.getElementById('1').checked;
+ var a2 = document.getElementById('2').checked;
+ var a3 = document.getElementById('3').checked;
+ var a4 = document.getElementById('4').checked;
+ var a5 = document.getElementById('5').checked;
+ var a6 = document.getElementById('6').checked;
+ var a7 = document.getElementById('7').checked;
+ var a8 = document.getElementById('8').checked;
+ var a9 = document.getElementById('9').checked;
+ var a10 = document.getElementById('10').checked;
+ var a11 = document.getElementById('11').checked;
+ var a12 = document.getElementById('12').checked;
+ var a13 = document.getElementById('13').checked;
+ var a14 = document.getElementById('14').checked;
+ var a15 = document.getElementById('15').checked;
+ document.getElementById('reporterror').innerHTML = "";
+ document.getElementById('checkerror').innerHTML = "";
+ if(reporttype == "document_list_by_type")
+ {
+	 if(documenttype == "")
+	{
+		 document.getElementById('reporterror').innerHTML ="Please Select One";
+		 error = "true";
+	}
+	 else
+		 {
+		 document.getElementById('reporterror').innerHTML = "";
+		 }
+ }
+ if(id_type_userdefined)
+ {
+	 if(a1 || a2 || a3 || a4 || a5 || a6 || a7 || a8 || a9 || a10 || a11 || a12 || a13 || a14 || a15)
+		{
+		 document.getElementById('checkerror').innerHTML = "";
+		}
+	 else
+		  {
+		 document.getElementById('checkerror').innerHTML = "Please Select Atleast One";
+		 error = "true";
+		  }
+ }
+ if(error == "true")
+	 {
+	 return false;
+	 }
+	
+}
+
 function toggle2(value){
     var e3=document.getElementById("document_type_table");
 if(value=="document_list_by_type")

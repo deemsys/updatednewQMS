@@ -91,9 +91,12 @@ $(window).load(function(){
 			                  </c:forEach>
                </select>
                <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;"  onblur="change_to_label()" onInput="return validatename3(id);"/>
+               
                 <input type="hidden" name=document_id id="generated_id"  value="" /> 
+               
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
             <label id="changeafter" style="display:none;" ></label> 
+             <br><span id="documentiderror" style="color:red"></span>
             
 <td valign="middle" align="left" class="input_txt" width="10%">Media Type:</td>
                <td valign="top" align="left" class="input_txt" width="70%">
@@ -215,7 +218,7 @@ $(window).load(function(){
                <td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
-               <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" style="width:200px;">
+               <select name="process" id="id_inpprocess" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                <option value="<c:out value="${processes.process_name}"/>" <c:if test="${documentMain.process==processes.process_name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_name}"/></option>
@@ -293,7 +296,7 @@ $(window).load(function(){
                
                <select name="approver1" class="input_txtbx" id="approver" style="width:200px;">
              	
-            	
+            	<option value="">-select-</option>
               <c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
                <option value="<c:out value="${employeeowner.name}"/>" <c:if test="${documentMain.approver1==employeeowner.name}"><c:out value="Selected"/></c:if>><c:out value="${employeeowner.name}"/></option>
                </c:forEach>    
@@ -376,7 +379,7 @@ $(window).load(function(){
                <option value="Obsolete" <c:if test="${documentMain.status=='Obsolete'}"><c:out value="Selected"/></c:if>>Obsolete</option>
                </select>
                 
-               <br/><span class="err"style="color:red"><form:errors path="DocumentMain.status"></form:errors></span></td>
+               <br/><span id="statuserror" style="color:red"></span><span class="err"style="color:red"><form:errors path="DocumentMain.status"></form:errors></span></td>
             <td valign="top" align="left" class="input_txt" width="20%"></td>
         </tr>
              <tr class="row1" >
@@ -449,46 +452,68 @@ function validatename3(id){
         
         <script type="text/javascript">
         
+        var start = "false";
+        function show_edit()
+    	{
+    		
+        	
+			start = "true";
+    		var element = document.getElementById('document_type_id');
+    		var element1 = document.getElementById('documentid1');
+    		var element2 = document.getElementById('change');
+    		var element3 = document.getElementById('document_id');
+    		var element4 = document.getElementById('documentid');
+    		var element5 = document.getElementById('hide_id');
+    		
+    			element.style.display="block";
+    			element3.style.display="block";
+    			element1.style.display="none";
+    			element2.style.display="none";
+    			element4.style.display="block";
+    			element5.style.display="none";
+    			document.getElementById("changeafter").style.display="none";
+    			document.getElementById("document_id").focus();
+    			
+    	}
+        
         function validation()
         {
-        	alert("validate");
-        	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/;
         	
+        	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/;
+        	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
         	 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
         	 var documenttitle = document.getElementById('documenttitle').value;
         	var documenttype = document.getElementById('id_document_type').value;
         	var id_inpprocess = document.getElementById('id_inpprocess').value;
-        	var filter_value = document.getElementById('issuer').value;
-        	var filter_value1 = document.getElementById('approver').value;
-        	var id_inpapprover2 = document.getElementById('approver2').value;
-        	var id_inpapprover3 = document.getElementById('approver3').value;
+        	var issuer = document.getElementById('issuer').value;
+        	var approver = document.getElementById('approver').value;
+        	var approver2 = document.getElementById('approver2').value;
+        	var approver3 = document.getElementById('approver3').value;
         	var revisionlevel = document.getElementById('revisionlevel').value;
         	var status = document.getElementById('status').value;
         	 var e2=document.getElementById('location_text').value;
         	 var e3=document.getElementById('id_file').value;
         	 var datepicker=document.getElementById('datepicker').value;
         	 var comments = document.getElementById('comments').value;
-        	 alert("sdfsdfs");
+        	 var error = "";
         	 
-        	 
-        	 alert("doc title = "+documenttitle);
-        	 alert("documenttype = "+documenttype);
-        	 alert("id_inpprocess ="+id_inpprocess);
-        	 alert("filter_value "+filter_value);
-        	 alert("filter_value1"+filter_value1);
-        	 alert("id_inpapprover2"+id_inpapprover2);
-        	 alert("id_inpapprover3"+id_inpapprover3);
-        	 alert("revisionlevel"+revisionlevel);
-        	 alert("status"+status);
-        	 alert("location_text = "+e2);
-        	 alert("id_file"+e3);
-        	 alert("datepicker"+datepicker);
-        	 alert("comments"+comments);
-        	var error = "";
-        	 
-        	
+        	if(start == "true")
+        	{
+        		
+        	var doc_id	= document.getElementById('document_id').value;
+        		if(doc_id == "")
+        		{
+        			document.getElementById('documentiderror').innerHTML = "Required Field Should not be Empty";
+        			error = "true";
+        		}
+        		else
+        			{
+        			document.getElementById('documentiderror').innerHTML = "";
+        			}
+        	}
         	//one
-        	 if(id_inpapprover2 == "")
+        	
+        	 if(approver2 == "")
      		{
      		 
      			 document.getElementById("approver2error").innerHTML="Required Field Should not be Empty";
@@ -496,10 +521,12 @@ function validatename3(id){
      		}
      		 else
      		{
+     			
      			 document.getElementById("approver2error").innerHTML="";
      		}
         	 //two
-     		 if(id_inpapprover3 == "")
+        	 
+     		 if(approver3 == "")
      			{
      			 
      				 document.getElementById("approver3error").innerHTML="Required Field Should not be Empty";
@@ -510,7 +537,7 @@ function validatename3(id){
      				 document.getElementById("approver3error").innerHTML="";
      		}
      		 
-     		 
+     	
      		 //three
      		 if(documenttitle =="")
      		 {
@@ -535,7 +562,7 @@ function validatename3(id){
      				 document.getElementById("documenttitle1").innerHTML= "";
      			 }
      		}
-     		 
+     		
      		 //four
      		 if(id_inpprocess == "")
      		{
@@ -548,9 +575,9 @@ function validatename3(id){
      			 document.getElementById("inprocesserror").innerHTML="";
      		}
      		 
-     		 
+     		
      		//five
-     		  if(filter_value == "")
+     		  if(issuer == "")
      				{
      				
      					 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
@@ -563,7 +590,8 @@ function validatename3(id){
      				
      					
      		 //six
-     				 if(filter_value1 == "")
+     		 
+     				 if(approver == "")
      					{
      					 
      						 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
@@ -574,6 +602,7 @@ function validatename3(id){
      					 document.getElementById("filter1error").innerHTML="";
      					 }
      			//seven	 
+     			
         	 if(document.getElementById('id_hardcopy').checked)
         	 {
         		if(e2=="")
@@ -583,6 +612,7 @@ function validatename3(id){
         			}
         	 }
         	 //eight
+        	
         	 if(document.getElementById('id_electronic').checked)
         		{
         		 if(e3=="")
@@ -593,6 +623,7 @@ function validatename3(id){
         			 }
         		}
         	 //nine
+        	
         	if(document.getElementById('id_both').checked)
         		{
         	
@@ -605,6 +636,7 @@ function validatename3(id){
         	}
         	 
         	 //ten
+        	 
         	if(revisionlevel == "")
         		{
         		document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
@@ -636,6 +668,7 @@ function validatename3(id){
     		}
    	 
         	//eleven
+        	
         	 if(comments =="")
     		 {
     		
@@ -647,7 +680,7 @@ function validatename3(id){
     		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
     		 error ="true";
     	 }
-    	 else if((comments.length < 4) && (comments.length > 400) )
+    	 else if((comments.length < 4) || (comments.length > 400) )
     		 {
     		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
     		 error ="true";
@@ -658,6 +691,7 @@ function validatename3(id){
     		    }
    	 
    		 //12
+   		
    		 if(datepicker == "")
 		 {
 		 document.getElementById("datepicker1").innerHTML="Required Field Should not be Empty";
@@ -673,7 +707,7 @@ function validatename3(id){
 		 document.getElementById("datepicker1").innerHTML="Invalid Date";
 		 error = "true";
 		 }
-   		 
+   		
    		if(documenttype == "")
    		{
    			
@@ -684,79 +718,28 @@ function validatename3(id){
    		{
    			 document.getElementById("documenttypeerror").innerHTML="";
    		}
+   		
+   	 if(status == "")
+		{
+		
+			 document.getElementById("statuserror").innerHTML="Required Field Should not be Empty";
+				error ="true";
+		}
+		 else
+			 {
+			 document.getElementById("statuserror").innerHTML="";
+			 }
    	  if(error == "true")
       {
       	return false;
       }
         }	
-        	/*  
         	
-        	 
-        	 
-        	 if(document.getElementById('id_hardcopy').checked)
-        	 {
-        		if(e2=="")
-        			{
-        			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-        			error = "true";
-        			}
-        		 
-        		 
-        	 }
-        	 
-        	 if(document.getElementById('id_electronic').checked)
-        	{
-        		 if(e3=="")
-        			 {
-        			
-        			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-        			 error = "true";
-        			 }
-        	}
-        	if(document.getElementById('id_both').checked)
-        		{
-        	
-        		if(e2=="")
-        		{
-        			
-        		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-        		error = "true";
-        		} */
-        		/*  if(e3=="")
-        		 {
-        			
-        		 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-        		 error = "true";
-        		 } */
-        		
-        	/* 
-        	 if(revisionlevel.charAt(0) ==" ")
-        		 {
-        		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be space";
-        		 error = "true";
-        		 }
-        	 esle if(revisionlevel.match(dotnumber))
-        	 { 
-        		 document.getElementById("revisionlevel1").innerHTML="";
-        	 }
-        	 else{
-        		
-        	 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
-        	 error = "true";
-         	}
-        	 
-        	 
-        	 if(comments.match(validate1))
-        	 { 
-        	 }
-        	 else{
-        	 document.getElementById("comments1").innerHTML="Required Field Should not be space";
-        	 error = "true";
-         	} */
       
    
         </script>
 <script>
+
 function toggle2(value){
   
     var e = document.getElementById('location_label');
@@ -823,25 +806,7 @@ function Approver1(){
 	
 }
 
-function show_edit()
-	{
-		
-		var element = document.getElementById('document_type_id');
-		var element1 = document.getElementById('documentid1');
-		var element2 = document.getElementById('change');
-		var element3 = document.getElementById('document_id');
-		var element4 = document.getElementById('documentid');
-		var element5 = document.getElementById('hide_id');
-		
-			element.style.display="block";
-			element3.style.display="block";
-			element1.style.display="none";
-			element2.style.display="none";
-			element4.style.display="block";
-			element5.style.display="none";
-			document.getElementById("changeafter").style.display="none";
-		
-	}
+
 	
 
 	function change_to_label()

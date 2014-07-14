@@ -742,7 +742,7 @@ function validation()
 		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
 		 error ="true";
 	 }
-	 else if((comments.length < 4) && (comments.length > 400) )
+	 else if((comments.length < 4) || (comments.length > 400) )
 		 {
 		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
 		 error ="true";
