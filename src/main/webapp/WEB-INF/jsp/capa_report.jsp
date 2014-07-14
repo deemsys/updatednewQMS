@@ -125,7 +125,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="report_title" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="report_title" class="input_txtbx"  style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
@@ -140,7 +140,7 @@
 								</tr>
 								<tr>
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="id_capa_id"/>Capa id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="id_nc_id""/>"Nc id"</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="id_nc_id""/>Nc id</td>
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="id_source_of_nonconformance"/>source_of_nonconformance</td>
 					      		</tr>
 					      		<tr>

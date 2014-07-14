@@ -1,7 +1,7 @@
 package qms.model;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Length;
+
 
 public class NonConformance
 {
@@ -10,7 +10,7 @@ private String id;
 private String source_of_nonconformance;
 
 private String external_id;
-
+@NotEmpty
 private String type_of_nonconformance;
 @NotEmpty
 private String product_id;
