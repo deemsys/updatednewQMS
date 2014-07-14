@@ -174,6 +174,13 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 
 					excelHeader.getCell(record++).setCellStyle(style);
 					}
+				else if (field.equals("date_found")) {
+					excelHeader.createCell(record).setCellValue(
+							"DATE FOUND");
+
+					excelHeader.getCell(record++).setCellStyle(style);
+					
+					}
 				else if (field.equals("temporary_action")) {
 					excelHeader.createCell(record).setCellValue(
 							"TEMPORARY ACTION");
