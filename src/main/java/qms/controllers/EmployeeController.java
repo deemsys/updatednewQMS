@@ -440,7 +440,7 @@ public class EmployeeController
 		System.out.println("report generating....");
 		String[] fields={"employee_id","name","job_title","date_hired","attachments","list_of_functions_needes","documented_in","qualified_by","type_of_training","trainer","training_due_date","training_completion_date","training_effectiveness_review_due_date","training_effectiveness_notes"};
 		
-		System.out.println(request.getParameter("type_of_report"));
+		System.out.println(request.getParameter("report_type"));
 		java.util.List<Employee> employees=new ArrayList<Employee>();
 		
 			switch(Integer.parseInt(request.getParameter("doc_type")))

@@ -41,7 +41,7 @@ public class FeedbackReportController {
 //Customer feedback report generation
 @RequestMapping(value={"/feedbackreport"}, method = RequestMethod.POST)
 public ModelAndView view_feedbackreport(HttpServletResponse response,HttpSession session,HttpServletRequest request, ModelMap model, Principal principal,CustomerFeedback customerFeedback ) {
-	String[] fields={"date_of_feedback,type_of_feedback,feedback_recorded_by,feedback_details"};
+	String[] fields={"date_of_feedback","type_of_feedback","feedback_recorded_by","feedback_details"};
 	java.util.List<CustomerFeedback> maintenances=new ArrayList<CustomerFeedback>();
 	session.setAttribute("feedback", customerFeedback.getType_of_feedback());
 	System.out.println("type of feeback ="+customerFeedback.getType_of_feedback());
