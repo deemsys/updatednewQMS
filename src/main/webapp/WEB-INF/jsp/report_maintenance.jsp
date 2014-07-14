@@ -121,6 +121,9 @@
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
+								<td><input type="checkbox" id="select_all"/>Select All</td>
+								</tr>
+								<tr>
 								<td><input type="checkbox" name="report_field[]" value="equipment_id" id="1"/>Equipment ID</td>
 								<td><input type="checkbox" name="report_field[]" value="equipment_name" id="2"/>Equipment Name</td>
 								<td><input type="checkbox" name="report_field[]" value="equipment_model" id="3"/>Equipment Model</td>
@@ -190,6 +193,18 @@ function validatename2(id){
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById(id).value = textInput;
 } 
+
+$('#select_all').change(function() {
+    var checkboxes = $(this).closest('form').find(':checkbox');
+
+    if($(this).is(':checked')) {
+        checkboxes.attr('checked','checked');
+    } else {
+        checkboxes.removeAttr('checked');
+    }
+   
+});
+
 </script>
 
 <script type="text/javascript">
