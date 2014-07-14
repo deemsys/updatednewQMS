@@ -140,6 +140,12 @@ document.getElementById("dateerror").innerHTML="";
 		 	document.getElementById("datepicker22").innerHTML="Invalid Date";
 		 	error="true";
 			}
+			
+			if(datepicker > datepicker1)
+			{
+				 document.getElementById("dateerror").innerHTML="Please Pickup the From Date not More than To Date";
+					error="true";
+			}	
 		}
 		
 	}

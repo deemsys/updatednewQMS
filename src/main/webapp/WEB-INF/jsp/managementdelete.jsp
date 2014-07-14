@@ -216,7 +216,7 @@ else
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${maintenance.review_id}"/></td>
+							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${managementreviewdetails.review_id}"/></td>
 						           	        <td valign="top" align="left" width="10%">${managementreviewdetails.review_id}</td>
 									       <td valign="top" align="left" width="10%">${managementreviewdetails.management_review_date}</td>
 											<td valign="top" align="left" width="15%">${managementreviewdetails.category}</td>
