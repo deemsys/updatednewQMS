@@ -43,7 +43,7 @@
       		</tr>
 		 	<tr>
 		
-			<c:if test="${success=='true'}">
+			<c:if test="${success=='insert'}">
 			<tr>
 				<td valign="top" align="left" style="padding: 5px 0 10px 200px;">&nbsp;
 					<div id="success_statusbar" class="status success">

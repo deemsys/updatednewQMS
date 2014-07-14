@@ -191,7 +191,7 @@
 																		value="Keep as is">Keep as is</option>
 						                    						</select><br><span style="color: red;" id="disid2err"></span>
 						                    						<td width="1%"></td>
-						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event)";  value="${nonconformance.quality2}" onchange="showbutton2();" />
+						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event);"  value="${nonconformance.quality2}" onchange="showbutton2();" />
 						                    						
 						                    						</td>
 						                    						<td align="left">

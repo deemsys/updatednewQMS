@@ -169,7 +169,7 @@
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member(s) :</td>      
-						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" onInput="return validatename(id);"  name="team_members"  id="team_member" style="width:78%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
+						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" onInput="return validatename(id);"  name="team_members"  id="team_member" style="width:78%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Statement :</td>               
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" onInput="return validatename(id);" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
                
@@ -188,9 +188,11 @@ onclick="Upload();"
 
 'upload_external_analysis'}"><c:out value="Checked=checked"/></c:if>/>
 				  <td>
-				  
+				 
 				  	 </tr>
-			 <tr class="row1" id="id_file" >
+				  	 
+			 <tr class="row1" id="id_file" style="display:none;" >
+			  
 			 <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
 			 <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
              <td valign="top" align="left" class="input_txt" width="30%">Upload the File :</td>
@@ -201,7 +203,7 @@ onclick="Upload();"
                    </tr>
 						<!-- 
 							</tr>
-				<tr class="row2" id="upload" style="display:none;">
+				
 				 <td valign="top" align="left" class="input_txt" width="30%" >Upload</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                   
@@ -339,7 +341,8 @@ onclick="Upload();"
       
 <script>
 $('#externalfile').change(function() {
-	 var e1=document.getElementById("upload");
+	
+	 var e1=document.getElementById("id_file");
 	   
 	 if($(this).is(':checked')) {
 		 e1.style.display="table-row";
@@ -773,9 +776,31 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 }
 	
 </script>
+<script type="text/javascript">
+function externalchecked()
+{
+ var externalfile = document.getElementById('externalfile').checked;
+ var e1=document.getElementById("id_file");
+ if(externalfile)
+	{
+	 
+	 e1.style.display="table-row"; 
+	}
+ else
+	 {
+	 e1.style.display="none";
+	 }
+
+}
+
+
+</script>
 <script>
 window.onload = function() {
 	doAjaxPost();
+	externalchecked();
+
+	
 	};
 </script>
 <jsp:include page="footer.jsp"></jsp:include>

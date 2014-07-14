@@ -86,14 +86,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                   	<div id="source_of_nonconformance">  
-                  		<%-- <select name="source_of_nonconformance" id="source_of_nonconformance_id"  class="input_txtbx" style="height:20px;">
-                  		<option value="">--Select--</option>
-                  		<c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
-                  		<option value="<c:out value="${nonconformance.source_of_nonconformance}"/>"><c:out value="${nonconformance.source_of_nonconformance}"/></option>
-                  		</c:forEach>
-                  		</select>
-                  		<span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.source_of_nonconformance"></form:errors></span></td>
-                      	 --%>	
+                  		
                 </div>
                 </td>
                 </tr>

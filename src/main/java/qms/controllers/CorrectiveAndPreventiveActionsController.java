@@ -390,7 +390,8 @@ public class CorrectiveAndPreventiveActionsController
 					
 				if (correctiveAndPreventiveActionsDAO.insert_correctiveAndPreventiveActions(correctiveAndPreventiveActions))
 				 	{
-						model.addAttribute("success", "true");
+						
+						model.addAttribute("success", "insert");
 						model.addAttribute("success_message", "Inserted Successfully");
 						flag = 1;
 				 	}	
