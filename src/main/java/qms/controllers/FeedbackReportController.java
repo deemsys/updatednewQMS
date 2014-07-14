@@ -32,6 +32,9 @@ public class FeedbackReportController {
 	
 	public String addFeedbackreport(HttpSession session,ModelMap model, Principal principal) {
 	model.addAttribute("menu","customer");
+	session.removeAttribute("feedback");
+	session.removeAttribute("fromdate");
+	session.removeAttribute("todate");
 		return "feedback_report";
 }
 
