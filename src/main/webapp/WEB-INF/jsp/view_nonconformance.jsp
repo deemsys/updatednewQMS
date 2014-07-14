@@ -209,14 +209,12 @@ function confirmation() {
 	if (answer){
 		return true;
 	}
-	else{
+	else
 		return false;
-	}
+	
 }
-
-
 </script>
-						
+						<br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>
 
 

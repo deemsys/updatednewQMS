@@ -125,13 +125,14 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="report_title" class="input_txtbx"  style="width:40%;" value=""/>
+									<input type="text" name="report_title" class="input_txtbx"  value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:</td>
+									Select Fields Required on the Report:
+									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						
@@ -139,45 +140,45 @@
 								<td><input type="checkbox" id="select_all"/>Select All</td>
 								</tr>
 								<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="id_capa_id"/>Capa id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="id_nc_id""/>Nc id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="id_source_of_nonconformance"/>source_of_nonconformance</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="1"/>Capa id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="2"/>Nc id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="3"/>source_of_nonconformance</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="external_id" id="id_external_id"/>external_id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="type_of_nonconformance" id="id_type_of_nonconformance"/>type_of_nonconformance</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="date_found" id="id_date_found"/>date_found</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="external_id" id="4"/>external_id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="type_of_nonconformance" id="5"/>type_of_nonconformance</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="date_found" id="6"/>date_found</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox"onclick="selectall(this.id)" name="report_field[]" value="temporary_action" id="id_temporary_action"/>temporary_action</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nature_of_nc" id="id_nature_of_nc"/>nature_of_nc</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_requestor" id="id_capa_requestor"/>capa_requestor</td>
+								<td><input type="checkbox"onclick="selectall(this.id)" name="report_field[]" value="temporary_action" id="7"/>temporary_action</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nature_of_nc" id="8"/>nature_of_nc</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_requestor" id="9"/>capa_requestor</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="request_date" id="id_request_date"/>request_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_due_date" id="id_capa_due_date"/>capa_due_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="assigned_team_leader" id="id_assigned_team_leader"/>assigned_team_leader</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="request_date" id="10"/>request_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_due_date" id="11"/>capa_due_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="assigned_team_leader" id="12"/>assigned_team_leader</td>
 							</tr>
 							<tr> 
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="team_members" id="id_team_members"/>team_members</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_analysis_file" id="id_root_cause_analysis_file"/>root_cause_analysis_file</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="use_5_why_in_system" id="id_use_5_why_in_system"/>use_5_why_in_system</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="team_members" id="13"/>team_members</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_analysis_file" id="14"/>root_cause_analysis_file</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="use_5_why_in_system" id="15"/>use_5_why_in_system</td>
 							</tr>
 							<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="why" id="id_why"/>why</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_statement" id="id_root_cause_statement"/>root_cause_statement</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="upload_external_analysis" id="id_upload_external_analysis"/>upload_external_analysis</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="why" id="16"/>why</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_statement" id="17"/>root_cause_statement</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="upload_external_analysis" id="18"/>upload_external_analysis</td>
 								</tr>
 								<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="action" id="id_action"/>action</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="responsibility" id="id_responsibility"/>responsibility</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="due_date" id="id_due_date"/>due_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="action" id="19"/>action</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="responsibility" id="20"/>responsibility</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="due_date" id="21"/>due_date</td>
 								</tr>
 								
 							<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="id_completion_date"/>completion_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="verified_by" id="id_verified_by"/>verified_by</td>
-							<td><input type="checkbox" name="report_field[]" value="verification_date" id="id_verification_date"/>verification_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="22"/>completion_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="verified_by" id="23"/>verified_by</td>
+							<td><input type="checkbox" name="report_field[]" value="verification_date" id="24"/>verification_date</td>
 								</tr>
 								
 								</table>
@@ -187,7 +188,7 @@
 						
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -206,6 +207,62 @@
 			<tr height=30><td></td></tr></table>
 
 
+
+<script type="text/javascript">
+function validate()
+{
+	var error ="";
+	
+	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+	
+	var a1 = document.getElementById('1').checked;
+	var a2 = document.getElementById('2').checked;
+	var a3 = document.getElementById('3').checked;
+	var a4 = document.getElementById('4').checked;
+	var a5 = document.getElementById('5').checked;
+	var a6 = document.getElementById('6').checked;
+	var a7 = document.getElementById('7').checked;
+	var a8 = document.getElementById('8').checked;
+	var a9 = document.getElementById('9').checked;
+	var a10 = document.getElementById('10').checked;
+	var a11 = document.getElementById('11').checked;
+	var a12 = document.getElementById('12').checked;
+	var a13 = document.getElementById('13').checked;
+	var a14 = document.getElementById('14').checked;
+	var a15 = document.getElementById('15').checked;
+	var a16 = document.getElementById('16').checked;
+	var a17 = document.getElementById('17').checked;
+	var a18 = document.getElementById('18').checked;
+	var a19 = document.getElementById('19').checked;
+	var a20 = document.getElementById('20').checked;
+	var a21 = document.getElementById('21').checked;
+	var a22 = document.getElementById('22').checked;
+	var a23 = document.getElementById('23').checked;
+	var a24 = document.getElementById('24').checked;
+	
+	
+	if(id_type_userdefined)
+		{
+		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14|| a15|| a16|| a17|| a18 || a19 || a20 || a21 || a22 || a23 || a24)
+			{
+			document.getElementById("userdefineerror").innerHTML="";
+			}
+		else{
+			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			error = "true";
+		}
+	}
+	else
+	{
+		document.getElementById("userdefineerror").innerHTML="";
+		}
+	
+	if(error == "true")
+		{
+		return false;
+		}
+}
+</script>
 
 <script type="text/javascript">
 function toggle2(value){
