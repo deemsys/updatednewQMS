@@ -33,7 +33,7 @@
 				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Form Report</span>
+									Reports</span>
 									
 								</a>
 							</li>
@@ -281,17 +281,9 @@
 												
 				<td valign="top" align="right" class="input_txt">Comments :</td>
 				<td valign="top" align="left" class="input_txt" >
-				<textarea class="input_txtbx" id="comments" name="comments"  style="height: 50px;" >${docform.comments}</textarea><br/>
+				<textarea class="input_txtbx" id="comments" name="comments"  style="height: 60px;" >${docform.comments}</textarea><br/>
 				<span id="comments1" style="color:red"></span>
 				<span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
-			
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-																		
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
 				</tr>
               
               	<tr class="row1">
@@ -390,6 +382,43 @@ e3.style.display="block";
 
 }
 </script>
+
+<script>
+  $(function() {
+	$("#form_or_rec_title").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});	
+  $(function() {
+		$("#responsibility ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});	
+
+  $(function() {
+		$("#comments ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});	
+  
+ $(function() {
+		$("#form_or_rec_id ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});	
+ $(function() {
+		$("#form_or_rec_id ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+
+</script>
+
 
 <script>
 function validation()

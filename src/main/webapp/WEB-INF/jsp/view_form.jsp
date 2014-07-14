@@ -46,7 +46,7 @@
 				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Form Report
+									Reports
 									
 								</a>
 							</li>
@@ -100,7 +100,7 @@
 							    
 							     <td valign="top" align="left" class="input_txt" >
                
-               <select name="process" id="id_inpprocess"  class="input_cmbbx1" style="width:200px;">
+               <select name="process" id="id_inpprocess"  class="input_txtbx">
                <option value="">--Select--</option>
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                 <option value="${processes.process_name}"<c:if test="${processes.process_name==processarea}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>

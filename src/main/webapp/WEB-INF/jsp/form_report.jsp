@@ -31,7 +31,7 @@
 				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
 								<c:when test="${menu=='document'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									Form Report
+									Reports
 									
 								</a>
 							</li>
@@ -116,13 +116,14 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="document_name" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="document_name" class="input_txtbx" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:</td>
+									Select Fields Required on the Report:
+									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
@@ -130,29 +131,29 @@
 								<td><input type="checkbox" id="select_all"/>Select All</td>
 								</tr>
 								
-								<td><input type="checkbox" name="report_field[]" value="location" id="id_field_document_title"/>Location</td>
-								<td><input type="checkbox" name="report_field[]" value="form_or_rec_id" id="id_field_document_type"/>Form/Rec Id</td>
+								<td><input type="checkbox" name="report_field[]" value="location" id="1"/>Location</td>
+								<td><input type="checkbox" name="report_field[]" value="form_or_rec_id" id="2"/>Form/Rec Id</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="responsibility" id="id_field_media_type"/>Responsibility</td>
-								<td><input type="checkbox" name="report_field[]" value="form_or_rec_titlelocation" id="id_field_location"/>Form/Rec Title</td>
-								<td><input type="checkbox" name="report_field[]" value="process" id="id_field_process"/>Process</td>
+								<td><input type="checkbox" name="report_field[]" value="responsibility" id="3"/>Responsibility</td>
+								<td><input type="checkbox" name="report_field[]" value="form_or_rec_titlelocation" id="4"/>Form/Rec Title</td>
+								<td><input type="checkbox" name="report_field[]" value="process" id="5"/>Process</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="media_type" id="id_field_external"/>Media Type</td>
-								<td><input type="checkbox" name="report_field[]" value="retention_time" id="id_field_issuer"/>Retention Time</td>
-								<td><input type="checkbox" name="report_field[]" value="form" id="id_field_revision_level"/>Form</td>
+								<td><input type="checkbox" name="report_field[]" value="media_type" id="6"/>Media Type</td>
+								<td><input type="checkbox" name="report_field[]" value="retention_time" id="7"/>Retention Time</td>
+								<td><input type="checkbox" name="report_field[]" value="form" id="8"/>Form</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="effective_date" id="id_field_date"/>Effective Date</td>
-								<td><input type="checkbox" name="report_field[]" value="document_id" id="id_field_approver1"/>Document Id</td>
-								<td><input type="checkbox" name="report_field[]" value="approver1" id="id_field_approver2"/>Approver 1</td>
+								<td><input type="checkbox" name="report_field[]" value="effective_date" id="9"/>Effective Date</td>
+								<td><input type="checkbox" name="report_field[]" value="document_id" id="10"/>Document Id</td>
+								<td><input type="checkbox" name="report_field[]" value="approver1" id="11"/>Approver 1</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="issuer" id="id_field_approver3"/>Issuer</td>
+								<td><input type="checkbox" name="report_field[]" value="issuer" id="12"/>Issuer</td>
 								<!-- <td><input type="checkbox" name="report_field[]" value="status" id="id_field_status"/>Status</td> -->
-								<td><input type="checkbox" name="report_field[]" value="comments" id="id_field_comment"/>Comments</td>
-								<td><input type="checkbox" name="report_field[]" value="revision_id" id="id_field_revision_id"/>Revision No</td>
+								<td><input type="checkbox" name="report_field[]" value="comments" id="13"/>Comments</td>
+								<td><input type="checkbox" name="report_field[]" value="revision_id" id="14"/>Revision No</td>
 					      		</tr>
 								</table>
 								
@@ -161,7 +162,7 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export" onclick="return validate();" name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -181,7 +182,52 @@
            <table  width=300 height=30>
 			<tr height=30><td></td></tr></table>
 							
-							
+	
+<script type="text/javascript">
+function validate()
+{
+	var error ="";
+	
+	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+	
+	var a1 = document.getElementById('1').checked;
+	var a2 = document.getElementById('2').checked;
+	var a3 = document.getElementById('3').checked;
+	var a4 = document.getElementById('4').checked;
+	var a5 = document.getElementById('5').checked;
+	var a6 = document.getElementById('6').checked;
+	var a7 = document.getElementById('7').checked;
+	var a8 = document.getElementById('8').checked;
+	var a9 = document.getElementById('9').checked;
+	var a10 = document.getElementById('10').checked;
+	var a11 = document.getElementById('11').checked;
+	var a12 = document.getElementById('12').checked;
+	var a13 = document.getElementById('13').checked;
+	var a14 = document.getElementById('14').checked;
+	
+	if(id_type_userdefined)
+		{
+		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14)
+			{
+			document.getElementById("userdefineerror").innerHTML="";
+			}
+		else{
+			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			error = "true";
+		}
+	}
+	else
+	{
+		document.getElementById("userdefineerror").innerHTML="";
+		}
+	
+	if(error == "true")
+		{
+		return false;
+		}
+}
+</script>
+						
 <script type="text/javascript">
 /* function toggle2(value){
     var e3=document.getElementById("document_type_table");

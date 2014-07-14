@@ -123,7 +123,7 @@
               	</tr>
                 <tr class="row2">
 				<td valign="top" align="left" class="input_txt" width="30%">PostalCode :</td>
-				<td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="postalcode" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="postalcode" maxlength="5" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Email :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;"id="emailerror"><form:errors path="SupplierPerformance.email_address"></form:errors></span></td>
                 
@@ -443,10 +443,10 @@ function validatename(id)
 		{
 		document.getElementById("postalerror").innerHTML="Required Field Should not be Empty";
 		error="true";
-		}else if(document.getElementById("inp_postalcode").value.length>6)
+		}else if(document.getElementById("inp_postalcode").value.length>5)
 	    {
 	    
-	    	document.getElementById("postalerror").innerHTML="Should be of length 6";
+	    	document.getElementById("postalerror").innerHTML="Should be of length 5";
 	    	 error="true";
 	    } 
 		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)

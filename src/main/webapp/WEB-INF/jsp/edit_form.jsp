@@ -681,6 +681,43 @@ function reset_form()
  </script>
 
 <script>
+  $(function() {
+	$("#form_or_rec_title").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});	
+  $(function() {
+		$("#responsibility ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});	
+
+  $(function() {
+		$("#comments ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});	
+  $(function() {
+		$("#form_or_rec_id ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});	
+$(function() {
+		$("#form_or_rec_id ").on("keypress", function(e) {
+			if (e.which === 32 && !this.value.length)
+		        e.preventDefault();
+		});
+		});
+
+</script>
+
+
+
+<script>
 function validation()
 {
 	

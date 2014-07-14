@@ -211,7 +211,7 @@
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
                      <td valign="top" align="left" class="input_txt"width="20%">
 				                  		<select name="responsibility" id="responsibility" class="input_txtbx" style="width:100%; height:20px;">
-				                  		<option value="">-select-</option>
+				                  		<option value="">--Select--</option>
 						                  <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="true">
                <option value="<c:out value="${hrandtrainings.name}"/>"><c:out value="${hrandtrainings.name}"/></option>
                </c:forEach>
