@@ -210,7 +210,7 @@
              <tr class="row2">
              <td valign="top" align="left" class="input_txt" width="30%">Form/Rec Id</td>
 			 <td valign="top" align="left" class="input_txt">
-			 <input type="text" class="input_txtbx" id="form_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" name="document_id"
+			 <input type="text" class="input_txtbx" id="form_id" readonly="readonly"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" name="document_id"
 			  value="" /><br/><span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
 			 </td>
 			 
