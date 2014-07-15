@@ -44,9 +44,9 @@ public class InternalAuditsController {
 	
 	//Internal Audit Report generation
 	@RequestMapping(value = "/internal_audit_report", method = RequestMethod.POST)
-	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model) {
+	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model,HttpServletResponse response) {
 		
-	String[] fields={"report_id","process","auditee_name","audit_start_date","audit_due_date","auditor","audit_notes","finding","completion_date","auditors_initial","type"};	
+	String[] fields={"report_id","process","auditee_name","audit_start_date","audit_due_date","auditor","audit_notes","finding","completion_date","auditors_initial"};	
 		//String title= "internal_audit";
 	String title="";
 		java.util.List<InternalAudits> internalAudits=new ArrayList<InternalAudits>();
@@ -84,6 +84,8 @@ public class InternalAuditsController {
 			
 			for (@SuppressWarnings("unused") String field : request.getParameterValues("report_field[]")) 
 			{
+				 response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("report_title")+"'");
+					
 				title=request.getParameter("report_title");
 				System.out.println(title);
 						
@@ -91,15 +93,18 @@ public class InternalAuditsController {
 				
 				ModelAndView modelAndView=new ModelAndView("internalauditsDAO","internalAudits",internalAudits);
 				modelAndView.addObject("fields",request.getParameterValues("report_field[]"));
-				modelAndView.addObject("title",title);
+				
+				/*modelAndView.addObject("title",title);*/
 				return modelAndView ;
 			}
 		}
 		
-		
+	else
+		response.setHeader("Content-Disposition","attachment;filename='InternalAudit_Report'");
+	
 		ModelAndView modelAndView=new ModelAndView("internalauditsDAO","internalAudits",internalAudits);
 		modelAndView.addObject("fields",fields);
-		modelAndView.addObject("title",title);
+		
 		 
 		return modelAndView ;
 		
