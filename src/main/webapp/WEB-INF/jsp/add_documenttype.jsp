@@ -110,10 +110,22 @@
   </div>
       </td>
       </tr>
+        <c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="add_documenttype">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Document Type</h2>
+              <h2 style="padding-left: 55px">Add Document Type</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -121,7 +133,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Add Document Type :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 60px">Add Document Type :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"  onInput="validateAlpha4();"/>
                 <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
@@ -160,12 +172,12 @@
 	 var documenttype = document.getElementById('documenttype').value;
 	 if(documenttype == "")
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("documenttype1").innerHTML="Required field should not be empty";
 		 return false;
 		 }
 	 else if(documenttype.charAt(0) == " ")
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Spaces";
+		 document.getElementById("documenttype1").innerHTML="Required field should not be spaces";
 		 return false;
 		 }
 	 else if(documenttype.length<4)
@@ -179,7 +191,7 @@
 		 }
 	 else
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required Field Should be Alphabates";
+		 document.getElementById("documenttype1").innerHTML="Required field should be alphabates";
 		 return false;
 		 }
  }

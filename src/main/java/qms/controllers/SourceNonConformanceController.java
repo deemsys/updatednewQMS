@@ -65,8 +65,8 @@ public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_S
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "sourceNC_list";
+		model.addAttribute("success","insert");
+	return "Add_source_NC";
 }
 @RequestMapping(value="/sourceNC_list", method=RequestMethod.GET)
 public String Sourcelist(HttpServletRequest request,ModelMap model, Principal principal) {

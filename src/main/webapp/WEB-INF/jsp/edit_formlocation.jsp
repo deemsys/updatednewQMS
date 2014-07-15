@@ -45,7 +45,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Form Location</h2>
+              <h2 style="padding-left: 45px">Editing Form Location</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${formLocationForm.formLocations[0]}" var="formlocation"> </c:set>
@@ -55,7 +55,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="left" class="input_txt" width="30%">Location Name :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 50px">Location Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" maxlength="32"  class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" onInput="validateAlpha4()" />
                 <br> <span id="formlocation1" style="color:red">   </span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span>
@@ -97,12 +97,12 @@
 	 var formlocation = document.getElementById('formlocation').value;
 	 if(formlocation == "")
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("formlocation1").innerHTML="Required field should not be empty";
 		 return false;
 		 }
 	 else if(formlocation.charAt(0) == " ")
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Spaces";
+		 document.getElementById("formlocation1").innerHTML="Required field should not be spaces";
 		 return false;
 		 }
 	 else if(formlocation.length<4)
@@ -116,7 +116,7 @@
 		 }
 	 else
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required Field Should be Alphabates";
+		 document.getElementById("formlocation1").innerHTML="Required field should be alphabates";
 		 return false;
 		 }
  }

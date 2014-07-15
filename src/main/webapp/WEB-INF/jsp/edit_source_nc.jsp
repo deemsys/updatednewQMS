@@ -34,12 +34,12 @@
             	   var sourceofnc = document.getElementById('sourceofnc').value;
             	   if(sourceofnc == "")
             		   {
-            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Empty";
+            		   document.getElementById("sourceofnc1").innerHTML="Required field should not be empty";
             			 return false;
             		   }
             	   else if(sourceofnc.charAt(0)==" ")
             		   {
-            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should not be Spaces";
+            		   document.getElementById("sourceofnc1").innerHTML="Required field should not be spaces";
           			 return false;
             		   }
             	   else if(sourceofnc.length<4)
@@ -53,7 +53,7 @@
             		   }
             	   else
             		   {
-            		   document.getElementById("sourceofnc1").innerHTML="Required Field Should be Alphabates";
+            		   document.getElementById("sourceofnc1").innerHTML="Required field should be alphabates";
             			 return false;
             		   
             		   }
@@ -91,7 +91,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Source of NC</h2>
+              <h2 style="padding-left: 55px">Editing Source of NC</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${conformance_SourceForm.conformance_Sources[0]}" var="sources"> </c:set>
@@ -101,7 +101,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 60px">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${sources.auto_id}"/>
                   <input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" onInput="validateAlpha4()" />

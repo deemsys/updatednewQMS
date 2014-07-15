@@ -116,7 +116,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Instruction Attachment</h2>
+              <h2 style="padding-left: 50px">Instruction Attachment</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -125,7 +125,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 
               		<tr class="row1">
-              		<td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">Instruction Attachment</td>
+              		<td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%" style="padding-left: 55px">Instruction Attachment</td>
               		<td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
               		 <input name="attachments" id="id_file" type="file" /> <br/>
               </td>
@@ -133,8 +133,8 @@
   
                <tr class="row2">
                <td></td>
-             <td align="right">
-             <input align="left" class="submit_btn1" type="submit" id="submit"  name="submit" value="Submit" ></td>
+             <td align="left">
+             <input class="submit_btn1" type="submit" id="submit"  name="submit" value="Submit" ></td>
              <td>
              <!--  <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td> -->
            

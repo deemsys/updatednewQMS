@@ -43,7 +43,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Type of NC</h2>
+              <h2 style="padding-left: 55px">Editing Type of NC</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${type_of_NC_Form.type_of_NCs[0]}" var="types"> </c:set>
@@ -53,7 +53,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="left" class="input_txt" width="30%">Type of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 60px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${types.auto_id}"/>
                   <input type="text" name="type_of_nc"  maxlength="32" class="input_txtbx"  id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${types.type_of_nc}" onInput="validateAlpha4()" />

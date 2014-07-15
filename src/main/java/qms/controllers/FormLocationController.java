@@ -67,8 +67,8 @@ public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("formLocationForm",formLocationForm);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "formlocation_list";
+		model.addAttribute("success","insert");
+	return "add_formlocation";
 }
 
 //Edit a record

@@ -61,8 +61,8 @@ public String postType(HttpSession session,@ModelAttribute("Type_of_NC") @Valid 
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "typeNC_list";
+		model.addAttribute("success","insert");
+	return "add_typenc";
 }
 @RequestMapping(value="/typeNC_list", method=RequestMethod.GET)
 public String Typelist(HttpServletRequest request,ModelMap model, Principal principal) {

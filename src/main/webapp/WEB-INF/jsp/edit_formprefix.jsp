@@ -45,7 +45,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Form Prefix</h2>
+              <h2 style="padding-left: 50px">Editing Form Prefix</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${formFormPrefix.formPrefixs[0]}" var="formprefix"> </c:set>
@@ -55,15 +55,15 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
               
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Form Prefix :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Form Prefix :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
                  <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                   <tr class="row2">
                 
-                  <td valign="middle" align="left" class="input_txt" width="30%">Description :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
+                  <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Description :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="200" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
                  <br>  <span id="document_id1" style="color:red"></span>  <span id="formname1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
@@ -103,11 +103,11 @@
     	    textInput = textInput.replace(/[^A-Z ]/g, "");
     	    document.getElementById("formprefix").value = textInput;
     	}
-    	function validateAlpha1(){
+    	/* function validateAlpha1(){
     	    var textInput = document.getElementById("formname").value;
     	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
     	    document.getElementById("formname").value = textInput;
-    	}
+    	} */
        function validation()
        {
       	
@@ -116,17 +116,18 @@
       	 var desc = /[A-Za-z ]+$/;
       	 var formprefix = document.getElementById('formprefix').value;
       	 var formname= document.getElementById('formname').value;
-      	 
+      	 document.getElementById("document_id1").innerHTML="";
+      	document.getElementById("docprefix1").innerHTML="";
       	
       	 
       	 if(formname =="")
       	 {
-      	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
+      	 document.getElementById("document_id1").innerHTML="Required field should not be empty";
       	 error="true";
       	 }
        else if(formname.charAt(0)==" ")
       	 {
-      	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
+      	 document.getElementById("document_id1").innerHTML="Required field should not be spaces";
       	 error="true";
       	 }
       	
@@ -140,23 +141,23 @@
       	 {
       	 	 document.getElementById("document_id1").innerHTML="";
       	 }
-       else {
+     /*   else {
       	 
       	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
       	 error="true";
           }
       	 
-      	 
+      	  */
       	 
       	 
       	 if(formprefix =="")
       	 {
-      	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
+      	 document.getElementById("docprefix1").innerHTML="Required field should not be empty";
       	 error="true";
       	 }
        else if(formprefix.charAt(0)==" ")
       	 {
-      	 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
+      	 document.getElementById("docprefix1").innerHTML="Required field should not be spaces";
       	 error="true";
       	 }
        else if(formprefix.length<4)
@@ -169,11 +170,7 @@
       	 	 document.getElementById("docprefix1").innerHTML="";
       	 }
       	 
-       else {
-      	 
-      	 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
-      	 error="true";
-       }
+     
       	 if(error=="true")
       		 {
       		 return false;

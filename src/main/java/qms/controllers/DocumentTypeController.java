@@ -66,8 +66,8 @@ public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("documentTypeForm",documentTypeForm);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "documenttype_list";
+		model.addAttribute("success","insert");
+	return "add_documenttype";
 }
 
 //Edit a record

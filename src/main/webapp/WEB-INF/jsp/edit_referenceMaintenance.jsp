@@ -44,7 +44,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Reference List</h2>
+              <h2 style="padding-left: 50px">Editing Reference List</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${referenceMaintenance_Form.references[0]}" var="reference"> </c:set>
@@ -54,7 +54,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="right" class="input_txt" width="30%">Frequency of Maintenance :</td>
+                  <td valign="top" align="left"  style="padding-left: 55px" class="input_txt" width="30%">Frequency of Maintenance :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${reference.auto_id}"/>
                   <input type="hidden" name="frequency_maintenance" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reference.frequency_maintenance}" />${reference.frequency_maintenance}<span class="err"><form:errors path="Reference.frequency_maintenance"></form:errors></span>

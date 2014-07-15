@@ -108,10 +108,22 @@
   </div>
       </td>
       </tr>
+       <c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 225px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="addreportnc">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Type NC</h2>
+              <h2 style="padding-left: 55px">Add Type NC</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -124,7 +136,7 @@
                 </tr>
                 
        --%>          <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="20%">Type of NC :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 60px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;">
                   <select name="type_of_nc"  class="input_txtbx" id="typeofNc" style="border:none;background-color:lightgrey;">
                                										<option value="">--Select--</option>
@@ -139,7 +151,7 @@
              <br>  <span id="typeofNc1" style="color:red"></span>
                <span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
                
-                  <td valign="top" align="left" class="input_txt" width="20%">Group Person :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 55px">Group Person :</td>
                   <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()"/>
                  <br>  <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>

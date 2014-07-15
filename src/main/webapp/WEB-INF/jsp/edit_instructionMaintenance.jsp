@@ -44,7 +44,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Instruction List</h2>
+              <h2 style="padding-left: 55px">Editing Instruction List</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${instructionMaintenanceForm.instructionMaintenances[0]}" var="reference"> </c:set>
@@ -62,7 +62,7 @@
               		</tr>
               		<tr class="row1">
               	
-              		<td valign="middle" align="right" id="id_location_txt" class="input_txt" width="55%">
+              		<td valign="middle" style="padding-left: 60px" align="left" id="id_location_txt" class="input_txt" width="55%">
               		<input type="hidden" name="auto_id" value="${reference.auto_id}"/>
               		<input name="filename" type="hidden" id="file_name"/>${reference.attachment_name}
                <input name="attachments" id="id_file" type="file" value="${reference.attachment_name }"/>

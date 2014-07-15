@@ -84,8 +84,8 @@ public String postreportnc(HttpSession session,@ModelAttribute("ReportedByNC") @
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("reportedByNCForm",reportedByNCForm);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "reportNC_list";
+		model.addAttribute("success","insert");
+	return "add_reportnc";
 }
 
 // Getting the List of records created on 19-jun-14.

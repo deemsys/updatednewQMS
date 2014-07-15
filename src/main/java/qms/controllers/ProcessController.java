@@ -48,7 +48,7 @@ public class ProcessController
 	@RequestMapping(value = "/add_process", method = RequestMethod.POST)
 	public String postProcess(HttpSession session,@ModelAttribute("Process") @Valid Process process,BindingResult result, ModelMap model) {
 
-		session.setAttribute("process",process);
+		//session.setAttribute("process",process);
 			if (result.hasErrors())
 			{
 				ProcessForm processForm = new ProcessForm();
@@ -67,8 +67,8 @@ public class ProcessController
 		    model.addAttribute("currentpage",1);
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("menu","admin");
-			model.addAttribute("success","true");
-		return "process_list";
+			model.addAttribute("success","insert");
+		return "add_process";
 	}
 
 	

@@ -116,10 +116,22 @@
   </div>
       </td>
       </tr>
+      <c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 225px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="addtypenc">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Type NC</h2>
+              <h2 style="padding-left: 55px">Add Type NC</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -127,7 +139,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="50%">Type of NC :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%" style="padding-left: 62px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="type_of_nc" maxlength="32" class="input_txtbx" id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="validateAlpha4()" value="" />
                 <br>  <span id="typeofnc1" style="color:red"></span>
                   <span class="err"><form:errors path="Type_of_NC.type_of_nc"></form:errors></span></td>
@@ -164,12 +176,12 @@
             	   var typeofnc = document.getElementById('typeofnc').value;
             	   if(typeofnc == "")
             		   {
-            		   document.getElementById("typeofnc1").innerHTML="Required Field Should not be Empty";
+            		   document.getElementById("typeofnc1").innerHTML="Required field should not be empty";
             			 return false;
             		   }
             	   else if(typeofnc.charAt(0)==" ")
             		   {
-            		   document.getElementById("typeofnc1").innerHTML="Required Field Should not be Spaces";
+            		   document.getElementById("typeofnc1").innerHTML="Required field should not be spaces";
           			 return false;
             		   }
             	   else if(typeofnc.length<4)
@@ -183,7 +195,7 @@
             		   }
             	   else
             		   {
-            		   document.getElementById("typeofnc1").innerHTML="Required Field Should be Alphabates";
+            		   document.getElementById("typeofnc1").innerHTML="Required field should be alphabates";
             			 return false;
             		   
             		   }

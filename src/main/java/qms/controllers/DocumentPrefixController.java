@@ -68,7 +68,7 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 		model.addAttribute("documentPrefixForm",documentPrefixForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","insert");
-	return "documentprefix_list";
+	return "add_prefixdocument";
 }
 	
 @RequestMapping(value="/documentprefix_list", method=RequestMethod.GET)

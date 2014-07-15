@@ -45,7 +45,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Document Type</h2>
+              <h2 style="padding-left: 65px">Editing Document Type</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${documentTypeForm.documentTypes[0]}" var="documenttype"> </c:set>
@@ -55,7 +55,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="top" align="left" class="input_txt" width="30%">Document Type&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 70px">Document Type&nbsp;:</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" onInput="validateAlpha4();"/>
                   <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span>
@@ -96,12 +96,12 @@
 	 var documenttype = document.getElementById('documenttype').value;
 	 if(documenttype == "")
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("documenttype1").innerHTML="Required field should not be empty";
 		 return false;
 		 }
 	 else if(documenttype.charAt(0) == " ")
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required Field Should not be Spaces";
+		 document.getElementById("documenttype1").innerHTML="Required field should not be spaces";
 		 return false;
 		 }
 	 else if(documenttype.length<4)
@@ -115,7 +115,7 @@
 		 }
 	 else
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required Field Should be Alphabates";
+		 document.getElementById("documenttype1").innerHTML="Required field should be alphabates";
 		 return false;
 		 }
  }

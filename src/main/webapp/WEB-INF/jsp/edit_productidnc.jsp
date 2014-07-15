@@ -43,7 +43,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Product Id</h2>
+              <h2 style="padding-left: 55px">Editing Product Id</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${productId_NC_Form.productIDNCs[0]}" var="products"> </c:set>
@@ -53,7 +53,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="left" class="input_txt" width="30%">Product Id :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 62px">Product ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${products.auto_id}"/>
                   <input type="text" name="productid_nc" class="input_txtbx" maxlength="32" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${products.productid_nc}" onInput="validateAlpha4()" />

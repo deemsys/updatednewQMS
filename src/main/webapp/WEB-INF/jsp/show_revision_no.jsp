@@ -111,7 +111,7 @@
       
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Revision Format</h2>
+              <h2 style="padding-left: 55px">Revision Format</h2>
               
              
               
@@ -131,8 +131,8 @@
 			</tr> --%>
 		<%-- </c:if> --%>
 		<c:if test="${success=='update'}">
-			<tr align="left">
-				<td valign="top" align="left" >&nbsp;
+			<tr align="left" >
+				<td valign="top" align="left" style="padding-left: 33px">&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/success.png"/>
@@ -150,7 +150,7 @@
         <c:set value="${revision_No_Form.revision_Nos[0]}" var="revision"/>   
               <tr class="row2">
                
-																		              <td valign="middle" align="left" class="input_txt"  >Revision Format :</td>
+																		              <td valign="middle" align="left" class="input_txt" style="padding-left: 60px" >Revision Format :</td>
 																		<td valign="top" align="left" class="input_txt">
 																		 <select id="decimalno" name="first" class="dropdown" style="width:200px;">
              
@@ -194,12 +194,12 @@ function validation()
 	var error="";
   if((document.getElementById('decimalno').value =="")&&(document.getElementById('floorno').value ==""))
 	  {	  
-	  document.getElementById("nullvalue").innerHTML="Required Field Should not be empty";
+	  document.getElementById("nullvalue").innerHTML="Required field should not be empty";
 		error="true";
 	  }
 	else  if((document.getElementById('decimalno').value==""))
 	  {	  
-	  document.getElementById("nullvalue").innerHTML="Required Field should not be empty";
+	  document.getElementById("nullvalue").innerHTML="Required field should not be empty";
 		error="true";
 	  }
 	  if(error=="true")

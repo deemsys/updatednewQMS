@@ -65,8 +65,8 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("formFormPrefix",formFormPrefix);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "formprefix_list";
+		model.addAttribute("success","insert");
+	return "add_prefixform";
 }
 	
 @RequestMapping(value="/formprefix_list", method=RequestMethod.GET)

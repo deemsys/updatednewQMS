@@ -60,8 +60,8 @@ public String postType(HttpSession session,@ModelAttribute("ProductIDNC") @Valid
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("productId_NC_Form",productId_NC_Form);
 		model.addAttribute("menu","admin");
-		model.addAttribute("success","true");
-	return "productidNC_list";
+		model.addAttribute("success","insert");
+	return "add_productidnc";
 }
 @RequestMapping(value="/productidNC_list", method=RequestMethod.GET)
 public String Typelist(HttpServletRequest request,ModelMap model, Principal principal) {

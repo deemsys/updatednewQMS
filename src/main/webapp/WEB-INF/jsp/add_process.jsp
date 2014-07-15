@@ -111,27 +111,40 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Process</h2>
+           
+              <h2 style="padding-left: 50px">Add Process</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
+               <c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="add_process">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%" >Process ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" onInput="validateAlpha()"/>
                 <br>  <span id="processid1"></span>
                   <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" >Process Name :</td>
+                  <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onInput="validateAlpha1()" />
                 <br>   <span id="processname1"></span>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" >Process Owner :</td>
+                  <td valign="middle" align="left" class="input_txt" style="padding-left: 55px" >Process Owner :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" maxlength="32" class="input_txtbx" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onInput="validateAlpha2()" />
                  <br>  <span id="processowner1"></span>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
@@ -194,7 +207,7 @@
 	 var processid = document.getElementById('processid').value;
 	 var processname = document.getElementById('processname').value;
 	 var processowner = document.getElementById('processowner').value;
-	 var errord = "Required Field Should not be Empty";
+	 var errord = "Required field should not be empty";
 	 var space = "Required Field Should not be Spaces";
 	 var num = "Required Field Should be AlphaNumeric";
 	 var wds = "Required Field Should be Alphabate";

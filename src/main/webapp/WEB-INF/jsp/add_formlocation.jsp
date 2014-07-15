@@ -109,10 +109,22 @@
   </div>
       </td>
       </tr>
+       <c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="add_formlocation">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Location</h2>
+              <h2 style="padding-left: 50px">Add Location</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -120,7 +132,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Add Location :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Add Location :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4();"/>
                 <br>  <span id="formlocation1" style="color:red"></span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>

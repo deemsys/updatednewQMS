@@ -141,7 +141,7 @@ function validateAlpha4(){
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Instruction Reference</h2>
+              <h2 style="padding-left: 60px">Instruction Reference</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -149,7 +149,7 @@ function validateAlpha4(){
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                	 <td valign="middle" align="left" class="input_txt" width="25%"><span class="err">Type of NC :</td>
+                	 <td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 65px"><span class="err">Type of NC :</td>
                		<td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="frequency_maintenance" id="frequency_maintenance" class="input_txtbx"  maxlength="32" style="width:200px;" value="" onInput="validateAlpha4()"/><br/><font size="+1" color="red"><span  id="frequency_maintenanceerr"></font><form:errors path="Reference.frequency_maintenance"></form:errors></span></td>
               		<td></td>
               		<td></td>

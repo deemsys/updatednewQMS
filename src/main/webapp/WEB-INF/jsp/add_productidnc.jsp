@@ -118,10 +118,22 @@
   </div>
       </td>
       </tr>
+       <c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 225px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="addproductidnc">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Product ID</h2>
+              <h2 style="padding-left: 55px">Add Product ID</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -129,7 +141,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt"  width="50%">Product ID :</td>
+                  <td valign="top" align="left" class="input_txt"  width="50%" style="padding-left: 60px">Product ID :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" maxlength="32" class="input_txtbx" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()" />
                   <br> <span id="productidnc1" style="color:red"></span>
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
@@ -165,13 +177,13 @@
             	   var productidnc = document.getElementById('productidnc').value;
             	   if(productidnc == "")
             		   {
-            		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Empty";
+            		   document.getElementById("productidnc1").innerHTML="Required field should not be empty";
             			 return false;
             		   }
             	   
             	   else if(productidnc.charAt(0)==" ")
             		   {
-            		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Spaces";
+            		   document.getElementById("productidnc1").innerHTML="Required field should not be spaces";
           			 return false;
             		   }
             	   else if(productidnc.length<4)
@@ -185,7 +197,7 @@
             		   }
             	   else
             		   {
-            		   document.getElementById("productidnc1").innerHTML="Required Field Should be Captial Alpha-Numeric";
+            		   document.getElementById("productidnc1").innerHTML="Required field should be captial alpha-numeric";
             			 return false;
             		   
             		   }

@@ -112,10 +112,23 @@
   </div>
       </td>
       </tr>
+      </tr>
+				<c:if test="${success=='insert'}">
+			<tr>
+				<td valign="top" align="left" style="padding: 5px 50px 10px 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/inserted.png">
+						<a title="Close" href="add_prefixdocument">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Document Prefix</h2>
+              <h2 style="padding-left: 50px">Add Document Prefix</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -123,15 +136,15 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" width="50%" class="input_txt">Prefix :</td>
+                  <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Prefix :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.id}" onInput="validateAlpha();"/>
                 <br>  <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" >Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx3" maxlength="32" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" onInput="validateAlpha1();"/>
+                  <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Description :</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx3" maxlength="200" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" onInput="validateAlpha1();"/>
                  <br>   <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
@@ -170,11 +183,11 @@
 	    textInput = textInput.replace(/[^A-Z ]/g, "");
 	    document.getElementById("docprefix").value = textInput;
 	}
- function validateAlpha1(){
+ /* function validateAlpha1(){
 	    var textInput = document.getElementById("document_id").value;
 	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
 	    document.getElementById("document_id").value = textInput;
-	}
+	} */
  function validation()
  {
 	
@@ -188,12 +201,12 @@
 	   document.getElementById("document_id1").innerHTML="";
 	 if(docprefix =="")
 		 {
-		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("docprefix1").innerHTML="Required field should not be empty";
 		 error="true";
 		 }
 	 else if(docprefix.charAt(0)==" ")
 		 {
-		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Spaces";
+		 document.getElementById("docprefix1").innerHTML="Required field should not be spaces";
 		 error="true";
 		 }
 	 else if(docprefix.length<4)
@@ -207,29 +220,29 @@
 		 }
 	 else if(docprefix.substring(0,1)==' ')
 		 {
-		 document.getElementById("docprefix1").innerHTML="Invalid Prefix";
+		 document.getElementById("docprefix1").innerHTML="Invalid prefix";
 		error="true";
 		 }
 	 else {
 		 
-		 document.getElementById("docprefix1").innerHTML="Required Field Should be Capital Letters";
+		 document.getElementById("docprefix1").innerHTML="Required field should be capital letters";
 		 error="true";
 	 }
 	 
 	 
 	 if(document_id =="")
 	 {
-	 document.getElementById("document_id1").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("document_id1").innerHTML="Required field should not be empty";
 	 error="true";
 	 }
  else if(document_id.charAt(0)==" ")
 	 {
-	 document.getElementById("document_id1").innerHTML="Required Field Should not be Spaces";
+	 document.getElementById("document_id1").innerHTML="Required field should not be spaces";
 	 error="true";
 	 }
  else if(document_id.length<4)
  {
- document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 32";
+ document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 200";
  error="true";
  }
 	  
@@ -237,11 +250,7 @@
 	 {
 	 	 document.getElementById("document_id").innerHTML="";
 	 }
- else {
-	 
-	 document.getElementById("document_id1").innerHTML="Required Field Should be only Letters";
-	 error="true";
- }
+
 	 if(error=="true")
 		 {
 		 return false;

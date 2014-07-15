@@ -43,7 +43,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Editing Type of NC</h2>
+              <h2 style="padding-left: 50px">Editing Type of NC</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${reportedByNCForm.reportedByNCs[0]}" var="reportedByNCs"> </c:set>
@@ -53,8 +53,8 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
              
-                  <td valign="middle" align="left" class="input_txt" width="30%">Type of NC&nbsp;:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <td valign="middle" align="left" class="input_txt" width="20%" style="padding-left: 55px">Type of NC&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">
                      <input type="hidden" name="auto_id" value="${reportedByNCs.auto_id}"/>
                   
 				                  		<select name="type_of_nc" id="typeofNc" class="input_txtbx" style="border:none;background-color:lightgrey;">
@@ -68,12 +68,10 @@
 				                   		</select>
 				                   		 <span id="typeofNc1" style="color:red"></span>
 				                   	</td>
-		</tr>
-		<tr class="row1">
-                  
+		
                 
-                  <td valign="middle" align="left" class="input_txt" >Group Person&nbsp;:</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" maxlength="32" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reportedByNCs.group_person}" onInput="validateAlpha4()"/>
+                  <td valign="middle" align="left" class="input_txt" width="10%" >Group Person&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="group_person" maxlength="32" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reportedByNCs.group_person}" onInput="validateAlpha4()"/>
                    <br>  <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
