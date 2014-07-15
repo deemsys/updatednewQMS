@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
+ <html style="height: 2447px; ">
 <div id="right_content">
 	<!-- <form name="grid" onSubmit="return validate(this)" action="" method="POST">
      -->	<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -96,12 +97,12 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							 <td align="center" valign="middle" width="5%">
-							    <td align="left" valign="middle" width="2%">Date of Feedback: </td>
+							    <td align="left" valign="middle" width="2%" style="width: 121px; ">Date of Feedback : </td>
 							    <td align="left" valign="middle" width="20%"><input type="text" name="date_of_feedback" id="datepicker"  value="${date}" class="input_txtbx" >
 							    <br><span id="datepicker11" style="color:red"></span>
 							    </td>
 							   
-							    <td align="left" valign="middle" width="2%">&nbsp;Type of Feedback: </td>
+							    <td align="left" valign="middle" width="2%" style="width: 154px; ">&nbsp;Type of Feedback : </td>
 							    <td align="left" valign="middle" width="20%">
 							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx"></td> -->
 							    
@@ -174,6 +175,12 @@
 							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
+							    	
+							    		</table>
+					</div>
+			
+			</tr>
+			
 							    	<tr>
 							    	<td colspan="6">  
 	<div class="extrabottom">
@@ -323,4 +330,8 @@ window.location="?do=viewparticipants&id="+document.getElementById("id").value+"
          })
  
 </script>
+
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>
+</html>

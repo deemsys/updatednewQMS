@@ -176,6 +176,6 @@ document.getElementById("dateerror").innerHTML="";
 <table  width=300 height=280>
 			<tr height=30><td></td></tr></table>
 			
-			<br><br><br><br><br><br><br>
+			<br><br><br><br>
 			
 <jsp:include page="footer.jsp"></jsp:include>
