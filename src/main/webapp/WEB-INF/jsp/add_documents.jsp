@@ -272,9 +272,13 @@
               
                </select>
                 <span id="issuer_generate">
-                <br><span id="filtererror" style="color:red"></span>
+              
+                </span>
+                  <br>
+                 
+                <span id="filtererror" style="color:red"></span>
                <span class="err"style="color:red"><form:errors path="DocumentMain.issuer"></form:errors></span> 
-               </span>
+              
                 <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>            
                <br/>
             
@@ -318,11 +322,13 @@
               
                </select>
                 <span id="issuer_generate1">
-                 <br><span id="filter1error" style="color:red"></span>
+                  </span>
+                    <br><span id="filter1error" style="color:red"></span>
                 <span class="err"style="color:red"><form:errors path="DocumentMain.approver1"></form:errors></span> 
-               </span>
+            
                 <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
                <br/>
+               
               </td>
               <td valign="top" align="left" class="input_txt" width="20%"></td>
                  </tr>  
@@ -481,7 +487,11 @@ function validatename3(id){
 
 </script>
 <script type="text/javascript">
-
+var ajax_issuer = "false";
+var issuerchange = "false";
+var ajax_issuer1 = "false";
+var issuerchange1 = "false";
+var letter  = "-";
 function toggle1(value){
 	
 	    var e = document.getElementById('location_label');
@@ -513,10 +523,59 @@ function toggle1(value){
 		}
 	    
 	}
+	
+	
+function change_to_label_issuer()
+{
+	
+	ajax_issuer  = "true";
+	var type=document.getElementById("filter_value");	
+	letter = type.value;
+	
+	document.getElementById("lable_td_issuer").style.display="block";
+	document.getElementById("edit_td_issuer").style.display="none";
+	
+	document.getElementById("issuer_full_lbl").innerHTML=type.value;
+	
+	}
+function change_to_label_issuer1()
+{
+	
+	ajax_issuer1  = "true";
+	var type=document.getElementById("filter_value1");	
+	
+	document.getElementById("lable_td_issuer").style.display="block";
+	document.getElementById("edit_td_issuer1").style.display="none";
+	
+	document.getElementById("issuer_full_lbl1").innerHTML=type.value;
+	
+	}
+function show_edit_issuer()
+{
+	var let = letter;
+	issuerchange = "true";
+	ajax_issuer  = "false";
+	  document.getElementById("issuer_generate").style.display="none";
+	  document.getElementById("issuer_full_lbl").style.display="none";
+document.getElementById("filter_value").style.display="block";
+
+	
+	}
+function show_edit_issuer1()
+{
+	issuerchange1 = "true";
+	ajax_issuer1  = "false";
+	  document.getElementById("issuer_generate1").style.display="none";
+	  document.getElementById("issuer_full_lbl1").style.display="none";
+document.getElementById("filter_value1").style.display="block";
+
+	
+	}
+	
 function validation()
 {
 	
-	alert("sdgdg");
+	
 	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
 	
@@ -539,9 +598,7 @@ function validation()
 	 var id_inpapprover2 = document.getElementById('id_inpapprover2').value;
 	 var id_inpapprover3 = document.getElementById('id_inpapprover3').value;
 	var status = document.getElementById('status').value;
-	alert("sdgdg");
-	alert("filter_value"+filter_value);
-	alert("filter_value1"+filter_value1);
+	
 	 if(id_inpapprover2 == "")
 		{
 		 
@@ -770,29 +827,129 @@ function validation()
 		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
 		 error ="true";
 		 }
-		 document.getElementById("filtererror").innerHTML="";
-	  if(filter_value == "-")
+		
+	
+			
+			if(ajax_issuer == "false")
 			{
-			
-				 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
-					error ="true";
-			}
-			
 				
-	  document.getElementById("filter1error").innerHTML="";
-			 if(filter_value1 == "-")
+				
+				if(filter_value == "-")
+				{
+					
+					 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+						error ="true";
+				}
+				else
+					{
+					 document.getElementById("filtererror").innerHTML="Select Issuer";
+						error ="true";
+					}
+				
+		
+			}	
+		  
+		  if(ajax_issuer == "true")
+			{
+			 
+			var issuer1 = document.getElementById("issuer1").value;
+			if(issuer1.length > 2)
+			{
+				document.getElementById("filtererror").innerHTML="";
+			}	
+			
+			else if(issuer1.length < 2){
+				 document.getElementById("filtererror").innerHTML="Issuer Doesn't exit";
+					error ="true";
+			 }
+			 else if(filter_value.length == 1){
+				 document.getElementById("filtererror").innerHTML="Please Select Issuer";
+					error ="true";
+			 }
+			 else{
+			  document.getElementById("filtererror").innerHTML="";
+			 }
+			 
+		}	
+			/*  if(issuerchange == "true")
+			{
+				alert("change");
+				alert(filter_value);
+				alert(issuer1.charAt(0));
+				var filter = "";
+				var issuer1 = document.getElementById("issuer1").value;
+				if(issuer1.charAt(0) == filter_value.charAt(0))
+				{
+				issuer1 = "";
+				alert("empty");
+				alert(issuer1);
+				if(issuer1.length <= 1)
+				{
+					 document.getElementById("filtererror").innerHTML="Please Select Issuer";
+						error ="true";
+				}
+				else
+					{
+					 document.getElementById("filtererror").innerHTML="";
+					}
+				}
+			} */
+		/*  if(filter_value1 == "-")
 				{
 				 
 					 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
 						error ="true";
 				}
+			 else
+				 {
+				 document.getElementById("filter1error").innerHTML="";
+				 } */
+					
+			if(ajax_issuer1 == "false")
+			{
 				
+				
+				if(filter_value1 == "-")
+				{
 					
-					
+					 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+						error ="true";
+				}
+				else
+					{
+					 document.getElementById("filter1error").innerHTML="Select Issuer";
+						error ="true";
+					}
+				
+		
+			}	
+		  
+		  if(ajax_issuer1 == "true")
+			{
+			 
+			var issuer1 = document.getElementById("approver1").value;
+			if(issuer1.length > 2)
+			{
+				document.getElementById("filter1error").innerHTML="";
+			}	
+			
+			else if(issuer1.length < 2){
+				 document.getElementById("filter1error").innerHTML="Issuer Doesn't exit";
+					error ="true";
+			 }
+			 else if(filter_value1.length == 1){
+				 document.getElementById("filter1error").innerHTML="Please Select Issuer";
+					error ="true";
+			 }
+			 else{
+			  document.getElementById("filter1error").innerHTML="";
+			 }
+			 
+		}	
 					
 		 if(error == "true")
 			 {
-			 alert("false");
+			 
 		 return false;
 			 }
 	}
@@ -952,46 +1109,10 @@ document.getElementById("lable_td").style.display="none";
   document.getElementById("issuer_generate").style.display="none";
   	} 
   
-  function change_to_label_issuer()
-  {
-  	
-      
-  	var type=document.getElementById("filter_value");	
-  	
-  	document.getElementById("lable_td_issuer").style.display="block";
-  	document.getElementById("edit_td_issuer").style.display="none";
-  	
-  	document.getElementById("issuer_full_lbl").innerHTML=type.value;
-  	
-  	}
-  function change_to_label_issuer1()
-  {
-  	
-      
-  	var type=document.getElementById("filter_value1");	
-  	
-  	document.getElementById("lable_td_issuer").style.display="block";
-  	document.getElementById("edit_td_issuer1").style.display="none";
-  	
-  	document.getElementById("issuer_full_lbl1").innerHTML=type.value;
-  	
-  	}
-  function show_edit_issuer()
-  {
-	  document.getElementById("issuer_generate").style.display="none";
-	  document.getElementById("issuer_full_lbl").style.display="none";
-  document.getElementById("filter_value").style.display="block";
   
-  	
-  	}
-  function show_edit_issuer1()
-  {
-	  document.getElementById("issuer_generate1").style.display="none";
-	  document.getElementById("issuer_full_lbl1").style.display="none";
-  document.getElementById("filter_value1").style.display="block";
   
-  	
-  	}
+  
+ 
   </script>
        <script>
 
