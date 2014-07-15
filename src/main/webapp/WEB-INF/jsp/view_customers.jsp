@@ -274,7 +274,7 @@ function validation()
 	 document.getElementById("searcherror3").innerHTML="";
 	if((id =="") &&(name == "") && (address == ""))
 		{
-		  document.getElementById("searcherror").innerHTML="Input is Empty";
+		  document.getElementById("searcherror").innerHTML="Input is empty";
 	    	error="true";
 		}
 	  else if(id.length > 0)

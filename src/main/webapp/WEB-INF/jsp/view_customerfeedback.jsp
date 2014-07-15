@@ -235,7 +235,7 @@ function validation()
 	
 	if((datepicker == "") && (type == ""))
 	{
-		 document.getElementById("searcherror").innerHTML="Input is Empty";
+		 document.getElementById("searcherror").innerHTML="Input is empty";
 			error="true";		
 	}
 	else if(datepicker.length > 0)
@@ -246,7 +246,7 @@ function validation()
 		 }
 		 else
 		 {
-			 document.getElementById("datepicker11").innerHTML="Invalid Date";
+			 document.getElementById("datepicker11").innerHTML="Invalid date";
 			 error="true";
 		 }
 	 }

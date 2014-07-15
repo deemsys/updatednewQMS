@@ -167,7 +167,7 @@ function validate()
 	var image = document.getElementById('image').value;
 	 if(datepicker123 == "")
 	 {
-	 document.getElementById("datepicker1").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker1").innerHTML="Required field should not be empty";
 	error="true";
 	 
 	 }
@@ -177,25 +177,25 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker1").innerHTML="Invalid Date Format";
+	 document.getElementById("datepicker1").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
 	 
 	 if(feedbackdetails == "")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("feedbackdetailserror").innerHTML="Required field should not be empty";
 			error="true";
 		 }
 	 else if(feedbackdetails.charAt(0) == " ")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Initial Spaces not Allowed";
+		 document.getElementById("feedbackdetailserror").innerHTML="Initial spaces not allowed";
 			error="true";
 		 }
 	 
 	 else  if((feedbackdetails.length < 4) ||(feedbackdetails.length > 400))
 	   {
-		   document.getElementById("feedbackdetailserror").innerHTML="Required Field should be Length of 4 to 400";
+		   document.getElementById("feedbackdetailserror").innerHTML="Required field should be length of 4 to 400";
 	    	error="true";
 			}
 	 else
@@ -206,7 +206,7 @@ function validate()
 	 if(image == "")
 		 {
 		 alert("no file");
-		 document.getElementById("imageerror").innerHTML="Please Upload a File";
+		 document.getElementById("imageerror").innerHTML="Please upload a file";
 			error="true";
 		 }
 	 else

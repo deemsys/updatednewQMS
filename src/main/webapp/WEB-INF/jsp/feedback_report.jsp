@@ -116,7 +116,7 @@ document.getElementById("dateerror").innerHTML="";
 
 	if(feedback == "")
 	{
-		 document.getElementById("generateerror").innerHTML="Please Select one";
+		 document.getElementById("generateerror").innerHTML="Please select one";
 			error="true";
 	}
 	else 
@@ -124,26 +124,26 @@ document.getElementById("dateerror").innerHTML="";
 		if((datepicker == "") || (datepicker1 == ""))
 			{
 			
-			 document.getElementById("dateerror").innerHTML="Please Pickup the From and To Date";
+			 document.getElementById("dateerror").innerHTML="Please pickup the from and to date";
 				error="true";
 			}
 		else
 		{
 			if(!datepicker.match(date))
 			{
-				 document.getElementById("datepicker11").innerHTML="Invalid Date";
+				 document.getElementById("datepicker11").innerHTML="Invalid date";
 			 	error="true";
 		 	}
 		
 			if(!datepicker1.match(date))
 			{
-		 	document.getElementById("datepicker22").innerHTML="Invalid Date";
+		 	document.getElementById("datepicker22").innerHTML="Invalid date";
 		 	error="true";
 			}
 			
 			if(datepicker > datepicker1)
 			{
-				 document.getElementById("dateerror").innerHTML="Please Pickup the From Date not More than To Date";
+				 document.getElementById("dateerror").innerHTML="Please pickup the from date not more than to date";
 					error="true";
 			}	
 		}
