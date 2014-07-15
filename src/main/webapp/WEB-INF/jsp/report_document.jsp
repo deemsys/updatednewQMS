@@ -69,7 +69,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									<select name="type_of_report" class="input_cmbbx_big" id="reporttype"
+									<select name="type_of_report" class="input_txtbx" id="reporttype"
 									onchange="toggle2(this.value)">
 										<option value="document_list_by_type">Document List by type</option>
 										<option value="external_document">External Document</option>
@@ -93,7 +93,7 @@
 								Select Document Type :
 								</td>
               <td valign="top" align="left" class="input_txt" width="25%">
-              <select name="document_type" id="documenttype" class="input_cmbbx1" style="width:200px;">
+              <select name="document_type" id="documenttype" class="input_txtbx">
               <option value="">--Select--</option>
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
@@ -131,7 +131,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="document_name" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="document_name" class="input_txtbx" id="report_title"value=""/>
 								</td>
 								
 							</tr>
@@ -142,6 +142,9 @@
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<tr>
+								<td><input type="checkbox" id="select_all"/>Select All</td>
+								</tr>
 								<tr>
 								<td><input type="checkbox" name="report_field[]" value="document_id" id="1"/>Document ID</td>
 								<td><input type="checkbox" name="report_field[]" value="document_title" id="2"/>Document Title</td>
@@ -251,7 +254,7 @@ function toggle2(value){
     var e3=document.getElementById("document_type_table");
 if(value=="document_list_by_type")
     {
-	
+	document.getElementById('documenttype').value ="";
 	e3.style.display="table-row";
 	
     }
@@ -269,7 +272,24 @@ function toggle3(value){
     var e2=document.getElementById("userdefined_fields");
 if(value==1)
     {
-	
+	document.getElementById('select_all').checked = false;
+	document.getElementById('1').checked = false;
+	document.getElementById('2').checked = false;
+	document.getElementById('3').checked = false;
+	document.getElementById('4').checked = false;
+	document.getElementById('5').checked = false;
+	document.getElementById('6').checked = false;
+	document.getElementById('7').checked = false;
+	document.getElementById('8').checked = false;
+	document.getElementById('9').checked = false;
+	document.getElementById('10').checked = false;
+	document.getElementById('11').checked = false;
+	document.getElementById('12').checked = false;
+	document.getElementById('13').checked = false;
+	document.getElementById('14').checked = false;
+	document.getElementById('15').checked = false;
+	document.getElementById('report_title').value = "";
+	 document.getElementById('checkerror').innerHTML = "";
 	e1.style.display="table-row";
 	e2.style.display="table-row";
     }
@@ -282,6 +302,16 @@ if(value==0)
     }
     
 }
+$('#select_all').change(function() {
+    var checkboxes = $(this).closest('form').find(':checkbox');
+
+    if($(this).is(':checked')) {
+        checkboxes.attr('checked','checked');
+    } else {
+        checkboxes.removeAttr('checked');
+    }
+   
+});
 </script>
 
 <table  width=300 height=30>
