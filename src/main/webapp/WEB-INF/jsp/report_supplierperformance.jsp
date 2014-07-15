@@ -279,6 +279,7 @@ if(value==1)
 	document.getElementById('13').checked = false;
 	document.getElementById('14').checked = false;
 	document.getElementById('15').checked = false;
+	document.getElementById("userdefineerror").innerHTML="";
 	e1.style.display="table-row";
 	e2.style.display="table-row";
     }

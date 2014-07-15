@@ -103,7 +103,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="report_title" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="report_title" class="input_txtbx" id="report_title" value=""/>
 								</td>
 								
 							</tr>
@@ -216,6 +216,11 @@ function validation()
 			 document.getElementById("datepicker22").innerHTML="Invalid Date";
 				 error="true";
 			}
+			if(datepicker1 > datepicker2)
+			{
+				document.getElementById("datepicker11").innerHTML="StartDate should not be greater than end date";
+				 error="true";
+			}
 		}
 		
 	}
@@ -266,6 +271,12 @@ function two_dates()
 		{
 	
 	document.getElementById('twodates').style.display ='block';
+	
+	 document.getElementById("datepicker11").innerHTML="";
+	 document.getElementById("datepicker22").innerHTML="";
+	 document.getElementById('datepicker2').value ="";
+	 document.getElementById('datepicker1').value ="";
+	 document.getElementById('dateerror').innerHTML = "";
 		}
 	else{
 		
@@ -278,7 +289,22 @@ function toggle3(value){
     var e2=document.getElementById("userdefined_fields");
 if(value==1)
     {
-	
+	document.getElementById('select_all').checked = false;
+	document.getElementById('0').checked = false;
+	document.getElementById('1').checked = false;
+	document.getElementById('2').checked = false;
+	document.getElementById('3').checked = false;
+	document.getElementById('4').checked = false;
+	document.getElementById('5').checked = false;
+	document.getElementById('6').checked = false;
+	document.getElementById('7').checked = false;
+	document.getElementById('8').checked = false;
+	document.getElementById('9').checked = false;
+	document.getElementById('10').checked = false;
+	document.getElementById('11').checked = false;
+	document.getElementById('12').checked = false;
+	document.getElementById("reporterror").innerHTML= "";
+	document.getElementById('report_title').value = "";
 	e1.style.display="table-row";
 	e2.style.display="table-row";
     }
