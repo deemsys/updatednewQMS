@@ -383,7 +383,14 @@ public class NonConformanceController {
 	public ModelAndView generatenonnonconformance_Report(HttpServletRequest request,ModelMap model, HttpServletResponse response)
 	{
 		String start = null,end = null;
-		String[] fields={"id","source_of_nonconformance","external_id","type_of_nonconformance","product_id","quantity_suspect","nature_of_nonconformance","date_found","reported_by","temporary_action","corrective_action_required","disposition_required","disposition1","disposition_complete_date","name_of_disposition_responsibility","cost_of_nonconformance"};
+		/*String[] fields={"id","source_of_nonconformance","external_id","type_of_nonconformance","product_id",
+				"quantity_suspect","nature_of_nonconformance","date_found","reported_by","temporary_action",
+				"corrective_action_required","disposition_required","disposition1","disposition_complete_date",
+				"name_of_disposition_responsibility","cost_of_nonconformance"};
+		*/
+		String[] fields = {"id","reported_by","corrective_action_required","cost_of_nonconformance","external_id","source_of_nonconformance",
+				"disposition_required","disposition1","type_of_nonconformance","product_id","nature_of_nonconformance",
+				"quantity_suspect","disposition_complete_date","date_found","temporary_action","name_of_disposition_responsibility"};
 		System.out.println(request.getParameter("type_of_report"));
 		java.util.List<NonConformance> nonConformances=new ArrayList<NonConformance>();
 		System.out.println(Integer.parseInt(request.getParameter("doc_type")));
