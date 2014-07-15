@@ -138,6 +138,9 @@ public class CorrectiveAndPreventiveActionsController
 			{
 			*/ response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("report_title")+"'");
 			fields = request.getParameterValues("report_field[]");
+			System.out.println("fields --- - - -");
+			option = "2";
+			System.out.println("option  ="+option);
 				/*title=request.getParameter("report_title");
 				System.out.println(title);
 						
@@ -155,28 +158,29 @@ public class CorrectiveAndPreventiveActionsController
 				modelAndView.addObject("fields",option0);
 				return modelAndView ;
 	}
-	if(option == "1")
+	else if(option == "1")
 	{
 		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
 		session.setAttribute("option",option);
 		modelAndView.addObject("fields",option1);
 		return modelAndView ;
 	}
-	else
+	else if(option == "2")
 	{
 		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
 		session.setAttribute("option",option);
 		modelAndView.addObject("fields",fields);
 		return modelAndView;
 	}
-		/*
+	else{	
 		
 		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
+		
 		modelAndView.addObject("fields",fields);
-		modelAndView.addObject("title",title);
+		
 		 
 		return modelAndView ;
-		*/
+	}
 	}
 	
 	//downloading the attachements
