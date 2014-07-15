@@ -136,7 +136,7 @@ public class CorrectiveAndPreventiveActionsController
 			
 			for (@SuppressWarnings("unused") String field : request.getParameterValues("report_field[]")) 
 			{
-			*/ response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("name_of_disposition_responsibility")+"'");
+			*/ response.setHeader("Content-Disposition","attachment;filename='"+request.getParameter("report_title")+"'");
 			fields = request.getParameterValues("report_field[]");
 				/*title=request.getParameter("report_title");
 				System.out.println(title);
@@ -165,6 +165,7 @@ public class CorrectiveAndPreventiveActionsController
 	else
 	{
 		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
+		session.setAttribute("option",option);
 		modelAndView.addObject("fields",fields);
 		return modelAndView;
 	}
