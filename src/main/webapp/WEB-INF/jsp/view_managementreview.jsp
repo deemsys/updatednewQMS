@@ -80,17 +80,17 @@
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						
 							  <tr>
-							    <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
+							    <td align="left" valign="middle" width="12%"><b>Review ID :</b></td>
 							    <td align="left" valign="middle" width="10%"> <input type="text" name="review_id" class="input_txtbx" id="id" style="height:13px" value="${reviewid}" onInput="return validatename(id);"> 
 							     <br> <span id="iderror" style="color:red"></span>
 							    </td>
-							     <td align="left" valign="middle" width="10%">
-							    <td align="left" valign="middle" width="10%"><b>Management Review Date:</b></td>
+							     <td align="left" valign="middle" width="2%">
+							    <td align="left" valign="middle" width="29%"><b>Management Review Date :</b></td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker"style="height:13px" value="${managementreviewdate}">
 							     <br> <span id="datepicker11" style="color:red"></span>
 							    </td>
-							    <td align="left" valign="middle" width="10%">
-							    <td align="left" valign="middle" width="8%"><b>Category:</b></td>
+							    <td align="left" valign="middle" width="2%">
+							    <td align="left" valign="middle" width="8%"><b>Category :</b></td>
 							    <td align="left" valign="middle" width="10%"> <select name="category" id="category" class="input_txtbx">
 				                  		  <option value="">--Select--</option>
 						                  <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>

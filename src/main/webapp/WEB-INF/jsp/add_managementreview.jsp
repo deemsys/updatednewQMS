@@ -73,22 +73,22 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2" valign="right">
                
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review Id:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review ID :</td>
 	                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="review_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/></td>
       
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review Date:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review Date :</td>
                   <td valign="top" align="left" class="input_txt1" width="10%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"/><br/>
                   <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
   				    </tr>
     					
                       <tr class="row1"  >
-                  <td valign="middle" align="left" class="input_txt" width="20%"> &nbsp;Attendee List With Titles:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="attendee_list_with_titles" class="input_txtbx" id="attendeelistwithtitles" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"> &nbsp;Attendee List With Titles :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="attendee_list_with_titles" class="input_txtbx" id="attendeelistwithtitles" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" maxlength="32" /><br/>
                   <span id="attendeelistwithtitleserror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>                
                	 <td valign="middle" align="left" class="input_txt" width="20%">Next Management Review By :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" maxlength="32"/><br/>
                   <span id="nextmanagementreviewbyerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.next_management_review_by"></form:errors></span></td>                
 		
@@ -96,7 +96,7 @@
 		  <tr class="row2" >
 						         	<td valign="middle" align="left" class="input_txt"width="20%">Category :</td>
 						          <td valign="middle" align="left" class="input_txt"width="20%">
-				                  		<select name="category" id="category"class="input_cmbbx1" style="width:200px">
+				                  		<select name="category" id="category" class="input_txtbx">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option value="audits" >Audits</option>
@@ -119,26 +119,26 @@
 						         </tr> 
            
                 <tr class="row1" >
-                  <td valign="middle" align="left" class="input_txt" width="20%">Assessment:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="assessment" class="input_txtbx" id="assessment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename3();" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Assessment :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="assessment" class="input_txtbx" id="assessment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename3();" maxlength="32"/><br/>
                   <span id="assessmenterror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>                
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Report Link:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Report Link :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" /><br/>
                   <span id="reportlinkerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
                   
                   </tr>
                 <tr class="row2">
-               <td valign="middle" align="left" class="input_txt" width="50%">Action Needed (Y/N):</td>
-               <td valign="top" align="left" class="input_txt" width="70%">
+               <td valign="middle" align="left" class="input_txt" width="30%">Action Needed (Y/N) :</td>
+               <td valign="top" align="left" class="input_txt" width="30%">
                <input type="radio" name="action_needed" value="Yes" onchange="toggle3(this.value);"  id="action_needed_yes" checked>Yes&nbsp;&nbsp;&nbsp;
                <input type="radio" name="action_needed" value="No" id="action_needed_no" onchange="toggle3(this.value);"  >No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </td> </tr>
                   
                       <tr class="row1" >
                   <td valign="middle" align="left" class="input_txt" width="20%">Action Detail :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_detail" class="input_txtbx" id="actiondetail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1();" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_detail" class="input_txtbx" id="actiondetail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1();" maxlength="32"/><br/>
                   <span id="actiondetailerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>                
                   <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Action Due Date :</td>
@@ -148,11 +148,11 @@
                   
                   </tr>
            	       <tr class="row2" >
-                  <td valign="middle" align="left" class="input_txt" width="20%">Responsibility:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Responsibility :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" /><br/>
                    <span id="responsibilityerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>                
-                  <td valign="middle" align="left" class="input_txt" width="20%">Completion Date:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/>
                   <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>                
@@ -161,7 +161,7 @@
                   
                    <tr class ="row1" >
                    
-         		   <td valign="middle" align="left" class="input_txt" width="20%">Continuous Improvement Project (Y/N):</td>
+         		   <td valign="middle" align="left" class="input_txt" width="20%">Continuous Improvement Project (Y/N) :</td>
                   </td>                
                   	<td valign="top" align="left" class="input_txt" width="20%"><input
 															type="radio" name="continuous_improvement_project" value="Yes"
@@ -176,7 +176,7 @@
                  <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="20%"></td>
                  <td colspan="1" align="left">
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onclick="return validate();" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">
               <td valign="middle" align="left" class="input_txt" width="20%">
                </tr>
@@ -280,17 +280,17 @@ function validate()
 	var datepicker1 = document.getElementById('datepicker1').value;
 	if(attendeelistwithtitles =="")
 		{
-		 document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("attendeelistwithtitleserror").innerHTML="Required field should not be empty";
 		 error="true";
 		}
 	else if(attendeelistwithtitles.charAt(0) == " ")
 	{
-		 document.getElementById("attendeelistwithtitleserror").innerHTML="Initial Spaces not Allowed";
+		 document.getElementById("attendeelistwithtitleserror").innerHTML="Initial spaces not allowed";
 		 error="true";
 	}
 	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
 		{
-		document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should be length of 4 to 32";
+		document.getElementById("attendeelistwithtitleserror").innerHTML="Required field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -301,18 +301,18 @@ function validate()
 	
 	if(nextmanagementreviewby == "")
 		{
-		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Required field should not be empty";
 			error="true";
 		
 		}
 	else if(nextmanagementreviewby.charAt(0) == " ")
 	{
-		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Initial Spaces not Allowed";
+		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Initial spaces not allowed";
 		 error="true";
 	}
 	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
 	{
-	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -322,7 +322,7 @@ function validate()
 		}
 	if(datepicker3 == "")
 	 {
-	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker33").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -332,12 +332,12 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="Invalid Date";
+	 document.getElementById("datepicker33").innerHTML="Invalid date";
 	 error="true";
 	 }
 	  if(category == "")
 		  {
-		  document.getElementById("categoryerror").innerHTML="Required Field Should not be Empty";
+		  document.getElementById("categoryerror").innerHTML="Required field should not be empty";
 			 error="true";
 		  }
 	  else {
@@ -346,18 +346,18 @@ function validate()
 	
 	if(assessment == "")
 		{
-		 document.getElementById("assessmenterror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("assessmenterror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 		}
 	else if(assessment.charAt(0) == " ")
 	{
-		 document.getElementById("assessmenterror").innerHTML="Initial Spaces not Allowed";
+		 document.getElementById("assessmenterror").innerHTML="Initial spaces not allowed";
 		 error="true";
 	}
 	else if((assessment.length < 4) ||(assessment.length > 32))
 		{
-		document.getElementById("assessmenterror").innerHTML="Required Field Should be length of 4 to 32";
+		document.getElementById("assessmenterror").innerHTML="Required field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -369,12 +369,12 @@ function validate()
 	
 	  if(reportlink == "")
 	  {
-	  document.getElementById("reportlinkerror").innerHTML="Required Field should not be Empty";
+	  document.getElementById("reportlinkerror").innerHTML="Required field should not be empty";
 	    	error="true";
 	  }
 	  else if(reportlink.charAt(0) == " ")
 		{
-			 document.getElementById("reportlinkerror").innerHTML="Initial Spaces not Allowed";
+			 document.getElementById("reportlinkerror").innerHTML="Initial spaces not allowed";
 			 error="true";
 		}
   		else  if(reportlink.match(website))
@@ -392,18 +392,18 @@ function validate()
 	if(actiondetail == "")
 		{
 		
-		 document.getElementById("actiondetailerror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("actiondetailerror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 		}
 		 else if(actiondetail.charAt(0) == " ")
 		{
-			 document.getElementById("actiondetailerror").innerHTML="Initial Spaces not Allowed";
+			 document.getElementById("actiondetailerror").innerHTML="Initial spaces not allowed";
 			 error="true";
 		}
 		else if((actiondetail.length < 4) ||(actiondetail.length > 32))
 		{
-		document.getElementById("actiondetailerror").innerHTML="Required Field Should be length of 4 to 32";
+		document.getElementById("actiondetailerror").innerHTML="Required field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -414,7 +414,7 @@ function validate()
 	
 	if(datepicker2 == "")
 	 {
-	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker22").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -424,24 +424,24 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date";
 	 error="true";
 	 }
 	
 	if(responsibility =="")
 	{
-		 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("responsibilityerror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 	}
 	 else if(responsibility.charAt(0) == " ")
 		{
-			 document.getElementById("responsibilityerror").innerHTML="Initial Spaces not Allowed";
+			 document.getElementById("responsibilityerror").innerHTML="Initial spaces not allowed";
 			 error="true";
 		}
 	else if((responsibility.length < 4) ||(responsibility.length > 32))
 		{
-		document.getElementById("responsibilityerror").innerHTML="Required Field Should be length of 4 to 32";
+		document.getElementById("responsibilityerror").innerHTML="Required field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -451,7 +451,7 @@ function validate()
 		}
 	if(datepicker1 == "")
 	 {
-	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker11").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -461,7 +461,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="Invalid Date";
+	 document.getElementById("datepicker11").innerHTML="Invalid date";
 	 error="true";
 	 }
 	if(error=="true")
