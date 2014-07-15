@@ -169,31 +169,25 @@
 					      		<td><input type="checkbox" name="report_field[]" value="cost_of_nonconformance" id="id_field_cost_of_nonconformance"/>Cost of NC</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="source_of_nonconformance" id="id_field_source_of_nonconformance"/>Source of NC</td>
 								<td><input type="checkbox" name="report_field[]" value="external_id" id="id_field_external_id"/>External ID</td>
+								<td><input type="checkbox" name="report_field[]" value="source_of_nonconformance" id="id_field_source_of_nonconformance"/>Source of NC</td>
 								<td><input type="checkbox" name="report_field[]" value="disposition_required" id="id_field_disposition_required"/>Disposition Required (Y/N)</td>
-					      		<td><input type="checkbox" name="report_field[]" value="disposition1" id="id_field_disposition1"/>Disposition1</td>
+					      		<td><input type="checkbox" name="report_field[]" value="disposition1" id="id_field_disposition1"/>Disposition</td>
 					      		</tr>
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="type_of_nonconformance" id="id_field_type_of_nonconformance"/>Type of NC</td>
 								<td><input type="checkbox" name="report_field[]" value="product_id" id="id_field_product_id"/>Product ID</td>
-								<td><input type="checkbox" name="report_field[]" value="disposition2" id="id_field_disposition2"/>Disposition2</td>
-					      		<td><input type="checkbox" name="report_field[]" value="disposition3" id="id_field_disposition3"/>Disposition3</td>
-								</tr>
-					      		
-					      		<tr>
+								
 								<td><input type="checkbox" name="report_field[]" value="nature_of_nonconformance" id="id_field_nature_of_nonconformance"/>Nature of NC</td>
 								<td><input type="checkbox" name="report_field[]" value="quantity_suspect" id="id_field_quantity_suspect"/>Quantity Suspect</td>
+								</tr>
+								<tr>
 								<td><input type="checkbox" name="report_field[]" value="disposition_complete_date" id="id_field_disposition_complete_date"/>Disposition Complete Date</td>
-					      		<td><input type="checkbox" name="report_field[]" value="quality1" id="id_quality1"/>Quality1</td>
-					      		</tr>
-					      		<tr>
+					      	
 								<td><input type="checkbox" name="report_field[]" value="date_found" id="id_field_date_found"/>Date Found</td>
 								<td><input type="checkbox" name="report_field[]" value="temporary_action" id="id_field_temporary_action"/>Temporary Action</td>
-								<td><input type="checkbox" name="report_field[]" value="disposition_responsibility" id="id_field_disposition_responsibility"/>Disposition Responsibility</td>
-					      		<td><input type="checkbox" name="report_field[]" value="quality2" id="id_quality2"/>Quality2</td>
-					      		<td><input type="checkbox" name="report_field[]" value="quality3" id="id_quality3"/>Quality3</td>
-					      		</tr>
+								<td><input type="checkbox" name="report_field[]" value="name_of_disposition_responsibility" id="id_field_disposition_responsibility"/>Disposition Responsibility</td>
+					      	</tr>
 					      		
 								</table>
 								
@@ -309,23 +303,18 @@ function checkboxvalid()
 	var type = document.getElementById('id_field_type_of_nonconformance').checked;	
 	var product = document.getElementById('id_field_product_id').checked;
 	var disposition1 = document.getElementById('id_field_disposition1').checked;
-	var disposition2 = document.getElementById('id_field_disposition2').checked;
-	var disposition3 = document.getElementById('id_field_disposition3').checked;
-	var quality1 = document.getElementById('id_quality1').checked;
-	var quality2 = document.getElementById('id_quality2').checked;
-	var quality3 = document.getElementById('id_quality3').checked;
 	var nature = document.getElementById('id_field_nature_of_nonconformance').checked;
 	var quantity = document.getElementById('id_field_quantity_suspect').checked;
 	var complete_date = document.getElementById('id_field_disposition_complete_date').checked;
 	var datefound = document.getElementById('id_field_date_found').checked;
 	var tempaction = document.getElementById('id_field_temporary_action').checked;
 	var responsibility = document.getElementById('id_field_disposition_responsibility').checked;
-	//var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	var datepicker = document.getElementById('datepicker').value;
 	var datepicker1 = document.getElementById('datepicker1').value;
 	var cost = document.getElementById('id_cost_of_nonconformance').checked;
 	var error="";
+	
 	 if(cost)
 		{
 		if(datepicker=="")
@@ -378,7 +367,7 @@ function checkboxvalid()
 	 } 
 		if(user)
 		{
-if(id || reported_by  || action_required || costofnc || source || external || disposition_required || type || product || disposition1 || disposition2 || disposition3 || quality1 || quality2 || quality3 || nature || quantity || complete_date || datefound || tempaction || responsibility)
+if(id || reported_by  || action_required || costofnc || source || external || disposition_required || type || product || disposition1 || nature || quantity || complete_date || datefound || tempaction || responsibility)
 	{
 	 document.getElementById("error").innerHTML="";
 	 }
