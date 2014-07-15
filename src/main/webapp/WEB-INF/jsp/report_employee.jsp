@@ -129,7 +129,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Enter the Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="name" class="input_txtbx" id="report_title" style="width:40%;" value=""/>
+									<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)"; style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
@@ -221,7 +221,7 @@ function validate()
 			document.getElementById("userdefineerror").innerHTML="";
 			}
 		else{
-			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			document.getElementById("userdefineerror").innerHTML="Please select atleast one";
 			error = "true";
 		}
 	}
@@ -236,7 +236,13 @@ function validate()
 		}
 }
 </script>
-
+<script>
+function validatename(id){
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+}
+</script>
 
 <script type="text/javascript">
 
@@ -360,4 +366,6 @@ if(($('#id').is(':checked')))
  
 	}
 </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
   <jsp:include page="footer.jsp"></jsp:include>
