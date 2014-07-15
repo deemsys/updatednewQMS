@@ -100,7 +100,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 
 			}
 		}
-		else if(value == "2")
+		if(value == "2")
 		{
 			for(String field:fields)
 			{
