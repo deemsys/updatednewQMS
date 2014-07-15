@@ -177,7 +177,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker1").innerHTML="Invalid Date";
+	 document.getElementById("datepicker1").innerHTML="Invalid Date Format";
 	 error="true";
 	 }
 	 

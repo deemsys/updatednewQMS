@@ -65,7 +65,7 @@
 				  
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">ID:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">ID :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="customer_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" maxlength="40"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
@@ -78,7 +78,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="customer_name" class="input_txtbx" id="customername" maxlength="32" value="" onInput="return validatename(id);"/><br>
                   <span id="customernameerror"style="color:red"></span>
                   <span class="err"><form:errors path="Customers.customer_name"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_text" width="20%">ContactName:</td>
+                  <td valign="middle" align="left" class="input_text" width="20%">ContactName :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename(id);"/><br>
                   <span id="contactnameerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.contact_name"></form:errors></span></td>
@@ -89,7 +89,7 @@
                	<td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_address" name="address" maxlength="40" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;" name="note"></textarea><br/>
                		<span id="addresserror" style="color:red"></span>
                	<span class="err"><form:errors path="Customers.address"></form:errors></span></td>
-			   <td valign="middle" align="left" class="input_txt" width="20%">Contact Title:</td>
+			   <td valign="middle" align="left" class="input_txt" width="20%">Contact Title :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="title_of_contact" class="input_txtbx" id="inp_title_of_contact" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="contacterror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.title_of_contact"></form:errors></span></td>
@@ -100,7 +100,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="city" class="input_txtbx" id="inp_city" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                    	<span id="cityerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.city"></form:errors></span></td>
-                      <td valign="middle" align="left" class="input_txt" width="20%">Telephone:</td>
+                      <td valign="middle" align="left" class="input_txt" width="20%">Telephone :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="telephone" class="input_txtbx" id="inp_telephone" maxlength="10" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                    <span id="telephoneerror" style="color:red"></span><span class="err"><form:errors path="Customers.telephone"></form:errors></span></td>
      
@@ -109,23 +109,23 @@
                   <td valign="middle" align="left" class="input_txt" width="20%"> State :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="state" class="input_txtbx" id="inp_state" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="stateerror" style="color:red"></span><span class="err"><form:errors path="Customers.state"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="20%">Fax:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Fax :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
      
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Country:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Country :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="country" class="input_txtbx" id="inp_country" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="countryerror" style="color:red"></span><span class="err"><form:errors path="Customers.country"></form:errors></span></td>
-                   <td valign="middle" align="left" class="input_txt" width="20%">Email:</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%">Email :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" maxlength="32" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="emailerror" style="color:red"></span><span class="err"><form:errors path="Customers.email_address"></form:errors></span></td>
               
                 </tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">ZipCode:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">ZipCode :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" maxlength="5" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="zipcodeerror" style="color:red"></span><span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                   </tr>

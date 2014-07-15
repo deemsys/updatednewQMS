@@ -109,7 +109,7 @@
                   <span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
                   </tr>
                   <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Attachment choosen:</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Attachment choosen :</td>
                 	<td valign="middle" align="left" id="image" value="${customerfeedbacks.attachment_name}">${customerfeedbacks.attachment_name}
                  <input type="file" name="attachments" class="input_txtbx1" id="attachment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.attachments}"></c:out>'></br>
                  
@@ -163,7 +163,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker1").innerHTML="Invalid Date";
+	 document.getElementById("datepicker1").innerHTML="Invalid Date Format";
 	 error="true";
 	 }
 	 
