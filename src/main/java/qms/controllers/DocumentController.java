@@ -658,7 +658,7 @@ public class DocumentController {
 		String albapate = letter.trim();
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.filterEmployees(albapate));
-		resultHTML="<Select name='issuer' id='filter_value' class='input_cmbbx1' style='width:120px;'>";
+		resultHTML="<Select name='issuer' id='issuer1' class='input_txtbx'>";
 		for (Employee employee : employeeDAO.filterEmployees(albapate) ) {
 			resultHTML+="<option value='"+employee.getName()+"'>"+employee.getName()+"</option>";
 		}
@@ -674,7 +674,7 @@ public class DocumentController {
 		String albapate = letter.trim();
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.filterProcessOwner(albapate));
-		resultHTML="<Select name='approver1' id='filter_value1' class='input_cmbbx1' style='width:120px;'>";
+		resultHTML="<Select name='approver1' id='approver1' class='input_txtbx'>";
 		for (Employee employee : employeeDAO.filterProcessOwner(albapate) ) {
 			resultHTML+="<option value='"+employee.getName()+"'>"+employee.getName()+"</option>";
 		}
