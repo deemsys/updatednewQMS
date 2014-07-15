@@ -66,7 +66,6 @@ public class DocumentControlDAO extends AbstractITextPdfView
        float[] width= new float[memolist+1];
 		table.setWidthPercentage(100);
 		int i=1;
-	//	String[] fields={"document_id","document_title","document_type","media_type","location","process","external","issuer","revision_level","date","approver1","approver2","approver3","status","comments"};
 		 table.addCell(createLabelCell("SNO"));
 		 width[0] = 1.0f;
 		

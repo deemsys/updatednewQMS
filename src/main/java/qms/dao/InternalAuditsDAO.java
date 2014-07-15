@@ -21,6 +21,11 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import qms.controllers.AbstractITextPdfView;
 import qms.model.DocumentMain;
 import qms.model.InternalAudits;
 
@@ -28,7 +33,7 @@ import qms.model.InternalAudits;
 
 	
 
-	public class InternalAuditsDAO extends AbstractExcelView
+	public class InternalAuditsDAO extends AbstractITextPdfView
 	{
 		private DataSource dataSource;
 		
@@ -46,193 +51,168 @@ import qms.model.InternalAudits;
 		 * Excel Sheet Generation
 		 */
 		@Override
-		protected void buildExcelDocument(Map model, HSSFWorkbook workbook ,
-				HttpServletRequest request, HttpServletResponse response)
-				throws Exception {
+		protected void buildPdfDocument(Map<String, Object> model, Document doc,
+		PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
+		throws Exception {
 			
-		/*	response.setHeader("Content-Disposition","attachment;filename='"+(String)model.get("title")+"'");
-			
-			HSSFSheet excelSheet = workbook.createSheet((String)model.get("title"));
-		*/
-			HSSFSheet excelSheet = workbook.createSheet("InternalAudits Report");
-			excelSheet.setDefaultColumnWidth(20);
-			  
-			//Style 1
-			CellStyle style = workbook.createCellStyle();
-		        Font font = workbook.createFont();
-		        font.setFontName("Arial");
-		        style.setFillForegroundColor(HSSFColor.BROWN.index);
-		        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-		        style.setWrapText(true);
-		        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-		        font.setColor(HSSFColor.WHITE.index);
-		        style.setFont(font);
-			
-		    //Style2
-		        CellStyle style2 = workbook.createCellStyle();
-		        Font font2 = workbook.createFont();
-		        font2.setFontName("Arial");
-		        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
-		        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
-		        style2.setWrapText(true);
-		        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-		        font2.setColor(HSSFColor.WHITE.index);
-		        style2.setFont(font2); 
-
+		
 			
 			@SuppressWarnings("unchecked")
-			
-			List<InternalAudits> internalAudit=(List<InternalAudits>) model.get("internalAudits");
+			List<InternalAudits> internalAudits=(List<InternalAudits>) model.get("internalAudits");
 			String[] fields=(String[])model.get("fields");
 			
-			setExcelHeader(excelSheet,style,fields);
-			setExcelRows(excelSheet,internalAudit,fields,style2);
+			int memolist = fields.length;
+			System.out.println(memolist);
+	       PdfPTable table=new PdfPTable(memolist+1);
+	       float[] width= new float[memolist+1];
+			table.setWidthPercentage(100);
+			int i=1;
+			 table.addCell(createLabelCell("SNO"));
+			 width[0] = 1.0f;
 			
-		}
-		
-		//creating header records
-		public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields)
-		{
-			HSSFRow excelHeader = excelSheet.createRow(0);
-			int i = 0;
-			
-			
-				for(String field:fields)
-				{
-					if (field.equals("id")) 
+			for (String field : fields) {
+					if (field.equals("report_id")) 
 					{
 						
-						excelHeader.createCell(i).setCellValue("ID");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("ID"));
+					
 						
 					}
 					else if (field.equals("process")) {
-						excelHeader.createCell(i).setCellValue("PROCESS");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("PROCESS"));
+						
 						}
-					
+					else if(field.equals("auditee_name")){
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("AUDITEE NAME"));
+						
+					}
 					else if (field.equals("audit_start_date")) {
-						excelHeader.createCell(i).setCellValue("AUDIT START DATE");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("AUDIT START DATE"));
+					
 						}
 					else if (field.equals("audit_due_date")) {
-						excelHeader.createCell(i).setCellValue("AUDIT DUE DATE");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("AUDIT DUE DATE"));
+					
 						}
 					
 					else if (field.equals("auditor")) {
-						excelHeader.createCell(i).setCellValue("AUDITOR");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("AUDITOR"));
+					
 						}
 					else if (field.equals("audit_notes")) {
-						excelHeader.createCell(i).setCellValue("AUDIT NOTES");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("AUDIT NOTES"));
+					
 						}
 					else if (field.equals("finding")) {
-						excelHeader.createCell(i).setCellValue("FINDING");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("FINDING"));
+					
 						}
 					else if (field.equals("completion_date")) {
-						excelHeader.createCell(i).setCellValue("COMPLETION DATE");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("COMPLETION DATE"));
+						
 						}
-					else if (field.equals("auditors_initials")) {
-						excelHeader.createCell(i).setCellValue("AUDITOR'S INITIALS");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
+					else if (field.equals("auditors_initial")) {
+						width[i] = 1.0f;
+						 i++;
+						 table.addCell(createLabelCell("AUDITOR'S INITIALS"));
+					
 						}
-					else if(field.equals("auditee_name")){
-						excelHeader.createCell(i).setCellValue("AUDITEE NAME");
-						excelHeader.getCell(i).setCellStyle(style);
-						i++;
-					}
 				
-				}
 			}
-	
-		
-		//creating cell records
-			
-		public void setExcelRows(HSSFSheet excelSheet, List<InternalAudits> internalAudits,String[] fields, CellStyle style2){
-			int record = 1,i=0;
+				
+			int j=1;
 			
 			for (InternalAudits internalAudit:internalAudits ){	
-				
-				HSSFRow excelRow = excelSheet.createRow(record++);
-				i=0;
+				String sno = String.valueOf(j);
+				table.addCell(createValueCell(sno));
+				j++;
 				for(String field:fields)
 				{
-					if (field.equals("id")) 
+					if (field.equals("report_id")) 
 					{						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getId());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getId()));
+							
 						
 					}
 					else if (field.equals("process")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getProcess());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getProcess()));
+							
+							}
+					else if (field.equals("auditee_name")) {
+						
+						table.addCell(createValueCell(
+								internalAudit.getAuditee_name()));
+							
 							}
 				 
 					else if (field.equals("audit_start_date")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAudit_start_date());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getAudit_start_date()));
+							
 						}
 					else if (field.equals("audit_due_date")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAudit_due_date());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getAudit_due_date()));
+							
 						}
 					else if (field.equals("auditor")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAuditor());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getAuditor()));
+							
 						}
 					else if (field.equals("audit_notes")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAuditor_notes());
-							i++;}
+						table.addCell(createValueCell(
+								internalAudit.getAuditor_notes()));
+						}
 					else if (field.equals("finding")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getFinding());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getFinding()));
+						
 						}
 					else if (field.equals("completion_date")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getCompletion_date());
-							i++;
+						table.addCell(createValueCell(
+								internalAudit.getCompletion_date()));
+							
 							}
-					else if (field.equals("auditors_initials")) {
+					else if (field.equals("auditors_initial")) {
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAuditors_initials());
-							i++;
-							}
-					else if (field.equals("auditee_name")) {
+						table.addCell(createValueCell(
+								internalAudit.getAuditors_initials()));
 						
-						excelRow.createCell(i).setCellValue(
-								internalAudit.getAuditee_name());
-							i++;
 							}
+					
 								}
 			}
+			table.setWidths(width);
+			
+			doc.add(table);
 		}
 		
 	//getting maximum+1 id for inserting
