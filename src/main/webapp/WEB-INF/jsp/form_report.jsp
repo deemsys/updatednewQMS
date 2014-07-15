@@ -76,7 +76,7 @@
 								
                <td valign="top" align="left" class="input_txt" >
                
-               <select name="process" id="id_inpprocess"  class="input_cmbbx1" style="width:200px;">
+               <select name="process" id="id_inpprocess"  class="input_txtbx" style="width:200px;">
                
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                 <option value="${processes.process_name}">${processes.process_name}</option>
