@@ -67,7 +67,7 @@
             <div class="contentbox">
             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <tr class="row2">
-               <td valign="middle" align="left" class="input_txt" width="2%"> Type of Feedback:</td>
+               <td valign="middle" align="left" class="input_txt" width="2%"> Type of Feedback :</td>
                <td valign="top" width="10%"><span class="err">
                   <select name="type_of_feedback" id="feedback" class="input_txtbx">
                   <option value="">-select-</option>
@@ -79,11 +79,11 @@
                   <td>
                    </tr>
                   <tr class="row1">
-                  <td valign="top" width="2%"><span class="err"></span>From Date:
+                  <td valign="top" width="2%"><span class="err"></span>From Date :
                   <input type="text" name="from_date" class="input_txtbx" id="datepicker"  value="${fromdate}" /><br>
                   
                   <span id="datepicker11"style="color:red"></span></td>
-                   <td width="2%"><span class="err"></span>To Date:
+                   <td width="2%"><span class="err"></span>To Date :
                   <input type="text" name="to_date" class="input_txtbx" id="datepicker1" value="${todate}" /><br>
                   <span id="datepicker22"style="color:red"></span>
                   <span class="err"></span></td>
@@ -175,4 +175,7 @@ document.getElementById("dateerror").innerHTML="";
 
 <table  width=300 height=280>
 			<tr height=30><td></td></tr></table>
+			
+			<br><br><br><br><br><br><br>
+			
 <jsp:include page="footer.jsp"></jsp:include>
