@@ -75,7 +75,7 @@ $(function() {
             <c:set value="${employeeForm.employees[0]}" var="employee"/>
                  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 					<tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="20%"><label>Employee ID :</label></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><label>ID :</label></td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${employee.employee_id }"/>"/><c:out value="${employee.employee_id }"/><br/><span style="color: red;" ></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
@@ -121,11 +121,25 @@ $(function() {
         				          <option value="${Jobs.job_title}">${Jobs.job_title}</option>
 			                  </c:forEach>
 			                 </select>
+			                 
                	<td valign="top" align="left" class="input_txt" width="20%"> Trainer :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.trainer }" /><br><span style="color: red;" id="trainererror" ><form:errors path="Employee.trainer"></form:errors></span></td>
                 </tr>
                 
 				<tr class="row1">
+				 <td valign="top" align="left" class="input_txt" width="20%">Working as :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">
+                  
+                   <input type="checkbox" name="process_owner" value="yes" onclick="toggle1()" id="processowner"<c:if test="${employee.process_owner=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Process Owner                 
+                   <input type="checkbox" name="document_control" value="yes" onclick="toggle2()" id="documentcontrol"<c:if test="${employee.document_control=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Document Control<br/><br/>
+                   <input type="checkbox" name="management" value="yes" onclick="toggle3()"  id="managementrep"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
+                  <span id="workingerror" style="color: red;" ></span>
+                   <td valign="top" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
+                 <td valign="top" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');"  onmouseout="hideTooltip('tooltip_id');"  style="height: 55px;"><c:out value="${employee.training_effectiveness_notes  }"/> </textarea><br><span style="color: red;" id="inp_job_titleerror" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
+
+                  
+                  </tr>
+                  <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
                   <input type="text" name="date_hired" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.date_hired }" /><br><span style="color: red;" id="datepickererror" ><form:errors path="Employee.date_hired"></form:errors></span></td>
@@ -133,7 +147,7 @@ $(function() {
                   <td valign="top" align="left" class="input_txt" width="20%">
                   <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_due_date }" /><br><span id="datepicker1error" style="color: red;" ><form:errors path="Employee.training_due_date"></form:errors></span></td>
                 </tr>
-                <tr class="row2">
+                <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Attachments :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="20%">
@@ -141,16 +155,8 @@ $(function() {
                     <input type="hidden" value="${employee.attachment_name}" id="image"/>
                   <input type="file" name="attachments" class="input_txt" id="id_attachments" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br>
                   <span id="imageerror" style="color:red"></span></td>
-                   <td valign="top" align="left" class="input_txt" width="20%">Working as :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%">
                   
-                   <input type="checkbox" name="process_owner" value="yes" onclick="toggle1()" id="processowner"<c:if test="${employee.process_owner=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Process Owner                 
-                   <input type="checkbox" name="document_control" value="yes" onclick="toggle2()" id="documentcontrol"<c:if test="${employee.document_control=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Document Control<br/><br/>
-                   <input type="checkbox" name="management" value="yes" onclick="toggle3()"  id="managementrep"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
-                  <span id="workingerror" style="color: red;" ></span>
-                  
-                   </tr>
-                   <tr class="row1">
+                   
                    <td valign="top" align="left" class="input_txt" width="20%">Completion Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
                   <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_completion_date }" /><br><span id="datepicker2error" style="color: red;" ><form:errors path="Employee.training_completion_date"></form:errors></span>
@@ -181,19 +187,19 @@ $(function() {
                 
                 </tr>
                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="20%">List of Functions Needs :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Functions Needs :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="list_of_functions_needes" class="input_txtbx" id="inp_list_of_functions_needes" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.list_of_functions_needes}" /><br><span id="functionneedserror" style="color: red;" ><form:errors path="Employee.list_of_functions_needes"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" width="20%">Training Effective Review Due Date :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Review Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_review_due_date }" /><br><span id="datepicker3error" style="color: red;" ><form:errors path="Employee.training_effectiveness_review_due_date"></form:errors></span></td>
+                  
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" onInput="return validatename(id);" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
-                <td valign="top" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
-                 <td valign="top" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');"  onmouseout="hideTooltip('tooltip_id');"  style="height: 55px;"><c:out value="${employee.training_effectiveness_notes  }"/> </textarea><br><span style="color: red;" id="inp_job_titleerror" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
-
-                 <%--  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_notes" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_notes }" /><br><span style="color: red;" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
-                 --%></tr>    
+                                <%--  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_notes" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_notes }" /><br><span style="color: red;" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
+                 --%>
+                 
+                 </tr>    
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Update" onclick="return onsubmitvalidate();" class="submit_btn1"></td>
@@ -390,7 +396,7 @@ function onsubmitvalidate()
 	var image = document.getElementById('image').value;
 	 if(!owner && !control && !management)
 	 {
-	 document.getElementById("workingerror").innerHTML="Please Select Atleast One";
+	 document.getElementById("workingerror").innerHTML="Please select atleast one";
 	 error="true";
 	 }
  else
@@ -402,7 +408,7 @@ function onsubmitvalidate()
 	 if(datepick == "")
 	 {
 	
-	 document.getElementById("datepickererror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepickererror").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -412,7 +418,7 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepickererror").innerHTML="Invalid Date";
+	 document.getElementById("datepickererror").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
@@ -420,7 +426,7 @@ function onsubmitvalidate()
 
 	 if(datepick1 == "")
 	 {
-	 document.getElementById("datepicker1error").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker1error").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -431,12 +437,12 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker1error").innerHTML="Invalid Date";
+	 document.getElementById("datepicker1error").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 if(datepick2 == "")
 	 {
-	 document.getElementById("datepicker2error").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker2error").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -446,13 +452,13 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker2error").innerHTML="Invalid Date";
+	 document.getElementById("datepicker2error").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 	 if(datepick3 == "")
 	 {
-	 document.getElementById("datepicker3error").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker3error").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -462,13 +468,13 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker3error").innerHTML="Invalid Date";
+	 document.getElementById("datepicker3error").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 	  if(image == "" || image == "null")
 	  {
-	  document.getElementById("imageerror").innerHTML="Please Upload a File";
+	  document.getElementById("imageerror").innerHTML="Please upload a file";
 		 error="true";
 	  }
 	else {
@@ -479,14 +485,14 @@ function onsubmitvalidate()
 	if(document.getElementById("inp_name").value=="")
 	{
 
-		document.getElementById("nameerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("nameerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((document.getElementById("inp_name").value.length < 4) || (document.getElementById("inp_name").value.length > 45))
 		{
 		
-		document.getElementById("nameerror").innerHTML="Should be of length 4 to 32";	
+		document.getElementById("nameerror").innerHTML="Required field should  be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -496,14 +502,14 @@ function onsubmitvalidate()
 	
 	if(document.getElementById("trainer").value=="")
 	{
-		document.getElementById("trainererror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("trainererror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((document.getElementById("trainer").value.length < 4) || (document.getElementById("trainer").value.length > 45))
 		{
 		
-		document.getElementById("trainererror").innerHTML="Should be of length 4 to 32";	
+		document.getElementById("trainererror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
 	else
@@ -513,13 +519,13 @@ function onsubmitvalidate()
 	
 	if(document.getElementById("inp_job_title").value=="")
 	{
-		document.getElementById("inp_job_titleerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("inp_job_titleerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((document.getElementById("inp_job_title").value.length < 5) || (document.getElementById("inp_job_title").value.length > 500))
 		{
-		document.getElementById("inp_job_titleerror").innerHTML="Should be of length 5 to 500";	
+		document.getElementById("inp_job_titleerror").innerHTML="Required field should  be of length 5 to 500";	
 		error="true";
 		}
 	else
@@ -529,13 +535,13 @@ function onsubmitvalidate()
 	
 						if(document.getElementById("inp_process").value=="")
 							{
-								document.getElementById("processerror").innerHTML="Required Field Should Not Empty";	
+								document.getElementById("processerror").innerHTML="Required field should not be empty";	
 								error="true";
 								
 							}
 							else if((document.getElementById("inp_process").value.length < 4) || (document.getElementById("inp_process").value.length > 45))
 								{
-								document.getElementById("processerror").innerHTML="Should be of length 4 to 32";	
+								document.getElementById("processerror").innerHTML="Required field should  be of length 4 to 32";	
 								error="true";
 								}
 							else
@@ -545,13 +551,13 @@ function onsubmitvalidate()
 							
 							if(document.getElementById("inp_process_name").value=="")
 							{
-								document.getElementById("processnameerror").innerHTML="Required Field Should Not Empty";	
+								document.getElementById("processnameerror").innerHTML="Required field should not be empty";	
 								error="true";
 								
 							}
 							else if((document.getElementById("inp_process_name").value.length < 4) || (document.getElementById("inp_process_name").value.length > 45))
 								{
-								document.getElementById("processnameerror").innerHTML="Should be of length 4 to 32";	
+								document.getElementById("processnameerror").innerHTML="Required field should be of length 4 to 32";	
 								error="true";
 								}
 							else
@@ -560,13 +566,13 @@ function onsubmitvalidate()
 								}
 							if(document.getElementById("inp_list_of_functions_needes").value=="")
 							{
-								document.getElementById("functionneedserror").innerHTML="Required Field Should Not Empty";	
+								document.getElementById("functionneedserror").innerHTML="Required field should not be empty";	
 								error="true";
 								
 							}
 							else if((document.getElementById("inp_list_of_functions_needes").value.length < 4) || (document.getElementById("inp_list_of_functions_needes").value.length > 45))
 								{
-								document.getElementById("functionneedserror").innerHTML="Should be of length 4 to 32";	
+								document.getElementById("functionneedserror").innerHTML="Required field should  be of length 4 to 32";	
 								error="true";
 								}
 							else
@@ -576,13 +582,13 @@ function onsubmitvalidate()
 
 							if(document.getElementById("documentedin").value=="")
 									{
-										document.getElementById("documentedinerror").innerHTML="Required Field Should Not Empty";	
+										document.getElementById("documentedinerror").innerHTML="Required field should not be empty";	
 										error="true";
 										
 									}
 									else if((document.getElementById("documentedin").value.length < 4) || (document.getElementById("documentedin").value.length > 45))
 										{
-										document.getElementById("documentedinerror").innerHTML="Should be of length 4 to 32";	
+										document.getElementById("documentedinerror").innerHTML="Required field should  be of length 4 to 32";	
 										error="true";
 										}
 									else

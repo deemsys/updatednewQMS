@@ -176,7 +176,7 @@ function doAjaxPost() {
 		<tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Job Title :</td>
                	<td valign="top" align="left" class="input_txt" width="20%"><span id="job_titles"></span>&nbsp;&nbsp;
-               	<a href="newjob" data-toggle="modal">Add New Job</a><br/> <span style="color: red;"><form:errors path="Employee.job_title"></form:errors></span></td>
+               	<%-- <a href="newjob" data-toggle="modal">Add New Job</a><br/> <span style="color: red;"><form:errors path="Employee.job_title"></form:errors></span> --%></td>
    				  <td valign="top" align="left" class="input_txt" width="20%"> Trainer :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx" id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.trainer}" /><br/> <span style="color: red;" id="trainererror"><form:errors path="Employee.trainer"></form:errors></span></td>
                 </tr>
@@ -420,7 +420,7 @@ function onsubmitvalidate()
 	var image = document.getElementById('image').value;
 	 if(!owner && !control && !management)
 	 {
-	 document.getElementById("workingerror").innerHTML="Please Select Atleast One";
+	 document.getElementById("workingerror").innerHTML="Please select atleast one";
 	 error="true";
 	 }
  else
@@ -431,7 +431,7 @@ function onsubmitvalidate()
 
 	 if(datepick == "")
 	 {
-	 document.getElementById("datepickererror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepickererror").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -441,13 +441,13 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepickererror").innerHTML="Invalid Date";
+	 document.getElementById("datepickererror").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 	 if(datepick1 == "")
 	 {
-	 document.getElementById("datepicker1error").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker1error").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -457,12 +457,12 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker1error").innerHTML="Invalid Date";
+	 document.getElementById("datepicker1error").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 if(datepick2 == "")
 	 {
-	 document.getElementById("datepicker2error").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker2error").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -472,13 +472,13 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker2error").innerHTML="Invalid Date";
+	 document.getElementById("datepicker2error").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 	 if(datepick3 == "")
 	 {
-	 document.getElementById("datepicker3error").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker3error").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -488,21 +488,21 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker3error").innerHTML="Invalid Date";
+	 document.getElementById("datepicker3error").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 	if(document.getElementById("inp_name").value=="")
 	{
 		
-		document.getElementById("nameerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("nameerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((document.getElementById("inp_name").value.length < 4) || (document.getElementById("inp_name").value.length > 45))
 		{
 		
-		document.getElementById("nameerror").innerHTML="Should be of length 4 to 32";	
+		document.getElementById("nameerror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -512,7 +512,7 @@ function onsubmitvalidate()
 	  if(document.getElementById("type").value=="")
 	{
 		  
-		document.getElementById("typeerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("typeerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -524,7 +524,7 @@ function onsubmitvalidate()
 	if(document.getElementById("qualifiedby").value=="")
 	{
 		
-		document.getElementById("qualifiedbyerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("qualifiedbyerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -534,14 +534,14 @@ function onsubmitvalidate()
 		} 
 	if(document.getElementById("trainer").value=="")
 	{
-		document.getElementById("trainererror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("trainererror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((document.getElementById("trainer").value.length < 4) || (document.getElementById("trainer").value.length > 45))
 		{
 		
-		document.getElementById("trainererror").innerHTML="Should be of length 4 to 32";	
+		document.getElementById("trainererror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
 	else
@@ -551,13 +551,13 @@ function onsubmitvalidate()
 	
 	if(document.getElementById("inp_job_title").value=="")
 	{
-		document.getElementById("inp_job_titleerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("inp_job_titleerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((document.getElementById("inp_job_title").value.length < 5) || (document.getElementById("inp_job_title").value.length > 500))
 		{
-		document.getElementById("inp_job_titleerror").innerHTML="Should be of length 5 to 500";	
+		document.getElementById("inp_job_titleerror").innerHTML="Required field should be of length 5 to 500";	
 		error="true";
 		}
 	else
@@ -566,7 +566,7 @@ function onsubmitvalidate()
 		}
 	 if(image == "")
 	  {
-	  document.getElementById("imageerror").innerHTML="Please Upload a File";
+	  document.getElementById("imageerror").innerHTML="Please upload a file";
 		 error="true";
 	  }
 	else {
@@ -575,13 +575,13 @@ function onsubmitvalidate()
 
 		if(document.getElementById("inp_process").value=="")
 							{
-								document.getElementById("processerror").innerHTML="Required Field Should Not Empty";	
+								document.getElementById("processerror").innerHTML="Required field should not empty";	
 								error="true";
 								
 							}
 							else if((document.getElementById("inp_process").value.length < 4) || (document.getElementById("inp_process").value.length > 45))
 								{
-								document.getElementById("processerror").innerHTML="Should be of length 4 to 32";	
+								document.getElementById("processerror").innerHTML="Required field should be of length 4 to 32";	
 								error="true";
 								}
 							else
@@ -591,13 +591,13 @@ function onsubmitvalidate()
 							
 							if(document.getElementById("inp_process_name").value=="")
 							{
-								document.getElementById("processnameerror").innerHTML="Required Field Should Not Empty";	
+								document.getElementById("processnameerror").innerHTML="Required field should not be empty";	
 								error="true";
 								
 							}
 							else if((document.getElementById("inp_process_name").value.length < 4) || (document.getElementById("inp_process_name").value.length > 45))
 								{
-								document.getElementById("processnameerror").innerHTML="Should be of length 4 to 32";	
+								document.getElementById("processnameerror").innerHTML="Required field should be of length 4 to 32";	
 								error="true";
 								}
 							else
@@ -606,13 +606,13 @@ function onsubmitvalidate()
 								}
 							if(document.getElementById("inp_list_of_functions_needes").value=="")
 							{
-								document.getElementById("functionneedserror").innerHTML="Required Field Should Not Empty";	
+								document.getElementById("functionneedserror").innerHTML="Required field should not be empty";	
 								error="true";
 								
 							}
 							else if((document.getElementById("inp_list_of_functions_needes").value.length < 4) || (document.getElementById("inp_list_of_functions_needes").value.length > 45))
 								{
-								document.getElementById("functionneedserror").innerHTML="Should be of length 4 to 32";	
+								document.getElementById("functionneedserror").innerHTML="Required field should be of length 4 to 32";	
 								error="true";
 								}
 							else
@@ -622,13 +622,13 @@ function onsubmitvalidate()
 
 							if(document.getElementById("documentedin").value=="")
 									{
-										document.getElementById("documentedinerror").innerHTML="Required Field Should Not Empty";	
+										document.getElementById("documentedinerror").innerHTML="Required field should not be empty";	
 										error="true";
 										
 									}
 									else if((document.getElementById("documentedin").value.length < 4) || (document.getElementById("documentedin").value.length > 45))
 										{
-										document.getElementById("documentedinerror").innerHTML="Should be of length 4 to 32";	
+										document.getElementById("documentedinerror").innerHTML="Required field should  be of length 4 to 32";	
 										error="true";
 										}
 									else
