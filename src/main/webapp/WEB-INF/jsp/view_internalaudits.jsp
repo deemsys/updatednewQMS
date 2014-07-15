@@ -72,12 +72,12 @@
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="8%">Audit ID:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" onInput="return validatename2(id);" value="${id}">
+							    <td align="left" valign="middle" width="8%">Audit ID :</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" onInput="return validatename2(id);" value="${id}">
 							    <br><span id="iderror" style="color:red"></span>
 							    </td>
 							     <td align="left" valign="middle" width="10%">
-							    <td align="left" valign="middle" width="8%">Process:</td>
+							    <td align="left" valign="middle" width="8%">Process :</td>
 							    <td align="left" valign="middle" width="10%">
 					
 							    <select name="process" id="process"  class="input_txtbx" style="width:200px;">
@@ -88,7 +88,7 @@
              				  </select>
              				  	</td> 
              				  	 <td align="left" valign="middle" width="10%">
-							    <td align="left" valign="middle" width="15%">Auditee name:</td>
+							    <td align="left" valign="middle" width="15%">Auditee Name :</td>
 							    <td align="left" valign="middle" width="10%">
 							    <select name="auditee_name" id="auditee"  class="input_txtbx" style="height:20px;">
                						<option value="">--Select--</option>
@@ -247,7 +247,7 @@ function validation()
 	
 	if((id == "") && (process == "") && (auditee == ""))
 	{
-		document.getElementById('searcherror').innerHTML = "Input is Empty";
+		document.getElementById('searcherror').innerHTML = "Input is empty";
 		error = "true";
 	}
 	else
@@ -256,7 +256,7 @@ function validation()
 		{
 			if((id.length < 4) || (id.length > 32))
 			{
-				document.getElementById('iderror').innerHTML = "Required Field should of length 4 to 32";
+				document.getElementById('iderror').innerHTML = "Required field should of length 4 to 32";
 				error = "true";
 			}
 			else
@@ -277,4 +277,8 @@ function validation()
 	}
 }
 </script>
+
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>

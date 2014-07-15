@@ -63,7 +63,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID:</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="id"value="<c:out value="${internalaudits.id}"/>"/><c:out value="${internalaudits.id}"/><br/><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
@@ -104,7 +104,7 @@
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit Start Date :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_start_date" readonly="readonly" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
                   <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_start_date"></form:errors></span></td>
                
@@ -112,7 +112,7 @@
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
                     <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_due_date"></form:errors></span></td>
                 </tr>
@@ -159,7 +159,7 @@
 				
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
                     <br> <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.completion_date"></form:errors></span></td>
                 </tr>
@@ -237,18 +237,18 @@ function validate()
 	
 	if(auditornotes == "")
 	{
-	 document.getElementById("auditornoteserror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("auditornoteserror").innerHTML="Required field should not be empty";
 		error="true";
 	}
 	else if(auditornotes.charAt(0) == " ")
 	{
-	 document.getElementById("auditornoteserror").innerHTML="Initial Spaces not Allowed";
+	 document.getElementById("auditornoteserror").innerHTML="Initial spaces not allowed";
 		error="true";
 	}
 	else if((auditornotes.length<4)||(auditornotes.length>400))
 	{
 	
-	 document.getElementById("auditornoteserror").innerHTML="Required Field Should be length of 4 to 400";
+	 document.getElementById("auditornoteserror").innerHTML="Required field should be length of 4 to 400";
 		error="true";
 	}
 else{
@@ -257,7 +257,7 @@ else{
 	
 	if(id_inpprocess =="")
 		{
-		 document.getElementById("inprocesserror").innerHTML="Please Select one";
+		 document.getElementById("inprocesserror").innerHTML="Please select one";
 			error="true";
 		}
 	else{
@@ -267,7 +267,7 @@ else{
 	
 	if(auditeename =="")
 	{
-	 document.getElementById("auditeenameerror").innerHTML="Please Select one";
+	 document.getElementById("auditeenameerror").innerHTML="Please select one";
 		error="true";
 	}
 else{
@@ -276,7 +276,7 @@ else{
 	
 	 if(datepicker1 == "")
 	 {
-	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker11").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -286,14 +286,14 @@ else{
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="Invalid Date";
+	 document.getElementById("datepicker11").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 
 	 if(datepicker == "")
 	 {
-	 document.getElementById("datepicker00").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker00").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -303,13 +303,13 @@ else{
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker00").innerHTML="Invalid Date";
+	 document.getElementById("datepicker00").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(datepicker2 == "")
 	 {
-	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker22").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -319,12 +319,12 @@ else{
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 if(finding =="")
 		 {
-		 document.getElementById("findingerror").innerHTML="Please Select One";
+		 document.getElementById("findingerror").innerHTML="Please select one";
 		 error="true";
 		 }
 	 else{
@@ -333,7 +333,7 @@ else{
 	 
 	 if(auditor =="")
 	 {
-	 document.getElementById("auditorerror").innerHTML="Please Select One";
+	 document.getElementById("auditorerror").innerHTML="Please select One";
 	 error="true";
 	 }
  else{
@@ -342,18 +342,18 @@ else{
 	 
 	 if(auditorsinitials == "")
 		{
-		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("auditorsinitialserror").innerHTML="Required field should not be empty";
 			error="true";
 		}
 	 else if(auditorsinitials.charAt(0) == " ")
 		{
-		 document.getElementById("auditorsinitialserror").innerHTML="Initial Spaces not Allowed";
+		 document.getElementById("auditorsinitialserror").innerHTML="Initial spaces not allowed";
 			error="true";
 		}
 	else if((auditorsinitials.length>10))
 		{
 		
-		 document.getElementById("auditorsinitialserror").innerHTML="Required Field Should be length of 1 to 10";
+		 document.getElementById("auditorsinitialserror").innerHTML="Required field should be length of 1 to 10";
 			error="true";
 		}
 	else{
@@ -419,4 +419,7 @@ function CreateGroup()
 	document.update.submit();
 }
 </script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>

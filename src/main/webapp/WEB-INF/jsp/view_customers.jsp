@@ -159,7 +159,7 @@
 							    	
 							    	<c:if test="${fn:length(customersForm.customers)== 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b style="color:red">No Participants Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
 						    	
