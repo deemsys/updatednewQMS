@@ -9,6 +9,10 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,12 +29,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
+import qms.controllers.AbstractITextPdfView;
 import qms.model.CorrectiveAndPreventiveActions;
 import qms.model.DocumentMain;
 
 
 
-public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
+public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 {
 	private DataSource dataSource;
 	 
@@ -38,105 +43,58 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 		this.dataSource = dataSource;
 	}
 	
+
 	@Override
-	protected void buildExcelDocument(Map model, HSSFWorkbook workbook ,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		//response.setHeader("Content-Disposition","attachment;filename='"+(String)model.get("title")+"'");
-		
-		//HSSFSheet excelSheet = workbook.createSheet((String)model.get("title"));
-		HSSFSheet excelSheet = workbook.createSheet("Corrective & Preventive Actions Report");
-		excelSheet.setDefaultColumnWidth(20);
-		
-		/*@SuppressWarnings("unchecked")
-		List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions=(List<CorrectiveAndPreventiveActions>)model.get("correctiveAndPreventiveActions");
+	protected void buildPdfDocument(Map<String, Object> model, Document doc,
+	PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
 		
 		
-		String[] fields=(String[])model.get("fields");
-		System.out.println(fields[0]);
-		*/
-		//Style 1
-		CellStyle style = workbook.createCellStyle();
-	        Font font = workbook.createFont();
-	        font.setFontName("Arial");
-	        style.setFillForegroundColor(HSSFColor.BROWN.index);
-	        style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-	        style.setWrapText(true);
-	        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-	        font.setColor(HSSFColor.WHITE.index);
-	        style.setFont(font);
-		
-	    //Style2
-	        CellStyle style2 = workbook.createCellStyle();
-	        Font font2 = workbook.createFont();
-	        font2.setFontName("Arial");
-	        style2.setFillForegroundColor(HSSFColor.YELLOW.index);
-	        style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
-	        style2.setWrapText(true);
-	        font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-	        font2.setColor(HSSFColor.WHITE.index);
-	        style2.setFont(font2); 
 	        
 	        @SuppressWarnings("unchecked")
 			List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions=(List<CorrectiveAndPreventiveActions>)model.get("correctiveAndPreventiveActions");
 			String[] fields=(String[])model.get("fields");
 			System.out.println(fields[0]);
 			HttpSession session = request.getSession();
-	        
-		setExcelHeader(excelSheet,correctiveAndPreventiveActions,fields,style,session);
-		setExcelRows(excelSheet,correctiveAndPreventiveActions,fields,style2,session);
-		
-	}
+	       
+			int memolist = fields.length;
+			System.out.println(memolist);
+	       PdfPTable table=new PdfPTable(memolist+1);
+	       float[] width= new float[memolist+1];
+			table.setWidthPercentage(100);
+			int i=1;
+			 table.addCell(createLabelCell("SNO"));
+			 width[0] = 1.0f;
+			
+			
 	
-	//creating header records
-	public void setExcelHeader(HSSFSheet excelSheet,List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions,String[] fields,CellStyle style,HttpSession session)
-	{
-		HSSFRow excelHeader = excelSheet.createRow(0);
-		int record = 0;
-		/*(String capa_id, String nc_id,
-			String source_of_nonconformance, String external_id,
-			String type_of_nonconformance, String date_found,
-			String temporary_action, String nature_of_nc,
-			String capa_requestor, String request_date, String capa_due_date,
-			String assigned_team_leader, String team_members,
-			String root_cause_analysis_file,
-			
-			 
-			 
-			 String use_5_why_in_system,
-			String why, String root_cause_statement,
-			String upload_external_analysis,
-			
-			 
-			 String action,
-			String responsibility, String due_date, String completion_date,
-			String verified_by, String verification_date)*/
-		int i = 0;
 		String value= (String) session.getAttribute("option");
 		System.out.println("session option = "+value);
 		
-		if(value == "0" & value == "1")
+		if(value == "0" || value == "1")
 		{
 			for(String field:fields)
 			{
 			 if (field.equals("nc_id")) {
-					excelHeader.createCell(record).setCellValue(
-							"NON CONFORMANCE ID");
+				 width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell(
+							"NON CONFORMANCE ID"));
 
-					excelHeader.getCell(record++).setCellStyle(style);
+					
 					
 					}
 				else if (field.equals("source_of_nonconformance")) {
-					excelHeader.createCell(record).setCellValue(
-							"SOURCE OF NON CONFORMANCE");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					}
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"SOURCE OF NON CONFORMANCE"));
+				}
 				else if (field.equals("root_cause_statement")) {
-					excelHeader.createCell(record++).setCellValue(
-							"ROOT CAUSE STATEMENT");
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("ROOT CAUSE STATEMENT"));
+				
 					}
 			
 
@@ -149,162 +107,157 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 				if (field.equals("capa_id")) 
 				{
 					
-					excelHeader.createCell(record).setCellValue(
-							"CORRECTIVE AND PREVENTIVE ACTIONS ID");
-
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("CORRECTIVE AND PREVENTIVE ACTIONS ID"));
 					
 				}
 				else if (field.equals("nc_id")) {
-					excelHeader.createCell(record).setCellValue(
-							"NON CONFORMANCE ID");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
 					}
 				else if (field.equals("source_of_nonconformance")) {
-					excelHeader.createCell(record).setCellValue(
-							"SOURCE OF NON CONFORMANCE");
-
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("SOURCE OF NON CONFORMANCE"));
 					} 
 				else if (field.equals("external_id")) {
-					excelHeader.createCell(record).setCellValue(
-							"EXTERNAL ID");
-
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("EXTERNAL ID"));
 					}
 				else if (field.equals("date_found")) {
-					excelHeader.createCell(record).setCellValue(
-							"DATE FOUND");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("DATE FOUND"));
 					}
 				else if (field.equals("temporary_action")) {
-					excelHeader.createCell(record).setCellValue(
-							"TEMPORARY ACTION");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("TEMPORARY ACTION"));
 					}
 				
 				else if (field.equals("nature_of_nc")) {
-					excelHeader.createCell(record).setCellValue(
-							"NATURE OF NC");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("NATURE OF NC"));
 					}
 				else if (field.equals("capa_requestor")) {
-					excelHeader.createCell(record).setCellValue(
-							"CAPA REQUESTOR");
-
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("CAPA REQUESTOR"));
 					}
 				
 				else if (field.equals("request_date")) {
-					excelHeader.createCell(record).setCellValue(
-							"REQUEST DATE");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("REQUEST DATE"));
 					}
 				else if (field.equals("capa_due_date")) {
-					excelHeader.createCell(record).setCellValue(
-							"CAPA DUE DATE");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"CAPA DUE DATE"));
 
-					excelHeader.getCell(record++).setCellStyle(style);
-					
 					}
 				else if (field.equals("assigned_team_leader")) {
-					excelHeader.createCell(record).setCellValue(
-							"ASSIGNED TEAM LEADER");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-										}
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"ASSIGNED TEAM LEADER"));
+				}
 				else if (field.equals("team_members")) {
-					excelHeader.createCell(record).setCellValue(
-							"TEAM MEMBERS");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"TEAM MEMBERS"));
 
-					excelHeader.getCell(record++).setCellStyle(style);
-					
 					}
 				else if (field.equals("root_cause_analysis_file")) {
-					excelHeader.createCell(record++).setCellValue(
-							"ROOT CAUSE ANALYSIS FILE");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"ROOT CAUSE ANALYSIS FILE"));
 					
 					}
 				else if (field.equals("use_5_why_in_system")) {
-					excelHeader.createCell(record++).setCellValue(
-							"USE 5 WHY IN SYSTEM");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"USE 5 WHY IN SYSTEM"));
 					
 					}
 				else if (field.equals("why")) {
-					excelHeader.createCell(record++).setCellValue(
-							"WHY");
-					// excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"WHY"));
+				
 					}
 				else if (field.equals("root_cause_statement")) {
-					excelHeader.createCell(record++).setCellValue(
-							"ROOT CAUSE STATEMENT");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"ROOT CAUSE STATEMENT"));
 					
 					}
 				else if (field.equals("upload_external_analysis")) {
-					excelHeader.createCell(record++).setCellValue(
-							"UPLOAD EXTERNAL ANALYSIS");
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"UPLOAD EXTERNAL ANALYSIS"));
+					
 					}
 				
 				
 				else if (field.equals("action")) {
-					excelHeader.createCell(record++).setCellValue(
-							"ACTION");
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"ACTION"));
+					
 					}
 				else if (field.equals("responsibility")) {
-					excelHeader.createCell(record++).setCellValue(
-							"RESPONSIBILITY");
-					excelHeader.getCell(record++).setCellStyle(style);
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"RESPONSIBILITY"));
+				
 					}
 				else if (field.equals("due_date")) {
-					excelHeader.createCell(record).setCellValue(
-							"DUE DATE");
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"DUE DATE"));
+				
 					}
 				else if (field.equals("completion_date")) {
-					excelHeader.createCell(record).setCellValue(
-							"COMPLETION DATE");
-
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"COMPLETION DATE"));
+	
 					}
 				else if (field.equals("verified_by")) {
-					excelHeader.createCell(record).setCellValue(
-							"VERIFIED BY");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"VERIFIED BY"));
 
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+				
 					}
 				else if (field.equals("verification_date")) {
-					excelHeader.createCell(record).setCellValue(
-							"VERIFICATION DATE");
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell(
+							"VERIFICATION DATE"));
 
-					excelHeader.getCell(record++).setCellStyle(style);
-					
+				
 					}
 			}
 		}
-			
-		}
-
-	//creating cell records
-		
-	public void setExcelRows(HSSFSheet excelSheet,List<CorrectiveAndPreventiveActions> correctiveAndPreventiveActions,String[] fields,CellStyle style,HttpSession session){
-		int record = 1,column=0;
-		int i=0;
-		String value= (String) session.getAttribute("option");
+	
+		int j= 1;
 		System.out.println("session option = "+value);
 		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
 	    int currentDay = localCalendar.get(Calendar.DATE);
@@ -313,25 +266,27 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 	    System.out.println("day  ="+currentDay+"month = "+currentMonth+"year = "+currentYear);
 	    String currentdate = currentDay+"/"+currentMonth+"/"+currentYear;
 	    for (CorrectiveAndPreventiveActions correctiveandpreventiveactions :correctiveAndPreventiveActions){	
-			HSSFRow excelRow = excelSheet.createRow(record++);
-
-	    if(value == "0" && value == "1")
+		
+	    	String sno = String.valueOf(j);
+			table.addCell(createValueCell(sno));
+			j++;
+	    if(value == "0" || value == "1")
 		{
 			for (String field : fields) {
 				if (field.equals("nc_id")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getNc_id());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getNc_id()));
 					
 					}
 				else if (field.equals("source_of_nonconformance")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getSource_of_nonconformance());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getSource_of_nonconformance()));
 					}
 
 				else if (field.equals("root_cause_statement")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getRoot_cause_statement());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getRoot_cause_statement()));
 					}
 				}
 		}
@@ -343,107 +298,118 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractExcelView
 				{
 					
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getCapa_id());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getCapa_id()));
 					
 				}
 				else if (field.equals("nc_id")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getNc_id());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getNc_id()));
 					}
 				else if (field.equals("source_of_nonconformance")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getSource_of_nonconformance());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getSource_of_nonconformance()));
 					} 
 				else if (field.equals("external_id")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getExternal_id());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getExternal_id()));
+					}
 				else if (field.equals("temporary_action")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getTemporary_action());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getTemporary_action()));
 					}
 				
 				else if (field.equals("nature_of_nc")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getNature_of_nc());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getNature_of_nc()));
 					}
 				else if (field.equals("capa_requestor")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getCapa_requestor());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getCapa_requestor()));
 					}
 				else if (field.equals("request_date")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getRequest_date());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getRequest_date()));
 					}
 				else if (field.equals("capa_due_date")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getCapa_due_date());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getCapa_due_date()));
 					}
 				else if (field.equals("assigned_team_leader")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getAssigned_team_leader());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getAssigned_team_leader()));
 					}
 				else if (field.equals("team_members")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getTeam_members());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getTeam_members()));
 					}
 				else if (field.equals("root_cause_analysis_file")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getRoot_cause_analysis_file());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getRoot_cause_analysis_file()));
 					}
 				else if (field.equals("use_5_why_in_system")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getUse_5_why_in_system());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getUse_5_why_in_system()));
 					}
 				else if (field.equals("why")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getWhy());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getWhy()));
 					}
 				else if (field.equals("root_cause_statement")) {
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getRoot_cause_statement());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getRoot_cause_statement()));
+					}
 				else if (field.equals("upload_external_analysis")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getUpload_external_analysis());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getUpload_external_analysis()));
+					}
 				
 				else if (field.equals("action")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getAction());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getAction()));
+					}
 				else if (field.equals("responsibility")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getResponsibility());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getResponsibility()));
+					}
 				else if (field.equals("due_date")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getDue_date());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getDue_date()));
+					}
 				else if (field.equals("completion_date")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getCompletion_date());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getCompletion_date()));
+					}
 				else if (field.equals("verified_by")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getVerified_by());}
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getVerified_by()));
+					}
 				else if (field.equals("verification_date")) {
 
-					excelRow.createCell(column++).setCellValue(
-							correctiveandpreventiveactions.getVerification_date());
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getVerification_date()));
 					}
 			}
 	    }
-			column=0;
+			
 			}
+	    table.setWidths(width);
+		
+		doc.add(table);
 	}	
 	
 	
