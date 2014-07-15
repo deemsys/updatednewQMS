@@ -149,7 +149,7 @@
 																	<tr class="row2">
 																		<td valign="top" align="left" class="input_txt" width="30%">Nature of NC: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
-																		<textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" onInput="return validatename(id);" style= "height: 55px;" ></textarea>
+																		<textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;" ></textarea>
 																			<br/><span id="nature" style="color: red;"></span>
 																		<font color="Red" size="+1"></font> <span style="color: red;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors>
 																		</span>
@@ -271,7 +271,7 @@
 																	<tr class="row1">
 								
 																	<td valign="top" align="left" class="input_txt" width="30%"> Temporary Action: </td>
-               														<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" onInput="return validatename(id);" style="height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
+               														<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" style="height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;"></span>
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          

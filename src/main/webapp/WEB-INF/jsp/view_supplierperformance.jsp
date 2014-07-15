@@ -31,7 +31,7 @@
 				            <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="supplierperformance_report" class="<c:choose>
 								<c:when test="${menu=='supplier'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Report Supplier</span>
+									<span>Reports</span>
 									
 								</a>
 							</li>

@@ -169,9 +169,9 @@
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member(s) :</td>      
-						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" onInput="return validatename(id);"  name="team_members"  id="team_member" style="width:78%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
+						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="team_members"  id="team_member" style="width:78%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Statement :</td>               
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" onInput="return validatename(id);" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
                
               </tr>
                  <tr class="row1">
