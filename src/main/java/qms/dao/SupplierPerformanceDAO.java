@@ -17,61 +17,25 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.springframework.web.servlet.view.document.AbstractExcelView;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import qms.controllers.AbstractITextPdfView;
 import qms.model.ManagementReview;
 import qms.model.SupplierPerformance;
 
 
-public class SupplierPerformanceDAO extends AbstractExcelView {
+public class SupplierPerformanceDAO extends AbstractITextPdfView {
 	private DataSource dataSource;
 
 	/* 
 	 * Excel Sheet Generation
 	 */
-	 
-	protected void buildExcelDocument(Map model,HSSFWorkbook workbook,
-			HttpServletRequest request,HttpServletResponse response)
-			throws Exception
-							{
-								System.out.println("excelsheet documents......");
-		
-								HSSFSheet excelSheet = workbook.createSheet("SupplierPerformance Report");
-								excelSheet.setDefaultColumnWidth(20);
-								
-								//style1
-								CellStyle style = workbook.createCellStyle();
-								Font font = workbook.createFont();
-								font.setFontName("Arial");
-								style.setFillForegroundColor(HSSFColor.BROWN.index);
-								style.setFillPattern(CellStyle.SOLID_FOREGROUND);
-								style.setWrapText(true);
-								font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-								font.setColor(HSSFColor.WHITE.index);
-								style.setFont(font);
-								
-								//style2
-								CellStyle style2 = workbook.createCellStyle();
-								Font font2= workbook.createFont();
-								font2.setFontName("Arial");
-								style2.setFillForegroundColor(HSSFColor.YELLOW.index);
-								style2.setFillPattern(CellStyle.SOLID_FOREGROUND);
-								style2.setWrapText(true);
-								font2.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-								font2.setColor(HSSFColor.WHITE.index);
-								style2.setFont(font2);
-								
-								@SuppressWarnings("unchecked")
-								List<SupplierPerformance> supplierPerformances = (List<SupplierPerformance>) model.get("supplierPerformances");
-								String[] fields = (String[])model.get("fields");
-								setExcelHeader(excelSheet,style,fields);
-								setExcelRows(excelSheet,supplierPerformances,fields,style2);
-								
-								System.out.println("came.");
-							}
-	
 	public DataSource getDataSource() {
 		return dataSource;
 	}
@@ -81,196 +45,219 @@ public class SupplierPerformanceDAO extends AbstractExcelView {
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
 	}
-
-	//creating header records
-	public void setExcelHeader(HSSFSheet excelSheet,CellStyle style,String[] fields) {
-		HSSFRow excelHeader = excelSheet.createRow(0);	
-	int i=0;
+	@Override
+	protected void buildPdfDocument(Map<String, Object> model, Document doc,
+	PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
+	throws Exception {
+							
+								@SuppressWarnings("unchecked")
+								List<SupplierPerformance> supplierPerformances = (List<SupplierPerformance>) model.get("supplierPerformances");
+								String[] fields = (String[])model.get("fields");
+								
+								int memolist = fields.length;
+								System.out.println(memolist);
+						       PdfPTable table=new PdfPTable(memolist+1);
+						       float[] width= new float[memolist+1];
+								table.setWidthPercentage(100);
+								int i=1;
+								 table.addCell(createLabelCell("SNO"));
+								 width[0] = 1.0f;
+			
 		for (String field : fields) {
 			
 			if(field.equals("supplier_id"))
 			{
-				excelHeader.createCell(i).setCellValue("ID");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("ID"));
+				
 			}
 			else if(field.equals("supplier_name"))
 			{
-				excelHeader.createCell(i).setCellValue("Supplier Name");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Supplier Name"));
+			
 			}
 			else if(field.equals("category"))
 			{
-				excelHeader.createCell(i).setCellValue("Category");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Category"));
+				
 			}
 			else if(field.equals("address"))
 			{
-				excelHeader.createCell(i).setCellValue("Address");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Address"));
+			
 			}
 			else if(field.equals("city"))
 			{
-				excelHeader.createCell(i).setCellValue("City");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("City"));
+			
 			}
 			else if(field.equals("state"))
 			{
-				excelHeader.createCell(i).setCellValue("State");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("State"));
+				
 			}
 			else if(field.equals("postalcode"))	
 			{
-				excelHeader.createCell(i).setCellValue("Postal Code");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Postal Code"));
+				
 			}else if(field.equals("country"))	
 			{
-				excelHeader.createCell(i).setCellValue("Country");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Country"));
+			
 			}else if(field.equals("website"))	
 			{
-				excelHeader.createCell(i).setCellValue("Website");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Website"));
+			
 			}else if(field.equals("certified_to"))
 			{
-				excelHeader.createCell(i).setCellValue("Certified To");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Certified To"));
+				
 			}else if(field.equals("contact_name"))	
 			{
-				excelHeader.createCell(i).setCellValue("Contact Name");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Contact Name"));
+			
 			}else if(field.equals("contact_title"))	
 			{
-				excelHeader.createCell(i).setCellValue("Contact Title");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Contact Title"));
+				
 			}else if(field.equals("phone"))	
 			{
-				excelHeader.createCell(i).setCellValue("Phone");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Phone"));
+				
 			}else if(field.equals("fax"))	
 			{
-				excelHeader.createCell(i).setCellValue("Fax");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Fax"));
+				
 			}else if(field.equals("email_address"))	
 			{
-				excelHeader.createCell(i).setCellValue("Email Address");
-				excelHeader.getCell(i).setCellStyle(style);
-				i++;
+				width[i] = 1.0f;
+				 i++;
+				 table.addCell(createLabelCell("Email Address"));
+			
 			}
 		}
 	
-	}
-	
-	
-	//End
-	
-	
-	//creating cell records
-	public void setExcelRows(HSSFSheet excelSheet, List<SupplierPerformance> supplierPerformances,String[] fields,CellStyle style2){
-		int record = 1;
-		int i=0;
+		int j =1;
 		for (SupplierPerformance supplierPerformance:supplierPerformances){	
-			HSSFRow excelRow = excelSheet.createRow(record++);
-	//		excelRow.setRowStyle((HSSFCellStyle) style2);
-		i=0;
+			String sno = String.valueOf(j);
+			table.addCell(createValueCell(sno));
+			j++;
+	
 				for (String field : fields) {
 					
 					if(field.equals("supplier_id"))
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getSupplier_id());
-							i++;
+						table.addCell(createValueCell(
+								supplierPerformance.getSupplier_id()));
+							
 					}
 					else if(field.equals("supplier_name"))
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getSupplier_name());
+							table.addCell(createValueCell(
+								supplierPerformance.getSupplier_name()));
 
-						i++;
+					
 					}
 					else if(field.equals("category"))
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getCategory());
-								i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getCategory()));
+						
 					}
 					else if(field.equals("address"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getAddress());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getAddress()));
+					
 					}else if(field.equals("city"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getCity());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getCity()));
+					
 					}else if(field.equals("state"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getState());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getState()));
+					
 					}else if(field.equals("postalcode"))
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getPostalcode());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getPostalcode()));
+						
 					}else if(field.equals("country"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getCountry());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getCountry()));
+					
 					}else if(field.equals("website"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getWebsite());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getWebsite()));
+						
 					}else if(field.equals("certified_to"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getCertified_to());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getCertified_to()));
+						
 					}else if(field.equals("contact_name"))	
 					{
-						excelRow.createCell(i).setCellValue(supplierPerformance.getContact_name());
-							i++;
+							table.addCell(createValueCell(supplierPerformance.getContact_name()));
+							
 					
 					}else if(field.equals("contact_title"))	
 					{
-						excelRow.createCell(i).setCellValue(supplierPerformance.getContact_title());
-						i++;
+							table.addCell(createValueCell(supplierPerformance.getContact_title()));
+						
 					}else if(field.equals("phone"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getPhone());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getPhone()));
+					
 					}else if(field.equals("fax"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getFax());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getFax()));
+						
 					}else if(field.equals("email_address"))	
 					{
-						excelRow.createCell(i).setCellValue(
-								supplierPerformance.getEmail_address());
-						i++;
+							table.addCell(createValueCell(
+								supplierPerformance.getEmail_address()));
+					
 					}
 					
 				}
 				
 		}
+		table.setWidths(width);
+		
+		doc.add(table);
 	}
 	
 	//Getting unique id
