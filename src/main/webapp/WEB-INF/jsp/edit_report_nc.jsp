@@ -74,7 +74,7 @@
                 
                   <td valign="middle" align="left" class="input_txt" >Group Person&nbsp;:</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="group_person" maxlength="32" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reportedByNCs.group_person}" onInput="validateAlpha4()"/>
-                     <span id="groupperson1" style="color:red"></span>
+                   <br>  <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
                   <tr class="row1">
@@ -93,6 +93,12 @@
              </div>
              </form>
                  <script type="text/javascript">
+                 $(function() {
+                		$("#groupperson").on("keypress", function(e) {
+                			if (e.which === 32 && !this.value.length)
+                		        e.preventDefault();
+                		});
+                		});
                  function validateAlpha4(){
              	    var textInput = document.getElementById("groupperson").value;
              	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
@@ -100,13 +106,16 @@
              	}
                function validation()
                {
+            	   document.getElementById("groupperson1").innerHTML="";
+            	   document.getElementById("typeofNc1").innerHTML="";
+            	 var error="";
             	   var chars = /[A-Za-z ]+$/;
             	   var typeofNc = document.getElementById('typeofNc').value;
             	   var groupperson = document.getElementById('groupperson').value;
             	   if(typeofNc == "")
             		   {
-            		   document.getElementById("typeofNc1").innerHTML="Please Select one";
-          			 	return false;
+            		   document.getElementById("typeofNc1").innerHTML="Required Field should not be Empty";
+          			 	error="true";
             		   }
             	   else{
             		   document.getElementById("typeofNc1").innerHTML="";
@@ -114,29 +123,25 @@
             	   
             	 if(groupperson == "")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Requried field should not be Empty";
-         			 	return false;
+            		   document.getElementById("groupperson1").innerHTML="Required Field should not be Empty";
+         			 	error="true";
             		   }
             	   else if(groupperson.charAt(0)==" ")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Requried field should not be Spaces";
-        			 	return false;
+            		   document.getElementById("groupperson1").innerHTML="Required Field should not be Spaces";
+        			 	error="true";
             		   }
             	   else if(groupperson.length<4)
           		   {
           		   document.getElementById("groupperson1").innerHTML="Required and must be of length 4 to 32";
-      			 	return false;
+      			 	error="true";
           		   }
-            	   else if(groupperson.match(chars))
-            		   {
-            		   document.getElementById("groupperson1").innerHTML="";
-            		  
-            		   }
-            	   else
-            		   {
-            		   document.getElementById("groupperson1").innerHTML="Requried field should be letters";
-       			 		return false;
-            		   }
+            	
+            	  
+            	 if(error=="true")
+            		 {
+            		 return false;
+            		 }
             	   
                }
                </script>

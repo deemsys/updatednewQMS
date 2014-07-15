@@ -940,6 +940,7 @@ public class FormController
 		@RequestMapping(value={"/setrevision"}, method = RequestMethod.GET)
 		public String Set_RevisionNo(HttpSession session,ModelMap model,@ModelAttribute("Revision_No") @Valid Revision_No revision_No, Principal principal )
 		{
+			model.addAttribute("menu","admin");
 			int size = formDAO.getFormat();
 			System.out.println("size = "+size);
 			if(size >= 1)
@@ -1002,6 +1003,7 @@ public class FormController
 			revision_No_Form.setRevision_Nos(formDAO.getFormattype());
 			model.addAttribute("revision_No_Form",revision_No_Form);
 			model.addAttribute("menu","admin");
+			model.addAttribute("success","update");
 		    return "show_revision_no";
 		}
 }

@@ -119,7 +119,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%" >Process Id :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" >Process ID :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" onInput="validateAlpha()"/>
                 <br>  <span id="processid1"></span>
                   <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
@@ -188,6 +188,7 @@
  
  function validation()
  {
+	var error="";
 	 var number = /^[A-Za-z0-9]*$/;
 	 var chars = /[A-Za-z ]+$/;
 	 var processid = document.getElementById('processid').value;
@@ -203,110 +204,61 @@
 	var nummsg = num.fontcolor("red");
 	var wdmsg  = wds.fontcolor("red");
 	ermsg=ermsg.fontcolor("red");
-	 if(processid==""&&processname==""&&processowner=="")
-		 {
-		 document.getElementById("processid1").innerHTML=msg;
-		 document.getElementById("processname1").innerHTML=msg;
-		 document.getElementById("processowner1").innerHTML=msg;
-		 return false;
-		 }
-	
-	 else
-		 {
-		 document.getElementById("processid1").innerHTML="";
-		 document.getElementById("processname1").innerHTML="";
-		 document.getElementById("processowner1").innerHTML="";
-		 
-		 }
+	 document.getElementById("processid1").innerHTML="";
+	 document.getElementById("processname1").innerHTML="";
+	 document.getElementById("processowner1").innerHTML="";
+	 
 	 if(processid=="")
 		 {
 		 document.getElementById("processid1").innerHTML=msg;
-		 return false;
+		 error="true";
 		 }
-	 else if(processname=="")
-		 {
-		 document.getElementById("processname1").innerHTML=msg;
-		 return false;
-		 }
-	 else if(processowner=="")
-		 {
-		 document.getElementById("processowner1").innerHTML=msg;
-		 return false;
-		 }
-	 else
+	 else if(processid.charAt(0)==" ")
 	 {
-	 document.getElementById("processid1").innerHTML="";
-	 document.getElementById("processname1").innerHTML="";
-	 document.getElementById("processowner1").innerHTML="";
-	
+	 document.getElementById("processid1").innerHTML=spmsg;
+	 error="true";
 	 }
-	 
-	 if(processid.charAt(0)==" ")
-		 {
-		 document.getElementById("processid1").innerHTML=spmsg;
-		 return false;
-		 }
-	 else if(processname.charAt(0)==" ")
-		 {
-		 document.getElementById("processname1").innerHTML=spmsg;
-		 return false;
-		 }
-	 else if(processowner.charAt(0)==" ")
-		 {
-		 document.getElementById("processowner1").innerHTML=spmsg;
-		 return false;
-		 }
-	 else
-	 {
-	 document.getElementById("processid1").innerHTML="";
-	 document.getElementById("processname1").innerHTML="";
-	 document.getElementById("processowner1").innerHTML="";
-	
-	 }
-	 
-	
-	 if(processid.match(number))
-		 {
-		 document.getElementById("processid1").innerHTML="";
-		 }
-	 else {
-		 document.getElementById("processid1").innerHTML=nummsg;
-		 return false;
-	 }
-	 
-	 if(processid.length<4)
+	 else if(processid.length<4)
 	 {
 		 document.getElementById("processid1").innerHTML=ermsg;
-		 return false;
+		 error="true";
 	 }
-	 
-	 if(processname.match(chars))
+	 if(processname=="")
+		 {
+		 document.getElementById("processname1").innerHTML=msg;
+		 error="true";
+		 }
+	 else if(processname.charAt(0)==" ")
 	 {
-	 document.getElementById("processname1").innerHTML="";
+	 document.getElementById("processname1").innerHTML=spmsg;
+	 error="true";
 	 }
- 	else {
-	 document.getElementById("processname1").innerHTML=wdmsg;
-	 return false;
-     } 
-	 if(processname.length<4)
+	 else if(processname.length<4)
 	 {
 		 document.getElementById("processname1").innerHTML=ermsg;
-		 return false;
+		 error="true";
 	 }
 	 
-	 if(processowner.match(chars))
- 	{
-	 document.getElementById("processowner1").innerHTML="";
+	 if(processowner=="")
+		 {
+		 document.getElementById("processowner1").innerHTML=msg;
+		 error="true";
+		 }
+	 else if(processowner.charAt(0)==" ")
+	 {
+	 document.getElementById("processowner1").innerHTML=spmsg;
+	 error="true";
 	 }
- 	else {
-	 document.getElementById("processowner1").innerHTML=wdmsg;
-	 return false;
- 	}
-	 if(processowner.length<4)
+	 else if(processowner.length<4)
 	 {
 		 document.getElementById("processowner1").innerHTML=ermsg;
+		 error="true";
+	 }	
+	
+	 if(error=="true")
+		 {
 		 return false;
-	 }
+		 }
 	 
  }
  

@@ -53,7 +53,14 @@
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr class="row2">
+              
+                 <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Form Prefix :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
+                 <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
+                </tr>
+                  <tr class="row2">
                 
                   <td valign="middle" align="left" class="input_txt" width="30%">Description :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
@@ -61,12 +68,6 @@
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
                   </td>
-                </tr>
-                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
-                 <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
-                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>

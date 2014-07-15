@@ -211,12 +211,12 @@
 		  </div>
 		  </td>
 		  </tr>
-
+<tr height="200"></tr>
         				       				
         				       				</table>
         				       				</div>
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
- <jsp:include page="footer.jsp"></jsp:include>           				       				
+ <jsp:include page="footer.jsp"></jsp:include>    </html>       				       				
 <script language="javascript">
 
 function confirmation() {

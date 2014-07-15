@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -159,6 +162,12 @@
                </table>
                </form>
                <script type="text/javascript">
+               $(function() {
+           		$("#groupperson").on("keypress", function(e) {
+           			if (e.which === 32 && !this.value.length)
+           		        e.preventDefault();
+           		});
+           		});
                function validateAlpha4(){
             	    var textInput = document.getElementById("groupperson").value;
             	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
@@ -166,43 +175,37 @@
             	}
                function validation()
                {
+            	   document.getElementById("typeofNc1").innerHTML="";
+            	   document.getElementById("groupperson1").innerHTML="";
+            	   var error="";
             	   var chars = /[A-Za-z ]+$/;
             	   var typeofNc = document.getElementById('typeofNc').value;
             	   var groupperson = document.getElementById('groupperson').value;
             	   if(typeofNc == "")
             		   {
-            		   document.getElementById("typeofNc1").innerHTML="Please Select one";
-          			 	return false;
-            		   }
-            	   else{
-            		   document.getElementById("typeofNc1").innerHTML="";
-            	   }
+            		   document.getElementById("typeofNc1").innerHTML="Required Field should not be Empty";
+          			 	error="true";
+            		   }           	 
             	   
             	 if(groupperson == "")
             		   {
             		   document.getElementById("groupperson1").innerHTML="Required field should not be Empty";
-         			 	return false;
+            		   error="true";
             		   }
             	 else if(groupperson.length<4)
       		   {
       		   document.getElementById("groupperson1").innerHTML="Required and must be of length 4 to 32";
-  			 	return false;
+      		 error="true";
       		   }
             	   else if(groupperson.charAt(0)==" ")
             		   {
             		   document.getElementById("groupperson1").innerHTML="Required field should not be Spaces";
-        			 	return false;
+            		   error="true";
             		   }
-            	   else if(groupperson.match(chars))
-            		   {
-            		   document.getElementById("groupperson1").innerHTML="";
-            		  
-            		   }
-            	   else
-            		   {
-            		   document.getElementById("groupperson1").innerHTML="Required field should be letters";
-       			 		return false;
-            		   }
+            	              	 if(error=="true")
+            		 {
+            		 return false;
+            		 }
             	   
                }
                </script>

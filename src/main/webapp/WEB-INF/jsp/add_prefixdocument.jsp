@@ -184,7 +184,8 @@
 	 var desc = /[A-Za-z ]+$/;
 	 var docprefix = document.getElementById('docprefix').value;
 	 var document_id= document.getElementById('document_id').value;
-	 
+	  document.getElementById("docprefix1").innerHTML="";
+	   document.getElementById("document_id1").innerHTML="";
 	 if(docprefix =="")
 		 {
 		 document.getElementById("docprefix1").innerHTML="Required Field Should not be Empty";

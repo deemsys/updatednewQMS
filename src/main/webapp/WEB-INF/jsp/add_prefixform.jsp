@@ -1,6 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <html>
 <form method="post" action="add_formprefix">
   <!-- <div id="right_content" style="background-color:lightgrey;"> -->
@@ -123,18 +126,19 @@
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
+               <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" >Form Prefix :</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
+                   <br> <span id="docprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
+                </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%">Description :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" maxlength="32" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
                   <br> <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
                 </tr>
-                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" >Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
-                   <br> <span id="docprefix1" style="color:red"></span>
-                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
-                </tr>
+                
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>

@@ -56,7 +56,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                 
-                  <td valign="middle" align="left" class="input_txt" width="30%">Process Id :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Process ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" />${process.process_id}<span class="err"><form:errors path="Process.process_id"></form:errors></span>
                   
                   </td>
@@ -64,13 +64,13 @@
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" maxlength="32" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onInput="validateAlpha1()" />
-                  <br>  <span id="processname1"></span>
+                  <br><FONT SIZE="+1" color="red"> <span id="processname2" class="err"></span></FONT> 
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Process Owner :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" maxlength="32"  class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onInput="validateAlpha2()" />
-               <br>      <span id="processowner1"></span>
+               <br>  <FONT SIZE="+1" color="red">  <span id="processowner2"></span></FONT>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
@@ -85,6 +85,7 @@
              </div>
              </td>
              </tr>
+             <tr><td height="350"></td></tr>
              </table>
              </div>
              </form>
@@ -117,113 +118,72 @@
 	    document.getElementById("processowner").value = textInput;
 	}
  
- function validation()
- {
-	 var number =  /^[A-Za-z0-9]+$/;
+  function validation()
+ { 
+	var error="";
+	 var number = /^[A-Za-z0-9]*$/;
 	 var chars = /[A-Za-z ]+$/;
-	// var processid = document.getElementById('processid').value;
+	 var processid = document.getElementById('processid').value;
 	 var processname = document.getElementById('processname').value;
-	 var processowner = document.getElementById('processowner').value;
-	 var errord = "Required Field Should not be Empty";
-	 var space = "Required Field Should not be Spaces";
-	// var num = "Required Field Should be AlphaNumeric";
-	 var wds = "Required Field Should be Alphabate";
-	 var ermsg="Required and must be of length 4 to 32";
-	var msg = errord.fontcolor("red");
-	var spmsg = space.fontcolor("red");
-//	var nummsg = num.fontcolor("red");
-	var wdmsg  = wds.fontcolor("red");
-	ermsg=ermsg.fontcolor("red");
-	 if(processname==""&&processowner=="")
-		 {
-		// document.getElementById("processid1").innerHTML=msg;
-		 document.getElementById("processname1").innerHTML=msg;
-		 document.getElementById("processowner1").innerHTML=msg;
-		 return false;
-		 }
+	 var processowner = document.getElementById('processowner').value;	
 	
-	 else
-		 {
-		// document.getElementById("processid1").innerHTML="";
-		 document.getElementById("processname1").innerHTML="";
-		 document.getElementById("processowner1").innerHTML="";
-		 
-		 }
+	 document.getElementById("processname2").innerHTML="";
+	 document.getElementById("processowner2").innerHTML="";
+	 
 	/*  if(processid=="")
 		 {
 		 document.getElementById("processid1").innerHTML=msg;
-		 return false;
+		 error="true";
 		 }
-	 else */ if(processname=="")
-		 {
-		 document.getElementById("processname1").innerHTML=msg;
-		 return false;
-		 }
-	 else if(processowner=="")
-		 {
-		 document.getElementById("processowner1").innerHTML=msg;
-		 return false;
-		 }
-	 else
+	 else if(processid.charAt(0)==" ")
 	 {
-	 //document.getElementById("processid1").innerHTML="";
-	 document.getElementById("processname1").innerHTML="";
-	 document.getElementById("processowner1").innerHTML="";
-	
+	 document.getElementById("processid1").innerHTML=spmsg;
+	 error="true";
 	 }
-	/*  
-	 if(processid.charAt(0)==" ")
+	 else if(processid.length<4)
+	 {
+		 document.getElementById("processid1").innerHTML=ermsg;
+		 error="true";
+	 } */
+	 if(processname=="")
 		 {
-		 document.getElementById("processid1").innerHTML=spmsg;
-		 return false;
+		 document.getElementById("processname2").innerHTML="Required Field Should not be Empty";
+		 error="true";
 		 }
-	 else */ if(processname.charAt(0)==" ")
+	 else if(processname.charAt(0)==" ")
+	 {
+	 document.getElementById("processname2").innerHTML="Required Field Should not be Spaces";
+	 error="true";
+	 }
+	 else if(processname.length<4)
+	 {
+		 document.getElementById("processname2").innerHTML="Required and must be of length 4 to 32";
+		 error="true";
+	 }
+	 
+	 if(processowner=="")
 		 {
-		 document.getElementById("processname1").innerHTML=spmsg;
-		 return false;
+		 document.getElementById("processowner2").innerHTML="Required Field Should not be Empty";
+		 error="true";
 		 }
 	 else if(processowner.charAt(0)==" ")
+	 {
+	 document.getElementById("processowner2").innerHTML="Required Field Should not be Spaces";
+	 error="true";
+	 }
+	 else if(processowner.length<4)
+	 {
+		 document.getElementById("processowner2").innerHTML="Required and must be of length 4 to 32";
+		 error="true";
+	 }	
+	
+	 if(error=="true")
 		 {
-		 document.getElementById("processowner1").innerHTML=spmsg;
 		 return false;
 		 }
-	 else
-	 {
-	// document.getElementById("processid1").innerHTML="";
-	 document.getElementById("processname1").innerHTML="";
-	 document.getElementById("processowner1").innerHTML="";
-	
-	 }
 	 
-	 if(processname.match(chars))
-	 {
-	 document.getElementById("processname1").innerHTML="";
-	 }
- 	else {
-	 document.getElementById("processname1").innerHTML=wdmsg;
-	 return false;
-     } 
-	 if(processname.length<4)
-	 {
-		 document.getElementById("processname1").innerHTML=ermsg;
-		 return false;
-	 } 
-	 
-	 if(processowner.match(chars))
- 	{
-	 document.getElementById("processowner1").innerHTML="";
-	 }
- 	else {
-	 document.getElementById("processowner1").innerHTML=wdmsg;
-	 return false;
- 	}
-	 if(processowner.length<4)
-	 {
-		 document.getElementById("processowner1").innerHTML=ermsg;
-		 return false;
-	 }
  }
- 
+
  
  </script>     
 </body>

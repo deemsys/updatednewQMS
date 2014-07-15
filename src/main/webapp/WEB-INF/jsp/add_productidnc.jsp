@@ -121,7 +121,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Add Product Id</h2>
+              <h2>Add Product ID</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -129,7 +129,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt"  width="50%">Product Id :</td>
+                  <td valign="top" align="left" class="input_txt"  width="50%">Product ID :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" maxlength="32" class="input_txtbx" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()" />
                   <br> <span id="productidnc1" style="color:red"></span>
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
