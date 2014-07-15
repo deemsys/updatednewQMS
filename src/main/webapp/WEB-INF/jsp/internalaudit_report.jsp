@@ -67,14 +67,14 @@
 							
 							<tr class="row1" id="report_type_table">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-								Type Of Report :
+								Type of Report :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
-								<input type="radio" name="audit_report_type" value="0" id="id_type_pastduedate" checked/>Past Due Audits<br/>
+								<input type="radio" name="audit_report_type" value="0" id="id_type_pastduedate" checked/>Past due audits<br/>
 								<input type="radio" onchange="toggle4(this.value)" name="audit_report_type" value="1" id="id_type_auditnonconformance"/>Audits with NonConformance<br/>
 								
 								<input type="radio"  name="audit_report_type" value="2" id="id_type_areaofimprovement"/>Area of Improvements<br/>
-								<input type="radio"  name="audit_report_type" value="3" id="id_type_pastduebyauditor"/>Past Due audits by Auditor<br/>
+								<input type="radio"  name="audit_report_type" value="3" id="id_type_pastduebyauditor"/>Past due audits by auditor<br/>
 								<input type="radio" name="audit_report_type" value="4" id="id_type_schedule"/>Audit Schedule<br/>
 							</td>
 							</tr>
@@ -98,21 +98,21 @@
 							
 							<tr class="row1" id="userdefined_name" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-									Name to appear on the Report:</td>
+									Name to appear on the report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="report_title" class="input_txtbx" id="report_title"  style="width:40%;" value=""/>
+									<input type="text" name="report_title" class="input_txtbx" id="report_title"  onInput="return validatename(id)"; style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:</td>
+									Select fields required on the report:</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr>
 								
 								
-								<td><input type="checkbox" id="select_all"/>Select All<br><span id="reporterror" style="color:red"> </span></td>
+								<td><input type="checkbox" id="select_all"/>Select all<br><span id="reporterror" style="color:red"> </span></td>
 								</tr> 
 								<tr>
 								<td><input type="checkbox"  onclick="selectall(this.id)" name="report_field[]" value="report_id" id="1"/>ID</td>
@@ -274,6 +274,14 @@ $('#select_all').change(function() {
 });
 
 </script>
+
+<script>
+function validatename(id){
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    document.getElementById(id).value = textInput;
+}
+</script>
 <script>
 		function selectall(id) 
 		{
@@ -298,6 +306,7 @@ $('#select_all').change(function() {
 		}
 		
 </script>
+<br><br><br><br><br>
   <jsp:include page="footer.jsp"></jsp:include>
   
   
