@@ -147,12 +147,12 @@ else
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="8%">ID:</td>
+							    <td align="left" valign="middle" width="25%">ID&nbsp;:</td>
 							    <td align="left" valign="middle" width="5%">
-							    <input type="text" name="equipment_id" class="input_txtbx2" id="equipment_id"  value="${equipid}">
+							    <input type="text" name="equipment_id" class="input_txtbx" id="equipment_id"  value="${equipid}">
 							    </td>
-							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx2" id="equipment_name"
+							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name&nbsp;:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name"
 							    
 							     value="${equipname}">
 							    </td>
@@ -160,7 +160,7 @@ else
 							  	<td align="center" valign="middle" width="30%">
 							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenances"/></td>
 							 	<td align="center" valign="middle" width="30%">
-							  <input type="button" class="submit_btn1" name="clear" id="id_clear" value="clear">
+							<!--   <input type="button" class="submit_btn1" name="clear" id="id_clear" value="clear"> -->
 							  </tr>
 							</table>
 						</div>
@@ -169,7 +169,7 @@ else
 					<form action="deletemaintenance" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-							<td valign="top" align="left" width="5%">Select</td>
+							<td valign="top" align="left" width="20%">Select</td>
 							<td valign="top" align="left" width="20%">Equipment Id</td>
 							<td valign="top" align="left" width="20%">Equipment Name</td>
 							<td valign="top" align="left" width="20%">Equipment Model</td>
@@ -206,14 +206,15 @@ else
 							    	</c:if>
 						    		<c:if test="${fn:length(maintenanceForm.maintenance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>		
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>
@@ -258,6 +259,7 @@ else
 		  </td>
 		  </tr>
 		
+	<TR height="150"></TR>
 	</table></div>
 		<table height="2%"><tr><td></td></tr></table>
 								

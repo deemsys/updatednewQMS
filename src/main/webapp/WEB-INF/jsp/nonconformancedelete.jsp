@@ -146,11 +146,11 @@ else
 							<form action="findnonconformances" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    	    <td align="left" valign="middle" width="10%"> NC ID: </td>
-							    <td align="left" valign="middle"><input type="text" name="id" class="input_text" id="id" value="${id}"></td>
-							    <td align="left" valign="middle">Type of Non Conformance:</td>
+							    	    <td align="left" valign="middle" width="10%"> NC ID&nbsp;: </td>
+							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" value="${id}"></td>
+							    <td align="left" valign="middle">Type of Non Conformance&nbsp;:</td>
 							    <td valign="top" align="left" class="input_txt">
-				                  									<select name="type_of_nonconformance" id="type_of_nonconformance" class="input_cmbbx1">
+				                  									<select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
 				                  										<option value="">--Select--</option>
 						                    							<option
 						                    							<c:if test="${'Product Quality' eq type}"><c:out value="Selected"/></c:if>
@@ -177,7 +177,7 @@ else
 							    <td align="left" valign="middle"><input type="text" name="product_id" id="product_id" class="input_text"></td>
 							   -->
 							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Find" name="findnonconformance"></td>
-							    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
+							    <td align="center" valign="middle"><!-- <input type="reset" class="submit_btn1" value="Clear"></td> -->
 							  </tr>
 							</table>
 							</form>
@@ -186,8 +186,8 @@ else
 							    	<form action="deletenonconformance" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-							<td valign="top" align="left" width="5%">Select</td>
-							<td valign="top" align="left" width="5%">Id</td>
+							<td valign="top" align="left" width="10%">Select</td>
+							<td valign="top" align="left" width="15%">ID</td>
 									 <td valign="top" align="left" width="20%">Source of NonConformance</td>
 									<!-- <td valign="top" align="left" width="10%">External ID</td>  -->
 									<td valign="top" align="left" width="20%">Type of Non Conformance</td>
@@ -228,7 +228,7 @@ else
 							    	</c:if>
 							    	 <c:if test="${fn:length(nonConformanceForm.nonconformance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>
@@ -236,7 +236,7 @@ else
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

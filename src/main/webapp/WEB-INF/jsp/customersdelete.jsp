@@ -149,16 +149,16 @@ else
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx2" id="id" value="${cusid}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx2" id="name" value="${cusname}"></td>
-							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx2" value="${cusaddress}"></td>
+							    <td align="left" valign="middle" width="10%">ID&nbsp;:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" value="${cusid}"></td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name&nbsp;:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${cusname}"></td>
+							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address&nbsp;:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${cusaddress}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
 							     -->
 							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomers" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
+							  	<td align="center" valign="middle" width="20%"><!-- <input type="submit" class="submit_btn1" value="Clear" name="welcome" > --></td>
 							  
 							  </tr>
 							</table>
@@ -168,7 +168,7 @@ else
 					<form action="deletecustomers" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="10%">select</td>
+									<td valign="top" align="left" width="10%">Select</td>
 									<td valign="top" align="left" width="10%">Customer&nbsp;ID</td>
 					         	<td valign="top" align="left" width="10%">Customer Name</td>
 								<td valign="top" align="left" width="10%">Address</td>
@@ -199,14 +199,14 @@ else
 							    	
 							    	<c:if test="${fn:length(customersForm.customers)== 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    	</tr>
 							    	</c:if>
 						    			
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li><input type="submit" value="Delete"  class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

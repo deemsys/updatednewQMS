@@ -46,7 +46,6 @@ ul, li {
 	color:#fff;
 }
 ul.login-list {
-	
 }
 ul.login-list li {
 	font-size:12px;
@@ -488,6 +487,13 @@ ul.pagination li.page a:hover {
 	margin-left:10px;
 	font-size:11px;
 }
+.dropdown{
+	width:200px;
+	height:30px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
 .input_txtbx {
 	width:200px;
 	height:22px;
@@ -574,6 +580,7 @@ ul.pagination li.page a:hover {
 	outline:none;
 	/* text-shadow:1px 1px 1px #555; */
 }
+
 .submit_btn1 {
 	/* background:url(../images/login_btn.png) 0 0 no-repeat;
 	 */width:100px;

@@ -151,22 +151,22 @@ else
 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="20%">Process Area </td>
+							    <td align="left" valign="middle" width="20%">Process Area&nbsp;:</td>
 							   <!--  <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx2" id="recordtitle"><span class="err"><form:errors path="Form.responsibility"></form:errors></span></td>
 							    <td align="center" valign="middle" width="38%"> -->
 							    
 							     <td valign="top" align="left" class="input_txt" >
                
-               <select name="process" id="id_inpprocess"  class="input_cmbbx1" style="width:200px;">
+               <select name="process" id="id_inpprocess"  class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                 <option value="${processes.process_name}"<c:if test="${processes.process_name==processarea}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
                </c:forEach>
                </select>
               </td>
-               <td valign="top" align="left" class="input_txt" >
-							  <input type="submit" value="Find" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							  <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn" ></td>
+               <td valign="top" align="right" class="input_txt" >
+							  <input type="submit" value="Find" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <td align="left" valign="middle" width="38%" style="padding-left: 40px"><!-- <input type="submit" value="Clear" class="submit_btn1" ></td> -->
 							  </tr>
 							</table>
 							
@@ -176,7 +176,7 @@ else
 					<form action="deleteform" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="10%">select</td>
+									<td valign="top" align="left" width="10%">Select</td>
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
 									<td valign="top" align="left" width="10%"></td>
@@ -210,7 +210,8 @@ else
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<br>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

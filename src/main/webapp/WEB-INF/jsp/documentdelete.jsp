@@ -148,14 +148,14 @@ else
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="30%"> Document Type: </td>
+							    <td align="left" valign="middle" width="30%"> Document Type&nbsp;: </td>
 							    <td><select name="document_type" id="search_document_type" class="input_txtbx" style="width:200px;">
               					<option value="">--Select--</option>
                 				<c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}" <c:if test="${documenttype.document_type==documentMain}"><c:out value="selected"></c:out></c:if>>${documenttype.document_type}</option>
 			                  </c:forEach> </select></td>
                
-							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process Area:</td>
+							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process Area&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%">
 							    <select name="search_process" id="search_process"  class="input_txtbx" style="width:200px;">
                					<option value="">--Select--</option>
@@ -164,7 +164,7 @@ else
              				  </c:forEach>
                					</select></td>   
 							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  "></td>
-							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
+							    <td align="center" valign="middle" width="38%"><!-- <input type="reset" value="Clear" class="submit_btn1"> --></td>
 							 </tr>
 							</table>
 							
@@ -230,7 +230,8 @@ else
 
 
 								</table>
-								<li class="page"><input type="submit" value="Delete" class="paging_select"></li>
+								<br>
+								<li class="page">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>
@@ -273,7 +274,7 @@ else
               </c:choose>			 	
 		 
 		</ul></div></td></table></div>
-		<table height="2%"><tr><td></td></tr></table>
+		<table height="2%"><tr><td></td></tr><tr height="50"></tr></table>
 								
 <script  language="javascript">
 
