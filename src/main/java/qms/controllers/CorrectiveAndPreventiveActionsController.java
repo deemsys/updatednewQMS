@@ -473,7 +473,7 @@ public class CorrectiveAndPreventiveActionsController
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.edit_CorrectiveAndPreventiveActions(capa_id));
 
 		model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
-		
+		model.addAttribute("menu","corrective");
 		return "edit_correctiveactions";
 	}
 	
@@ -499,6 +499,7 @@ public class CorrectiveAndPreventiveActionsController
 			CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 			correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.edit_CorrectiveAndPreventiveActions(correctiveAndPreventiveActions.getCapa_id()));
 			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
+			model.addAttribute("menu","corrective");
 	        return "edit_correctiveactions";
 		}
 		byte[] buffer;

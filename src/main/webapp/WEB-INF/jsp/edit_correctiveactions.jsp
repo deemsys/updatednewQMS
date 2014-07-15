@@ -517,7 +517,7 @@ error="true";
 }
 else if(why.substring(0,1)==" ")
 {
-	alert("space");
+	
 document.getElementById('whyerr').innerHTML="Initial space not allowed";
  error="true";
 }
@@ -798,17 +798,17 @@ function use5whychecked()
 {
 	
 	var use_5_why_in_system = document.getElementById('use_5_why_in_system').checked; 
-	var e4=document.getElementById("5why");
-	var e5=document.getElementById("why?");
+	var e4=document.getElementById('5why');
+	var e5=document.getElementById('why?');
 	
 	 if(!use_5_why_in_system)
-		{
-		 	e4.style.display="block";
-	 		e5.style.display="block";
+		{ 
+		 e4.style.display="table-cell";
+			e5.style.display="table-cell";
+	     
  		}
 	 else 
 	 {
-		 alert("notchecked");
 	 e4.style.display="none";
 	 e5.style.display="none";
 	 }
