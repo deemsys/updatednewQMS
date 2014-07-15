@@ -148,14 +148,14 @@ else
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="15%"> Document Type: </td>
+							    <td align="left" valign="middle" width="30%"> Document Type: </td>
 							    <td><select name="document_type" id="search_document_type" class="input_txtbx" style="width:200px;">
               					<option value="">--Select--</option>
                 				<c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}" <c:if test="${documenttype.document_type==documentMain}"><c:out value="selected"></c:out></c:if>>${documenttype.document_type}</option>
 			                  </c:forEach> </select></td>
                
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Process Area:</td>
+							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Process Area:</td>
 							    <td align="left" valign="middle" width="10%">
 							    <select name="search_process" id="search_process"  class="input_txtbx" style="width:200px;">
                					<option value="">--Select--</option>
@@ -172,13 +172,13 @@ else
 					<form action="deletedocument" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="10%">select</td>
+									<td valign="top" align="left" width="10%">Select</td>
 									<td valign="top" align="left" width="10%">Document Id</td>
 									<td valign="top" align="left" width="10%">Document Type</td>
 									<td valign="top" align="left" width="10%">Process Area</td>
 									<td valign="top" align="left" width="10%">Media Type</td>		
 	          						<td valign="top" align="center" width="15%">External Document(Y/N)</td>
-									<td valign="top" align="left" width="10%"></td>
+								<!-- 	<td valign="top" align="left" width="10%"></td> -->
 									
 									
 									</tr>
@@ -208,7 +208,7 @@ else
 										<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
 										</c:otherwise>
 										</c:choose>	
-											<td valign="top" align="center" width="15%">
+											<td valign="top" align="left" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<c:choose>
 											<c:when test="${documentMains.external=='Yes'}">
 											<c:out value="Yes"></c:out>
@@ -220,7 +220,7 @@ else
 											
 											
 											
-											<td valign="top" align="left" width="15%">
+											
 											
 											
 											</td>
@@ -230,7 +230,7 @@ else
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li class="page"><input type="submit" value="Delete" class="paging_select"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>
