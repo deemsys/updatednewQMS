@@ -67,7 +67,7 @@
                      
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" >
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:57px;border:none;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:100px;">
                
              <!--   <option value = "">Select Form Prefix</option> -->
 			              <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
@@ -78,8 +78,8 @@
             
                
               <input type="hidden" value="${docform.form_or_rec_id}" id="generated_id90" /> 
-               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx" style="width:200px;" value="" /> 
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" onkeypress="return validate(event);" style="height:22px;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
+               <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx" style="width:100px;" value="" /> 
+              <input type="text" value="" id="form_or_rec_id" class="input_txtbx" onkeypress="return validate(event);" style="height:22px;width:100px;" name="form_or_rec_id" onblur="change_to_label();"/>
               <br><span id="formiderror" style="color:red"></span>
               <span id="quality3err" style="color:red;"></span>
               <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
@@ -504,7 +504,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 else if(title.charAt(0)==" ")
 	 {
 	 
-	 document.getElementById("title1").innerHTML="Spaces are not allowed";
+	 document.getElementById("title1").innerHTML="Initial Space not allowed";
 	 error="true";
 	 }
 	 else if(!title.match(spl))
@@ -512,6 +512,12 @@ var spl =  /^[A-Za-z0-9]*$/;
  		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
  		error="true";
  		 }
+
+	 else if((title.length < 4) || (title.length > 32))
+		 {
+		 document.getElementById("title1").innerHTML="Required Field Should be Length 4 to 32";
+		 error="true";
+		 }
  	 else
  		 {
  		 document.getElementById("title1").innerHTML="";
@@ -525,7 +531,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 }
 	 else if(comments.charAt(0)==" ")
 	 {
-		 document.getElementById("comments1").innerHTML="Spaces are Not allowed";
+		 document.getElementById("comments1").innerHTML="Initial Space Not allowed";
 		 error="true";
 	 }
 
@@ -552,10 +558,15 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 }
 	    else if(responsibility.charAt(0)==" ")
 		 {
-			 document.getElementById("responsibility1").innerHTML="Spaces are Not allowed";
+			 document.getElementById("responsibility1").innerHTML="Initial Space Not allowed";
 			 error="true";
 		 }
-	    
+
+		 else if((responsibility.length < 4) || (responsibility.length > 32))
+			 {
+			 document.getElementById("responsibility1").innerHTML="Required Field Should be Length 4 to 32";
+			 error="true";
+			 }
 	    else if(!responsibility.match(spl))
  		 {
  		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
@@ -586,10 +597,15 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 
 		 if(form_id == "")
 		 {
-		alert("form id");
+		
 		 document.getElementById("formiderror").innerHTML="Required Field Should not be Empty";
 			error ="true";
 		 }
+		 else if((form_id.length < 4) || (form_id.length > 32))
+			 {
+			 document.getElementById("formiderror").innerHTML="Required Field Should be Length 4 to 32";
+			 error="true";
+			 } 
 	 else
 		{
 		 document.getElementById("formiderror").innerHTML= "";
@@ -717,7 +733,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 			}
 			else
 				{
-				 document.getElementById("filter1error").innerHTML="Select Issuer";
+				 document.getElementById("filter1error").innerHTML="Select Approver";
 					error ="true";
 				}
 			
@@ -734,11 +750,11 @@ var spl =  /^[A-Za-z0-9]*$/;
 		}	
 		
 		else if(issuer1.length < 2){
-			 document.getElementById("filter1error").innerHTML="Issuer Doesn't exit";
+			 document.getElementById("filter1error").innerHTML="Approver Doesn't exit";
 				error ="true";
 		 }
 		 else if(filter_value1.length == 1){
-			 document.getElementById("filter1error").innerHTML="Please Select Issuer";
+			 document.getElementById("filter1error").innerHTML="Please Select Approver";
 				error ="true";
 		 }
 		 else{
@@ -808,7 +824,7 @@ window.onload = function(){
     document.getElementById("form_or_rec_id").value = res[1];
 	}
 
-}
+};
 	</script>
 
 <script type="text/javascript">

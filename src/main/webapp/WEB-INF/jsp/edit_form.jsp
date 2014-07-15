@@ -30,7 +30,7 @@
 				            <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="form_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Form Report
+									Reports
 									
 								</a>
 							</li>
@@ -51,9 +51,8 @@
 	
 	          <tr class="row2">
                             <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
-			<td valign="top" align="left" class="input_txt" width="30%" >
-			
-		
+	
+		<td valign="top" align="left" class="input_txt" width="30%">
 			<a id="formid">
 			
 					<input type="hidden" id="formid"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
@@ -66,8 +65,18 @@
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
                </select>
-              
+            
                 <label id="changeafter" style="display:none;" ></label> 
+                
+                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="display:none;height:22px;background-color:none;"  onblur="change_to_label()" onInput="return validatename3(id);"/><span id="quality3err" style="color:red;"></span>
+                <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
+               <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
+            <label id="changeafter" style="color:red;"></label>
+            <span id="formiderror" style="color:red"></span>
+            <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
+            </td>
+               
+            <!--     <label id="changeafter" style="display:none;" ></label> 
                 
                   <input type="text" value="" id="form_or_rec_id"  style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()" onInput="return validatename3(id);"/><span id="quality3err" style="color:red;"></span>
                 <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
@@ -76,8 +85,7 @@
             <span id="formiderror" style="color:red"></span>
             <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             
-               
-              <td valign="top" align="left" class="input_txt" width="30%">Responsibility :</td>
+             -->                 <td valign="top" align="left" class="input_txt" width="30%">Responsibility :</td>
 			  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" class="input_txtbx" id="responsibility"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"

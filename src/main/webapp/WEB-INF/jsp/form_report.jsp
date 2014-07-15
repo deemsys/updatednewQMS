@@ -133,6 +133,7 @@
 								
 								<td><input type="checkbox" name="report_field[]" value="location" id="1"/>Location</td>
 								<td><input type="checkbox" name="report_field[]" value="form_or_rec_id" id="2"/>Form/Rec Id</td>
+					      		<td><input type="checkbox" name="report_field[]" value="revision_id" id="14"/>Revision No</td>
 					      		</tr>
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="responsibility" id="3"/>Responsibility</td>
@@ -153,7 +154,7 @@
 								<td><input type="checkbox" name="report_field[]" value="issuer" id="12"/>Issuer</td>
 								<!-- <td><input type="checkbox" name="report_field[]" value="status" id="id_field_status"/>Status</td> -->
 								<td><input type="checkbox" name="report_field[]" value="comments" id="13"/>Comments</td>
-								<td><input type="checkbox" name="report_field[]" value="revision_id" id="14"/>Revision No</td>
+								
 					      		</tr>
 								</table>
 								
