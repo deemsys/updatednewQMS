@@ -147,13 +147,13 @@ else
 			     <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">CAPA Id</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx1" id="capa_id" value="${capa}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;Request date</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx1" id="datepicker" value="${date}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;Actions</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx1" value="${action}"></td>
-							    <td align="center" valign="middle" width="38%">
+							    <td align="left" valign="middle" width="10%">CAPA Id:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}"></td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Request date:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Actions:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx" value="${action}"></td>
+							    <td align="center" valign="middle" width="20%">
 							  <input type="submit" class="submit_btn1"  value="Search" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 	</table></div></form>
@@ -161,13 +161,13 @@ else
 					<form action="deletecorrectiveactions" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-							<td valign="top" align="left" width="20%">Select</td>
-							<td valign="top" align="left" width="20%">CAPA ID</td>
-							<td valign="top" align="left" width="20%">NC ID</td>
-							<td valign="top" align="left" width="20%">CAPA Requester</td>
-							<td valign="top" align="left" width="20%">CAPA Due Date</td>
-							<td valign="top" align="left" width="20%">File</td>
-							<td valign="top" align="left" width="20%">
+							<td valign="top" align="left" width="10%">Select</td>
+							<td valign="top" align="left" width="10%">CAPA ID</td>
+							<td valign="top" align="left" width="10%">NC ID</td>
+							<td valign="top" align="left" width="10%">CAPA Requester</td>
+							<td valign="top" align="left" width="10%">CAPA Due Date</td>
+							<td valign="top" align="left" width="10%">File</td>
+							
 							</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -183,9 +183,9 @@ else
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${correctiveAndPreventiveActions.capa_id}"/></td>
 					 			           	<td valign="top" align="left"  width="10%">${correctiveAndPreventiveActions.capa_id}</td> 
 									        <%-- <td valign="top" align="left" width="10%">${correctiveAndPreventiveActions.equipment_id}</td> --%>
-									        <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.nc_id}</td>
-        				       				 <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.capa_requestor}</td>
-        				       				 <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.capa_due_date}</td>
+									        <td valign="top" align="left" width="10%">${correctiveAndPreventiveActions.nc_id}</td>
+        				       				 <td valign="top" align="left" width="10%">${correctiveAndPreventiveActions.capa_requestor}</td>
+        				       				 <td valign="top" align="left" width="10%">${correctiveAndPreventiveActions.capa_due_date}</td>
         				       				<c:choose>
 											<c:when test="${correctiveAndPreventiveActions.attachment_name!='null'}">
 											<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc1?capa_id=${correctiveAndPreventiveActions.capa_id}"></c:out>">Download</a></td>
@@ -195,11 +195,6 @@ else
 										</c:choose>	
         				       				<%--  <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.action}</td> --%>
         				       				
-											<td valign="top" align="center" width="15%">
-											
-											
-											
-											<td valign="top" align="left" width="15%">
 											
 											
 											</td>
@@ -208,7 +203,7 @@ else
 							    	</c:if>
 							    	<c:if test="${fn:length(correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>
@@ -216,7 +211,7 @@ else
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

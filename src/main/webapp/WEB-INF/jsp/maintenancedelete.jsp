@@ -46,7 +46,7 @@ else
 	
 				<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="documentdelete" class="<c:choose>
-								<c:when test="${menu=='admin'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
+								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									Document
 									
 								</a>
@@ -60,7 +60,7 @@ else
 							</li>
 							 <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="maintenancedelete" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Maintenance
 									
 								</a>
@@ -158,7 +158,7 @@ else
 							    </td>
 							    
 							  	<td align="center" valign="middle" width="30%">
-							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenances"/></td>
+							  	<input type="submit" class="submit_btn1" value="Search" id="id_submit" name="search_maintenances"/></td>
 							 	<td align="center" valign="middle" width="30%">
 							<!--   <input type="button" class="submit_btn1" name="clear" id="id_clear" value="clear"> -->
 							  </tr>
@@ -206,7 +206,7 @@ else
 							    	</c:if>
 						    		<c:if test="${fn:length(maintenanceForm.maintenance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red;"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>		

@@ -533,7 +533,7 @@ public class EmployeeController
 				
 				
 				model.addAttribute("employeeForm", employeeForm);
-				model.addAttribute("menu","employee");
+				model.addAttribute("menu","admin");
 				return "employeesdelete";
 				
 			}
@@ -552,7 +552,7 @@ public class EmployeeController
 		 	model.addAttribute("employeeForm",employeeForm);	
 		  	model.addAttribute("noofrows",5);   
 		    model.addAttribute("currentpage",page);
-		    model.addAttribute("menu","employee");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","viewall");
 		    
 		    return "employeesdelete";
@@ -571,10 +571,10 @@ public class EmployeeController
 
 		  //	model.addAttribute("noofrows",5);    
 		   //narrativereportForm.getNarrativereport().size()
-		    model.addAttribute("menu","employee");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
 		      
-		    	model.addAttribute("menu","employee");
+		    	model.addAttribute("menu","admin");
 		        model.addAttribute("success","false");
 		        model.addAttribute("button","close");
 		        return "employeesdelete";

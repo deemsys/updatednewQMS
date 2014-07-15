@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
@@ -163,9 +164,9 @@ else
               					 <option value="${processes.process_name}" <c:if test="${processes.process_name==documentMain1}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
              				  </c:forEach>
                					</select></td>   
-							    <td align="center" valign="middle" width="38%"><input type="submit" value="Find" class="submit_btn1"  "></td>
-							    <td align="center" valign="middle" width="38%"><!-- <input type="reset" value="Clear" class="submit_btn1"> --></td>
-							 </tr>
+							    <td align="center" valign="middle" width="38%"><input type="submit" value="Search" class="submit_btn1"  "></td>
+							    <!-- <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>
+							  --></tr>
 							</table>
 							
 						</div></form>
@@ -185,7 +186,7 @@ else
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							<c:if test="${fn:length(documentMainForm.documentMains) gt 0}">	       		
 									<c:forEach items="${documentMainForm.documentMains}" var="documentMains" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -218,19 +219,20 @@ else
 											</c:otherwise>							
 											</c:choose>
 											
-											
-											
-											
-											
-											
 											</td>
 										</tr>
 							    	</c:forEach>
-						    				
-
+									</c:if>			    				
+			
+							<c:if test="${fn:length(documentMainForm.documentMains) == 0}">	
+						    		<tr class="row1">
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
+							    		
+							    	</tr>
+							    	</c:if>	
 
 								</table>
-								<br>
+								
 								<li class="page">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>

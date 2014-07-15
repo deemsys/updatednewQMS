@@ -415,7 +415,7 @@ public class CustomerFeedbackController
 		        model.addAttribute("currentpage",1);
 		    	model.addAttribute("customerFeedbackForm", customerFeedbackForm);
 			
-			model.addAttribute("menu","customer");
+			model.addAttribute("menu","admin");
 	        System.out.println("finding result");
 	        return "customersfeedbackdelete";		
 			}
@@ -430,7 +430,7 @@ public class CustomerFeedbackController
 			model.addAttribute("customerFeedbackForm",customerFeedbackForm);	
 		  	model.addAttribute("noofrows",5);   
 		    model.addAttribute("currentpage",page);
-		    model.addAttribute("menu","customer");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","viewall");
 		    
 		    return "customersfeedbackdelete";
@@ -449,10 +449,10 @@ public class CustomerFeedbackController
 
 		  	model.addAttribute("noofrows",5);    
 		   //narrativereportForm.getNarrativereport().size()
-		  	model.addAttribute("menu","customer");
+		  	model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
 		      
-		    	model.addAttribute("menu","customer");
+		    	model.addAttribute("menu","admin");
 		        model.addAttribute("success","false");
 		        model.addAttribute("button","close");
 		        return "customersfeedbackdelete";

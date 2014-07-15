@@ -105,7 +105,7 @@ else
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="supplierperformancedelete" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Supplier Performance
 								</a>
 							</li>
@@ -148,14 +148,14 @@ else
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">Supplier Name:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbox" id="suppliername" value="${suppliername}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Phone:</td>
-								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbox" value="${phone}"></td>							    
+							    <td align="left" valign="middle" width="15%">Supplier Name:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbx" id="suppliername" value="${suppliername}"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Phone:</td>
+								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbox" value="${email}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbx" value="${email}"></td>
 							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformances" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
+							  	<!-- <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td> -->
 							  
 							  </tr>
 							  
@@ -169,12 +169,12 @@ else
 								<td valign="top" align="left" width="10%">Select</td>
 								<td valign="top" align="left" width="10%">&nbsp;ID</td>
 					         	<td valign="top" align="left" width="10%">Supplier Name</td>
-					         	 <td valign="top" align="left" width="15%">Address</td>
-          						<td valign="top" align="left" width="5%">City</td>
+					         	 <td valign="top" align="left" width="10%">Address</td>
+          						<td valign="top" align="left" width="10%">City</td>
           						<td valign="top" align="left" width="10%">State</td>
-          						<td valign="top" align="left" width="5%">Country</td>
-          						<td valign="top" align="left" >Phone</td>
-          						<td valign="top" align="left" >e_mail address</td>
+          						<td valign="top" align="left" width="10%">Country</td>
+          						<td valign="top" align="left" width="10%">Phone</td>
+          						<td valign="top" align="left" width="10%">e_mail address</td>
           				</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -188,28 +188,20 @@ else
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${supplierperformance.supplier_id}"/></td>
 				  	 			           	<td valign="top" align="left"  width="10%">${supplierperformance.supplier_id}</td> 
-									       <td valign="top" align="left" width="15%">${supplierperformance.supplier_name}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.address}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.city}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.state}</td>
-									       <td valign="top" align="left" width="15%">${supplierperformance.country}</td>
-											<td valign="top" align="left" width="15%">${supplierperformance.phone}</td>
-											<td valign="top" align="left" width="15%">${supplierperformance.email_address}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.supplier_name}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.address}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.city}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.state}</td>
+									       <td valign="top" align="left" width="10%">${supplierperformance.country}</td>
+											<td valign="top" align="left" width="10%">${supplierperformance.phone}</td>
+											<td valign="top" align="left" width="10%">${supplierperformance.email_address}</td>
 											
-											<td valign="top" align="center" width="15%">
-											
-											
-											
-											<td valign="top" align="left" width="15%">
-											
-											
-											</td>
 										</tr>
 							    	</c:forEach>
 							    	</c:if>
 							    	<c:if test="${fn:length(supplierPerformanceForm.supplierperformance) == 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    	</tr>
 							    	</c:if>
 						    	
@@ -218,7 +210,7 @@ else
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

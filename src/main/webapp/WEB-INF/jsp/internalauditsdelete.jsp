@@ -150,18 +150,18 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
  								    <td align="left" valign="middle" width="10%">Audit ID:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx1" id="id" value="${id}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;Process:</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" value="${id}"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;Process:</td>
 							    <td align="left" valign="middle" width="10%">
 							    <%-- <input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td> --%>
-							    <select name="process" id="search_process"  class="input_cmbbx1" style="width:200px;">
+							    <select name="process" id="search_process"  class="input_txtbx" style="width:200px;">
                					 <option value="" >--Select--</option>
               					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
               					 <option value="${processes.process_name}" <c:if test="${processes.process_name==process}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
              				  	</c:forEach>
              				  </select>
              				  	</td> 
-							    <td align="left" valign="middle" width="15%">&nbsp;Auditee name:</td>
+							    <td align="left" valign="middle" width="20%">&nbsp;Auditee name:</td>
 							    <td align="left" valign="middle" width="10%">
 							    <select name="auditee_name" id="id_inpprocess"  class="input_txtbx" style="height:20px;">
                						<option value="">--Select--</option>
@@ -172,7 +172,7 @@ else
                					</td>
 
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1" value="Search" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  </tr>
 							</table>
 						</div>
@@ -181,14 +181,14 @@ else
 					<form action="deleteinternalaudits" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-							<td valign="top" align="left" width="5%">Select</td>
+							<td valign="top" align="left" width="10%">Select</td>
 							<td valign="top" align="left" width="10%">Audit Id</td>
 									<td valign="top" align="left" width="10%">Process</td>
-									<td valign="top" align="left" width="15%">Audit Due Date</td>
-									<td valign="top" align="left" width="15%">Audit Start Date</td>
+									<td valign="top" align="left" width="10%">Audit Due Date</td>
+									<td valign="top" align="left" width="10%">Audit Start Date</td>
 									<td valign="top" align="left" width="10%">Auditor</td>									
-									<td valign="top" align="left" width="15%">Finding</td>
-									<td valign="top" align="left" width="15%">Completion Date</td>
+									<td valign="top" align="left" width="12%">Finding</td>
+									<td valign="top" align="left" width="10%">Completion Date</td>
 									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -206,30 +206,22 @@ else
 											<td valign="top" align="left" width="10%">${internalAudits.audit_due_date}</td>
 											<td valign="top" align="left" width="10%">${internalAudits.audit_start_date}</td>
 											<td valign="top" align="left" width="10%">${internalAudits.auditor}</td>
-											<td valign="top" align="left" width="15%">${internalAudits.finding}</td>
-											<td valign="top" align="left" width="15%">${internalAudits.completion_date}</td>
-											
-											<td valign="top" align="center" width="15%">
-											
-											
-											
-											<td valign="top" align="left" width="15%">
-											
-											
+											<td valign="top" align="left" width="12%">${internalAudits.finding}</td>
+											<td valign="top" align="left" width="10%">${internalAudits.completion_date}</td>
 											</td>
 										</tr>
 							    	</c:forEach>
 						    		</c:if>
 						    		<c:if test="${fn:length(internalAuditsForm.internalAudits)== 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    	</tr>
 							    	</c:if>
 						    			
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

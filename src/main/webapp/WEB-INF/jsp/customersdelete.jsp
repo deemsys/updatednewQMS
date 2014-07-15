@@ -73,7 +73,7 @@ else
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="customersdelete" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
 									Customers
 								</a>
 							</li>
@@ -157,7 +157,7 @@ else
 							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${cusaddress}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
 							     -->
-							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomers" ></td>
+							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomers" ></td>
 							  	<td align="center" valign="middle" width="20%"><!-- <input type="submit" class="submit_btn1" value="Clear" name="welcome" > --></td>
 							  
 							  </tr>
@@ -199,14 +199,14 @@ else
 							    	
 							    	<c:if test="${fn:length(customersForm.customers)== 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    	</tr>
 							    	</c:if>
 						    			
 
 
 								</table>
-								<li><input type="submit" value="Delete"  class="submit_btn1"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete"  class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

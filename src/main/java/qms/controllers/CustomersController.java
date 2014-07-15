@@ -264,7 +264,7 @@ public class CustomersController
 				model.addAttribute("success","false");
 				model.addAttribute("currentpage",1);
 				model.addAttribute("customersForm",customersForm);
-				model.addAttribute("menu", "customer");
+				model.addAttribute("menu", "admin");
 				System.out.println("finding....");
 				return "customersdelete";
 			}
@@ -282,7 +282,7 @@ public class CustomersController
 			model.addAttribute("customersForm", customersForm);	
 		  	model.addAttribute("noofrows",5);
 		    model.addAttribute("currentpage",page);
-		    model.addAttribute("menu","customer");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","viewall");
 		    
 		    return "customersdelete";
@@ -306,10 +306,10 @@ public class CustomersController
 
 		 // 	model.addAttribute("noofrows",5);    
 		   //narrativereportForm.getNarrativereport().size()
-		    model.addAttribute("menu","document");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
 		      
-		    	model.addAttribute("menu","document");
+		    	model.addAttribute("menu","admin");
 		        model.addAttribute("success","false");
 		        model.addAttribute("button","close");
 		        return "customersdelete";

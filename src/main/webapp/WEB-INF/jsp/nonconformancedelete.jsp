@@ -176,7 +176,7 @@ else
 							  --><!--    <td align="left" valign="middle">Product Id:</td>
 							    <td align="left" valign="middle"><input type="text" name="product_id" id="product_id" class="input_text"></td>
 							   -->
-							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Find" name="findnonconformance"></td>
+							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Search" name="findnonconformance"></td>
 							    <td align="center" valign="middle"><!-- <input type="reset" class="submit_btn1" value="Clear"></td> -->
 							  </tr>
 							</table>
@@ -228,7 +228,7 @@ else
 							    	</c:if>
 							    	 <c:if test="${fn:length(nonConformanceForm.nonconformance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>

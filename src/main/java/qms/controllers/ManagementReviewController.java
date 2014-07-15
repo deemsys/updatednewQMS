@@ -420,7 +420,7 @@ public String searchreviews(HttpSession session,@RequestParam("review_id") Strin
 	model.addAttribute("success","false");
 	model.addAttribute("currentpage",1);
 	model.addAttribute("managementreviewform",managementreviewform);
-	model.addAttribute("menu","managementreview");
+	model.addAttribute("menu","admin");
 	return "managementdelete";
 
 }
@@ -437,7 +437,7 @@ public String viewdeletemanagementreport_page(HttpServletRequest request,
 	model.addAttribute("managementreviewform",managementreviewform);	
 	model.addAttribute("noofrows",5);   
  model.addAttribute("currentpage",page);
- model.addAttribute("menu","managementreview");
+ model.addAttribute("menu","admin");
  model.addAttribute("button","viewall");
  model.addAttribute("success","true");
  return "managementdelete";
@@ -460,10 +460,10 @@ public String viewalldeletemanagementreport(HttpSession session,HttpServletReque
 
 	model.addAttribute("noofrows",5);    
 //narrativereportForm.getNarrativereport().size()
- model.addAttribute("menu","managementreview");
+ model.addAttribute("menu","admin");
  model.addAttribute("button","close");
    
- 	model.addAttribute("menu","managementreview");
+ 	model.addAttribute("menu","admin");
      model.addAttribute("success","false");
      model.addAttribute("button","close");
      return "managementdelete";

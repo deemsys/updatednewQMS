@@ -698,7 +698,7 @@ public class CorrectiveAndPreventiveActionsController
 			
 			
 			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);
-			model.addAttribute("menu","corrective");
+			model.addAttribute("menu","admin");
 			return "correctiveactionsdelete";
 	}
 		//Search Operation Results pagination for Admin's Setup created on 28-june-2014. 
@@ -715,7 +715,7 @@ public class CorrectiveAndPreventiveActionsController
 			model.addAttribute("correctiveAndPreventiveActionsForm", correctiveAndPreventiveActionsForm);	
 		  	model.addAttribute("noofrows",5);
 		    model.addAttribute("currentpage",page);
-		    model.addAttribute("menu","corrective");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","viewall");
 		    
 		    return "correctiveactionsdelete";
@@ -736,10 +736,10 @@ public class CorrectiveAndPreventiveActionsController
 
 		 // 	model.addAttribute("noofrows",5);    
 		   //narrativereportForm.getNarrativereport().size()
-		    model.addAttribute("menu","corrective");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
 		      
-		    	model.addAttribute("menu","corrective");
+		    	model.addAttribute("menu","admin");
 		        model.addAttribute("success","false");
 		        model.addAttribute("button","close");
 		        return "correctiveactionsdelete";

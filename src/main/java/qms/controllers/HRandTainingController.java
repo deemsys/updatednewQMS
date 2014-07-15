@@ -252,7 +252,7 @@ public class HRandTainingController {
 						model.addAttribute("success","false");
 						model.addAttribute("currentpage",1);
 						model.addAttribute("hRandTrainingForm",hRandTrainingForm);
-						model.addAttribute("menu", "hr");
+						model.addAttribute("menu", "admin");
 						System.out.println("finding....");
 						return "hrdelete";
 					}
@@ -271,7 +271,7 @@ public class HRandTainingController {
 				 	model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
 				  	model.addAttribute("noofrows",5);   
 				    model.addAttribute("currentpage",page);
-				    model.addAttribute("menu","hr");
+				    model.addAttribute("menu","admin");
 				    model.addAttribute("button","viewall");
 				    return "hrdelete";
 				    
@@ -295,10 +295,10 @@ public class HRandTainingController {
 
 				  	model.addAttribute("noofrows",5);    
 				   //narrativereportForm.getNarrativereport().size()
-				    model.addAttribute("menu","hr");
+				    model.addAttribute("menu","admin");
 				    model.addAttribute("button","close");
 				      
-				    	model.addAttribute("menu","hr");
+				    	model.addAttribute("menu","admin");
 				        model.addAttribute("success","false");
 				        model.addAttribute("button","close");
 				        return "hrdelete";

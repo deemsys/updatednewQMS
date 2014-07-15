@@ -111,7 +111,7 @@ return "maintenance_list";
 			model.addAttribute("success","false");
 			model.addAttribute("currentpage",1);
 	    	model.addAttribute("maintenanceForm",maintenanceForm);
-	    	model.addAttribute("menu","maintenance");	
+	    	model.addAttribute("menu","admin");	
 		return "maintenancedelete";
 		}
 
@@ -127,7 +127,7 @@ return "maintenance_list";
     	model.addAttribute("maintenanceForm",maintenanceForm);
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
-	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","viewall");
 	    
 	    return "maintenancedelete";
@@ -143,10 +143,10 @@ return "maintenance_list";
 		MaintenanceForm maintenanceForm=new MaintenanceForm();
     	maintenanceForm.setMaintenance(maintenanceDAO.search_maintenance(equipment_id,equipment_name,0));
 		model.addAttribute("maintenanceForm",maintenanceForm);
-	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
 	      
-	    	model.addAttribute("menu","maintenance");
+	    	model.addAttribute("menu","admin");
 	        model.addAttribute("success","false");
 	        model.addAttribute("button","close");
 	        return "maintenancedelete";

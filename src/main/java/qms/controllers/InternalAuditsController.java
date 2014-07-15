@@ -487,7 +487,7 @@ public class InternalAuditsController {
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
 	    model.addAttribute("internalAuditsForm",internalAuditsForm);
-	    model.addAttribute("menu","audits");
+	    model.addAttribute("menu","admin");
 	
     return "internalauditsdelete";
 
@@ -507,7 +507,7 @@ public class InternalAuditsController {
 		model.addAttribute("internalAuditsForm", internalAuditsForm);	
 	  	model.addAttribute("noofrows",5);
 	    model.addAttribute("currentpage",page);
-	    model.addAttribute("menu","audits");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","viewall");
 	    return "internalauditsdelete";
 	}
@@ -529,10 +529,10 @@ public class InternalAuditsController {
 
  // 	model.addAttribute("noofrows",5);    
    //narrativereportForm.getNarrativereport().size()
-    model.addAttribute("menu","audits");
+    model.addAttribute("menu","admin");
     model.addAttribute("button","close");
       
-    	model.addAttribute("menu","audits");
+    	model.addAttribute("menu","admin");
         model.addAttribute("success","false");
         model.addAttribute("button","close");
         return "internalauditsdelete";

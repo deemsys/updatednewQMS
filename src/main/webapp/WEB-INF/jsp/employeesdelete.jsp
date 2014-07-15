@@ -148,10 +148,10 @@ else
 							<form action="findemployees" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="right" valign="middle" width="10%"> Type&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"> Type:&nbsp;</td>
 							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
 							     -->
-							    <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_cmbbx1">
+							    <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_txtbx">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
@@ -165,7 +165,7 @@ else
 														</select></td>
                 
 							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
-							    <td valign="middle" align="left" class="input_txt"><select	name="qualified_by" class="input_cmbbx1">
+							    <td valign="middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
                   										<option
@@ -185,12 +185,12 @@ else
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
 				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx2" id="trainer" value="${trainer}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
 	 -->						  
-							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Find"></td>
-							     <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
+							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search"></td>
+							     <!-- <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td> -->
 							  </tr>
 							  </table>
 							  </form>
@@ -200,13 +200,13 @@ else
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
 								<td valign="top" align="left" width="10%">Select</td>
-								<td valign="top" align="left" width="20%">Employee&nbsp;ID</td>
-					         	<td valign="top" align="left" width="25%">Name</td>
-					         	<td valign="top" align="left" width="20%">Type</td>
-								<td valign="top" align="left" width="20%">Qualified By</td>
-								<td valign="top" align="left" width="20%">Trainer</td>
-          						<td valign="top" align="left" width="20%">Attachments</td>
-          						<td valign="top" align="left" width="20%"></td>
+								<td valign="top" align="left" width="10%">Employee&nbsp;ID</td>
+					         	<td valign="top" align="left" width="10%">Name</td>
+					         	<td valign="top" align="left" width="10%">Type</td>
+								<td valign="top" align="left" width="10%">Qualified By</td>
+								<td valign="top" align="left" width="10%">Trainer</td>
+          						<td valign="top" align="left" width="10%">Attachments</td>
+          						
 									
 									
 									</tr>
@@ -223,7 +223,7 @@ else
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${employees.employee_id}"/></td>
 					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
 									        <td valign="top" align="left" width="10%">${employees.employee_id}</td>
-									        <td valign="top" align="left" width="15%">${employees.name}</td>
+									        <td valign="top" align="left" width="10%">${employees.name}</td>
 											<td valign="top" align="left" width="10%">${employees.type_of_training}</td>											
 											<td valign="top" align="left" width="10%">${employees.qualified_by}</td>											
 											<td valign="top" align="left" width="10%">${employees.trainer}</td>
@@ -234,12 +234,7 @@ else
 										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>		
-												<td valign="top" align="left" width="15%">
 												
-											
-											
-											<td valign="top" align="left" width="15%">
-											
 											
 											</td>
 										</tr>
@@ -247,14 +242,14 @@ else
 						    		</c:if>
 						    		<c:if test="${fn:length(employeeForm.employees) == 0}">	
 						    		<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>	
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

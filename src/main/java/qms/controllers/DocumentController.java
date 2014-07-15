@@ -885,7 +885,7 @@ public class DocumentController {
 		
 		
 		model.addAttribute("documentMainForm", documentMainForm);
-		model.addAttribute("menu","document");
+		model.addAttribute("menu","admin");
 		return "documentdelete";
 		}
 			
@@ -905,7 +905,7 @@ public class DocumentController {
 		model.addAttribute("documentMainForm", documentMainForm);	
 	  	model.addAttribute("noofrows",5);
 	    model.addAttribute("currentpage",page);
-	    model.addAttribute("menu","document");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","viewall");
 	    
 	    return "documentdelete";
@@ -927,10 +927,10 @@ public class DocumentController {
 
 	 // 	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
-	    model.addAttribute("menu","document");
+	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
 	      
-	    	model.addAttribute("menu","document");
+	    	model.addAttribute("menu","admin");
 	        model.addAttribute("success","false");
 	        model.addAttribute("button","close");
 	        return "documentdelete";

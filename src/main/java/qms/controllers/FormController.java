@@ -737,7 +737,7 @@ public class FormController
 			 model.addAttribute("noofpages",(int) Math.ceil(formDAO.Search_form(process) * 1.0 / 5));	 
 				model.addAttribute("noofrows",5);   
 			    model.addAttribute("currentpage",1);
-			    model.addAttribute("menu","document");
+			    model.addAttribute("menu","admin");
 			    model.addAttribute("button","viewall");
 			    model.addAttribute("formForm",formForm);
 			 ProcessForm processForm = new ProcessForm();
@@ -756,7 +756,7 @@ public class FormController
 			model.addAttribute("noofpages",(int) Math.ceil(formDAO.Search_form(process) * 1.0 / 5));	 
 		  	model.addAttribute("noofrows",5);   
 		    model.addAttribute("currentpage",page);
-		    model.addAttribute("menu","document");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","viewall");
 			model.addAttribute("formForm",formForm);
 		    ProcessForm processForm = new ProcessForm();
@@ -773,9 +773,9 @@ public class FormController
 			
 			FormForm formForm=new FormForm();
 			formForm.setForm(formDAO.search_form(process,0));
-		    model.addAttribute("menu","maintenance");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
-		    model.addAttribute("menu","document");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("success","false");
 		    model.addAttribute("button","close");
 			model.addAttribute("formForm",formForm);
@@ -798,7 +798,7 @@ public class FormController
 		
 		
 		model.addAttribute("formForm", formForm);
-     model.addAttribute("menu","document");
+     model.addAttribute("menu","admin");
      
 		 model.addAttribute("formForm",formForm);
 		

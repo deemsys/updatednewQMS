@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
 
 <html>
@@ -146,7 +147,7 @@ else
 						</div>
 						 <div class="contentbox">
 						 <form action="search_forms" name="dashboard" method="GET">
-						<div style="border:#993300 2px solid; padding:15px; margin-bottom:15px;">
+						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 
 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -165,7 +166,7 @@ else
                </select>
               </td>
                <td valign="top" align="right" class="input_txt" >
-							  <input type="submit" value="Find" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" value="Search" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							  <td align="left" valign="middle" width="38%" style="padding-left: 40px"><!-- <input type="submit" value="Clear" class="submit_btn1" ></td> -->
 							  </tr>
 							</table>
@@ -179,13 +180,11 @@ else
 									<td valign="top" align="left" width="10%">Select</td>
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
-									<td valign="top" align="left" width="10%"></td>
-									<td valign="top" align="left" width="10%"></td>
 									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
-							       		
+							       	<c:if test="${fn:length(formForm.form) gt 0}">	
 									<c:forEach items="${formForm.form}" var="form" varStatus="status">
 							       		<% if(i==1)
 							       			i=2;
@@ -196,21 +195,18 @@ else
 								        <%--    	<td valign="top" align="left"  width="10%">${form.auto_number}</td> --%>
 									        <td valign="top" align="left" width="10%">${form.form_or_rec_id}</td>
 											<td valign="top" align="left" width="10%">${form.process}</td>
-											
-											
-											
-											
-											<td valign="top" align="left" width="15%">
-											
-											
-											</td>
 										</tr>
 							    	</c:forEach>
-						    				
+						    		</c:if>
+						    		<c:if test="${fn:length(formForm.form) == 0}">	
+						    		<tr class="row1">
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
+							    		
+							    	</tr>
+							    	</c:if>			
 
 
 								</table>
-								<br>
 								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
@@ -284,6 +280,6 @@ $(function () {
 	});
 </script>
   <table  width=300 height=40>
-			<tr height=30><td></td></tr></table>
+			<tr height=120px;><td></td></tr></table>
 			<jsp:include page="footer.jsp"></jsp:include>
 </html>

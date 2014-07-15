@@ -350,7 +350,7 @@ import qms.forms.SupplierPerformanceForm;;
 				model.addAttribute("success","false");
 				model.addAttribute("currentpage",1);
 		    	model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-		    	model.addAttribute("menu","supplier");
+		    	model.addAttribute("menu","admin");
 			
 			return "supplierperformancedelete";
 		
@@ -370,7 +370,7 @@ import qms.forms.SupplierPerformanceForm;;
 				model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 			  	model.addAttribute("noofrows",5);   
 			    model.addAttribute("currentpage",page);
-			    model.addAttribute("menu","supplier");
+			    model.addAttribute("menu","admin");
 			    model.addAttribute("button","viewall");
 			    model.addAttribute("success","true");
 			    return "supplierperformancedelete";

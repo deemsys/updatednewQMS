@@ -158,20 +158,17 @@ else
 						<form action="search_reviews" name="dashboard" method="GET">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							     <td align="left" valign="middle" width="10%"><b>Review ID:</b></td>
-							    
-							
-							    
+							     <td align="left" valign="middle" width="12%">Review ID:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <input type="text" name="review_id" class="input_txtbox" id="id"  value="${reviewid}"> </td>
-							    <td align="left" valign="middle" width="30%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management Review Date:</b></td>
+							    <input type="text" name="review_id" class="input_txtbx" id="id"  value="${reviewid}"> </td>
+							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;Management Review Date:</td>
 							    <td align="left" valign="middle" width="10%">
 							    
-							    <input type="text" name="management_review_date" class="input_txtbx2" id="datepicker" value="${managementreviewdate}"></td>
-							    <td align="left" valign="middle" width="15%"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</b></td>
+							    <input type="text" name="management_review_date" class="input_txtbx" id="datepicker" value="${managementreviewdate}"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Category:</td>
 							    <td align="left" valign="middle" width="10%">
 				                  
-							    <select name="category" class="input_cmbbx1">
+							    <select name="category" class="input_txtbx">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option <c:if test="${categoryvalue eq 'audits'}"><c:out value="Selected"/></c:if>  value="audits" >Audits</option>
@@ -186,7 +183,7 @@ else
 										  <option <c:if test="${categoryvalue eq 'significant changes to the QMS'}"><c:out value="Selected"/></c:if>  value="significant changes to the QMS" >Significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							   <!--  <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn1" name="Clear" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
 							   -->
@@ -199,12 +196,12 @@ else
 					<form action="deletemanagement" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
-							<td valign="top" align="left" width="5%">Select</td>
-							<td valign="top" align="left" width="5%">Review id</td>
-									<td valign="top" align="left" width="20%">Management Review Date</td>
+							<td valign="top" align="left" width="8%">Select</td>
+							<td valign="top" align="left" width="8%">Review id</td>
+									<td valign="top" align="left" width="15%">Management Review Date</td>
 									<td valign="top" align="left" width="10%">Category</td>
-									<td valign="top" align="left" width="15%">Action Due date</td>
-									<td valign="top" align="left" width="15%">Completion date</td>	
+									<td valign="top" align="left" width="10%">Action Due date</td>
+									<td valign="top" align="left" width="10%">Completion date</td>	
 							</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -216,24 +213,19 @@ else
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${managementreviewdetails.review_id}"/></td>
-						           	        <td valign="top" align="left" width="10%">${managementreviewdetails.review_id}</td>
-									       <td valign="top" align="left" width="10%">${managementreviewdetails.management_review_date}</td>
-											<td valign="top" align="left" width="15%">${managementreviewdetails.category}</td>
-											<td valign="top" align="left" width="15%">${managementreviewdetails.action_due_date}</td>
-											<td valign="top" align="left" width="25%">${managementreviewdetails.completion_date}</td> 
-												
-											<td valign="top" align="center" width="25%">
+							       		<td valign="top" align="left" width="8%"><input type="checkbox" name="chkUser" value="${managementreviewdetails.review_id}"/></td>
+						           	        <td valign="top" align="left" width="8%">${managementreviewdetails.review_id}</td>
+									       <td valign="top" align="left" width="15%">${managementreviewdetails.management_review_date}</td>
+											<td valign="top" align="left" width="10%">${managementreviewdetails.category}</td>
+											<td valign="top" align="left" width="10%">${managementreviewdetails.action_due_date}</td>
+											<td valign="top" align="left" width="10%">${managementreviewdetails.completion_date}</td> 
 											
-											
-											
-											</td>
 										</tr>
 							    	</c:forEach>
 							    	</c:if>
 							    	<c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>	
@@ -241,7 +233,7 @@ else
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

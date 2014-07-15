@@ -149,13 +149,14 @@ else
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="25%">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker" class="input_txtbx1" value="${date}" ></td>
-							    <td align="left" valign="middle" width="25%">&nbsp;Type of Feedback: </td>
+							    <td align="left" valign="middle" width="10%">Date of Feedback : </td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker" class="input_txtbx" value="${date}" ></td>
+							    <td width="10%"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;Type of Feedback: </td>
 							    <td align="left" valign="middle" width="10%">
-							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx1"></td> -->
+							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx"></td> -->
 							    
-							     <select name="type_of_feedback" class="input_cmbbx1" id="type">
+							     <select name="type_of_feedback" class="input_txtbx" id="type">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option <c:if test="${type eq 'Complaint'}"><c:out value="Selected"/></c:if>  value="Complaint" >Complaint</option>
@@ -163,16 +164,8 @@ else
 										  <option <c:if test="${type eq 'Product Return'}"><c:out value="Selected"/></c:if> value="Product Return" >Product Return</option>
 								</select></td>
 							    
-							    
-							    
-							    
-							    <%-- <td align="left" valign="middle" width="25%">&nbsp;Type of Feedback: </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="type_of_feedback" id="type" class="input_txtbx1" value="${type}"></td>
-							     --%><!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="feedback_details" class="input_txtbx1" id="details"></td>
-							     -->
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomerfeedbacks" ></td>
-							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomerfeedbacks" ></td>
+							  	<!-- <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td> -->
 							  </tr>
 							</table>
 							</form>
@@ -226,14 +219,14 @@ else
 							    	
 									<c:if test="${fn:length(customerFeedbackForm.customerFeedbacks)== 0}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    	</tr>
 							    	</c:if>
 						    				
 
 
 								</table>
-								<li><input type="submit" value="Delete"></li>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

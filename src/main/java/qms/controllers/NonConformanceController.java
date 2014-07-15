@@ -532,7 +532,7 @@ public class NonConformanceController {
 				model.addAttribute("success","false");
 				model.addAttribute("currentpage",1);
 				model.addAttribute("nonConformanceForm",nonConformanceForm);
-				model.addAttribute("menu", "nonconformance");
+				model.addAttribute("menu", "admin");
 				System.out.println("finding....");
 
 				return "nonconformancedelete";
@@ -556,7 +556,7 @@ public class NonConformanceController {
 	    	model.addAttribute("nonConformanceForm",nonConformanceForm);
 		  	model.addAttribute("noofrows",5);   
 		    model.addAttribute("currentpage",page);
-		    model.addAttribute("menu","nonconformance");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","viewall");
 		    
 		    return "nonconformancedelete";
@@ -581,10 +581,10 @@ public class NonConformanceController {
 			model.addAttribute("nonConformanceForm", nonConformanceForm);
 		  	model.addAttribute("noofrows",5);    
 		   //narrativereportForm.getNarrativereport().size()
-		    model.addAttribute("menu","maintenance");
+		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
 		      
-		    	model.addAttribute("menu","nonconformance");
+		    	model.addAttribute("menu","admin");
 		        model.addAttribute("success","false");
 		        model.addAttribute("button","close");
 		        return "nonconformancedelete";
