@@ -372,6 +372,7 @@ if(value==1)
 	document.getElementById('23').checked = false;
 	document.getElementById('24').checked = false;
 	document.getElementById('report_title').value = "";
+	document.getElementById("userdefineerror").innerHTML="";
 	e1.style.display="table-row";
 	e2.style.display="table-row";
     }
