@@ -812,9 +812,10 @@ public class EmployeeDAO extends AbstractITextPdfView{
 	    try{
 	    	String cmd_select="null";
 	    	if(type=="trainingneeds")
+	    		
 						cmd_select= "select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t2.type_of_training='Classroom'";
-			else if(type=="training_reports_for_each_employee")
-						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.management='yes'";
+			else if(type=="training_report_for_each_employee")
+						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.process_owner='yes'";
 			else if(type=="qualification_for_each_employee")
 						cmd_select="select * from tbl_employee as t1 join tbl_employee_desc as t2 on t1.employee_id=t2.employee_id where t1.process_owner='yes'";
 			else if(type=="opentraining")
