@@ -12,6 +12,10 @@
  {
 
  document.getElementById("start").style.display="block";
+ document.getElementById("starterr").innerHTML="";
+ document.getElementById("enderr").innerHTML="";
+ document.getElementById('datepicker').value = "";
+	document.getElementById('datepicker1').value = "";
  
  }
  function validation1()
@@ -102,13 +106,13 @@
 								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display:none;">
 	
     								<tr class="row2">
-    								<td valign="middle" align="left" class="input_txt"> Enter the Start Date : </td>
+    								<td></td>
+    								<td valign="middle" align="right" class="input_txt"> Enter the Start Date : </td>
     								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker" name="start"/><br><span style="color:red;" id="starterr"></span></td>
     								</tr>
-    								
-    								
     								<tr class="row2">
-    								<td valign="middle" align="left" class="input_txt"> Enter the End Date : </td>
+    								<td></td>
+    								<td valign="middle" align="right" class="input_txt"> Enter the End Date : </td>
     								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker1" name="end" /><br><span style="color:red;" id="enderr"></span></td>
     								</tr>
     							</table>
@@ -147,7 +151,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Enter the Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx" value=""/>
+									<input type="text" name="name_of_disposition_responsibility"id="report_title" class="input_txtbx" value=""/>
 								</td>
 								
 							</tr>
@@ -250,7 +254,26 @@ function toggle3(value){
     var e2=document.getElementById("userdefined_fields");
 if(value==1)
     {
+	document.getElementById('select_all').checked = false;
+	document.getElementById('id_field_id').checked = false;
+	document.getElementById('id_field_reported_by').checked = false;
+	document.getElementById('id_field_corrective_action_required').checked = false;
+	document.getElementById('id_field_cost_of_nonconformance').checked = false;
+	document.getElementById('id_field_external_id').checked = false;
+	document.getElementById('id_field_source_of_nonconformance').checked = false;
+	document.getElementById('id_field_disposition_required').checked = false;
+	document.getElementById('id_field_disposition1').checked = false;
+	document.getElementById('id_field_type_of_nonconformance').checked = false;
 	
+	document.getElementById('id_field_product_id').checked = false;
+	document.getElementById('id_field_nature_of_nonconformance').checked = false;
+	document.getElementById('id_field_quantity_suspect').checked = false;
+	document.getElementById('id_field_disposition_complete_date').checked = false;
+	document.getElementById('id_field_date_found').checked = false;
+	document.getElementById('id_field_temporary_action').checked = false;
+	document.getElementById('id_field_disposition_responsibility').checked = false;
+	document.getElementById('report_title').value = "";
+	document.getElementById("error").innerHTML="";
 	e1.style.display="table-row";
 	e2.style.display="table-row";
     }

@@ -110,7 +110,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx" value=""/>
+									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx" id="report_title" value=""/>
 								</td>
 								
 							</tr>
@@ -291,6 +291,25 @@ function toggle3(value){
     var e2=document.getElementById("userdefined_fields");
 if(value==1)
     {
+	document.getElementById('select_all').checked = false;
+	document.getElementById('1').checked = false;
+	document.getElementById('2').checked = false;
+	document.getElementById('3').checked = false;
+	document.getElementById('4').checked = false;
+	document.getElementById('5').checked = false;
+	document.getElementById('6').checked = false;
+	document.getElementById('7').checked = false;
+	document.getElementById('8').checked = false;
+	document.getElementById('9').checked = false;
+	document.getElementById('10').checked = false;
+	document.getElementById('11').checked = false;
+	document.getElementById('12').checked = false;
+	document.getElementById('13').checked = false;
+	document.getElementById('14').checked = false;
+	document.getElementById('15').checked = false;
+	document.getElementById('16').checked = false;
+	document.getElementById('report_title').value = "";
+	document.getElementById("userdefineerror").innerHTML="";
 	
 	e1.style.display="table-row";
 	e2.style.display="table-row";
@@ -312,7 +331,8 @@ if(value==0)
 	var e3=document.getElementById("no_of_days");
 	if(value==1)
     {
-	
+		
+		document.getElementById('noofdays').value = "";
 	e3.style.display="table-row";
 	
     }
