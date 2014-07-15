@@ -68,65 +68,65 @@
                   <td valign="middle" align="left" class="input_txt" width="20%">ID:</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="customer_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" maxlength="40"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
                   <span id="websiteerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.website"></form:errors></span></td>
             
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%"> Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="customer_name" class="input_txtbx" id="customername" value="" onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="customer_name" class="input_txtbx" id="customername" maxlength="32" value="" onInput="return validatename(id);"/><br>
                   <span id="customernameerror"style="color:red"></span>
                   <span class="err"><form:errors path="Customers.customer_name"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_text" width="20%">ContactName:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename(id);"/><br>
                   <span id="contactnameerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.contact_name"></form:errors></span></td>
             
                 </tr>
 				<tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%"> Address :</td>
-               	<td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_address" name="address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;" name="note"></textarea><br/>
+               	<td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_address" name="address" maxlength="40" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;" name="note"></textarea><br/>
                		<span id="addresserror" style="color:red"></span>
                	<span class="err"><form:errors path="Customers.address"></form:errors></span></td>
 			   <td valign="middle" align="left" class="input_txt" width="20%">Contact Title:</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="title_of_contact" class="input_txtbx" id="inp_title_of_contact" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="title_of_contact" class="input_txtbx" id="inp_title_of_contact" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="contacterror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.title_of_contact"></form:errors></span></td>
             
 				</tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%"> City :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="city" class="input_txtbx" id="inp_city" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="city" class="input_txtbx" id="inp_city" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                    	<span id="cityerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.city"></form:errors></span></td>
                       <td valign="middle" align="left" class="input_txt" width="20%">Telephone:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="telephone" class="input_txtbx" id="inp_telephone" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="telephone" class="input_txtbx" id="inp_telephone" maxlength="10" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                    <span id="telephoneerror" style="color:red"></span><span class="err"><form:errors path="Customers.telephone"></form:errors></span></td>
      
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%"> State :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="state" class="input_txtbx" id="inp_state"onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="state" class="input_txtbx" id="inp_state" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="stateerror" style="color:red"></span><span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">Fax:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
      
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Country:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="country" class="input_txtbx" id="inp_country" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="country" class="input_txtbx" id="inp_country" maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="countryerror" style="color:red"></span><span class="err"><form:errors path="Customers.country"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="20%">Email:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" maxlength="32" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="emailerror" style="color:red"></span><span class="err"><form:errors path="Customers.email_address"></form:errors></span></td>
               
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">ZipCode:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode"onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" maxlength="5" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="zipcodeerror" style="color:red"></span><span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                   </tr>
                 
@@ -254,13 +254,283 @@ function validatename2(id){
     document.getElementById(id).value = textInput;
 }  
 </script>
+
+ <script type="text/javascript">
+      function validateblur()
+      {
+    	
+    	  document.getElementById("customernameerror").innerHTML=" ";
+  		
+  		if(document.getElementById("customername").value=="")
+  		{
+  		document.getElementById("customernameerror").innerHTML="Required Field Should not be Empty";
+  		
+  		return false;
+  		}
+    	  
+  		document.getElementById("customernameerror").innerHTML="";
+	    if(document.getElementById("customername").value.length<4 || document.getElementById("customername").value.length>=32)
+	    {
+	    	
+	    	document.getElementById("customernameerror").innerHTML="Name should be Length of 4 to 32";
+	    	
+	        return false;
+	    }
+
+ document.getElementById("websiteerror").innerHTML=" ";
+  		
+  		if(document.getElementById("inp_website").value=="")
+  		{
+  		document.getElementById("websiteerror").innerHTML="Required Field Should not be Empty";
+  		
+  		return false;
+  		}
+  		
+  		document.getElementById("websiteerror").innerHTML=" ";
+  	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+  	    
+  	    if(document.getElementById("inp_website").value.match(website)==null)
+  	    {
+  	    	document.getElementById("websiteerror").innerHTML="Invalid URL Format";
+  	    	
+  	    	 return false;
+  	    }
+
+    	
+  	  document.getElementById("contactnameerror").innerHTML=" ";
+		
+		if(document.getElementById("inp_contact_name").value=="")
+		{
+		document.getElementById("contactnameerror").innerHTML="Required Field Should not be Empty";
+		
+		return false;
+		}
+  	  
+		document.getElementById("contactnameerror").innerHTML="";
+	    if(document.getElementById("inp_contact_name").value.length<4 || document.getElementById("inp_contact_name").value.length>=32)
+	    {
+	    	
+	    	document.getElementById("contactnameerror").innerHTML="Name should be Length of 4 to 32";
+	    	
+	        return false;
+	    }
+    	  
+    	 
+  document.getElementById("addresserror").innerHTML=" ";
+		
+		if(document.getElementById("inp_address").value=="")
+		{
+		document.getElementById("addresserror").innerHTML="Required Field Should not be Empty";
+		
+		return false;
+		}
+  	  
+		document.getElementById("addresserror").innerHTML="";
+	    if(document.getElementById("inp_address").value.length<4 || document.getElementById("inp_address").value.length>400)
+	    {
+	    	
+	    	document.getElementById("addresserror").innerHTML="Required Field should be Length of 4 to 400";
+	    	
+	        return false;
+	    }
+ document.getElementById("cityerror").innerHTML=" ";
+		
+		if(document.getElementById("inp_city").value=="")
+		{
+		document.getElementById("cityerror").innerHTML="Required Field Should not be Empty";
+		
+		return false;
+		}
+  	  
+		document.getElementById("cityerror").innerHTML="";
+	    if(document.getElementById("inp_city").value.length<4 || document.getElementById("inp_city").value.length>=32)
+	    {
+	    	
+	    	document.getElementById("cityerror").innerHTML="Required Field should be Length of 4 to 32";
+	    	
+	        return false;
+	    }
+    	  
+    	 
+document.getElementById("contacterror").innerHTML=" ";
+		
+		if(document.getElementById("inp_title_of_contact").value=="")
+		{
+		document.getElementById("contacterror").innerHTML="Required Field Should not be Empty";
+		
+		return false;
+		}
+  	  
+		document.getElementById("contacterror").innerHTML="";
+	    if(document.getElementById("inp_title_of_contact").value.length<4 || document.getElementById("inp_title_of_contact").value.length>=32)
+	    {
+	    	
+	    	document.getElementById("contacterror").innerHTML="Required Field should be Length of 4 to 32";
+	    	
+	        return false;
+	    }
+    	  
+    	  
+document.getElementById("stateerror").innerHTML=" ";
+		
+		if(document.getElementById("inp_state").value=="")
+		{
+		document.getElementById("stateerror").innerHTML="Required Field Should not be Empty";
+		
+		return false;
+		}
+  	  
+		document.getElementById("stateerror").innerHTML="";
+	    if(document.getElementById("inp_state").value.length<4 || document.getElementById("inp_state").value.length>=32)
+	    {
+	    	
+	    	document.getElementById("stateerror").innerHTML="Required Field should be Length of 4 to 32";
+	    	
+	        return false;
+	    }
+    	 
+    	  
+document.getElementById("telephoneerror").innerHTML=" ";
+		
+		if(document.getElementById("inp_telephone").value=="")
+		{
+		document.getElementById("telephoneerror").innerHTML="Required Field Should not be Empty";
+		
+		return false;
+		}
+		document.getElementById("telephoneerror").innerHTML=" ";
+		 var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
+	  	    
+	  	    if(document.getElementById("inp_telephone").value.match(mobile)==null)
+	  	    {
+	  	    	document.getElementById("telephoneerror").innerHTML="Invalid Phone Number Format";
+	  	    	
+	  	    	 return false;
+	  	    }
+
+	  	  document.getElementById("telephoneerror").innerHTML="";
+	      var txt1=document.getElementById("inp_telephone").value;
+	   
+	     if(txt1==0000000000 && txt1==1111111111)
+	  	   {
+	     document.getElementById("telephoneerror").innerHTML="Invalid Phone Number Format";
+	   
+	     return false;
+	      }
+
+	  	 
+    	 
+	     document.getElementById("countryerror").innerHTML=" ";
+			
+			if(document.getElementById("inp_country").value=="")
+			{
+			document.getElementById("countryerror").innerHTML="Required Field Should not be Empty";
+			
+			return false;
+			}
+	  	  
+			document.getElementById("countryerror").innerHTML="";
+		    if(document.getElementById("inp_country").value.length<4 || document.getElementById("inp_country").value.length>=32)
+		    {
+		    	
+		    	document.getElementById("countryerror").innerHTML="Required Field should be Length of 4 to 32";
+		    	
+		        return false;
+		    }
+		    document.getElementById("faxerror").innerHTML=" ";
+			
+			if(document.getElementById("inp_fax").value=="")
+			{
+			document.getElementById("faxerror").innerHTML="Required Field Should not be Empty";
+			
+			return false;
+			}
+			document.getElementById("faxerror").innerHTML=" ";
+			 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+		  	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
+		  	    {
+		  	    	document.getElementById("faxerror").innerHTML="Invalid Phone Number Format";
+		  	    	
+		  	    	 return false;
+		  	    }
+		   
+	    	  
+	    	  document.getElementById("zipcodeerror").innerHTML=" ";
+				
+				if(document.getElementById("inp_zipcode").value=="")
+				{
+				document.getElementById("zipcodeerror").innerHTML="Required Field Should not be Empty";
+				
+				return false;
+				}
+				
+				
+				/* document.getElementById("zipcodeerror").innerHTML=" ";
+				var zipcode =/^\d{5}$|^\d{5}-\d{4}$/;
+		    	
+			  	    if(document.getElementById("inp_zipcode").value.match(zipcode)==null)
+			  	    {
+			  	    	document.getElementById("zipcodeerror").innerHTML="Invalid Zip Format";
+			  	    	
+			  	    	 return false;
+			  	    } */
+			  	  
+			  	    document.getElementById("zipcodeerror").innerHTML="";
+			  	if(document.getElementById("inp_zipcode").value.length<5)
+			  	{
+			  	document.getElementById("zipcodeerror").innerHTML="Zipcode format should be 5Numbers";
+			  	 
+			  	 return false;
+			  	
+			  	}
+			  	
+			  	
+			  	
+			  	var txt1=document.getElementById("inp_zipcode").value;
+			     if( txt1==00000){
+			     document.getElementById("zipcodeerror").innerHTML="Invalid Zipcode format ";
+			     
+			     return false;
+			     }
+			    var txt2=txt1.substring(1,3);
+			     
+			     if(txt2==000){
+			     document.getElementById("zipcodeerror").innerHTML="Invalid Zipcode format ";
+			     
+			     return false;
+			     }
+			     
+
+			  	  document.getElementById("emailerror").innerHTML=" ";
+					
+					if(document.getElementById("inp_email_address").value=="")
+					{
+					document.getElementById("emailerror").innerHTML="Required Field Should not be Empty";
+					
+					return false;
+					}
+	    	
+	    	
+					var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+				    
+				    if(document.getElementById("inp_email_address").value.match(mail)==null)
+				    {
+				    	document.getElementById("emailerror").innerHTML="Invalid E-Mail Format";
+				    	
+				    	 return false;
+				    }
+
+	  
+      }
+      
+      </script>
       <script type="text/javascript">
       function validate()
       {
     	  var error="";
     	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
-    	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
     	  var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
     	  var zipcode =/^\d{5}$|^\d{5}-\d{4}$/;
     	  var customername = document.getElementById('customername').value;
@@ -321,27 +591,6 @@ function validatename2(id){
     	  
     	  
     	  
-    	  if(inp_contact_name =="")
-		  {
-		  document.getElementById("contactnameerror").innerHTML="Required Field should not be Empty";
-	    	error="true";
-		  }
-    	  else if(inp_contact_name.charAt(0) ==" ") 
-		   {
-		   document.getElementById("contactnameerror").innerHTML="Initial Spaces not Allowed";
-	    	error="true";
-			}
-	  else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
-		   {
-		   document.getElementById("contactnameerror").innerHTML="Required Field should be Length of 4 to 32";
-	    	error="true";
-			}
-	   else
-		   {
-		   document.getElementById("contactnameerror").innerHTML="";
-		   }
-    	  
-    	  
     	  
     	  if(address =="")
 		  {
@@ -361,6 +610,27 @@ function validatename2(id){
 	   else
 		   {
 		   document.getElementById("addresserror").innerHTML="";
+		   }
+    	  
+
+    	  if(inp_contact_name =="")
+		  {
+		  document.getElementById("contactnameerror").innerHTML="Required Field should not be Empty";
+	    	error="true";
+		  }
+    	  else if(inp_contact_name.charAt(0) ==" ") 
+		   {
+		   document.getElementById("contactnameerror").innerHTML="Initial Spaces not Allowed";
+	    	error="true";
+			}
+	  else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
+		   {
+		   document.getElementById("contactnameerror").innerHTML="Required Field should be Length of 4 to 32";
+	    	error="true";
+			}
+	   else
+		   {
+		   document.getElementById("contactnameerror").innerHTML="";
 		   }
     	  
     	  
@@ -534,10 +804,11 @@ function validatename2(id){
   else if(emailaddress.match(mail)){  
 	  
 	   document.getElementById("emailerror").innerHTML="";
+	  
 	   }
   
   else{
-	  document.getElementById("emailerror").innerHTML="Required Field should contain 5 digits";
+	  document.getElementById("emailerror").innerHTML="Invalid Email Format";
     	error="true";
   }
   

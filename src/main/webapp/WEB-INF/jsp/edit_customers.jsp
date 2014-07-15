@@ -256,7 +256,7 @@ function validatename2(id){
     	  var error="";
     	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
-    	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
     	  var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
     	  var zipcode =/^\d{5}$|^\d{5}-\d{4}$/;
     	  var customername = document.getElementById('customername').value;
@@ -316,27 +316,7 @@ function validatename2(id){
     	   
     	  
     	  
-    	  
-    	  if(inp_contact_name =="")
-		  {
-		  document.getElementById("contactnameerror").innerHTML="Required Field should not be Empty";
-	    	error="true";
-		  }
-    	  else if(inp_contact_name.charAt(0) ==" ") 
-		   {
-		   document.getElementById("contactnameerror").innerHTML="Initial Spaces not Allowed";
-	    	error="true";
-			}
-	 	 else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
-		   {
-		   document.getElementById("contactnameerror").innerHTML="Required Field should be Length of 4 to 32";
-	    	error="true";
-			}
-	   else
-		   {
-		   document.getElementById("contactnameerror").innerHTML="";
-		   }
-    	  
+    	
     	  
     	  
     	  if(address =="")
@@ -359,6 +339,26 @@ function validatename2(id){
 		   document.getElementById("addresserror").innerHTML="";
 		   }
     	  
+    	  
+    	  if(inp_contact_name =="")
+		  {
+		  document.getElementById("contactnameerror").innerHTML="Required Field should not be Empty";
+	    	error="true";
+		  }
+    	  else if(inp_contact_name.charAt(0) ==" ") 
+		   {
+		   document.getElementById("contactnameerror").innerHTML="Initial Spaces not Allowed";
+	    	error="true";
+			}
+	 	 else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
+		   {
+		   document.getElementById("contactnameerror").innerHTML="Required Field should be Length of 4 to 32";
+	    	error="true";
+			}
+	   else
+		   {
+		   document.getElementById("contactnameerror").innerHTML="";
+		   }
     	  
     	  
     	  if(city =="")
@@ -533,7 +533,7 @@ function validatename2(id){
 	   }
   
   else{
-	  document.getElementById("emailerror").innerHTML="Required Field should contain 5 digits";
+	  document.getElementById("emailerror").innerHTML="Invalid Email Format";
     	error="true";
   }
   
