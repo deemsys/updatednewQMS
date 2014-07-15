@@ -121,7 +121,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="form_or_rec_title"
-																			value="${docform.form_or_rec_title }" />
+																			value="${docform.form_or_rec_title }" onInput="return validatename(id);"/>
 																			<br/>
 																			<span id="title1" style="color:red"></span><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
@@ -134,7 +134,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility"
-																			value="${docform.responsibility }" /><br/>
+																			value="${docform.responsibility }" onInput="return validatename(responsibility);"/><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
@@ -281,7 +281,7 @@
 												
 				<td valign="top" align="right" class="input_txt">Comments :</td>
 				<td valign="top" align="left" class="input_txt" >
-				<textarea class="input_txtbx" id="comments" name="comments"  style="height: 60px;" >${docform.comments}</textarea><br/>
+				<textarea class="input_txtbx" id="comments" name="comments" onInput="return validatename(comments)" style="height: 60px;" >${docform.comments}</textarea><br/>
 				<span id="comments1" style="color:red"></span>
 				<span style="color:red;"><form:errors path="Form.comments"></form:errors></span></td>
 				</tr>
@@ -382,6 +382,27 @@ e3.style.display="block";
 
 }
 </script>
+<script>
+function validatename(id)
+{
+	var textInput = document.getElementById(id).value;
+	textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+	document.getElementById(id).value = textInput;
+}
+function validatename(responsibility)
+{
+	var textInput = document.getElementById("responsibility").value;
+	textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+	document.getElementById("responsibility").value = textInput;
+}
+function validatename(comments)
+{
+	var textInput = document.getElementById(comments).value;
+	textInput = textInput.replace(/[^A-Za-z0-9, ]/g, "");
+	document.getElementById(comments).value = textInput;
+}
+
+</script>
 
 <script>
   $(function() {
@@ -434,7 +455,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 var title = document.getElementById('form_or_rec_title').value;
 	 var responsibility = document.getElementById('responsibility').value;
 	 var comments = document.getElementById('comments').value;
-	 var datepicker123 = document.getElementById('datepicker123').value
+	 var datepicker123 = document.getElementById('datepicker123').value;
 	 
 
 	 if(title =="")
