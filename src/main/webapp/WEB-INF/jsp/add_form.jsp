@@ -67,7 +67,7 @@
                      
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" >
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:57px;border:none;background-color:lightgrey;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:57px;border:none;">
                
              <!--   <option value = "">Select Form Prefix</option> -->
 			              <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
@@ -79,9 +79,8 @@
                
               <input type="hidden" value="${docform.form_or_rec_id}" id="generated_id90" /> 
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx" style="width:200px;" value="" /> 
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" style="height:22px;background-color:lightgrey;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
-              
-              </br>
+              <input type="text" value="" id="form_or_rec_id" class="input_txtbx145" onkeypress="return validate(event);" style="height:22px;width:50px;border:none;" name="form_or_rec_id" onblur="change_to_label();"/>
+              <br><span id="formiderror" style="color:red"></span>
               <span id="quality3err" style="color:red;"></span>
               <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
               </td>
@@ -159,14 +158,16 @@
         				       <option value="${processes.process_name}"<c:if test="${processes.process_name == docform.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
 			                  </c:forEach>
            	 	</select><br/>
+           	 	<span id="inprocesserror" style="color:red"></span>
            	 	<span style="color:red;"><form:errors path="Form.process"></form:errors></span></td>
                
           		<td valign="top" align="left"  class="input_txt">Media Type:</td>
                <td valign="top" align="left" class="input_txt">
          
-                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy" id="id_hardcopy" <c:if test="${docform.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;
+                 <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy" id="id_hardcopy" checked <c:if test="${docform.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;
                 <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${docform.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
                 <input type="radio" name="media_type" value="both"  id="id_both" onchange="toggle2(this.value);" <c:if test="${docform.media_type=='both'}"><c:out value="checked" /></c:if>/>Both&nbsp;<span class="err"></span>
+               <span id="mediatypeerror" style="color:red"></span>
                <span class="err" style="color:red"><form:errors path="Form.media_type"></form:errors></span>
                </td>
                </tr>
@@ -180,7 +181,7 @@
                <option value="1Week" <c:if test="${docform.retention_time=='1Week'}"><c:out value="Selected"/></c:if>>1Week</option>
                <option value="1Month" <c:if test="${docform.retention_time=='1Month'}"><c:out value="Selected"/></c:if>>1Month</option>
                <option value="1Year" <c:if test="${docform.retention_time=='1Year'}"><c:out value="Selected"/></c:if>>1Year</option>
-               </select><br/>
+               </select><br/><span id="retentionerr" style="color:red;"></span>
 				    <span style="color:red;"><form:errors path="Form.retention_time"></form:errors></span>
                </td>
                <td valign="top" align="left" class="input_txt" width="30%">Is this a Form?</td>
@@ -252,6 +253,7 @@
               
                </span>
                <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
+               <br><span id="filter1error" style="color:red"></span>
                <br/><span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
 			   </td>
 			   
@@ -322,7 +324,9 @@
                 <span id="issuer_generate"> 
                </span>
                <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>      
-               <br/><span style="color:red;"><form:errors path="Form.issuer"></form:errors></span>
+               <br/>
+               <span id="filtererror" style="color:red"></span>
+               <span style="color:red;"><form:errors path="Form.issuer"></form:errors></span>
               </td>
 																		 
 																	
@@ -348,6 +352,11 @@
 </form>
 
 <script type="text/javascript">
+var ajax_issuer = "false";
+var issuerchange = "false";
+var ajax_issuer1 = "false";
+var issuerchange1 = "false";
+var letter  = "-";
 function toggle2(value){
   
     var e = document.getElementById('location_label');
@@ -403,6 +412,18 @@ function validatename(comments)
 }
 
 </script>
+<script type="text/javascript">
+       function validate(event) {
+          
+           var regex = new RegExp("^[0-9]+$");
+           var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+           if (!regex.test(key)) {
+             // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+               event.preventDefault();
+               return false;
+           }
+       }       
+    </script>
 
 <script>
   $(function() {
@@ -444,35 +465,52 @@ function validatename(comments)
 <script>
 function validation()
 {
-var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
-var space = /\S/;
+
+//	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 var spl =  /^[A-Za-z0-9]*$/;
 	
-	
-	 var e2=document.getElementById('location_text').value;
-	 var e3=document.getElementById('id_file').value;
 	 var title = document.getElementById('form_or_rec_title').value;
 	 var responsibility = document.getElementById('responsibility').value;
-	 var comments = document.getElementById('comments').value;
-	 var datepicker123 = document.getElementById('datepicker123').value;
+	 var error ="";
+	 var form_id = document.getElementById('form_or_rec_id').value;
+	 var id_hardcopy = document.getElementById('id_hardcopy').checked;
+	 var id_electronic = document.getElementById('id_electronic').checked;
+	 var id_both = document.getElementById('id_both').checked;
+	 var location_text = document.getElementById('location_text').value;
 	 
-
-	 if(title =="")
+	 var id_inpprocess = document.getElementById('id_inpprocess').value;
+	 var filter_value = document.getElementById('filter_value').value;
+	 var filter_value1 = document.getElementById('filter_value1').value;
+	 var datepicker123=document.getElementById('datepicker123').value;
+	 var e2=document.getElementById('location_text').value;
+	 var e3=document.getElementById('id_file').value;
+	 var comments = document.getElementById('comments').value;
+	var retention = document.getElementById('retention').value;
+	if(retention=="")
+		{
+		document.getElementById('retentionerr').innerHTML = "Required Field Should Not be Empty";
+		error = "true";
+		}
+	else
+		{
+		document.getElementById('retentionerr').innerHTML = "";
+		}
+	if(title =="")
 	 {
-		 document.getElementById("title1").innerHTML="Required Field Should not be Blank";
-		 return false;
+		 document.getElementById("title1").innerHTML="Required Field Should not be Empty";
+		 error="true";
 	 } 
 	 else if(title.charAt(0)==" ")
 	 {
 	 
-	 document.getElementById("title1").innerHTML="Spaces are not allowed"
-	 return false;
+	 document.getElementById("title1").innerHTML="Spaces are not allowed";
+	 error="true";
 	 }
 	 else if(!title.match(spl))
  		 {
  		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
- 		return false;
+ 		error="true";
  		 }
  	 else
  		 {
@@ -481,14 +519,21 @@ var spl =  /^[A-Za-z0-9]*$/;
     
 	 if(comments =="")
 	 {
-		 document.getElementById("comments1").innerHTML="Required Field Should not be Blank";
-		 return false;
+		
+		 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+		 error="true";
 	 }
 	 else if(comments.charAt(0)==" ")
 	 {
 		 document.getElementById("comments1").innerHTML="Spaces are Not allowed";
-		 return false;
+		 error="true";
 	 }
+
+	 else if((comments.length < 4) || (comments.length > 400) )
+		 {
+		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
+		 error ="true";
+		 }
 	 else if(!comments.match(spl))
 		 {
 		 document.getElementById("comments1").innerHTML="Special Characters are Not allowed";
@@ -502,19 +547,19 @@ var spl =  /^[A-Za-z0-9]*$/;
 	    if(responsibility =="")
 		 {
 			 
-			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Blank";
-			 return false;
+			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
+			 error="true";
 		 }
 	    else if(responsibility.charAt(0)==" ")
 		 {
 			 document.getElementById("responsibility1").innerHTML="Spaces are Not allowed";
-			 return false;
+			 error="true";
 		 }
 	    
 	    else if(!responsibility.match(spl))
  		 {
  		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
- 		return false;
+ 		error="true";
  		 }
  	 else
  		 {
@@ -522,58 +567,192 @@ var spl =  /^[A-Za-z0-9]*$/;
  		 }  
 	        
 	    
-		 if(!datepicker123.match(date))
-			 {
+	     if(datepicker123 == "")
+		 {
 			
+		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
+		 error ="true";
+		 
+		 }
+		 else if(datepicker123.match(date))
+		 {
+		 document.getElementById("datepicker1234").innerHTML="";
+		 }
+		 else
+		 {
 		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
-		 return false;
+		 error ="true";
 		 }
 	 
-		 if(document.getElementById('id_hardcopy').checked)
+		 if(form_id == "")
 		 {
-			if(e2=="")
-				{
-				
-				document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-				return false;
-				}
+		alert("form id");
+		 document.getElementById("formiderror").innerHTML="Required Field Should not be Empty";
+			error ="true";
+		 }
+	 else
+		{
+		 document.getElementById("formiderror").innerHTML= "";
+		}
+	  if(!(document.getElementById('id_hardcopy').checked) &&  !(document.getElementById('id_electronic').checked) && !(document.getElementById('id_both').checked) )
+	{
+		alert("media type");
+		 document.getElementById("mediatypeerror").innerHTML="Select Atleast One";
+			error ="true";
+	}
+	 else
+		 {
+		 document.getElementById("mediatypeerror").innerHTML= "";
 		 }
 		 
-		 
-		 
-		 
-		 
-		 if(document.getElementById('id_electronic').checked)
-		{
-			 if(e3=="")
-				 {
-				
-				 document.getElementById("attach").innerHTML="File No Uploaded";
-				 return false;
-				 }
+	if(document.getElementById('id_hardcopy').checked)
+	 {
+		if(e2=="")
+			{
 			
-		}
-		 
-		 
-		 
-		 
-		if(document.getElementById('id_both').checked)
-			{
-			if(e2=="")
-			{
-				
 			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-			return false;
+			error ="true";
 			}
-		
-			 if(e3=="")
+	 }
+	 
+	 
+	 
+	 
+	 
+	 if(document.getElementById('id_electronic').checked)
+	{
+		 if(e3=="")
 			 {
-				
-			 document.getElementById("attach").innerHTML="File No Uploaded";
-			 return false;
+			
+			 document.getElementById("attach").innerHTML="No File Uploaded";
+			 error ="true";
 			 }
 		
+	}
+	 
+	 
+	 
+	 
+	if(document.getElementById('id_both').checked)
+		{
+		if(e2=="")
+		{
+			 
+		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+		error ="true";
+		}
+	
+		 if(e3=="")
+		 {
+			 
+		 document.getElementById("attach").innerHTML="File No Uploaded";
+		 error ="true";
+		 }
+	
+		}
+	
+	
+		if(ajax_issuer == "false")
+		{
+			
+			
+			if(filter_value == "-")
+			{
+				
+				 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+					error ="true";
 			}
+			else
+				{
+				 document.getElementById("filtererror").innerHTML="Select Issuer";
+					error ="true";
+				}
+			
+	
+		}	
+		if(id_inpprocess == "")
+		{
+			 
+			 document.getElementById("inprocesserror").innerHTML="Please Select One";
+			 error ="true";
+		}
+		else
+		{
+			 document.getElementById("inprocesserror").innerHTML="";
+		}
+		
+	  
+	  if(ajax_issuer == "true")
+		{
+		 
+		var issuer1 = document.getElementById("issuer1").value;
+		if(issuer1.length > 2)
+		{
+			document.getElementById("filtererror").innerHTML="";
+		}	
+		
+		else if(issuer1.length < 2){
+			 document.getElementById("filtererror").innerHTML="Issuer Doesn't exit";
+				error ="true";
+		 }
+		 else if(filter_value.length == 1){
+			 document.getElementById("filtererror").innerHTML="Please Select Issuer";
+				error ="true";
+		 }
+		 else{
+		  document.getElementById("filtererror").innerHTML="";
+		 }
+		 
+	}	
+				
+		if(ajax_issuer1 == "false")
+		{
+			
+			
+			if(filter_value1 == "-")
+			{
+				
+				 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+					error ="true";
+			}
+			else
+				{
+				 document.getElementById("filter1error").innerHTML="Select Issuer";
+					error ="true";
+				}
+			
+	
+		}	
+	  
+	  if(ajax_issuer1 == "true")
+		{
+		 
+		var issuer1 = document.getElementById("approver1").value;
+		if(issuer1.length > 2)
+		{
+			document.getElementById("filter1error").innerHTML="";
+		}	
+		
+		else if(issuer1.length < 2){
+			 document.getElementById("filter1error").innerHTML="Issuer Doesn't exit";
+				error ="true";
+		 }
+		 else if(filter_value1.length == 1){
+			 document.getElementById("filter1error").innerHTML="Please Select Issuer";
+				error ="true";
+		 }
+		 else{
+		  document.getElementById("filter1error").innerHTML="";
+		 }
+		 
+	}	
+		 if(error == "true")
+		 {
+		 
+	 return false;
+		 }
+
+	
 		
 	
 }
@@ -688,7 +867,7 @@ function doAjaxPost_for_process() {
 			alert('Error: ' + e);
 		}
 	});
-}
+}/* 
 function change_to_label_issuer()
 {
 	
@@ -729,7 +908,56 @@ document.getElementById("filter_value1").style.display="block";
 
 	
 	}
-function change_to_label()
+ */
+
+ function change_to_label_issuer()
+ {
+ 	
+ 	ajax_issuer  = "true";
+ 	var type=document.getElementById("filter_value");	
+ 	letter = type.value;
+ 	
+ 	document.getElementById("lable_td_issuer").style.display="block";
+ 	document.getElementById("edit_td_issuer").style.display="none";
+ 	
+ 	document.getElementById("issuer_full_lbl").innerHTML=type.value;
+ 	
+ 	}
+ function change_to_label_issuer1()
+ {
+ 	
+ 	ajax_issuer1  = "true";
+ 	var type=document.getElementById("filter_value1");	
+ 	
+ 	document.getElementById("lable_td_issuer").style.display="block";
+ 	document.getElementById("edit_td_issuer1").style.display="none";
+ 	
+ 	document.getElementById("issuer_full_lbl1").innerHTML=type.value;
+ 	
+ 	}
+ function show_edit_issuer()
+ {
+ 	var let = letter;
+ 	issuerchange = "true";
+ 	ajax_issuer  = "false";
+ 	  document.getElementById("issuer_generate").style.display="none";
+ 	  document.getElementById("issuer_full_lbl").style.display="none";
+ document.getElementById("filter_value").style.display="block";
+
+ 	
+ 	}
+ function show_edit_issuer1()
+ {
+ 	issuerchange1 = "true";
+ 	ajax_issuer1  = "false";
+ 	  document.getElementById("issuer_generate1").style.display="none";
+ 	  document.getElementById("issuer_full_lbl1").style.display="none";
+ document.getElementById("filter_value1").style.display="block";
+
+ 	
+ 	}
+
+ function change_to_label()
 {
 	
 	var numbers = /^[0-9]+$/; 

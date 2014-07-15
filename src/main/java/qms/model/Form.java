@@ -13,15 +13,15 @@ public class Form {
 	private String location;
 	
     @NotEmpty
-    @Length(min=4,max=32,message="Required Field should between 4 to 32 characters!!!")
+
     private String form_or_rec_id;
 
     @NotEmpty
-    @Length(min=4,max=32,message="Required Field should between 4 to 32 characters!!!")
+
 	private String responsibility;
 
     @NotEmpty
-    @Length(min=4,max=32,message="Required Field should between 4 to 32 characters!!!")
+
 	private String form_or_rec_title;
 
     @NotEmpty
@@ -65,7 +65,7 @@ public class Form {
 	private String issuer;
 	
 	@NotEmpty
-	@Length(min=5,max=500,message="Required Field should between 5 to 500 characters!!!")
+
 	private String comments;
 
 	

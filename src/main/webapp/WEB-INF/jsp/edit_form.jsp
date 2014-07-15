@@ -53,16 +53,13 @@
                             <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
 			<td valign="top" align="left" class="input_txt" width="30%" >
 			
+		
 			<a id="formid">
 			
 					<input type="hidden" id="formid"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');"
 					name="form_or_rec_id" />${form.form_or_rec_id}</a>
-																		
-													 
-                        
-              
-              
+		      
                <select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;">
       
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
@@ -72,9 +69,11 @@
               
                 <label id="changeafter" style="display:none;" ></label> 
                 
-                  <input type="text" value="" id="form_or_rec_id"  style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()"/><span id="quality3err" style="color:red;"></span>
+                  <input type="text" value="" id="form_or_rec_id"  style="display:none;height:22px;background-color:lightgrey;width:50px;border:none;"  onblur="change_to_label()" onInput="return validatename3(id);"/><span id="quality3err" style="color:red;"></span>
                 <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
+            <label id="changeafter" style="color:red;"></label>
+            <span id="formiderror" style="color:red"></span>
             <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             
                
@@ -103,7 +102,7 @@
 																			type="text" class="input_txtbx" id="form_or_rec_title"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title"
+																			name="form_or_rec_title" onInput="return validatename(id);"
 																			value="${form.form_or_rec_title}" /><br/>
 																			<span id="title1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
@@ -118,7 +117,9 @@
 			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
         				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
 			                  </c:forEach>
-			                 </select><span style="color:red;"><form:errors path="Form.process"></form:errors></span></td>
+			                 </select>
+			                 <br/><span id="inprocesserror" style="color:red"></span>
+			                 <span style="color:red;"><form:errors path="Form.process"></form:errors></span></td>
          
                
 																		
@@ -225,6 +226,7 @@
                <option value="1Month" <c:if test="${form.retention_time=='1Month'}"><c:out value="Selected"/></c:if>>1Month</option>
                <option value="1Year" <c:if test="${form.retention_time=='1Year'}"><c:out value="Selected"/></c:if>>1Year</option>
                </select>
+               <br><span id="retentionerr" style="color:red;"></span>
                <span style="color:red;"><form:errors path="Form.retention_time"></form:errors></span>
 																		
 																		</td>
@@ -307,7 +309,8 @@
               																 </c:forEach>    
                
              															  </select>  
-																			<br/><span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
+																			<br/><span id="filter1error" style="color:red"></span>
+																			<span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
 																		</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
@@ -318,13 +321,13 @@
                             <td valign="top" align="left" class="input_txt" width="30%">Issuer :</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
 																			 <select name="issuer" id="issuer" class="input_txtbx" >
-               <option value="">--Select--</option> 
+               <!-- <option value="">--Select--</option>  -->
                <c:forEach items="${employeeForm.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>" <c:if test="${form.issuer==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
                </c:forEach>              
                </select>
-																			
-																			<br/><span style="color:red;"><form:errors path="Form.issuer"></form:errors></span>
+																			<br/><span id="filtererror" style="color:red"></span>
+																			<span style="color:red;"><form:errors path="Form.issuer"></form:errors></span>
 																		</td>
 																		
 																		
@@ -427,9 +430,10 @@ e3.style.display="block";
 }
 </script>
 <script type="text/javascript">
+var start = "false";
 	function show_edit()
 	{
-		
+		start = "true";
 		var element = document.getElementById('document_type_id');
 		var element1 = document.getElementById('formid');
 		var element2 = document.getElementById('change');
@@ -444,7 +448,7 @@ e3.style.display="block";
 			element4.style.display="block";
 			element5.style.display="none";
 			document.getElementById("changeafter").style.display="none";
-		
+			document.getElementById("form_or_rec_id").focus();
 	}
 
 	function change_to_label()
@@ -680,6 +684,22 @@ function reset_form()
 });
  </script>
 
+  <script type="text/javascript">
+function validatename(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+function validatename3(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^0-9]/g, "");
+    document.getElementById(id).value = textInput;
+}
+
+
+</script>
 <script>
   $(function() {
 	$("#form_or_rec_title").on("keypress", function(e) {
@@ -720,35 +740,59 @@ $(function() {
 <script>
 function validation()
 {
-	
-var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/ ;
-var space = /\S/;
+
+//	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 var spl =  /^[A-Za-z0-9]*$/;
 	
-	 var e2=document.getElementById('location_text').value;
-	 var e3=document.getElementById('id_file').value;
 	 var title = document.getElementById('form_or_rec_title').value;
 	 var responsibility = document.getElementById('responsibility').value;
-	 var comments = document.getElementById('comments').value;
-	 var datepicker123 = document.getElementById('datepicker123').value
-	 
+	 var error ="";
 	
-	 if(title =="")
+	 var id_hardcopy = document.getElementById('id_hardcopy').checked;
+	 var id_electronic = document.getElementById('id_electronic').checked;
+	 var id_both = document.getElementById('id_both').checked;
+	 var location_text = document.getElementById('location_text').value;
+	 
+	 var id_inpprocess = document.getElementById('id_inpprocess').value;
+	 var issuer = document.getElementById('issuer').value;
+ 	var approver = document.getElementById('approver').value;
+ 	 var datepicker123=document.getElementById('datepicker123').value;
+	 var e2=document.getElementById('location_text').value;
+	 var e3=document.getElementById('id_file').value;
+	 var comments = document.getElementById('comments').value;
+	var retention = document.getElementById('retention').value;
+	if(retention=="")
+		{
+		
+		document.getElementById('retentionerr').innerHTML = "Required Field Should Not be Empty";
+		error = "true";
+		}
+	else
+		{
+		document.getElementById('retentionerr').innerHTML = "";
+		}
+	if(title =="")
 	 {
-		 document.getElementById("title1").innerHTML="Required Field Should not be Blank";
-		 return false;
+		 document.getElementById("title1").innerHTML="Required Field Should not be Empty";
+		 error="true";
 	 } 
 	 else if(title.charAt(0)==" ")
 	 {
 	 
-	 document.getElementById("title1").innerHTML="Spaces are not allowed"
-	 return false;
+	 document.getElementById("title1").innerHTML="Initial Space not allowed";	
+	 error="true";
 	 }
+	 else if((title.length < 4) || (title.length > 400) )
+	 {
+	 document.getElementById("title1").innerHTML="Required Field Should be Length 4 to 32";
+	 error ="true";
+	 }
+
 	 else if(!title.match(spl))
  		 {
  		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
- 		return false;
+ 		error="true";
  		 }
  	 else
  		 {
@@ -757,14 +801,21 @@ var spl =  /^[A-Za-z0-9]*$/;
     
 	 if(comments =="")
 	 {
-		 document.getElementById("comments1").innerHTML="Required Field Should not be Blank";
-		 return false;
+		
+		 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+		 error="true";
 	 }
 	 else if(comments.charAt(0)==" ")
 	 {
-		 document.getElementById("comments1").innerHTML="Spaces are Not allowed";
-		 return false;
+		 document.getElementById("comments1").innerHTML="Initial Space Not allowed";
+		 error="true";
 	 }
+
+	 else if((comments.length < 4) || (comments.length > 400) )
+		 {
+		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
+		 error ="true";
+		 }
 	 else if(!comments.match(spl))
 		 {
 		 document.getElementById("comments1").innerHTML="Special Characters are Not allowed";
@@ -778,19 +829,24 @@ var spl =  /^[A-Za-z0-9]*$/;
 	    if(responsibility =="")
 		 {
 			 
-			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Blank";
-			 return false;
+			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
+			 error="true";
 		 }
 	    else if(responsibility.charAt(0)==" ")
 		 {
-			 document.getElementById("responsibility1").innerHTML="Spaces are Not allowed";
-			 return false;
+			 document.getElementById("responsibility1").innerHTML="Initial Space Not allowed";
+			 error="true";
+		 }
+	    else if((responsibility.length < 4) || (responsibility.length > 400) )
+		 {
+		 document.getElementById("responsibility1").innerHTML="Required Field Should be of Length 4 to 32";
+		 error ="true";
 		 }
 	    
 	    else if(!responsibility.match(spl))
  		 {
  		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
- 		return false;
+ 		error="true";
  		 }
  	 else
  		 {
@@ -798,49 +854,114 @@ var spl =  /^[A-Za-z0-9]*$/;
  		 }  
 	        
 	    
-	 if(!datepicker123.match(date))
-			 {
-		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
-		 return false;
-		 }
-		 if(document.getElementById('id_hardcopy').checked)
+	     if(datepicker123 == "")
 		 {
-			if(e2=="")
-				{
-				
-				document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-				return false;
-				}
-			 
-			 
+			
+	    	 
+		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
+		 error ="true";
+		 
 		 }
-		 if(document.getElementById('id_electronic').checked)
+		 else if(datepicker123.match(date))
+		 {
+		 document.getElementById("datepicker1234").innerHTML="";
+		 }
+		 else
+		 {
+		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
+		 error ="true";
+		 }
+	 
+	     if(start == "true")
+     	{
+     		
+     	var form_id	= document.getElementById('form_or_rec_id').value;
+     		if(form_id == "")
+     		{
+     			document.getElementById('formiderror').innerHTML = "Required Field Should not be Empty";
+     			error = "true";
+     		}
+     		else
+     			{
+     			document.getElementById('formiderror').innerHTML = "";
+     			}
+     	}
+    	 if(document.getElementById('id_hardcopy').checked)
+    	 {
+    		if(e2=="")
+    			{
+    			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+    			error = "true";
+    			}
+    	 }
+    	 //eight
+    	
+    	 if(document.getElementById('id_electronic').checked)
+    		{
+    		 if(e3=="")
+    			 {
+    			
+    			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+    			 error = "true";
+    			 }
+    		}
+    	 //nine
+    	
+    	if(document.getElementById('id_both').checked)
+    		{
+    	
+    		if(e2=="")
+    		{
+    			
+    		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+    		error = "true";
+    		}
+    	}
+	
+	
+		if(id_inpprocess == "")
 		{
-			
-			 if(e3=="")
-				 {
-				
-				 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-				 return false;
-				 }
+			 
+			 document.getElementById("inprocesserror").innerHTML="Please Select One";
+			 error ="true";
 		}
-		if(document.getElementById('id_both').checked)
+		else
+		{
+			 document.getElementById("inprocesserror").innerHTML="";
+		}
+		
+	  
+		 if(issuer == "")
 			{
 			
-			if(e2=="")
-			{
-				
-			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
-			return false;
+				 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+					error ="true";
 			}
-			 if(e3=="")
-			 {
+	  else
+		  {
+		 document.getElementById("filtererror").innerHTML="";
+		  }
+			
 				
-			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
-			 return false;
+	 //six
+	 
+			 if(approver == "")
+				{
+				 
+					 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+						error ="true";
+				}
+			 else
+				 {
+				 document.getElementById("filter1error").innerHTML="";
+				 }
+			 if(error == "true")
+			 {
+			 
+		 return false;
 			 }
-			}	
-}
+	
+	}
 
 </script>
 

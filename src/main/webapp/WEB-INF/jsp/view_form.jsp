@@ -94,7 +94,7 @@
 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="20%">Process Area </td>
+							    <td align="left" valign="middle" width="20%">Process Area :</td>
 							   <!--  <td align="left" valign="middle" width="10%"><input type="text" name="process" class="input_txtbx2" id="recordtitle"><span class="err"><form:errors path="Form.responsibility"></form:errors></span></td>
 							    <td align="center" valign="middle" width="38%"> -->
 							    
@@ -109,8 +109,8 @@
               </td>
                <td valign="top" align="left" class="input_txt" >
 							  <input type="submit" value="Search" class="submit_btn1" name="search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
-							  <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn1" ></td>
-							  </tr>
+							  <!-- <td align="center" valign="middle" width="38%"><input type="submit" value="Clear" class="submit_btn1" ></td>
+							   --></tr>
 							</table>
 							
 						</div> 
@@ -168,7 +168,7 @@
 										</c:if>
 						    			 <c:if test="${fn:length(formForm.form) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red;"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>		
