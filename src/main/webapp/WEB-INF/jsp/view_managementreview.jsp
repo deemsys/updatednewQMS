@@ -109,7 +109,7 @@
 							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit"onclick="return validation('this');" onmouseover="showTooltip('tooltip_id','inp_id3');" />
 							  
 
-							  <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation1();" onmouseover="showTooltip('tooltip_id','inp_id3');" />
+							  <!-- <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation1();" onmouseover="showTooltip('tooltip_id','inp_id3');" /> -->
 							  <br> <span id="searcherror" style="color:red"></span>
 
 							  </td>
