@@ -63,7 +63,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${correctiveAndPreventiveActions.capa_id}"/>"/>${correctiveAndPreventiveActions.capa_id}<br/><span style="color: red;"></span></td>
               	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
-				   <select name="nc_id" id="nc_id" class="input_txtbx" onchange="doAjaxPost();" style="height:20px;">
+				   <select name="nc_id" id="nc_id" class="dropdown" onchange="doAjaxPost();">
                <option value="">--Select--</option>
                <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
                <%-- <option value="<c:out value="${nonconformance.id}"/>"><c:out value="${nonconformance.id}"/></option>
@@ -80,7 +80,7 @@
                 <tr class="row2">
 				  <td valign="top" align="left" class="input_txt" width="30%"> External ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
-                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.external_id}"></c:out>' /><br/><span style="color: red;" id="externalerror"></span><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></td>  
+                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.external_id}"></c:out>' onkeyup="ChangeCase(this);"/><br/><span style="color: red;" id="externalerror"></span><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></td>  
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
@@ -95,12 +95,14 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Date Found :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="date_found" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.date_found}" /><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span></td> --%>
-                  <select name="date_found" id="datepicker" class="input_txtbx" style="height:20px;">
-                  <option valule="">--Select--</option>
+                  <select name="date_found" id="datepicker" class="dropdown">
+                  <option value="">--Select--</option>
                   <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
                      <option value="${nonconformance.date_found}"<c:if test="${nonconformance.date_found == correctiveAndPreventiveActions.date_found}"><c:out value="selected"/></c:if>>${nonconformance.date_found}</option>
                   </c:forEach>
-                  </select><span style="color: red;" id="datepickererr"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span>
+                  </select>
+                  <br>
+                  <span style="color: red;" id="datepickererr"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span>
                   </td>
                   
 
@@ -128,41 +130,56 @@
             <tr class="row2">
               <td valign="top" align="left" class="input_txt"> CAPA Requestor :</td>
 			  <td valign="top" align="left" class="input_txt">
-				           <select name="capa_requestor" class="input_txtbx" style="height:20px;" id="capa_requestor">
+				           <select name="capa_requestor" class="dropdown"  id="capa_requestor">
 						                  <option value="">--Select--</option>
 						                  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
 										  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
 										  <option  <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name3'}"><c:out value="Selected"/></c:if> value="name3">name3</option>
-				           </select> <span style="color: red;" id="capaerror"></span><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></td>	
+				           </select><br> <span style="color: red;" id="capaerror"></span><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></td>	
 			  <td valign="top" align="left" class="input_txt"> Use 5 Why's in system(Y/N)<span>(*Optional)</span> :</td>
-		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system"/></td>					
-			</tr> 
+		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system" <c:if test="${correctiveAndPreventiveActions.use_5_why_in_system=='use_5_why_in_system'}"><c:out value="Checked"/></c:if>/></td>					
+		<script>
+		
+
+if (document.getElementById("use_5_why_in_system").value.checked) {
+document.getElementById("why").style.visibility = 'visible';
+
+
+}
+else  {
+document.getElementById("why").style.visibility = 'hidden';
+
+
+}
+
+</script>
+	</tr> 
 				
             <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%"> Request Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.request_date}" /><span style="color: red;" id="datepicker2err"></span><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.request_date}" /><br><span style="color: red;" id="datepicker2err"></span><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></td>
                   
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's?'
 				   	 <input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="top" align="left" class="input_txt" width="70% " id="5why">
-					  <textarea class="input_txtbx"  name="why" id="why" style="width:98%; height: 70px;">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
+					  <textarea class="input_txtbx"  name="why" id="why"  style="width:98%; height: 70px;" onInput="return validatename(id);">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
              </tr>	
              
             <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="30%"> CAPA Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.capa_due_date}" /><span style="color: red;" id="datepicker3err"></span><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.capa_due_date}" /><br><span style="color: red;" id="datepicker3err"></span><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></td>
                  
               
                 </tr>
             <tr class="row1">
               <td valign="top" align="left" class="input_txt">Assigned Team Leader :</td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="assigned_team_leader" id="team_leader" class="input_txtbx" style="height:20px;">
+				                  		<select name="assigned_team_leader" id="team_leader" class="dropdown">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
 											<option <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
 											<option  <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name3'}"><c:out value="Selected"/></c:if> value="name3">name3</option>
-				                 </select>
+				                 </select><br>
 				                 <span style="color: red;" id="leadererror"></span><form:errors path="CorrectiveAndPreventiveActions.assigned_team_leader"></form:errors>
 				                 
 				                   	</td>	
@@ -181,12 +198,7 @@
                <!-- <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 						 -->             	  <td valign="top" align="left" class="input_txt">Upload External Analysis(Y/N)<span>(*Optional)</span> :</td>
-				  <td> <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" 
-
-onclick="Upload();"
-				                  <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis == 
-
-'upload_external_analysis'}"><c:out value="Checked=checked"/></c:if>/>
+				  <td> <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis =='upload_external_analysis'}"><c:out value="Checked=checked"/></c:if> />
 				  <td>
 				 
 				  	 </tr>
@@ -196,7 +208,7 @@ onclick="Upload();"
 			 <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
 			 <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
              <td valign="top" align="left" class="input_txt" width="30%">Upload the File :</td>
-             <td valign="top" align="left" class="input_txt" width="30%"> <input name="attachments"  type="file" /><span style="color: red;" id="fileerror"></span><div  style="color:red; font-weight:bold;" > <c:out 
+             <td valign="top" align="left" class="input_txt" width="30%"> <input name="attachments" id="attachments"   type="file"/><span style="color: red;" id="fileerror"></span><div  style="color:red; font-weight:bold;" > <c:out 
 
  value="${correctiveAndPreventiveActions.attachment_name}"  ></c:out></div></td>
                  
@@ -231,8 +243,9 @@ onclick="Upload();"
                     <tr class="row2">
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
                      <td valign="top" align="left" class="input_txt"width="20%">
-				                  		<select name="responsibility" class="input_txtbx" id="responsibility">
-<%-- 						        <!--          <option value="">-select-</option>
+				                  		<select name="responsibility" class="dropdown" id="responsibility">
+				                  		<option value="">--Select--</option>
+<%-- 						        <!--         <option value="">--Select--</option>
 						         -->          <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="true">
                <option value="<c:out value="${hrandtrainings.name}"/>"><c:out value="${hrandtrainings.name}"/></option>
                </c:forEach>
@@ -417,6 +430,7 @@ $('#use_5_why_in_system').change(function() {
          });
  
 </script>
+
 <script>
 
 $(function() {
@@ -456,8 +470,16 @@ $(function() {
 		if (e.which === 32 && !this.value.length)
 	        e.preventDefault();
 	});
-	});	
+	});
+$(function() {
+	$("#why").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});		
 </script>
+
+
 <script>
 function validatename(id)
 {
@@ -468,9 +490,17 @@ function validatename(id)
 function validatealphanumeric(){
 
 	var textInput = document.getElementById("inp_external_id").value;
-    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+    textInput = textInput.replace(/[^a-z0-9]/g, "");
     document.getElementById("inp_external_id").value = textInput;
 }
+
+</script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+
 
 </script>
 <script>
@@ -505,7 +535,7 @@ function validation()
 			if(why=="")
 				{
 	
-		document.getElementById('whyerr').innerHTML="Required Field Should Not be Empty";
+		document.getElementById('whyerr').innerHTML="Required field should not be empty";
 		error="true";
 		}
 		
@@ -531,7 +561,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
  		{
  		if(file="")
  			{
- 			alert("file");
+ 		
  		document.getElementById('fileerror').innerHTML="Please Upload a File";
  		error="true";
  		}
@@ -540,11 +570,10 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
  		{
  		document.getElementById('fileerror').innerHTML="";
  		}
- 
+
 	if(datepicker == "")
 	 {
-		
-	 document.getElementById("datepickererr").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepickererr").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -557,7 +586,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	if(datepicker2 == "")
 	 {
 		
-	 document.getElementById("datepicker2err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker2err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -574,7 +603,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 
 	if(datepicker3 == "")
 	 {
-	 document.getElementById("datepicker3err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker3err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -589,7 +618,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	 }
 	if(datepicker4 == "")
 	 {
-	 document.getElementById("datepicker4err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker4err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -605,7 +634,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 
 	if(datepicker5 == "")
 	 {
-	 document.getElementById("datepicker5err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker5err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -621,7 +650,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 
 	if(datepicker6 == "")
 	 {
-	 document.getElementById("datepicker6err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker6err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -639,7 +668,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	{
  		
 		
-		document.getElementById("iderror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("iderror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -650,7 +679,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	if(capa=="")
 	{
 		
-		document.getElementById("capaerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("capaerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -660,7 +689,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	if(external=="")
 	{
 		
-		document.getElementById("externalerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("externalerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -670,7 +699,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 		if(team_leader=="")
 	{
 	
-		document.getElementById("leadererror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("leadererror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -685,7 +714,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	}
 	if(team_member=="")
 	{
-		document.getElementById("membererror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("membererror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -701,7 +730,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	
 	if(root_cause_statement=="")
 	{
-		document.getElementById("rooterror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("rooterror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -716,7 +745,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	}
 	if(root_cause_analysis_file=="")
 	{
-		document.getElementById("root1error").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("root1error").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -731,7 +760,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	}
 	if(action=="")
 	{
-		document.getElementById("actionerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("actionerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -745,7 +774,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	}
 	   if(verified_by=="")
 	{
-		document.getElementById("verifiedbyerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("verifiedbyerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -760,7 +789,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	} 
 	 if(responsibility=="")
 	{
-		document.getElementById("responsibilityerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("responsibilityerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -801,7 +830,7 @@ function use5whychecked()
 	var e4=document.getElementById('5why');
 	var e5=document.getElementById('why?');
 	
-	 if(!use_5_why_in_system)
+	 if(use_5_why_in_system)
 		{ 
 		 e4.style.display="table-cell";
 			e5.style.display="table-cell";

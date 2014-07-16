@@ -60,11 +60,11 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>"/>${capa_id}<br/><span style="color: red;"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>" />${capa_id}<br/><span style="color: red;"></span></td>
               	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
-				   <select name="nc_id" id="nc_id" class="input_txtbx" onchange="doAjaxPost();" style="height:20px;">
+				   <select name="nc_id" id="nc_id" class="dropdown" onchange="doAjaxPost();">
                <option value="">--Select--</option>
                <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
                <option value="<c:out value="${nonconformance.id}"/>"><c:out value="${nonconformance.id}"/></option>
@@ -81,7 +81,7 @@
                 <tr class="row2">
 				  <td valign="top" align="left" class="input_txt" width="30%"> External ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
-                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
+                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeyup="ChangeCase(this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
@@ -95,7 +95,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Date Found :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="date_found" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.date_found}" /><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span></td> --%>
-                  <select name="date_found" id="datepicker" class="input_txtbx" style="height:20px;">
+                  <select name="date_found" id="datepicker" class="dropdown" >
                   <option value="">--Select--</option>
                   <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
                   <option value="<c:out value="${nonconformance.date_found}"/>"><c:out value="${nonconformance.date_found}"/></option>
@@ -129,7 +129,7 @@
             <tr class="row2">
               <td valign="top" align="left" class="input_txt"> CAPA Requestor :</td>
 			  <td valign="top" align="left" class="input_txt">
-				           <select name="capa_requestor" class="input_txtbx" style="height:20px;" id="capa_requestor">
+				           <select name="capa_requestor" class="dropdown"  id="capa_requestor">
 						                  <option value="">--Select--</option>
 						                  <option value="name1" >name1</option>
 										  <option value="name1">name2</option>
@@ -158,7 +158,7 @@
             <tr class="row1">
               <td valign="top" align="left" class="input_txt">Assigned Team Leader :</td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="assigned_team_leader" class="input_txtbx" style="height:20px;" id="team_leader">
+				                  		<select name="assigned_team_leader" class="dropdown"  id="team_leader">
 						                  <option value="">--Select--</option>
 						                       <option value="name1" >name1</option>
 											<option  value="name1">name2</option>
@@ -210,7 +210,7 @@
                     <tr class="row2">
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
                      <td valign="top" align="left" class="input_txt"width="20%">
-				                  		<select name="responsibility" id="responsibility" class="input_txtbx" style="width:100%; height:20px;">
+				                  		<select name="responsibility" id="responsibility" class="dropdown">
 				                  		<option value="">--Select--</option>
 						                  <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="hrandtrainings" varStatus="true">
                <option value="<c:out value="${hrandtrainings.name}"/>"><c:out value="${hrandtrainings.name}"/></option>
@@ -446,9 +446,17 @@ function validatename(id)
 function validatealphanumeric(){
 
 	var textInput = document.getElementById("inp_external_id").value;
-    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+    textInput = textInput.replace(/[^a-z0-9]/g, "");
     document.getElementById("inp_external_id").value = textInput;
 }
+
+</script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+
 
 </script>
 <script>
@@ -483,7 +491,7 @@ function validation()
  			if(why=="")
  				{
  	
- 		document.getElementById('whyerr').innerHTML="Required Field Should Not be Empty";
+ 		document.getElementById('whyerr').innerHTML="Required field should not be empty";
  		error="true";
  		}
  		
@@ -521,7 +529,7 @@ function validation()
 	if(datepicker == "")
 	 {
 		
-	 document.getElementById("datepickererr").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepickererr").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -535,7 +543,7 @@ function validation()
 	if(datepicker2 == "")
 	 {
 		
-	 document.getElementById("datepicker2err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker2err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -552,7 +560,7 @@ function validation()
 
 	if(datepicker3 == "")
 	 {
-	 document.getElementById("datepicker3err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker3err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -567,7 +575,7 @@ function validation()
 	 }
 	if(datepicker4 == "")
 	 {
-	 document.getElementById("datepicker4err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker4err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -583,7 +591,7 @@ function validation()
 
 	if(datepicker5 == "")
 	 {
-	 document.getElementById("datepicker5err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker5err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -599,7 +607,7 @@ function validation()
 
 	if(datepicker6 == "")
 	 {
-	 document.getElementById("datepicker6err").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker6err").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -617,7 +625,7 @@ function validation()
 	{
  		
 		
-		document.getElementById("iderror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("iderror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -628,7 +636,7 @@ function validation()
 	if(capa=="")
 	{
 		
-		document.getElementById("capaerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("capaerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -638,7 +646,7 @@ function validation()
 	if(external=="")
 	{
 		
-		document.getElementById("externalerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("externalerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -648,7 +656,7 @@ function validation()
 		if(team_leader=="")
 	{
 	
-		document.getElementById("leadererror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("leadererror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -663,7 +671,7 @@ function validation()
 	}
 	if(team_member=="")
 	{
-		document.getElementById("membererror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("membererror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -679,7 +687,7 @@ function validation()
 	
 	if(root_cause_statement=="")
 	{
-		document.getElementById("rooterror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("rooterror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -694,13 +702,13 @@ function validation()
 	}
 	if(root_cause_analysis_file=="")
 	{
-		document.getElementById("root1error").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("root1error").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
 	else if((root_cause_analysis_file.length < 4) || (root_cause_analysis_file.length > 45))
 		{
-		alert("length");
+		//alert("length");
 		document.getElementById("root1error").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
@@ -709,7 +717,7 @@ function validation()
 	}
 	if(action=="")
 	{
-		document.getElementById("actionerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("actionerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -723,7 +731,7 @@ function validation()
 	}
 	   if(verified_by=="")
 	{
-		document.getElementById("verifiedbyerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("verifiedbyerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -738,7 +746,7 @@ function validation()
 	} 
 	 if(responsibility=="")
 	{
-		document.getElementById("responsibilityerror").innerHTML="Required Field Should Not Empty";	
+		document.getElementById("responsibilityerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
