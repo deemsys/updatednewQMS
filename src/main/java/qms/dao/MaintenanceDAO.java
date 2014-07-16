@@ -880,9 +880,9 @@ public class MaintenanceDAO extends AbstractITextPdfView
 				
 				}
 					else if(type=="maintenance_past_due")
-						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t2.calibration='No' and t1.due_date<now()";
+						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t2.calibration='No' and t1.due_date < NOW()";
 				else if(type=="calibration_past_due")
-						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t1.due_date<now() and t2.calibration='yes'";
+						cmd_select="select * from tbl_maintenancechild as t1 join tbl_maintenance as t2 on t1.equipmentid=t2.equipment_id where t1.due_date < NOW() and t2.calibration='Yes'";
 				
 			resultSet = statement.executeQuery(cmd_select);
 			while (resultSet.next()) {

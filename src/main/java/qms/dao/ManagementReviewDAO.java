@@ -1149,7 +1149,7 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	    int currentDay = c.get(Calendar.DATE);
 	    int currentMonth = c.get(Calendar.MONTH) + 1;
 	    int currentYear = c.get(Calendar.YEAR);
-	    String currentdate = currentYear+"-0"+currentMonth+"-0"+currentDay;
+	    String currentdate = currentYear+"-"+currentMonth+"-"+currentDay;
 	    
 	    Date start = c.getTime();
 	    c.add(Calendar.DATE, -13);
@@ -1158,7 +1158,7 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	    int oldDay = c.get(Calendar.DATE);
 	    int oldMonth = c.get(Calendar.MONTH) + 1;
 	    int oldYear = c.get(Calendar.YEAR);
-	    String olddate = oldYear+"-0"+oldMonth+"-"+oldDay;
+	    String olddate = oldYear+"-"+oldMonth+"-"+oldDay;
 	    System.out.println(olddate);
 	    System.out.println(currentdate);
     
