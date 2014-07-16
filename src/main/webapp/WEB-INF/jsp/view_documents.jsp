@@ -121,7 +121,7 @@
                					</select>
                					<br><span id="processerror" style="color:red"></span>
                					</td>   
-							    <td align="center" valign="middle" width="38%"><input type="submit" value="Search" class="submit_btn1" onclick="return validation('this');">
+							    <td align="center" valign="middle" width="38%"><input type="submit" value="Search" class="submit_btn1" >
 							    
 							    </td>
 <!-- 							    <td align="center" valign="middle" width="38%"><input type="reset" value="Clear" class="submit_btn1"></td>

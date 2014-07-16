@@ -174,12 +174,17 @@ public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Va
 @RequestMapping(value = "/delete_formprefix", method = RequestMethod.GET)
 public String deletemaintenance(@RequestParam("id") String id,FormPrefix formPrefix,ModelMap model) {
 
-	
+	int page =1;
 	formprefixDAO.delete_formprefix(id);
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
-	formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
-	model.addAttribute("formFormPrefix",formFormPrefix);
-	model.addAttribute("menu","admin");
+	formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(page));
+	model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));
+	model.addAttribute("formFormPrefix",formFormPrefix);	
+  	model.addAttribute("noofrows",5);   
+    model.addAttribute("currentpage",page);
+    model.addAttribute("menu","admin");
+    model.addAttribute("button","viewall");
+	model.addAttribute("success","delete");
     return "formprefix_list";
 	
 }

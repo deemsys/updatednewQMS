@@ -114,7 +114,7 @@
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/inserted.png">
-						<a title="Close" href="addsourcenc">
+						<a title="Close" href="addreportnc">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>

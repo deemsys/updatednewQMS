@@ -115,7 +115,7 @@
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/inserted.png">
-						<a title="Close" href="add_prefixform">
+						<a title="Close" href="add_formlocation">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>
