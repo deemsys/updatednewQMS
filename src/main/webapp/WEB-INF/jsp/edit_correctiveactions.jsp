@@ -162,7 +162,7 @@ document.getElementById("why").style.visibility = 'hidden';
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="top" align="left" class="input_txt" width="70% " id="5why">
-					  <textarea class="input_txtbx"  name="why" id="why"  style="width:98%; height: 70px;" onInput="return validatename(id);">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
+					  <textarea class="input_txtbx1"  name="why" id="why"  style="width:98%; height: 70px;" onInput="return validatename(id);">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
              </tr>	
              
             <tr class="row2">
@@ -188,7 +188,7 @@ document.getElementById("why").style.visibility = 'hidden';
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
 						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea  class="input_txtbx1"    name="team_members"  id="team_member" style="width: 202px; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Statement :</td>               
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx1"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
                
               </tr>
                  <tr class="row1">
@@ -275,7 +275,7 @@ document.getElementById("why").style.visibility = 'hidden';
                   <tr >
                   
                   <td valign="top" align="center"></td>
-				  <td valign="top" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
+				  <td valign="top" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
 				 </td>
                   </tr>
                   </table>
