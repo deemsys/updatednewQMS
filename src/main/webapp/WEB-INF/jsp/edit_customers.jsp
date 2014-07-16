@@ -69,27 +69,27 @@
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Customer Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="customer_name" class="input_txtbx" id="customername" placeholder="Name"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.customer_name}" onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="customer_name" class="input_txtbx" id="customername"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.customer_name}" onInput="return validatename(id);"/><br>
                    <span id="customernameerror"style="color:red"></span>
                   <span class="err"><form:errors path="Customers.customer_name"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%">ContactName :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" placeholder="Name"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.contact_name}" onInput="return validatename(id);" /><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.contact_name}" onInput="return validatename(id);" /><br>
                    <span id="contactnameerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.contact_name"></form:errors></span></td>
                 </tr>
 				<tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Address :</td>
-               		<td><textarea class="input_txtbx" id="inp_address" name="address" placeholder="Address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;"><c:out value="${customers.address}"/>	</textarea><br/>
+               		<td><textarea class="input_txtbx" id="inp_address" name="address"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;"><c:out value="${customers.address}"/>	</textarea><br/>
                		<span id="addresserror" style="color:red"></span>
                		<span class="err"><form:errors path="Customers.address"></form:errors></span></td>
                		 <td valign="middle" align="left" class="input_txt" width="30%">Contact Title :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="title_of_contact" class="input_txtbx" id="inp_title_of_contact" placeholder="Title" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.title_of_contact}"  onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="title_of_contact" class="input_txtbx" id="inp_title_of_contact" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.title_of_contact}"  onInput="return validatename(id);"/><br>
                   <span id="contacterror" style="color:red"></span><span class="err"><form:errors path="Customers.title_of_contact"></form:errors></span></td>
                 
                	</tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">City :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city" placeholder="chennai" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.city}"  onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.city}"  onInput="return validatename(id);"/><br>
                    	<span id="cityerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.city"></form:errors></span></td>
                  <td valign="middle" align="left" class="input_txt" width="30%"> Telephone :</td>
@@ -100,7 +100,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">State :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state" placeholder="Tamil Nadu" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.state}"  onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.state}"  onInput="return validatename(id);"/><br>
                     <span id="stateerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="30%"> Fax :</td>
@@ -111,11 +111,11 @@
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Country :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" id="inp_country" placeholder="India" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.country}"  onInput="return validatename(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.country}"  onInput="return validatename(id);"/><br>
                   <span id="countryerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.country"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="30%">Email :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" placeholder="Email Id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.email_address}" onInput="return validatename1(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.email_address}" onInput="return validatename1(id);"/><br>
                    <span id="emailerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.email_address"></form:errors></span></td>
                  
