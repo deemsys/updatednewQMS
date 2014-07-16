@@ -344,18 +344,18 @@ function validate()
 	
 	if(name == "")
 	{
-	 document.getElementById("nameerror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("nameerror").innerHTML="Required field should not be empty";
 	 error="true";
 	
 	}
 	else if(name.charAt(0) == " ")
 	{
-		document.getElementById("nameerror").innerHTML="Initail Spaces not Allowed";
+		document.getElementById("nameerror").innerHTML="Initail spaces not allowed";
 		 error="true";
 	}
 else if((name.length < 4) ||(name.length > 32))
 	{
-	document.getElementById("nameerror").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("nameerror").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -366,18 +366,18 @@ else
 	
 	if(trainer == "")
 	{
-	 document.getElementById("trainererror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("trainererror").innerHTML="Required field should not be empty";
 	 error="true";
 	
 	}
 	else if(trainer.charAt(0) == " ")
 	{
-		document.getElementById("trainererror").innerHTML="Initail Spaces not Allowed";
+		document.getElementById("trainererror").innerHTML="Initail spaces not allowed";
 		 error="true";
 	}
 	else if((trainer.length < 4) ||(trainer.length > 32))
 	{
-	document.getElementById("trainererror").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("trainererror").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -388,7 +388,7 @@ else
 	
 	 if(jobtitle == "")
 	  {
-	  document.getElementById("jobtitleerror").innerHTML="Required Field Should not be Empty";
+	  document.getElementById("jobtitleerror").innerHTML="Required field should not be empty";
 		 error="true";
 	  }
  else {
@@ -397,7 +397,7 @@ else
 
 	 if(qualifiedby == "")
 	  {
-	  document.getElementById("qualifiedbyerror").innerHTML="Required Field Should not be Empty";
+	  document.getElementById("qualifiedbyerror").innerHTML="Required field should not be empty";
 		 error="true";
 	  }
  	else
@@ -406,18 +406,18 @@ else
 	}
 	 if(effectivenessnotes == "")
 		{
-		 document.getElementById("effectivenessnoteserror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("effectivenessnoteserror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 		}
 		else if(effectivenessnotes.charAt(0) == " ")
 		{
-			document.getElementById("effectivenessnoteserror").innerHTML="Initail Spaces not Allowed";
+			document.getElementById("effectivenessnoteserror").innerHTML="Initail spaces not allowed";
 			 error="true";
 		}
 	else if((effectivenessnotes.length < 4) ||(effectivenessnotes.length > 400))
 		{
-		document.getElementById("effectivenessnoteserror").innerHTML="Required Field Should be length of 4 to 400";
+		document.getElementById("effectivenessnoteserror").innerHTML="Required field should be length of 4 to 400";
 		error="true";
 		
 		}
@@ -430,7 +430,7 @@ else
 	 
 	 if(typeoftraining == "")
 	  {
-	  document.getElementById("typeoftrainingerror").innerHTML="Required Field Should not be Empty";
+	  document.getElementById("typeoftrainingerror").innerHTML="Required field should not be empty";
 		 error="true";
 	  }
 	else {
@@ -439,7 +439,7 @@ else
 	 
 	 if(datepicker == "")
 	 {
-	 document.getElementById("datepicker00").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker00").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -449,13 +449,13 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker00").innerHTML="Invalid Date";
+	 document.getElementById("datepicker00").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(image == "")
 	  {
-	  document.getElementById("imageerror").innerHTML="Please Upload a File";
+	  document.getElementById("imageerror").innerHTML="Please upload a file";
 		 error="true";
 	  }
 	else {
@@ -465,7 +465,7 @@ else
 	 
 	 if(datepicker1 == "")
 	 {
-	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker11").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -475,13 +475,13 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="Invalid Date";
+	 document.getElementById("datepicker11").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(datepicker2 == "")
 	 {
-	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker22").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -491,13 +491,13 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(datepicker3 == "")
 	 {
-	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker33").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -507,12 +507,12 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="Invalid Date";
+	 document.getElementById("datepicker33").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 if(!disposition && !calibration && !responsibility)
 	 {
-	 document.getElementById("functionsneedserror").innerHTML="Please Select Atleast One";
+	 document.getElementById("functionsneedserror").innerHTML="Please select atleast one";
 	 error="true";
 	 }
  else
@@ -523,18 +523,18 @@ else
 	 
 	 if(documentedin == "")
 		{
-		 document.getElementById("documentedinerror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("documentedinerror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 		}
 	 else if(documentedin.charAt(0) == " ")
 		{
-			document.getElementById("documentedinerror").innerHTML="Initail Spaces not Allowed";
+			document.getElementById("documentedinerror").innerHTML="Initail spaces not allowed";
 			 error="true";
 		}
 	else if((documentedin.length < 4) ||(documentedin.length > 400))
 		{
-		document.getElementById("documentedinerror").innerHTML="Required Field Should be length of 4 to 400";
+		document.getElementById("documentedinerror").innerHTML="Required field should be length of 4 to 400";
 		error="true";
 		
 		}
