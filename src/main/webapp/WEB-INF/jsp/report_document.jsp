@@ -178,8 +178,8 @@
 							<tr >
              <td  colspan="2" align="left" width="30%" style="padding-left: 270px">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate"onclick="return validation();" class="submit_btn1">
-             </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+            <!--  </td><td style="padding:10px;">
+              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td> -->
             
              </tr></table>
             

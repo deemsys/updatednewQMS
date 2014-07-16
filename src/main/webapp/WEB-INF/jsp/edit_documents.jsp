@@ -84,22 +84,24 @@ $(window).load(function(){
 					<input type="hidden" id="documentid1"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');"
 					name="document_id" />${documentMain.document_id}</a>
-					<select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;">
+					<table style="width:100%;" class="simple_table" border="0">
+                    <tr ><td align="left">
+					<select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;width:130px; margin:0 0 0 -15px;margin-right:-1px;">
                
 			                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
-               </select>
-               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;"  onblur="change_to_label()" onInput="return validatename3(id);"/>
+               </select></td><td align="left">
+               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:60px;margin:0 0 0 -10px;"  onblur="change_to_label()" onInput="return validatename3(id);"/>
                
-                <input type="hidden" name=document_id id="generated_id"  value="" /> 
+                <input type="hidden" name=document_id id="generated_id"  value="" /> </td></tr></table>
                
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
             <label id="changeafter" style="display:none;" ></label> 
              <br><span id="documentiderror" style="color:red"></span>
             
 <td valign="middle" align="left" class="input_txt" width="10%">Media Type:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">
+               <td valign="middle" align="left" class="input_txt" width="70%">
                <!-- <select name="media_type" class="input_cmbbx1" onchange="">
                <option onclick="toggle2(this.value);" value="Hard Copy">Hard Copy</option>
                <option onclick="toggle2(this.value);" value="Electronic">Electronic</option>
@@ -129,7 +131,7 @@ $(window).load(function(){
              </tr>  
               <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Document Title:</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onInput="return validatename(id);"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
                <span id="documenttitle1" style="color:red"></span>
                </td>
@@ -200,7 +202,7 @@ $(window).load(function(){
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Document Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Document Type:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
            
                 <select name="document_type" id="id_document_type"  class="input_txtbx">
@@ -276,7 +278,7 @@ $(window).load(function(){
 		 
 		  
 		       <tr class="row1" style="border:none;">
-            <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
+            <td valign="middle" align="left" class="input_txt" width="20%">Issuer:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
                
                <select name="issuer" id="issuer" class="input_txtbx" style="width:200px;">
@@ -289,8 +291,8 @@ $(window).load(function(){
                
                <br/><span id="filtererror" style="color:red"></span><span class="err"style="color:red"><form:errors path="DocumentMain.issuer"></form:errors></span></td>
             
-                <td valign="middle" align="left" class="input_txt" width="30%">Approver 1(Process Owner):</td>
-               <td valign="top" align="left" class="input_txt" width="25%" >
+                <td valign="middle" align="left" class="input_txt" width="20%">Approver 1(Process Owner):</td>
+               <td valign="top" align="left" class="input_txt" width="40%" >
               
                
                
@@ -321,7 +323,7 @@ $(window).load(function(){
    			    </td>
               
               <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
-               <td valign="top" align="left" class="input_txt" width="25%">
+               <td valign="top" align="left" class="input_txt" width="45%">
                
  				<select name="approver2" class="input_txtbx" id="approver2" style="width:200px;">
              	  <option value="">--Select--</option>
@@ -339,14 +341,14 @@ $(window).load(function(){
              </tr>
              <tr class="row1" style="border:none;">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Date:</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Date:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx"  value="${documentMain.date}"/><br/>
                <span id="datepicker1" style="color:red"></span>
                <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
-               <td valign="middle" align="left" class="input_txt" width="70%">Approver 3(Mgmt Report):</td>
-               <td valign="top" align="left" class="input_txt" width="25%">
+               <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report):</td>
+               <td valign="top" align="left" class="input_txt" width="35%">
                
                <select name="approver3" id="approver3" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
@@ -383,11 +385,11 @@ $(window).load(function(){
             <td valign="top" align="left" class="input_txt" width="20%"></td>
         </tr>
              <tr class="row1" >
-             <td colspan="2" align="right">
-             <input type="submit" id="submit"  name="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
-             <td colspan="3"> 
+             <td colspan="2" align="center">
+             <input type="submit" align="left" id="submit"  name="submit" value="Update" onclick="return validation();" class="submit_btn1" style="margin-left:105%;"></td>
+            <!--  <td colspan="3"> 
             <input type="button" id="reset_export" name="reset_export" value="Reset" onclick="reset1();"class="submit_btn1"></td>
-                       
+                       --> 
       
         </tr>
         </table>
