@@ -152,7 +152,7 @@
 		 }
 	 else if(processname.charAt(0)==" ")
 	 {
-	 document.getElementById("processname2").innerHTML="Required field should not be spaces";
+	 document.getElementById("processname2").innerHTML="Should not accept initial space";
 	 error="true";
 	 }
 	 else if(processname.length<4)
@@ -168,7 +168,7 @@
 		 }
 	 else if(processowner.charAt(0)==" ")
 	 {
-	 document.getElementById("processowner2").innerHTML="Required field should not be spaces";
+	 document.getElementById("processowner2").innerHTML="Should not accept initial space";
 	 error="true";
 	 }
 	 else if(processowner.length<4)

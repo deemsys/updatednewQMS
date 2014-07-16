@@ -110,16 +110,16 @@
       </tr>
        <c:if test="${success=='insert'}">
 			<tr>
-				<td valign="top" align="left" style="padding: 5px 50px 10px 225px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<td valign="top" align="left" style="padding: 5px 50px 10px 228px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/inserted.png">
-						<a title="Close" href="addreportnc">
+						<a title="Close" href="addsourcenc">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>
 			</tr>
-		</c:if>
+		</c:if>  
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
@@ -127,6 +127,7 @@
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
+         
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" >
@@ -211,7 +212,7 @@
       		   }
             	   else if(groupperson.charAt(0)==" ")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Required field should not be spaces";
+            		   document.getElementById("groupperson1").innerHTML="Should not accept initial space";
             		   error="true";
             		   }
             	              	 if(error=="true")

@@ -62,6 +62,7 @@
                   
                   </td>
                 </tr>
+                <tr height="10"></tr>
                   <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
@@ -101,7 +102,7 @@
             		   }
             	   else if(typeofnc.charAt(0)==" ")
             		   {
-            		   document.getElementById("typeofnc1").innerHTML="Required Field Should not be Spaces";
+            		   document.getElementById("typeofnc1").innerHTML="Should not accept initial space";
           			 return false;
             		   }
             	   else if(typeofnc.length<4)

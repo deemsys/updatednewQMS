@@ -108,7 +108,18 @@
       </tr>
       
        <tr>
-      
+      <c:if test="${success=='update'}">
+			<tr align="left" >
+				<td valign="top" align="left" style="padding-left: 230px">&nbsp;
+					<div id="success_statusbar" class="status success">
+						<p class="closestatus">
+						<img alt="Success" src="resources/images/icons/success.png"/>
+						<a title="Close" href="setrevision">
+						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
+						</p>
+					</div></td>
+			</tr>
+		</c:if>
         <td valign="top" align="left">
             <div class="headings altheading">
               <h2 style="padding-left: 55px">Revision Format</h2>
@@ -130,18 +141,7 @@
 					</div></td>
 			</tr> --%>
 		<%-- </c:if> --%>
-		<c:if test="${success=='update'}">
-			<tr align="left" >
-				<td valign="top" align="left" style="padding-left: 33px">&nbsp;
-					<div id="success_statusbar" class="status success">
-						<p class="closestatus">
-						<img alt="Success" src="resources/images/icons/success.png"/>
-						<a title="Close" href="setrevision">
-						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>
-						</p>
-					</div></td>
-			</tr>
-		</c:if></TABLE>
+		</TABLE>
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">

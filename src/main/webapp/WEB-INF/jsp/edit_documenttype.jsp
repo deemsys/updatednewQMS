@@ -62,7 +62,7 @@
                   <input type="hidden" name="id" id="id" value="${documenttype.id}"/>
                   </td>
                 </tr>
-                
+                <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
@@ -101,7 +101,7 @@
 		 }
 	 else if(documenttype.charAt(0) == " ")
 		 {
-		 document.getElementById("documenttype1").innerHTML="Required field should not be spaces";
+		 document.getElementById("documenttype1").innerHTML="Should not accept initial space";
 		 return false;
 		 }
 	 else if(documenttype.length<4)

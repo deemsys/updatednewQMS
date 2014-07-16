@@ -108,17 +108,9 @@
   </div>
       </td>
       </tr>
-      <tr>
-        <td valign="top" align="left">
-            <div class="headings altheading">
-           
-              <h2 style="padding-left: 50px">Add Process</h2>
-            </div>
-    <div class="contentbox">
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
-               <c:if test="${success=='insert'}">
+     <c:if test="${success=='insert'}">
 			<tr>
-				<td valign="top" align="left" style="padding: 5px 50px 10px 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<td valign="top" align="left" style="padding: 5px 50px 10px 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/inserted.png">
@@ -128,6 +120,15 @@
 					</div></td>
 			</tr>
 		</c:if>
+      <tr>
+        <td valign="top" align="left">
+            <div class="headings altheading">
+           
+              <h2 style="padding-left: 50px">Add Process</h2>
+            </div>
+    <div class="contentbox">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
@@ -137,18 +138,19 @@
                 <br>  <span id="processid1"></span>
                   <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
+                  <tr height="10"></tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onInput="validateAlpha1()" />
                 <br>   <span id="processname1"></span>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
-                </tr>
+                </tr>  <tr height="10"></tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px" >Process Owner :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" maxlength="32" class="input_txtbx" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onInput="validateAlpha2()" />
                  <br>  <span id="processowner1"></span>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
-                </tr>
+                </tr>  <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
@@ -213,7 +215,7 @@
 	 var processname = document.getElementById('processname').value;
 	 var processowner = document.getElementById('processowner').value;
 	 var errord = "Required field should not be empty";
-	 var space = "Required field should not be spaces";
+	 var space = "Should not accept initial space";
 	 var num = "Required field should be alphanumeric";
 	 var wds = "Required field should be alphabate";
 	 var ermsg="Required and must be of length 4 to 32";

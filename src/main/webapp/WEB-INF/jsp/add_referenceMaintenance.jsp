@@ -31,7 +31,7 @@ error="true";
 }
 else if(document.getElementById("frequency_maintenance").value.substring(0,1)==' ')
 {
-document.getElementById("frequency_maintenanceerr").innerHTML="Invalid data";
+document.getElementById("frequency_maintenanceerr").innerHTML="Should not accept initial space";
 error="true";
 }
 if(error=="true")

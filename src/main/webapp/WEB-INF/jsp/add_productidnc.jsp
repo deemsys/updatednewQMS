@@ -118,13 +118,13 @@
   </div>
       </td>
       </tr>
-       <c:if test="${success=='insert'}">
+        <c:if test="${success=='insert'}">
 			<tr>
-				<td valign="top" align="left" style="padding: 5px 50px 10px 225px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<td valign="top" align="left" style="padding: 5px 50px 10px 228px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div id="success_statusbar" class="status success">
 						<p class="closestatus">
 						<img alt="Success" src="resources/images/icons/inserted.png">
-						<a title="Close" href="addproductidnc">
+						<a title="Close" href="addsourcenc">
 						<img alt="Success" src="resources/images/icons/icon_square_close.png"></a>		
 						</p>
 					</div></td>
@@ -137,6 +137,7 @@
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
@@ -146,7 +147,7 @@
 onkeyup="ChangeCase(this);" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()" />
                   <br> <span id="productidnc1" style="color:red"></span>
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
-                </tr>
+                </tr><tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
@@ -188,7 +189,7 @@ onkeyup="ChangeCase(this);" onblur="toggle(this.value)"onmouseover="showTooltip(
             	   
             	   else if(productidnc.charAt(0)==" ")
             		   {
-            		   document.getElementById("productidnc1").innerHTML="Required field should not be spaces";
+            		   document.getElementById("productidnc1").innerHTML="Should not accept initial space";
           			 return false;
             		   }
             	   else if(productidnc.length<4)

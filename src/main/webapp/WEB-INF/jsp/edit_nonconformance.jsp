@@ -657,7 +657,7 @@ else
 	    
 		else if(document.getElementById("quality1").value.substring(0,1)==" ")
 		{
-		document.getElementById("qua1").innerHTML="Initial space not allowed";
+		document.getElementById("qua1").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		else if(quality1!="")
@@ -687,7 +687,7 @@ if(quality2=="")
 
 else if(document.getElementById("quality2").value.substring(0,1)==" ")
 {
-document.getElementById("qua2").innerHTML="Initial space not allowed";
+document.getElementById("qua2").innerHTML="Should not accept initial space";
  error="true";
 }
 else if(quality2!="")
@@ -717,7 +717,7 @@ if(quality3=="")
 
 else if(document.getElementById("quality3").value.substring(0,1)==" ")
 {
-document.getElementById("qua3").innerHTML="Initial space not allowed";
+document.getElementById("qua3").innerHTML="Should not accept initial space";
  error="true";
 }
 else if(quality3!="")
@@ -806,7 +806,7 @@ if(datefound == "")
 	
 	    else if(document.getElementById("quantity").value.substring(0,1)==" ")
 		{
-		document.getElementById("quantitysuspect").innerHTML="Initial space not allowed";
+		document.getElementById("quantitysuspect").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 	    else
@@ -831,7 +831,7 @@ if(datefound == "")
 		
 	 	else if(document.getElementById("costofnc").value.substring(0,1)==" ")
 			{
-			document.getElementById("cost").innerHTML="Initial space not allowed";
+			document.getElementById("cost").innerHTML="Should not accept initial space";
 			 error="true";
 			}
 	 	else
@@ -856,7 +856,7 @@ if(datefound == "")
 
 		    else if(document.getElementById("natureofnc").value.substring(0,1)==" ")
 			{
-			document.getElementById("nature").innerHTML="Initial space not allowed";
+			document.getElementById("nature").innerHTML="Should not accept initial space";
 			 error="true";
 			}
 		 	else{
@@ -881,7 +881,7 @@ if(datefound == "")
 				
 					else if(document.getElementById("tempaction").value.substring(0,1)==" ")
 					{
-					document.getElementById("temp").innerHTML="Initial space not allowed";
+					document.getElementById("temp").innerHTML="Should not accept initial space";
 					 error="true";
 					}
 					else
@@ -906,7 +906,7 @@ if(datefound == "")
 				
 					else if(document.getElementById("name_of_disposition_responsibility").value.substring(0,1)==" ")
 					{
-					document.getElementById("responsibilityerror").innerHTML="Initial space not allowed";
+					document.getElementById("responsibilityerror").innerHTML="Should not accept initial space";
 					 error="true";
 					}
 					else

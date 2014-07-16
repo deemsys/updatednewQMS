@@ -74,7 +74,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="group_person" maxlength="32" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${reportedByNCs.group_person}" onInput="validateAlpha4()"/>
                    <br>  <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
-                </tr>
+                </tr><tr height="10"></tr>
                   <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
@@ -126,7 +126,7 @@
             		   }
             	   else if(groupperson.charAt(0)==" ")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Required field should not be spaces";
+            		   document.getElementById("groupperson1").innerHTML="Should not accept initial space";
         			 	error="true";
             		   }
             	   else if(groupperson.length<4)

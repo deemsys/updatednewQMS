@@ -219,7 +219,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete  Form-Prefix Form ?")
+	var answer = confirm("Are you Sure You Want to Delete  Document Prefix Form?")
 	if (answer){
 		return true;
 	}

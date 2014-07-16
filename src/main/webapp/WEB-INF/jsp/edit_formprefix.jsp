@@ -134,7 +134,7 @@
       	 }
        else if(formname.charAt(0)==" ")
       	 {
-      	 document.getElementById("document_id1").innerHTML="Required field should not be spaces";
+      	 document.getElementById("document_id1").innerHTML="Should not accept initial space";
       	 error="true";
       	 }
       	
@@ -164,7 +164,7 @@
       	 }
        else if(formprefix.charAt(0)==" ")
       	 {
-      	 document.getElementById("docprefix1").innerHTML="Required field should not be spaces";
+      	 document.getElementById("docprefix1").innerHTML="Should not accept initial space";
       	 error="true";
       	 }
        else if(formprefix.length<4)

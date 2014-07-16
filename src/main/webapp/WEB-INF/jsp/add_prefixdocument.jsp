@@ -113,7 +113,7 @@
       </td>
       </tr>
       </tr>
-				<c:if test="${success=='insert'}">
+			<c:if test="${success=='insert'}">
 			<tr>
 				<td valign="top" align="left" style="padding: 5px 50px 10px 220px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<div id="success_statusbar" class="status success">
@@ -124,14 +124,16 @@
 						</p>
 					</div></td>
 			</tr>
-		</c:if>
+		</c:if>	
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
               <h2 style="padding-left: 50px">Add Document Prefix</h2>
+           
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
+         
               <tr>
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
@@ -151,6 +153,7 @@
                  <br>   <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
+                  <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit"  onclick="return validation();" class="submit_btn1"></td>
@@ -213,7 +216,7 @@
 		 }
 	 else if(docprefix.charAt(0)==" ")
 		 {
-		 document.getElementById("docprefix1").innerHTML="Required field should not be spaces";
+		 document.getElementById("docprefix1").innerHTML="Should not accept initial space";
 		 error="true";
 		 }
 	 else if(docprefix.length<4)
@@ -244,7 +247,7 @@
 	 }
  else if(document_id.charAt(0)==" ")
 	 {
-	 document.getElementById("document_id1").innerHTML="Required field should not be spaces";
+	 document.getElementById("document_id1").innerHTML="Should not accept initial space";
 	 error="true";
 	 }
  else if(document_id.length<4)

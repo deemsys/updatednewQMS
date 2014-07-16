@@ -316,7 +316,8 @@
                </tr>
                  <tr class="row1">
                   <td><br>
-                  <td valign="top" align="center"><input type="submit" class="submit_btn1" value="Submit" onclick="return validation();"></td>
+               <td></td>
+                  <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Submit" onclick="return validation();"></td>
                 </tr>
 												
 														<!-- <td><input type="submit" class="submit_btn1" value="submit" onclick="return validation();"></td> -->
@@ -537,7 +538,7 @@ error="true";
 	
 	    else if(document.getElementById("quantity").value.substring(0,1)==" ")
 		{
-		document.getElementById("quantitysuspect").innerHTML="Initial space not allowed";
+		document.getElementById("quantitysuspect").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 	    else
@@ -562,7 +563,7 @@ error="true";
 		
 	 	else if(document.getElementById("costofnc").value.substring(0,1)==" ")
 			{
-			document.getElementById("cost").innerHTML="Initial space not allowed";
+			document.getElementById("cost").innerHTML="Should not accept initial space";
 			 error="true";
 			}
 	 	else
@@ -577,6 +578,12 @@ error="true";
 				 document.getElementById("nature").innerHTML="Required field should not be empty";
 				 error="true";
 			 } 
+			 else if(document.getElementById("natureofnc").value.substring(0,1)==' ')
+			    {
+			    	
+			    	document.getElementById("nature").innerHTML="Should not accept initial space";
+			    	 error="true";
+			    } 
 				
 		 	else if(document.getElementById("natureofnc").value.length<4 || document.getElementById("natureofnc").value.length>=32)
 			    {
@@ -606,7 +613,7 @@ error="true";
 				
 					else if(document.getElementById("tempaction").value.substring(0,1)==" ")
 					{
-					document.getElementById("temp").innerHTML="Initial space not allowed";
+					document.getElementById("temp").innerHTML="Should not accept initial space";
 					 error="true";
 					}
 					else
@@ -631,7 +638,7 @@ error="true";
 				
 					else if(document.getElementById("name_of_disposition_responsibility").value.substring(0,1)==" ")
 					{
-					document.getElementById("responsibilityerror").innerHTML="Initial space not allowed";
+					document.getElementById("responsibilityerror").innerHTML="Should not accept initial space";
 					 error="true";
 					}
 					else
@@ -661,7 +668,7 @@ error="true";
 					    
 						else if(document.getElementById("quality1").value.substring(0,1)==" ")
 						{
-						document.getElementById("qua1").innerHTML="Initial space not allowed";
+						document.getElementById("qua1").innerHTML="Should not accept initial space";
 						 error="true";
 						}
 						else if(quality1!="")
@@ -691,7 +698,7 @@ error="true";
 			    
 				else if(document.getElementById("quality2").value.substring(0,1)==" ")
 				{
-				document.getElementById("qua2").innerHTML="Initial space not allowed";
+				document.getElementById("qua2").innerHTML="Should not accept initial space";
 				 error="true";
 				}
 				else if(quality2!="")
@@ -721,7 +728,7 @@ error="true";
 			    
 				else if(document.getElementById("quality3").value.substring(0,1)==" ")
 				{
-				document.getElementById("qua3").innerHTML="Initial space not allowed";
+				document.getElementById("qua3").innerHTML="Should not accept initial space";
 				 error="true";
 				}
 				else if(quality3!="")

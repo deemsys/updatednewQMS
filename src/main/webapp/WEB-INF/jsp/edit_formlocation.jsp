@@ -62,7 +62,7 @@
                   <input type="hidden" name="location_id" id="locationid" value="${formlocation.location_id}"/>
                   </td>
                 </tr>
-                
+                <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
@@ -102,7 +102,7 @@
 		 }
 	 else if(formlocation.charAt(0) == " ")
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required field should not be spaces";
+		 document.getElementById("formlocation1").innerHTML="Should not accept initial space";
 		 return false;
 		 }
 	 else if(formlocation.length<4)
