@@ -205,13 +205,13 @@ function validate()
 	 
 	 if(image == "")
 		 {
-		 alert("no file");
+		 //alert("no file");
 		 document.getElementById("imageerror").innerHTML="Please upload a file";
 			error="true";
 		 }
 	 else
 		 {
-		 alert("file is there");
+		 //alert("file is there");
 		 document.getElementById("imageerror").innerHTML="";
 		 }
 	 if(error == "true")

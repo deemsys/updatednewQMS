@@ -98,7 +98,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="5%">Id :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" placeholder="C1001"  onkeyup="ChangeCase(this);"   onInput="return validatename2(id);"value="${cust_id}">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" placeholder="C1001"  onkeyup="ChangeCase(this);"   onInput="return validatename2(id);" value="${cust_id}">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
 							  
@@ -247,7 +247,7 @@ function validatename(id){
 function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
     document.getElementById(id).value = textInput;
 }  
 </script>
