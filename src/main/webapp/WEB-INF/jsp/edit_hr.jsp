@@ -121,7 +121,7 @@ $(function() {
                	
                	<tr class="row1">
                 <td valign="middle" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
-                 <td><textarea class="input_txtbx" style="height:40px;" id="effectivenessnotes" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" style="height: 89px;" name="note"><c:out value="${hRandTrainings.training_effectiveness_notes  }"/> </textarea><br>
+                 <td><textarea class="input_txtbx" style="height: 75px;" id="effectivenessnotes" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" style="height: 89px;" name="note"><c:out value="${hRandTrainings.training_effectiveness_notes  }"/> </textarea><br>
                  <span id="effectivenessnoteserror" style="color:red"></span>
                  <span class="err"><form:errors path="HRandTraining.training_effectiveness_notes"></form:errors></span></td>
  <td valign="middle" align="left" class="input_txt" width="20%">Type :</td>

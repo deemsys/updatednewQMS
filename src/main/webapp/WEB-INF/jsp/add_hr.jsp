@@ -228,7 +228,7 @@ function doAjaxPost() {
 
                  <td valign="middle" align="left" class="input_txt" width="20%"> Training Effectiveness Notes :</td>
 
-                  <td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" rows="3" cols="25"  id="effectivenessnotes" name="training_effectiveness_notes" style="height:40px;"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 177px; height: 89px;" name="note"></textarea><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" rows="3" cols="25"  id="effectivenessnotes" name="training_effectiveness_notes" style="height: 75px;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 177px; height: 89px;" name="note"></textarea><br>
                    <span id="effectivenessnoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_notes"></form:errors></span></td>
                  <td valign="middle" align="left" class="input_txt" width="20%">Type :</td>
