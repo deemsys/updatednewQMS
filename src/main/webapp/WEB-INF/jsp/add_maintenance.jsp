@@ -518,7 +518,7 @@ function validation()
 		}
 	else if(equipment_id.length < 4 || equipment_id.length > 32)
 		{
-		document.getElementById("equipment_id1").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("equipment_id1").innerHTML="Field should be length of 4 to 32";
 		error="true";
 		}
 	else{
@@ -537,7 +537,7 @@ function validation()
 	}
 	else if(equipment_name.length < 4 || equipment_name.length > 32)
 	{
-	document.getElementById("equipment_name1").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("equipment_name1").innerHTML="Field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -559,7 +559,7 @@ function validation()
 	}
 	else if(equipment_model.length < 4 || equipment_model.length > 32)
 	{
-	document.getElementById("equipment_model1").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("equipment_model1").innerHTML="Field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -581,7 +581,7 @@ function validation()
 	}
 	else if(serial_number.length < 4 || serial_number.length > 32)
 	{
-	document.getElementById("serial_number1").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("serial_number1").innerHTML="Field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -618,7 +618,7 @@ function validation()
 	 
 	 if(frequency_maintenance == "")
 	 {
-	 document.getElementById("frequency_maintenance1").innerHTML="Select atleast one. For more option hold ctrl and select";
+	 document.getElementById("frequency_maintenance1").innerHTML="Select atleast one";
 	 error="true";
 	 }
  	else
@@ -649,7 +649,7 @@ function validation()
 		}
 	  else if(instructions.length < 4 || instructions.length > 400 )
 			 {
-			 document.getElementById("instructions1").innerHTML="Required field should be length of 4 to 400";
+			 document.getElementById("instructions1").innerHTML="Field should be length of 4 to 400";
 			 error="true";
 			 }
 		 else{
@@ -718,7 +718,7 @@ function validation()
 		}
 		else if(notes.length < 4 || notes.length > 400 )
 			 {
-			 document.getElementById("notes1").innerHTML="Required field should be length of 4 to 400";
+			 document.getElementById("notes1").innerHTML="Field should be length of 4 to 400";
 			 error="true";
 			 }
 		 else{
