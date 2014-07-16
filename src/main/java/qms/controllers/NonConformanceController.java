@@ -291,7 +291,9 @@ public class NonConformanceController {
 		HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
 		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getnameList());
 		model.addAttribute("hRandTrainingForm",hRandTrainingForm);	
-
+		
+		model.addAttribute("justcame",false);
+		
 		session.removeAttribute("id");
 		session.removeAttribute("type");
 		if (result.hasErrors())

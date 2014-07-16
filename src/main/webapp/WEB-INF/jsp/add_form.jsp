@@ -336,7 +336,7 @@
 					
 					
               <tr class="row1">
-              <td colspan="1" align="center">
+              <td  align="left">
              <input type="submit" id="export" onclick="return validation();"  name="export" value="Submit" class="submit_btn1"></td>
              <!-- <td colspan="1">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td> -->

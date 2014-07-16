@@ -798,7 +798,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		document.getElementById('retentionerr').innerHTML = "";
 		}
 	
-	if(rec_id =="")
+	/* if(rec_id =="")
 	 {
 		 document.getElementById("changeafter").innerHTML="Required field should not be empty";
 		 error="true";
@@ -808,7 +808,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 document.getElementById("changeafter").innerHTML="Required field should be length 4 to 32";
 	 error ="true";
 	 }
-	
+	 */
 	if(title =="")
 	 {
 		 document.getElementById("title1").innerHTML="Required field should not be empty";

@@ -314,6 +314,7 @@ return "maintenance_list";
 		//model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","maintenance");
 		model.addAttribute("success","update");
+		model.addAttribute("justcame",false);
 	    return "maintenance_list";
 	}
 	

@@ -247,6 +247,7 @@ public class FormController
 		load_document_page_dropdowns(model);
 		
 		int flag = 0;
+		model.addAttribute("justcame",false);
 		request.getAttribute("revision_id");
 		System.out.println("revisionid = "+request.getAttribute("revision_id"));
 		session.setAttribute("docform",form1);
@@ -373,6 +374,7 @@ public class FormController
 	             ProcessForm processForm1 = new ProcessForm();
 					processForm1.setProcesses(processDAO.getProcess());
 					model.addAttribute("processForm", processForm1);
+					model.addAttribute("justcame",false);
 					
 	          return "view_form";
 			}
@@ -383,6 +385,7 @@ public class FormController
 		    model.addAttribute("formForm",formForm);
              model.addAttribute("menu","document");
              model.addAttribute("id", formDAO.get_formid());
+             model.addAttribute("justcame",false);
 				return "view_form";
 			}
 		
