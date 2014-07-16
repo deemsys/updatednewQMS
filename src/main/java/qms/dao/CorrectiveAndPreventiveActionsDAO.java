@@ -265,12 +265,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 	
 		int j= 1;
 		System.out.println("session option = "+value);
-		Calendar localCalendar = Calendar.getInstance(TimeZone.getDefault());
-	    int currentDay = localCalendar.get(Calendar.DATE);
-	    int currentMonth = localCalendar.get(Calendar.MONTH) + 1;
-	    int currentYear = localCalendar.get(Calendar.YEAR);
-	    System.out.println("day  ="+currentDay+"month = "+currentMonth+"year = "+currentYear);
-	    String currentdate = currentDay+"/"+currentMonth+"/"+currentYear;
+	
 	    for (CorrectiveAndPreventiveActions correctiveandpreventiveactions :correctiveAndPreventiveActions)
 	    {	
 		System.out.println("dsgfdsfsd");
@@ -297,7 +292,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 					}
 				}
 		}
-	    else if(value == "2")
+	    if(value == "2")
 	    {
 	    	System.out.println("data");
 			for(String field:fields)
