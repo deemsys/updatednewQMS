@@ -143,8 +143,8 @@
                   <td valign="top" align="left" class="input_txt" width="30%"> Request Date :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span style="color: red;" id="datepicker2err"><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></span></td>
                   
-                  <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's?'
-				   	 <input type="checkbox" name="why1" value="why1" id="0"/></td>
+                  <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
+				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="top" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
 					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
              </tr>	
@@ -235,7 +235,7 @@
                   <tr >
                   
                   <td valign="top" align="center"></td>
-				  <td valign="top" align="center"><input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
+				  <td valign="top" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
 				 </td>
                   </tr>
                   </table>
