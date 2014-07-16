@@ -20,7 +20,7 @@
 <script src="resources/js/transition.js"></script>
 <form method="post" enctype="multipart/form-data" action="insert_documents">
   <div id="right_content">
-    <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
+    <table cellpadding="0" cellspacing="0" border="0" width="98%" he class="margin_table">
      <tr>
         <td>
         <div>
@@ -59,7 +59,7 @@
             <div class="headings altheading">
               <h2>&nbsp;&nbsp;Document Details</h2> 
             </div> -->
-            <div class="contentbox">
+            <div class="contentbox" >
            <h1 style="color:#7A3A3A;font-size:20px;">Document Details</h1>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">

@@ -237,7 +237,7 @@
 
 
 
-	<div id="main">
+	<div id="main" >
 		<div id="header">
 			<div class="logo">
 				<a href="#"><img src="<c:url value="/resources/images/Qmslogo.png" />" alt="Company Logo" /></a>
