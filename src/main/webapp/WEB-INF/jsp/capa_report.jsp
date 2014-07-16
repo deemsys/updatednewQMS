@@ -82,13 +82,13 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="report_type_table">
-								<td valign="top" align="right" class="input_txt" width="30%">
+								<td valign="top" align="left" class="input_txt" width="30%" style="margin-left:10%;">
 								Type Of Report :
 								</td>
-								<td valign="top" align="left" class="input_txt" width="100%">
-								<input type="radio"  name="actions_report_type" value="0"  onclick="validation1()" id="id_type_Open_Corrective_Actions" checked/>Open_Corrective_Actions<br/>
-								<input type="radio"  name="actions_report_type" value="1"  onclick="validation1()" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>Open_Corrective_Actions_for_Over_30_Days<br/>							
-							    <input type="radio"  name="actions_report_type" value="2"  onclick="validation()" id="id_type_Corrective_Actions_for_A_Certain_Period"/>Corrective_Actions_for_A_Certain_Period<br/>
+								<td valign="top" align="left" class="input_txt" width="100%">&nbsp;&nbsp;
+								<input type="radio"  name="actions_report_type" value="0"  onclick="validation1()" id="id_type_Open_Corrective_Actions" checked/>&nbsp;Open_Corrective_Actions<br/>
+								&nbsp;&nbsp;&nbsp;<input type="radio"  name="actions_report_type" value="1"  onclick="validation1()" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>&nbsp;Open_Corrective_Actions_for_Over_30_Days<br/>							
+							    &nbsp;&nbsp;&nbsp;<input type="radio"  name="actions_report_type" value="2"  onclick="validation()" id="id_type_Corrective_Actions_for_A_Certain_Period"/>&nbsp;Corrective_Actions_for_A_Certain_Period<br/>
 								
 							
 								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display:none;">
@@ -109,11 +109,11 @@
 							
 							
 							<tr class="row2">
-								<td valign="top" align="right" class="input_txt" width="30%">
+								<td valign="top" align="left" class="input_txt" width="30%">
 									Select Report Type:</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
-								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
+									&nbsp;&nbsp;&nbsp;<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>&nbsp;Standard Report&nbsp;&nbsp;&nbsp;
+								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>&nbsp;User Defined Report<br/>
 							
 								</td>
 								
@@ -125,63 +125,63 @@
 						
 							
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="top" align="right" class="input_txt" width="30%">
+								<td valign="top" align="left" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="report_title" class="input_txtbx" id="report_title" value=""/>
+									&nbsp;&nbsp;&nbsp;<input type="text" name="report_title" class="input_txtbx" id="report_title" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
-								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
+								<td valign="top" align="left" style="margin-top:2px;" class="input_txt" width="30%">
 									Select Fields Required on the Report:
 									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						
 								<tr>
-								<td><input type="checkbox" id="select_all"/>Select All</td>
+								<td><input type="checkbox" id="select_all"/>&nbsp;Select All</td>
 								</tr>
 								<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="1"/>Capa id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="2"/>Nc id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="3"/>source_of_nonconformance</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="1"/>&nbsp;Capa id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="2"/>&nbsp;Nc id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="3"/>&nbsp;source_of_nonconformance</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="external_id" id="4"/>external_id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="type_of_nonconformance" id="5"/>type_of_nonconformance</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="date_found" id="6"/>date_found</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="external_id" id="4"/>&nbsp;external_id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="type_of_nonconformance" id="5"/>&nbsp;type_of_nonconformance</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="date_found" id="6"/>&nbsp;date_found</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox"onclick="selectall(this.id)" name="report_field[]" value="temporary_action" id="7"/>temporary_action</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nature_of_nc" id="8"/>nature_of_nc</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_requestor" id="9"/>capa_requestor</td>
+								<td><input type="checkbox"onclick="selectall(this.id)" name="report_field[]" value="temporary_action" id="7"/>&nbsp;temporary_action</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nature_of_nc" id="8"/>&nbsp;nature_of_nc</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_requestor" id="9"/>&nbsp;capa_requestor</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="request_date" id="10"/>request_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_due_date" id="11"/>capa_due_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="assigned_team_leader" id="12"/>assigned_team_leader</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="request_date" id="10"/>&nbsp;request_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_due_date" id="11"/>&nbsp;capa_due_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="assigned_team_leader" id="12"/>&nbsp;assigned_team_leader</td>
 							</tr>
 							<tr> 
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="team_members" id="13"/>team_members</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_analysis_file" id="14"/>root_cause_analysis_file</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="use_5_why_in_system" id="15"/>use_5_why_in_system</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="team_members" id="13"/>&nbsp;team_members</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_analysis_file" id="14"/>&nbsp;root_cause_analysis_file</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="use_5_why_in_system" id="15"/>&nbsp;use_5_why_in_system</td>
 							</tr>
 							<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="why" id="16"/>why</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_statement" id="17"/>root_cause_statement</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="upload_external_analysis" id="18"/>upload_external_analysis</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="why" id="16"/>&nbsp;why</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_statement" id="17"/>&nbsp;root_cause_statement</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="upload_external_analysis" id="18"/>&nbsp;upload_external_analysis</td>
 								</tr>
 								<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="action" id="19"/>action</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="responsibility" id="20"/>responsibility</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="due_date" id="21"/>due_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="action" id="19"/>&nbsp;action</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="responsibility" id="20"/>&nbsp;responsibility</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="due_date" id="21"/>&nbsp;due_date</td>
 								</tr>
 								
 							<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="22"/>completion_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="verified_by" id="23"/>verified_by</td>
-							<td><input type="checkbox" name="report_field[]" value="verification_date" id="24"/>verification_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="22"/>&nbsp;completion_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="verified_by" id="23"/>&nbsp;verified_by</td>
+							<td><input type="checkbox" name="report_field[]" value="verification_date" id="24"/>&nbsp;verification_date</td>
 								</tr>
 								
 								</table>
@@ -191,12 +191,12 @@
 						
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
+             <table style="width: 408px; "><tr style="padding:10px;"><td style=" width: 100px">&nbsp;&nbsp;<input type="submit" align="left" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1" style="width: 79px; ">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+              &nbsp;&nbsp;<input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" style="width: 79px; "></td>
             
              </tr></table>
-            
+            </td>
            
              </tr>
             
@@ -253,7 +253,7 @@ function validate()
 		if(datepicker=="")
 		{	
 		
-	 document.getElementById("starterr").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("starterr").innerHTML="Required field should not be empty";
 	 error="true";
 		}
 		
@@ -267,7 +267,7 @@ function validate()
 	else if(datepicker > datepicker1)
 			{
 		
-				 document.getElementById("starterr").innerHTML="Please Pickup the StartDate not More than EndDate";
+				 document.getElementById("starterr").innerHTML="Please pickup the startDate not more than endDate";
 					error="true";
 			}	
 		else
@@ -282,7 +282,7 @@ function validate()
 		if(datepicker1=="")
 		{	
 		
-	 document.getElementById("enderr").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("enderr").innerHTML="Required field should not be empty";
 	 error="true";
 		}
 	
@@ -307,7 +307,7 @@ function validate()
 			document.getElementById("userdefineerror").innerHTML="";
 			}
 		else{
-			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			document.getElementById("userdefineerror").innerHTML="Please select atleast one";
 			error = "true";
 		}
 	}
