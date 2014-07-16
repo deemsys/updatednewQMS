@@ -57,7 +57,7 @@ public class MaintenanceDAO extends AbstractITextPdfView
 		String[] fields=(String[])model.get("fields");
 		
 		int memolist = fields.length;
-		System.out.println(memolist);
+		System.out.println("length = "+memolist);
        PdfPTable table=new PdfPTable(memolist+1);
        float[] width= new float[memolist+1];
 		table.setWidthPercentage(100);
