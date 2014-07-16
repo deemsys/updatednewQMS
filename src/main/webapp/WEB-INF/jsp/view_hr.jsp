@@ -264,7 +264,7 @@ function validation()
 		{
 		   if(trainer.length < 4  || trainer.length > 32)
 			   {
-			   document.getElementById("trainererror").innerHTML="Required field should be length 4 to 32";
+			   document.getElementById("trainererror").innerHTML="Required field should be length of 4 to 32";
 				 error="true";
 			   }
 		}   
