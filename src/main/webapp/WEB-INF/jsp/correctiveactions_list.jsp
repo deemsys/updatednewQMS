@@ -79,11 +79,11 @@
 			     <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">CAPA Id:</td>
+							    <td align="left" valign="middle" width="10%">CAPA ID :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;Request date:</td>
+							    <td align="left" valign="middle" width="15%">&nbsp;Request date :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;Actions:</td>
+							    <td align="left" valign="middle" width="15%">&nbsp;Actions :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx" value="${action}"></td>
 							    <td align="center" valign="middle" width="38%">
 							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
