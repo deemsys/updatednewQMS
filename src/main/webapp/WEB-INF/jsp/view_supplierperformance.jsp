@@ -249,5 +249,6 @@ window.location="?do=viewsupplierperformance&suppliername="+document.getElementB
 
 
 </script>
-
-<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="footer.jsp"></jsp:include>

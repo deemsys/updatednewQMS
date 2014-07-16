@@ -501,6 +501,13 @@ ul.pagination li.page a:hover {
 	background:#f8fbfd;
 	border:1px solid #9fb7cd;
 }
+.input_dropdowntxtbx {
+	width:200px;
+	height:35px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
 .input_txtbx3 {
 	width:200px;
 	height:22px;

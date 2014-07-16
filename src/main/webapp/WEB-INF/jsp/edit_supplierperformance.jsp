@@ -60,16 +60,16 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="30%">Supplier ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="supplier_id" id="inp_id"  value="<c:out value="${supplierperformance.supplier_id }"/>"/><c:out value="${supplierperformance.supplier_id }"/><br/><span style="color: red;"><form:errors path="SupplierPerformance.supplier_id"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" id="inp_id"  value="<c:out value="${supplierperformance.supplier_id }"/>"/><c:out value="${supplierperformance.supplier_id }"/><br/><span style="color: red;"><form:errors path="SupplierPerformance.supplier_id"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="website" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"><form:errors path="SupplierPerformance.website"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="website" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"><form:errors path="SupplierPerformance.website"></form:errors></span></td>
                 
                 </tr>                                                                                
                   <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%">SupplierName :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="SupplierPerformance.supplier_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="SupplierPerformance.supplier_name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Certified To :</td>
-				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" style="height:20px;" id="certified_to">
+				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="dropdown" id="certified_to">
                   										<option
 															<c:if test="${supplierperformance.certified_to eq 'ISO 9001'}"><c:out value="Selected"/></c:if>
 															value="ISO 9001">ISO 9001</option>
@@ -83,7 +83,7 @@
                 </tr>
 		        <tr class="row2">
 				  <td valign="top" align="left" class="input_txt" width="30%">Category :</td>
-				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_txtbx" style="height:20px;" id="category">
+				<td valign="top" align="left" class="input_txt"><select	name="category" class="dropdown" id="category">
                   										<option
 															<c:if test="${supplierperformance.category eq 'Critical'}"><c:out value="Selected"/></c:if>
 															value="Critical">Critical</option>
@@ -92,45 +92,45 @@
 															value="Non Critical">Non Critical</option>
 															</select>
 															<br/><span style="color: red;" id="categoryerror"><form:errors path="SupplierPerformance.category"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" width="30%">ContactName:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;" id="contacterror"><form:errors path="SupplierPerformance.contact_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Contact Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;" id="contacterror"><form:errors path="SupplierPerformance.contact_name"></form:errors></span></td>
                                   
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%">Address :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <td valign="top" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="address" class="input_txtbx" id="inp_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.address}" /><br/><span style="color: red;"><form:errors path="SupplierPerformance.address"></form:errors></span></td> --%>
-                   <textarea class="input_txtbx" id="inp_address" name="address"  style="width:41%; height: 50px;" >${supplierperformance.address}</textarea><br/>
+                   <textarea class="input_txtbx" id="inp_address" name="address"  style="height: 50px;" >${supplierperformance.address}</textarea><br/>
 				<span style="color: red;" id="addresserror"><form:errors path="supplierperformance.address"></form:errors></span></td>
 			
                   <td valign="top" align="left" class="input_txt" width="30%">Title :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="contact_title" class="input_txtbx" id="inp_contact_title" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_title}" /><br/><span style="color: red;" id="titleerror"><form:errors path="SupplierPerformance.contact_title"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_title" class="input_txtbx" id="inp_contact_title" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_title}" /><br/><span style="color: red;" id="titleerror"><form:errors path="SupplierPerformance.contact_title"></form:errors></span></td>
                 
                 </tr>
 				<tr class="row2">
 				  <td valign="top" align="left" class="input_txt" width="30%">City :</td>
-				  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="city" class="input_txtbx" id="inp_city" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.city}" /><br/><span style="color: red;" id="cityerror"><form:errors path="SupplierPerformance.city"></form:errors></span></td>
+				  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.city}" /><br/><span style="color: red;" id="cityerror"><form:errors path="SupplierPerformance.city"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Phone :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="phone" class="input_txtbx" id="inp_phone" maxlength="10"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.phone}" /><br/><span style="color: red;" id="phoneerror"><form:errors path="SupplierPerformance.phone"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="phone" class="input_txtbx" id="inp_phone" maxlength="10"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.phone}" /><br/><span style="color: red;" id="phoneerror"><form:errors path="SupplierPerformance.phone"></form:errors></span></td>
                 
                 </tr>
               	<tr class="row1">
               	<td valign="top" align="left" class="input_txt" width="30%">State :</td>
-              	<td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="state" onInput="return validatename(id);" class="input_txtbx" id="inp_state" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="SupplierPerformance.state"></form:errors></span></td>
+              	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" onInput="return validatename(id);" class="input_txtbx" id="inp_state" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="SupplierPerformance.state"></form:errors></span></td>
               	  <td valign="top" align="left" class="input_txt" width="30%">Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="10" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" maxlength="10" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
                 
               	</tr>
                 <tr class="row2">
 				<td valign="top" align="left" class="input_txt" width="30%">PostalCode :</td>
-				<td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="postalcode" maxlength="5" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" maxlength="5" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Email :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;"id="emailerror"><form:errors path="SupplierPerformance.email_address"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;"id="emailerror"><form:errors path="SupplierPerformance.email_address"></form:errors></span></td>
                 
                 </tr>
 				<tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%">Country :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="country" class="input_txtbx" id="inp_country" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span style="color: red;" id="countryerror"><form:errors path="SupplierPerformance.country"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" id="inp_country" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span style="color: red;" id="countryerror"><form:errors path="SupplierPerformance.country"></form:errors></span></td>
                 </tr>
                 
                 <tr class="row2">
@@ -566,5 +566,7 @@ function validatename(id)
   
 </body>
 </html>
-      <jsp:include page="footer.jsp"></jsp:include>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="footer.jsp"></jsp:include>
                 
