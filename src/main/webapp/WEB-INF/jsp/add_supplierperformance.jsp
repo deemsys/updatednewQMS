@@ -271,7 +271,7 @@ function validatename(id)
 		if(certified=="")
 		{
 		
-		document.getElementById("certifiederror").innerHTML="Required field should not be empty";
+		document.getElementById("certifiederror").innerHTML="Please select one";
 		error="true";
 		}
 		else{
@@ -280,7 +280,7 @@ function validatename(id)
 		if(category=="")
 		{
 		
-		document.getElementById("categoryerror").innerHTML="Required field should not be empty";
+		document.getElementById("categoryerror").innerHTML="Please select one";
 		error="true";
 		}
 		else{
