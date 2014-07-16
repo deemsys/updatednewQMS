@@ -90,9 +90,15 @@
                   <tr class="row2">
                   <td> <span id="dateerror"style="color:red"></span></td>
                   </tr>
-                  <td  valign="top" align="right">&nbsp;</td>
-                   <td valign="top" align="left"  colspan="3"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" >
+                  
+                   <tr class="row1">
+                  <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
                 
+                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" ></td>
+                </tr>
+                 <!--  <td  valign="top" align="right">&nbsp;</td>
+                   <td valign="top" align="left"  colspan="3"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" >
+                 -->
                    </td>
      				                     
 </tr>
