@@ -67,9 +67,9 @@ $(function() {
             </div>
             <div class="contentbox">
             <c:set value="${hRandTrainingForm.hRandTrainings[0]}" var="hRandTrainings"/>
-                 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+                 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height:450px">
 					<tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%"><label>HR ID:</label></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><label>ID :</label></td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="id" value="<c:out value="${hRandTrainings.id }"/>"/><c:out value="${hRandTrainings.id }"/><br/><span class="err"></span></td>
                  </tr>
                 <tr class="row1">
@@ -85,10 +85,10 @@ $(function() {
                 
                                  </tr>
 		<tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Job Title</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Job Title :</td>
                	<td valign="top" align="left" class="input_txt" width="20%">
               
-			                 <select	name="job_title" id="jobtitle"class="input_txtbx" >
+			                 <select	name="job_title" id="jobtitle"class="dropdown" >
 			                 <option value="">--Select--</option>
 			                 <option <c:if test="${hRandTrainings.job_title eq 'Job Title1'}"><c:out value="Selected"/></c:if> value="Job Title1">Job Title1</option>
 							<option <c:if test="${hRandTrainings.job_title eq 'Job Title2'}"><c:out value="Selected"/></c:if> value="Job Title2">Job Title2</option>
@@ -98,8 +98,8 @@ $(function() {
 							<span class="err"><form:errors path="HRandTraining.job_title"></form:errors></span></td>
 
 			                 
-            <td valign="middle" align="left" class="input_txt" width="20%">Qualified By:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><select	name="qualified_by" id="qualifiedby" class="input_txtbx" >
+            <td valign="middle" align="left" class="input_txt" width="20%">Qualified By :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><select	name="qualified_by" id="qualifiedby" class="dropdown" >
                   					
                   										<option
 															<c:if test="${hRandTrainings.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
@@ -120,13 +120,13 @@ $(function() {
                	</tr>
                	
                	<tr class="row1">
-                <td valign="middle" align="left" class="input_txt" width="20%">Training Effectiveness Notes:</td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
                  <td><textarea class="input_txtbx" style="height:40px;" id="effectivenessnotes" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" style="height: 89px;" name="note"><c:out value="${hRandTrainings.training_effectiveness_notes  }"/> </textarea><br>
                  <span id="effectivenessnoteserror" style="color:red"></span>
                  <span class="err"><form:errors path="HRandTraining.training_effectiveness_notes"></form:errors></span></td>
- <td valign="middle" align="left" class="input_txt" width="20%">Type:</td>
+ <td valign="middle" align="left" class="input_txt" width="20%">Type :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">
-                  <select  name="type_of_training" id="typeoftraining" class="input_txtbx" >
+                  <select  name="type_of_training" id="typeoftraining" class="dropdown" >
 
 				                  									
                   										<option
@@ -142,19 +142,19 @@ $(function() {
                	
                 
 				<tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Date Hired</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.date_hired }" /><br>
+                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.date_hired }" /><br>
                    <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.date_hired"></form:errors></span></td>
-                <td valign="middle" align="left" class="input_txt" width="20%">Due Date</td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_due_date }" /><br>
+                  <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_due_date }" /><br>
                   <br> <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Attachments</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Attachments :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="20%" >
                    <input type="hidden" value="${hRandTrainings.attachment_name}" id="image"/><c:out value="${hRandTrainings.attachment_name}"></c:out>
@@ -165,9 +165,9 @@ $(function() {
 
                   
                   
-                   <td valign="middle" align="left" class="input_txt" width="20%">Completion Date</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_completion_date }" /><br>
+                  <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_completion_date }" /><br>
                    <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_completion_date"></form:errors></span>
                   </td>
@@ -175,7 +175,7 @@ $(function() {
                 
            
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Functions Needs:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Functions Needs :</td>
                  <td valign="top" align="left" class="input_txt" width="20%">
                  <input type="checkbox" name="calibration" value="yes" id="calibration"<c:if test="${hRandTrainings.calibration=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Calibration<br>                
                    <input type="checkbox" name="responsibility" value="yes" id="responsibility"<c:if test="${hRandTrainings.responsibility=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Responsibility<br/>
@@ -185,19 +185,27 @@ $(function() {
                   </tr>
                   
                   <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Training Effective Review Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Review Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_effectiveness_review_due_date }" /><br>
                   <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="20%">Documented In:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" /><br>
                    <span id="documentedinerror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
                   </tr>
-                                 <tr class="row1">
+                  
+                   <tr class="row2">
+                 <td valign="middle" align="left" class="input_txt" width="20%"></td>
+                 <td colspan="1" align="left">
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Update" onclick="return validate();"class="submit_btn1"><br/></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">
+              <td valign="middle" align="left" class="input_txt" width="20%">
+               </tr>
+                               <!--   <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="middle" align="center"><input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
-                </tr>
+                </tr> -->
               </table>
               
             </div>
@@ -536,5 +544,5 @@ else
 		 }
 }
     </script>    
-    
+<br><br><br><br><br><br><br><br><br>
 	 <jsp:include page="footer.jsp"></jsp:include>

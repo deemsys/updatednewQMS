@@ -173,28 +173,28 @@ function doAjaxPost() {
 
             <div class="contentbox">
 
-             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height: 450px">
 
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
 
                 <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="20%">ID:</td>
+                 <td valign="middle" align="left" class="input_txt" width="20%">ID :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="id" id="inp_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><font color="Red" size="+1"></font></td>
                 </tr>
 
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Name:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Name :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"   id="name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br><span id="nameerror" style="color:red"></span>
-                   <td valign="middle" align="left" class="input_txt" width="20%"> Trainer:</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%"> Trainer :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx"  id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/>
                   <span id="trainererror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.trainer"></form:errors></span></td>
                 </tr>
 
 				<tr class="row1">
-                    <td valign="middle" align="left" class="input_txt" width="20%">Job Title:</td>
-               	 <td valign="middle" align="left" class="input_txt" width="20%"><select	name="job_title" id="jobtitle"class="input_txtbx"  >
+                    <td valign="middle" align="left" class="input_txt" width="20%">Job Title :</td>
+               	 <td valign="middle" align="left" class="input_txt" width="20%"><select	name="job_title" id="jobtitle" class="dropdown"   >
 
                   										<option value="">--Select--</option>
                  										<option	value="Job Title1">Job Title1</option>
@@ -205,8 +205,8 @@ function doAjaxPost() {
 														<span class="err"><form:errors path="HRandTraining.job_title"></form:errors></span></td>
 
 
-               	  <td valign="middle" align="left" class="input_txt" width="20%">Qualified By:</td>
-                 <td valign="middle" align="left" class="input_txt"width="20%"><select	name="qualified_by" id="qualifiedby"class="input_txtbx" >
+               	  <td valign="middle" align="left" class="input_txt" width="20%">Qualified By :</td>
+                 <td valign="middle" align="left" class="input_txt"width="20%"><select	name="qualified_by" id="qualifiedby" class="dropdown" >
                   											<option value="">--Select--</option>
                   										<option
 															<c:if test="${HRandTraining.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
@@ -226,13 +226,13 @@ function doAjaxPost() {
 
                 <tr class="row2">
 
-                 <td valign="middle" align="left" class="input_txt" width="20%"> Training Effectiveness Notes:</td>
+                 <td valign="middle" align="left" class="input_txt" width="20%"> Training Effectiveness Notes :</td>
 
-                  <td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" id="effectivenessnotes" name="training_effectiveness_notes" style="height:40px;"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 177px; height: 89px;" name="note"></textarea><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" rows="3" cols="25"  id="effectivenessnotes" name="training_effectiveness_notes" style="height:40px;"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 177px; height: 89px;" name="note"></textarea><br>
                    <span id="effectivenessnoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_notes"></form:errors></span></td>
-                 <td valign="middle" align="left" class="input_txt" width="20%">Type:</td>
-               <td valign="middle" align="left" class="input_txt"><select	name="type_of_training"id="typeoftraining" class="input_txtbx" >
+                 <td valign="middle" align="left" class="input_txt" width="20%">Type :</td>
+               <td valign="middle" align="left" class="input_txt"><select	name="type_of_training"id="typeoftraining" class="dropdown" >
                 	<option value="">--Select--</option>
                   										<option value="Classroom">Classroom</option>
 														<option value="Hands on">Hands on</option>
@@ -241,28 +241,28 @@ function doAjaxPost() {
 							</td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%"> Date Hired:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"> Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                  <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.date_hired"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="20%">Due Date:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_due_date" class="input_txtbx"  id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_due_date" class="input_txtbx"  id="datepicker1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br> <span id="datepicker11" style="color:red"></span><span class="err"><form:errors path="HRandTraining.training_due_date"></form:errors></span></td>
                 </tr>
 
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Attachments:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Attachments :</td>
    					<td valign="top" align="left" class="input_txt" width="20%"><input name="attachments" id="image"type="file" />
   					 </br><span id="imageerror" style="color:red"></span><span class="err"></span></td>
-                   <td valign="middle" align="left" class="input_txt" width="20%">Completion Date:</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                   <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_completion_date" class="input_txtbx"  id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   
                   <br> <span id="datepicker22" style="color:red"></span><span class="err"><form:errors path="HRandTraining.training_completion_date"></form:errors></span></td>
                 </tr>
 
                   <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Functions Needs:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Functions Needs :</td>
                  <td valign="top" align="left" class="input_txt" width="20%">
 
                <input type="checkbox" name="calibration"  value="yes" id="calibration"/>&nbsp;Calibration<br>
@@ -274,27 +274,32 @@ function doAjaxPost() {
                  </tr>
 
                  <tr class="row1">
-                   <td valign="middle" align="left" class="input_txt" width="20%">Review Due Date:</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%">Review Due Date :</td>
 
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br><span id="datepicker33" style="color:red"></span><span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="20%">Documented In:</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
 
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" onInput="return validatename(id);"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   
                   <br><span id="documentedinerror" style="color:red"></span><span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
 
                  </tr>      
+ 
+ 
+  <tr class="row2">
+                 <td valign="middle" align="left" class="input_txt" width="20%"></td>
+                 <td colspan="1" align="left">
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Add HR" onclick="return validate();" class="submit_btn1"><br/></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">
+              <td valign="middle" align="left" class="input_txt" width="20%">
+               </tr>
+      <!--  <tr class="row1">
+ <td valign="top" align="right">&nbsp;</td>
+                  <td></td>
+                  <td valign="top" align="center"><input type="submit" value="Add HR" onclick="return validate();" class="submit_btn1"></td>
 
-                
-
-                 <tr class="row1">
-
-                  <td valign="top" align="left">&nbsp;</td>
-
-                  <td valign="top" align="left"><input type="submit" value="Add HR" onclick="return validate();" class="submit_btn1"></td>
-
-                </tr>
+                </tr> -->
 
               </table>
               </div>
@@ -389,18 +394,18 @@ function validate()
 	
 	if(name == "")
 	{
-	 document.getElementById("nameerror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("nameerror").innerHTML="Required field should not be empty";
 	 error="true";
 	
 	}
 	else if(name.charAt(0) == " ")
 	{
-		document.getElementById("nameerror").innerHTML="Initail Spaces not Allowed";
+		document.getElementById("nameerror").innerHTML="Initail spaces not allowed";
 		 error="true";
 	}
 	else if((name.length < 4) ||(name.length > 32))
 	{
-	document.getElementById("nameerror").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("nameerror").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -411,18 +416,18 @@ function validate()
 	
 	if(trainer == "")
 	{
-	 document.getElementById("trainererror").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("trainererror").innerHTML="Required field should not be empty";
 	 error="true";
 	
 	}
 	else if(trainer.charAt(0) == " ")
 	{
-		document.getElementById("trainererror").innerHTML="Initail Spaces not Allowed";
+		document.getElementById("trainererror").innerHTML="Initail spaces not allowed";
 		 error="true";
 	}
 	else if((trainer.length < 4) ||(trainer.length > 32))
 	{
-	document.getElementById("trainererror").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("trainererror").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -433,7 +438,7 @@ function validate()
 	
 	 if(jobtitle == "")
 	  {
-	  document.getElementById("jobtitleerror").innerHTML="Required Field Should not be Empty";
+	  document.getElementById("jobtitleerror").innerHTML="Required field should not be empty";
 		 error="true";
 	  }
  	else {
@@ -442,7 +447,7 @@ function validate()
 
 	 if(qualifiedby == "")
 	  {
-	  document.getElementById("qualifiedbyerror").innerHTML="Required Field Should not be Empty";
+	  document.getElementById("qualifiedbyerror").innerHTML="Required field should not be empty";
 		 error="true";
 	  }
  	else {
@@ -450,18 +455,18 @@ function validate()
  	}
 	 if(effectivenessnotes == "")
 		{
-		 document.getElementById("effectivenessnoteserror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("effectivenessnoteserror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 		}
 	 	else if(effectivenessnotes.charAt(0) == " ")
 		{
-			document.getElementById("effectivenessnoteserror").innerHTML="Initail Spaces not Allowed";
+			document.getElementById("effectivenessnoteserror").innerHTML="Initail spaces not allowed";
 			 error="true";
 		}
 		else if((effectivenessnotes.length < 4) ||(effectivenessnotes.length > 400))
 		{
-		document.getElementById("effectivenessnoteserror").innerHTML="Required Field Should be length of 4 to 400";
+		document.getElementById("effectivenessnoteserror").innerHTML="Required field should be length of 4 to 400";
 		error="true";
 		
 		}
@@ -474,7 +479,7 @@ function validate()
 	 
 	 if(typeoftraining == "")
 	  {
-	  document.getElementById("typeoftrainingerror").innerHTML="Required Field Should not be Empty";
+	  document.getElementById("typeoftrainingerror").innerHTML="Required field should not be empty";
 		 error="true";
 	  }
 	else {
@@ -483,7 +488,7 @@ function validate()
 	 
 	 if(datepicker == "")
 	 {
-	 document.getElementById("datepicker00").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker00").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -493,13 +498,13 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker00").innerHTML="Invalid Date";
+	 document.getElementById("datepicker00").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(image == "")
 	  {
-	  document.getElementById("imageerror").innerHTML="Please Upload a File";
+	  document.getElementById("imageerror").innerHTML="Please upload a file";
 		 error="true";
 	  }
 	else {
@@ -509,7 +514,7 @@ function validate()
 	 
 	 if(datepicker1 == "")
 	 {
-	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker11").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -519,13 +524,13 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="Invalid Date";
+	 document.getElementById("datepicker11").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(datepicker2 == "")
 	 {
-	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker22").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -535,13 +540,13 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 if(datepicker3 == "")
 	 {
-	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker33").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -551,12 +556,12 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="Invalid Date";
+	 document.getElementById("datepicker33").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 if(!disposition && !calibration && !responsibility)
 		 {
-		 document.getElementById("functionsneedserror").innerHTML="Please Select Atleast One";
+		 document.getElementById("functionsneedserror").innerHTML="Please select atleast one";
 		 error="true";
 		 }
 	 else
@@ -568,18 +573,18 @@ function validate()
 	 
 	 if(documentedin == "")
 		{
-		 document.getElementById("documentedinerror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("documentedinerror").innerHTML="Required field should not be empty";
 		 error="true";
 		
 		}
 	 else if(documentedin.charAt(0) == " ")
 		{
-			document.getElementById("documentedinerror").innerHTML="Initail Spaces not Allowed";
+			document.getElementById("documentedinerror").innerHTML="Initail spaces not allowed";
 			 error="true";
 		}
 	else if((documentedin.length < 4) ||(documentedin.length > 400))
 		{
-		document.getElementById("documentedinerror").innerHTML="Required Field Should be length of 4 to 400";
+		document.getElementById("documentedinerror").innerHTML="Required field should be length of 4 to 400";
 		error="true";
 		
 		}
@@ -594,7 +599,7 @@ function validate()
 		 }
 }
     </script>        
-
+<br><br><br><br><br><br><br><br><br>
       <jsp:include page="footer.jsp"></jsp:include>
 
   

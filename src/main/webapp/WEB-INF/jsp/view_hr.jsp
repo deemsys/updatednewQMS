@@ -73,9 +73,9 @@
 							<form action="findhr" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="right" valign="middle" width="10%"> Type&nbsp;</td>
+							    <td align="right" valign="middle" width="10%"> Type :&nbsp;</td>
 							 
-							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" id="type"class="input_txtbx">
+							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" id="type"class="dropdown">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
@@ -88,8 +88,8 @@
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="right" valign="middle" width="12%">QualifiedBy: </td>
-							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx" id="qualified">
+							     <td align="right" valign="middle" width="12%">Qualified By :&nbsp; </td>
+							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="dropdown" id="qualified">
                   											<option value="">--Select--</option>
 				                  									
                   										<option
@@ -106,7 +106,7 @@
 															value="Training">Training</option>
 														
 															</select><span class="err"><form:errors path="HRandTraining.qualified_by"></form:errors></span></td>
-               				<td align="right" valign="middle" width="12%"> Trainer:&nbsp;</td>
+               				<td align="right" valign="middle" width="12%"> Trainer :&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}" onInput="return  validatename(id);">
 							     <br><span id="trainererror" style="color:red"></span>
 							    </td>
@@ -172,11 +172,16 @@
 										</c:if>
 										<c:if test="${fn:length(hRandTrainingForm.hRandTrainings) == 0}">
 										<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><b style="color:red">No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>
-										
+							    	
+							    	
+									</table>
+					</div>
+				</td>
+			</tr>	
 										 <tr><td colspan="6">  
 	<div class="extrabottom">
              <ul class="pagination">
@@ -250,7 +255,7 @@ function validation()
   document.getElementById("searcherror").innerHTML="";
   if(type == "" && trainer == "" && qualified == "")
 	  {
-	  document.getElementById("searcherror").innerHTML="Input is Empty";
+	  document.getElementById("searcherror").innerHTML="Input is empty";
 		 error="true";
 	  }
   else
@@ -259,14 +264,14 @@ function validation()
 		{
 		   if(trainer.length < 4  || trainer.length > 32)
 			   {
-			   document.getElementById("trainererror").innerHTML="Required Field Should be Length 4 to 32";
+			   document.getElementById("trainererror").innerHTML="Required field should be length 4 to 32";
 				 error="true";
 			   }
 		}   
 	 }
   	if(error == "true")
   		{
-  		alert("ssfsdf");
+  		
   		return false;
   		}
 }
@@ -333,5 +338,6 @@ function findpart()
 window.location="?do=viewparticipants&moblie="+document.getElementById("moblie").value+"&group="+document.getElementById("group").value+"&city="+document.getElementById("city").value;
 }
 </script>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>
