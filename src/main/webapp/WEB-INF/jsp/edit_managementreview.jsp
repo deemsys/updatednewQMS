@@ -94,7 +94,7 @@
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%">Category :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  <select name="category" id="category" class="input_txtbx" >
+                  <select name="category" id="category" class="dropdown" >
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option <c:if test="${managementReviewdetails.category eq 'audits'}"><c:out value="Selected"/></c:if> value="audits" >Audits</option>

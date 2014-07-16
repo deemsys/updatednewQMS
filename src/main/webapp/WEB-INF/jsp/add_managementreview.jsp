@@ -96,7 +96,7 @@
 		  <tr class="row2" >
 						         	<td valign="middle" align="left" class="input_txt"width="20%">Category :</td>
 						          <td valign="middle" align="left" class="input_txt"width="20%">
-				                  		<select name="category" id="category" class="input_txtbx">
+				                  		<select name="category" id="category" class="dropdown">
 				                  		<option value="">--Select--</option>
 						                      
 						                  <option value="audits" >Audits</option>
@@ -291,7 +291,7 @@ function validate()
 	}
 	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
 		{
-		document.getElementById("attendeelistwithtitleserror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("attendeelistwithtitleserror").innerHTML="Field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -313,7 +313,7 @@ function validate()
 	}
 	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
 	{
-	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("nextmanagementreviewbyerror").innerHTML="Field should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -358,7 +358,7 @@ function validate()
 	}
 	else if((assessment.length < 4) ||(assessment.length > 32))
 		{
-		document.getElementById("assessmenterror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("assessmenterror").innerHTML="Field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -404,7 +404,7 @@ function validate()
 		}
 		else if((actiondetail.length < 4) ||(actiondetail.length > 32))
 		{
-		document.getElementById("actiondetailerror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("actiondetailerror").innerHTML="Field should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -442,7 +442,7 @@ function validate()
 		}
 	else if((responsibility.length < 4) ||(responsibility.length > 32))
 		{
-		document.getElementById("responsibilityerror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("responsibilityerror").innerHTML="Field should be length of 4 to 32";
 		error="true";
 		
 		}

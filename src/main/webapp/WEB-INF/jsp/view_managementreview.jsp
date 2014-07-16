@@ -105,7 +105,7 @@
 										  <option <c:if test="${categoryvalue eq 'significant changes to the QMS'}"><c:out value="Selected"/></c:if>  value="significant changes to the QMS" >Significant changes to the QMS</option>	
 				                   	</select></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation();" onmouseover="showTooltip('tooltip_id','inp_id3');" />
+							  <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation1();" onmouseover="showTooltip('tooltip_id','inp_id3');" />
 							  <br> <span id="searcherror" style="color:red"></span>
 							  </td>
 							
@@ -119,13 +119,13 @@
 						-->	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						 		<tr class="title">
 							
-									<td valign="top" align="left" width="10%">Review Id</td>
-									<td valign="top" align="left" width="20%">Management Review Date</td>
+									<td valign="top" align="left" width="10%">Review ID</td>
+									<td valign="top" align="left" width="10%">Review Date</td>
 									<td valign="top" align="left" width="10%">Category</td>
-									<td valign="top" align="left" width="10%">Responsibility</td>
-									<td valign="top" align="left" width="15%">Completion Date</td>
-									<td valign="top" align="left" width="25%">Continuous Improvement Project</td> 				
-									<td valign="top" align="left" width="15%">Actions</td>						
+									<td valign="top" align="left" width="12%">Responsibility</td>
+									<td valign="top" align="left" width="12%">Completion Date</td>
+									<td valign="top" align="left" width="17%">Improvement Project (Y/N)</td> 				
+									<td valign="top" align="left" width="10%">Actions</td>						
 									</tr>
 
 					 <c:if test="${fn:length(managementreviewform.managementreviewdetails) gt 0}">
@@ -138,14 +138,14 @@
 							       			i=1;%>
 							       		<tr class="row<%=i%>">
 								           	
-								           	<td valign="top" align="left"  width="5%"><a href="<c:out value="view_review?review_id=${managementreviewdetails.review_id}"/>">${managementreviewdetails.review_id}</a></td>
+								           	<td valign="top" align="left"  width="10%"><a href="<c:out value="view_review?review_id=${managementreviewdetails.review_id}"/>">${managementreviewdetails.review_id}</a></td>
 											
-											<td valign="top" align="left" width="14%">${managementreviewdetails.management_review_date}</td>
+											<td valign="top" align="left" width="10%">${managementreviewdetails.management_review_date}</td>
 											<td valign="top" align="left" width="10%">${managementreviewdetails.category}</td>
-											<td valign="top" align="left" width="10%">${managementreviewdetails.responsibility}</td>
-											<td valign="top" align="left" width="10%">${managementreviewdetails.completion_date}</td> 
-											<td valign="top" align="left" width="15%">${managementreviewdetails.continuous_improvement_project}</td> 
-											<td valign="top" align="left" width="15%">
+											<td valign="top" align="left" width="12%">${managementreviewdetails.responsibility}</td>
+											<td valign="top" align="left" width="12%">${managementreviewdetails.completion_date}</td> 
+											<td valign="top" align="left" width="17%">${managementreviewdetails.continuous_improvement_project}</td> 
+											<td valign="top" align="left" width="10%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_managementreview?review_id=${managementreviewdetails.review_id}"/>" style="padding-right:10px;">Edit</a>
 											<%-- <a href="#" title="" ><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_managementreview?review_id=${managementreviewdetails.review_id}"/>" onclick="return confirmation()" >Remove</a> --%>
 											</td>	
@@ -155,7 +155,7 @@
 							    </c:if>	
 							    <c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%" style="color:red"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>		
@@ -258,7 +258,7 @@ function validation()
  document.getElementById("datepicker11").innerHTML="";
  	if((id =="") && (datepicker == "") && (category == ""))
 	{
-		document.getElementById('searcherror').innerHTML = "Input is Empty";
+		document.getElementById('searcherror').innerHTML = "Input is empty";
 		error = "true";
 	}
  	else
@@ -267,7 +267,7 @@ function validation()
  		{
  			if((id.length > 32))
  			{
- 				document.getElementById('iderror').innerHTML = "Required Field Should be Length 4 to 32";
+ 				document.getElementById('iderror').innerHTML = "Field should be length 4 to 32";
  				error = "true";	
  			}
  		}
@@ -279,7 +279,7 @@ function validation()
  			 }
  			 else
  			 {
- 				 document.getElementById("datepicker11").innerHTML="Invalid Date";
+ 				 document.getElementById("datepicker11").innerHTML="Invalid date";
  				 error="true";
  			 }
  		}	

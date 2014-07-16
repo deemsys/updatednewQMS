@@ -43,10 +43,10 @@
         <td valign="top" align="left"><div>
          <font color="Red" size="+1"></font>
             <div class="headings altheading">
-              <h2>Management Review Details</h2>
+              <h2 style="padding-left:30px">Management Review Details</h2>
             </div>
             <div class="contentbox">
-            <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+            <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:30px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 
               <c:set value="${managementreviewform.managementreviewdetails[0]}" var="managementreviewdetails"> </c:set>
@@ -120,24 +120,7 @@
                </div>
                </tr>
                </table>
-               
-                
-                
-           
-            <!--  <script type="text/javascript">
-function toggle3(value){
-     
-       var e = document.getElementById('child_table');
-      // var e1=document.getElementById('employee');
-if(value==0)
-       {
-	e.style.display="none";
-       }
-else
-       {
-	e.style.display="block";
-       }
-       
-}
-</script> -->
-            
+               <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              
+                <jsp:include page="footer.jsp"></jsp:include>
+    
