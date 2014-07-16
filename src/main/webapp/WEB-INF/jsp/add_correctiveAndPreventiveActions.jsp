@@ -498,7 +498,7 @@ function validation()
  	else if((why.length < 4) || (why.length > 32))
 	{
 	
-	document.getElementById('whyerr').innerHTML="Required field should be of length 4 to 32";	
+	document.getElementById('whyerr').innerHTML="Field should be of length 4 to 32";	
 	error="true";
 	}
     else if(why.substring(0,1)==" ")
@@ -663,7 +663,7 @@ function validation()
 	else if((team_leader.length < 4) || (team_leader.length > 45))
 		{
 		
-		document.getElementById("leadererror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("leadererror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -678,7 +678,7 @@ function validation()
 	else if((team_member.length < 4) || (team_member.length > 45))
 		{
 		
-		document.getElementById("membererror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("membererror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -694,7 +694,7 @@ function validation()
 	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 45))
 		{
 		
-		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("rooterror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -709,7 +709,7 @@ function validation()
 	else if((root_cause_analysis_file.length < 4) || (root_cause_analysis_file.length > 45))
 		{
 		//alert("length");
-		document.getElementById("root1error").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("root1error").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -723,7 +723,7 @@ function validation()
 	}
 	else if((action.length < 4) || (action.length > 45))
 		{
-		document.getElementById("actionerror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("actionerror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -738,7 +738,7 @@ function validation()
 	else if((verified_by.length < 4) || (verified_by.length > 45))
 		{
 		
-		document.getElementById("verifiedbyerror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("verifiedbyerror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{

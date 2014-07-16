@@ -186,7 +186,7 @@ document.getElementById("why").style.visibility = 'hidden';
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member(s) :</td>      
-						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="team_members"  id="team_member" style="width:78%; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
+						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="team_members"  id="team_member" style="width: 202px; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Statement :</td>               
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
                
@@ -542,7 +542,7 @@ function validation()
 	else if((why.length < 4) || (why.length > 32))
 {
 
-document.getElementById('whyerr').innerHTML="Required field should be of length 4 to 32";	
+document.getElementById('whyerr').innerHTML="Field should be of length 4 to 32";	
 error="true";
 }
 else if(why.substring(0,1)==" ")
@@ -706,7 +706,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((team_leader.length < 4) || (team_leader.length > 45))
 		{
 		
-		document.getElementById("leadererror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("leadererror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -721,7 +721,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((team_member.length < 4) || (team_member.length > 45))
 		{
 		
-		document.getElementById("membererror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("membererror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -737,7 +737,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 45))
 		{
 		
-		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("rooterror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -752,7 +752,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((root_cause_analysis_file.length < 4) || (root_cause_analysis_file.length > 45))
 		{
 		
-		document.getElementById("root1error").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("root1error").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -766,7 +766,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	}
 	else if((action.length < 4) || (action.length > 45))
 		{
-		document.getElementById("actionerror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("actionerror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
@@ -781,7 +781,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((verified_by.length < 4) || (verified_by.length > 45))
 		{
 		
-		document.getElementById("verifiedbyerror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("verifiedbyerror").innerHTML="Field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
