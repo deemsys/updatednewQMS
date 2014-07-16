@@ -103,10 +103,15 @@
 										  <option <c:if test="${categoryvalue eq 'previous items'}"><c:out value="Selected"/></c:if>  value="previous items" >Previous Items</option>
 										  <option <c:if test="${categoryvalue eq 'recommendations for improvement'}"><c:out value="Selected"/></c:if>  value="recommendations for improvement" >Recommendations for Improvement</option>
 										  <option <c:if test="${categoryvalue eq 'significant changes to the QMS'}"><c:out value="Selected"/></c:if>  value="significant changes to the QMS" >Significant changes to the QMS</option>	
-				                   	</select></td>
+				                   	</select>
+				                   	<br> <span id="caterror" style="color:red"></span></td>
 							    <td align="center" valign="middle" width="38%">
+							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit"onclick="return validation('this');" onmouseover="showTooltip('tooltip_id','inp_id3');" />
+							  
+
 							  <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation1();" onmouseover="showTooltip('tooltip_id','inp_id3');" />
 							  <br> <span id="searcherror" style="color:red"></span>
+
 							  </td>
 							
 							  </tr>
@@ -253,21 +258,35 @@ function validation()
  var id = document.getElementById('id').value;
  var datepicker = document.getElementById('datepicker').value;
  var category = document.getElementById('category').value;
- document.getElementById('searcherror').innerHTML = "";
+ document.getElementById('caterror').innerHTML = "";
  document.getElementById('iderror').innerHTML ="";
  document.getElementById("datepicker11").innerHTML="";
- 	if((id =="") && (datepicker == "") && (category == ""))
+ 	if(id =="")
 	{
-		document.getElementById('searcherror').innerHTML = "Input is empty";
+
+		document.getElementById('iderror').innerHTML = "Required field should not be empty";
+
+
 		error = "true";
 	}
+ 	if(datepicker==""){
+ 		document.getElementById('datepicker11').innerHTML = "Required field should not be empty";
+		error = "true";
+ 	}
+ 	if(category==""){
+ 		document.getElementById('caterror').innerHTML = "Required field should not be empty";
+		error = "true";
+ 	}
  	else
  	{
  		if(id.length > 0)
  		{
  			if((id.length > 32))
  			{
- 				document.getElementById('iderror').innerHTML = "Field should be length 4 to 32";
+
+ 				document.getElementById('iderror').innerHTML = "Required Field Should be length 4 to 32";
+
+ 	
  				error = "true";	
  			}
  		}
