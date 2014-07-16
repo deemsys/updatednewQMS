@@ -69,7 +69,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">SupplierName :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="SupplierPerformance.supplier_name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Certified To :</td>
-				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="dropdown" id="certified_to">
+				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" id="certified_to">
                   										<option
 															<c:if test="${supplierperformance.certified_to eq 'ISO 9001'}"><c:out value="Selected"/></c:if>
 															value="ISO 9001">ISO 9001</option>
@@ -83,7 +83,7 @@
                 </tr>
 		        <tr class="row2">
 				  <td valign="top" align="left" class="input_txt" width="30%">Category :</td>
-				<td valign="top" align="left" class="input_txt"><select	name="category" class="dropdown" id="category">
+				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_txtbx" id="category">
                   										<option
 															<c:if test="${supplierperformance.category eq 'Critical'}"><c:out value="Selected"/></c:if>
 															value="Critical">Critical</option>
@@ -118,7 +118,7 @@
               	<td valign="top" align="left" class="input_txt" width="30%">State :</td>
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" onInput="return validatename(id);" class="input_txtbx" id="inp_state" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="SupplierPerformance.state"></form:errors></span></td>
               	  <td valign="top" align="left" class="input_txt" width="30%">Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" maxlength="10" placeholder="+1" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" maxlength="12" placeholder="+1" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
                 
               	</tr>
                 <tr class="row2">
@@ -269,7 +269,7 @@ function validatename(id)
 	    }
 		else if(document.getElementById("inp_supplier_name").value.substring(0,1)==" ")
 		{
-		document.getElementById("nameerror").innerHTML="Initial space not allowed";
+		document.getElementById("nameerror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 	    else
@@ -292,7 +292,7 @@ function validatename(id)
 		    } 
 		else if(document.getElementById("inp_contact_name").value.substring(0,1)==" ")
 		{
-		document.getElementById("contacterror").innerHTML="Initial space not allowed";
+		document.getElementById("contacterror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		
@@ -316,7 +316,7 @@ function validatename(id)
 		    } 
 		else if(document.getElementById("inp_address").value.substring(0,1)==" ")
 		{
-		document.getElementById("addresserror").innerHTML="Initial space not allowed";
+		document.getElementById("addresserror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		    else
@@ -338,7 +338,7 @@ function validatename(id)
 		    } 
 		else if(document.getElementById("inp_contact_title").value.substring(0,1)==" ")
 		{
-		document.getElementById("titleerror").innerHTML="Initial space not allowed";
+		document.getElementById("titleerror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		    else
@@ -360,7 +360,7 @@ function validatename(id)
 		    } 
 		else if(document.getElementById("inp_city").value.substring(0,1)==" ")
 		{
-		document.getElementById("cityerror").innerHTML="Initial space not allowed";
+		document.getElementById("cityerror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		    else
@@ -383,7 +383,7 @@ function validatename(id)
 		    } 
 		else if(document.getElementById("inp_state").value.substring(0,1)==" ")
 		{
-		document.getElementById("stateerror").innerHTML="Initial space not allowed";
+		document.getElementById("stateerror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		    else
@@ -405,7 +405,7 @@ function validatename(id)
 		    } 
 		else if(document.getElementById("inp_country").value.substring(0,1)==" ")
 		{
-		document.getElementById("countryerror").innerHTML="Initial space not allowed";
+		document.getElementById("countryerror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		    else
@@ -427,7 +427,7 @@ function validatename(id)
 	    }
 		else if(email.substring(0,1)==" ")
 		{
-		document.getElementById("emailerror").innerHTML="Initial space not allowed";
+		document.getElementById("emailerror").innerHTML="Should not accept initial space";
 		 error="true";
 		}
 		else
@@ -463,40 +463,23 @@ function validatename(id)
 	    	document.getElementById('postalerror').innerHTML="";
 	    	}
 	    
-	   // var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-	    var faxreg= /^\+?[0-9]+$/;
-	    var letters = /^[A-Za-z]+$/;  
-	    if(fax=="")	
-		{
-		document.getElementById("faxerror").innerHTML="Required field should not be empty";
-		error="true";
-		}
 
-	    else if(document.getElementById("inp_fax").value.length<10)
-	    {
-	    	
-	    	document.getElementById("faxerror").innerHTML="Field should be of length 10";
-	    	 error="true";
-	    } 
-	    else if(document.getElementById("inp_fax").value.match(faxreg)==null)
-	    {
-	    	document.getElementById("faxerror").innerHTML="Invalid fax format";
-	    	error="true";
-	    }
-	    else if(fax.substring(0,1)==" ")
-		{
-		document.getElementById("faxerror").innerHTML="Initial space not allowed";
-		 error="true";
-		}
-	    else if(fax.match(letters))
-    	{
-    	document.getElementById("faxerror").innerHTML="Enter numeric values";
-    	}
-    
-	    else
-	    	{
-	    	document.getElementById("faxerror").innerHTML="";
-	    	}
+	    document.getElementById("faxerror").innerHTML=" ";
+	   	
+	   	if(document.getElementById("inp_fax").value=="")
+	   	{
+	   	document.getElementById("faxerror").innerHTML="Required field should not be empty";
+	   	
+	   	return false;
+	   	}
+	   	document.getElementById("faxerror").innerHTML=" ";
+	   	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+	   	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
+	   	    {
+	   	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
+	   	    	
+	   	    	 return false;
+	   	    }
 
 	    
 

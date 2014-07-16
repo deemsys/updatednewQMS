@@ -39,8 +39,8 @@
 									<span>Reports</span>
 									
 								</a>
-							</li>
 				            </ul>
+							</li>
 				            
   </div>
        </td>
@@ -59,15 +59,15 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="id" id="auditid"class="input_txtbx" readonly="readonly" value="<c:out value="${id}" />"/><br/>
+	                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="id" id="auditid"class="input_txtbx" readonly="readonly" value="<c:out value="${id}" />"/><br/>
                   <span id="auditiderror" style="color:red"class="err"></span></td>
                 </tr>
                 <tr class="row1">
 						         	<td valign="top" align="left" class="input_txt"> Process :</td>
 						          <td valign="top" align="left">
 				                  		
-				        	 <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" style="width:200px;">
+				        	 <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" >
                				<option value="">--Select--</option>
                				<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                				<option value="<c:out value="${processes.process_name}"/>"><c:out value="${processes.process_name}"/></option>
@@ -81,7 +81,7 @@
 			<tr class="row2">
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditee Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <td valign="top" align="left" class="input_txt" width="30%">
                  <select name="auditee_name" id="auditeename" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
@@ -97,7 +97,7 @@
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit Start Date :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
                   <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_start_date"></form:errors></span></td>
                
@@ -105,14 +105,14 @@
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
                    <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_due_date"></form:errors></span></td>
                 </tr>
 			<tr class="row1">
 							         	<td valign="middle" align="left" class="input_txt"> Auditor :</td>
 							           <td valign="top" align="left" class="input_txt">
-					                  		<select name="auditor"id="auditor" class="input_txtbx" style="height:20px;">
+					                  		<select name="auditor"id="auditor" class="input_txtbx">
 							                <option value="">--Select--</option>
 						                     <option <c:if test="${internalaudits.auditor eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >Name1</option>
 											<option <c:if test="${internalaudits.auditor eq 'name2'}"><c:out value="Selected"/></c:if> value="name2">Name2</option>
@@ -131,14 +131,14 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtbx"  name="auditor_notes" id="auditor_notes" style="width:59%; height: 70px;">${internalaudits.auditor_notes}</textarea>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="auditor_notes" id="auditor_notes" style="height: 70px;">${internalaudits.auditor_notes}</textarea>
                  <br> <span id="auditornoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
 						         	<td valign="middle" align="left" class="input_txt"> Finding :</td>
 						           <td valign="top" align="left" class="input_txt">
-				                  		<select name="finding" id="finding"class="input_txtbx" style="height:20px;">
+				                  		<select name="finding" id="finding"class="input_txtbx">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${internalaudits.finding eq 'ok'}"><c:out value="Selected"/></c:if> value="ok" >Ok</option>
 											<option <c:if test="${internalaudits.finding eq 'area of improvement'}"><c:out value="Selected"/></c:if> value="area of improvement">Area Of Improvement </option>
@@ -153,13 +153,13 @@
 				
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
                   <br> <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditor's Initials :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onInput="return validatename(id);"/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onInput="return validatename(id);"/>
                   <br><span id="auditorsinitialserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditors_initials"></form:errors></span></td>
                 </tr>

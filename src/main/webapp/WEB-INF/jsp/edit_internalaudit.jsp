@@ -242,7 +242,7 @@ function validate()
 	}
 	else if(auditornotes.charAt(0) == " ")
 	{
-	 document.getElementById("auditornoteserror").innerHTML="Initial spaces not allowed";
+	 document.getElementById("auditornoteserror").innerHTML="Should not accept initial space";
 		error="true";
 	}
 	else if((auditornotes.length<4)||(auditornotes.length>400))
@@ -347,7 +347,7 @@ else{
 		}
 	 else if(auditorsinitials.charAt(0) == " ")
 		{
-		 document.getElementById("auditorsinitialserror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("auditorsinitialserror").innerHTML="Should not accept initial space";
 			error="true";
 		}
 	else if((auditorsinitials.length>10))
