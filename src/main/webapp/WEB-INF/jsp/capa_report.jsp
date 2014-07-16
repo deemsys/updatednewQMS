@@ -110,7 +110,7 @@
 							
 							<tr class="row2">
 								<td valign="top" align="left" class="input_txt" width="30%">
-									Select Report Type:</td>
+									Select Report Type :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									&nbsp;&nbsp;&nbsp;<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>&nbsp;Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>&nbsp;User Defined Report<br/>
@@ -126,7 +126,7 @@
 							
 							<tr class="row1" id="userdefined_name" style="display:none;">
 								<td valign="top" align="left" class="input_txt" width="30%">
-									Name to appear on the Report:</td>
+									Name to appear on the Report :</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
 									&nbsp;&nbsp;&nbsp;<input type="text" name="report_title" class="input_txtbx" id="report_title" value="" onInput="return validatename();"/>
 								</td>
@@ -134,7 +134,7 @@
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="left" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:
+									Select Fields Required on the Report :
 									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
