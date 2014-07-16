@@ -45,9 +45,9 @@
               <h2>&nbsp;&nbsp;Update Form</h2>
             </div>
             <div class="contentbox">
-            <h1 style="color:#7A3A3A;font-size:20px;">Form Details</h1>
+            <h1 style="color:#7A3A3A;font-size:20px;">Edit Form Details</h1>
     <c:set value="${formForm.form[0]}" var="form"/>        
-	<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+	<table cellpadding="0" cellspacing="0" border="1" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 	
 	          <tr class="row2">
                             <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
@@ -55,23 +55,23 @@
 		<td valign="top" align="left" class="input_txt" width="30%">
 			<a id="formid">
 			
-					<input type="hidden" id="formid"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
+					<input type="hidden" id="formid" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');"
 					name="form_or_rec_id" />${form.form_or_rec_id}</a>
 		      
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:100px;display:none">
       
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
                </select>
             
-                <label id="changeafter" style="display:none;" ></label> 
+                <label id="changeafter" style="display:none;"></label> 
                 
-                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="display:none;height:22px;background-color:none;"  onblur="change_to_label()" onInput="return validatename3(id);"/><span id="quality3err" style="color:red;"></span>
+                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none"  onblur="change_to_label();" onInput="return validatename3(id);"/><span id="quality3err" style="color:red;"></span>
                 <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
-            <label id="changeafter" style="color:red;"></label>
+            <label id="changeafter1" style="color:red;"></label>
             <span id="formiderror" style="color:red"></span>
             <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             </td>
@@ -85,87 +85,13 @@
             <span id="formiderror" style="color:red"></span>
             <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
             
-             -->                 <td valign="top" align="left" class="input_txt" width="30%">Responsibility :</td>
-			  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" class="input_txtbx" id="responsibility"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="responsibility" 
-																			value="${form.responsibility}" /><br/>
-																			<span id="responsibility1" style="color:red"></span>
-																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
-																		
-																		</td>
-																		              
-				
-																		
-																		<td valign="top" align="left" class="input_txt" width="30%">																	
-																		</td>
-																		
-
-             </tr>
-              
-              <tr class="row1">
-               <td valign="top" align="left" class="input_txt" width="30%">Form/Rec Title:</td>
-																		<td valign="top" align="left" class="input_txt" width="30%"><input
-																			type="text" class="input_txtbx" id="form_or_rec_title"
-																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title" onInput="return validatename(id);"
-																			value="${form.form_or_rec_title}" /><br/>
-																			<span id="title1" style="color:red"></span>
-																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
-																		
-																		</td>
-																		<td valign="top" align="left" class="input_txt" width="30%" width="20%">Process:</td>
-               <td valign="top" align="left" class="input_txt" width="30%" >
-               
-               
-                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx">
-							 
-			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
-        				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
-			                  </c:forEach>
-			                 </select>
-			                 <br/><span id="inprocesserror" style="color:red"></span>
-			                 <span style="color:red;"><form:errors path="Form.process"></form:errors></span></td>
-         
-               
-																		
-																		<td valign="top" align="left" class="input_txt" width="30%">																	
-																		</td>
-																		<td valign="top" align="left" class="input_txt" width="30%">																	
-																		</td> 
-               <td valign="top" align="left" class="input_txt" width="30%" width="20%"></td>
-																		
-				             </tr>
-              
-              <tr class="row2"> 
-               
-			   <td valign="top" align="left" class="input_txt" width="30%" width="40%">Media Type:</td>
-               <td valign="top" align="left" class="input_txt" width="30%">
-               
-                
-                 <c:choose>
-               <c:when test="${form.media_type=='hardcopy'}">
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
-               </c:when>
-               <c:when test="${form.media_type=='electronic'}">
-               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
-            	   </c:when>
-               <c:when test="${form.media_type=='both'}">
-               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;
-                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
-               </c:when>
-               </c:choose>
-               </td>
-                <c:choose>
+             --> 
+             
+                            
+             
+             <c:choose>
                 <c:when test="${form.media_type=='hardcopy'}">
-               <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="30%" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;">Upload File:</label></td>
+               <td valign="top" id="id_location_lbl" align="left" class="input_txt" width="30%" width="20%"><label id="location_label" >Location :</label><br><label id="file_upload_label" style="display:none;">Upload File :</label></td>
                <td valign="top" align="left" id="id_location_txt" class="input_txt" width="30%" width="25%">
                <select id="location_text" name="location" class="input_txtbx" style="width:200px;">
               <option value="">--Select--</option>
@@ -219,7 +145,93 @@
                </td>
               </c:when>
                </c:choose>
+															
+             
+																		              
+				
+																		
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
+																		</td>
+																		
+
+             </tr>
+              
+              <tr class="row1">
+               <td valign="top" align="left" class="input_txt" width="30%">Form/Rec Title :</td>
+																		<td valign="top" align="left" class="input_txt" width="30%"><input
+																			type="text" class="input_txtbx" id="form_or_rec_title"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="form_or_rec_title" onInput="return validatename(id);"
+																			value="${form.form_or_rec_title}" /><br/>
+																			<span id="title1" style="color:red"></span>
+																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
+																		
+																		</td>
+																		
+																		<td valign="top" align="left" class="input_txt" width="30%" width="40%">Media Type :</td>
+               <td valign="top" align="left" class="input_txt" width="30%">
+               
+                
+                 <c:choose>
+               <c:when test="${form.media_type=='hardcopy'}">
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy"  checked/>Hard Copy&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               <c:when test="${form.media_type=='electronic'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" checked />Electronic&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);"/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+            	   </c:when>
+               <c:when test="${form.media_type=='both'}">
+               <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy"   id="id_hardcopy" />Hard Copy&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" />Electronic&nbsp;
+                <input type="radio" name="media_type" onchange="toggle2(this.value);" value="both"  id="id_both" onchange="toggle2(this.value);" checked/> Both&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>    
+               </c:when>
+               </c:choose>
+               </td>
+                			
+																		
+               
+																		
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
+																		</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
+																		</td> 
+               <td valign="top" align="left" class="input_txt" width="30%" width="20%"></td>
+																		
+				             </tr>
+              
+              <tr class="row2"> 
+               
+			   <td valign="top" align="left" class="input_txt" width="30%" width="20%">Process :</td>
+               <td valign="top" align="left" class="input_txt" width="30%" >
+               
+               
+                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx">
+							 <option value="">--Select--</option>
+			                <c:forEach items="${processForm.processes}" var="processes" varStatus="status">
+        				       <option value="${processes.process_name}"<c:if test="${processes.process_name == form.process}"><c:out value="selected"/></c:if>>${processes.process_name}</option>
+			                  </c:forEach>
+			                 </select>
+			                 <br/><span id="inprocesserror" style="color:red"></span>
+			                 <span style="color:red;"><form:errors path="Form.process"></form:errors></span></td>
+			                 
+			                 
+              <td valign="top" align="left" class="input_txt" width="30%">Responsibility :</td>
+			  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" class="input_txtbx" id="responsibility"
+																			onmouseover="showTooltip('tooltip_id','inp_id3');"
+																			onmouseout="hideTooltip('tooltip_id');"
+																			name="responsibility" 
+																			value="${form.responsibility}" /><br/>
+																			<span id="responsibility1" style="color:red"></span>
+																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
+																		
+																		</td>
+         
                </tr>
+               
                <tr class="row1">
 																		 <td valign="top" align="left" class="input_txt" width="30%">Retention Time:</td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><%-- <input
@@ -229,7 +241,7 @@
 																			name="retention_time"
 																			value="${form.retention_time}" /> --%>
 																			 <select id="retention" name="retention_time" class="input_txtbx" style="width:200px;">
-              
+              <option value="">--Select--</option>
                <option value="1Week" <c:if test="${form.retention_time=='1Week'}"><c:out value="Selected"/></c:if>>1Week</option>
                <option value="1Month" <c:if test="${form.retention_time=='1Month'}"><c:out value="Selected"/></c:if>>1Month</option>
                <option value="1Year" <c:if test="${form.retention_time=='1Year'}"><c:out value="Selected"/></c:if>>1Year</option>
@@ -249,18 +261,18 @@
          </table>
          </div>
                 <div class="contentbox">
-           <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
+           <h1 style="color:#7A3A3A;font-size:20px;">Edit Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" id="displayold">
              <tr class="row2">
              <td valign="top" align="left" width="15%">
             <!--  <a href="#" style="padding-right:10px;" onclick="reset_form()">Enter New Revision</a> -->
-             <input type="button" value="Enter New Revision" onClick="reset_form()"/>
+             <input type="button" value="Enter New Revision" class="submit_btn1" style="width:160px;" onclick="reset_form()"/>
              </td>
              </tr>
               <tr class="row1">
                          
-																		  <td valign="top" align="left" class="input_txt" width="30%">Revision No. (optional):</td>
+																		  <td valign="top" align="left" class="input_txt" width="25%">Revision No. (optional):</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
 																		<span id="valueTempe" style="font-weight: bold; width:28px;">${form.revision_id}</span>
 																		<button id="plus" href="#" style="height: 18px; width:18px;" value="">+</button>
@@ -283,24 +295,25 @@
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="auto_no"
 																			value="${form.auto_number}" />
-																			<br/>
+																			
 																			<span style="color:red;"><form:errors path="Form.effective_date"></form:errors></span>
 																		</td>  
 																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>      
-																		  
+																		  <td valign="top" align="left" class="input_txt" width="30%">																	
+																		</td>
 																		</tr>
               
               <tr class="row2">
-              																	 <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
+              																	 <td valign="top" align="left" class="input_txt" width="25%">Form/Rec ID :</td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="form_id"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="document_id"
-																			value="${form.form_or_rec_id}" style="display:none;" />
+																			value="${form.form_or_rec_id}" style="display:none;" readonly="readonly" />
 																			<b id="hide_id">${form.form_or_rec_id}</b><br/><span class="err"> <form:errors path="Form.document_id"></form:errors></span>
 																		</td>
                           
@@ -312,6 +325,7 @@
 																			
 																			 --%>
 																			  <select name="approver1" class="input_txtbx" id="approver">
+																			  <option value="">--Select--</option>
              																<c:forEach items="${employeeowner.employees}" var="employeeowner" varStatus="true">
              															     <option value="<c:out value="${employeeowner.name}"/>" <c:if test="${form.approver1==employeeowner.name}"><c:out value="Selected"/></c:if>><c:out value="${employeeowner.name}"/></option>
               																 </c:forEach>    
@@ -323,13 +337,15 @@
 																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">																	
+																		</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td> </tr>
               
               <tr class="row1">
-                            <td valign="top" align="left" class="input_txt" width="30%">Issuer :</td>
+                            <td valign="top" align="left" class="input_txt" width="25%">Issuer :</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
 																			 <select name="issuer" id="issuer" class="input_txtbx" >
-               <!-- <option value="">--Select--</option>  -->
+               <!-- <option value="">--Select--</option>  --><option value="">--Select--</option>
                <c:forEach items="${employeeForm.employees}" var="employees" varStatus="true">
                <option value="<c:out value="${employees.name}"/>" <c:if test="${form.issuer==employees.name}"><c:out value="Selected"/></c:if>><c:out value="${employees.name}"/></option>
                </c:forEach>              
@@ -348,7 +364,8 @@
 																		</td>
 																		<td valign="top" align="left" class="input_txt" width="30%">																	
 																		</td>
-																		
+																		<td valign="top" align="left" class="input_txt" width="30%">																	
+																		</td>
               </tr>
               
              
@@ -446,14 +463,15 @@ var start = "false";
 		var element1 = document.getElementById('formid');
 		var element2 = document.getElementById('change');
 		var element3 = document.getElementById('form_or_rec_id');
-		var element4 = document.getElementById('form_id');
+		//var element4 = document.getElementById('form_id');
 		var element5 = document.getElementById('hide_id');
 		
 			element.style.display="block";
 			element3.style.display="block";
+
 			element1.style.display="none";
 			element2.style.display="none";
-			element4.style.display="block";
+			//element4.style.display="block";
 			element5.style.display="none";
 			document.getElementById("changeafter").style.display="none";
 			document.getElementById("form_or_rec_id").focus();
@@ -463,13 +481,22 @@ var start = "false";
 	{
 		
 	   
-		var type=document.getElementById('document_type_id');	
+	   var numbers = /^[0-9]+$/;
+		var type=document.getElementById("document_type_id");	
 		
-		var doc_id=document.getElementById('form_or_rec_id');	
+		var doc_id=document.getElementById("form_or_rec_id");	
 		
-		
+		//alert("doc_id");
 		document.getElementById("changeafter").style.display="block";
-		if(doc_id.value.match(numbers))
+		
+		if(doc_id.value.length == ""){
+			
+			var color = "Required field should not be empty";
+			var result = color.fontcolor("red");
+			document.getElementById("changeafter").innerHTML=result;
+		}
+		
+		else if(doc_id.value.match(numbers))
 		{
 			if((doc_id.value.length < 4) || (doc_id.value.length > 32))
 			{
@@ -655,14 +682,15 @@ var start = "false";
 function reset_form()
 {
 	
+	document.getElementById('valueTempe').value="";
 	
-	document.getElementById('revisionid').value="0";
-	document.getElementById('datepicker').value="";
+	document.getElementById('datepicker123').value="";
+	
 	document.getElementById('issuer').value="";
+	
 	document.getElementById('approver').value="";
+	
 	document.getElementById('comments').value="";
-	
-	
 	
   
 }
@@ -773,7 +801,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	if(retention=="")
 		{
 		
-		document.getElementById('retentionerr').innerHTML = "Required Field Should Not be Empty";
+		document.getElementById('retentionerr').innerHTML = "Required field should not be empty";
 		error = "true";
 		}
 	else
@@ -782,24 +810,24 @@ var spl =  /^[A-Za-z0-9]*$/;
 		}
 	if(title =="")
 	 {
-		 document.getElementById("title1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("title1").innerHTML="Required field should not be empty";
 		 error="true";
 	 } 
 	 else if(title.charAt(0)==" ")
 	 {
 	 
-	 document.getElementById("title1").innerHTML="Initial Space not allowed";	
+	 document.getElementById("title1").innerHTML="Initial space not allowed";	
 	 error="true";
 	 }
 	 else if((title.length < 4) || (title.length > 400) )
 	 {
-	 document.getElementById("title1").innerHTML="Required Field Should be Length 4 to 32";
+	 document.getElementById("title1").innerHTML="Required field should be length 4 to 32";
 	 error ="true";
 	 }
 
 	 else if(!title.match(spl))
  		 {
- 		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
+ 		 document.getElementById("title").innerHTML="Special Characters are Not allowed";
  		error="true";
  		 }
  	 else
@@ -810,23 +838,23 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 if(comments =="")
 	 {
 		
-		 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("comments1").innerHTML="Required field should not be empty";
 		 error="true";
 	 }
 	 else if(comments.charAt(0)==" ")
 	 {
-		 document.getElementById("comments1").innerHTML="Initial Space Not allowed";
+		 document.getElementById("comments1").innerHTML="Initial space not allowed";
 		 error="true";
 	 }
 
 	 else if((comments.length < 4) || (comments.length > 400) )
 		 {
-		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
+		 document.getElementById("comments1").innerHTML="Required field should be length 4 to 400";
 		 error ="true";
 		 }
 	 else if(!comments.match(spl))
 		 {
-		 document.getElementById("comments1").innerHTML="Special Characters are Not allowed";
+		 document.getElementById("comments11").innerHTML="Special characters are not allowed";
 		
 		 }
 	 else 
@@ -837,23 +865,23 @@ var spl =  /^[A-Za-z0-9]*$/;
 	    if(responsibility =="")
 		 {
 			 
-			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("responsibility1").innerHTML="Required field should not be empty";
 			 error="true";
 		 }
 	    else if(responsibility.charAt(0)==" ")
 		 {
-			 document.getElementById("responsibility1").innerHTML="Initial Space Not allowed";
+			 document.getElementById("responsibility1").innerHTML="Initial space not allowed";
 			 error="true";
 		 }
 	    else if((responsibility.length < 4) || (responsibility.length > 400) )
 		 {
-		 document.getElementById("responsibility1").innerHTML="Required Field Should be of Length 4 to 32";
+		 document.getElementById("responsibility1").innerHTML="Required field should be of length 4 to 32";
 		 error ="true";
 		 }
 	    
 	    else if(!responsibility.match(spl))
  		 {
- 		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
+ 		 document.getElementById("responsibility").innerHTML="Special characters are not allowed";
  		error="true";
  		 }
  	 else
@@ -866,7 +894,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 {
 			
 	    	 
-		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("datepicker1234").innerHTML="Required field should not be empty";
 		 error ="true";
 		 
 		 }
@@ -876,7 +904,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 }
 		 else
 		 {
-		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
+		 document.getElementById("datepicker1234").innerHTML="Invalid date";
 		 error ="true";
 		 }
 	 
@@ -886,7 +914,7 @@ var spl =  /^[A-Za-z0-9]*$/;
      	var form_id	= document.getElementById('form_or_rec_id').value;
      		if(form_id == "")
      		{
-     			document.getElementById('formiderror').innerHTML = "Required Field Should not be Empty";
+     			document.getElementById('formiderror').innerHTML = "Required field should not be empty";
      			error = "true";
      		}
      		else
@@ -898,7 +926,7 @@ var spl =  /^[A-Za-z0-9]*$/;
     	 {
     		if(e2=="")
     			{
-    			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+    			document.getElementById("hard").innerHTML="Required field should not be empty";
     			error = "true";
     			}
     	 }
@@ -909,7 +937,7 @@ var spl =  /^[A-Za-z0-9]*$/;
     		 if(e3=="")
     			 {
     			
-    			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+    			 document.getElementById("attach").innerHTML="Required field should not be empty";
     			 error = "true";
     			 }
     		}
@@ -921,7 +949,7 @@ var spl =  /^[A-Za-z0-9]*$/;
     		if(e2=="")
     		{
     			
-    		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+    		document.getElementById("hard").innerHTML="Required field should not be empty";
     		error = "true";
     		}
     	}
@@ -930,7 +958,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		if(id_inpprocess == "")
 		{
 			 
-			 document.getElementById("inprocesserror").innerHTML="Please Select One";
+			 document.getElementById("inprocesserror").innerHTML="Please select one";
 			 error ="true";
 		}
 		else
@@ -942,7 +970,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 if(issuer == "")
 			{
 			
-				 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("filtererror").innerHTML="Required field should not be empty";
 					error ="true";
 			}
 	  else
@@ -956,7 +984,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 			 if(approver == "")
 				{
 				 
-					 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("filter1error").innerHTML="Required field should not be empty";
 						error ="true";
 				}
 			 else

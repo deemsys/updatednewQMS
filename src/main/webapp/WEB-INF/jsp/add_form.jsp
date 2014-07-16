@@ -48,7 +48,7 @@
               <h2>&nbsp;&nbsp;Form Details</h2>
             </div> -->
             <div class="contentbox">
-            <h1 style="color:#7A3A3A;font-size:20px;">Form Details</h1>
+            <h1 style="color:#7A3A3A;font-size:20px;">Add Form Details</h1>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
@@ -59,9 +59,9 @@
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
     		
     	     <tr class="row1">
-    		 <td valign="top" align="left" class="input_txt"></span>Form/RecId:</td>
+    		 <td valign="top" align="left" class="input_txt" width="20%"></span>Form/Rec ID :</td>
               
-               <td valign="top" align="left" class="input_txt1"  id="lable_td" style="display:none;">
+               <td valign="top" align="left" class="input_txt1"  id="lable_td" style="display:none;" >
                <label id="document_id_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
                <br/>
                      
@@ -79,21 +79,22 @@
                
               <input type="hidden" value="${docform.form_or_rec_id}" id="generated_id90" /> 
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx" style="width:100px;" value="" /> 
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx" onkeypress="return validate(event);" style="height:22px;width:100px;" name="form_or_rec_id" onblur="change_to_label();"/>
+              <input type="text" value="" id="form_or_rec_id" class="input_txtbx" onkeypress="return validate(event);" style="height:22px;width:100px;" name="form_or_rec_id" onblur="change_to_label();" maxlength="32"/>
               <br><span id="formiderror" style="color:red"></span>
-              <span id="quality3err" style="color:red;"></span>
               <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
+              <span id="quality3err" style="color:red;"></span>
               </td>
+             
              <%-- <td valign="top" align="left" class="input_txt" ></span>Auto Number:</td>
                   <td valign="top" align="left" class="input_txt" ><input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/></span></td>
 			 --%>
 			 
 			 
-			<td valign="top" id="id_location_lbl" align="left" class="input_txt"><label id="location_label" ></span> Location:</label><br><label id="file_upload_label" style="display:none;"><span style="color:red;"></span> Upload File:</label></td>
-               <td valign="top" align="left" id="id_location_txt" class="input_txt" >
+			<td valign="top" id="id_location_lbl" align="left" class="input_txt" width="20%" ><label id="location_label" ></span> Location :</label><br><label id="file_upload_label" style="display:none;"><span style="color:red;"></span> Upload File:</label></td>
+               <td valign="top" align="left" id="id_location_txt" class="input_txt" width="35%">
                
                <select id="location_text" name="location" class="input_txtbx" style="width:200px;">
-              <option value = "">Select Location</option>
+              <option value = "">--Select--</option>
 			               <c:forEach items="${formLocationForm.formLocations}" var="formlocation" varStatus="status">
                   			 <option value="${formlocation.form_location}"<c:if test="${formlocation.form_location == docform.location}"><c:out value="selected"/></c:if>>${formlocation.form_location}</option>
 			                  </c:forEach></select><span style="color:red;"><form:errors path="Form.location"></form:errors></span>
@@ -102,10 +103,12 @@
 				 <input name="attachments" style="display:none;" id="id_file" type="file" />	
 				 <span id="attach" style="color:red"></span>
 				 </td>										
-				<td valign="top" align="left" class="input_txt"></td>
+				
 				<td valign="top" align="right" class="input_txt"></td>
 				<td valign="top" align="right" class="input_txt"></td>
 				<td valign="top" align="right" class="input_txt"></td>
+				
+				</tr>
 				<!-- 														<td valign="top" align="right" class="input_txt">																	
 																		</td>
 																		<td valign="top" align="right" class="input_txt">																	
@@ -114,26 +117,26 @@
                 -->
               
               <tr class="row2">	
-				  <td valign="top" align="left" class="input_txt" width="30%"></span>Form/Rec Title :</td>
-				  <td valign="top" align="left" class="input_txt" width="70%"><input
+				  <td valign="top" align="left" class="input_txt" width="20%"></span>Form/Rec Title :</td>
+				  <td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="form_or_rec_title"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="form_or_rec_title"
-																			value="${docform.form_or_rec_title }" onInput="return validatename(id);"/>
+																			value="${docform.form_or_rec_title }" onInput="return validatename(id);" maxlength="32"/>
 																			<br/>
 																			<span id="title1" style="color:red"></span><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
 																		</td>
 				
-				 													              <td valign="top" align="left" class="input_txt" width="30%"><span
-																			class="err"></span>Responsibility:</td>
-																		<td valign="top" align="left" class="input_txt" width="70%"><input
+				 													              <td valign="top" align="left" class="input_txt" width="20%"><span
+																			class="err"></span>Responsibility :</td>
+																		<td valign="top" align="left" class="input_txt" width="35%"><input
 																			type="text" class="input_txtbx" id="responsibility"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility"
-																			value="${docform.responsibility }" onInput="return validatename(responsibility);"/><br/>
+																			value="${docform.responsibility}" onInput="return validateresponsibility(id)" maxlength="32"/><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
@@ -161,8 +164,8 @@
            	 	<span id="inprocesserror" style="color:red"></span>
            	 	<span style="color:red;"><form:errors path="Form.process"></form:errors></span></td>
                
-          		<td valign="top" align="left"  class="input_txt">Media Type:</td>
-               <td valign="top" align="left" class="input_txt">
+          		<td valign="top" align="left"  class="input_txt">Media Type :</td>
+               <td valign="top" align="left" class="input_txt"> 
          
                  <input type="radio" name="media_type" onchange="toggle2(this.value);" value="hardcopy" id="id_hardcopy" checked <c:if test="${docform.media_type=='hardcopy'}"><c:out value="checked" /></c:if>/>Hard Copy&nbsp;
                 <input type="radio" name="media_type" value="electronic"  id="id_electronic" onchange="toggle2(this.value);" <c:if test="${docform.media_type=='electronic'}"><c:out value="checked" /></c:if>/>Electronic&nbsp;<span class="err"></span>
@@ -173,8 +176,8 @@
                </tr>
               
               <tr class="row2">
-              <td valign="top" align="left" class="input_txt" width="30%"></span>Retention Time :</td>
-			  <td valign="top" align="left" class="input_txt" width="70%">		
+              <td valign="top" align="left" class="input_txt" width="20%"></span>Retention Time :</td>
+			  <td valign="top" align="left" class="input_txt" width="30%">		
 																		 
                <select id="retention" name="retention_time" class="input_txtbx">
            <option value="">--Select--</option>
@@ -184,8 +187,8 @@
                </select><br/><span id="retentionerr" style="color:red;"></span>
 				    <span style="color:red;"><form:errors path="Form.retention_time"></form:errors></span>
                </td>
-               <td valign="top" align="left" class="input_txt" width="30%">Is this a Form?</td>
-			   <td valign="top" align="left" class="input_txt" width="70%">
+               <td valign="top" align="left" class="input_txt" width="20%">Is this a Form?</td>
+			   <td valign="top" align="left" class="input_txt" width="35%">
 			   <input type="radio" name="form" value="Yes" class="input_txt" checked >Yes&nbsp;&nbsp;&nbsp;
 			   <input type="radio" name="form" value="No" class="input_txt" >No
                </tr>
@@ -203,23 +206,21 @@
             <!--  <div id="child_table" style="display:none;"> -->
 <br>
              
-             <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
+             <h1 style="color:#7A3A3A;font-size:20px;">Add Revision Details</h1>
 <br>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
              <tr class="row2">
-             <td valign="top" align="left" class="input_txt" width="30%">Form/Rec Id</td>
-			 <td valign="top" align="left" class="input_txt">
-			 <input type="text" class="input_txtbx" id="form_id" readonly="readonly"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" name="document_id"
+             <td valign="top" align="left" class="input_txt" width="20%">Form/Rec ID :</td>
+			 <td valign="top" align="left" class="input_txt" width="30%">
+			 <input type="text" class="input_txtbx" id="form_id" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" name="document_id"
 			  value="" /><br/><span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
 			 </td>
 			 
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
-   			   <td valign="top" align="right" class="input_txt" width="50%">Approver 1(Process Owner):</td>
-               <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" >
+   			   <td valign="top" align="left" class="input_txt" width="20%">Approver 1(Process Owner) :</td>
+               <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="35%">
                <input type="hidden" value="${docform.approver1}" id="appro">
-               <select name="filter" id="filter_value1" class="input_txtbx" onchange="AjaxProcessOwner(this.value);" onblur="change_to_label_issuer1();" style="width:75%;">
+               <select name="filter" id="filter_value1" class="input_txtbx" onchange="AjaxProcessOwner(this.value);" onblur="change_to_label_issuer1();">
                <option value="">--Select--</option>
                <option value="A">A</option>
               <option value="B">B</option>
@@ -254,11 +255,10 @@
                </span>
                <label id="issuer_full_lbl1"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer1()">&nbsp;&nbsp;Change</a>            
                <br><span id="filter1error" style="color:red"></span>
-               <br/><span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
+               <span style="color:red;"><form:errors path="Form.approver1"></form:errors></span>
 			   </td>
 			   
-																		<td valign="top" align="left" class="input_txt">																	
-																		</td>
+																		
 																		<td valign="top" align="left" class="input_txt">																	
 																		</td>
 																		
@@ -270,7 +270,7 @@
               
     			<tr class="row1">			             
 				<td valign="top" align="left" class="input_txt" >Effective Date :</td>
-				<td valign="top" align="left" class="input_txt" >
+				<td valign="top" align="left" class="input_txt" width="30%">
 				<input type="hidden" name="auto_no" value="${id }"/>
 				<input type="text" class="input_txtbx" id="datepicker123" name="effective_date" value="${docform.effective_date}" />
 				<br/>
@@ -278,10 +278,8 @@
 				<span style="color:red;"><form:errors path="Form.effective_date"></form:errors></span>
 				</td>  
 				
-																		<td valign="top" align="left" class="input_txt">																	
-												-						</td>
 												
-				<td valign="top" align="right" class="input_txt">Comments :</td>
+				<td valign="top" align="left" class="input_txt">Comments :</td>
 				<td valign="top" align="left" class="input_txt" >
 				<textarea class="input_txtbx" id="comments" name="comments" onInput="return validatename(comments)" style="height: 60px;" >${docform.comments}</textarea><br/>
 				<span id="comments1" style="color:red"></span>
@@ -289,10 +287,10 @@
 				</tr>
               
               	<tr class="row1">
-                <td valign="top" align="left" class="input_txt" >Issuer:</td>
-                <td valign="top" align="left" id="edit_td_issuer" class="input_txt">
+                <td valign="top" align="left" class="input_txt" >Issuer :</td>
+                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="30%">
                  <input type="hidden" value="${docform.issuer}" id="issu"/>
-                 <select name="filter" id="filter_value" class="input_txtbx" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" style="width:75%;">
+                 <select name="filter" id="filter_value" class="input_txtbx" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" >
                  <option value="">--Select--</option>
                  <option value="A">A</option>
               	 <option value="B">B</option>
@@ -323,7 +321,7 @@
               </select>
                 <span id="issuer_generate"> 
                </span>
-               <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">&nbsp;&nbsp;Change</a>      
+               <label id="issuer_full_lbl"></label><a href="#" style="text-decoration: none;" onclick="show_edit_issuer()">Change</a>      
                <br/>
                <span id="filtererror" style="color:red"></span>
                <span style="color:red;"><form:errors path="Form.issuer"></form:errors></span>
@@ -398,10 +396,10 @@ function validatename(id)
 	textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
 	document.getElementById(id).value = textInput;
 }
-function validatename(responsibility)
+function validateresponsibility(id)
 {
 	var textInput = document.getElementById("responsibility").value;
-	textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+	textInput = textInput.replace(/[^A-Za-z]/g, "");
 	document.getElementById("responsibility").value = textInput;
 }
 function validatename(comments)
@@ -460,7 +458,22 @@ function validatename(comments)
 		});
 
 </script>
-
+<script type="text/javascript">
+function labelvalidate(id){
+	 alert("caall");
+	var form_or_rec_id=document.getElementById(id).value;
+	alert(form_or_rec_id);
+	if(form_or_rec_id == "")
+	 {
+	
+	 document.getElementById("formiderror").innerHTML="Required field should not be empty";
+		error ="true";
+	 }
+	else(){
+		document.getElementById("formiderror").innerHTML="";
+	}
+}
+</script>
 
 <script>
 function validation()
@@ -477,19 +490,21 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 var id_hardcopy = document.getElementById('id_hardcopy').checked;
 	 var id_electronic = document.getElementById('id_electronic').checked;
 	 var id_both = document.getElementById('id_both').checked;
-	 var location_text = document.getElementById('location_text').value;
+	 //var location_text = document.getElementById('location_text').value;
 	 
 	 var id_inpprocess = document.getElementById('id_inpprocess').value;
 	 var filter_value = document.getElementById('filter_value').value;
 	 var filter_value1 = document.getElementById('filter_value1').value;
 	 var datepicker123=document.getElementById('datepicker123').value;
 	 var e2=document.getElementById('location_text').value;
+	 
 	 var e3=document.getElementById('id_file').value;
+	 
 	 var comments = document.getElementById('comments').value;
 	var retention = document.getElementById('retention').value;
 	if(retention=="")
 		{
-		document.getElementById('retentionerr').innerHTML = "Required Field Should Not be Empty";
+		document.getElementById('retentionerr').innerHTML = "Required field should not be empty";
 		error = "true";
 		}
 	else
@@ -498,24 +513,24 @@ var spl =  /^[A-Za-z0-9]*$/;
 		}
 	if(title =="")
 	 {
-		 document.getElementById("title1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("title1").innerHTML="Required field should not be empty";
 		 error="true";
 	 } 
 	 else if(title.charAt(0)==" ")
 	 {
 	 
-	 document.getElementById("title1").innerHTML="Initial Space not allowed";
+	 document.getElementById("title1").innerHTML="Initial space not allowed";
 	 error="true";
 	 }
 	 else if(!title.match(spl))
  		 {
- 		 document.getElementById("title1").innerHTML="Special Characters are Not allowed";
+ 		 document.getElementById("title").innerHTML="Special characters are not allowed";
  		error="true";
  		 }
 
 	 else if((title.length < 4) || (title.length > 32))
 		 {
-		 document.getElementById("title1").innerHTML="Required Field Should be Length 4 to 32";
+		 document.getElementById("title1").innerHTML="Required field should be Length 4 to 32";
 		 error="true";
 		 }
  	 else
@@ -526,23 +541,23 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 if(comments =="")
 	 {
 		
-		 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("comments1").innerHTML="Required field should not be empty";
 		 error="true";
 	 }
 	 else if(comments.charAt(0)==" ")
 	 {
-		 document.getElementById("comments1").innerHTML="Initial Space Not allowed";
+		 document.getElementById("comments1").innerHTML="Initial space not allowed";
 		 error="true";
 	 }
 
 	 else if((comments.length < 4) || (comments.length > 400) )
 		 {
-		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
+		 document.getElementById("comments1").innerHTML="Required field should be length 4 to 400";
 		 error ="true";
 		 }
 	 else if(!comments.match(spl))
 		 {
-		 document.getElementById("comments1").innerHTML="Special Characters are Not allowed";
+		 document.getElementById("comments").innerHTML="Special characters are not allowed";
 		
 		 }
 	 else 
@@ -553,23 +568,23 @@ var spl =  /^[A-Za-z0-9]*$/;
 	    if(responsibility =="")
 		 {
 			 
-			 document.getElementById("responsibility1").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("responsibility1").innerHTML="Required field should not be empty";
 			 error="true";
 		 }
 	    else if(responsibility.charAt(0)==" ")
 		 {
-			 document.getElementById("responsibility1").innerHTML="Initial Space Not allowed";
+			 document.getElementById("responsibility1").innerHTML="Initial space not allowed";
 			 error="true";
 		 }
 
 		 else if((responsibility.length < 4) || (responsibility.length > 32))
 			 {
-			 document.getElementById("responsibility1").innerHTML="Required Field Should be Length 4 to 32";
+			 document.getElementById("responsibility1").innerHTML="Required field should be length 4 to 32";
 			 error="true";
 			 }
 	    else if(!responsibility.match(spl))
  		 {
- 		 document.getElementById("responsibility1").innerHTML="Special Characters are Not allowed";
+ 		 document.getElementById("responsibility1").innerHTML="Special characters are not allowed";
  		error="true";
  		 }
  	 else
@@ -581,7 +596,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	     if(datepicker123 == "")
 		 {
 			
-		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("datepicker1234").innerHTML="";
 		 error ="true";
 		 
 		 }
@@ -591,19 +606,19 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 }
 		 else
 		 {
-		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
+		 document.getElementById("datepicker1234").innerHTML="Invalid date";
 		 error ="true";
 		 }
 	 
 		 if(form_id == "")
 		 {
 		
-		 document.getElementById("formiderror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("formiderror").innerHTML="Required field should not be empty";
 			error ="true";
 		 }
 		 else if((form_id.length < 4) || (form_id.length > 32))
 			 {
-			 document.getElementById("formiderror").innerHTML="Required Field Should be Length 4 to 32";
+			 document.getElementById("formiderror").innerHTML="Required field should be length 4 to 32";
 			 error="true";
 			 } 
 	 else
@@ -613,7 +628,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	  if(!(document.getElementById('id_hardcopy').checked) &&  !(document.getElementById('id_electronic').checked) && !(document.getElementById('id_both').checked) )
 	{
 		alert("media type");
-		 document.getElementById("mediatypeerror").innerHTML="Select Atleast One";
+		 document.getElementById("mediatypeerror").innerHTML="Select atleast one";
 			error ="true";
 	}
 	 else
@@ -626,9 +641,13 @@ var spl =  /^[A-Za-z0-9]*$/;
 		if(e2=="")
 			{
 			
-			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+			document.getElementById("hard").innerHTML="Required field should not be empty";
 			error ="true";
 			}
+		else{
+			document.getElementById("hard").innerHTML="";
+			
+		}
 	 }
 	 
 	 
@@ -640,10 +659,12 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 if(e3=="")
 			 {
 			
-			 document.getElementById("attach").innerHTML="No File Uploaded";
+			 document.getElementById("attach").innerHTML="No file uploaded";
 			 error ="true";
 			 }
-		
+		 else{
+			 document.getElementById("attach").innerHTML="";
+		 }
 	}
 	 
 	 
@@ -654,17 +675,22 @@ var spl =  /^[A-Za-z0-9]*$/;
 		if(e2=="")
 		{
 			 
-		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+		document.getElementById("hard").innerHTML="Required field should not be empty";
 		error ="true";
 		}
-	
+		else{
+			document.getElementById("hard").innerHTML="";
+		}
 		 if(e3=="")
 		 {
 			 
-		 document.getElementById("attach").innerHTML="File No Uploaded";
+		 document.getElementById("attach").innerHTML="No file uploaded";
 		 error ="true";
 		 }
-	
+		 else{
+			 document.getElementById("attach").innerHTML="";
+		 }
+		 
 		}
 	
 	
@@ -675,7 +701,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 			if(filter_value == "-")
 			{
 				
-				 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("filtererror").innerHTML="Required field should not be empty";
 					error ="true";
 			}
 			else
@@ -689,7 +715,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		if(id_inpprocess == "")
 		{
 			 
-			 document.getElementById("inprocesserror").innerHTML="Please Select One";
+			 document.getElementById("inprocesserror").innerHTML="Please select one";
 			 error ="true";
 		}
 		else
@@ -708,11 +734,11 @@ var spl =  /^[A-Za-z0-9]*$/;
 		}	
 		
 		else if(issuer1.length < 2){
-			 document.getElementById("filtererror").innerHTML="Issuer Doesn't exit";
+			 document.getElementById("filtererror").innerHTML="Issuer doesn't exit";
 				error ="true";
 		 }
 		 else if(filter_value.length == 1){
-			 document.getElementById("filtererror").innerHTML="Please Select Issuer";
+			 document.getElementById("filtererror").innerHTML="Please select issuer";
 				error ="true";
 		 }
 		 else{
@@ -728,12 +754,12 @@ var spl =  /^[A-Za-z0-9]*$/;
 			if(filter_value1 == "-")
 			{
 				
-				 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("filter1error").innerHTML="Required field should not be empty";
 					error ="true";
 			}
 			else
 				{
-				 document.getElementById("filter1error").innerHTML="Select Approver";
+				 document.getElementById("filter1error").innerHTML="Select approver";
 					error ="true";
 				}
 			
@@ -750,11 +776,11 @@ var spl =  /^[A-Za-z0-9]*$/;
 		}	
 		
 		else if(issuer1.length < 2){
-			 document.getElementById("filter1error").innerHTML="Approver Doesn't exit";
+			 document.getElementById("filter1error").innerHTML="Approver doesn't exit";
 				error ="true";
 		 }
 		 else if(filter_value1.length == 1){
-			 document.getElementById("filter1error").innerHTML="Please Select Approver";
+			 document.getElementById("filter1error").innerHTML="Please select approver";
 				error ="true";
 		 }
 		 else{
@@ -979,9 +1005,17 @@ document.getElementById("filter_value1").style.display="block";
 	var numbers = /^[0-9]+$/; 
 	var type=document.getElementById("document_type_id");	
 	var doc_id=document.getElementById("form_or_rec_id");	
+	//var form_error_id=document.getElementById("form_or_rec_id");
 	document.getElementById("lable_td").style.display="block";
 	document.getElementById("edit_td").style.display="none";
-	if(doc_id.value.match(numbers))
+	if(doc_id.value.length == ""){
+		
+		var color = "Required field should not be empty";
+		var result = color.fontcolor("red");
+		document.getElementById("document_id_full_lbl").innerHTML=result;
+	}
+	
+	else if(doc_id.value.match(numbers))
 	{
 		if((doc_id.value.length < 4) || (doc_id.value.length > 32))
 			{

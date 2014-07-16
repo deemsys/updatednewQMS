@@ -126,7 +126,7 @@
 									<td valign="top" align="left" width="10%">Effective Date</td>
 									<td valign="top" align="left" width="10%">Approver1</td>
 									<td valign="top" align="left" width="10%">Issuer</td>
-									<td valign="top" align="left" width="10%">Actions</td>
+									<td valign="top" align="left" width="15%">Actions</td>
 									</tr>
  						<c:if test="${fn:length(formForm.form) gt 0}">	
 								
@@ -140,7 +140,7 @@
 							       			i=1;%>
 							       			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-								           	<td valign="top" align="left" width="10%"style="display:none"><input type="hidden" name="auto_number" id="autonumber" value="${form.auto_number}"/>
+								           	<td valign="top" align="left" width="10%" style="display:none"><input type="hidden" name="auto_number" id="autonumber" value="${form.auto_number}"/>
 									        ${form.auto_number}</td>
 									        <td valign="top" align="left" width="10%"><a href="list_form?id=${form.auto_number}">
 									        ${form.document_id}</a></td>
