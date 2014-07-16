@@ -73,7 +73,7 @@
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="15%">Document ID:
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx"  value=""/>
-              <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/> 
+               <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/> 
              
                </td>
                <td valign="top" align="left" class="input_txt1" width="15%" id="lable_td" style="display:none;">
@@ -86,11 +86,12 @@
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
                <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:140px;">
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
-        				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
-			                  </c:forEach>
+        	   <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
+			   </c:forEach>
                </select>
-                  <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
-               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;"  name="document_id" onblur="change_to_label();"onInput="return validatename3(id);"/>
+              
+               <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
+               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();"onInput="return validatename3(id);"/>
                <br><span id="documentiderror" style="color:red"></span>
             
               <c:if test="${fail=='fail'}">
@@ -347,7 +348,7 @@
                  <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
-               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onInput="return validatename2(id);"/><br/>
+               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onInput="validaterevision();"/><br/>
                <span id="revisionlevel1" style="color:red"></span>
         <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;height:18px;beckground:lightgrey;">
                				<option value="">--select--</option>
@@ -571,6 +572,11 @@ document.getElementById("filter_value1").style.display="block";
 
 	
 	}
+function validaterevision(){
+    var textInput = document.getElementById("revisionlevel").value;
+    textInput = textInput.replace(/[^A-Za-z0-9.]/g, "");
+    document.getElementById("revisionlevel").value = textInput;
+}
 	
 function validation()
 {
@@ -640,6 +646,13 @@ function validation()
 		{
 		 document.getElementById("documentiderror").innerHTML= "";
 		}
+	 if(document_id!=""){
+		 if(document.getElementById("document_id").value.length<4 || document.getElementById("document_id").value.length>32 ){
+			 document.getElementById("documentiderror").innerHTML="Required field should between 4 to 32 characters";
+				error ="true";
+			 } 
+		 }
+	 
 	 if(!(document.getElementById('id_hardcopy').checked) &&  !(document.getElementById('id_electronic').checked) && !(document.getElementById('id_both').checked) )
 	{
 		
