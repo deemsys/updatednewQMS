@@ -195,7 +195,7 @@ function doAjaxPost() {
                    --%>
                   </td>
                  <td valign="top" align="left" class="input_txt" width="20%"> Training Effectiveness Notes :</td>
-                  <td><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" value="${employee.training_effectiveness_notes}" onmouseout="hideTooltip('tooltip_id');"  style=" height: 55px;" name="note"></textarea><br/> 
+                  <td><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');" value="${employee.training_effectiveness_notes}" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;" name="note"></textarea><br/> 
                   <span id="inp_job_titleerror" style="color: red;"><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
                  
                 </tr>

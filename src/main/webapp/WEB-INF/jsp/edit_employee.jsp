@@ -135,7 +135,7 @@ $(function() {
                    <input type="checkbox" name="management" value="yes" onclick="toggle3()"  id="managementrep"/<c:if test="${employee.management=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Management Representative<br/>
                   <span id="workingerror" style="color: red;" ></span>
                    <td valign="top" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
-                 <td valign="top" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');"  onmouseout="hideTooltip('tooltip_id');"  style="height: 55px;"><c:out value="${employee.training_effectiveness_notes  }"/> </textarea><br><span style="color: red;" id="inp_job_titleerror" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
+                 <td valign="top" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_job_title" name="training_effectiveness_notes" onmouseover="showTooltip('tooltip_id','inp_id3');"  onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;"><c:out value="${employee.training_effectiveness_notes  }"/> </textarea><br><span style="color: red;" id="inp_job_titleerror" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
 
                   
                   </tr>
