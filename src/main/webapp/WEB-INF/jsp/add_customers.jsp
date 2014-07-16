@@ -456,7 +456,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 			 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
 		  	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
 		  	    {
-		  	    	document.getElementById("faxerror").innerHTML="Invalid phone number format";
+		  	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
 		  	    	
 		  	    	 return false;
 		  	    }

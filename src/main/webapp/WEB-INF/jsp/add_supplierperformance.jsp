@@ -125,7 +125,7 @@
               	<td valign="top" align="left" class="input_txt" width="30%"> State :</td>
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="supplierperformance.state"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+1" name="fax" maxlength="10" class="input_txtbx" id="inp_fax"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+1" name="fax" class="input_txtbx" id="inp_fax"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
 
               	</tr>
                 <tr class="row2">
@@ -497,7 +497,7 @@ function validatename(id)
 	    	document.getElementById('postalerror').innerHTML="";
 	    	}
 	    
-	    var faxreg= /^\+?[0-9]+$/;
+	    /* var faxreg= /^\+?[0-9]+$/;
 	    var letters = /^[A-Za-z]+$/;  
 	    if(fax=="")	
 		{
@@ -530,6 +530,24 @@ function validatename(id)
 	    	{
 	    	document.getElementById("faxerror").innerHTML="";
 	    	}
+ */
+ 
+ document.getElementById("faxerror").innerHTML=" ";
+	
+	if(document.getElementById("inp_fax").value=="")
+	{
+	document.getElementById("faxerror").innerHTML="Required field should not be empty";
+	
+	return false;
+	}
+	document.getElementById("faxerror").innerHTML=" ";
+	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
+	    {
+	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
+	    	
+	    	 return false;
+	    }
 
 	    
 

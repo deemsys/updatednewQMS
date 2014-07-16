@@ -125,8 +125,8 @@
 									       <td valign="top" align="left" width="10%">${supplierperformance.state}</td>
 									       <td valign="top" align="left" width="10%">${supplierperformance.country}</td>
 										<td valign="top" align="left" width="10%">${supplierperformance.phone}</td>
-											<td valign="top" align="left" width="15%">${supplierperformance.email_address}</td>	
-										<td valign="top" align="left" width="15%">
+											<td valign="top" align="left" width="10%">${supplierperformance.email_address}</td>	
+										<td valign="top" align="left" width="10%">
 								 			<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editsupplierperformance?sid=${supplierperformance.supplier_id}"/>" style="padding-right:10px;">Edit</a>
 										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="deletesupplierperformance?sid=${supplierperformance.supplier_id}"/>" onclick="return confirmation()">Remove</a> --%>
 								 		</td>
