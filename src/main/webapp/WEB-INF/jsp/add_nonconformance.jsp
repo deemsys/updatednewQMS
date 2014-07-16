@@ -394,7 +394,7 @@ $('#reported_id').each(function() {
 
 	//update.submit();
 	var error="";
-   	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
    	var datefound = document.getElementById('datepicker').value;  
 	var complete = document.getElementById('datepicker1').value;	
 	var quantity = document.getElementById('quantity').value;	
@@ -858,15 +858,15 @@ else
 </script>     
 
 <script>
- $(function() {
-	 var format="yy-mm-dd";
-           $( "#datepicker" ).datepicker();
-         });
+$(function() {
+	 $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+       });
+
  
  $(function() {
-	 var format="yy-mm-dd";
-           $( "#datepicker1" ).datepicker();
-         });
+	 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
+        });
+ 
  
 
  function resetForm(){
