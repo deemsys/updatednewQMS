@@ -144,7 +144,7 @@
 								</tr>
 								<tr>
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="1"/>&nbsp;Capa id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="2"/>&nbsp;Nc id</td>
+							<!-- 	<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="2"/>&nbsp;Nc id</td> -->
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="3"/>&nbsp;Source of nonconformance</td>
 					      		</tr>
 					      		<tr>
@@ -219,7 +219,7 @@ function validate()
 	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
 	
 	var a1 = document.getElementById('1').checked;
-	var a2 = document.getElementById('2').checked;
+	/* var a2 = document.getElementById('2').checked; */
 	var a3 = document.getElementById('3').checked;
 	var a4 = document.getElementById('4').checked;
 	var a5 = document.getElementById('5').checked;
@@ -303,7 +303,7 @@ function validate()
 	
 	if(id_type_userdefined)
 		{
-		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14|| a15|| a16|| a17|| a18 || a19 || a20 || a21 || a22 || a23 || a24)
+		if(a1 || a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14|| a15|| a16|| a17|| a18 || a19 || a20 || a21 || a22 || a23 || a24)
 			{
 			document.getElementById("userdefineerror").innerHTML="";
 			}
@@ -369,7 +369,7 @@ if(value==1)
     {
 	document.getElementById('select_all').checked = false;
 	document.getElementById('1').checked = false;
-	document.getElementById('2').checked = false;
+	/* document.getElementById('2').checked = false; */
 	document.getElementById('3').checked = false;
 	document.getElementById('4').checked = false;
 	document.getElementById('5').checked = false;
