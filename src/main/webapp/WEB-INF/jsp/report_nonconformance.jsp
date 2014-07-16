@@ -103,16 +103,16 @@
 								<td colspan="4">
 								
 								
-								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display:none;">
+								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display: none">
 	
     								<tr class="row2">
     								<td></td>
-    								<td valign="middle" align="right" class="input_txt"> Enter the Start Date : </td>
+    								<td valign="middle" align="right" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter the Start Date : </td>
     								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker" name="start"/><br><span style="color:red;" id="starterr"></span></td>
     								</tr>
     								<tr class="row2">
     								<td></td>
-    								<td valign="middle" align="right" class="input_txt"> Enter the End Date : </td>
+    								<td valign="middle" align="right" class="input_txt"> Enter the End Date :&nbsp;&nbsp;</td>
     								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker1" name="end" /><br><span style="color:red;" id="enderr"></span></td>
     								</tr>
     							</table>
@@ -202,7 +202,7 @@
              <td  colspan="2" align="center" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit"  id="export"  name="export" value="Generate" class="submit_btn1" onclick="return checkboxvalid();">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" ></td>
+            <!--   <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" ></td> -->
             
              </tr></table>
             
@@ -343,21 +343,21 @@ function checkboxvalid()
 		if(datepicker=="")
 		{	
 		
-	 document.getElementById("starterr").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("starterr").innerHTML="Required field should not be empty";
 	 error="true";
 		}
 		
 	else if(!datepicker.match(date))
 	 {
 		
-	 document.getElementById("starterr").innerHTML="Invalid Date";
+	 document.getElementById("starterr").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 	else if(datepicker > datepicker1)
 			{
 		
-				 document.getElementById("starterr").innerHTML="Please Pickup the StartDate not More than EndDate";
+				 document.getElementById("starterr").innerHTML="Please pickup the startdate not more than enddate";
 					error="true";
 			}	
 		else
@@ -372,14 +372,14 @@ function checkboxvalid()
 		if(datepicker1=="")
 		{	
 		
-	 document.getElementById("enderr").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("enderr").innerHTML="Required field should not be empty";
 	 error="true";
 		}
 	
 	else if(!datepicker1.match(date))
 	 {
 		
-	 document.getElementById("enderr").innerHTML="Invalid Date";
+	 document.getElementById("enderr").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 else
@@ -396,7 +396,7 @@ if(id || reported_by  || action_required || costofnc || source || external || di
 	 }
 	 else
 	 {
-	 document.getElementById("error").innerHTML="Please Select atleast One";
+	 document.getElementById("error").innerHTML="Please select atleast one";
 	 error="true";
 	 }
 		}

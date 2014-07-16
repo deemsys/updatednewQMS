@@ -27,17 +27,17 @@ function validation()
 	var error="";
 	if(document.getElementById("username").value==""&&document.getElementById("password").value=="")
 		{
-		document.getElementById("usernameerr").innerHTML="Required Field should not be empty";
+		document.getElementById("usernameerr").innerHTML="Required field should not be empty";
 		error="true";
 		}
 	if(document.getElementById("username").value=="")
 	{
-	document.getElementById("usernameerr").innerHTML="Required Field should not be empty";
+	document.getElementById("usernameerr").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	if(document.getElementById("password").value=="")
 	{
-	document.getElementById("passworderr").innerHTML="Required Field should not be empty";
+	document.getElementById("passworderr").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	if(error=="true")
@@ -73,9 +73,9 @@ function validation()
 		   <li>
 <BR/>
 	 <table cellpadding="0" cellspacing="0" border="0" width="300">
-	 <td style="width:40%" valign="top">
+	 <td style="width:35%" valign="top">
 	
-		       <b> <font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email ID&nbsp;:</font></b>
+		       <b> <font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName&nbsp;:</font></b>
 		     </td>
 		     
 		       <td valign="top" align="left"><input type="text" maxlength="32" class="inputbx1" id="username" style="border:solid 1px brown;" name="j_username" value=''>
@@ -85,7 +85,7 @@ function validation()
 		      </li>
 		      <li>
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
-		      <td style="width:40%" valign="top">
+		      <td style="width:35%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password&nbsp;:</font></b>
 		        </td>
 		      

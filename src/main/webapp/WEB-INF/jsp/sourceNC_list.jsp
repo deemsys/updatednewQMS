@@ -80,7 +80,7 @@
 							</ul>
 							<ul class="horizmenu" style="margin-bottom:5px;">
 				         
-							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="reportNC_list" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Report NC</span>

@@ -67,14 +67,14 @@
 									
 								</a>
 							</li>	
-							<li  style=" float:left;margin-right:0px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addsourcenc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Source of NC</span>
 									
 								</a>
 							</li>	
-							<li  style=" float:left;margin-right:6px;text-transform:uppercase;">
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addtypenc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Type of NC</span>
