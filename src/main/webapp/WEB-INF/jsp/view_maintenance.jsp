@@ -51,21 +51,21 @@
                <c:set value="${maintenanceForm.maintenance[0]}" var="maintenance"> </c:set>
                <tr class="row2">
 
-                  <td valign="middle" align="left" class="input_txt" width="20%">Equipment Id: </td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment ID  : </td>
 
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.equipment_id}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.equipment_id}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Equipment Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.equipment_name}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Name  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.equipment_name}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Equipment Model :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.equipment_model}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Model  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.equipment_model}</br><span class="err"></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Serial Number :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.serial_number}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Serial Number  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.serial_number}</br><span class="err"></span></td>
                 </tr>
                   </table>
 						         </td>
@@ -73,24 +73,24 @@
 						         <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Date Acquired :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.date_acquired}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Date Acquired  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.date_acquired}</br><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="20%"> Equipment Status :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.equipment_status}
+                 <td valign="middle" align="left" class="input_txt" width="50%">Equipment Status  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.equipment_status}
                   
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="20%"> Frequency of Maintenance :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.frequency_maintenance}
+                 <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.frequency_maintenance}
                   
                   <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Calibration(Y/N):</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${maintenance.calibration}
+               <td valign="middle" align="left" class="input_txt" width="50%">Calibration(Y/N)  :</td>
+               <td valign="top" align="left" class="input_txt" width="50%">${maintenance.calibration}
                </td>
                 </tr>
                  </table>
@@ -108,52 +108,84 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="20%"> Type of Maintenance :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.type_of_maintenance}
+                 <td valign="middle" align="left" class="input_txt" width="50%">Type of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.type_of_maintenance}
                   
                 <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Maintenance Frequency :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.weekly}</br>${Maintenance.monthly}</br>${maintenance.quarterly}<br>
-                  ${maintenance.semiannually}<br>${maintenance.annually}
-                  
+                  <td valign="top" align="left" class="input_txt" width="50%">Frequency of Maintenance :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">
+                  <c:if test="${maintenance.weekly != 'null'}">
+                  ${maintenance.weekly}
+                  </c:if><br>
+                  <c:if test="${maintenance.monthly != 'null'}">
+                  ${maintenance.monthly}
+                  </c:if><br>
+                  <c:if test="${maintenance.quarterly != 'null'}">
+                  ${maintenance.quarterly}
+                  </c:if><br>
+                  <c:if test="${maintenance.semiannually != 'null'}">
+                  ${maintenance.semiannually}
+                  </c:if><br>
+                  <c:if test="${maintenance.annually != 'null'}">
+                  ${maintenance.annually}
+                  </c:if>
+                 
                   
                   
                   
                   <span class="err"></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Reference :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.reference1}</br>${maintenance.reference2}</br>
-                  ${maintenance.reference3}</br>${maintenance.reference4}</br>${maintenance.reference5}</br><span class="err"></span></td>
-                </tr>
-                <tr class="row2">
+                  <td valign="top" align="left" class="input_txt" width="50%">Reference  :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">
+                   <c:if test="${maintenance.reference1 != 'null'}">
+                  ${maintenance.reference1}
+                  </c:if><br>
+                   <c:if test="${maintenance.reference2 != 'null'}">
+                  ${maintenance.reference2}
+                  </c:if><br>
+                   <c:if test="${maintenance.reference3 != 'null'}">
+                  ${maintenance.reference3}
+                  </c:if><br>
+                   <c:if test="${maintenance.reference4 != 'null'}">
+                  ${maintenance.reference4}
+                  </c:if><br>
+                   <c:if test="${maintenance.reference5 != 'null'}">
+                  ${maintenance.reference5}
+                  </c:if>
               
-               <td valign="middle" align="left" class="input_txt">Instructions(Optional):</td>
-               <td valign="top" align="left"  colspan="3">${maintenance.instructions}<br/><span class="err"></span></td>
-            </tr>
+               </td>
+                </tr>
+               
               </table>
         </td> 
-           <td>
-           <table>
+            <td align="left" valign="top" width="50%" style="padding-right: 25px;">
+          	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+           
            
             <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.due_date}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Due Date  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.due_date}</br><span class="err"></span></td>
                 </tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.completion_date}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Completion Date  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.completion_date}</br><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Completed By :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${maintenance.completed_by}</br><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="50%">Completed By  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">${maintenance.completed_by}</br><span class="err"></span></td>
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt">Notes:</td>
+               <td valign="middle" align="left" class="input_txt">Notes  :</td>
                <td valign="top" align="left"  colspan="3">${maintenance.notes}<br/><span class="err"></span></td>
+            </tr>
+             <tr class="row2">
+              
+               <td valign="middle" align="left" class="input_txt">Instructions(Optional)  :</td>
+               <td valign="top" align="left"  colspan="3">${maintenance.instructions}<br/><span class="err"></span></td>
             </tr>
          </table>
          </td>
@@ -168,8 +200,8 @@
          </table>
          </div>
          </form>
-            
-                
+            <br><br><br>
+           <jsp:include page="footer.jsp"></jsp:include>      
          
             <!--  <script type="text/javascript">
 function toggle3(value){
