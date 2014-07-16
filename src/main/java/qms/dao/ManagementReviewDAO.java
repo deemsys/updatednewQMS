@@ -1140,6 +1140,8 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	List<ManagementReview> managementreviewdetails = new ArrayList<ManagementReview>();
 
 	 Date date = new Date();
+	 String currentdate = "";
+	 String olddate = "";
 	    Calendar c = Calendar.getInstance();
 	    c.setTime(date);
 	    System.out.println("Day of week = "+c.get(Calendar.DAY_OF_WEEK));
@@ -1149,7 +1151,15 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	    int currentDay = c.get(Calendar.DATE);
 	    int currentMonth = c.get(Calendar.MONTH) + 1;
 	    int currentYear = c.get(Calendar.YEAR);
-	    String currentdate = currentYear+"-"+currentMonth+"-"+currentDay;
+	    if(currentMonth <  10 && currentDay < 10)
+	    currentdate = currentYear+"-0"+currentMonth+"-0"+currentDay;
+	    
+	    else if(currentMonth <  10 && currentDay > 10)
+	    	 currentdate = currentYear+"-0"+currentMonth+"-"+currentDay;
+	    else if(currentMonth >  10 && currentDay < 10)
+	    	 currentdate = currentYear+"-"+currentMonth+"-0"+currentDay;
+	    else
+	    	 currentdate = currentYear+"-"+currentMonth+"-"+currentDay;
 	    
 	    Date start = c.getTime();
 	    c.add(Calendar.DATE, -13);
@@ -1158,7 +1168,18 @@ public  List<ManagementReview> getmanagement_bytype(String type){
 	    int oldDay = c.get(Calendar.DATE);
 	    int oldMonth = c.get(Calendar.MONTH) + 1;
 	    int oldYear = c.get(Calendar.YEAR);
-	    String olddate = oldYear+"-"+oldMonth+"-"+oldDay;
+	    
+	    if(oldMonth <  10 && oldDay < 10)
+	    	olddate =oldYear+"-0"+oldMonth+"-0"+oldDay;
+		    
+		    else if(oldMonth <  10 && oldDay > 10)
+		    	olddate = oldYear+"-0"+oldMonth+"-"+oldDay;
+		    else if(oldMonth >  10 && oldDay < 10)
+		    	olddate = oldYear+"-"+oldMonth+"-0"+oldDay;
+		    else
+		    	olddate = oldYear+"-"+oldMonth+"-"+oldDay;
+		    
+	  
 	    System.out.println(olddate);
 	    System.out.println(currentdate);
     
