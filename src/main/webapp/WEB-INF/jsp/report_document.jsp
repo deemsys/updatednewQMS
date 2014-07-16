@@ -60,13 +60,13 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>Document Report</h2>
+					<h2 style="padding-left: 50px">Document Report</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_doc_report">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 55px">
 									Select Report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<select name="type_of_report" class="input_txtbx" id="reporttype"
@@ -89,7 +89,7 @@
 								<input type="radio"  name="doc_type" value="4" id="id_type_gov_regulation"/>Goverment Regulation<br/>
 								<input type="radio" name="doc_type" value="5" id="id_type_manual"/>Specification<br/>
 							</td> -->
-							 <td valign="middle" align="right" class="input_txt" width="30%">
+							 <td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 55px">
 								Select Document Type :
 								</td>
               <td valign="top" align="left" class="input_txt" width="25%">
@@ -103,8 +103,8 @@
                
 							</tr>
 							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Select Report Type:</td>
+								<td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 55px">
+									Select Report Type :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
@@ -128,20 +128,20 @@
 								
 							</tr> -->
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Name to appear on the Report:</td>
-								<td valign="top" align="left" class="input_txt" width="50%">
+								<td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 55px">
+									Name to appear on the Report :</td>
+								<td valign="top" align="left" class="input_txt" width="50%" >
 									<input type="text" name="document_name" class="input_txtbx" id="report_title"value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
-								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:
+								<td valign="top" align="left" style="margin-top:2px;padding-left: 55px;" class="input_txt" width="25%">
+									Select Fields Required on the Report :
 									<br><span id="checkerror" style="color:red"></span>
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-left:-10px;">
 								<tr>
 								<td><input type="checkbox" id="select_all"/>Select All</td>
 								</tr>
@@ -176,7 +176,7 @@
 								
 							</tr>
 							<tr >
-             <td  colspan="2" align="center" width="30%">
+             <td  colspan="2" align="left" width="30%" style="padding-left: 270px">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate"onclick="return validation();" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>

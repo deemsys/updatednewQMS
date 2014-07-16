@@ -71,7 +71,7 @@
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
     		
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="15%">Document ID:
+                 <td valign="middle" align="left" class="input_txt" width="15%">Document ID :
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx"  value=""/>
                <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/> 
              
@@ -84,15 +84,18 @@
                </td>          
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:140px;">
+               <table style="width:100%;" class="simple_table" border="0">
+               <tr ><td align="left">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:130px; margin:0 0 0 -10px;margin-right:-40px;">
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         	   <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			   </c:forEach>
-               </select>
+               </select></td><td align="left">
               
+               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();"onInput="return validatename3(id);"/>
                <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
-               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();"onInput="return validatename3(id);"/>
-               <br><span id="documentiderror" style="color:red"></span>
+               </td></tr>
+               <!-- <tr><td colspan="2"><span id="documentiderror" style="color:red"></span></td></tr> --></table>
             
               <c:if test="${fail=='fail'}">
               <p class="closestatus">
@@ -102,7 +105,7 @@
               </td>
               
               
-               <td valign="top" align="left" class="input_txt" width="5%">Media Type:</td>
+               <td valign="top" align="left" class="input_txt" width="5%">Media Type :</td>
                <td valign="top" align="left" class="input_txt" width="89px;">
                
              
@@ -125,7 +128,7 @@
               
               <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%">Document Title :</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onInput="return validatename(id);"/><br/>
                 <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
@@ -154,7 +157,7 @@
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Document Type:</td>
+               <td valign="middle" align="left" class="input_txt" width="25%">Document Type :</td>
               <td valign="top" align="left" class="input_txt" width="25%">
               <select name="document_type" id="documenttype" class="input_txtbx">
               <option value="">--Select--</option>
@@ -165,7 +168,7 @@
              
              <span  id="documenttypeerror" style="color:red" ></span>
              <span class="err"style="color:red" ><form:errors path="DocumentMain.document_type"></form:errors></span></td>
-             <td valign="middle" align="left" class="input_txt" width="20%">Process:</td>
+             <td valign="middle" align="left" class="input_txt" width="20%">Process :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" >
@@ -184,8 +187,8 @@
              <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="25%">
-               <td valign="top" align="left" class="input_txt" width="20%">
-               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document ?(Y/N):</td>
+               <td valign="top" align="left" class="input_txt" width="20%"><br/>
+               <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document ?(Y/N) :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
               <input type="radio" name="external" value="Yes"  id="id_yesforexternal"checked>Yes&nbsp;&nbsp;&nbsp;
@@ -221,7 +224,7 @@
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
     		
     <tr class="row2">
-                            <td valign="middle" align="left" class="input_txt">Document Id</td>
+                            <td valign="middle" align="left" class="input_txt">Document Id :</td>
 																		<td valign="top" align="left" class="input_txt"><input
 																			type="text" class="input_txtbx" readonly="readonly" id="documentid"
 																			name="document_id"
@@ -239,7 +242,7 @@
 </tr>             
              <tr class="row1" style="border:none;">
            
-            <td valign="middle" align="left" class="input_txt" width="25%">Issuer:</td>
+            <td valign="middle" align="left" class="input_txt" width="25%">Issuer :</td>
                <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
                 <input type="hidden" value="${documentMain.issuer}" id="issu"/>
                <select name="filter" id="filter_value" class="input_txtbx" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" >
@@ -285,7 +288,7 @@
             
              
                </td> 
-                <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner):</td>
+                <td valign="middle" align="left" class="input_txt" width="25%">Approver 1(Process Owner) :</td>
                <td valign="top" align="left" id="edit_td_issuer1" class="input_txt" width="20%">
                <input type="hidden" value="${documentMain.approver1}" id="appro">
                
@@ -345,7 +348,7 @@
              <br/>
              <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span></td>--%>
              
-                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
+                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level :</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
                <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onInput="validaterevision();"/><br/>
@@ -361,7 +364,7 @@
               
                <%-- <input type="text" id="revision_level" name="revision_level" class="input_txtbx1"  value="${documentMain.revision_level }"/><br/>
               <span class="err"style="color:red"><form:errors path="DocumentMain.revision_level"></form:errors></span> --%>
-               <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control):</td>
+               <td valign="middle" align="left" class="input_txt" width="20%">Approver 2(Doc Control) :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                 <select name="approver2" id="id_inpapprover2"  class="input_txtbx" >
                <option value="">--Select--</option>
@@ -381,7 +384,7 @@
              <tr class="row1" style="border:none;">
                <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
               <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
-                <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report):</td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report) :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                <select name="approver3" id="id_inpapprover3"  class="input_txtbx" >
                <option value="">--Select--</option>
@@ -396,12 +399,12 @@
           
              </tr>  
               <tr class="row2" style="border:none;">
-                 <td valign="middle" align="left" class="input_txt">Comments:</td>
+                 <td valign="middle" align="left" class="input_txt">Comments :</td>
                <td valign="top" align="left"><textarea class="input_txtbx" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
               <span id="comments1" style="color:red"></span>
                 <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
-               <td valign="top" align="left" class="input_txt" width="20%">Status:</td>
+               <td valign="top" align="left" class="input_txt" width="20%">Status :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
               
                
@@ -422,10 +425,10 @@
              </table></div>
              </div>
              <tr class="row1" >
-             <td colspan="2" align="right">
-             <input align="left" class="submit_btn1" type="submit" id="submit" onclick="return validation();" name="submit" value="Submit" ></td>
-             <td colspan="3">
-              <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td>
+             <td colspan="2" align="center">
+             <input align="left" class="submit_btn1" type="submit" id="submit" onclick="return validation();" name="submit" value="Submit" style="margin-left:17%;"></td>
+             <!-- <td colspan="3">
+              <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td> -->
             <!-- <td><a href="#" class="button blue">
   
 </a>
