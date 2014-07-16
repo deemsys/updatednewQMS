@@ -27,10 +27,11 @@
 <form method="post" action="update_maintenance">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
+      
       <tr>
-        <td>
-        <div>
-  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
+      <td>
+      <div>
+  <ul class="horizmenu" style=" float:left;margin-left:205px; margin-top:8px;">
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_maintenance" class="<c:choose>
@@ -56,40 +57,40 @@
         </td>
       </tr>
       <tr>
-        <td valign="top" align="left"><div>
+        <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Maintenance & Calibration Details</h2>
+              <h2 style="padding-left:6px">Maintenance and Calibration Details</h2>
             </div>  
             <div class="contentbox">
-       <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:15px;">
-       <div>
+         <div style="border:#993300  2px solid; padding:25px; margin-bottom:15px; margin-left:10px;">
+        <div>
         <table cellpadding="0" cellspacing="0" border="0" width="100%" >
          <c:set value="${maintenanceForm.maintenance[0]}" var="Maintenance"> </c:set>
              
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="top" width="50%"  style="padding-right: 40px;padding-bottom:40px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Equipment Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_id}" />${Maintenance.equipment_id}
+			    <tr class="row2">
+                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment ID  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="hidden" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_id}" />${Maintenance.equipment_id}
                   <!--  <span id="equipment_id1" style="color:red"></span> -->
                   <span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Equipment Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
+                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Name  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
                     <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Equipment Model :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
+                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Model  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onkeyup="ChangeCase(this);" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
                     <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Serial Number :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onInput="return validatename3(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
+                  <td valign="middle" align="left" class="input_txt" width="50%">Serial Number  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onInput="return validatename3(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
                    <span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
@@ -99,15 +100,15 @@
 						         <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Date Acquired :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.date_acquired}" />
+                  <td valign="middle" align="left" class="input_txt" width="50%">Date Acquired  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.date_acquired}" />
                     <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Equipment Status :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="equipment_status" id="equipment_status"class="input_cmbbx1">				  
+                 <td valign="middle" align="left" class="input_txt" width="50%">Equipment Status  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                  <select name="equipment_status" id="equipment_status"class="dropdown">				  
                   <option value="">--Select--</option>
              	<option <c:if test="${Maintenance.equipment_status eq 'Active'}"><c:out value="Selected"/></c:if> value="Active" >Active</option>
                 <option <c:if test="${Maintenance.equipment_status eq 'Not Active'}"><c:out value="Selected"/></c:if> value="Not Active" >Not Active</option>
@@ -119,40 +120,10 @@
                   <span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Frequency of Maintenance :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
-                  <%--  <%
-                  String values= (String) request.getAttribute("frequency");
-                   System.out.println("type of maintenance = "+request.getAttribute("frequency"));
-                   String[] list_of_values = values.split(",");
-                   int leng = list_of_values.length;
-                   for(int i=0; i < leng;i++)
-                   {
-                	   if(i == 0)
-                	   {
-                		   String weekly = list_of_values[i];
-                		   System.out.println("1 "+weekly);
-                	   }
-                	   if(i == 1)
-                	   {
-                		   String monthly = list_of_values[i];
-                		   System.out.println("2 "+monthly);
-                	   }
-                	   if(i == 3)
-                	   {
-                		   String quarterly = list_of_values[i];
-                	   }
-                	   if(i == 4)
-                	   {
-                		   String semiannually = list_of_values[i];
-                	   }
-                	   if(i == 5)
-                	   {
-                		   String annually = list_of_values[i];
-                	   }
-                   }
-                   %> --%>
-                   <select name="frequency_maintenance" id="frequency_maintenance"class="input_cmbbx1" multiple>
+                 <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+              
+                   <select name="frequency_maintenance" id="frequency_maintenance"class="dropdown" style="height:80px;" multiple>
                    <c:set var="theString" value="${Maintenance.frequency_maintenance}"/>
 
 					
@@ -169,8 +140,8 @@
                   <span class="err"></span></td>
                   </tr>
                    <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="30%">Calibration(Y/N):</td>
-               <td valign="top" align="left" class="input_txt" width="70%">
+               <td valign="middle" align="left" class="input_txt" width="50%">Calibration(Y/N)  :</td>
+               <td valign="top" align="left" class="input_txt" width="50%">
                <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes"  <c:if test="${Maintenance.calibration=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                <input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);" <c:if test="${Maintenance.calibration=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </td>
@@ -182,22 +153,15 @@
         </table>
         </div>
          <div>
-                     <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
-
-        
-    
-    <tr>
-   <td align="left" valign="top" width="50%" style="padding-right: 25px;">
+         <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
+          <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
-                <%-- <tr class="row2">
-         
-                  <td valign="middle" align="left" class="input_txt" width="30%">Equipment Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipmentid}" /><span class="err"></span></td>
-                </tr>  --%>
-               <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Type of Maintenance :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
-                  <select name="type_of_maintenance" class="input_cmbbx1">
+                <tr class="row2">
+                 <td valign="middle" align="left" class="input_txt" width="50%">Type of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                  <select name="type_of_maintenance" class="dropdown">
                  
                   <option <c:if test="${Maintenance.type_of_maintenance eq 'Preventive'}"><c:out value="Selected"/></c:if> value="Preventive" >Preventive</option>
                   <option <c:if test="${Maintenance.type_of_maintenance eq 'Corrective'}"><c:out value="Selected"/></c:if> value="Corrective" >Corrective</option>
@@ -207,8 +171,8 @@
                 <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Maintenance Frequency :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
                   
                   <input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax()" <c:if test="${Maintenance.weekly=='weekly'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Weekly  <br/>               
              	  <input type="checkbox" name="monthly" value="monthly" id="monthly" onclick="toggleAjax()" <c:if test="${Maintenance.monthly=='monthly'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Monthly<br/>
@@ -219,8 +183,8 @@
                 <%--   <input type="text" name="maintenance_frequency" class="input_txtbx" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.maintenance_frequency}" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td> --%>
                 </tr>
                  <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Reference :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
+                  <td valign="top" align="left" class="input_txt" width="50%">Reference  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
                   
                   <%-- <input type="text" name="reference" class="input_txtbx" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.reference}" /> --%>
                    <div id="reference1"></div><br>
@@ -232,35 +196,33 @@
                 --%> </tr>
                 <tr class="row2">
               
-               <td valign="top" align="left" class="input_txt">Instructions:</td>
+               <td valign="top" align="left" class="input_txt">Instructions(optional)  :</td>
                <td valign="top" align="left"  colspan="3">
                <div id="instruction"></div>
-               <textarea class="input_txtbx1" id="instructions" name="instructions"  style="width:70%; height: 49px;" >${Maintenance.instructions}</textarea><br/>
+               <textarea class="input_txtbx" id="instructions" name="instructions"  style="height: 89px;" >${Maintenance.instructions}</textarea><br/>
                <span id="instructions1" style="color:red"></span> 
                <span class="err"><form:errors path="Maintenance.instructions"></form:errors></span></td>
             </tr>
         </table>
         </td> 
-           <td>
-           <table>
-           
-           
+            <td align="left" valign="top" width="50%" style="padding-right: 25px;">
+          	<table cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.due_date}" />
+                  <td valign="middle" align="left" class="input_txt" width="50%">Due Date  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.due_date}" />
                    <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.completion_date}" />
+                  <td valign="middle" align="left" class="input_txt" width="50%">Completion Date  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.completion_date}" />
                    <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Completed By :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">
-                    <select name="completed_by" id="completed_by"  class="input_cmbbx1" style="width:200px;">
+                  <td valign="middle" align="left" class="input_txt" width="50%">Completed By  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                    <select name="completed_by" id="completed_by"  class="dropdown">
 							 
 			                <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="calibrationname" varStatus="status">
         				       <option value="${calibrationname.name}"<c:if test="${calibrationname.name == Maintenance.completed_by}"><c:out value="selected"/></c:if>>${calibrationname.name}</option>
@@ -271,31 +233,33 @@
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="30%">Notes:</td>
-               <td valign="top" align="left"  colspan="3" width="70%"><textarea class="input_txtbx1"  name="notes"  id="notes" style="width:80%; height: 49px;" >${Maintenance.notes}</textarea><br/>
+               <td valign="middle" align="left" class="input_txt" width="50%">Notes  :</td>
+               <td valign="middle" align="left"  colspan="3" width="50%"><textarea class="input_txtbx"  name="notes"  id="notes" style="height:89px;" >${Maintenance.notes}</textarea><br/>
                <span id="notes1" style="color:red"></span>
                <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
             </tr>
-            <tr class="row1">
+          
+        
+          
+          </table>
+              <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                 
                    <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                 </tr>
+          </td>
+          </tr>
+          </table>
+          </div>
+          </div>
+          </div>
+          </div>
+          </td>
+          </tr>
+          </table>
+          </div>
+          </form>
           
-           </table>
-           </td>
-           </tr>
-    
-           </table>
-            
-            
-           
-         </div>  
-            </div>
-             </td>
-            </tr>
-            </table></div>
-            </form>
               
            
  <script>
@@ -461,7 +425,7 @@ function validatename(id){
 function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+    textInput = textInput.replace(/[^a-zA-Z0-9 ]/g, "");
     document.getElementById(id).value = textInput;
 }  
 function validatename3(id){
@@ -516,17 +480,17 @@ function validation()
 	
 	if(equipment_name == "")
 	{
-	document.getElementById("equipment_name1").innerHTML="Required Field Should not be Empty";
+	document.getElementById("equipment_name1").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	else if(equipment_name.charAt(0) == " ")
 	{
-	document.getElementById("equipment_name1").innerHTML="Initial Spaces not Alloweds";
+	document.getElementById("equipment_name1").innerHTML="Initial spaces not alloweds";
 	error="true";
 	}
 	else if((equipment_name.length < 4) || (equipment_name.length > 32))
 	{
-	document.getElementById("equipment_name1").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("equipment_name1").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -538,17 +502,17 @@ function validation()
 	
 	if(equipment_model == "")
 	{
-	document.getElementById("equipment_model1").innerHTML="Required Field Should not be Empty";
+	document.getElementById("equipment_model1").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	else if(equipment_model.charAt(0) == " ")
 	{
-	document.getElementById("equipment_model1").innerHTML="Initial Spaces not Alloweds";
+	document.getElementById("equipment_model1").innerHTML="Initial spaces not alloweds";
 	error="true";
 	}
 	else if((equipment_model.length < 4) || (equipment_model.length > 32))
 	{
-	document.getElementById("equipment_model1").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("equipment_model1").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -560,17 +524,17 @@ function validation()
 	
 	if(serial_number == "")
 	{
-	document.getElementById("serial_number1").innerHTML="Required Field Should not be Empty";
+	document.getElementById("serial_number1").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	else if(serial_number.charAt(0) == " ")
 	{
-	document.getElementById("serial_number1").innerHTML="Initial Spaces not Alloweds";
+	document.getElementById("serial_number1").innerHTML="Initial spaces not alloweds";
 	error="true";
 	}
 	else if((serial_number.length < 4)|| (serial_number.length > 32))
 	{
-	document.getElementById("serial_number1").innerHTML="Required Field Should be length of 4 to 32";
+	document.getElementById("serial_number1").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -580,7 +544,7 @@ function validation()
 	
 	 if(datepicker1 == "")
 	 {
-	 document.getElementById("datepicker11").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker11").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -596,7 +560,7 @@ function validation()
 	 
 	 if(equipment_status == "")
 		 {
-		 document.getElementById("equipment_status1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("equipment_status1").innerHTML="Required field should not be empty";
 		 error="true";
 		 }
 	 else
@@ -620,7 +584,7 @@ function validation()
 		 document.getElementById("frequencyofmaintenance1").innerHTML="";
 		 }
 	 else{
-		 document.getElementById("frequencyofmaintenance1").innerHTML="Please Check atleast one";
+		 document.getElementById("frequencyofmaintenance1").innerHTML="Please check atleast one";
 		 error="true";
 		 
 	 }
@@ -633,12 +597,12 @@ function validation()
 		}
 	 else if(instructions.charAt(0) == " ")
 		{
-		document.getElementById("instructions1").innerHTML="Initial Spaces not Alloweds";
+		document.getElementById("instructions1").innerHTML="Initial spaces not allowed";
 		error="true";
 		}
-	  else if((instructions.length < 5) || (instructions.length > 400 ))
+	  else if((instructions.length < 4) || (instructions.length > 400 ))
 			 {
-			 document.getElementById("instructions1").innerHTML="Should b/w 5 to 400 chars";
+			 document.getElementById("instructions1").innerHTML="Required field should be length of 4 to 400";
 			 error="true";
 			 }
 		 else{
@@ -651,7 +615,7 @@ function validation()
 	 
 if(datepicker2 == "")
 	 {
-	 document.getElementById("datepicker22").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker22").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -661,14 +625,14 @@ if(datepicker2 == "")
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid Date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date";
 	 error="true";
 	 }
 	 
 	 
 	 if(datepicker3 == "")
 	 {
-	 document.getElementById("datepicker33").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker33").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -678,14 +642,14 @@ if(datepicker2 == "")
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="Invalid Date";
+	 document.getElementById("datepicker33").innerHTML="Invalid date";
 	 error="true";
 	 } 
 	 
 	 
 	 if(completed_by == "")
 	 {
-	 document.getElementById("completed_by1").innerHTML="Please Select";
+	 document.getElementById("completed_by1").innerHTML="Please select";
 	 error="true";
 	 }
 	else
@@ -697,17 +661,17 @@ if(datepicker2 == "")
 	 if(notes == "")
 		{
 		 
-		document.getElementById("notes1").innerHTML="Required Field Should not Empty";
+		document.getElementById("notes1").innerHTML="Required field should not be empty";
 		error="true";
 		}
 	 else if(notes.charAt(0) == " ")
 		{
-		document.getElementById("notes1").innerHTML="Initial Spaces not Alloweds";
+		document.getElementById("notes1").innerHTML="Initial spaces not alloweds";
 		error="true";
 		}
-		else if((notes.length < 5) || (notes.length > 400 ))
+		else if((notes.length < 4) || (notes.length > 400 ))
 			 {
-			 document.getElementById("notes1").innerHTML="Should b/w 5 to 400 chars";
+			 document.getElementById("notes1").innerHTML="Required field should be length of 4 to 400";
 			 error="true";
 			 }
 		 else{
@@ -721,7 +685,10 @@ if(datepicker2 == "")
 		 }
 }
 
-
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
 </script>  
 <script>
 	

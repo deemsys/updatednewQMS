@@ -82,20 +82,20 @@
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							     <td align="center" valign="middle" width="10%">
-							    <td align="left" valign="middle"width="2%">ID:</td>
+							    
+							    <td align="left" valign="middle"width="3%">ID  :</td>
 							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" value="${equipid}"onInput="return validatename2(id);">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
-							    <td align="center" valign="middle" width="15%">
-							    <td align="left" valign="middle" width="10%">Equipment Name:</td>
+							    <td align="center" valign="middle" width="12%">
+							    <td align="left" valign="middle" width="10%">Equipment Name  :</td>
 							    <td align="left" valign="middle"width="2%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onInput="return validatename(id);">
 							     <br><span id="searcherror2" style="color:red"></span>
 							
 							    </td>
 							    
 							  	<td align="center" valign="middle" width="30%">
-							  	<input type="submit" class="submit_btn1" value="Find" id="id_submit" name="search_maintenance" onclick="return validatefind();"/>
+							  	<input type="submit" class="submit_btn1" value="Search" id="id_submit" name="search_maintenance" onclick="return validatefind1();"/>
 							  	  <br><span id="searcherror" style="color:red"></span>
 							  	</td>
 							 	
@@ -132,7 +132,7 @@
         				       				 </c:if>
         				       				  <c:if test="${fn:length(maintenanceForm.maintenance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" style="color:red" width="100%"><center><b>No Records Found!!!</b></center></td>
 							    		
 							    	</tr>
 							    	</c:if>
@@ -279,4 +279,7 @@ function validatename2(id){
 	           $( "#datepicker" ).datepicker();
 	           
 	         });
-   </script>  				       				
+   </script>  				
+   <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<jsp:include page="footer.jsp"></jsp:include>			
