@@ -56,7 +56,7 @@
               <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-left: 65px;">
+			<td align="left" valign="top" width="50%">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
 	                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
@@ -80,7 +80,7 @@
 						         </tr> 
 			<tr class="row2">
                <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%"> Auditee Name :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Auditee name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                  <select name="auditee_name" id="auditeename" class="input_txtbx">
                <option value="">--Select--</option>
@@ -95,7 +95,7 @@
 
 								
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Audit Start Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Audit start date :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
                   <span id="datepicker11" style="color:red"></span>
@@ -104,7 +104,7 @@
    
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Audit Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Audit due date :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
                    <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_due_date"></form:errors></span></td>
@@ -129,14 +129,14 @@
  <table cellpadding="0" cellspacing="0" border="0" width="100%">
 								
                       <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%"> Auditor Notes :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Auditor notes :</td>
                                 
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="auditor_notes" id="auditor_notes" style="height: 70px;">${internalaudits.auditor_notes}</textarea>
                  <br> <span id="auditornoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-						         	<td valign="middle" align="left" class="input_txt"> Finding :</td>
+						         	<td valign="middle" align="left" class="input_txt">Finding :</td>
 						           <td valign="top" align="left" class="input_txt">
 				                  		<select name="finding" id="finding"class="input_txtbx">
 						                  <option value="">--Select--</option>
@@ -152,13 +152,13 @@
 						         </tr> 
 				
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%"> Completion Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Completion date :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" readonly="readonly" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
                   <br> <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="30%"> Auditor's Initials :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Auditor's initials :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onInput="return validatename(id);"/>
                   <br><span id="auditorsinitialserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditors_initials"></form:errors></span></td>
@@ -196,7 +196,7 @@
 function validatename(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^A-Za-z ]/g, "");
+    textInput = textInput.replace(/[^A-Za-z. ]/g, "");
     document.getElementById(id).value = textInput;
 }   
 function validatename3(id){
@@ -336,11 +336,13 @@ else{
 	 
 	 if(auditorsinitials == "")
 		{
+		 
 		 document.getElementById("auditorsinitialserror").innerHTML="Required field should not be empty";
 			error="true";
 		}
 	 else if(auditorsinitials.charAt(0) == " ")
 		{
+		 
 		 document.getElementById("auditorsinitialserror").innerHTML="Should not accept initial space";
 			error="true";
 		}
@@ -351,6 +353,7 @@ else{
 			error="true";
 		}
 	else{
+		
 		 document.getElementById("auditorsinitialserror").innerHTML="";
 	}
 	

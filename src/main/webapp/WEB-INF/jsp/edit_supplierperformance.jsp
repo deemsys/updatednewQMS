@@ -256,7 +256,7 @@ function validatename(id)
 		var certified = document.getElementById('certified').value;
 		var category = document.getElementById('category').value; 
 		var error="";
-		alert("hi");
+		
 		if(category=="")	
 		{
 		

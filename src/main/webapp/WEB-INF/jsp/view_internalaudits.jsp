@@ -73,14 +73,14 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="8%">Audit ID :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" onInput="return validatename2(id);" value="${id}">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" onkeyup="ChangeCase(this);" onInput="return validatename2(id);" value="${id}">
 							    <br><span id="iderror" style="color:red"></span>
 							    </td>
 							     <td align="left" valign="middle" width="10%">
 							    <td align="left" valign="middle" width="8%">Process :</td>
 							    <td align="left" valign="middle" width="10%">
 					
-							    <select name="process" id="process"  class="input_txtbx" style="width:200px;">
+							    <select name="process" id="process"  class="input_txtbx">
                					 <option value="" >--Select--</option>
               					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
               					 <option value="${processes.process_name}" <c:if test="${processes.process_name==process}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
@@ -90,7 +90,7 @@
              				  	 <td align="left" valign="middle" width="10%">
 							    <td align="left" valign="middle" width="15%">Auditee Name :</td>
 							    <td align="left" valign="middle" width="10%">
-							    <select name="auditee_name" id="auditee"  class="input_txtbx" style="height:20px;">
+							    <select name="auditee_name" id="auditee"  class="input_txtbx">
                						<option value="">--Select--</option>
                						<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                						<option value="<c:out value="${processes.process_owner}"/>" <c:if test="${processes.process_owner==name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_owner}"/></option>
@@ -216,6 +216,12 @@
 	});
 	});
   </script>               
+  <script>
+  function ChangeCase(elem)
+  {
+      elem.value = elem.value.toUpperCase();
+  }
+  </script>
 <script type="text/javascript">  
 function validatename2(id){
 	
@@ -223,8 +229,6 @@ function validatename2(id){
     textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
     document.getElementById(id).value = textInput;
 } 
-</script>
-<script>
 function confirmation() {
 	var answer = confirm("Are you Sure You Want to Delete Internal Audits Form ?")
 	if (answer){
