@@ -199,6 +199,7 @@
 
 </td>
 </tr>
+<tr height="250"><td></td></tr>
 </table>
 </div>
 
@@ -215,6 +216,6 @@ function confirmation() {
 }
 </script>
 						<br><br><br><br><br><br><br><br><br>
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include></html>
 
 

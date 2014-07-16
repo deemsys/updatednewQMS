@@ -416,7 +416,7 @@ $('#reported_id').each(function() {
 	var dispid1 = document.getElementById('disid1').value;
  	var dispid2 = document.getElementById('disid2').value;
 	var dispid3 = document.getElementById('disid3').value; 
- 
+	document.getElementById("externalerror").innerHTML="";
 	
  if(typenc=="")
 	 {
