@@ -135,7 +135,7 @@ public class HRandTainingController {
 			
 			HRandTrainingForm hRandTrainingForm=new HRandTrainingForm();
 			hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
-			model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
+			//model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
 			model.addAttribute("menu","hr");
 	        return "view_hr";
 			}
