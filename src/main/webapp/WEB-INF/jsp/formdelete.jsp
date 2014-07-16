@@ -22,7 +22,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are you sure.You want to delete the Form(s)?");
+var result=confirm("Are sure you wants to delete this record");
 if(result)
 	{
 return true;

@@ -15,7 +15,7 @@
 <script>
 function validate()
 {
-alert("Are sure you wants to delete this record");
+
  var chks = document.getElementsByName('chkUser');
 var hasChecked = false;
 for (var i = 0; i < chks.length; i++)
@@ -31,7 +31,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are you sure.You want to delete the User(s)?");
+var result=confirm("Are sure you wants to delete this record(s)?");
 if(result)
 	{
 return true;
