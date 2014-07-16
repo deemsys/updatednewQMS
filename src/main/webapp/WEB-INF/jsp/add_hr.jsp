@@ -173,7 +173,7 @@ function doAjaxPost() {
 
             <div class="contentbox">
 
-             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height: 450px">
+             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height:440px"">
 
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
 
@@ -406,7 +406,7 @@ function validate()
 	}
 	else if(name.charAt(0) == " ")
 	{
-		document.getElementById("nameerror").innerHTML="Initail spaces not allowed";
+		document.getElementById("nameerror").innerHTML="Requiired field Should not accept initial space";
 		 error="true";
 	}
 	else if((name.length < 4) ||(name.length > 32))
@@ -428,7 +428,7 @@ function validate()
 	}
 	else if(trainer.charAt(0) == " ")
 	{
-		document.getElementById("trainererror").innerHTML="Initail spaces not allowed";
+		document.getElementById("trainererror").innerHTML="Requiired field Should not accept initial space";
 		 error="true";
 	}
 	else if((trainer.length < 4) ||(trainer.length > 32))
@@ -467,7 +467,7 @@ function validate()
 		}
 	 	else if(effectivenessnotes.charAt(0) == " ")
 		{
-			document.getElementById("effectivenessnoteserror").innerHTML="Initail spaces not allowed";
+			document.getElementById("effectivenessnoteserror").innerHTML="Requiired field Should not accept initial space";
 			 error="true";
 		}
 		else if((effectivenessnotes.length < 4) ||(effectivenessnotes.length > 400))
@@ -585,7 +585,7 @@ function validate()
 		}
 	 else if(documentedin.charAt(0) == " ")
 		{
-			document.getElementById("documentedinerror").innerHTML="Initail spaces not allowed";
+			document.getElementById("documentedinerror").innerHTML="Requiired field Should not accept initial space";
 			 error="true";
 		}
 	else if((documentedin.length < 4) ||(documentedin.length > 400))
@@ -605,7 +605,7 @@ function validate()
 		 }
 }
     </script>        
-<br><br><br><br><br><br><br><br><br>
+
       <jsp:include page="footer.jsp"></jsp:include>
 
   
