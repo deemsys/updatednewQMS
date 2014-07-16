@@ -111,8 +111,9 @@ public class NonConformanceController {
 		
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
     	nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, page));
-		model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance)) * 1.0 / 5);	 
-    	model.addAttribute("nonConformanceForm",nonConformanceForm);
+		model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance) * 1.0 / 5));	 
+    	System.out.println((int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance) * 1.0 / 5));
+		model.addAttribute("nonConformanceForm",nonConformanceForm);
 	  	model.addAttribute("noofrows",5);   
 	    model.addAttribute("currentpage",page);
 	    model.addAttribute("menu","nonconformance");
@@ -552,7 +553,7 @@ public class NonConformanceController {
 			
 			NonConformanceForm nonConformanceForm = new NonConformanceForm();
 	    	nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, page));
-			model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance)) * 1.0 / 5);	 
+			model.addAttribute("noofpages",(int) Math.ceil(nonConformanceDAO.FindNonconformance(id, type_of_nonconformance) * 1.0 / 5));	 
 	    	model.addAttribute("nonConformanceForm",nonConformanceForm);
 		  	model.addAttribute("noofrows",5);   
 		    model.addAttribute("currentpage",page);
