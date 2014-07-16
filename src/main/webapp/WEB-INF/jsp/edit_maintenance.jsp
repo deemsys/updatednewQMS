@@ -485,7 +485,7 @@ function validation()
 	}
 	else if(equipment_name.charAt(0) == " ")
 	{
-	document.getElementById("equipment_name1").innerHTML="Initial spaces not alloweds";
+	document.getElementById("equipment_name1").innerHTML="Should not accept initial spaces";
 	error="true";
 	}
 	else if((equipment_name.length < 4) || (equipment_name.length > 32))
@@ -507,7 +507,7 @@ function validation()
 	}
 	else if(equipment_model.charAt(0) == " ")
 	{
-	document.getElementById("equipment_model1").innerHTML="Initial spaces not alloweds";
+	document.getElementById("equipment_model1").innerHTML="Should not accept initial spaces";
 	error="true";
 	}
 	else if((equipment_model.length < 4) || (equipment_model.length > 32))
@@ -529,7 +529,7 @@ function validation()
 	}
 	else if(serial_number.charAt(0) == " ")
 	{
-	document.getElementById("serial_number1").innerHTML="Initial spaces not alloweds";
+	document.getElementById("serial_number1").innerHTML="Should not accept initial spaces";
 	error="true";
 	}
 	else if((serial_number.length < 4)|| (serial_number.length > 32))
@@ -597,7 +597,7 @@ function validation()
 		}
 	 else if(instructions.charAt(0) == " ")
 		{
-		document.getElementById("instructions1").innerHTML="Initial spaces not allowed";
+		document.getElementById("instructions1").innerHTML="Should not accept initial space";
 		error="true";
 		}
 	  else if((instructions.length < 4) || (instructions.length > 400 ))
@@ -666,7 +666,7 @@ if(datepicker2 == "")
 		}
 	 else if(notes.charAt(0) == " ")
 		{
-		document.getElementById("notes1").innerHTML="Initial spaces not alloweds";
+		document.getElementById("notes1").innerHTML="Should not accept initial spaces";
 		error="true";
 		}
 		else if((notes.length < 4) || (notes.length > 400 ))
