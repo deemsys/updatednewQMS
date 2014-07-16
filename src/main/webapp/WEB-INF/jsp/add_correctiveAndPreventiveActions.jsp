@@ -135,7 +135,7 @@
 										  <option value="name1">name2</option>
 										  <option value="name3">name3</option>
 				           </select><br/> <span style="color: red;" id="capaerror"><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></span></td>	
-			  <td valign="top" align="left" class="input_txt"> Use 5 Whys's in system(Y/N)<span>(*Optional)</span> :</td>
+			  <td valign="top" align="left" class="input_txt"> Use 5 Whys's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
 		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system"/></td>					
 			</tr> 
 				
@@ -169,7 +169,7 @@
 				                   	</td>	
                  </tr>
                   <tr class="row2">
-                 <td valign="top" align="left" class="input_txt" width="30%">Team Member(s) :</td>      
+                 <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
 				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="width:76%; height: 70px;"></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Statement :</td>               
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
@@ -179,7 +179,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
-               <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional) :</span></td>
+               <td valign="top" align="left" class="input_txt" > Upload External Analysis (Y/N)<span> &nbsp;(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
 				<tr class="row2" id="upload" style="display:none;">
