@@ -86,9 +86,9 @@
 								Type Of Report :
 								</td>
 								<td valign="top" align="left" class="input_txt" width="100%">&nbsp;&nbsp;
-								<input type="radio"  name="actions_report_type" value="0"  onclick="validation1()" id="id_type_Open_Corrective_Actions" checked/>&nbsp;Open_Corrective_Actions<br/>
-								&nbsp;&nbsp;&nbsp;<input type="radio"  name="actions_report_type" value="1"  onclick="validation1()" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>&nbsp;Open_Corrective_Actions_for_Over_30_Days<br/>							
-							    &nbsp;&nbsp;&nbsp;<input type="radio"  name="actions_report_type" value="2"  onclick="validation()" id="id_type_Corrective_Actions_for_A_Certain_Period"/>&nbsp;Corrective_Actions_for_A_Certain_Period<br/>
+								<input type="radio"  name="actions_report_type" value="0"  onclick="validation1()" id="id_type_Open_Corrective_Actions" checked/>&nbsp;Open Corrective Actions<br/>
+								&nbsp;&nbsp;&nbsp;<input type="radio"  name="actions_report_type" value="1"  onclick="validation1()" id="id_type_Open_Corrective_Actions_for_Over_30_Days"/>&nbsp;Open Corrective Actions for Over 30 Days<br/>							
+							    &nbsp;&nbsp;&nbsp;<input type="radio"  name="actions_report_type" value="2"  onclick="validation()" id="id_type_Corrective_Actions_for_A_Certain_Period"/>&nbsp;Corrective Actions for A Certain Period<br/>
 								
 							
 								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display:none;">
@@ -128,7 +128,7 @@
 								<td valign="top" align="left" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									&nbsp;&nbsp;&nbsp;<input type="text" name="report_title" class="input_txtbx" id="report_title" value=""/>
+									&nbsp;&nbsp;&nbsp;<input type="text" name="report_title" class="input_txtbx" id="report_title" value="" onInput="return validatename();"/>
 								</td>
 								
 							</tr>
@@ -145,43 +145,43 @@
 								<tr>
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_id" id="1"/>&nbsp;Capa id</td>
 								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nc_id" id="2"/>&nbsp;Nc id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="3"/>&nbsp;source_of_nonconformance</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="source_of_nonconformance" id="3"/>&nbsp;Source of nonconformance</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="external_id" id="4"/>&nbsp;external_id</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="type_of_nonconformance" id="5"/>&nbsp;type_of_nonconformance</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="date_found" id="6"/>&nbsp;date_found</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="external_id" id="4"/>&nbsp;External id</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="type_of_nonconformance" id="5"/>&nbsp;Type of nonconformance</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="date_found" id="6"/>&nbsp;Date found</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox"onclick="selectall(this.id)" name="report_field[]" value="temporary_action" id="7"/>&nbsp;temporary_action</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nature_of_nc" id="8"/>&nbsp;nature_of_nc</td>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_requestor" id="9"/>&nbsp;capa_requestor</td>
+								<td><input type="checkbox"onclick="selectall(this.id)" name="report_field[]" value="temporary_action" id="7"/>&nbsp;Temporary action</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="nature_of_nc" id="8"/>&nbsp;Nature of nc</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_requestor" id="9"/>&nbsp;Capa requestor</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="request_date" id="10"/>&nbsp;request_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_due_date" id="11"/>&nbsp;capa_due_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="assigned_team_leader" id="12"/>&nbsp;assigned_team_leader</td>
+								<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="request_date" id="10"/>&nbsp;Request date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="capa_due_date" id="11"/>&nbsp;Capa due date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="assigned_team_leader" id="12"/>&nbsp;Assigned team leader</td>
 							</tr>
 							<tr> 
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="team_members" id="13"/>&nbsp;team_members</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_analysis_file" id="14"/>&nbsp;root_cause_analysis_file</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="use_5_why_in_system" id="15"/>&nbsp;use_5_why_in_system</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="team_members" id="13"/>&nbsp;Team members</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_analysis_file" id="14"/>&nbsp;Root cause analysis file</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="use_5_why_in_system" id="15"/>&nbsp;Use 5 why in system</td>
 							</tr>
 							<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="why" id="16"/>&nbsp;why</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_statement" id="17"/>&nbsp;root_cause_statement</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="upload_external_analysis" id="18"/>&nbsp;upload_external_analysis</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="why" id="16"/>&nbsp;Why</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="root_cause_statement" id="17"/>&nbsp;Root cause statement</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="upload_external_analysis" id="18"/>&nbsp;Upload external analysis</td>
 								</tr>
 								<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="action" id="19"/>&nbsp;action</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="responsibility" id="20"/>&nbsp;responsibility</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="due_date" id="21"/>&nbsp;due_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="action" id="19"/>&nbsp;Action</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="responsibility" id="20"/>&nbsp;Responsibility</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="due_date" id="21"/>&nbsp;Due date</td>
 								</tr>
 								
 							<tr>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="22"/>&nbsp;completion_date</td>
-							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="verified_by" id="23"/>&nbsp;verified_by</td>
-							<td><input type="checkbox" name="report_field[]" value="verification_date" id="24"/>&nbsp;verification_date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="completion_date" id="22"/>&nbsp;Completion date</td>
+							<td><input type="checkbox" onclick="selectall(this.id)" name="report_field[]" value="verified_by" id="23"/>&nbsp;Verified by</td>
+							<td><input type="checkbox" name="report_field[]" value="verification_date" id="24"/>&nbsp;Verification date</td>
 								</tr>
 								
 								</table>
@@ -322,7 +322,27 @@ function validate()
 		}
 }
 </script>
+<script>
+$(function() {
+	$("#report_title").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});	
 
+
+</script>
+<script>
+function validatename()
+{
+	var textInput = document.getElementById("report_title").value;
+	textInput = textInput.replace(/[^A-Za-z ]/g, "");
+	document.getElementById("report_title").value = textInput;
+}
+
+
+
+</script>
 <script type="text/javascript">
 function toggle2(value){
     var e3=document.getElementById("report_type_table");
