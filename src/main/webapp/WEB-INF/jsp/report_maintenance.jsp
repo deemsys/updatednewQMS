@@ -160,7 +160,7 @@
              <td  colspan="2" align="center" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validate();"class="submit_btn1">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+              <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)"value="Reset" class="submit_btn1"></td>
             
              </tr></table>
             
