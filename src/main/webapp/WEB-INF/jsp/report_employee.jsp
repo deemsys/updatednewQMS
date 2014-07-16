@@ -81,43 +81,41 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="document_type_table">
-							
-							 <td valign="middle" align="left" class="input_txt" width="20%">Select Employee Report Type :</td>
+								<td valign="middle" align="left" class="input_txt" width="30%">
+								Select employee report type :
+								</td>
+								<td valign="middle" align="left" class="input_txt" width="100%">
+								<!-- <input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/> -->
 								
-							   <td valign="middle" align="left" class="input_txt" width="20%">
-							
-								<!-- <td valign="middle" align="left" class="input_txt" width="100%">
-								<input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/>
-								 -->
-								
-								<input type="radio" onchange="validation1()" name="doc_type" value="0" id="id_training_needs" checked/>Training Needs<br/>
-								<input type="radio"  onclick="validation1()"  name="doc_type" value="1" id="id_training_report_for_each_employee"/>Training Report for Each Employee<br/>
-								 <input type="radio" onclick="validation()" name="doc_type" value="2" id="id_qualification_for_each_employee"/>Qualification for each employee<br/>
-								  <input type="radio" onclick="validation()" name="doc_type" value="3" id="id_open_training"/>Open Training<br/>
-								   <input type="radio" onclick="validation()" name="doc_type" value="4" id="id_open_training_effectiveness"/>Open Training Effectiveness<br/> 
-								    <input type="radio" onclick="validation()" name="doc_type" value="5" id="id_past_due_training_by_trainer"/>Past-due training by trainer<br/>
+								<br>
+								<br>
+								<input type="radio" onchange="validation1()" name="doc_type" value="0" id="id_training_needs" checked/>&nbsp;Training needs<br/>
+								<input type="radio"  onclick="validation1()"  name="doc_type" value="1" id="id_training_report_for_each_employee"/>&nbsp;Training report for each employee<br/>
+								 <input type="radio" onclick="validation()" name="doc_type" value="2" id="id_qualification_for_each_employee"/>&nbsp;Qualification for each employee<br/>
+								  <input type="radio" onclick="validation()" name="doc_type" value="3" id="id_open_training"/>&nbsp;Open training<br/>
+								   <input type="radio" onclick="validation()" name="doc_type" value="4" id="id_open_training_effectiveness"/>&nbsp;Open training effectiveness<br/> 
+								    <input type="radio" onclick="validation()" name="doc_type" value="5" id="id_past_due_training_by_trainer"/>&nbsp;Past-due training by trainer<br/>
 								
 								</td>
 								</tr>
 								
 								<tr class="row2">
-						
-						 <td valign="middle" align="left" class="input_txt" width="20%">Select Report Type :</td>
-								
-							 <td valign="top" align="left" class="input_txt" width="20%">
-									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
-								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
+								<td valign="middle" align="left" class="input_txt" width="30%">
+									Select report type :</td>
+								<td valign="top" align="left" class="input_txt" width="100%">
+									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>&nbsp;Standard report&nbsp;&nbsp;&nbsp;
+								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>&nbsp;User defined report<br/>
 									
 								</td>
 								
 							</tr>
 						
-						<!-- </table>
+						</table>
 						
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						
 						
-							<tr class="row2">
+							<!-- <tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Report Type:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
@@ -128,54 +126,63 @@
 								
 							</tr> -->
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								 <td valign="middle" align="left" class="input_txt" width="20%"> Enter the name to appear on the report :</td>
-									
-							  <td valign="middle" align="left" class="input_txt" width="20%">
-									<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)"; style="width:40%;" value=""/>
+								<td valign="middle" align="left" class="input_txt" width="30%">
+									Enter the name to appear on the report :</td>
+								<td valign="top" align="left" class="input_txt" width="100%">
+									&nbsp;&nbsp;&nbsp;<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)"; style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
-								 <td valign="middle" align="left" class="input_txt" width="20%"> Enter the fields required on the report :</td>
-									
+								<td valign="top" align="left" style="margin-top:2px;" class="input_txt" width="30%">
+									Enter the fields required on the report :
 									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								
 								<tr>
-								<td><input type="checkbox" id="select_all"/>Select All</td>
+								<td><input type="checkbox" id="select_all"/>&nbsp;Select all</td>
 								</tr>
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="employee_id" id="1"/>Employee id</td>
-								<td><input type="checkbox" name="report_field[]" value="name" id="2"/>name</td>
-								<td><input type="checkbox" name="report_field[]" value="job_title" id="3"/>Job Title</td>
+								<td><input type="checkbox" name="report_field[]" value="employee_id" id="1"/>&nbsp;Employee id</td>
+								<td><input type="checkbox" name="report_field[]" value="name" id="2"/>&nbsp;name</td>
+								<td><input type="checkbox" name="report_field[]" value="job_title" id="3"/>&nbsp;Job title</td>
 					      		
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="attachments" id="4"/>Attachments</td>
-								<td><input type="checkbox" name="report_field[]" value="list_of_function_needs" id="5"/>List of function needs</td>
-								<td><input type="checkbox" name="report_field[]" value="documented_in" id="6"/>documented In</td>
+								<td><input type="checkbox" name="report_field[]" value="attachments" id="4"/>&nbsp;Attachments</td>
+								<td><input type="checkbox" name="report_field[]" value="list_of_function_needs" id="5"/>&nbsp;List of function needs</td>
+								<td><input type="checkbox" name="report_field[]" value="documented_in" id="6"/>&nbsp;Documented In</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="qualified_by" id="7"/>Qualified By</td>
-								<td><input type="checkbox" name="report_field[]" value="type_of_training" id="8"/>Type of Training</td>
-								<td><input type="checkbox" name="report_field[]" value="trainer" id="9"/>Trainer</td>
+								<td><input type="checkbox" name="report_field[]" value="qualified_by" id="7"/>&nbsp;Qualified by</td>
+								<td><input type="checkbox" name="report_field[]" value="type_of_training" id="8"/>&nbsp;Type of training</td>
+								<td><input type="checkbox" name="report_field[]" value="trainer" id="9"/>&nbsp;Trainer</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="training_due_date" id="10"/>Training Due Date</td>
-								<td><input type="checkbox" name="report_field[]" value="training_completion_date" id="11"/>Completion Date</td>
-								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_review_due_date" id="12"/>Review Due Date</td>
+								<td><input type="checkbox" name="report_field[]" value="training_due_date" id="10"/>&nbsp;Training due date</td>
+								<td><input type="checkbox" name="report_field[]" value="training_completion_date" id="11"/>&nbsp;Completion date</td>
+								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_review_due_date" id="12"/>&nbsp;Review due date</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_notes" id="13"/>Effectiveness Notes</td>
-								<td><input type="checkbox" name="report_field[]" value="date_hired" id="14"/>Date Hired</td>
+								<td><input type="checkbox" name="report_field[]" value="training_effectiveness_notes" id="13"/>&nbsp;Effectiveness notes</td>
+								<td><input type="checkbox" name="report_field[]" value="date_hired" id="14"/>&nbsp;Date hired</td>
 								</tr>
 								</table>
 								
 								</td>
 								
 							</tr>
-							<tr >
+							<tr class="row1">
+                  <td valign="middle"  align="left" class="input_txt" width="30%">&nbsp;</td>
+                 
+                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
+           
+          &nbsp;&nbsp;&nbsp;&nbsp;  <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1">
+            </td><td>
+             </td>
+                </tr>
+							<!-- <tr >
              <td  colspan="2" align="center" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
@@ -184,7 +191,7 @@
              </tr></table>
             
            
-             </tr>
+             </tr> -->
             
 							
 						</table>
