@@ -490,7 +490,7 @@ function validatename(id)
 function validatealphanumeric(){
 
 	var textInput = document.getElementById("inp_external_id").value;
-    textInput = textInput.replace(/[^a-z0-9]/g, "");
+    textInput = textInput.replace(/[^a-zA-Z0-9]/g, "");
     document.getElementById("inp_external_id").value = textInput;
 }
 

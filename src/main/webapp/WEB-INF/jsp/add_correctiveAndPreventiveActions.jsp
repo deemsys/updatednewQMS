@@ -170,7 +170,7 @@
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
-				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx1" name="team_members" id="team_member" style="width:76%; height: 70px;"></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
+				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx1" name="team_members" id="team_member" style="height: 75px;" ></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
                
@@ -446,7 +446,7 @@ function validatename(id)
 function validatealphanumeric(){
 
 	var textInput = document.getElementById("inp_external_id").value;
-    textInput = textInput.replace(/[^a-z0-9]/g, "");
+    textInput = textInput.replace(/[^a-zA-Z0-9]/g, "");
     document.getElementById("inp_external_id").value = textInput;
 }
 
