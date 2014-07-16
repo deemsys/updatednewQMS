@@ -101,6 +101,7 @@ public class CorrectiveAndPreventiveActionsController
 					  case 0:
 						  correctiveAndPreventiveActions=correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions_bytype("Open_Corrective_Actions", start, end);
 			  title="Open_Corrective_Actions";
+			  System.out.println("case 0");
 			  option = "0";
 			  break;
 		  case 1:
@@ -169,6 +170,7 @@ public class CorrectiveAndPreventiveActionsController
 	{
 		ModelAndView modelAndView=new ModelAndView("CorrectiveAndPreventiveActionsDAO","correctiveAndPreventiveActions",correctiveAndPreventiveActions);
 		session.setAttribute("option",option);
+		System.out.println("correctiveAndPreventiveActions");
 		modelAndView.addObject("fields",fields);
 		return modelAndView;
 	}
