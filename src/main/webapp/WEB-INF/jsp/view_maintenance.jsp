@@ -37,11 +37,11 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Maintenance and Calibration Details</h2>
+              <h2 style="padding-left:6px">Maintenance and Calibration Details</h2>
             </div>
             
     <div class="contentbox">
-       <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:15px;">
+       <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
         <div>
            <table cellpadding="0" cellspacing="0" border="0" width="100%" >
               <tr>
