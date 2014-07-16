@@ -247,7 +247,8 @@ function validate()
 	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 	var certainperiod = document.getElementById('id_type_Corrective_Actions_for_A_Certain_Period').checked;
 	
-	var error="";
+	
+	
 	 if(certainperiod)
 		{
 		if(datepicker=="")

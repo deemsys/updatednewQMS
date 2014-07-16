@@ -102,6 +102,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 		}
 		if(value == "2")
 		{
+			System.out.println("sdfsdf");
 			for(String field:fields)
 			{
 				if (field.equals("capa_id")) 
@@ -125,6 +126,11 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 					width[i] = 1.0f;
 					 i++;
 					 table.addCell(createLabelCell("EXTERNAL ID"));
+					}
+				else if (field.equals("type_of_nonconformance")) {
+					width[i] = 1.0f;
+					 i++;
+					 table.addCell(createLabelCell("TYPE OF NC"));
 					}
 				else if (field.equals("date_found")) {
 					width[i] = 1.0f;
@@ -265,8 +271,9 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 	    int currentYear = localCalendar.get(Calendar.YEAR);
 	    System.out.println("day  ="+currentDay+"month = "+currentMonth+"year = "+currentYear);
 	    String currentdate = currentDay+"/"+currentMonth+"/"+currentYear;
-	    for (CorrectiveAndPreventiveActions correctiveandpreventiveactions :correctiveAndPreventiveActions){	
-		
+	    for (CorrectiveAndPreventiveActions correctiveandpreventiveactions :correctiveAndPreventiveActions)
+	    {	
+		System.out.println("dsgfdsfsd");
 	    	String sno = String.valueOf(j);
 			table.addCell(createValueCell(sno));
 			j++;
@@ -292,6 +299,7 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 		}
 	    else if(value == "2")
 	    {
+	    	System.out.println("data");
 			for(String field:fields)
 			{
 				if (field.equals("capa_id")) 
@@ -314,6 +322,14 @@ public class CorrectiveAndPreventiveActionsDAO extends AbstractITextPdfView
 				else if (field.equals("external_id")) {
 					table.addCell(createValueCell(
 							correctiveandpreventiveactions.getExternal_id()));
+					}
+				else if (field.equals("type_of_nonconformance")) {
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getType_of_nonconformance()));
+					}
+				else if (field.equals("date_found")) {
+					table.addCell(createValueCell(
+							correctiveandpreventiveactions.getDate_found()));
 					}
 				else if (field.equals("temporary_action")) {
 					table.addCell(createValueCell(
