@@ -59,7 +59,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID:</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${correctiveAndPreventiveActions.capa_id}"/>"/>${correctiveAndPreventiveActions.capa_id}<br/><span style="color: red;"></span></td>
               	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
