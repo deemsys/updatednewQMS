@@ -486,6 +486,7 @@ function validation()
 	var upload = document.getElementById('externalfile').checked;
 	var file = document.getElementById('id_file').value;
 	
+	
  	if(usewhy!="")
  		{
  			if(why=="")
@@ -650,6 +651,12 @@ function validation()
 		error="true";
 		
 	}
+	else if((external.length < 4) || (external.length > 32))
+		{
+		
+		document.getElementById('externalerror').innerHTML="Field should be of length 4 to 32";	
+		error="true";
+		}
 	else{
 		document.getElementById('externalerror').innerHTML="";
 	}

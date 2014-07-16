@@ -693,6 +693,12 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 		error="true";
 		
 	}
+	else if((external.length < 4) || (external.length > 32))
+	{
+	
+	document.getElementById('externalerror').innerHTML="Field should be of length 4 to 32";	
+	error="true";
+	}
 	else{
 		document.getElementById('externalerror').innerHTML="";
 	}
