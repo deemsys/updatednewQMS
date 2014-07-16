@@ -279,6 +279,11 @@ function validate()
 		 document.getElementById("attendeelistwithtitleserror").innerHTML="Required field should not be empty";
 			error="true";
 		}
+	else if(attendeelistwithtitles.charAt(0) == " ")
+	{
+		 document.getElementById("attendeelistwithtitleserror").innerHTML="Should not accept initial space";
+		 error="true";
+	}
 	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
 		{
 		document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should be length 4 to 32";
@@ -296,6 +301,11 @@ function validate()
 			error="true";
 		
 		}
+	else if(nextmanagementreviewby.charAt(0) == " ")
+	{
+		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Should not accept initial space";
+		 error="true";
+	}
 	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
 	{
 	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should be length 4 to 32";
@@ -336,6 +346,11 @@ function validate()
 		 error="true";
 		
 		}
+	else if(assessment.charAt(0) == " ")
+	{
+		 document.getElementById("assessmenterror").innerHTML="Should not accept initial space";
+		 error="true";
+	}
 	else if((assessment.length < 4) ||(assessment.length > 32))
 		{
 		document.getElementById("assessmenterror").innerHTML="Required Field Should be length 4 to 32";
@@ -353,6 +368,11 @@ function validate()
 	  document.getElementById("reportlinkerror").innerHTML="Required field should not be empty";
 	    	error="true";
 	  }
+	  else if(reportlink.charAt(0) == " ")
+		{
+			 document.getElementById("reportlinkerror").innerHTML="Should not accept initial space";
+			 error="true";
+		}
   else  if(reportlink.match(website))
 	   {
 	  
@@ -371,6 +391,11 @@ function validate()
 		 document.getElementById("actiondetailerror").innerHTML="Required field should not be empty";
 		 error="true";
 		
+		}
+	 else if(actiondetail.charAt(0) == " ")
+		{
+			 document.getElementById("actiondetailerror").innerHTML="Should not accept initial space";
+			 error="true";
 		}
 	else if((actiondetail.length < 4) ||(actiondetail.length > 32))
 		{
@@ -404,6 +429,11 @@ function validate()
 		 document.getElementById("responsibilityerror").innerHTML="Required field should not be empty";
 		 error="true";
 		
+		}
+	 else if(responsibility.charAt(0) == " ")
+		{
+			 document.getElementById("responsibilityerror").innerHTML="Should not accept initial space";
+			 error="true";
 		}
 	else if((responsibility.length < 4) ||(responsibility.length > 32))
 		{
