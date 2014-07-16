@@ -69,7 +69,7 @@
                <tr class="row2">
                <td valign="middle" align="left" class="input_txt" width="2%"> Type of Feedback :</td>
                <td valign="top" width="10%"><span class="err">
-                  <select name="type_of_feedback" id="feedback" class="input_txtbx">
+                  <select name="type_of_feedback" id="feedback" class="dropdown">
                   <option value="">-select-</option>
                   <option value="Complaint"<c:if test="${feedback=='Complaint'}"><c:out value="selected"/></c:if>>Complaint</option>
                   <option value="Suggestion"<c:if test="${feedback=='Suggestion'}"><c:out value="selected"/></c:if>>Suggestion</option>
@@ -78,16 +78,23 @@
                      <br><span id="generateerror" style="color:red"></span>
                   <td>
                    </tr>
+                   
+               
                   <tr class="row1">
-                  <td valign="top" width="2%"><span class="err"></span>From Date :
+                     <td valign="middle" align="left" class="input_txt" width="2%">From Date :</td>
+                <td valign="middle" align="left" class="input_txt" width="10%"><span class="err"></span>
                   <input type="text" name="from_date" class="input_txtbx" id="datepicker"  value="${fromdate}" /><br>
                   
-                  <span id="datepicker11"style="color:red"></span></td>
-                   <td width="2%"><span class="err"></span>To Date :
+                  <span id="datepicker11"style="color:red"></span></td></tr>
+                    <tr class="row1">
+                   <td valign="middle" align="left" class="input_txt" width="2%"><span class="err"></span>To Date :</td>
+                     <td valign="middle" align="left" class="input_txt" width="10%"><span class="err"></span>
                   <input type="text" name="to_date" class="input_txtbx" id="datepicker1" value="${todate}" /><br>
                   <span id="datepicker22"style="color:red"></span>
                   <span class="err"></span></td>
+                  </td></tr>
                   <tr class="row2">
+                  <td></td>
                   <td> <span id="dateerror"style="color:red"></span></td>
                   </tr>
                   
@@ -133,6 +140,7 @@ document.getElementById("dateerror").innerHTML="";
 			 document.getElementById("dateerror").innerHTML="Please pickup the from and to date";
 				error="true";
 			}
+		
 		else
 		{
 			if(!datepicker.match(date))

@@ -81,7 +81,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="document_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="right" class="input_txt" width="30%" >
 								Select Employee Report Type :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
@@ -110,11 +110,6 @@
 								
 							</tr>
 						
-						</table>
-						
-						<table cellpadding="0" cellspacing="0" border="0" width="100%">
-						
-						
 							<!-- <tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Report Type:</td>
@@ -128,7 +123,7 @@
 							<tr class="row1" id="userdefined_name" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Enter the Name to appear on the Report:</td>
-								<td valign="top" align="left" class="input_txt" width="50%">
+								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)"; style="width:40%;" value=""/>
 								</td>
 								
@@ -173,13 +168,19 @@
 								</td>
 								
 							</tr>
-							<tr >
+							
+							  <tr class="row1">
+               <td></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                 <td valign="middle" align="left" class="input_txt" ><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1"></td>
+                </tr>
+							<!-- <tr >
              <td  colspan="2" align="center" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
-             </tr></table>
+             </tr> --></table>
             
            
              </tr>

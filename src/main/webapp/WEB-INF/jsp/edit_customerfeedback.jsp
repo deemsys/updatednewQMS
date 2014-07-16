@@ -118,7 +118,7 @@
                   
                     <tr class="row1">
                <td></td>
-                  <td valign="middle" align="left" class="input_txt" ><input type="submit" class="submit_btn1" value="Update Feedback" id="id_submit"style="width:170px;" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
+                  <td valign="middle" align="left" class="input_txt" ><input type="submit" class="submit_btn1" value="Update" id="id_submit"style="width:170px;" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   </tr>
                   
                   
