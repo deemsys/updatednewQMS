@@ -91,6 +91,8 @@ public class NonConformanceController {
 	    Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		model.addAttribute("justcame",false);
+		
 		return "view_nonconformance";
 	}
 	
@@ -105,9 +107,12 @@ public class NonConformanceController {
 		session.setAttribute("nc",id);
 		session.setAttribute("typenc",type_of_nonconformance);
 
+		model.addAttribute("justcame",false);
+		
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		
 		
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
     	nonConformanceForm.setNonconformance(nonConformanceDAO.findnonconformance(id, type_of_nonconformance, page));
@@ -182,6 +187,9 @@ public class NonConformanceController {
 	@RequestMapping(value = "/add_nonconformance", method = RequestMethod.POST)
 	public String addNonconformance_post(HttpSession session,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,BindingResult result2,ModelMap model) {
 		
+		
+		model.addAttribute("justcame",false);
+		
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
@@ -219,6 +227,8 @@ public class NonConformanceController {
 	   // model.addAttribute("nonConformanceForm",nonConformanceForm);
 	    model.addAttribute("menu","nonconformance");
 	    model.addAttribute("success","true");
+	    model.addAttribute("justcame",false);
+	    
 		return "view_nonconformance";
 	}
 

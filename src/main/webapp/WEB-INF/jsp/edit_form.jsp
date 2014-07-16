@@ -47,34 +47,26 @@
             <div class="contentbox">
             <h1 style="color:#7A3A3A;font-size:20px;">Edit Form Details</h1>
     <c:set value="${formForm.form[0]}" var="form"/>        
-	<table cellpadding="0" cellspacing="0" border="1" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 	
 	          <tr class="row2">
                             <td valign="top" align="left" class="input_txt" width="30%">Form/Rec ID :</td>
 	
-		<td valign="top" align="left" class="input_txt" width="30%">
+		<td valign="top" align="left" class="input_txt" width="40%">
 			<a id="formid">
-			
-					<input type="hidden" id="formid" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
-					onmouseout="hideTooltip('tooltip_id');"
-					name="form_or_rec_id" />${form.form_or_rec_id}</a>
-		      
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:100px;display:none">
+			<input type="hidden" id="formid" onmouseover="showTooltip('tooltip_id','inp_id3');" 
+					onmouseout="hideTooltip('tooltip_id');" name="form_or_rec_id" />${form.form_or_rec_id}</a>
+		       <input type="hidden" name="form_or_rec_id" id="generated_id" value=""/> 
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:50px;display:none;">
       
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
-               </select>
-            
-                <label id="changeafter" style="display:none;"></label> 
-                
-                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none"  onblur="change_to_label();" onInput="return validatename3(id);"/><span id="quality3err" style="color:red;"></span>
-                <input type="hidden" name=form_or_rec_id id="generated_id"  value=""/> 
-               <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
-            <label id="changeafter1" style="color:red;"></label>
-            <span id="formiderror" style="color:red"></span>
-            <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
-            </td>
+               </select>              
+                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none;" onblur="change_to_label();" maxlength="32" onInput="return validatename3(id);"/>
+               <span id="changeafter"></span>  
+               <span id="change" style="display: none;" ></span><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  
+             </td>
                
             <!--     <label id="changeafter" style="display:none;" ></label> 
                 
@@ -272,8 +264,8 @@
              </tr>
               <tr class="row1">
                          
-																		  <td valign="top" align="left" class="input_txt" width="25%">Revision No. (optional):</td>
-																		<td valign="top" align="left" class="input_txt" width="30%">
+																		  <td valign="top" align="left" class="input_txt" width="30%">Revision No. (optional) :</td>
+																		<td valign="top" align="left" class="input_txt" width="40%">
 																		<span id="valueTempe" style="font-weight: bold; width:28px;">${form.revision_id}</span>
 																		<button id="plus" href="#" style="height: 18px; width:18px;" value="">+</button>
 																   <input type="hidden" name="revision_id" id="revisionid" value=""  class="input_txtbx" >
@@ -313,8 +305,8 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="document_id"
-																			value="${form.form_or_rec_id}" style="display:none;" readonly="readonly" />
-																			<b id="hide_id">${form.form_or_rec_id}</b><br/><span class="err"> <form:errors path="Form.document_id"></form:errors></span>
+																			value="${form.form_or_rec_id}" readonly="readonly" />
+																			<b id="hide_id"></b><br/><span class="err"> <form:errors path="Form.document_id"></form:errors></span>
 																		</td>
                           
 																		              <td valign="top" align="left" class="input_txt" width="30%">Approver1(Process Owner) :</td>
@@ -371,7 +363,7 @@
              
                    
               <tr class="row1">
-              <td colspan="2" align="right">
+              <td colspan="3" align="right">
              <input type="submit" id="export"  name="export" value="Update" onclick="return validation();"  class="submit_btn1"></td>
             <!--  <td colspan="3">
             <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
@@ -463,15 +455,15 @@ var start = "false";
 		var element1 = document.getElementById('formid');
 		var element2 = document.getElementById('change');
 		var element3 = document.getElementById('form_or_rec_id');
-		//var element4 = document.getElementById('form_id');
+		var element4 = document.getElementById('form_id');
 		var element5 = document.getElementById('hide_id');
 		
-			element.style.display="block";
-			element3.style.display="block";
+			element.style.display="inline";
+			element3.style.display="inline";
 
 			element1.style.display="none";
 			element2.style.display="none";
-			//element4.style.display="block";
+			//element4.style.display="none";
 			element5.style.display="none";
 			document.getElementById("changeafter").style.display="none";
 			document.getElementById("form_or_rec_id").focus();
@@ -480,25 +472,21 @@ var start = "false";
 	function change_to_label()
 	{
 		
-	   
-	   var numbers = /^[0-9]+$/;
+	  
 		var type=document.getElementById("document_type_id");	
 		
 		var doc_id=document.getElementById("form_or_rec_id");	
 		
 		//alert("doc_id");
-		document.getElementById("changeafter").style.display="block";
+		document.getElementById("changeafter").style.display="inline";
 		
-		if(doc_id.value.length == ""){
-			
-			var color = "Required field should not be empty";
+		if(doc_id.value == ""){
+				var color = "Required field should not be empty";
 			var result = color.fontcolor("red");
 			document.getElementById("changeafter").innerHTML=result;
 		}
 		
-		else if(doc_id.value.match(numbers))
-		{
-			if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+		else if((doc_id.value.length < 4) || (doc_id.value.length > 32))
 			{
 			var color = "Required field should be a length of 4 to 32";
 			var result = color.fontcolor("red");
@@ -507,22 +495,21 @@ var start = "false";
 		else{
 			document.getElementById("changeafter").innerHTML = type.value+-+doc_id.value;
 			}
-		}
-		
-		
-		
-		document.getElementById("changeafter").innerHTML = type.value+-+doc_id.value;
-		
+			
 		
 		var gen_id=document.getElementById("generated_id");
 		gen_id.value=type.value+-+doc_id.value;
+		
+		
 		document.getElementById('document_type_id').style.display="none";
 		document.getElementById('form_or_rec_id').style.display="none";
-		document.getElementById("change").style.display="block";
+		document.getElementById("change").style.display="inline";
 		if((gen_id.value)!= null)
 		{
-     	form_id.value=gen_id.value;
-     
+		//alert("form_id");
+		//alert(gen_id.value);
+     	form_id.value=gen_id.value;  
+     	
 		}
 
 
@@ -542,8 +529,10 @@ var start = "false";
 	
 
 	function incrementValue(e){
+		
 		if(intgert.test(valueElement.text()))
 			{
+			alert("int");
 		if(valueElement.text() < 100){
 			var value = valueElement.text(Math.max(parseFloat(valueElement.text()) + e.data.increment).toFixed(1)); 
 			var id = document.getElementById('revisionid');
@@ -629,8 +618,7 @@ var start = "false";
 			}
 		if(intgrt.test(valueElement.text()))
 			{
-			
-			
+						
 			var value=valueElement.text();
 			var id = document.getElementById('revisionid');
 			var inc = parseFloat('1');
@@ -682,7 +670,7 @@ var start = "false";
 function reset_form()
 {
 	
-	document.getElementById('valueTempe').value="";
+	document.getElementById('valueTempe').innerHTML="0";
 	
 	document.getElementById('datepicker123').value="";
 	
@@ -698,11 +686,11 @@ function reset_form()
 </script>
  <script>
 
- $(window).load(function(){
+ /* $(window).load(function(){
  $("#form_or_rec_id").keyup(function() {
 		
 	 $("#quality3err").html(''); 
-	/* var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/; */
+	/* var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
 	var intRegex = /^\d+$/;
 	if(intRegex.test($(this).val())||$(this).val()=='') 
 	{
@@ -717,7 +705,7 @@ function reset_form()
     oldValue = $(this).val();
 })
 
-});
+}); */
  </script>
 
   <script type="text/javascript">
@@ -729,9 +717,9 @@ function validatename(id){
 }  
 function validatename3(id){
 	
-    var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^0-9]/g, "");
-    document.getElementById(id).value = textInput;
+	 var textInput = document.getElementById(id).value;
+	    textInput = textInput.replace(/[^0-9]/g, "");
+	    document.getElementById(id).value = textInput;
 }
 
 
@@ -781,6 +769,7 @@ function validation()
 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 var spl =  /^[A-Za-z0-9]*$/;
 	
+	var rec_id=document.getElementById('form_or_rec_id').value;
 	 var title = document.getElementById('form_or_rec_title').value;
 	 var responsibility = document.getElementById('responsibility').value;
 	 var error ="";
@@ -808,6 +797,18 @@ var spl =  /^[A-Za-z0-9]*$/;
 		{
 		document.getElementById('retentionerr').innerHTML = "";
 		}
+	
+	if(rec_id =="")
+	 {
+		 document.getElementById("changeafter").innerHTML="Required field should not be empty";
+		 error="true";
+	 } 
+	else if((rec_id.length < 4) || (rec_id.length > 400) )
+	 {
+	 document.getElementById("changeafter").innerHTML="Required field should be length 4 to 32";
+	 error ="true";
+	 }
+	
 	if(title =="")
 	 {
 		 document.getElementById("title1").innerHTML="Required field should not be empty";
@@ -929,6 +930,9 @@ var spl =  /^[A-Za-z0-9]*$/;
     			document.getElementById("hard").innerHTML="Required field should not be empty";
     			error = "true";
     			}
+    		else{
+    			document.getElementById("hard").innerHTML="";
+    		}
     	 }
     	 //eight
     	
@@ -940,6 +944,9 @@ var spl =  /^[A-Za-z0-9]*$/;
     			 document.getElementById("attach").innerHTML="Required field should not be empty";
     			 error = "true";
     			 }
+    		 else{
+    			 document.getElementById("attach").innerHTML="";
+    		 }
     		}
     	 //nine
     	
@@ -952,8 +959,20 @@ var spl =  /^[A-Za-z0-9]*$/;
     		document.getElementById("hard").innerHTML="Required field should not be empty";
     		error = "true";
     		}
+    		else{
+    			document.getElementById("hard").innerHTML="";
+    		}
+    		if(e3=="")
+			 {
+			
+			 document.getElementById("attach").innerHTML="Required field should not be empty";
+			 error = "true";
+			 }
+		 else{
+			 document.getElementById("attach").innerHTML="";
+		 }
     	}
-	
+		
 	
 		if(id_inpprocess == "")
 		{

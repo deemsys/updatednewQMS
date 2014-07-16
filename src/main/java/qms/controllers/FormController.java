@@ -111,6 +111,8 @@ public class FormController
 
 	{	
 		int flag = 0;
+		
+		
 		String approver1 = request.getParameter("approver1");
 		String issuer1 = request.getParameter("issuer");
 		System.out.println("approver1"+approver1);
@@ -208,7 +210,7 @@ public class FormController
 			System.out.println(e.toString());
 			e.printStackTrace();
 		}
-
+		model.addAttribute("justcame",false);
 		model.addAttribute("id", "1001");
 		if (flag == 1)
 		{
@@ -216,6 +218,7 @@ public class FormController
 			ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm", processForm);
+			model.addAttribute("justcame",false);
 			
 			FormForm formForm=new FormForm();
 		    formForm.setForm(formDAO.getform());
@@ -580,6 +583,7 @@ public class FormController
 		FormForm formForm=new FormForm();
 		model.addAttribute("menu","document");
 	  	model.addAttribute("noofrows",5);
+	  	model.addAttribute("justcame",false);
 	  	
 	  	ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getProcess());

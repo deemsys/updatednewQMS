@@ -77,7 +77,7 @@
                <td valign="top" align="left" class="input_txt" >
                
                <select name="process" id="id_inpprocess"  class="input_txtbx" style="width:200px;">
-               
+               <option value="">--Select--</option>
              <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                 <option value="${processes.process_name}">${processes.process_name}</option>
                </c:forEach>
@@ -163,9 +163,9 @@
 							</tr>
 							<tr >
              <td  colspan="2" align="center" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export" onclick="return validate();" name="export" value="Generate" class="submit_btn1">
-             </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+             <table><tr style="padding:10px;"><td style="padding:10px;" align="left"><input type="submit" id="export" onclick="return validate();" name="export" value="Generate" class="submit_btn1">
+             </td><td style="padding:10px;" align="left">
+              <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)" value="Reset" class="submit_btn1"></td>
             
              </tr>
             

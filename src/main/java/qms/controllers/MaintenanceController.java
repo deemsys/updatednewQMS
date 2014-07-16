@@ -186,6 +186,8 @@ return "maintenance_list";
 	//	model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","maintenance");
 		model.addAttribute("success","true");
+		model.addAttribute("justcame",false);
+		
 		return "maintenance_list";
 	}
 	
@@ -197,6 +199,8 @@ return "maintenance_list";
 		
 		MaintenanceForm maintenanceForm= new MaintenanceForm(); 
 		model.addAttribute("menu","maintenance");
+		model.addAttribute("justcame",false);
+		
 	  	//model.addAttribute("noofrows",5);
 		
 		
