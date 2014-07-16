@@ -56,7 +56,7 @@
               <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="top" width="50%" style="padding-left: 65px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
 	                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
@@ -82,7 +82,7 @@
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%"> Auditee Name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
-                 <select name="auditee_name" id="auditeename" class="input_txtbx" style="width:200px;">
+                 <select name="auditee_name" id="auditeename" class="input_txtbx">
                <option value="">--Select--</option>
                <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                <option value="<c:out value="${processes.process_owner}"/>"><c:out value="${processes.process_owner}"/></option>
@@ -236,7 +236,7 @@ function validate()
 	}
 	else if(auditornotes.charAt(0) == " ")
 		{
-		 document.getElementById("auditornoteserror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("auditornoteserror").innerHTML="Should not accept initial space";
 			error="true";
 		}
 else if((auditornotes.length<4)||(auditornotes.length>400))
@@ -341,7 +341,7 @@ else{
 		}
 	 else if(auditorsinitials.charAt(0) == " ")
 		{
-		 document.getElementById("auditorsinitialserror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("auditorsinitialserror").innerHTML="Should not accept initial space";
 			error="true";
 		}
 	else if((auditorsinitials.length<=0)||(auditorsinitials.length>10))
