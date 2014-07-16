@@ -178,10 +178,7 @@ else
 					           <td valign="top" align="left" width="20%">Feedback recorded by</td>
  							 	<td valign="top" align="left" width="20%">Feedback details</td> 
           						<td valign="top" align="left" width="15%">Attachments</td>
-          						
-									<td valign="top" align="left" width="10%"></td>
-									
-									
+          							
 									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -195,21 +192,17 @@ else
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${customerFeedbacks.date_of_feedback}"/></td>
 					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
-									       <td valign="top" align="left"  width="10%">${customerFeedbacks.date_of_feedback}</td>
+									       <td valign="top" align="left"  width="15%">${customerFeedbacks.date_of_feedback}</td>
 											<td valign="top" align="left" width="15%">${customerFeedbacks.type_of_feedback}</td>
-									 	 <td valign="top" align="left" width="15%">${customerFeedbacks.feedback_recorded_by}</td>
-									 	 <td valign="top" align="left" width="10%">${customerFeedbacks.feedback_details}</td>
+									 	 <td valign="top" align="left" width="20%">${customerFeedbacks.feedback_recorded_by}</td>
+									 	 <td valign="top" align="left" width="20%">${customerFeedbacks.feedback_details}</td>
 									 	 <c:choose>
 											<c:when test="${customerFeedbacks.attachment_name!='null'}">
-											<td valign="top" align="left" width="10%"><a href="<c:out value="download_attachment?fid=${customerFeedbacks.feedback_id}"></c:out>">Download</a></td>
+											<td valign="top" align="left" width="15%"><a href="<c:out value="download_attachment?fid=${customerFeedbacks.feedback_id}"></c:out>">Download</a></td>
 										</c:when>
 										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>	
-											
-											
-											<td valign="top" align="left" width="15%">
-											
 											
 											</td>
 										</tr>
@@ -256,8 +249,7 @@ else
             </c:forEach>          
             <c:if test="${currentpage!=noofpages}">
               <li class="page_unselect"><a href="viewdeletefeedbackreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li> 
-              <li class="page_unselect"><a href="viewhrreport_page?page=${currentpage+1}&date_of_feedback=${date}&type_of_feedback=${type}">Next</a></li>
-                 </c:if>
+                </c:if>
               <c:choose>
               <c:when test="${button=='viewall'}">
                   <li class="page"><a href="viewalldeletefeedbackreport?&date_of_feedback=${date}&type_of_feedback=${type}" class="paging_select">ViewAll</a></li>

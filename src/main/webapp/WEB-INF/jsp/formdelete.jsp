@@ -180,6 +180,10 @@ else
 									<td valign="top" align="left" width="10%">Select</td>
 									<td valign="top" align="left" width="10%">Form/Rec ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
+									<td valign="top" align="left" width="10%">Effective Date</td>
+									<td valign="top" align="left" width="10%">Approver1</td>
+									<td valign="top" align="left" width="10%">Issuer</td>
+									
 									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -195,6 +199,10 @@ else
 								        <%--    	<td valign="top" align="left"  width="10%">${form.auto_number}</td> --%>
 									        <td valign="top" align="left" width="10%">${form.form_or_rec_id}</td>
 											<td valign="top" align="left" width="10%">${form.process}</td>
+											<td valign="top" align="left" width="10%">${form.effective_date}</td>
+											<td valign="top" align="left" width="10%">${form.approver1}</td>
+											<td valign="top" align="left" width="10%">${form.issuer}</td>
+											
 										</tr>
 							    	</c:forEach>
 						    		</c:if>

@@ -188,9 +188,9 @@ else
         				       				 <td valign="top" align="left" width="10%">${correctiveAndPreventiveActions.capa_due_date}</td>
         				       				<c:choose>
 											<c:when test="${correctiveAndPreventiveActions.attachment_name!='null'}">
-											<td valign="top" align="center" width="10%"><a href="<c:out value="downloadMaindoc1?capa_id=${correctiveAndPreventiveActions.capa_id}"></c:out>">Download</a></td>
+											<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc1?capa_id=${correctiveAndPreventiveActions.capa_id}"></c:out>">Download</a></td>
 										</c:when>
-										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
+										<c:otherwise><td valign="top" align="left" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>	
         				       				<%--  <td valign="top" align="left" width="15%">${correctiveAndPreventiveActions.action}</td> --%>

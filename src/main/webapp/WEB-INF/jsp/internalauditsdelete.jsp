@@ -154,7 +154,7 @@ else
 							    <td align="left" valign="middle" width="10%">&nbsp;Process:</td>
 							    <td align="left" valign="middle" width="10%">
 							    <%-- <input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td> --%>
-							    <select name="process" id="search_process"  class="input_txtbx" style="width:200px;">
+							    <select name="process" id="search_process"  class="input_txtbx" >
                					 <option value="" >--Select--</option>
               					 <c:forEach items="${processForm.processes}" var="processes" varStatus="true">
               					 <option value="${processes.process_name}" <c:if test="${processes.process_name==process}"><c:out value="selected"></c:out></c:if>>${processes.process_name}</option>
@@ -163,7 +163,7 @@ else
              				  	</td> 
 							    <td align="left" valign="middle" width="20%">&nbsp;Auditee name:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <select name="auditee_name" id="id_inpprocess"  class="input_txtbx" style="height:20px;">
+							    <select name="auditee_name" id="id_inpprocess"  class="input_txtbx">
                						<option value="">--Select--</option>
                						<c:forEach items="${processForm.processes}" var="processes" varStatus="true">
                						<option value="<c:out value="${processes.process_owner}"/>" <c:if test="${processes.process_owner==name}"><c:out value="Selected"/></c:if>><c:out value="${processes.process_owner}"/></option>
@@ -208,7 +208,7 @@ else
 											<td valign="top" align="left" width="10%">${internalAudits.auditor}</td>
 											<td valign="top" align="left" width="12%">${internalAudits.finding}</td>
 											<td valign="top" align="left" width="10%">${internalAudits.completion_date}</td>
-											</td>
+											
 										</tr>
 							    	</c:forEach>
 						    		</c:if>

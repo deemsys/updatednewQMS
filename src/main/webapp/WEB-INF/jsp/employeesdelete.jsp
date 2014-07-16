@@ -148,7 +148,7 @@ else
 							<form action="findemployees" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%"> Type:&nbsp;</td>
+							    <td align="left" valign="middle" width="10%"> Type :&nbsp;</td>
 							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
 							     -->
 							    <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_txtbx">
@@ -164,7 +164,7 @@ else
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="right" valign="middle" width="12%">QualifiedBy&nbsp; </td>
+							     <td align="right" valign="middle" width="12%">QualifiedBy :&nbsp;&nbsp;&nbsp; </td>
 							    <td valign="middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
@@ -184,7 +184,7 @@ else
 															</select><span class="err"><form:errors path="Employee.qualified_by"></form:errors></span></td>
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
-				 -->				<td align="right" valign="middle" width="12%"> Trainer&nbsp;</td>
+				 -->				<td align="right" valign="middle" width="12%"> Trainer :&nbsp;&nbsp;&nbsp;</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
@@ -234,9 +234,6 @@ else
 										<c:otherwise><td valign="top" align="center" width="10%">No Document</td>
 										</c:otherwise>
 										</c:choose>		
-												
-											
-											</td>
 										</tr>
 							    	</c:forEach>
 						    		</c:if>

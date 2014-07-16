@@ -151,14 +151,14 @@ else
 							  <tr>
 							    <td align="left" valign="middle" width="10%">ID&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" value="${cusid}"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;Name&nbsp;:</td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Name&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${cusname}"></td>
-							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Address&nbsp;:</td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Address&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${cusaddress}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
 							     -->
 							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomers" ></td>
-							  	<td align="center" valign="middle" width="20%"><!-- <input type="submit" class="submit_btn1" value="Clear" name="welcome" > --></td>
+							  	<!-- <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td> -->
 							  
 							  </tr>
 							</table>
@@ -173,10 +173,9 @@ else
 					         	<td valign="top" align="left" width="10%">Customer Name</td>
 								<td valign="top" align="left" width="10%">Address</td>
 								<td valign="top" align="left" width="10%">City</td>
-          						<td valign="top" align="left" width="15%">Email Address</td>
+          						<td valign="top" align="left" width="10%">Email Address</td>
           						
         					</tr>
-									</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
 								<% int i=1; %>
@@ -192,7 +191,7 @@ else
 									      <td valign="top" align="left" width="10%">${customers.customer_name}</td>
 											<td valign="top" align="left" width="10%">${customers.address}</td>
 											<td valign="top" align="left" width="10%">${customers.city}</td>
-											<td valign="top" align="left" width="15%">${customers.email_address}</td>
+											<td valign="top" align="left" width="10%">${customers.email_address}</td>
 											</tr>
 							    	</c:forEach>
 							    	</c:if>

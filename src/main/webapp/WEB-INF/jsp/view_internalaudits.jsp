@@ -239,7 +239,7 @@ function confirmation() {
 	
 }
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function validation()
 {
 	var error = "";
@@ -281,7 +281,7 @@ function validation()
 	}
 }
 </script>
-
+ -->
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

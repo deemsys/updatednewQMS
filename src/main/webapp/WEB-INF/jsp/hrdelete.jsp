@@ -148,10 +148,9 @@ else
 							<form action="findadminhr" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="right" valign="middle" width="10%"> Type:&nbsp;</td>
-							    <!-- <td align="left" valign="middle" width="5%"><input type="text" name="type_of_training" class="input_txtbx2" id="type"></td>
-							     -->
-							     <td valign="middle" align="left" class="input_txt"><select	name="type_of_training" class="input_txtbx">
+							    <td align="left" valign="middle"> Type:&nbsp;</td>
+							     <td valign="middle" align="left" class="input_txt">
+							     <select	name="type_of_training" class="input_txtbx">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
@@ -164,7 +163,7 @@ else
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="right" valign="middle" width="12%">QualifiedBy:&nbsp; </td>
+							     <td align="left" valign="middle">QualifiedBy:&nbsp; </td>
 							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
@@ -182,14 +181,11 @@ else
 															value="Training">Training</option>
 														
 															</select><span class="err"><form:errors path="HRandTraining.qualified_by"></form:errors></span></td>
-                <!-- 
-							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
-				 -->				<td align="right" valign="middle" width="12%"> Trainer:&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
+                				<td align="right" valign="middle"> Trainer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							    <td align="left" valign="middle"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
 							  
-	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
-	 -->						  
-							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search"></td>
+			  
+							    <td align="center" valign="middle" width="10%"><input type="submit" class="submit_btn1" value="Search"></td>
 							     <!-- <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td> -->
 							  </tr>
 							  </table>

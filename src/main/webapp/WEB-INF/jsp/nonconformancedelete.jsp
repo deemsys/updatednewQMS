@@ -193,8 +193,6 @@ else
 									<td valign="top" align="left" width="20%">Type of Non Conformance</td>
 									<td valign="top" align="left" width="20%">Product Id</td>
 									<td valign="top" align="left" width="20%">Quantity Suspect</td>
-									<td valign="top" align="left" width="10%"></td>
-									<td valign="top" align="left" width="10%"></td>
 									
 									</tr>
 
@@ -209,20 +207,12 @@ else
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${nonconformance.id}"/></td>
 					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
-									        	<td valign="top" align="left"  width="10%">${nonconformance.id}</td>
-									        <td valign="top" align="left" width="10%">${nonconformance.source_of_nonconformance}</td>
-									        <td valign="top" align="left" width="10%">${nonconformance.type_of_nonconformance}</td>
-											<td valign="top" align="left" width="10%">${nonconformance.product_id}</td>
+									        	<td valign="top" align="left"  width="15%">${nonconformance.id}</td>
+									        <td valign="top" align="left" width="20%">${nonconformance.source_of_nonconformance}</td>
+									        <td valign="top" align="left" width="20%">${nonconformance.type_of_nonconformance}</td>
+											<td valign="top" align="left" width="20%">${nonconformance.product_id}</td>
 											<td valign="top" align="left" width="15%">${nonconformance.quantity_suspect}</td>
 											
-											<td valign="top" align="center" width="15%">
-											
-											
-											
-											<td valign="top" align="left" width="15%">
-											
-											
-											</td>
 										</tr>
 							    	</c:forEach>
 							    	</c:if>
