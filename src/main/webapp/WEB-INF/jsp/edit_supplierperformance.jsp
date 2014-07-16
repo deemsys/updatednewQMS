@@ -122,7 +122,7 @@
                 
               	</tr>
                 <tr class="row2">
-				<td valign="top" align="left" class="input_txt" width="30%">PostalCode :</td>
+				<td valign="top" align="left" class="input_txt" width="30%">Postal code :</td>
 				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" maxlength="5" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Email :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;"id="emailerror"><form:errors path="SupplierPerformance.email_address"></form:errors></span></td>
@@ -264,7 +264,7 @@ function validatename(id)
 		else if(document.getElementById("inp_supplier_name").value.length<4 || document.getElementById("inp_supplier_name").value.length>=32)
 	    {
 	    	
-	    	document.getElementById("nameerror").innerHTML="Should be of length 4 to 32";
+	    	document.getElementById("nameerror").innerHTML="Field should be of length 4 to 32";
 			error="true";
 	    }
 		else if(document.getElementById("inp_supplier_name").value.substring(0,1)==" ")
@@ -287,7 +287,7 @@ function validatename(id)
 		else if(document.getElementById("inp_contact_name").value.length<4 || document.getElementById("inp_contact_name").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("contacterror").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("contacterror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
 		else if(document.getElementById("inp_contact_name").value.substring(0,1)==" ")
@@ -311,7 +311,7 @@ function validatename(id)
 		else if(document.getElementById("inp_address").value.length<5 || document.getElementById("inp_address").value.length>=500)
 		    {
 		    	
-		    	document.getElementById("addresserror").innerHTML="Should be of length 5 to 500";
+		    	document.getElementById("addresserror").innerHTML="Field should be of length 5 to 500";
 		    	 error="true";
 		    } 
 		else if(document.getElementById("inp_address").value.substring(0,1)==" ")
@@ -333,7 +333,7 @@ function validatename(id)
 		else if(document.getElementById("inp_contact_title").value.length<4 || document.getElementById("inp_contact_title").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("titleerror").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("titleerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
 		else if(document.getElementById("inp_contact_title").value.substring(0,1)==" ")
@@ -355,7 +355,7 @@ function validatename(id)
 		else if(document.getElementById("inp_city").value.length<4 || document.getElementById("inp_city").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("cityerror").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("cityerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
 		else if(document.getElementById("inp_city").value.substring(0,1)==" ")
@@ -378,7 +378,7 @@ function validatename(id)
 		else if(document.getElementById("inp_state").value.length<4 || document.getElementById("inp_state").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("stateerror").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("stateerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
 		else if(document.getElementById("inp_state").value.substring(0,1)==" ")
@@ -400,7 +400,7 @@ function validatename(id)
 		else if(document.getElementById("inp_country").value.length<4 || document.getElementById("inp_country").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("countryerror").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("countryerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
 		else if(document.getElementById("inp_country").value.substring(0,1)==" ")
@@ -446,7 +446,7 @@ function validatename(id)
 		}else if(document.getElementById("inp_postalcode").value.length>5)
 	    {
 	    
-	    	document.getElementById("postalerror").innerHTML="Required field should be of length 5";
+	    	document.getElementById("postalerror").innerHTML="Field should be of length 5";
 	    	 error="true";
 	    } 
 		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
@@ -475,7 +475,7 @@ function validatename(id)
 	    else if(document.getElementById("inp_fax").value.length<10)
 	    {
 	    	
-	    	document.getElementById("faxerror").innerHTML="Should be of length 10";
+	    	document.getElementById("faxerror").innerHTML="Field should be of length 10";
 	    	 error="true";
 	    } 
 	    else if(document.getElementById("inp_fax").value.match(faxreg)==null)
@@ -537,7 +537,7 @@ function validatename(id)
 		   }
 	  }
 	  else{
-		  document.getElementById("phoneerror").innerHTML="Required field should contain 10 digits";
+		  document.getElementById("phoneerror").innerHTML="Field should contain 10 digits";
 	    	error="true";
 	  }
   	

@@ -70,9 +70,9 @@
             
              
                   <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Supplier Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Supplier name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="supplier_name" class="input_txtbx" onInput="return validatename(id);" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="supplierperformance.supplier_name"></form:errors></span></td>
-           		  <td valign="top" align="left" class="input_txt" width="30%">Certified To :</td>
+           		  <td valign="top" align="left" class="input_txt" width="30%">Certified to :</td>
 				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="dropdown"  id="certified">
 															<option value="">--Select--</option>			
                   										<option
@@ -99,7 +99,7 @@
 															</select>
 															<br/><span style="color: red;" id="categoryerror"><form:errors path="SupplierPerformance.category"></form:errors></span></td>
                                   
-                  <td valign="top" align="left" class="input_txt" width="30%">ContactName :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Contact name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;" id="contacterror"><form:errors path="supplierperformance.contact_name"></form:errors></span></td>
                 
                 </tr>
@@ -125,11 +125,11 @@
               	<td valign="top" align="left" class="input_txt" width="30%"> State :</td>
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="supplierperformance.state"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+1" name="fax" maxlength="13" class="input_txtbx" id="inp_fax"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+1" name="fax" maxlength="10" class="input_txtbx" id="inp_fax"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
 
               	</tr>
                 <tr class="row2">
-				<td valign="top" align="left" class="input_txt" width="30%">PostalCode :</td>
+				<td valign="top" align="left" class="input_txt" width="30%">Postal code :</td>
 				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" maxlength="5" onkeypress="return validate(event)" class="input_txtbx" id="inp_postalcode" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="supplierperformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Email :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;" id="emailerror"><form:errors path="supplierperformance.email_address"></form:errors></span></td>

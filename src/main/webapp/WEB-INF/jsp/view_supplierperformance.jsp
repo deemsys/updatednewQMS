@@ -78,7 +78,7 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle">Supplier Name:</td>
+							    <td align="left" valign="middle">Supplier name:</td>
 							    <td align="left" valign="middle"><input type="text" name="supplier_name" onInput="return validatename(id);" class="input_txtbx" id="name"  value="${suppliername}"></td>
 							    <td align="left" valign="middle">&nbsp;&nbsp;Phone:</td>
 								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" onkeypress="return validate(event);" class="input_txtbx" value="${phone}"></td>							    
@@ -106,7 +106,7 @@
 					         	<td valign="top" align="left" width="10%">State</td>
           						<td valign="top" align="left" width="10%">Country</td>
           						<td valign="top" align="left" width="10%">Phone</td>
-          						<td valign="top" align="left" width="10%" >e_mail address</td>
+          						<td valign="top" align="left" width="10%" >Email address</td>
           						<td valign="top" align="left" width="10%">Actions</td>
         					</tr>
 						
