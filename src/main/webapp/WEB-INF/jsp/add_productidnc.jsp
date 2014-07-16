@@ -142,7 +142,8 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt"  width="50%" style="padding-left: 60px">Product ID :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" maxlength="32" class="input_txtbx" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="productid_nc" maxlength="32" class="input_txtbx" id="productidnc" 
+onkeyup="ChangeCase(this);" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()" />
                   <br> <span id="productidnc1" style="color:red"></span>
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span></td>
                 </tr>
@@ -160,6 +161,10 @@
                </table>
                </form>
     <script type="text/javascript">
+    function ChangeCase(elem)
+    {
+        elem.value = elem.value.toUpperCase();
+    }
     $(function() {
   		$("#productidnc").on("keypress", function(e) {
   			if (e.which === 32 && !this.value.length)
@@ -168,7 +173,7 @@
   		});
       function validateAlpha4(){
     	    var textInput = document.getElementById("productidnc").value;
-    	    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+    	    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
     	    document.getElementById("productidnc").value = textInput;
     	}
                function validation()

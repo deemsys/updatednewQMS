@@ -124,7 +124,7 @@
 															 <c:forEach items="${type_of_NC_Form.type_of_NCs}" var="types" varStatus="status">
         				       <option value="${types.type_of_nc}">${types.type_of_nc}</option>
 			                  </c:forEach>
-																	</select><span style="color:red;" id="typencerr">
+																	</select><br><span style="color:red;" id="typencerr">
 																	<form:errors path="Nonconformance.type_of_nonconformance"></form:errors></span>
 																	
 																	
@@ -413,7 +413,7 @@ function validation()
  		 if(reported_by=="")
 		{		
 
- 		document.getElementById('reporterr').innerHTML="Required Field Should not be Empty";
+ 		document.getElementById('reporterr').innerHTML="Required field should not be empty";
  	error="true";
  		}
 
@@ -431,7 +431,7 @@ function validation()
 	
 	if(external=="")
 		{
-	document.getElementById("externalerror").innerHTML="Required Field Should not be Empty";
+	document.getElementById("externalerror").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	else
@@ -441,7 +441,7 @@ function validation()
 	}
 	if(datefound == "")
 	 {
-	 document.getElementById("datepicker2").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker2").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -451,14 +451,14 @@ function validation()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker2").innerHTML="Invalid Date";
+	 document.getElementById("datepicker2").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 
 	if(complete == "")
 	 {
-	 document.getElementById("completedate").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("completedate").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -468,13 +468,13 @@ function validation()
 	 }
 	 else
 	 {
-	 document.getElementById("completedate").innerHTML="Invalid Date";
+	 document.getElementById("completedate").innerHTML="Invalid date";
 	 error="true";
 	 }
   	if(typenc =="")
 	 {
 
-		 document.getElementById("typencerr").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("typencerr").innerHTML="Required field should not be empty";
 		 error="true";
 	 } 
   	else
@@ -484,7 +484,7 @@ function validation()
 		if(sourcenc =="")
 		 {
 		
-			 document.getElementById("sourcencerr").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("sourcencerr").innerHTML="Required field should not be empty";
 			 error="true";
 		 }
 		else{
@@ -493,7 +493,7 @@ function validation()
 			if(product =="")
 			 {
 			
-				 document.getElementById("producterr").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("producterr").innerHTML="Required field should not be empty";
 				 error="true";
 			 }
 			else
@@ -505,7 +505,7 @@ function validation()
   	if(quantity =="")
 	 {
 	
-		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("quantitysuspect").innerHTML="Required field should not be empty";
 		 error="true";
 	 } 
 		
@@ -530,7 +530,7 @@ function validation()
 	 	if(costnc =="")
 		 {
 		
-			 document.getElementById("cost").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("cost").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -556,7 +556,7 @@ function validation()
 		 	if(naturenc =="")
 			 {
 			
-				 document.getElementById("nature").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("nature").innerHTML="Required field should not be empty";
 				 error="true";
 			 } 
 				
@@ -574,7 +574,7 @@ function validation()
 			 	if(action =="")
 				 {
 				
-					 document.getElementById("temp").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("temp").innerHTML="Required field should not be empty";
 					 error="true";
 				 } 
 					
@@ -599,7 +599,7 @@ function validation()
 			 	if(responsibility =="")
 				 {
 				
-					 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("responsibilityerror").innerHTML="Required field should not be empty";
 					 error="true";
 				 } 
 					
@@ -623,7 +623,7 @@ function validation()
 				 
 			 	if(dispid1=="")
 				 {
-				 document.getElementById('disid1err').innerHTML="Required Field Should not be Empty";
+				 document.getElementById('disid1err').innerHTML="Required field should not be empty";
 				 error="true";
 				 }
 				
@@ -636,7 +636,7 @@ function validation()
 			 	if(quality1=="")
 			 		{
 									
-						 document.getElementById("qua1").innerHTML="Required No's Field Should not be Empty";
+						 document.getElementById("qua1").innerHTML="Required no's field should not be empty";
 						 error="true";
 					 } 
 						
@@ -654,7 +654,7 @@ function validation()
 				
 			if(dispid2=="")
 				 {
-				 document.getElementById('disid2err').innerHTML="Required Field Should not be Empty";
+				 document.getElementById('disid2err').innerHTML="Required field should not be empty";
 				 error="true";
 				 }
 			else
@@ -666,7 +666,7 @@ function validation()
 	 	if(quality2=="")
 	 		{
 									
-				 document.getElementById("qua2").innerHTML="Required No's Field Should not be Empty";
+				 document.getElementById("qua2").innerHTML="Required no's field should not be empty";
 				 error="true";
 			 } 
 				
@@ -684,7 +684,7 @@ function validation()
 
 			if(dispid3=="")
 				 {
-				 document.getElementById('disid3err').innerHTML="Required Field Should not be Empty";
+				 document.getElementById('disid3err').innerHTML="Required field should not be empty";
 				 error="true";
 				 }
 			else

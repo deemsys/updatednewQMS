@@ -175,12 +175,12 @@
 	 var formlocation = document.getElementById('formlocation').value;
 	 if(formlocation == "")
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("formlocation1").innerHTML="Required field should not be empty";
 		 return false;
 		 }
 	 else if(formlocation.charAt(0) == " ")
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required Field Should not be Spaces";
+		 document.getElementById("formlocation1").innerHTML="Required field should not be spaces";
 		 return false;
 		 }
 	 else if(formlocation.length<4)
@@ -194,7 +194,7 @@
 		 }
 	 else
 		 {
-		 document.getElementById("formlocation1").innerHTML="Required Field Should be Alphabates";
+		 document.getElementById("formlocation1").innerHTML="Required field should be alphabates";
 		 return false;
 		 }
  }

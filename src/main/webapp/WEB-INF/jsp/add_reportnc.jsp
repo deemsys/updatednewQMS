@@ -195,13 +195,13 @@
             	   var groupperson = document.getElementById('groupperson').value;
             	   if(typeofNc == "")
             		   {
-            		   document.getElementById("typeofNc1").innerHTML="Required Field should not be Empty";
+            		   document.getElementById("typeofNc1").innerHTML="Required field should not be empty";
           			 	error="true";
             		   }           	 
             	   
             	 if(groupperson == "")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Required field should not be Empty";
+            		   document.getElementById("groupperson1").innerHTML="Required field should not be empty";
             		   error="true";
             		   }
             	 else if(groupperson.length<4)
@@ -211,7 +211,7 @@
       		   }
             	   else if(groupperson.charAt(0)==" ")
             		   {
-            		   document.getElementById("groupperson1").innerHTML="Required field should not be Spaces";
+            		   document.getElementById("groupperson1").innerHTML="Required field should not be spaces";
             		   error="true";
             		   }
             	              	 if(error=="true")

@@ -56,16 +56,19 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="left"  style="padding-left: 55px">Prefix :</td>
-                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onInput="validateAlpha()" />
+                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onInput="validateAlpha()" onkeyup="ChangeCase(this);"/>
                   <input type="hidden" name="id" id="id" value="${documentprefix.id}"/>
                  <br>   <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
                   
                   </td>
                 </tr>
+                <tr height="10"></tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" style="padding-left: 55px">Description :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="document_id" class="input_txtbx" maxlength="200" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" onInput="validateAlpha1()" />
+                  <td valign="top" align="left" style="padding-left: 55px">Description :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                   <textarea  cols="27" rows="5" class="input_txtarea"  maxlength="200"  id="document_id" >${documentprefix.document_id}</textarea>
+                <input type="hidden" name="document_id" id="duplicate">
                   <br>  <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
@@ -99,7 +102,7 @@ $(function() {
 		});
 		function validateAlpha(){
 	    var textInput = document.getElementById("docprefix").value;
-	    textInput = textInput.replace(/[^A-Z ]/g, "");
+	    textInput = textInput.replace(/[^A-Za-z]/g, "");
 	    document.getElementById("docprefix").value = textInput;
 	}
 /*  function validateAlpha1(){
@@ -107,6 +110,10 @@ $(function() {
 	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
 	    document.getElementById("document_id").value = textInput;
 	} */
+	function ChangeCase(elem)
+	 {
+	     elem.value = elem.value.toUpperCase();
+	 }
   function validation()
  {
 	
@@ -115,6 +122,8 @@ $(function() {
 	 var desc = /[A-Za-z ]+$/;
 	 var docprefix = document.getElementById('docprefix').value;
 	 var document_id= document.getElementById('document_id').value;
+	document.getElementById("duplicate").value=document.getElementById('document_id').value;
+	
 	  document.getElementById("docprefix1").innerHTML="";
 	   document.getElementById("document_id1").innerHTML="";
 	 if(docprefix =="")

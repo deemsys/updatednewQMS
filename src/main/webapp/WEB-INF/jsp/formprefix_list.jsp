@@ -160,9 +160,9 @@
 			      <form action="formprefix_list" method="POST"> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
-							<td valign="top" align="left" width="20%"> Id</td>
-							<td valign="top" align="left" width="20%">Form Name</td>
-							<td valign="top" align="left" width="20%">Form Prefix</td>
+							<td valign="top" align="left" width="20%">ID</td>
+								<td valign="top" align="left" width="20%">Form Prefix</td>
+							<td valign="top" align="left" width="20%">Description</td>						
 							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>
 							<c:if test="${fn:length(formFormPrefix.formPrefixs) gt 0}">
@@ -171,8 +171,9 @@
         				       				
         				       				
         				       				 <td valign="top" align="left"  width="10%"> ${formprefix.id}</td>
-        				       				 <td valign="top" align="left" width="15%">${formprefix.form_name}</td>
         				       				 <td valign="top" align="left" width="15%">${formprefix.form_prefix}</td>
+        				       				 <td valign="top" align="left" width="15%">${formprefix.form_name}</td>
+        				       				
         				       					<td valign="top" align="left">
 												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_formprefix?id=${formprefix.id}"/>" style="padding-right:10px;">Edit</a>
 											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_formprefix?id=${formprefix.id}"/>" onclick="return confirmation()">Remove</a>

@@ -56,14 +56,17 @@
               
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" 
+                	  onkeyup="ChangeCase(this);" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
                  <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
-                </tr>
+                </tr><tr height="10"></tr>
                   <tr class="row2">
                 
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Description :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_name" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="200" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
+                  <td valign="top" align="left" class="input_txt" width="70%">
+                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="form_name" id="formname">${formprefix.form_name}</textarea>
+               
                  <br>  <span id="document_id1" style="color:red"></span>  <span id="formname1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
@@ -100,7 +103,7 @@
       		});
       function validateAlpha(){
     	    var textInput = document.getElementById("formprefix").value;
-    	    textInput = textInput.replace(/[^A-Z ]/g, "");
+    	    textInput = textInput.replace(/[^A-Za-z]/g, "");
     	    document.getElementById("formprefix").value = textInput;
     	}
     	/* function validateAlpha1(){
@@ -108,6 +111,10 @@
     	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
     	    document.getElementById("formname").value = textInput;
     	} */
+    	function ChangeCase(elem)
+    	{
+    	    elem.value = elem.value.toUpperCase();
+    	}
        function validation()
        {
       	

@@ -137,14 +137,17 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.id}" onInput="validateAlpha();"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onkeyup="ChangeCase(this);" value="${documentprefix.id}" onInput="validateAlpha();"/>
                 <br>  <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
                 </tr>
+                <tr height="10"></tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="document_id" class="input_txtbx3" maxlength="200" id="document_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.document_id}" onInput="validateAlpha1();"/>
+                  <td valign="top" align="left" class="input_txt" style="padding-left: 55px">Description :</td>
+                  <td valign="top" align="left" class="input_txt" >
+                  <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="document_id" id="document_id"></textarea>
+             
                  <br>   <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
@@ -164,6 +167,10 @@
  </table>
  </form>
  <script type="text/javascript">
+ function ChangeCase(elem)
+ {
+     elem.value = elem.value.toUpperCase();
+ }
  $(function() {
 		$("#docprefix").on("keypress", function(e) {
 			if (e.which === 32 && !this.value.length)
@@ -180,7 +187,7 @@
  
  function validateAlpha(){
 	    var textInput = document.getElementById("docprefix").value;
-	    textInput = textInput.replace(/[^A-Z ]/g, "");
+	    textInput = textInput.replace(/[^A-Za-z]/g, "");
 	    document.getElementById("docprefix").value = textInput;
 	}
  /* function validateAlpha1(){

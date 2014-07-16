@@ -140,13 +140,16 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onkeyup="ChangeCase(this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
                    <br> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
+                <tr height="10"></tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Description :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="form_name" maxlength="200" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" onInput="validateAlpha1();"/>
+                  <td valign="top" align="left" class="input_txt" width="50%" style="padding-left: 55px">Description :</td>
+                  <td valign="top" align="left" class="input_txt" >
+                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="form_name" id="formname"></textarea>
+                 <%--  <input type="text" name="form_name" maxlength="200" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" onInput="validateAlpha1();"/> --%>
                   <br> <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
                 </tr>
@@ -181,7 +184,7 @@ $(function() {
 		});
 function validateAlpha(){
     var textInput = document.getElementById("formprefix").value;
-    textInput = textInput.replace(/[^A-Z ]/g, "");
+    textInput = textInput.replace(/[^A-Za-z]/g, "");
     document.getElementById("formprefix").value = textInput;
 }
 /* function validateAlpha1(){
@@ -189,6 +192,10 @@ function validateAlpha(){
     textInput = textInput.replace(/[^A-Za-z ]/g, "");
     document.getElementById("formname").value = textInput;
 } */
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
  function validation()
  {
 	

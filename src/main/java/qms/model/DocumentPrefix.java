@@ -5,8 +5,12 @@ public class DocumentPrefix {
 	private String id;
 	@NotEmpty
 	private String doc_prefix;
-	@NotEmpty
+	
+	
 	private String document_id;
+	
+	
+	
 	
 	public DocumentPrefix() {
 		super();

@@ -152,7 +152,7 @@
 		 }
 	 else if(processname.charAt(0)==" ")
 	 {
-	 document.getElementById("processname2").innerHTML="Required Field Should not be Spaces";
+	 document.getElementById("processname2").innerHTML="Required field should not be spaces";
 	 error="true";
 	 }
 	 else if(processname.length<4)

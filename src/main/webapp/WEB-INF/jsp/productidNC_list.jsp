@@ -152,7 +152,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
 							<td valign="top" align="left" width="20%">Product SNO</td>
-							<td valign="top" align="left" width="20%">Product Id</td>
+							<td valign="top" align="left" width="20%">Product ID</td>
 							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>
 							<c:if test="${fn:length(productId_NC_Form.productIDNCs) gt 0}">

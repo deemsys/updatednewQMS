@@ -133,7 +133,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" onInput="validateAlpha()"/>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" onInput="validateAlpha()" onkeyup="ChangeCase(this);"/>
                 <br>  <span id="processid1"></span>
                   <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
@@ -185,7 +185,7 @@
 		});
  function validateAlpha(){
 	    var textInput = document.getElementById("processid").value;
-	    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+	    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
 	    document.getElementById("processid").value = textInput;
 	}
  function validateAlpha1(){
@@ -199,6 +199,11 @@
 	    document.getElementById("processowner").value = textInput;
 	}
  
+ function ChangeCase(elem)
+ {
+     elem.value = elem.value.toUpperCase();
+ }
+
  function validation()
  {
 	var error="";
@@ -208,9 +213,9 @@
 	 var processname = document.getElementById('processname').value;
 	 var processowner = document.getElementById('processowner').value;
 	 var errord = "Required field should not be empty";
-	 var space = "Required Field Should not be Spaces";
-	 var num = "Required Field Should be AlphaNumeric";
-	 var wds = "Required Field Should be Alphabate";
+	 var space = "Required field should not be spaces";
+	 var num = "Required field should be alphanumeric";
+	 var wds = "Required field should be alphabate";
 	 var ermsg="Required and must be of length 4 to 32";
 	var msg = errord.fontcolor("red");
 	var spmsg = space.fontcolor("red");

@@ -151,7 +151,7 @@
 			      <form> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
-							<td valign="top" align="left" width="20%">Type Id</td>
+							<td valign="top" align="left" width="20%">Type ID</td>
 							<td valign="top" align="left" width="20%">Type of NC</td>
 							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>

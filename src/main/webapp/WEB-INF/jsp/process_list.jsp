@@ -144,7 +144,7 @@
 			      <form action="process_list" method="POST"> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
-							<td valign="top" align="left" width="20%">Process Id</td>
+							<td valign="top" align="left" width="20%">Process ID</td>
 							<td valign="top" align="left" width="20%">Process Name</td>
 							<td valign="top" align="left" width="20%">Process Owner</td>
 							<td valign="top" align="left" width="20%">Actions</td>

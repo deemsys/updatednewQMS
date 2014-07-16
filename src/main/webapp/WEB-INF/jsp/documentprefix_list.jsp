@@ -142,9 +142,9 @@
 			      <form action="documentprefix_list" method="POST"> 
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				     <tr class="title">
-							<td valign="top" align="left" width="20%"> Id</td>
+							<td valign="top" align="left" width="20%"> ID</td>
 							<td valign="top" align="left" width="20%">Prefix</td>
-							<td valign="top" align="left" width="20%">Document Id</td>
+							<td valign="top" align="left" width="20%">Description</td>
 							<td valign="top" align="left" width="20%">Actions</td>
 							</tr>
 							<c:if test="${fn:length(documentPrefixForm.documentPrefixs) gt 0}">
