@@ -200,11 +200,16 @@ $(function() {
                  --%>
                  
                  </tr>    
-                 <tr class="row1">
-                  <td valign="top" align="left">&nbsp;</td>
-                  <td></td><td></td>
-                  <td valign="top" align="center"><input type="submit" value="Update" onclick="return onsubmitvalidate();" class="submit_btn1"></td>
+                  <tr class="row1">
+                  <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
+                  <td></td>
+                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Update" onclick="return onsubmitvalidate();" class="submit_btn1"></td>
                 </tr>
+                 <!-- <tr class="row1">
+                  <td valign="top" align="left">&nbsp;</td>
+                  <td></td>
+                  <td valign="top" align="center"><input type="submit" value="Update" onclick="return onsubmitvalidate();" class="submit_btn1"></td>
+                </tr> -->
               </table>
               
             </div>

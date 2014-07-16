@@ -147,7 +147,7 @@ function doAjaxPost() {
                 <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="Employee.employee_id"></form:errors></td>
                  <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                  <td valign="top" align="left" class="input_txt" width="20%">
-                 <select name="qualified_by" class="input_txtbx" id="qualifiedby">
+                 <select name="qualified_by" class="dropdown" id="qualifiedby">
                   			<option value="">--Select--</option>
                   		<option value="Education">Education</option>
 						<option value="Experience">Experience</option>
@@ -160,7 +160,7 @@ function doAjaxPost() {
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="inp_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.name}"  />
                   <br/><span style="color: red;" id="nameerror"><form:errors path="Employee.name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Type :</td>
-               <td valign="top" align="left" class="input_txt" width="20%"><select	name="type_of_training" class="input_txtbx" id="type">
+               <td valign="top" align="left" class="input_txt" width="20%"><select	name="type_of_training" class="dropdown" id="type">
                  	<option value="">--Select--</option>
 				                  									
                   										<option
@@ -262,8 +262,8 @@ function doAjaxPost() {
                 
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
-                  <td></td><td></td> 
-                  <td valign="top" align="center">&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return onsubmitvalidate();"></td>
+                  <td></td> 
+                  <td valign="top" align="left">&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return onsubmitvalidate();"></td>
                 </tr>
               </table>
            
