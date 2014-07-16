@@ -497,41 +497,7 @@ function validatename(id)
 	    	document.getElementById('postalerror').innerHTML="";
 	    	}
 	    
-	    /* var faxreg= /^\+?[0-9]+$/;
-	    var letters = /^[A-Za-z]+$/;  
-	    if(fax=="")	
-		{
-		document.getElementById("faxerror").innerHTML="Required field should not be empty";
-		error="true";
-		}
-
-	    else if(document.getElementById("inp_fax").value.length<10)
-	    {
-	    	
-	    	document.getElementById("faxerror").innerHTML="Field should be of length 10";
-	    	 error="true";
-	    } 
-	    else if(document.getElementById("inp_fax").value.match(faxreg)==null)
-	    {
-	    	document.getElementById("faxerror").innerHTML="Invalid fax format";
-	    	error="true";
-	    }
-	    else if(fax.substring(0,1)==" ")
-		{
-		document.getElementById("faxerror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
-	    else if(fax.match(letters))
-    	{
-    	document.getElementById("faxerror").innerHTML="Enter numeric values";
-    	}
-    
-	    else
-	    	{
-	    	document.getElementById("faxerror").innerHTML="";
-	    	}
- */
- 
+	     
  document.getElementById("faxerror").innerHTML=" ";
 	
 	if(document.getElementById("inp_fax").value=="")
