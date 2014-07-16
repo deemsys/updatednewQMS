@@ -47,7 +47,7 @@ public class JobController
 	{
 	//List<Job> jobs=new ArrayList<Job>();
 	//jobs=jobDAO.getJobs();
-	String returnHTML="<select id='job_title' name='job_title'>";
+	String returnHTML="<select id='job_title' class='input_txtbx' name='job_title'>";
 	
 	for (Job job : jobDAO.getJobs()) {
 		System.out.println(job.getJob_title());
