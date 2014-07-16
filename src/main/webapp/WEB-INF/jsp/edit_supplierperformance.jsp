@@ -257,7 +257,7 @@ function validatename(id)
 		var category = document.getElementById('category').value; 
 		var error="";
 		alert("hi");
-		if(category=="")
+		if(category=="")	
 		{
 		
 		document.getElementById("categoryerror").innerHTML="Please select one";
