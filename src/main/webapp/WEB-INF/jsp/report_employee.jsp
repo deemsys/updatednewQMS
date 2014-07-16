@@ -81,14 +81,15 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="document_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%" >
-								Select Employee Report Type :
-								</td>
-								<td valign="middle" align="left" class="input_txt" width="100%">
-								<!-- <input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/> -->
+							
+							 <td valign="middle" align="left" class="input_txt" width="20%">Select Employee Report Type :</td>
 								
-								<br>
-								<br>
+							   <td valign="middle" align="left" class="input_txt" width="20%">
+							
+								<!-- <td valign="middle" align="left" class="input_txt" width="100%">
+								<input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/>
+								 -->
+								
 								<input type="radio" onchange="validation1()" name="doc_type" value="0" id="id_training_needs" checked/>Training Needs<br/>
 								<input type="radio"  onclick="validation1()"  name="doc_type" value="1" id="id_training_report_for_each_employee"/>Training Report for Each Employee<br/>
 								 <input type="radio" onclick="validation()" name="doc_type" value="2" id="id_qualification_for_each_employee"/>Qualification for each employee<br/>
@@ -100,9 +101,10 @@
 								</tr>
 								
 								<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Select Report Type:</td>
-								<td valign="top" align="left" class="input_txt" width="100%">
+						
+						 <td valign="middle" align="left" class="input_txt" width="20%">Select Report Type :</td>
+								
+							 <td valign="top" align="left" class="input_txt" width="20%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
 									
@@ -110,7 +112,12 @@
 								
 							</tr>
 						
-							<!-- <tr class="row2">
+						<!-- </table>
+						
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						
+						
+							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select Report Type:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
@@ -121,16 +128,16 @@
 								
 							</tr> -->
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Enter the Name to appear on the Report:</td>
-								<td valign="top" align="left" class="input_txt" width="100%">
+								 <td valign="middle" align="left" class="input_txt" width="20%"> Enter the name to appear on the report :</td>
+									
+							  <td valign="middle" align="left" class="input_txt" width="20%">
 									<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)"; style="width:40%;" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
-								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report:
+								 <td valign="middle" align="left" class="input_txt" width="20%"> Enter the fields required on the report :</td>
+									
 									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -168,19 +175,13 @@
 								</td>
 								
 							</tr>
-							
-							  <tr class="row1">
-               <td></td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                 <td valign="middle" align="left" class="input_txt" ><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1"></td>
-                </tr>
-							<!-- <tr >
+							<tr >
              <td  colspan="2" align="center" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
-             </tr> --></table>
+             </tr></table>
             
            
              </tr>
