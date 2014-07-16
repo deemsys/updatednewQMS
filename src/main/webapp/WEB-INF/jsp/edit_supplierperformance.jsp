@@ -100,7 +100,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Address :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="address" class="input_txtbx" id="inp_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.address}" /><br/><span style="color: red;"><form:errors path="SupplierPerformance.address"></form:errors></span></td> --%>
-                   <textarea class="input_txtbx" id="inp_address" name="address"  style="height: 50px;" >${supplierperformance.address}</textarea><br/>
+                   <textarea class="input_txtbx" id="inp_address" name="address"  style="height: 50px;">${supplierperformance.address}</textarea><br/>
 				<span style="color: red;" id="addresserror"><form:errors path="supplierperformance.address"></form:errors></span></td>
 			
                   <td valign="top" align="left" class="input_txt" width="30%">Title :</td>

@@ -79,11 +79,11 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle">Supplier Name:</td>
-							    <td align="left" valign="middle"><input type="text" placeholder="SP1000" name="supplier_name" class="input_txtbx" id="suppliername" onInput="return validateusername(id);" value="${suppliername}"></td>
+							    <td align="left" valign="middle"><input type="text" name="supplier_name" onInput="return validatename(id);" class="input_txtbx" id="name"  value="${suppliername}"></td>
 							    <td align="left" valign="middle">&nbsp;&nbsp;Phone:</td>
-								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
+								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" onkeypress="return validate(event);" class="input_txtbx" value="${phone}"></td>							    
 							    <td align="left" valign="middle">&nbsp;&nbsp;Email:</td>
-							    <td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="email_address" id="email" class="input_txtbx"value="${email}"></td>
+							    <td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="email_address" id="mail" class="input_txtbx" value="${email}"></td>
 							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformance" ></td>
 							  	
 							  
@@ -252,17 +252,53 @@ window.location="?do=viewsupplierperformance&suppliername="+document.getElementB
 		textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
 		document.getElementById(id).value = textInput;
 	}
+ function ChangeCase(elem)
+ {
+     elem.value = elem.value.toUpperCase();
+ }
+ function validatename(id)
+ {
+ 	var textInput = document.getElementById(id).value;
+ 	textInput = textInput.replace(/[^A-Za-z ]/g, "");
+ 	document.getElementById(id).value = textInput;
+ }
 
 
 </script>
 <script>
 $(function() {
-	$("#email").on("keypress", function(e) {
+	$("#mail").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});	
+$(function() {
+	$("#name").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});	
+$(function() {
+	$("#phone").on("keypress", function(e) {
 		if (e.which === 32 && !this.value.length)
 	        e.preventDefault();
 	});
 	});	
 </script>
+<script type="text/javascript">
+       function validate(event) {
+          
+           var regex = new RegExp("^[0-9]+$");
+           var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+           if (!regex.test(key)) {
+             // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+               event.preventDefault();
+               return false;
+           }
+       }       
+    </script>
+
+
 <!-- <script type="text/javascript">
   function validatefind()
   {
