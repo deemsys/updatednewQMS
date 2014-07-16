@@ -69,7 +69,8 @@
                   <td valign="top" align="left" class="input_txt" width="30%">SupplierName :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="SupplierPerformance.supplier_name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Certified To :</td>
-				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" id="certified_to">
+				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" id="certified">
+                  										<option value="">--Select--</option>
                   										<option
 															<c:if test="${supplierperformance.certified_to eq 'ISO 9001'}"><c:out value="Selected"/></c:if>
 															value="ISO 9001">ISO 9001</option>
@@ -84,6 +85,7 @@
 		        <tr class="row2">
 				  <td valign="top" align="left" class="input_txt" width="30%">Category :</td>
 				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_txtbx" id="category">
+                  										<option value="">--Select--</option>
                   										<option
 															<c:if test="${supplierperformance.category eq 'Critical'}"><c:out value="Selected"/></c:if>
 															value="Critical">Critical</option>
@@ -91,7 +93,7 @@
 															<c:if test="${supplierperformance.category eq 'Non Critical'}"><c:out value="Selected"/></c:if>
 															value="Non Critical">Non Critical</option>
 															</select>
-															<br/><span style="color: red;" id="categoryerror"><form:errors path="SupplierPerformance.category"></form:errors></span></td>
+															<br/><span style="color: red;" id="categoryerror"></span><form:errors path="SupplierPerformance.category"></form:errors></td>
                   <td valign="top" align="left" class="input_txt" width="30%">Contact Name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;" id="contacterror"><form:errors path="SupplierPerformance.contact_name"></form:errors></span></td>
                                   
@@ -251,9 +253,28 @@ function validatename(id)
 		var postal = document.getElementById('inp_postalcode').value;
 		var email = document.getElementById('inp_email_address').value;
 		var country = document.getElementById('inp_country').value;
-		//var certified = document.getElementById('certified').value;
-		//var category = document.getElementById('category').value; 
+		var certified = document.getElementById('certified').value;
+		var category = document.getElementById('category').value; 
 		var error="";
+		alert("hi");
+		if(category=="")
+		{
+		
+		document.getElementById("categoryerror").innerHTML="Please select one";
+		error="true";
+		}
+		else{
+		document.getElementById("categoryerror").innerHTML="";
+		}
+		if(certified=="")
+		{
+		
+		document.getElementById("certifiederror").innerHTML="Please select one";
+		error="true";
+		}
+		else{
+		document.getElementById("certifiederror").innerHTML="";
+		}
 		document.getElementById("nameerror").innerHTML="";
 		if(document.getElementById("inp_supplier_name").value=="")
 			{
