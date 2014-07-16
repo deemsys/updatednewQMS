@@ -62,17 +62,17 @@
 						
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr class="row1">
-							<td valign="top" align="left" class="input_txt" width="30%" width="25%">Non-Conformance (NC)ID:</td>
+							<td valign="top" align="left" class="input_txt" width="30%" width="25%" style="height: 30px">Non-Conformance (NC)ID&nbsp;:</td>
 							<td valign="top" align="left" class="input_txt" width="30%" width="25%">
 							<input type="hidden" name="id" class="input_txtbx" value="<c:out value="${id }"/>" /><c:out value="${id}" /> <br/><font color="Red" size="+1"></font></td>
-							<td valign="top" align="left" class="input_txt" width="30%" id="external_label"  style="display:none;> External ID </td>
+							<td valign="top" align="left" class="input_txt" width="30%" id="external_label"  style="display:none;"> External ID </td>
 							<td valign="top" align="left" class="input_txt" width="30%">
 							<input type="text" class="input_txtbx" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
 						<br/><span style="color:red;" id="externalerror"></span></td>
 				 </tr>
 				   <tr class="row2">
 		         
-							<td valign="top" align="left" class="input_txt" width="30%">Source of NC: </td>
+							<td valign="top" align="left" class="input_txt" width="30%">Source of NC&nbsp;: </td>
 						    <td valign="top" align="left" class="input_txt" width="30%">
 				            <select name="source_of_nonconformance" class="input_txtbx" id="source_of_nonconformance">
 				             	<option value="">--Select--</option>
@@ -93,7 +93,7 @@
 																		<br/>
 																		<font color="Red" size="+1"></font>
 																		</td>
-																<td valign="top" align="left" class="input_txt" width="30%"> Product ID: </td>
+																<td valign="top" align="left" class="input_txt" width="30%"> Product ID&nbsp;: </td>
 					                      	<td valign="top" align="left" class="input_txt" width="30%">
 					                      	<select name="product_id" class="input_txtbx" id="product_id">
 				                  										<option value="">--Select--</option>
@@ -105,7 +105,7 @@
 																	</tr>
 																	
 																	<tr class="row1">
-																		<td valign="top" align="left" class="input_txt" width="30%">Type Of NC: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Type Of NC&nbsp;: </td>
 						          										<td valign="top" align="left" class="input_txt" width="30%">
 				                  									<select name="type_of_nonconformance" class="input_txtbx" id="type_of_nonconformance" onchange="doAjaxPost();" >
 				                  										<option value="">--Select--</option>
@@ -130,7 +130,7 @@
 																	
 																	</td>
 
-																		<td valign="top" align="left" class="input_txt" width="30%">Quantity Suspect: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Quantity Suspect&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx"
 																			id="quantity"
@@ -147,7 +147,7 @@
 																	
 
 																	<tr class="row2">
-																		<td valign="top" align="left" class="input_txt" width="30%">Nature of NC: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Nature of NC&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
 																		<textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;" ></textarea>
 																			<br/><span id="nature" style="color: red;"></span>
@@ -155,7 +155,7 @@
 																		</span>
 																		</td>
 																	
-																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Required?(Y/N): </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Required?(Y/N)&nbsp;: </td>
 																		
 																	
 																		    <td valign="top" align="left" class="input_txt" width="30%">
@@ -166,7 +166,7 @@
 																	
 																	<tr class="row1">
 																	
-						                    							<td valign="top" align="left" class="input_txt" width="30%">Date Found: </td>
+						                    							<td valign="top" align="left" class="input_txt" width="30%">Date Found&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -176,7 +176,7 @@
 																		<span style="color: red;"><form:errors path="Nonconformance.date_found"></form:errors>
 																		</span>
 																		</td>
-																		<td valign="top" align="left" class="input_txt">Disposition: </td>
+																		<td valign="top" align="left" class="input_txt">Disposition&nbsp;: </td>
 						                    						<td valign="top" align="left" "class="input_txt">
 						                    						<table  cellpadding="0" cellspacing="0"><tr>
 						                    						<td style="vertical-align:top; padding:0px;">
@@ -197,7 +197,7 @@
 						                    					<td align="left">
 						                    					<label class="number_btn1"  id="button1"   style="display:none;" >No's</label>
 						                    					</td></tr>
-						                    					<tr><td colspan="3"><span style="color: red;" id="qua1"><form:errors path="Nonconformance.quality1"></form:errors></span></td></tr>
+						                    					<tr ><td colspan="3" align="left"><span style="color: red;" id="qua1"><form:errors path="Nonconformance.quality1"></form:errors></span></td></tr>
 						                    					
 						                    					<tr>
 						                    						<td style="vertical-align:top;padding:0px;"><select name="disposition2" id="disid2" class="input_txtbx" onchange="show2();">
@@ -249,13 +249,13 @@
 																	</tr>
 																	
 																	<tr class="row2">
-																		<td valign="top" align="left" class="input_txt" width="30%">Reported By: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Reported By&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
-								 										 <div id="reported_by">
-								 										 <select name="reported_by" id="reported_by" class="input_txtbx">
-								 										 <option value="">--Select--</option></select></div><br><span style="color:red;" id="reporterr"></span>
+								 										 <div id="reporteddiv_by">
+								 										 <select name="reported_by" id="reported_id" class="input_txtbx">
+								 										 <option value="">--Select--</option></select><br><span style="color:red;" id="reporterr"></span></div>
  														  
-																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Complete Date:</td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Complete Date&nbsp;:</td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="datepicker1"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -270,14 +270,14 @@
 															
 																	<tr class="row1">
 								
-																	<td valign="top" align="left" class="input_txt" width="30%"> Temporary Action: </td>
+																	<td valign="top" align="left" class="input_txt" width="30%"> Temporary Action&nbsp;: </td>
                														<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" style="height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;"></span>
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          
 															
 															
-																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Responsibility: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Responsibility&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
 																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_txtbx">
               																<option value="">--Select--</option>
@@ -291,13 +291,13 @@
 																	</tr>
 																	
 																	<tr class="row2">
-																 	<td valign="top" align="left" class="input_txt" width="30%"> Corrective Action Required(Y/N):</td>
+																 	<td valign="top" align="left" class="input_txt" width="30%"> Corrective Action Required(Y/N)&nbsp;:</td>
 																	<td valign="top" align="left" class="input_txt" width="30%">
 																	<input type="radio" name="corrective_action_required"  value="Yes" class="input_txt" width="30%" checked="true">Yes&nbsp;&nbsp;&nbsp;
 																	<input type="radio" name="corrective_action_required" value="No" class="input_txt" width="30%">No
                 	          											</td>
 																	
-																		<td valign="top" align="left" class="input_txt" width="30%">Cost of NC: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%">Cost of NC&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="costofnc"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
@@ -343,7 +343,7 @@
    function doAjaxPost() {
 	 
 	document.getElementById('type_of_nonconformance').style.display="block";
-	 document.getElementById("reported_by").style.display="inline";
+	 document.getElementById("reported_id").style.display="inline";
 	var filer_value = $('#type_of_nonconformance').val();
 	var group_person=$('#group_person').val();
 	
@@ -353,7 +353,7 @@
 		data : "type_of_nonconformance=" + filer_value+"&group_person="+group_person,
 		success : function(response) {
 	
-		$('#reported_by').html(response);
+		$('#reporteddiv_by').html(response);
 			},
 		error : function(e) {
 			alert('Error: ' + e);
@@ -382,25 +382,35 @@ function showDiv() {
 </script>
 
 <script>
+
 function validation()
 {
+var values = [];
+$('#reported_id').each(function() { 
+    values.push( $(this).attr('value') );
+   
+});
+
 	//update.submit();
 	var error="";
    	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
-   	var datefound = document.getElementById('datepicker').value;
-	var complete = document.getElementById('datepicker1').value;
-	var quantity = document.getElementById('quantity').value;
-	var costnc = document.getElementById('costofnc').value;
-	var action = document.getElementById('tempaction').value;
+   	var datefound = document.getElementById('datepicker').value;  
+	var complete = document.getElementById('datepicker1').value;	
+	var quantity = document.getElementById('quantity').value;	
+	var costnc = document.getElementById('costofnc').value;	
+	var action = document.getElementById('tempaction').value;	
 	var naturenc = document.getElementById('natureofnc').value;
-	var quality1 = document.getElementById('quality1').value;
-	var quality2 = document.getElementById('quality2').value;
-	var quality3 = document.getElementById('quality3').value;
-	var typenc = document.getElementById('type_of_nonconformance').value;
-	var sourcenc = document.getElementById('source_of_nonconformance').value;
-	var product = document.getElementById('product_id').value;
+	var quality1 = document.getElementById('quality1').value;	
+	var quality2 = document.getElementById('quality2').value;	
+	var quality3 = document.getElementById('quality3').value;	
+	var typenc = document.getElementById('type_of_nonconformance').value;	
+	var sourcenc = document.getElementById('source_of_nonconformance').value;	
+	var product = document.getElementById('product_id').value;	
 	var responsibility = document.getElementById('name_of_disposition_responsibility').value;
+	
+		 document.getElementById('reporterr').innerHTML="";
  	var external = document.getElementById('external_id').value;
+ 	
  	var reported_by = document.getElementById('reported_id').value;
  	
 	var dispid1 = document.getElementById('disid1').value;
@@ -408,18 +418,26 @@ function validation()
 	var dispid3 = document.getElementById('disid3').value; 
  
 	
- 	 if(typenc!="")
+ if(typenc=="")
+	 {
+ if(reported_by=="")
+	{		
+
+	document.getElementById('reporterr').innerHTML="Please select type of nc";
+error="true";
+	}	}
+ if(typenc!="")
 		{
  		 if(reported_by=="")
 		{		
-
+ 			document.getElementById('reporterr').innerHTML="";
  		document.getElementById('reporterr').innerHTML="Required field should not be empty";
  	error="true";
  		}
 
  	 else
  		 {
- 		 document.getElementById('reporterr').innerHTML="";
+ 		
  		 }
 		}
  	 
@@ -534,10 +552,10 @@ function validation()
 			 error="true";
 		 } 
 			
-	 	else if(document.getElementById("costofnc").value.length<4 || document.getElementById("costofnc").value.length>=32)
+	 	else if(document.getElementById("costofnc").value==0)
 		    {
 		    	
-		    	document.getElementById("cost").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("cost").innerHTML="Should be greater than 0";
 		    	 error="true";
 		    } 
 		

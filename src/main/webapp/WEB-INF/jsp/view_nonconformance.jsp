@@ -114,11 +114,11 @@
 				<form action="view_nonconformance" name="dashboard" method="POST">			
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="5%">Id</td>
+									<td valign="top" align="left" width="5%">ID</td>
 									<td valign="top" align="left" width="20%">Source of NonConformance</td>
 									<!-- <td valign="top" align="left" width="10%">External ID</td> 
 									 --><td valign="top" align="left" width="20%">Type of Non Conformance</td>
-									<td valign="top" align="left" width="10%">Product Id</td>
+									<td valign="top" align="left" width="10%">Product ID</td>
 									<td valign="top" align="left" width="20%">Quantity Suspect</td>
 									<td valign="top" align="left" width="25%">Action</td>
 									
@@ -151,7 +151,7 @@
 
   									<c:if test="${fn:length(nonConformanceForm.nonconformance) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Participants Found!!!</b></span></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Records Found!!!</b></span></center></td>
 							    		
 							    	</tr>
 							    	</c:if>

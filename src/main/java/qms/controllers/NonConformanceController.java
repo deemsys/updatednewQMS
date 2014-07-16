@@ -633,7 +633,7 @@ public class NonConformanceController {
 				returnText=returnText+"<select name='reported_by' class='input_txtbx' id='reported_id'>";
 			 	
 				System.out.println("Group Person"+group_person);
-				returnText+="<option value=''>-select-</option>";
+				returnText+="<option value=''>-Select-</option>";
 				for(String typenc:resultHTML)
 				{
 					returnText+="<option value='"+typenc+"'";

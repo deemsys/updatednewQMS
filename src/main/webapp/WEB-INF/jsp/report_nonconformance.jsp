@@ -202,7 +202,7 @@
              <td  colspan="2" align="center" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit"  id="export"  name="export" value="Generate" class="submit_btn1" onclick="return checkboxvalid();">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" onclick="return submit();"></td>
+              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" ></td>
             
              </tr></table>
             

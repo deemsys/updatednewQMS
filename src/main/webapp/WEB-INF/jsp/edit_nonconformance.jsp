@@ -71,14 +71,14 @@
   				
 
                         		<tr class="row1">
-				                  <td valign="top" align="left" class="input_txt" width="20%"> Non-Conformance(ID): </td>
-				                  <td valign="top" align="left" class="input_txt" width="20%">
+				                  <td valign="top" align="left" class="input_txt" width="20%" style="height: 30px"> Non-Conformance(ID)&nbsp;:</td>
+				                  <td valign="top" align="left" class="input_txt" width="20%" height="20%">
 				                 
 				                 <input type="hidden" name="id" value="<c:out value="${nonconformance.id}"/>"/><c:out value="${nonconformance.id}"/>
 				                   	<br><font color="Red" size="+1"></font>
 				                  </td>
 				                  
-				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID: </td>
+				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  class="input_txtbx" style="display:block;" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" />
 				                  	<span style="color:red;" id="externalerror"></span>
 				                  	</td>
@@ -86,7 +86,7 @@
 				                
 
 								 <tr class="row2">
-						         	<td valign="top" align="left" class="input_txt" width="20%"> Source of NC: </td>
+						         	<td valign="top" align="left" class="input_txt" width="20%"> Source of NC&nbsp;: </td>
 						           <td valign="top" align="left" class="input_txt" width="20%">
 				                  		<select name="source_of_nonconformance" class="input_txtbx" id="source_of_nonconformance" onclick="showDiv()">
 						                    <option <c:if test="${nonconformance.source_of_nonconformance eq 'Internal Audit'}"><c:out value="Selected"/></c:if> value="Internal Audit" >Internal Audit</option>
@@ -100,7 +100,7 @@
 				                   		</select>
 				                   		<br><span style="color: red;" id="sourcencerr"><form:errors path="Nonconformance.source_of_nonconformance"></form:errors></td>
 						         	
-					            	<td valign="top" align="left" class="input_txt" width="20%"> Product ID: </td>
+					            	<td valign="top" align="left" class="input_txt" width="20%"> Product ID&nbsp;: </td>
 					                      	<td valign="top" align="left" class="input_txt" width="20%">
 					                      	<select name="product_id" class="input_txtbx" id="product_id">
 				                  										<option value="">--Select--</option>
@@ -112,7 +112,7 @@
 					                  </tr>
 								 
 								<tr class="row1">
-				                  	<td valign="top" align="left" class="input_txt" width="20%"> Type of NC: </td>
+				                  	<td valign="top" align="left" class="input_txt" width="20%"> Type of NC&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 				                  		<select name="type_of_nonconformance" class="input_txtbx" id="type_of_nonconformance" onchange="doAjaxPost();">
 						                    <option <c:if test="${nonconformance.type_of_nonconformance eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
@@ -124,7 +124,7 @@
 			                  </c:forEach>
 				                   		</select><span style="color: red;" id="typencerr"><form:errors path="Nonconformance.type_of_nonconformance"></form:errors>
 				                   	</td>
-				                 	<td valign="top" align="left" class="input_txt"> Quantity Suspect: </td>
+				                 	<td valign="top" align="left" class="input_txt"> Quantity Suspect&nbsp;: </td>
 				                    <td valign="top" align="left" class="input_txt">
 				                    <input type="text" value="${nonconformance.quantity_suspect}" class="input_txtbx" onInput="return validatename(id);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
 				                    <span id="quantitysuspect" style="color: red;"></span>
@@ -133,7 +133,7 @@
 				    	</tr>
 						
 				                <tr class="row2">
-									<td valign="top" align="left" class="input_txt" width="20%"> Nature Of NC: </td>
+									<td valign="top" align="left" class="input_txt" width="20%"> Nature Of NC&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 				               
 				                <textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;"  >${nonconformance.nature_of_nonconformance}</textarea>
@@ -141,14 +141,14 @@
 								<span id="nature" style="color: red;"></span>
 								<span style="color: red;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
 				                	
-			                  <td valign="top" align="left" class="input_txt" width="20%"> Disposition Required(Y/N): </td>
+			                  <td valign="top" align="left" class="input_txt" width="20%"> Disposition Required(Y/N)&nbsp;: </td>
 			        		        
 			        		        <td valign="top" align="left" class="input_txt" width="20%">
                 	                            <input type="radio" name="disposition_required" value="Yes" onchange="toggle3(this.value);"  id="disposition_required_yes"<c:if test="${nonconformance.disposition_required=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                 	                            <input type="radio" name="disposition_required" value="No" id="disposition_required_no" onchange="toggle3(this.value);"  <c:if test="${nonconformance.disposition_required=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
                 	           </tr>
 								 <tr class="row1">
-				                 	<td valign="top" align="left" class="input_txt" width="20%"> Date Found: </td>
+				                 	<td valign="top" align="left" class="input_txt" width="20%"> Date Found&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 				                  	<input type="text" value="${nonconformance.date_found}" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br>
 				                  	<span id="datepicker2" style="color: red;"></span>
@@ -156,7 +156,7 @@
 				  
 				                
                 	          
-				                  	<td valign="top" align="left" class="input_txt" width="10%"> Disposition: </td>
+				                  	<td valign="top" align="left" class="input_txt" width="10%" > Disposition&nbsp;: </td>
 				                  	
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 						                    						<table cellpadding="0" cellspacing="0"><tr>
@@ -166,7 +166,7 @@
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Repair'}"><c:out value="Selected"/></c:if>="" value="Repair">Repair</option>
 				                  										<option <c:if test="${nonconformance.disposition1 eq 'Discard'}"><c:out value="Selected"/></c:if>="" value="Discard">Discard</option>
 																		<option <c:if test="${nonconformance.disposition1 eq 'Keep as is'}"><c:out value="Selected"/></c:if>="" value="Keep as is">Keep as is</option>
-						                    						</select><br/><span style="color: red;" id="disid1err"></span>
+						                    						</select><br/><span style="color: red;" id="disid1err"></span><span style="color: red;" id="qua1"></span>
 						                    							</td>
 						                    							<td width="1%"></td>
 						                    							<td align="left" style="padding:0px;">
@@ -176,7 +176,7 @@
 						                    					<label class="number_btn1"  id="button1"   style="display:block;">No's</label>
 						                    					</td></tr>
 						                    					<tr><td colspan="3">
-						                    					<span style="color: red;" id="qua1"></span></td></tr>
+						                    					</td></tr>
 						                    					<tr>
 						                    						<td style="vertical-align:top;padding:0px;"><select name="disposition2" id="disid2" class="input_txtbx" onchange="show2();" >
 				                  										<option value="">--Select--</option>
@@ -189,14 +189,14 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition2 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select><br><span style="color: red;" id="disid2err"></span>
+						                    						</select><br><span style="color: red;" id="disid2err"></span><span  id="qua2" style="color: red;"></span>
 						                    						<td width="1%"></td>
 						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event);"  value="${nonconformance.quality2}" onchange="showbutton2();" />
 						                    						
 						                    						</td>
 						                    						<td align="left">
 						                    						<label class="number_btn1"  id="button2"   style="display:block;">No's</label></td>
-						                    						</tr><tr><td colspan="3"><span id="qua2" style="color: red;"></span></td></tr><tr>
+						                    						</tr><tr><td colspan="3" ></td></tr><tr>
 						                    						
 						                    						
 						                    						<td style="vertical-align:top;padding:0px;"><select name="disposition3" id="disid3"class="input_txtbx" onchange="show3();">
@@ -210,21 +210,21 @@
 																		<option
 				                  										<c:if test="${nonconformance.disposition3 eq 'Keep as is'}"><c:out value="Selected"/></c:if>
 																		value="Keep as is">Keep as is</option>
-						                    						</select><br/><span style="color: red;" id="disid3err"></span>
+						                    						</select><br/><span style="color: red;" id="disid3err"></span><span id="qua3" style="color: red;"></span>
 						                    						</td>
 						                    						<td width="1%"></td>
 						                    					<td  align="left" style="padding:0px;"><input type="text" name="quality3" id="quality3" style="display:block; width:40px;" class="input_txtbx" value="${nonconformance.quality3}" onkeypress="return validate(event)"; onchange="showbutton3();"/>
 						                    					</td><td  align="left">
 						                    					<label class="number_btn1"  id="button3"   style="display:block;">No's</label>
 						                    						</td>
-						                    						</tr><tr><td colspan="3"><span id="qua3" style="color: red;"></span></td></tr></table>
+						                    						</tr><tr><td colspan="3"></td></tr></table>
 						                    						
 						                    						
 																		</td>
 																	</tr>
 						                     					        
 								<tr class="row2">
-				                	<td valign="top" align="left" class="input_txt"> Reported By: </td>
+				                	<td valign="top" align="left" class="input_txt"> Reported By&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div id="reported_by">
 				                    <input type="text" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
@@ -250,19 +250,19 @@
  														  
 				              --%>     	</td> 
 				                  	
-				                  	 <td valign="top" align="left" class="input_txt"> Disposition Complete Date:</td>
+				                  	 <td valign="top" align="left" class="input_txt"> Disposition Complete Date&nbsp;:</td>
 			                        <td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.disposition_complete_date}" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="disposition_complete_date" /><br><span style="color: red;" id="completedate"><form:errors path="Nonconformance.disposition_complete_date"></form:errors></span></td>
 				      
 			          
 				       	</tr>
 						                 
    						  		<tr class="row1">
-			   						<td valign="top" align="left" class="input_txt"> Temporary Action: </td>
+			   						<td valign="top" align="left" class="input_txt"> Temporary Action&nbsp;: </td>
                						<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" style= "height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;"></span>
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          </td>
-         							<td valign="top" align="left" class="input_txt"> Disposition Responsibility: </td>
+         							<td valign="top" align="left" class="input_txt"> Disposition Responsibility&nbsp;: </td>
 			                        <td valign="top" align="left" class="input_txt">
 																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_txtbx" style="width:58%">
               																
@@ -275,14 +275,14 @@
 				        		
 		  					
 		  					<tr class="row2">
-                  				   	<td valign="top" align="left" class="input_txt"> Corrective Action Required(Y/N): </td>
+                  				   	<td valign="top" align="left" class="input_txt"> Corrective Action Required(Y/N)&nbsp;: </td>
                   				 
                   				                   <td valign="top" align="left" class="input_txt" width="20%">
                 			 					<input type="radio" name="corrective_action_required" value="Yes" onchange="toggle3(this.value);"  id="corrective_action_required_yes" <c:if test="${nonconformance.corrective_action_required=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                 			 					<input type="radio" name="corrective_action_required" value="No" id="corrective_action_required_no" onchange="toggle3(this.value);"  <c:if test="${nonconformance.corrective_action_required=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span></td>
                 			 
                 			 
-			    	                <td valign="top" align="left" class="input_txt"> Cost of NC: </td>
+			    	                <td valign="top" align="left" class="input_txt"> Cost of NC&nbsp;: </td>
 			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" onkeypress="return validate(event)";  class="input_txtbx" id="costofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/>
 			   	                 	<span id="cost" style="color: red;"></span>
 			   	                 <span style="color: red;"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
@@ -290,7 +290,8 @@
      
                 <tr class="row1">
                   <td valign="top" align="center">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Update" onclick="return validation();"></td>
+                  <td valign="top" align="left"></td>
+          <td><input type="submit" class="submit_btn1" value="Update" onclick="return validation();"></td>
             </tr>
     </table>
     
@@ -609,7 +610,7 @@ function validation()
 		 if(reported_by=="")
 		{		
 
-		document.getElementById('reporterr').innerHTML="Required Field Should not be Empty";
+		document.getElementById('reporterr').innerHTML="Required field should not be empty";
 	error="true";
 		}
 
@@ -625,7 +626,7 @@ function validation()
 	
 	if(external=="")
 		{
-	document.getElementById("externalerror").innerHTML="Required Field Should not be Empty";
+	document.getElementById("externalerror").innerHTML="Required field should not be empty";
 	error="true";
 	}
 	else
@@ -636,7 +637,7 @@ function validation()
 
  if(dispid1=="")
  {
- document.getElementById('disid1err').innerHTML="Required Field Should not be Empty";
+ document.getElementById('disid1err').innerHTML="Required field should not be empty";
  error="true";
  }
 
@@ -649,7 +650,7 @@ else
 	if(quality1=="")
 		{
 					
-		 document.getElementById("qua1").innerHTML="Required No's Field Should not be Empty";
+		 document.getElementById("qua1").innerHTML="Required no's field should not be empty";
 		 error="true";
 	 } 
 		
@@ -667,7 +668,7 @@ else
 
 if(dispid2=="")
  {
- document.getElementById('disid2err').innerHTML="Required Field Should not be Empty";
+ document.getElementById('disid2err').innerHTML="Required field should not be empty";
  error="true";
  }
 else
@@ -679,7 +680,7 @@ if(dispid2!="")
 if(quality2=="")
 {
 					
- document.getElementById("qua2").innerHTML="Required No's Field Should not be Empty";
+ document.getElementById("qua2").innerHTML="Required no's field should not be empty";
  error="true";
 } 
 
@@ -697,7 +698,7 @@ else if(quality2!="")
 
 if(dispid3=="")
  {
- document.getElementById('disid3err').innerHTML="Required Field Should not be Empty";
+ document.getElementById('disid3err').innerHTML="Required field should not be empty";
  error="true";
  }
 else
@@ -709,7 +710,7 @@ if(dispid3!="")
 if(quality3=="")
 {
 				
- document.getElementById("qua3").innerHTML="Required No's Field Should not be Empty";
+ document.getElementById("qua3").innerHTML="Required no's field should not be empty";
  error="true";
 } 
 
@@ -727,7 +728,7 @@ else if(quality3!="")
 
 if(datefound == "")
 	 {
-	 document.getElementById("datepicker2").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("datepicker2").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -737,14 +738,14 @@ if(datefound == "")
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker2").innerHTML="Invalid Date";
+	 document.getElementById("datepicker2").innerHTML="Invalid date";
 	 error="true";
 	 }
 
 
 	if(complete == "")
 	 {
-	 document.getElementById("completedate").innerHTML="Required Field Should not be Empty";
+	 document.getElementById("completedate").innerHTML="Required field should not be empty";
 	 error="true";
 	 
 	 }
@@ -754,13 +755,13 @@ if(datefound == "")
 	 }
 	 else
 	 {
-	 document.getElementById("completedate").innerHTML="Invalid Date";
+	 document.getElementById("completedate").innerHTML="Invalid date";
 	 error="true";
 	 }
   	if(typenc =="")
 	 {
 
-		 document.getElementById("typencerr").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("typencerr").innerHTML="Required field should not be empty";
 		 error="true";
 	 } 
   	else
@@ -770,7 +771,7 @@ if(datefound == "")
 		if(sourcenc =="")
 		 {
 		
-			 document.getElementById("sourcencerr").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("sourcencerr").innerHTML="Required field should not be empty";
 			 error="true";
 		 }
 		else{
@@ -779,7 +780,7 @@ if(datefound == "")
 			if(product =="")
 			 {
 			
-				 document.getElementById("producterr").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("producterr").innerHTML="Required field should not be empty";
 				 error="true";
 			 }
 			else
@@ -791,7 +792,7 @@ if(datefound == "")
   	if(quantity =="")
 	 {
 	
-		 document.getElementById("quantitysuspect").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("quantitysuspect").innerHTML="Required field should not be empty";
 		 error="true";
 	 } 
 		
@@ -813,17 +814,17 @@ if(datefound == "")
 	    	document.getElementById("quantitysuspect").innerHTML="";
 	    	}
 	
-	 	if(costnc =="")
+	 	if(document.getElementById("costofnc").value=="")
 		 {
 		
-			 document.getElementById("cost").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("cost").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
-	 	else if(document.getElementById("costofnc").value.length<4 || document.getElementById("costofnc").value.length>=32)
+	 	else if(document.getElementById("costofnc").value==0)
 		    {
 		    	
-		    	document.getElementById("cost").innerHTML="Should be of length 4 to 32";
+		    	document.getElementById("cost").innerHTML="Should be greater than 0";
 		    	 error="true";
 		    } 
 		
@@ -842,7 +843,7 @@ if(datefound == "")
 		 	if(naturenc =="")
 			 {
 			
-				 document.getElementById("nature").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("nature").innerHTML="Required field should not be empty";
 				 error="true";
 			 } 
 				
@@ -866,7 +867,7 @@ if(datefound == "")
 			 	if(action =="")
 				 {
 				
-					 document.getElementById("temp").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("temp").innerHTML="Required field should not be empty";
 					 error="true";
 				 } 
 					
@@ -891,7 +892,7 @@ if(datefound == "")
 			 	if(responsibility =="")
 				 {
 				
-					 document.getElementById("responsibilityerror").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("responsibilityerror").innerHTML="Required field should not be empty";
 					 error="true";
 				 } 
 					
@@ -913,10 +914,10 @@ if(datefound == "")
 						document.getElementById("responsibilityerror").innerHTML="";
 						}		
 				 	
-				 	if(quality1 =="")
+				 	/* if(quality1 =="")
 					 {
 					
-						 document.getElementById("qua1").innerHTML="Required Field Should not be Empty";
+						 document.getElementById("qua1").innerHTML="Required field should not be empty";
 						 error="true";
 					 } 
 						
@@ -933,7 +934,7 @@ if(datefound == "")
 						 if(quality2 =="")
 						 {
 						
-							 document.getElementById("qua2").innerHTML="Required Field Should not be Empty";
+							 document.getElementById("qua2").innerHTML="Required field should not be empty";
 							 error="true";
 						 } 
 						 else
@@ -944,13 +945,13 @@ if(datefound == "")
 						 	if(quality3 =="")
 							 {
 							
-								 document.getElementById("qua3").innerHTML="Required Field Should not be Empty";
+								 document.getElementById("qua3").innerHTML="Required field should not be empty";
 								 return false;
 							 } 
 						 	else{
 						 	document.getElementById("qua3").innerHTML="";
 								}	
-
+ */
 								  if(error == "true")
 									{
 									return false;
