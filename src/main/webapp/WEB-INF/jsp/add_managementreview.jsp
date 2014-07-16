@@ -149,7 +149,7 @@
                   </tr>
            	       <tr class="row2" >
                   <td valign="middle" align="left" class="input_txt" width="20%">Responsibility :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validateres(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" /><br/>
                    <span id="responsibilityerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>                
                   <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
@@ -261,6 +261,12 @@ function validatename3(id){
     textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
     document.getElementById(id).value = textInput;
 }  
+function validateres(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}
 </script>
 <script type="text/javascript">
 function validate()
@@ -286,12 +292,12 @@ function validate()
 		}
 	else if(attendeelistwithtitles.charAt(0) == " ")
 	{
-		 document.getElementById("attendeelistwithtitleserror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("attendeelistwithtitleserror").innerHTML="Should not accept initial space";
 		 error="true";
 	}
 	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
 		{
-		document.getElementById("attendeelistwithtitleserror").innerHTML="Field should be length of 4 to 32";
+		document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}
@@ -308,12 +314,14 @@ function validate()
 		}
 	else if(nextmanagementreviewby.charAt(0) == " ")
 	{
-		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("nextmanagementreviewbyerror").innerHTML="Should not accept initial space";
 		 error="true";
 	}
 	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
 	{
-	document.getElementById("nextmanagementreviewbyerror").innerHTML="Field should be length of 4 to 32";
+
+	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should be length 4 to 32";
+
 	error="true";
 	
 	}
@@ -353,12 +361,14 @@ function validate()
 		}
 	else if(assessment.charAt(0) == " ")
 	{
-		 document.getElementById("assessmenterror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("assessmenterror").innerHTML="Should not accept initial space";
 		 error="true";
 	}
 	else if((assessment.length < 4) ||(assessment.length > 32))
 		{
-		document.getElementById("assessmenterror").innerHTML="Field should be length of 4 to 32";
+
+		document.getElementById("assessmenterror").innerHTML="Required Field Should be length 4 to 32";
+
 		error="true";
 		
 		}
@@ -375,7 +385,7 @@ function validate()
 	  }
 	  else if(reportlink.charAt(0) == " ")
 		{
-			 document.getElementById("reportlinkerror").innerHTML="Initial spaces not allowed";
+			 document.getElementById("reportlinkerror").innerHTML="Should not accept initial space";
 			 error="true";
 		}
   		else  if(reportlink.match(website))
@@ -399,12 +409,13 @@ function validate()
 		}
 		 else if(actiondetail.charAt(0) == " ")
 		{
-			 document.getElementById("actiondetailerror").innerHTML="Initial spaces not allowed";
+			 document.getElementById("actiondetailerror").innerHTML="Should not accept initial space";
 			 error="true";
 		}
 		else if((actiondetail.length < 4) ||(actiondetail.length > 32))
 		{
-		document.getElementById("actiondetailerror").innerHTML="Field should be length of 4 to 32";
+
+		document.getElementById("actiondetailerror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}
@@ -437,12 +448,13 @@ function validate()
 	}
 	 else if(responsibility.charAt(0) == " ")
 		{
-			 document.getElementById("responsibilityerror").innerHTML="Initial spaces not allowed";
+			 document.getElementById("responsibilityerror").innerHTML="Should not accept initial space";
 			 error="true";
 		}
 	else if((responsibility.length < 4) ||(responsibility.length > 32))
 		{
-		document.getElementById("responsibilityerror").innerHTML="Field should be length of 4 to 32";
+
+		document.getElementById("responsibilityerror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}
