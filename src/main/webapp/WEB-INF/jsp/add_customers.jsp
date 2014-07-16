@@ -86,7 +86,7 @@
                 </tr>
 				<tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%"> Address :</td>
-               	<td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_address" name="address" maxlength="40" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;" name="note"></textarea><br/>
+               	<td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" id="inp_address" name="address" maxlength="" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="height: 75px;" name="note"></textarea><br/>
                		<span id="addresserror" style="color:red"></span>
                	<span class="err"><form:errors path="Customers.address"></form:errors></span></td>
 			   <td valign="middle" align="left" class="input_txt" width="20%">Contact Title :</td>
@@ -129,10 +129,17 @@
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" maxlength="5" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="zipcodeerror" style="color:red"></span><span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                   </tr>
-                
+                <!--   <tr class="row2">
+                 <td valign="middle" align="left" class="input_txt" width="20%"></td>
+                 <td colspan="1" align="left">
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onclick="return validate();" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">
+              <td valign="middle" align="left" class="input_txt" width="20%">
+               </tr> -->
                  <tr class="row1">
-                  <td valign="middle" align="center">&nbsp;</td>
-                  <td valign="top" align="center"><input type="submit" value="Add Customer" onclick="return validate();"class="submit_btn1"></td>
+                  <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
+                  <td></td>
+                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Add Customer" onclick="return validate();"class="submit_btn1"></td>
                 </tr>
               </table>
              

@@ -128,8 +128,9 @@
                 
                 </tr>
                  <tr class="row1">
-                  
-                  <td colspan ="3" valign="middle" align="right"><input type="submit" value="Update Customer" style="width:140px;"onclick="return validate();"class="submit_btn1"></td>
+                   <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
+               <td></td>
+                  <td ><input type="submit" value="Update Customer" style="width:140px;"onclick="return validate();"class="submit_btn1"></td>
                 </tr>
               </table>
               

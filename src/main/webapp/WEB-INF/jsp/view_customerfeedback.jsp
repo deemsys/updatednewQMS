@@ -117,7 +117,7 @@
 							    <!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="feedback_details" class="input_txtbx1" id="details"></td>
 							     -->
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomerfeedback" onclick="return validation();">
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomerfeedback" onclick="return validation();">
 							    <br><span id="searcherror" style="color:red"></span>
 							    </td>
 <!-- 							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
@@ -133,7 +133,7 @@
          						<td valign="top" align="left" width="15%">Date of Feedback</td>
 					         	<td valign="top" align="left" width="15%">Type of Feedback</td>
 					         <!--  <td valign="top" align="left" width="20%">Feedback recorded by</td>
- 							 -->	<td valign="top" align="left" width="20%">Feedback details</td> 
+ 							 -->	<td valign="top" align="left" width="20%">Feedback Details</td> 
           						<td valign="top" align="left" width="15%">Attachments</td>
           						 <td valign="top" align="left" width="15%">Action</td>
           						

@@ -98,9 +98,15 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="5%">Id :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" placeholder="C1001" onInput="return validatename2(id);"value="${cust_id}">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" onkeyup="ChangeCase(this);" class="input_txtbx" id="id" placeholder="C1001"   onInput="return validatename2(id);"value="${cust_id}">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
+							    <script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
 							     <td align="center" valign="middle" width="10%">
 							    <td align="left" valign="middle" width="6%">Name :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${name}" onInput="return validatename(id);">
@@ -112,7 +118,7 @@
 							     <br><span id="searcherror3" style="color:red"></span>
 							    </td>
 							  
-							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Find" name="findcustomer" onclick="return validation();">
+							      <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomer" onclick="return validation();">
 							       <br><span id="searcherror" style="color:red"></span>
 							      </td>
 							<!--   	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>
@@ -251,6 +257,15 @@ function validatename2(id){
 }  
 </script>
 <script>
+$(document).ready(function()
+		{
+		    $('#id').keyup(function()
+		    {
+		        $(this).val($(this).val().toUpperCase());
+		    });
+		});
+</script>
+<script>
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?")
 	if (answer){
@@ -324,6 +339,12 @@ function validation()
 	}
 
 
+</script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
 </script>
 <script language="javascript">
 
