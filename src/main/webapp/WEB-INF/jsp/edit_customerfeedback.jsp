@@ -86,7 +86,7 @@
                   <select name="type_of_feedback" class="input_txtbx">
                   <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Complaint'}"><c:out value="Selected"/></c:if> value="Complaint">Complaint</option>
                   <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Suggestion'}"><c:out value="Selected"/></c:if> value="Suggestion">Suggestion</option>
-                  <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Product Return'}"><c:out value="Selected"/></c:if> value="Product Return">Product Return</option>                  
+                  <option <c:if test="${customerfeedbacks.type_of_feedback eq 'Product Return'}"><c:out value="Selected"/></c:if> value="Product Return">Product return</option>                  
                   </select>
                   
                   <br/><span class="err"></span></td>
@@ -109,7 +109,7 @@
                   <span class="err"><form:errors path="CustomerFeedback.feedback_details"></form:errors></span></td>
                   </tr>
                   <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Attachment choosen :</td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> Attachments :</td>
                 	<td valign="middle" align="left" id="image" value="${customerfeedbacks.attachment_name}">${customerfeedbacks.attachment_name}
                  <input type="file" name="attachments" class="input_txtbx1" id="attachment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${customerfeedbacks.attachments}"></c:out>'></br>
                  
@@ -175,7 +175,7 @@ function validate()
 		 }
 	 else if(feedbackdetails.charAt(0) == " ")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("feedbackdetailserror").innerHTML="Requiired field Should not accept initial space";
 			error="true";
 		 }
 	 else  if((feedbackdetails.length < 4) ||(feedbackdetails.length > 400))

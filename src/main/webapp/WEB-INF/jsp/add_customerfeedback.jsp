@@ -85,7 +85,7 @@
                   <select name="type_of_feedback" class="input_txtbx">
                   <option value="Complaint">Complaint</option>
                   <option value="Suggestion">Suggestion</option>
-                  <option value="Product Return">Product Return</option>                  
+                  <option value="Product Return">Product return</option>                  
                   </select>
                   
                   <br/><span class="err"></span></td>
@@ -189,7 +189,7 @@ function validate()
 		 }
 	 else if(feedbackdetails.charAt(0) == " ")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Initial spaces not allowed";
+		 document.getElementById("feedbackdetailserror").innerHTML="Requiired field Should not accept initial space";
 			error="true";
 		 }
 	 

@@ -68,7 +68,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%">ID :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="customer_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" maxlength="40" placeholder="https://www.example.com"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" placeholder="http(s)://www.example.com"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
                   <span id="websiteerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.website"></form:errors></span></td>
             
@@ -78,7 +78,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="customer_name" class="input_txtbx" id="customername" maxlength="32"  value="" onInput="return validatename(id);"/><br>
                   <span id="customernameerror"style="color:red"></span>
                   <span class="err"><form:errors path="Customers.customer_name"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_text" width="20%">ContactName :</td>
+                  <td valign="middle" align="left" class="input_text" width="20%">Contact Name :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" maxlength="32"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename(id);"/><br>
                   <span id="contactnameerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.contact_name"></form:errors></span></td>
@@ -110,7 +110,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="state" class="input_txtbx" id="inp_state"  maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="stateerror" style="color:red"></span><span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" placeholder="+12345678901" onInput="return validatename1(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" placeholder="+12345678901" onInput="return validatefax();"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
      
@@ -261,7 +261,14 @@ function validatename2(id){
     document.getElementById(id).value = textInput;
 }  
 </script>
+<script>
+function validatefax(){
+    var textInput = document.getElementById("inp_fax").value;
+    textInput = textInput.replace(/[^0-9+]/g, "");
+    document.getElementById("inp_fax").value = textInput;
+}
 
+</script>
  <script type="text/javascript">
       function validateblur()
       {
@@ -559,7 +566,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
     		  }
     	  else if(customername.charAt(0) ==" ") 
 		   {
-		   document.getElementById("customernameerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("customernameerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
     	  else  if((customername.length < 4) ||(customername.length > 32))
@@ -580,7 +587,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
     		  }
     	  else if(inp_website.charAt(0) ==" ") 
 		   {
-		   document.getElementById("websiteerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("websiteerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
     	  else  if(inp_website.match(website))
@@ -606,7 +613,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(address.charAt(0) ==" ") 
 		   {
-		   document.getElementById("addresserror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("addresserror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((address.length < 4) ||(address.length > 400))
@@ -627,7 +634,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(inp_contact_name.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contactnameerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("contactnameerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
@@ -649,7 +656,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(city.charAt(0) ==" ") 
 		   {
-		   document.getElementById("cityerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("cityerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 		  else  if((city.length < 4) ||(city.length > 32))
@@ -670,7 +677,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(contact.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contacterror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("contacterror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((contact.length < 4) ||(contact.length > 32))
@@ -691,7 +698,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(state.charAt(0) ==" ") 
 		   {
-		   document.getElementById("stateerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("stateerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((state.length < 4) ||(state.length > 32))
@@ -711,9 +718,19 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(telephone.charAt(0) ==" ") 
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("telephoneerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
+    	  
+    	  
+    	  else if (!(telephone.charAt(0)=="9" || telephone.charAt(0)=="8" || telephone.charAt(0)=="7"))
+          {
+               //alert("Mobile No. should start with 9 or 8 or 7");
+               document.getElementById("telephoneerror").innerHTML="Telephone number should start with 9 or 8 or 7";
+   	    	error="true";
+          }
+    
+
 	  else if(telephone.match(mobile)){  
 		  if((telephone == "0000000000") || (telephone == "1111111111"))
 		   {
@@ -738,7 +755,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(country.charAt(0) ==" ") 
 	   {
-	   document.getElementById("countryerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("countryerror").innerHTML="Requiired field Should not accept initial space";
    	error="true";
 		}
   else  if((country.length < 4) ||(country.length > 32))
@@ -759,7 +776,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(fax.charAt(0) ==" ") 
 	   {
-	   document.getElementById("faxerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("faxerror").innerHTML="Requiired field Should not accept initial space";
   	error="true";
 		}
   else if(fax.match(faxreg))
@@ -784,7 +801,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(inpzipcode.charAt(0) ==" ") 
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("zipcodeerror").innerHTML="Requiired field Should not accept initial space";
  	error="true";
 		}
   else if(inpzipcode.match(zipcode)){  
@@ -805,7 +822,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(emailaddress.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("emailerror").innerHTML="Requiired field Should not accept initial space";
 	error="true";
 		}
   else if(emailaddress.match(mail)){  

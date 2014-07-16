@@ -62,7 +62,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">ID :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="customer_id" value="<c:out value="${customers.customer_id}"/>"/><c:out value="${customers.customer_id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="30%">Website :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="https://www.QMS.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.website}" onInput="return validatename1(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.website}" onInput="return validatename1(id);"/><br>
                    <span id="websiteerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.website"></form:errors></span></td>
                 
@@ -72,7 +72,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="customer_name" class="input_txtbx" id="customername"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.customer_name}" onInput="return validatename(id);"/><br>
                    <span id="customernameerror"style="color:red"></span>
                   <span class="err"><form:errors path="Customers.customer_name"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="30%">ContactName :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Contact Name :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.contact_name}" onInput="return validatename(id);" /><br>
                    <span id="contactnameerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.contact_name"></form:errors></span></td>
@@ -327,7 +327,7 @@ function validatename2(id){
 		  }
     	  else if(address.charAt(0) ==" ") 
 		   {
-		   document.getElementById("addresserror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("addresserror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((address.length < 4) ||(address.length > 400))
@@ -348,7 +348,7 @@ function validatename2(id){
 		  }
     	  else if(inp_contact_name.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contactnameerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("contactnameerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	 	 else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
@@ -369,7 +369,7 @@ function validatename2(id){
 		  }
     	  else if(city.charAt(0) ==" ") 
 		   {
-		   document.getElementById("cityerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("cityerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((city.length < 4) ||(city.length > 32))
@@ -390,7 +390,7 @@ function validatename2(id){
 		  }
     	  else if(contact.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contacterror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("contacterror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((contact.length < 4) ||(contact.length > 32))
@@ -411,7 +411,7 @@ function validatename2(id){
 		  }
     	  else if(state.charAt(0) ==" ") 
 		   {
-		   document.getElementById("stateerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("stateerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((state.length < 4) ||(state.length > 32))
@@ -431,9 +431,16 @@ function validatename2(id){
 		  }
     	  else if(telephone.charAt(0) ==" ") 
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("telephoneerror").innerHTML="Requiired field Should not accept initial space";
 	    	error="true";
 			}
+    	  
+    	  else if (!(telephone.charAt(0)=="9" || telephone.charAt(0)=="8" || telephone.charAt(0)=="7"))
+          {
+               //alert("Mobile No. should start with 9 or 8 or 7");
+               document.getElementById("telephoneerror").innerHTML="Telephone number should start with 9 or 8 or 7";
+   	    	error="true";
+          }
 	  else if(telephone.match(mobile)){  
 		  if((telephone == "0000000000") || (telephone == "1111111111"))
 		   {
@@ -458,7 +465,7 @@ function validatename2(id){
 	  }
 	  else if(country.charAt(0) ==" ") 
 	   {
-	   document.getElementById("countryerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("countryerror").innerHTML="Requiired field Should not accept initial space";
   	error="true";
 		}
   	else  if((country.length < 4) ||(country.length > 32))
@@ -479,7 +486,7 @@ function validatename2(id){
 	  }
 	  else if(fax.charAt(0) ==" ") 
 	   {
-	   document.getElementById("faxerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("faxerror").innerHTML="Requiired field Should not accept initial space";
  	error="true";
 		}
   else if(fax.match(faxreg))
@@ -504,7 +511,7 @@ function validatename2(id){
 	  }
 	  else if(inpzipcode.charAt(0) ==" ") 
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("zipcodeerror").innerHTML="Requiired field Should not accept initial space";
 	error="true";
 		}
   	else if(inpzipcode.match(zipcode)){  
@@ -525,7 +532,7 @@ function validatename2(id){
 	  }
 	  else if(emailaddress.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerror").innerHTML="Initial spaces not allowed";
+	   document.getElementById("emailerror").innerHTML="Requiired field Should not accept initial space";
 	error="true";
 		}
   else if(emailaddress.match(mail)){  

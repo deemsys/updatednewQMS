@@ -145,7 +145,7 @@
 								</tr>
 								<tr>
 								<td><input type="checkbox" name="report_field[]" value="employee_id" id="1"/>&nbsp;Employee id</td>
-								<td><input type="checkbox" name="report_field[]" value="name" id="2"/>&nbsp;name</td>
+								<td><input type="checkbox" name="report_field[]" value="name" id="2"/>&nbsp;Name</td>
 								<td><input type="checkbox" name="report_field[]" value="job_title" id="3"/>&nbsp;Job title</td>
 					      		
 					      		</tr>
