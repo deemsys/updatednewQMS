@@ -182,6 +182,10 @@ $(function() {
                    <input type="checkbox" name="disposition" value="yes" id="disposition"/<c:if test="${hRandTrainings.disposition=='yes'}"><c:out value="checked=checked"/></c:if>>&nbsp;Disposition
                  <br> <span id="functionsneedserror" style="color:red"></span>
                   </td>
+                   <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" /><br>
+                   <span id="documentedinerror" style="color:red"></span>
+                  <span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
                   </tr>
                   
                   <tr class="row2">
@@ -189,19 +193,20 @@ $(function() {
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_effectiveness_review_due_date }" /><br>
                   <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
-                  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" /><br>
-                   <span id="documentedinerror" style="color:red"></span>
-                  <span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
+                 
                   </tr>
-                  
-                   <tr class="row2">
+                   <tr class="row1">
+                  <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
+                  <td></td>
+                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
+                </tr>
+                  <!--  <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="20%"></td>
                  <td colspan="1" align="left">
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Update" onclick="return validate();"class="submit_btn1"><br/></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">
               <td valign="middle" align="left" class="input_txt" width="20%">
-               </tr>
+               </tr> -->
                                <!--   <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="middle" align="center"><input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
