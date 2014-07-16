@@ -223,7 +223,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete Type Of Nc?")
+	var answer = confirm("Are you sure want to remove type of nc?")
 	if (answer){
 		return true;
 	}

@@ -228,7 +228,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete Report Nc?")
+	var answer = confirm("Are you sure want to remove report nc?")
 	if (answer){
 		return true;
 	}

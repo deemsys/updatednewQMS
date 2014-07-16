@@ -221,7 +221,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete Source Of Nc?")
+	var answer = confirm("Are you sure want to remove source of nc?")
 	if (answer){
 		return true;
 	}

@@ -221,7 +221,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete  Process?")
+	var answer = confirm("Are you sure want to remove process?")
 	if (answer){
 		return true;
 	}

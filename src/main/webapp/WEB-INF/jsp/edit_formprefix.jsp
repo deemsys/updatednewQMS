@@ -63,7 +63,7 @@
                 </tr><tr height="10"></tr>
                   <tr class="row2">
                 
-                  <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Description :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 55px">Description :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                    <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="form_name" id="formname">${formprefix.form_name}</textarea>
                
@@ -72,6 +72,7 @@
                   <input type="hidden" name="id" id="id" value="${formprefix.id}"/>
                   </td>
                 </tr>
+                <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>

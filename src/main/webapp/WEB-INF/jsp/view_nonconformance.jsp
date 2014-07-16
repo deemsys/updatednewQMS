@@ -76,9 +76,9 @@
 							<form action="findnonconformance" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle"> NC ID: </td>
+							    <td align="left" valign="middle"> NC ID&nbsp;: </td>
 							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" value="${nc}"></td>
-							    <td align="left" valign="middle">Type of Non Conformance:</td>
+							    <td align="left" valign="middle">Type of Non Conformance&nbsp;:</td>
 							    <td valign="middle" align="left"><select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
 				                  										<option value="">--Select--</option>
 						                    							<option
@@ -114,13 +114,13 @@
 				<form action="view_nonconformance" name="dashboard" method="POST">			
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="5%">ID</td>
+									<td valign="top" align="left" width="10%">ID</td>
 									<td valign="top" align="left" width="20%">Source of NonConformance</td>
 									<!-- <td valign="top" align="left" width="10%">External ID</td> 
 									 --><td valign="top" align="left" width="20%">Type of Non Conformance</td>
-									<td valign="top" align="left" width="10%">Product ID</td>
+									<td valign="top" align="left" width="20%">Product ID</td>
 									<td valign="top" align="left" width="20%">Quantity Suspect</td>
-									<td valign="top" align="left" width="25%">Action</td>
+									<td valign="top" align="left" width="20%">Action</td>
 									
 									</tr>
 
@@ -135,12 +135,12 @@
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
 								           	<td valign="top" align="left"  width="10%"><a href="list_nonconformance?id=${nonconformance.id}">${nonconformance.id}</a></td>
 								           	
-											<td valign="top" align="left" width="15%">${nonconformance.source_of_nonconformance}</td>
+											<td valign="top" align="left" width="20%">${nonconformance.source_of_nonconformance}</td>
 										<%-- 	<td valign="top" align="left" width="10%">${nonconformance.external_id}</td> 
 										 --%>	<td valign="top" align="left" width="20%">${nonconformance.type_of_nonconformance}</td>
 											<td valign="top" align="left" width="20%">${nonconformance.product_id}</td>
 											<td valign="top" align="left" width="20%">${nonconformance.quantity_suspect}</td>
-											<td valign="top" align="left" width="25%">
+											<td valign="top" align="left" width="20%">
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_nonconformance?id=${nonconformance.id}"/>" style="padding-right:10px;">Edit</a>
 										<%-- 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_nonconformance?id=${nonconformance.id }"/>" onclick="return confirmation()">Remove</a> --%>
 										 </td>

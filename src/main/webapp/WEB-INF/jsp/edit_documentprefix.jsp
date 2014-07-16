@@ -72,6 +72,7 @@
                   <br>  <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
+                <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" >&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>

@@ -237,7 +237,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete  Form Prefix Form?")
+	var answer = confirm("Are you sure want to remove form prefix?")
 	if (answer){
 		return true;
 	}

@@ -232,7 +232,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete  Location?")
+	var answer = confirm("Are you sure want to remove locations?")
 	if (answer){
 		return true;
 	}

@@ -50,41 +50,41 @@
               <c:set value="${nonConformanceForm.nonconformance[0]}" var="nonconformance"></c:set>
                <tr class="row2">
 
-                  <td valign="top" align="left" class="input_txt" width="20%">Id: </td>
+                  <td valign="top" align="left" class="input_txt" width="30%">ID&nbsp;: </td>
 					<td valign="top" align="left" class="input_txt" width="20%">${nonconformance.id}</br><span class="err"></span></td>
-                  <td valign="top" align="left" class="input_txt" width="20%">External Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.external_id}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%">External Id&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.external_id}</br><span class="err"></span></td>
                
                 </tr>
                  <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="20%">Source of Nonconformance:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Source of Nonconformance&nbsp;:</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.source_of_nonconformance}</br><span class="err"></span></td>
-                  <td valign="top" align="left" class="input_txt" width="20%"> Product Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.product_id}</br><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"> Product Id&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.product_id}</br><span class="err"></span></td>
                 </tr>
                  
                  <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="20%">Type Of Nonconformance :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Type Of Nonconformance&nbsp;:</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.type_of_nonconformance}</br><span class="err"></span></td>
-                 <td valign="top" align="left" class="input_txt" width="20%"> Quantity Suspect :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.quantity_suspect}
+                 <td valign="top" align="left" class="input_txt" width="20%"> Quantity Suspect&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.quantity_suspect}
                  </td>
                   </tr>
                 
                 <tr class="row1">
-               <td valign="top" align="left" class="input_txt" width="20%">Disposition Required(Y/N):</td>
+               <td valign="top" align="left" class="input_txt" width="20%">Disposition Required(Y/N)&nbsp;:</td>
                <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.disposition_required}
-               <td valign="top" align="left" class="input_txt" width="20%">Nature Of Nonconformance:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.nature_of_nonconformance}
+               <td valign="top" align="left" class="input_txt" width="20%">Nature Of Nonconformance&nbsp;:</td>
+               <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.nature_of_nonconformance}
                </td>
                </tr>
                
                    <tr class="row2">
-                 <td valign="top" align="left" class="input_txt" width="20%"> Date Found :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.date_found}
-               <td valign="top" align="left" class="input_txt" width="20%">Disposition:</td>
+                 <td valign="top" align="left" class="input_txt" width="20%"> Date Found&nbsp;:</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" >${nonconformance.date_found}
+               <td valign="top" align="left" class="input_txt" width="20%" >Disposition&nbsp;:</td>
              <td>
-             <table> 
+             <table border="0"> 
               <tr>
                <td>${nonconformance.disposition1}</td>
                <td>${nonconformance.quality1}</td>
@@ -102,26 +102,26 @@
               </table>
               </td>
                    <tr class="row1">
-               <td valign="top" align="left" class="input_txt" width="20%"> Reported By:</td>
+               <td valign="top" align="left" class="input_txt" width="20%"> Reported By&nbsp;:</td>
                <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.reported_by}
                </td>
-               <td valign="top" align="left" class="input_txt" width="20%">Disposition Complete Date:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.disposition_complete_date}
+               <td valign="top" align="left" class="input_txt" width="20%">Disposition Complete Date&nbsp;:</td>
+               <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.disposition_complete_date}
                </td>
                 </tr>
                  <tr class="row1">
-               <td valign="top" align="left" class="input_txt" width="20%">Temporary Action:</td>
+               <td valign="top" align="left" class="input_txt" width="20%">Temporary Action&nbsp;:</td>
                <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.temporary_action}
-               <td valign="top" align="left" class="input_txt" width="20%">Name of Disposition Responsibility:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.name_of_disposition_responsibility}
+               <td valign="top" align="left" class="input_txt" width="20%">Name of Disposition Responsibility&nbsp;:</td>
+               <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.name_of_disposition_responsibility}
                </td>
                 </tr>
                 <tr class="row1">
-               <td valign="top" align="left" class="input_txt" width="20%">Corrective Action Required(Y/N):</td>
+               <td valign="top" align="left" class="input_txt" width="20%">Corrective Action Required(Y/N)&nbsp;:</td>
                <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.corrective_action_required}
                </td>
-               <td valign="top" align="left" class="input_txt" width="20%">Cost of Nonconformance:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">${nonconformance.cost_of_nonconformance}
+               <td valign="top" align="left" class="input_txt" width="20%">Cost of Nonconformance&nbsp;:</td>
+               <td valign="top" align="left" class="input_txt" width="20%" style="padding-left:23px">${nonconformance.cost_of_nonconformance}
                </td>
                 </tr>
                 
@@ -131,6 +131,7 @@
                </div>
                </td>
                </tr>
+               <tr height="200"></tr>
                </table>
                </div>
                </form>

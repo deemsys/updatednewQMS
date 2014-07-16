@@ -62,7 +62,7 @@
 						
 				<table cellpadding="0" cellspacing="0" border="0" width="100%">
 					<tr class="row1">
-							<td valign="top" align="left" class="input_txt" width="30%" width="25%" style="height: 30px">Non-Conformance (NC)ID&nbsp;:</td>
+							<td valign="top" align="left" class="input_txt" width="30%" width="25%" style="height: 50px">Non-Conformance (NC)ID&nbsp;:</td>
 							<td valign="top" align="left" class="input_txt" width="30%" width="25%">
 							<input type="hidden" name="id" class="input_txtbx" value="<c:out value="${id }"/>" /><c:out value="${id}" /> <br/><font color="Red" size="+1"></font></td>
 							<td valign="top" align="left" class="input_txt" width="30%" id="external_label"  style="display:none;"> External ID </td>
@@ -72,7 +72,7 @@
 				 </tr>
 				   <tr class="row2">
 		         
-							<td valign="top" align="left" class="input_txt" width="30%">Source of NC&nbsp;: </td>
+							<td valign="top" align="left" class="input_txt" width="30%" height="30%">Source of NC&nbsp;: </td>
 						    <td valign="top" align="left" class="input_txt" width="30%">
 				            <select name="source_of_nonconformance" class="input_txtbx" id="source_of_nonconformance">
 				             	<option value="">--Select--</option>
@@ -105,7 +105,7 @@
 																	</tr>
 																	
 																	<tr class="row1">
-																		<td valign="top" align="left" class="input_txt" width="30%">Type Of NC&nbsp;: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%" style="height:50px">Type Of NC&nbsp;: </td>
 						          										<td valign="top" align="left" class="input_txt" width="30%">
 				                  									<select name="type_of_nonconformance" class="input_txtbx" id="type_of_nonconformance" onchange="doAjaxPost();" >
 				                  										<option value="">--Select--</option>
@@ -249,7 +249,7 @@
 																	</tr>
 																	
 																	<tr class="row2">
-																		<td valign="top" align="left" class="input_txt" width="30%">Reported By&nbsp;: </td>
+																		<td valign="top" align="left" class="input_txt" width="30%" style="height: 50px">Reported By&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
 								 										 <div id="reporteddiv_by">
 								 										 <select name="reported_by" id="reported_id" class="input_txtbx">
@@ -289,9 +289,9 @@
 			                 												<form:errors path="Nonconformance.name_of_disposition_responsibility"></form:errors>
 				        		
 																	</tr>
-																	
+																	<tr height="10"></tr>
 																	<tr class="row2">
-																 	<td valign="top" align="left" class="input_txt" width="30%"> Corrective Action Required(Y/N)&nbsp;:</td>
+																 	<td valign="top" align="left" class="input_txt" width="30%" style="height: 50px"> Corrective Action Required(Y/N)&nbsp;:</td>
 																	<td valign="top" align="left" class="input_txt" width="30%">
 																	<input type="radio" name="corrective_action_required"  value="Yes" class="input_txt" width="30%" checked="true">Yes&nbsp;&nbsp;&nbsp;
 																	<input type="radio" name="corrective_action_required" value="No" class="input_txt" width="30%">No

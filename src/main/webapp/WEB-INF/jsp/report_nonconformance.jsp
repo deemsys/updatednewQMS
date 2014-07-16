@@ -84,11 +84,11 @@
 					<form method="post" action="generate_nonconformance_report">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
-							<tr class="row1" id="document_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+							<tr class="row1" id="document_type_table" >
+								<td valign="middle" align="right" class="input_txt" width="30%" style="padding-right:75px">
 								Select NonConformance Type :
 								</td>
-								<td valign="middle" align="left" class="input_txt" width="100%">
+								<td valign="middle" align="left" class="input_txt" width="100%" style="padding-left: 23px">
 								<!-- <input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/> -->
 								
 								<br>
@@ -106,13 +106,13 @@
 								<table id="start" cellpadding="0" cellspacing="0" border="0" width="100%" style="display: none">
 	
     								<tr class="row2">
-    								<td></td>
-    								<td valign="middle" align="right" class="input_txt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter the Start Date : </td>
+    								<td width="30%"></td>
+    								<td valign="middle" align="left" class="input_txt" style="padding-left: 23px">Enter the Start Date : </td>
     								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker" name="start"/><br><span style="color:red;" id="starterr"></span></td>
     								</tr>
     								<tr class="row2">
     								<td></td>
-    								<td valign="middle" align="right" class="input_txt"> Enter the End Date :&nbsp;&nbsp;</td>
+    								<td valign="middle" align="left" class="input_txt" style="padding-left: 23px"> Enter the End Date :&nbsp;&nbsp;</td>
     								<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx" id="datepicker1" name="end" /><br><span style="color:red;" id="enderr"></span></td>
     								</tr>
     							</table>
@@ -123,9 +123,9 @@
     						
 			
 								<tr class="row2">
-								<td valign="middle" align="right" style="padding-left: 10px" class="input_txt" width="30%">
-									Select Report Type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td valign="top" align="left" class="input_txt" width="100%">
+								<td valign="middle" align="right" style="padding-right:73px" class="input_txt" width="30%">
+									Select Report Type&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td valign="top" align="left" class="input_txt" width="100%" style="padding-left: 23px">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
 								</td>
@@ -148,17 +148,16 @@
 								
 							</tr> -->
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Enter the Name to appear on the Report:</td>
-								<td valign="top" align="left" class="input_txt" width="50%">
+								<td valign="middle" align="right" class="input_txt" width="20%">
+									Enter the Name to appear on the Report&nbsp;:</td>
+								<td valign="top" align="left" class="input_txt" width="50%" style="padding-left:22px">
 									<input type="text" name="name_of_disposition_responsibility"id="report_title" class="input_txtbx" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report:
-									<br><span style="color: red;" id="error"></span></td>	
+									Enter the Fields Required on the Report&nbsp;:<br><span style="color: red;" id="error"></span></td>	
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								

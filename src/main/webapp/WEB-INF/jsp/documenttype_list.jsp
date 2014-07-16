@@ -220,7 +220,7 @@
 <script language="javascript">
 
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete  Document type?")
+	var answer = confirm("Are you sure want to remove document type?")
 	if (answer){
 		return true;
 	}

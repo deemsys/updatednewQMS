@@ -61,18 +61,21 @@
                   
                   </td>
                 </tr>
+                <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" maxlength="32" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onInput="validateAlpha1()" />
                   <br><FONT SIZE="+1" color="red"> <span id="processname2" class="err"></span></FONT> 
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
+                 <tr height="10"></tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Process Owner :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_owner" maxlength="32"  class="input_txtbx" id="processowner" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onInput="validateAlpha2()" />
                <br>  <FONT SIZE="+1" color="red">  <span id="processowner2"></span></FONT>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>
+                 <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>

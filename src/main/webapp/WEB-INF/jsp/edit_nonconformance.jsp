@@ -71,7 +71,7 @@ $(function() {
   				
 
                         		<tr class="row1">
-				                  <td valign="top" align="left" class="input_txt" width="20%" style="height: 30px"> Non-Conformance(ID)&nbsp;:</td>
+				                  <td valign="top" align="left" class="input_txt" width="20%" style="height:50px"> Non-Conformance(ID)&nbsp;:</td>
 				                  <td valign="top" align="left" class="input_txt" width="20%" height="20%">
 				                 
 				                 <input type="hidden" name="id" value="<c:out value="${nonconformance.id}"/>"/><c:out value="${nonconformance.id}"/>
@@ -86,7 +86,7 @@ $(function() {
 				                
 
 								 <tr class="row2">
-						         	<td valign="top" align="left" class="input_txt" width="20%"> Source of NC&nbsp;: </td>
+						         	<td valign="top" align="left" class="input_txt" width="20%" style="height:50px"> Source of NC&nbsp;: </td>
 						           <td valign="top" align="left" class="input_txt" width="20%">
 				                  		<select name="source_of_nonconformance" class="input_txtbx" id="source_of_nonconformance" onclick="showDiv()">
 						                    <option <c:if test="${nonconformance.source_of_nonconformance eq 'Internal Audit'}"><c:out value="Selected"/></c:if> value="Internal Audit" >Internal Audit</option>
@@ -100,7 +100,7 @@ $(function() {
 				                   		</select>
 				                   		<br><span style="color: red;" id="sourcencerr"><form:errors path="Nonconformance.source_of_nonconformance"></form:errors></td>
 						         	
-					            	<td valign="top" align="left" class="input_txt" width="20%"> Product ID&nbsp;: </td>
+					            	<td valign="top" align="left" class="input_txt" width="20%" > Product ID&nbsp;: </td>
 					                      	<td valign="top" align="left" class="input_txt" width="20%">
 					                      	<select name="product_id" class="input_txtbx" id="product_id">
 				                  										<option value="">--Select--</option>
@@ -112,7 +112,7 @@ $(function() {
 					                  </tr>
 								 
 								<tr class="row1">
-				                  	<td valign="top" align="left" class="input_txt" width="20%"> Type of NC&nbsp;: </td>
+				                  	<td valign="top" align="left" class="input_txt" width="20%" style="height:50px"> Type of NC&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 				                  		<select name="type_of_nonconformance" class="input_txtbx" id="type_of_nonconformance" onchange="doAjaxPost();">
 						                    <option <c:if test="${nonconformance.type_of_nonconformance eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
@@ -224,7 +224,7 @@ $(function() {
 																	</tr>
 						                     					        
 								<tr class="row2">
-				                	<td valign="top" align="left" class="input_txt"> Reported By&nbsp;: </td>
+				                	<td valign="top" align="left" class="input_txt" style="height:50px"> Reported By&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt">
 				                  	<div id="reported_by">
 				                    <input type="text" name="group_person" id="group_person" value="${nonconformance.reported_by}"/>
@@ -272,7 +272,7 @@ $(function() {
 			                 												</select><br/>
 			                 												<span id="responsibilityerror" style="color: red;"></span>
 			                 												<span style="color: red;"><form:errors path="Nonconformance.name_of_disposition_responsibility"></form:errors>
-				        		
+				        		<tr height="10"></tr>
 		  					
 		  					<tr class="row2">
                   				   	<td valign="top" align="left" class="input_txt"> Corrective Action Required(Y/N)&nbsp;: </td>
