@@ -26,14 +26,14 @@
 								<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_supplierperformance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Supplier</span>
+									<span>Add SupplierPerformance</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_supplierperformance" class="<c:choose>
 								<c:when test="${menu=='supplier'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span>View Supplier</span>
+									<span>View SupplierPerformance</span>
 									
 								</a>
 							</li>
@@ -52,7 +52,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Supplier Performance Details</h2>
+              <h2>Edit Supplier Performance</h2>
             </div>
             <div class="contentbox">
               <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">

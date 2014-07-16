@@ -16,7 +16,7 @@
 					<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_supplierperformance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Supplier</span>
+									<span>Add SupplierPerformance</span>
 									
 								</a>
 							</li>
@@ -24,7 +24,7 @@
 				          <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_supplierperformance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>View Supplier</span>
+									<span>View SupplierPerformance</span>
 									
 								</a>
 							</li>
@@ -179,6 +179,7 @@
 					</div>
 				</td></tr>
 </table></td></tr></table>
+
 
 <script type="text/javascript">
 function validate()

@@ -12,14 +12,14 @@
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_supplierperformance" class="<c:choose>
 								<c:when test="${menu=='supplier'}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span>Add Supplier</span>
+									<span>Add SupplierPerformance</span>
 									
 								</a>
 							</li>
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="view_supplierperformance" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span>View Supplier</span>
+									<span>View SupplierPerformance</span>
 									
 								</a>
 							</li>
@@ -39,7 +39,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Supplier Performance List</h2>
+              <h2>Supplier Performance Details</h2>
             </div>
             <div class="contentbox">
             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
@@ -47,30 +47,30 @@
               <c:set value="${supplierPerformanceForm.supplierperformance[0]}" var="supplierperformance"></c:set>
                <tr class="row2">
 
-                  <td valign="middle" align="left" class="input_txt" width="20%">Supplier  Id : </td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Supplier ID : </td>
 					<td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.supplier_id}</br><span class="err"></span></td>
                <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
                <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.website}
                </td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Supplier Name :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Supplier name :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.supplier_name}</br><span class="err"></span></td>
-               <td valign="middle" align="left" class="input_txt" width="20%"> Certified To :</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"> Certified to :</td>
                <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.certified_to}
                </td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Category :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.category}</br><span class="err"></span></td>
-               <td valign="middle" align="left" class="input_txt" width="20%"> Contact Name :</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"> Contact name :</td>
                <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.contact_name}
                </td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Address :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.address}</br><span class="err"></span></td>
-               <td valign="middle" align="left" class="input_txt" width="20%"> Contact Title :</td>
+               <td valign="middle" align="left" class="input_txt" width="20%"> Contact title :</td>
                <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.contact_title}
                </td>
                 </tr>
@@ -90,9 +90,9 @@
                   
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="20%">  Postal Code :</td>
+                 <td valign="middle" align="left" class="input_txt" width="20%">  Postal code :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.postalcode}</td>
-                    <td valign="middle" align="left" class="input_txt" width="20%"> Email Address :</td>
+                    <td valign="middle" align="left" class="input_txt" width="20%"> Email address :</td>
                <td valign="top" align="left" class="input_txt" width="20%">${supplierperformance.email_address}
                </td>
                   </tr>
