@@ -79,11 +79,11 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle">Supplier Name:</td>
-							    <td align="left" valign="middle"><input type="text" name="supplier_name" class="input_txtbx" id="suppliername" value="${suppliername}"></td>
+							    <td align="left" valign="middle"><input type="text" placeholder="SP1000" name="supplier_name" class="input_txtbx" id="suppliername" onInput="return validateusername(id);" value="${suppliername}"></td>
 							    <td align="left" valign="middle">&nbsp;&nbsp;Phone:</td>
-								<td align="left" valign="middle"><input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
+								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
 							    <td align="left" valign="middle">&nbsp;&nbsp;Email:</td>
-							    <td align="left" valign="middle"><input type="text" name="email_address" id="email" class="input_txtbx"value="${email}"></td>
+							    <td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="email_address" id="email" class="input_txtbx"value="${email}"></td>
 							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformance" ></td>
 							  	
 							  
@@ -188,7 +188,7 @@
 
 <script>
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete Supplier Performance Form ?")
+	var answer = confirm("Are you Sure You Want to Delete Supplier Performance Form ?");
 	if (answer){
 		return true;
 	}
@@ -247,8 +247,58 @@ return true;
 window.location="?do=viewsupplierperformance&suppliername="+document.getElementById("suppliername").value+"&phone="+document.getElementById("phone").value+"&city="+document.getElementById("city").value;
 }
 
+ function validateusername(id){
+	    var textInput = document.getElementById(id).value;
+		textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+		document.getElementById(id).value = textInput;
+	}
+
 
 </script>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+<script>
+$(function() {
+	$("#email").on("keypress", function(e) {
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});	
+</script>
+<!-- <script type="text/javascript">
+  function validatefind()
+  {
+	  var error = "";
+	  var suppliername = document.getElementById('suppliername').value;
+	  var phone  = document.getElementById('phone').value;
+	  var email = document.getElementById('email').value;
+	
+	  if(suppliername =="" && phone == "" && email == "")
+		  {
+		  document.getElementById("searcherror").innerHTML="Input Empty";
+			error="true";
+		  }
+	 
+	  else if(suppliername.length > 0)
+	  {
+	  if((suppliername.length < 4) || (suppliername.length > 32))
+		  {
+		  document.getElementById("nameerror").innerHTML="Required field should be length of 4 to 32";
+			error="true";
+		  }
+	  else{
+		  document.getElementById("nameerror").innerHTML="";
+	 	 }
+	  }
+	  else
+		  {
+		  document.getElementById("nameerror").innerHTML="";
+		  }
+	  
+	  if(error == "true")
+		  {
+		  return false;
+		  }
+  }
+  </script>
+ --><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>

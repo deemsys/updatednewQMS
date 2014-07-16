@@ -179,9 +179,6 @@
 					</div>
 				</td></tr>
 </table></td></tr></table>
-<table  width="50%" height="50%">
-			<tr><td></td></tr></table>
-
 
 <script type="text/javascript">
 function validate()
@@ -327,5 +324,6 @@ if(value==0)
 	});
 
 </script>
-<br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
   <jsp:include page="footer.jsp"></jsp:include>

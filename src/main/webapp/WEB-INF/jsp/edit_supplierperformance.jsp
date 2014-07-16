@@ -57,7 +57,7 @@
             <div class="contentbox">
               <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
             <c:set value="${supplierPerformanceForm.supplierperformance[0]}" var="supplierperformance"/>
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding-left: 30px; padding-right: 30px;">
               <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="30%">Supplier ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" id="inp_id"  value="<c:out value="${supplierperformance.supplier_id }"/>"/><c:out value="${supplierperformance.supplier_id }"/><br/><span style="color: red;"><form:errors path="SupplierPerformance.supplier_id"></form:errors></span></td>
@@ -118,7 +118,7 @@
               	<td valign="top" align="left" class="input_txt" width="30%">State :</td>
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" onInput="return validatename(id);" class="input_txtbx" id="inp_state" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="SupplierPerformance.state"></form:errors></span></td>
               	  <td valign="top" align="left" class="input_txt" width="30%">Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" maxlength="10" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" maxlength="10" placeholder="+1" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
                 
               	</tr>
                 <tr class="row2">
@@ -258,7 +258,7 @@ function validatename(id)
 		if(document.getElementById("inp_supplier_name").value=="")
 			{
 			
-			document.getElementById("nameerror").innerHTML="Required Field Should not be Empty";
+			document.getElementById("nameerror").innerHTML="Required field should not be empty";
 			error="true";
 			}
 		else if(document.getElementById("inp_supplier_name").value.length<4 || document.getElementById("inp_supplier_name").value.length>=32)
@@ -280,7 +280,7 @@ function validatename(id)
 		if(contact =="")
 		 {
 		
-			 document.getElementById("contacterror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("contacterror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -304,7 +304,7 @@ function validatename(id)
 		if(address =="")
 		 {
 		
-			 document.getElementById("addresserror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("addresserror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -326,7 +326,7 @@ function validatename(id)
 		if(title =="")
 		 {
 		
-			 document.getElementById("titleerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("titleerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -348,7 +348,7 @@ function validatename(id)
 		if(city =="")
 		 {
 		
-			 document.getElementById("cityerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("cityerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -371,7 +371,7 @@ function validatename(id)
 		if(state =="")
 		 {
 		
-			 document.getElementById("stateerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("stateerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -393,7 +393,7 @@ function validatename(id)
 		if(country =="")
 		 {
 		
-			 document.getElementById("countryerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("countryerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -416,13 +416,13 @@ function validatename(id)
 	    
 		if(email=="")
 		{
-		document.getElementById("emailerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("emailerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 		
 		else if(email.match(mail)==null)
 	    {
-	    	document.getElementById("emailerror").innerHTML="Invalid E-Mail Format";
+	    	document.getElementById("emailerror").innerHTML="Invalid E-mail format";
 	    	error="true";
 	    }
 		else if(email.substring(0,1)==" ")
@@ -441,22 +441,22 @@ function validatename(id)
 	    
 	    if(postal=="")	
 		{
-		document.getElementById("postalerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("postalerror").innerHTML="Required field should not be empty";
 		error="true";
 		}else if(document.getElementById("inp_postalcode").value.length>5)
 	    {
 	    
-	    	document.getElementById("postalerror").innerHTML="Should be of length 5";
+	    	document.getElementById("postalerror").innerHTML="Required field should be of length 5";
 	    	 error="true";
 	    } 
 		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
 	    {
-	    	document.getElementById("postalerror").innerHTML="Invalid Postalcode Format";
+	    	document.getElementById("postalerror").innerHTML="Invalid postalcode format";
 	    	error="true";
 	    }
 	    else if(document.getElementById("inp_postalcode").value.match(zero))
 	    	{
-	    	document.getElementById("postalerror").innerHTML="invalid PostalCode";
+	    	document.getElementById("postalerror").innerHTML="Invalid postalcode";
 	    	}
 	    else
 	    	{
@@ -468,7 +468,7 @@ function validatename(id)
 	    var letters = /^[A-Za-z]+$/;  
 	    if(fax=="")	
 		{
-		document.getElementById("faxerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("faxerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 
@@ -480,7 +480,7 @@ function validatename(id)
 	    } 
 	    else if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	    {
-	    	document.getElementById("faxerror").innerHTML="Invalid Fax Format";
+	    	document.getElementById("faxerror").innerHTML="Invalid fax format";
 	    	error="true";
 	    }
 	    else if(fax.substring(0,1)==" ")
@@ -490,7 +490,7 @@ function validatename(id)
 		}
 	    else if(fax.match(letters))
     	{
-    	document.getElementById("faxerror").innerHTML="Enter Numeric Values";
+    	document.getElementById("faxerror").innerHTML="Enter numeric values";
     	}
     
 	    else
@@ -504,13 +504,13 @@ function validatename(id)
 		  
 	    if(document.getElementById("inp_website").value=="")	
 		{
-		document.getElementById("websiteerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("websiteerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 
 	    else if(document.getElementById("inp_website").value.match(website)==null)
 	    {
-	    	document.getElementById("websiteerror").innerHTML="Invalid website Format";
+	    	document.getElementById("websiteerror").innerHTML="Invalid website format";
 	    	error="true";
 	    }
 	    else
@@ -521,14 +521,14 @@ function validatename(id)
 
 	    if(phone =="")
 		  {
-		  document.getElementById("phoneerror").innerHTML="Required Field should not be Empty";
+		  document.getElementById("phoneerror").innerHTML="Required field should not be empty";
 	    	error="true";
 		  }
 	  
 	  else if(phone.match(mobile)){  
 		  if((phone == "0000000000") || (phone == "1111111111"))
 		   {
-		   document.getElementById("phoneerror").innerHTML="Invalid Number";
+		   document.getElementById("phoneerror").innerHTML="Invalid number";
 	    	error="true";
 			}
 		  else
@@ -537,14 +537,14 @@ function validatename(id)
 		   }
 	  }
 	  else{
-		  document.getElementById("phoneerror").innerHTML="Required Field should contain 10 digits";
+		  document.getElementById("phoneerror").innerHTML="Required field should contain 10 digits";
 	    	error="true";
 	  }
   	
 
 	    if(error == "true")
 	    	{
-		return false;
+		return false; 	 	
 		}
 		
 		

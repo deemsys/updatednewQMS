@@ -59,9 +59,9 @@
             </div>
             <div class="contentbox">
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding-left: 30px; padding-right: 30px;">
    				 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%">Supplier ID :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%" >Supplier ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
                 
             	 <td valign="top" align="left" class="input_txt" width="30%">Website :</td>
@@ -271,7 +271,7 @@ function validatename(id)
 		if(certified=="")
 		{
 		
-		document.getElementById("certifiederror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("certifiederror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 		else{
@@ -280,7 +280,7 @@ function validatename(id)
 		if(category=="")
 		{
 		
-		document.getElementById("categoryerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("categoryerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 		else{
@@ -289,7 +289,7 @@ function validatename(id)
 		if(document.getElementById("inp_supplier_name").value=="")
 			{
 			
-			document.getElementById("nameerror").innerHTML="Required Field Should not be Empty";
+			document.getElementById("nameerror").innerHTML="Required field should not be empty";
 			error="true";
 			}
 		else if(document.getElementById("inp_supplier_name").value.length<4 || document.getElementById("inp_supplier_name").value.length>=32)
@@ -312,7 +312,7 @@ function validatename(id)
 		if(contact =="")
 		 {
 		
-			 document.getElementById("contacterror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("contacterror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -335,7 +335,7 @@ function validatename(id)
 		if(address =="")
 		 {
 		
-			 document.getElementById("addresserror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("addresserror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -358,7 +358,7 @@ function validatename(id)
 		if(title =="")
 		 {
 		
-			 document.getElementById("titleerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("titleerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -380,7 +380,7 @@ function validatename(id)
 		if(city =="")
 		 {
 		
-			 document.getElementById("cityerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("cityerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -402,7 +402,7 @@ function validatename(id)
 		if(state =="")
 		 {
 		
-			 document.getElementById("stateerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("stateerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -424,7 +424,7 @@ function validatename(id)
 		if(country =="")
 		 {
 		
-			 document.getElementById("countryerror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("countryerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
 			
@@ -450,13 +450,13 @@ function validatename(id)
 	    
 		if(email=="")
 		{
-		document.getElementById("emailerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("emailerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 		
 		else if(email.match(mail)==null)
 	    {
-	    	document.getElementById("emailerror").innerHTML="Invalid E-Mail Format";
+	    	document.getElementById("emailerror").innerHTML="Invalid E-mail format";
 	    	error="true";
 	    }
 		else if(email.substring(0,1)==" ")
@@ -474,7 +474,7 @@ function validatename(id)
 	
 	    if(postal=="")	
 		{
-		document.getElementById("postalerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("postalerror").innerHTML="Required field should not be empty";
 		error="true";
 		}else if(document.getElementById("inp_postalcode").value.length>5)
 	    {
@@ -485,45 +485,47 @@ function validatename(id)
 
 		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
 	    {
-	    	document.getElementById("postalerror").innerHTML="Invalid Postalcode Format";
+	    	document.getElementById("postalerror").innerHTML="Invalid postalcode format";
 	    	error="true";
 	    }
 	    else if(document.getElementById("inp_postalcode").value.match(zero))
 	    	{
-	    	document.getElementById("postalerror").innerHTML="invalid PostalCode";
+	    	document.getElementById("postalerror").innerHTML="invalid postalCode";
 	    	}
 	    else
 	    	{
 	    	document.getElementById('postalerror').innerHTML="";
 	    	}
 	    
-	    //var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-var letters = /^[A-Za-z]+$/;  
-    var faxreg = /^\+?[0-9]+$/;
-//	   var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-	    if(document.getElementById("inp_fax").value=="")	
+	    var faxreg= /^\+?[0-9]+$/;
+	    var letters = /^[A-Za-z]+$/;  
+	    if(fax=="")	
 		{
-		document.getElementById("faxerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("faxerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
+
+	    else if(document.getElementById("inp_fax").value.length<10)
+	    {
+	    	
+	    	document.getElementById("faxerror").innerHTML="Should be of length 10";
+	    	 error="true";
+	    } 
 	    else if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	    {
-	    	document.getElementById("faxerror").innerHTML="Invalid Fax Format";
+	    	document.getElementById("faxerror").innerHTML="Invalid fax format";
 	    	error="true";
 	    }
-	    else if(document.getElementById("inp_fax").value.substring(0,1)==" ")
+	    else if(fax.substring(0,1)==" ")
 		{
 		document.getElementById("faxerror").innerHTML="Initial space not allowed";
 		 error="true";
 		}
-	    
-	    else if(document.getElementById("inp_fax").value.match(letters))
-	    	{
-	    	alert("numeric");
-	    	document.getElementById("faxerror").innerHTML="Enter Numeric Values";
-	    	error="true";
-	    	}
-	    
+	    else if(fax.match(letters))
+    	{
+    	document.getElementById("faxerror").innerHTML="Enter numeric values";
+    	}
+    
 	    else
 	    	{
 	    	document.getElementById("faxerror").innerHTML="";
@@ -536,7 +538,7 @@ var letters = /^[A-Za-z]+$/;
 	    
 	    if(document.getElementById("inp_website").value=="")	
 		{
-		document.getElementById("websiteerror").innerHTML="Required Field Should not be Empty";
+		document.getElementById("websiteerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 
@@ -552,7 +554,7 @@ var letters = /^[A-Za-z]+$/;
 	
 	    if(phone =="")
 		  {
-		  document.getElementById("phoneerror").innerHTML="Required Field should not be Empty";
+		  document.getElementById("phoneerror").innerHTML="Required field should not be empty";
 	    	error="true";
 		  }
 	  
@@ -568,7 +570,7 @@ var letters = /^[A-Za-z]+$/;
 		   }
 	  }
 	  else{
-		  document.getElementById("phoneerror").innerHTML="Required Field should contain 10 digits";
+		  document.getElementById("phoneerror").innerHTML="Required field should contain 10 digits";
 	    	error="true";
 	  }
   	  
