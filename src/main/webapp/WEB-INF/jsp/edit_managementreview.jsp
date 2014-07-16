@@ -145,7 +145,7 @@
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Responsibility :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>' maxlength="32"> 
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validateres(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>' maxlength="32"> 
                   <br> <span id="responsibilityerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>
                 
@@ -168,7 +168,7 @@
               <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"></td>
                  <td colspan="1" align="right">
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="submit" class="submit_btn1" name="submit" id="id_submit"onclick="return validate();" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="submit" class="submit_btn1" value="Update" name="submit" id="id_submit"onclick="return validate();" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                  <td valign="middle" align="right" class="input_txt" width="30%">
              	 <td valign="middle" align="left" class="input_txt" width="30%">
              	 </tr>
@@ -250,6 +250,12 @@ function validatename3(id){
     textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
     document.getElementById(id).value = textInput;
 }  
+function validateres(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}
 </script>
 <script type="text/javascript">
 function validate()
@@ -275,7 +281,7 @@ function validate()
 		}
 	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
 		{
-		document.getElementById("attendeelistwithtitleserror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}
@@ -292,7 +298,7 @@ function validate()
 		}
 	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
 	{
-	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should be length 4 to 32";
 	error="true";
 	
 	}
@@ -332,7 +338,7 @@ function validate()
 		}
 	else if((assessment.length < 4) ||(assessment.length > 32))
 		{
-		document.getElementById("assessmenterror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("assessmenterror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}
@@ -368,7 +374,7 @@ function validate()
 		}
 	else if((actiondetail.length < 4) ||(actiondetail.length > 32))
 		{
-		document.getElementById("actiondetailerror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("actiondetailerror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}
@@ -401,7 +407,7 @@ function validate()
 		}
 	else if((responsibility.length < 4) ||(responsibility.length > 32))
 		{
-		document.getElementById("responsibilityerror").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("responsibilityerror").innerHTML="Required Field Should be length 4 to 32";
 		error="true";
 		
 		}

@@ -549,7 +549,7 @@ function validatename3(id){
      		 }
      		 else if(documenttitle.charAt(0) == " ")
      		{
-     			 document.getElementById("documenttitle1").innerHTML="Initial Spaces not Allowed";
+     			 document.getElementById("documenttitle1").innerHTML="Should not accept initial space";
      			 error ="true";
      		}
      		 else
@@ -646,7 +646,7 @@ function validatename3(id){
         		}
         	else if(revisionlevel.charAt(0) ==" ")
    			 {
-   			 document.getElementById("revisionlevel1").innerHTML="Initial Spaces not Allowed";
+   			 document.getElementById("revisionlevel1").innerHTML="Should not accept initial space";
    			 error = "true";
    			 }
    		 else if(revisionlevel.match(dotnumber))

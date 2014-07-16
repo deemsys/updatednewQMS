@@ -59,36 +59,36 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>MANAGEMENT REVIEW</h2>
+					<h2 style="padding-left: 50px">Management Review</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_managementreview_report">
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="report_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">
 								Type Of Report :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
 								<input type="radio" name="management_report_type" value="0" id="id_type_managementreviewminutes" onclick="two_dates()"checked/>Management Review Minutes<br/>
 								<input type="radio" name="management_report_type" value="1" id="id_type_upcomingmanagementreviewmemo"onclick="two_dates()"/>Upcoming Management Review Memo<br/>
 								<input type="radio"  name="management_report_type" value="2" id="id_type_actionlistbetweendates" onclick="two_dates()"/>Action List Between Dates<br/>
-								<lable id ="twodates"style="display:none;">Start Date:
+								<label id ="twodates"style="display:none;">Start Date :
                   				<input type="text" name="start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
-                  				  <br><span id="datepicker11" style="color:red"></span>   <br>  <br>    
-                  				End Date:&nbsp;&nbsp;
+                  				  <br><span id="datepicker11" style="color:red"></span><br>    
+                  				End Date :&nbsp;&nbsp;
                   				<input type="text" name="end_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                   				 <br><span id="datepicker22" style="color:red"></span>
-                  				 <br><span id="dateerror" style="color:red"></span><br>   
-                  				</lable>
+                  				 <span id="dateerror" style="color:red"></span>  
+                  				</label>
                   				
 								<input type="radio"  name="management_report_type" value="3" id="id_type_pastdueactionlist"/onclick="two_dates()">Past Due Action List<br/>
 								<input type="radio" name="management_report_type" value="4" id="id_type_listofcontinuousimprovementprojects"/onclick="two_dates()">List of Continuous Improvement Projects<br/>
 							</td>
 							</tr>
 							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Select Report Type:</td>
+								<td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">
+									Select Report Type :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
@@ -100,18 +100,18 @@
 						
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
-									Name to appear on the Report:</td>
+								<td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">
+									Name to appear on the Report :</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
 									<input type="text" name="report_title" class="input_txtbx" id="report_title" value=""/>
 								</td>
 								
 							</tr>
 							<tr class="row1" id="userdefined_fields" style="display:none;">
-								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:</td>
+								<td valign="top" align="left" style="margin-top:2px;padding-left: 55px;" class="input_txt" width="30%">
+									Select Fields Required on the Report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-left:-10px;">
 								<tr>
 								
 								
@@ -148,11 +148,11 @@
 								
 							</tr>
 							<tr >
-             <td  colspan="2" align="center" width="30%">
+             <td  colspan="2" align="left" width="30%" style="padding-left:325px;">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validation();"class="submit_btn">
-             </td><td style="padding:10px;">
+             </td><!-- <td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn"></td>
-            
+             -->
              </tr></table>
            
             

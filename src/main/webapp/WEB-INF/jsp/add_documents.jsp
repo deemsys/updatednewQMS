@@ -725,7 +725,7 @@ function validation()
 	 }
 	 else if(documenttitle.charAt(0) == " ")
 	{
-		 document.getElementById("documenttitle1").innerHTML="Initial Spaces not Allowed";
+		 document.getElementById("documenttitle1").innerHTML="Should not accept initial space";
 		 error ="true";
 	}
 	 else
