@@ -76,7 +76,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review ID :</td>
 	                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="review_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/></td>
       
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Review Date :</td>
                   <td valign="top" align="left" class="input_txt1" width="10%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"/><br/>
                   <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
@@ -123,7 +123,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="assessment" class="input_txtbx" id="assessment" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename3();" maxlength="32"/><br/>
                   <span id="assessmenterror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>                
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Report Link :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Report Link :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" /><br/>
                   <span id="reportlinkerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
@@ -141,7 +141,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_detail" class="input_txtbx" id="actiondetail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1();" maxlength="32"/><br/>
                   <span id="actiondetailerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>                
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp; Action Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Action Due Date :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  /><br/>
                   <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>                
@@ -193,6 +193,7 @@
 
 </tr>
 </table>
+<br/><br/><br/><br/><br/><br/><br/><br/>
 
 <script>
 $(function() {

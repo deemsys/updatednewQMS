@@ -89,7 +89,7 @@
 							</tr>
 						</table>
 						
-						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						<table cellpadding="0" cellspacing="0" border="1" width="100%">
 							<tr class="row1" id="userdefined_name" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
@@ -142,6 +142,8 @@
               <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
             
              </tr></table>
+
+             
        
            
              </tr>
@@ -152,7 +154,6 @@
 					</div>
 				</td></tr>
 </table></td></tr></table>
-
 
 <script type="text/javascript">
 
