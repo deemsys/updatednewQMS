@@ -86,7 +86,7 @@
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
                <table style="width:100%;" class="simple_table" border="0">
                <tr ><td align="left">
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:130px; margin:0 0 0 -10px;margin-right:-40px;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:130px; margin:0 0 0 -10px;margin-right:-1px;">
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         	   <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			   </c:forEach>
@@ -129,11 +129,11 @@
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Document Title :</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onInput="return validatename(id);"/><br/>
+               <td valign="middle" align="left" class="input_txt" width="15%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onInput="return validatename(id);"/><br/>
                 <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="25%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
                
                <select id="location_text" name="location" class="input_txtbx">
@@ -158,7 +158,7 @@
              <tr class="row1">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Document Type :</td>
-              <td valign="top" align="left" class="input_txt" width="25%">
+              <td valign="top" align="left" class="input_txt" width="15%">
               <select name="document_type" id="documenttype" class="input_txtbx">
               <option value="">--Select--</option>
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
@@ -168,7 +168,7 @@
              
              <span  id="documenttypeerror" style="color:red" ></span>
              <span class="err"style="color:red" ><form:errors path="DocumentMain.document_type"></form:errors></span></td>
-             <td valign="middle" align="left" class="input_txt" width="20%">Process :</td>
+             <td valign="middle" align="left" class="input_txt" width="25%">Process :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
                
                <select name="process" id="id_inpprocess" onchange="doAjaxPost_for_process();" class="input_txtbx" >
