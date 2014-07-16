@@ -22,7 +22,7 @@ alert("Please select at least one.");
 return false;
 }
 //var result=confirm("Are you sure.You want to delete the User(s)?");
-var result = confirm("Are sure you wants to delete this record");
+var result = confirm("Are sure you wants to delete this record(s)?");
 if(result)
 	{
 return true;
@@ -179,7 +179,7 @@ else
 									<td valign="top" align="left" width="10%">Document Type</td>
 									<td valign="top" align="left" width="10%">Process Area</td>
 									<td valign="top" align="left" width="10%">Media Type</td>		
-	          						<td valign="top" align="center" width="15%">External Document(Y/N)</td>
+	          						<td valign="top" align="center" width="10%">External Document(Y/N)</td>
 								<!-- 	<td valign="top" align="left" width="10%"></td> -->
 									
 									
@@ -210,7 +210,7 @@ else
 										<td valign="top" align="left" width="10%"><a href="<c:out value="downloadMaindoc?id=${documentMains.document_id}"></c:out>">Download</a>&nbsp;<label>and</</label>&nbsp;<label>Hard Copy </label></td>
 										</c:otherwise>
 										</c:choose>	
-											<td valign="top" align="left" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+											<td valign="top" align="left" width="10%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<c:choose>
 											<c:when test="${documentMains.external=='Yes'}">
 											<c:out value="Yes"></c:out>

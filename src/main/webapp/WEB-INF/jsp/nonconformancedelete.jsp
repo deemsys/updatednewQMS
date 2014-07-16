@@ -21,7 +21,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are sure you wants to delete this record?");
+var result=confirm("Are sure you wants to delete this record(s)?");
 if(result)
 	{
 return true;
