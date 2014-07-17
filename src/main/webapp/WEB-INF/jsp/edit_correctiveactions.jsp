@@ -542,15 +542,20 @@ function validation()
 	else if((why.length < 4) || (why.length > 32))
 {
 
-document.getElementById('whyerr').innerHTML="Field should be of length 4 to 32";	
+document.getElementById('whyerr').innerHTML="Required should be of length 4 to 32";	
 error="true";
 }
-else if(why.substring(0,1)==" ")
-{
+	else if((why.charAt(0)== " "))
+	{
 	
-document.getElementById('whyerr').innerHTML="Initial space not allowed";
- error="true";
-}
+	document.getElementById("whyerr").innerHTML="Require field should not accept initial space";	
+	error="true";
+	}
+	else
+	{
+	document.getElementById('whyerr').innerHTML="";
+	}
+			
 			}
 	else
 		{
@@ -565,6 +570,10 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
  		document.getElementById('fileerror').innerHTML="Please Upload a File";
  		error="true";
  		}
+ 		else
+ 		{
+ 		document.getElementById('fileerror').innerHTML="";
+ 		}	
  		}
  	else
  		{
@@ -696,7 +705,7 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((external.length < 4) || (external.length > 32))
 	{
 	
-	document.getElementById('externalerror').innerHTML="Field should be of length 4 to 32";	
+	document.getElementById('externalerror').innerHTML="Required field should be of length 4 to 32";	
 	error="true";
 	}
 	else{
@@ -712,28 +721,34 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((team_leader.length < 4) || (team_leader.length > 45))
 		{
 		
-		document.getElementById("leadererror").innerHTML="Field should be of length 4 to 32";	
+		document.getElementById("leadererror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
 	else{
 		document.getElementById('leadererror').innerHTML="";
 	}
-	if(team_member=="")
-	{
-		document.getElementById("membererror").innerHTML="Required field should not be empty";	
-		error="true";
-		
-	}
-	else if((team_member.length < 4) || (team_member.length > 45))
+		if(team_member=="")
+		{
+			document.getElementById("membererror").innerHTML="Required field should not be empty";	
+			error="true";
+			
+		}
+		else if((team_member.length < 4) || (team_member.length > 45))
+			{
+			
+			document.getElementById("membererror").innerHTML="Required field should be of length 4 to 32";	
+			error="true";
+			}
+		else if((team_member.charAt(0)== " "))
 		{
 		
-		document.getElementById("membererror").innerHTML="Field should be of length 4 to 32";	
+		document.getElementById("membererror").innerHTML="Require field should not accept initial space";	
 		error="true";
 		}
-	else{
-		document.getElementById('membererror').innerHTML="";
-	}
-	
+		else{
+			document.getElementById('membererror').innerHTML="";
+		}
+		
 	if(root_cause_statement=="")
 	{
 		document.getElementById("rooterror").innerHTML="Required field should not be empty";	
@@ -743,9 +758,15 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 45))
 		{
 		
-		document.getElementById("rooterror").innerHTML="Field should be of length 4 to 32";	
+		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
+	else if((root_cause_statement.charAt(0)== " "))
+	{
+	
+	document.getElementById("rooterror").innerHTML="Require field should not accept initial space";	
+	error="true";
+	}
 	else{
 		document.getElementById('rooterror').innerHTML="";
 	}
@@ -758,9 +779,15 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((root_cause_analysis_file.length < 4) || (root_cause_analysis_file.length > 45))
 		{
 		
-		document.getElementById("root1error").innerHTML="Field should be of length 4 to 32";	
+		document.getElementById("root1error").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
+	else if((root_cause_analysis_file.charAt(0)== " "))
+	{
+	
+	document.getElementById("root1error").innerHTML="Require field should not accept initial space";	
+	error="true";
+	}
 	else{
 		document.getElementById('root1error').innerHTML="";
 	}
@@ -772,9 +799,15 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	}
 	else if((action.length < 4) || (action.length > 45))
 		{
-		document.getElementById("actionerror").innerHTML="Field should be of length 4 to 32";	
+		document.getElementById("actionerror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
+	else if((action.charAt(0)== " "))
+	{
+	
+	document.getElementById("actionerror").innerHTML="Require field should not accept initial space";	
+	error="true";
+	}
 	else{
 		document.getElementById("actionerror").innerHTML="";
 	}
@@ -787,9 +820,15 @@ document.getElementById('whyerr').innerHTML="Initial space not allowed";
 	else if((verified_by.length < 4) || (verified_by.length > 45))
 		{
 		
-		document.getElementById("verifiedbyerror").innerHTML="Field should be of length 4 to 32";	
+		document.getElementById("verifiedbyerror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
+	else if((verified_by.charAt(0)== " "))
+	{
+	
+	document.getElementById("verifiedbyerror").innerHTML="Require field should not accept initial space";	
+	error="true";
+	}     
 	else{
 		document.getElementById('verifiedbyerror').innerHTML="";
 	} 
