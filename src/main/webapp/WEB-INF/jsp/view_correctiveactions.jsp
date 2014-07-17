@@ -1,209 +1,234 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 <jsp:include page="header.jsp"></jsp:include>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data"  action="updatecorrectiveAndPreventiveActions">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
       <tr>
-      <td>
-      <div>
-  <ul class="horizmenu">
+       <td>
+        <div>
+  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-middle:8px;">
 						
-							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span >Add Corrective and Preventive Actions</span>
+									Add Corrective And Preventive Actions
 									
 								</a>
 							</li>
-						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+							
+							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="correctiveactions_list" class="<c:choose>
-								<c:when test="${menu==''}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									<span >View Corrective and Preventive Actions</span>
+								<c:when test="${menu=='corrective'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
+									View Corrective And Preventive Actions
+									
 								</a>
 							</li>
-				           <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+						
+				         <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="capa_report" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									<span >Reports</span>
+									Reports
 								</a>
 							</li>
-							</ul>
-							
+				            </ul>
+				            
   </div>
-      </td>
+       </td>
       </tr>
       <tr>
       
- 
-	
-        <td valign="top" align="left"><div>
+       <td valign="middle" align="left">
+        
+        
             <div class="headings altheading">
-              <h2>View Corrective And Preventive Actions </h2>
+              <h2>Corrective And Preventive Actions Details</h2>
             </div>
             <div class="contentbox">
+              <c:set value="${correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions[0]}" var="correctiveAndPreventiveActions"> </c:set>
+               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+             <!--  <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
-               <c:set value="${correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions[0]}" var="correctiveAndPreventiveActions"> </c:set>
-               <tr class="row2">
-
-                  <td valign="middle" align="left" class="input_txt" width="20%">CAPA Id: </td>
-
-                  
-
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.capa_id}<span class="err"></span></td>
+              --> <tr>
+			<td align="left" valign="middle" width="50%" style="padding-right: 25px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr class="row2">
+                  <td valign="middle" align="left" class="input_txt" width="30%">CAPA ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.capa_id}<br/></td>
+              	   <td valign="middle" align="left" class="input_txt"> NC ID :</td>
+				  <td valign="middle" align="left" class="input_txt">${correctiveAndPreventiveActions.nc_id}
+			</td>			
+              
                 </tr>
-                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">NC id :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.nc_id}<span class="err"></span></td>
-                </tr>
-                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Source of Nonconformance :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.source_of_nonconformance}</br><span class="err"></span></td>
-                </tr>
-                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="20%">External id:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.external_id}</br><span class="err"></span></td>
-                </tr>
-                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="20%">Type of Nonconformance:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.type_of_nonconformance}</br><span class="err"></span></td>
-                </tr>
-                <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="20%"> Date found :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.date_found}
-                  
-                  <br/><span class="err"></span></td>
-                  </tr>
-                   <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="20%">Temporary Action :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.temporary_action}
-                  
-                  <br/><span class="err"></span></td>
-                  </tr>
-                   <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Nature of NC:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.nature_of_nc}
-               </td>
-                </tr>
-               <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">CAPA Requester:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.capa_requestor}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Request Date:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.request_date}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">CAPA Due Date:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.capa_due_date}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Assigned team leader:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.assigned_team_leader}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Team members:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.team_members}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Root Cause Analysis File:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.root_cause_analysis_file}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Use 5 why in System:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.use_5_why_in_system}
-               </td>
-                </tr>
-                 <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Why's:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.why}
-               </td>
-                </tr>
-                  <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Root Cause Statement:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.root_cause_statement}
-               </td>
-                </tr>
-                  <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Upload external analysis:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.upload_external_analysis}
-               </td>
-                </tr>
-                  
-                 
-
-                <tr>
-             <td colspan="4">
-            <!--  <div id="child_table" style="display:none;"> -->
-             <table cellpadding="0" cellspacing="0" border="0" width="100%" >
-            
-        <!--  <tr class="row2">
-                  <td valign="middle" align="right" class="input_txt" width="30%">Equipment Id :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"></span></td>
-                </tr> -->
-              <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Action:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.action}
-               </td>
-                </tr>
-                <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Responsibility:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.responsibility}
-               </td>
-                </tr>
-                <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Due Date:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.due_date}
-               </td>
-                </tr>
-                <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Completion Date:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.completion_date}
-               </td>
-                </tr>
-                <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Verified by:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.verified_by}
-               </td>
-                </tr>
-                <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="20%">Verification Date:</td>
-               <td valign="top" align="left" class="input_txt" width="70%">${correctiveAndPreventiveActions.verification_date}
-               </td>
-                </tr>
-                 
                 
-            </table>
-            </div>
-            </td>
+                <tr class="row2">
+				  <td valign="middle" align="left" class="input_txt" width="30%"> External ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
+                  		${correctiveAndPreventiveActions.external_id}<br/></td>  
+                  
+                  <td valign="middle" align="left" class="input_txt" width="30%">Source of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.source_of_nonconformance}
+                  	
+                </td>
+                </tr>
+                  			
+                <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Date Found :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
+                 ${correctiveAndPreventiveActions.date_found}
+                   </td>
+                  
+
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Type of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
+                 ${correctiveAndPreventiveActions.type_of_nonconformance}<br/>
+                                    </td>
+                </tr>
+                
+			<tr class="row2">
+				<td valign="middle" align="left" class="input_txt" width="30%">Temporary Action :</td>               
+                <td valign="middle" align="left" class="input_txt" width="30%">
+                ${correctiveAndPreventiveActions.temporary_action}
+                 
+                </td>
+            	
+            	<td valign="middle" align="left" class="input_txt" width="30%">Nature of NC :</td>      
+				<td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.nature_of_nc}
+				 
+				</td>
             </tr>
-            </table>
-            </div>
-            </div>
-            </td>
-            </tr>
-            </table></div>
-            </form>
-            <!--  <script type="text/javascript">
-function toggle3(value){
-     
-       var e = document.getElementById('child_table');
-      // var e1=document.getElementById('employee');
-if(value==0)
-       {
-	e.style.display="none";
-       }
-else
-       {
-	e.style.display="block";
-       }
-       
-}
-</script> -->
-            
+            <tr class="row2">
+              <td valign="middle" align="left" class="input_txt"> CAPA Requestor :</td>
+			  <td valign="middle" align="left" class="input_txt">${correctiveAndPreventiveActions.capa_requestor}
+				</td>        
+						                  
+				                 
+										  
+							  
+				 	
+			  <td valign="middle" align="left" class="input_txt"> Use 5 Why's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
+		      <td>${correctiveAndPreventiveActions.use_5_why_in_system}</td>					
+		
+	</tr> 
+				
+            <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Request Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.request_date}</td>
+                  
+                  <td valign="middle" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
+				   	 &nbsp;</td>
+				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why">
+					  ${correctiveAndPreventiveActions.why}</td>			
+             </tr>	
+             
+            <tr class="row2">
+                  <td valign="middle" align="left" class="input_txt" width="30%"> CAPA Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.capa_due_date}</td>
+                 
+              
+                </tr>
+            <tr class="row1">
+              <td valign="middle" align="left" class="input_txt">Assigned Team Leader :</td>
+						           <td valign="middle" align="left" class="input_txt">
+				                  	${correctiveAndPreventiveActions.assigned_team_leader}	
+				                 
+				                   	</td>	
+                 </tr>
+                  <tr class="row2">
+                 <td valign="middle" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
+						         	 <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.team_members}</td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
+                  <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.root_cause_statement}</td>
+               
+              </tr>
+                 <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
+                  
+                  <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.root_cause_analysis_file}</td>
+               <!-- <td valign="middle" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
+				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
+						 -->             	  <td valign="middle" align="left" class="input_txt" width="32%">Upload External Analysis (Y/N)<span>(*Optional)</span> :</td>
+				  <td valign="middle" align="left" class="input_txt" width="32%">${correctiveAndPreventiveActions.upload_external_analysis}
+				  </td>
+				 
+				  	 </tr>
+				  	 
+			 <tr class="row1" id="id_file" style="display:none;" >
+			  
+			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
+			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
+             <td valign="middle" align="left" class="input_txt" width="30%">Upload the File :</td>
+             <td valign="middle" align="left" class="input_txt" width="30%">${correctiveAndPreventiveActions.attachment_name}</td>
+                 
+                   </tr>
+						<!-- 
+							</tr>
+				
+				 <td valign="middle" align="left" class="input_txt" width="30%" >Upload</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
+                  
+                  <input name="attachments"  id="id_file" type="file" /> 
+                  </td>       	
+          
+           </tr>
+           -->       
+                 
+                  </table>
+                <br>
+                <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
+                 <table cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+			<td align="left" valign="middle" width="50%" style="padding-right: 25px;">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" width="20%">Action :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">${correctiveAndPreventiveActions.action}</td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">${correctiveAndPreventiveActions.due_date}</td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Verified By :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">${correctiveAndPreventiveActions.verified_by}</td>
+               </tr>
+                    <tr class="row2">
+                     <td valign="middle" align="left" class="input_txt" width="20%">Responsibity :</td>
+                     <td valign="middle" align="left" class="input_txt"width="20%">${correctiveAndPreventiveActions.responsibility}
+				                  		
+				                   	</td>	
+                     
+                     <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">${correctiveAndPreventiveActions.completion_date}</td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Verification Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">${correctiveAndPreventiveActions.verification_date}</td>
+                 </tr>
+                </table>
+               </td>
+               </tr>
+               </table>
+                </div>
+                 
+                 <br>
+                 <table align="center" width="100%">
+                  <tr >
+                  
+                  <td valign="middle" align="center"></td>
+				  <td valign="middle" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
+				 </td>
+                  </tr>
+                  </table>
+                  </table>
+                  </div>
+                  
+                  </td>
+                  </tr></table></div>
+                 
+                  </form>
+                  
+                  
+                  
+
+<jsp:include page="footer.jsp"></jsp:include>
