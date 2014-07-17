@@ -68,7 +68,7 @@
                   <td valign="top" align="left" style="padding-left: 55px">Description :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="400" name="document_id" id="document_id" >${documentprefix.document_id}</textarea>
-                <input type="hidden" name="document_id" id="duplicate">
+                <input type="hidden"  id="duplicate">
                   <br>  <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
                 </tr>
