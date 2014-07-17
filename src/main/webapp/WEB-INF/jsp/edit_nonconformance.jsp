@@ -79,7 +79,7 @@ $(function() {
 				                  </td>
 				                  
 				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID&nbsp;: </td>
-				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  class="input_txtbx" style="display:block;" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" />
+				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onkeyup="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" />
 				                  	<span style="color:red;" id="externalerror"></span>
 				                  	</td>
 				                </tr>
@@ -136,7 +136,7 @@ $(function() {
 									<td valign="top" align="left" class="input_txt" width="20%"> Nature Of NC&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 				               
-				                <textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;"  >${nonconformance.nature_of_nonconformance}</textarea>
+				                <textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" maxlength="200" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;"  >${nonconformance.nature_of_nonconformance}</textarea>
 								<br>
 								<span id="nature" style="color: red;"></span>
 								<span style="color: red;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
@@ -258,7 +258,7 @@ $(function() {
 						                 
    						  		<tr class="row1">
 			   						<td valign="top" align="left" class="input_txt"> Temporary Action&nbsp;: </td>
-               						<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" style= "height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
+               						<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" maxlength="200" style= "height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;"></span>
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          </td>
@@ -573,6 +573,10 @@ $(function() {
 		</script>
 		
 <script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
 function validation()
 {
 	
@@ -627,6 +631,11 @@ function validation()
 	if(external=="")
 		{
 	document.getElementById("externalerror").innerHTML="Required field should not be empty";
+	error="true";
+	}
+	else if(external.length<4)
+	{
+	document.getElementById("externalerror").innerHTML="Required and must be of length 4 to 32";
 	error="true";
 	}
 	else
@@ -799,7 +808,7 @@ if(datefound == "")
   	else if(document.getElementById("quantity").value.length<4 || document.getElementById("quantity").value.length>=32)
 	    {
 	    	
-	    	document.getElementById("quantitysuspect").innerHTML="Should be of length 4 to 32";
+	    	document.getElementById("quantitysuspect").innerHTML="Required and must be of length 4 to 32";
 	    	 error="true";
 	    } 
 	
@@ -847,10 +856,10 @@ if(datefound == "")
 				 error="true";
 			 } 
 				
-		 	else if(document.getElementById("natureofnc").value.length<4 || document.getElementById("natureofnc").value.length>=32)
+		 	else if(document.getElementById("natureofnc").value.length<4)
 			    {
 			    	
-			    	document.getElementById("nature").innerHTML="Should be of length 4 to 32";
+			    	document.getElementById("nature").innerHTML="Required and must be of length 4 to 200";
 			    	 error="true";
 			    } 
 
@@ -871,10 +880,10 @@ if(datefound == "")
 					 error="true";
 				 } 
 					
-					else if(document.getElementById("tempaction").value.length<4 || document.getElementById("tempaction").value.length>=32)
+					else if(document.getElementById("tempaction").value.length<4)
 				    {
 				    	
-				    	document.getElementById("temp").innerHTML="Should be of length 4 to 32";
+				    	document.getElementById("temp").innerHTML="Required and must be of length 4 to 200";
 				    	 error="true";
 				    } 
 				
@@ -1023,7 +1032,7 @@ function validatename(id)
 function validatealphanumeric(){
 
 	var textInput = document.getElementById("external_id").value;
-    textInput = textInput.replace(/[^A-Z0-9]/g, "");
+    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
     document.getElementById("external_id").value = textInput;
 }
 
