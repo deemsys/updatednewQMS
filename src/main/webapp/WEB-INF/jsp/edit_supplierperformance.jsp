@@ -438,7 +438,7 @@ function validatename(id)
 		    	{
 		    	document.getElementById("countryerror").innerHTML="";
 		    	}
-		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
 	    
 		if(email=="")
 		{
