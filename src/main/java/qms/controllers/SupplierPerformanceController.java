@@ -54,7 +54,7 @@ import qms.forms.SupplierPerformanceForm;;
         model.addAttribute("currentpage",1);
         */
 	  //  model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
-	    
+	    model.addAttribute("justcame",false);
 		return "view_supplierperformance";
 	 	}
 		
@@ -79,6 +79,7 @@ import qms.forms.SupplierPerformanceForm;;
 		    model.addAttribute("menu","supplier");
 		    model.addAttribute("button","viewall");
 		    model.addAttribute("success","true");
+		    model.addAttribute("justcame",false);
 		    return "view_supplierperformance";
 		    
 			
@@ -150,6 +151,7 @@ import qms.forms.SupplierPerformanceForm;;
 			model.addAttribute("id", supplierPerformanceDAO.get_maxid());
 			model.addAttribute("menu","supplier");
 			   model.addAttribute("success","true");
+			   model.addAttribute("justcame",false);
 			return "view_supplierperformance";
 			
 	 	}
@@ -173,7 +175,7 @@ import qms.forms.SupplierPerformanceForm;;
 		//	model.addAttribute("supplierPerformanceForm", supplierPerformanceForm);
 			model.addAttribute("success","update");
 			model.addAttribute("menu","supplier");
-			 
+			 model.addAttribute("justcame",false);
 			return "view_supplierperformance";
 
 	 	}
@@ -351,7 +353,6 @@ import qms.forms.SupplierPerformanceForm;;
 				model.addAttribute("currentpage",1);
 		    	model.addAttribute("supplierPerformanceForm",supplierPerformanceForm);
 		    	model.addAttribute("menu","admin");
-			
 			return "supplierperformancedelete";
 		
 		}

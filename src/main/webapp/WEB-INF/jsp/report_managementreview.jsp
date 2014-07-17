@@ -59,7 +59,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2 style="padding-left: 50px">Management Review</h2>
+					<h2 style="padding-left: 50px">Management Review Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_managementreview_report">
@@ -73,7 +73,7 @@
 								<input type="radio" name="management_report_type" value="0" id="id_type_managementreviewminutes" onclick="two_dates()"checked/>Management Review Minutes<br/>
 								<input type="radio" name="management_report_type" value="1" id="id_type_upcomingmanagementreviewmemo"onclick="two_dates()"/>Upcoming Management Review Memo<br/>
 								<input type="radio"  name="management_report_type" value="2" id="id_type_actionlistbetweendates" onclick="two_dates()"/>Action List Between Dates<br/>
-								<label id ="twodates"style="display:none;">Start Date :
+								<label id ="twodates" style="display:none;">Start Date :
                   				<input type="text" name="start_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                   				  <br><span id="datepicker11" style="color:red"></span><br>    
                   				End Date :&nbsp;&nbsp;
@@ -150,9 +150,9 @@
 							<tr >
              <td  colspan="2" align="left" width="30%" style="padding-left:325px;">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validation();"class="submit_btn">
-             </td><!-- <td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn"></td>
-             -->
+             </td><td style="padding:10px;">
+              <input type="reset" id="reset_export" onclick="toggle3(0);" name="reset_export" value="Reset" class="submit_btn"></td>
+            
              </tr></table>
            
             
@@ -313,6 +313,7 @@ if(value==0)
 	
 	e1.style.display="none";
 	e2.style.display="none";
+	document.getElementById('twodates').style.display ='none';
   
     }
     

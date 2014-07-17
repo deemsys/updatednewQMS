@@ -134,7 +134,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 60px">Add Document Type :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 60px">Document Type :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"  onInput="validateAlpha4();"/>
                 <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>

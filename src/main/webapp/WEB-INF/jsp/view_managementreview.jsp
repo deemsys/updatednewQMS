@@ -106,7 +106,7 @@
 				                   	</select>
 				                   	<br> <span id="caterror" style="color:red"></span></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit"onclick="return validation('this');" onmouseover="showTooltip('tooltip_id','inp_id3');" />
+							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" />
 							  
 
 							  <!-- <input type="submit" class="submit_btn1" name="search" id="id_submit"onclick="return validation1();" onmouseover="showTooltip('tooltip_id','inp_id3');" /> -->
@@ -159,10 +159,11 @@
 							    </c:forEach>
 							    </c:if>	
 							    <c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
+							    <c:if test="${justcame ne false}">
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%" style="color:red"><center><b>No Records Found!!!</b></center></td>
 							    		
-							    	</tr>
+							    	</tr></c:if>
 							    	</c:if>		
 						    		
 								 <!-- 	<div style="clear: both;"></div>

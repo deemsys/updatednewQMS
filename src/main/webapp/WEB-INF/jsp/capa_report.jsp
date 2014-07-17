@@ -193,7 +193,7 @@
              <td  colspan="2" align="center" width="30%">
              <table style="width: 408px; "><tr style="padding:10px;"><td style=" width: 100px">&nbsp;&nbsp;<input type="submit" align="left" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1" style="width: 79px; ">
              </td><td style="padding:10px;">
-              &nbsp;&nbsp;<!-- <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1" style="width: 79px; "> --></td>
+              &nbsp;&nbsp;<input type="reset" id="reset_export" name="reset_export" value="Reset" onclick="toggle3(0);" class="submit_btn1" style="width: 79px; "></td>
             
              </tr></table>
             </td>
@@ -402,6 +402,7 @@ if(value==0)
 	
 	e1.style.display="none";
 	e2.style.display="none";
+	document.getElementById("start").style.display="none";
   
     }
     

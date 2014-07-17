@@ -147,7 +147,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Type of Non Conformance List</h2>
+			          <h2>Report NC List</h2>
 			        </div>
 			        <div class="contentbox">
 	 

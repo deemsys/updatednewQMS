@@ -60,8 +60,8 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>" />${capa_id}<br/><span style="color: red;"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">CAPA ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>" />${capa_id}<br/><span style="color: red;"></span></td>
               	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
 				   <select name="nc_id" id="nc_id" class="dropdown" onchange="doAjaxPost();">
@@ -79,8 +79,8 @@
                 </tr>
                 
                 <tr class="row2">
-				  <td valign="top" align="left" class="input_txt" width="30%"> External ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%">
+				  <td valign="middle" align="left" class="input_txt" width="30%"> External ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
                   		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeyup="ChangeCase(this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
@@ -92,8 +92,8 @@
                 </tr>
                   			
                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Date Found :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Date Found :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="date_found" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.date_found}" /><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span></td> --%>
                   <select name="date_found" id="datepicker" class="dropdown" >
                   <option value="">--Select--</option>
@@ -103,22 +103,22 @@
                   </select><br/><span style="color: red;" id="datepickererr"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span>
                   </td>
 
-                  <td valign="top" align="left" class="input_txt" width="30%"> Type of NC :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><div id="type_of_nc">
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Type of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><div id="type_of_nc">
                   <%-- <input type="text" name="type_of_nonconformance" class="input_txtbx" id="type_of_nc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""> <br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.type_of_nonconformance"></form:errors></span> --%>
                   </div>
                   </td>
                 </tr>
                 
-			<tr class="row2">
-				<td valign="top" align="left" class="input_txt" width="30%">Temporary Action :</td>               
+			<tr class="row1">
+				<td valign="middle" align="left" class="input_txt" width="30%">Temporary Action :</td>               
                 <td valign="top" align="left" class="input_txt" width="30%">
-                <div id="temporary_action">
+                <div id="temporary_action" class="input_txt">
                 <%-- <textarea class="input_txtbx1" id="temporary_action" name="temporary_action"  style="width:55%; height: 70px;" value=""></textarea><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span> --%>
                 </div>
                 </td>
             	
-            	<td valign="top" align="left" class="input_txt" width="30%">Nature of NC :</td>      
+            	<td valign="middle" align="left" class="input_txt" width="30%">Nature of NC :</td>      
 				<td valign="top" align="left" class="input_txt" width="30%">
 				<div id="nature_of_nc">
 				<%-- <textarea class="input_txtbx1"  id="nature_of_nc" name="nature_of_nc" style="width:100%; height: 70px;" value=""></textarea><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.nature_of_nc"></form:errors></span> --%>
@@ -127,7 +127,7 @@
               
             </tr>
             <tr class="row2">
-              <td valign="top" align="left" class="input_txt"> CAPA Requestor :</td>
+              <td valign="middle" align="left" class="input_txt"> CAPA Requestor :</td>
 			  <td valign="top" align="left" class="input_txt">
 				           <select name="capa_requestor" class="dropdown"  id="capa_requestor">
 						                  <option value="">--Select--</option>
@@ -135,8 +135,8 @@
 										  <option value="name1">name2</option>
 										  <option value="name3">name3</option>
 				           </select><br/> <span style="color: red;" id="capaerror"><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></span></td>	
-			  <td valign="top" align="left" class="input_txt"> Use 5 Whys's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
-		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system"/></td>					
+			  <td valign="middle" align="left" class="input_txt"> Use 5 Whys's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
+		      <td valign="middle" align="left" class="input_txt"><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system"/></td>					
 			</tr> 
 				
             <tr class="row1">
@@ -145,7 +145,7 @@
                   
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
-				  <td valign="top" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
+				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
 					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
              </tr>	
              
@@ -176,10 +176,10 @@
                
               </tr>
                  <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
-               <td valign="top" align="left" class="input_txt" > Upload External Analysis (Y/N)<span> &nbsp;(*Optional) :</span></td>
+               <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
 				<tr class="row2" id="upload" style="display:none;">

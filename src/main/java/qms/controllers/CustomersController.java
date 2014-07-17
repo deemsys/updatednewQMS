@@ -49,7 +49,9 @@ public class CustomersController
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
   *///  model.addAttribute("customersForm",customersForm);
-    
+    model.addAttribute("justcame",false);
+
+
 	return "view_customers";
  	}
 	
@@ -133,6 +135,9 @@ public class CustomersController
 	model.addAttribute("id", customersDAO.getMax_customerID());
 	model.addAttribute("menu","customer");
 	model.addAttribute("success","true");
+	 model.addAttribute("justcame",false);
+
+
 	return "view_customers";
  	}
 	
@@ -160,6 +165,9 @@ public class CustomersController
   //  model.addAttribute("customersForm",customersForm);
     model.addAttribute("success","update");
     model.addAttribute("menu","customer");
+    model.addAttribute("justcame",false);
+
+
 	return "view_customers";
 
 	

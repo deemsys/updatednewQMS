@@ -150,6 +150,8 @@ public class EmployeeController
 		model.addAttribute("id",employeeDAO.getMax_employeeID());
 		model.addAttribute("employeeForm",employeeForm);		
 		model.addAttribute("menu","employee");
+		 model.addAttribute("justcame",false);
+
         return "view_employees";
 		}
 		
@@ -182,7 +184,8 @@ public class EmployeeController
 		EmployeeForm employeeForm=new EmployeeForm();
 		model.addAttribute("menu","employee");
 		employeeForm.setEmployees(employeeDAO.getlimitedemployeereport(1));
-	
+		 model.addAttribute("justcame",false);
+
 		return "view_employees";
 	}
 		
@@ -350,6 +353,8 @@ public class EmployeeController
 				employeeForm.setEmployees(employeeDAO.getEmployees());
 				//model.addAttribute("employeeForm", employeeForm);
 				model.addAttribute("menu","employee");
+				 model.addAttribute("justcame",false);
+
 				return "view_employees";
 				}
 				else{

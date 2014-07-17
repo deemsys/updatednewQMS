@@ -156,7 +156,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Instruction List</h2>
+			          <h2>Instruction Attachment List</h2>
 			        </div>
 			        <div class="contentbox">
 			      <form action="documentprefix_list" method="POST"> 

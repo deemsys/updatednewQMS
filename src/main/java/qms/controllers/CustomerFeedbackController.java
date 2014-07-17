@@ -128,6 +128,7 @@ public class CustomerFeedbackController
 		//	model.addAttribute("customerFeedbackForm",customerFeedbackForm);		
 			model.addAttribute("menu","customer");
 		    model.addAttribute("success","true");
+		    model.addAttribute("justcame",false);
 
 			return "/view_customerfeedback";
 		}
@@ -231,6 +232,8 @@ public class CustomerFeedbackController
 	    model.addAttribute("success","update");
 
 		model.addAttribute("menu","customer");
+		 model.addAttribute("justcame",false);
+
 		return "view_customerfeedback";
 	}
 		else
@@ -268,6 +271,8 @@ public class CustomerFeedbackController
         */
 	//	model.addAttribute("customerFeedbackForm",customerFeedbackForm);
 		//model.addAttribute("menu","customer");
+		 model.addAttribute("justcame",false);
+
 		return "view_customerfeedback";
 	}
 	

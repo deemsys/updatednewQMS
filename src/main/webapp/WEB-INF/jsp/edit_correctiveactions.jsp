@@ -13,7 +13,7 @@
       <tr>
        <td>
         <div>
-  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
+  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-middle:8px;">
 						
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcorrectiveAndPreventiveActions" class="<c:choose>
@@ -44,7 +44,7 @@
       </tr>
       <tr>
       
-       <td valign="top" align="left">
+       <td valign="middle" align="left">
         
         
             <div class="headings altheading">
@@ -56,13 +56,13 @@
              <!--  <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               --> <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="middle" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%">CAPA ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${correctiveAndPreventiveActions.capa_id}"/>"/>${correctiveAndPreventiveActions.capa_id}<br/><span style="color: red;"></span></td>
-              	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
-				  <td valign="top" align="left" class="input_txt">
+                  <td valign="middle" align="left" class="input_txt" width="30%">CAPA ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${correctiveAndPreventiveActions.capa_id}"/>"/>${correctiveAndPreventiveActions.capa_id}<br/><span style="color: red;"></span></td>
+              	   <td valign="middle" align="left" class="input_txt"> NC ID :</td>
+				  <td valign="middle" align="left" class="input_txt">
 				   <select name="nc_id" id="nc_id" class="dropdown" onchange="doAjaxPost();">
                <option value="">--Select--</option>
                <c:forEach items="${nonConformanceForm.nonconformance}" var="nonconformance" varStatus="true">
@@ -78,12 +78,12 @@
                 </tr>
                 
                 <tr class="row2">
-				  <td valign="top" align="left" class="input_txt" width="30%"> External ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%">
+				  <td valign="middle" align="left" class="input_txt" width="30%"> External ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
                   		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.external_id}"></c:out>' onkeyup="ChangeCase(this);"/><br/><span style="color: red;" id="externalerror"></span><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></td>  
                   
-                  <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Source of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
                   	<div id="source_of_nonconformance"> 
                   	<%-- <input type="text" name="source_of_nonconformance" id="source_of_nonconformance"  class="input_txtbx" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.source_of_nonconformance}"></c:out>' /><br/> --%> 
                   		
@@ -92,8 +92,8 @@
                 </tr>
                   			
                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Date Found :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%">
+                  <td valign="middle" align="left" class="input_txt" width="30%">Date Found :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="date_found" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.date_found}" /><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.date_found"></form:errors></span></td> --%>
                   <select name="date_found" id="datepicker" class="dropdown">
                   <option value="">--Select--</option>
@@ -106,37 +106,37 @@
                   </td>
                   
 
-                  <td valign="top" align="left" class="input_txt" width="30%"> Type of NC :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><div id="type_of_nc">
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Type of NC :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><div id="type_of_nc">
                   <%-- <input type="text" name="type_of_nonconformance" class="input_txtbx" id="type_of_nc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.type_of_nonconformance}"></c:out>' /><br/><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.type_of_nonconformance"></form:errors></span>
                    --%></div>
                   </td>
                 </tr>
                 
 			<tr class="row2">
-				<td valign="top" align="left" class="input_txt" width="30%">Temporary Action :</td>               
-                <td valign="top" align="left" class="input_txt" width="30%">
+				<td valign="middle" align="left" class="input_txt" width="30%">Temporary Action :</td>               
+                <td valign="middle" align="left" class="input_txt" width="30%">
                 <div id="temporary_action">
                 <%-- <textarea class="input_txtbx1"  name="temporary_action"  style="width:55%; height: 70px;">${correctiveAndPreventiveActions.temporary_action}</textarea><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.temporary_action"></form:errors></span>
                  --%></div>
                 </td>
             	
-            	<td valign="top" align="left" class="input_txt" width="30%">Nature of NC :</td>      
-				<td valign="top" align="left" class="input_txt" width="30%"><div id="nature_of_nc">
+            	<td valign="middle" align="left" class="input_txt" width="30%">Nature of NC :</td>      
+				<td valign="middle" align="left" class="input_txt" width="30%"><div id="nature_of_nc">
 				<textarea class="input_txtbx1"  id="nature_of_nc" name="nature_of_nc" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.nature_of_nc}</textarea><span style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.nature_of_nc"></form:errors></span>
 				 </div>
 				</td>
             </tr>
             <tr class="row2">
-              <td valign="top" align="left" class="input_txt"> CAPA Requestor :</td>
-			  <td valign="top" align="left" class="input_txt">
+              <td valign="middle" align="left" class="input_txt"> CAPA Requestor :</td>
+			  <td valign="middle" align="left" class="input_txt">
 				           <select name="capa_requestor" class="dropdown"  id="capa_requestor">
 						                  <option value="">--Select--</option>
 						                  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
 										  <option <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name2'}"><c:out value="Selected"/></c:if> value="name1">name2</option>
 										  <option  <c:if test="${correctiveAndPreventiveActions.capa_requestor eq 'name3'}"><c:out value="Selected"/></c:if> value="name3">name3</option>
 				           </select><br> <span style="color: red;" id="capaerror"></span><form:errors path="CorrectiveAndPreventiveActions.capa_requestor"></form:errors></td>	
-			  <td valign="top" align="left" class="input_txt"> Use 5 Why's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
+			  <td valign="middle" align="left" class="input_txt"> Use 5 Why's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
 		      <td><input type="checkbox" name="use_5_why_in_system" value="use_5_why_in_system" id="use_5_why_in_system" <c:if test="${correctiveAndPreventiveActions.use_5_why_in_system=='use_5_why_in_system'}"><c:out value="Checked"/></c:if>/></td>					
 		<script>
 		
@@ -156,24 +156,24 @@ document.getElementById("why").style.visibility = 'hidden';
 	</tr> 
 				
             <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%"> Request Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.request_date}" /><br><span style="color: red;" id="datepicker2err"></span><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"> Request Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.request_date}" /><br><span style="color: red;" id="datepicker2err"></span><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></td>
                   
-                  <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
+                  <td valign="middle" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
-				  <td valign="top" align="left" class="input_txt" width="70% " id="5why">
+				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why">
 					  <textarea class="input_txtbx1"  name="why" id="why"  style="width:98%; height: 70px;" onInput="return validatename(id);">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
              </tr>	
              
             <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%"> CAPA Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.capa_due_date}" /><br><span style="color: red;" id="datepicker3err"></span><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"> CAPA Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${correctiveAndPreventiveActions.capa_due_date}" /><br><span style="color: red;" id="datepicker3err"></span><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></td>
                  
               
                 </tr>
             <tr class="row1">
-              <td valign="top" align="left" class="input_txt">Assigned Team Leader :</td>
-						           <td valign="top" align="left" class="input_txt">
+              <td valign="middle" align="left" class="input_txt">Assigned Team Leader :</td>
+						           <td valign="middle" align="left" class="input_txt">
 				                  		<select name="assigned_team_leader" id="team_leader" class="dropdown">
 						                  <option value="">--Select--</option>
 						                       <option <c:if test="${correctiveAndPreventiveActions.assigned_team_leader eq 'name1'}"><c:out value="Selected"/></c:if> value="name1" >name1</option>
@@ -185,30 +185,30 @@ document.getElementById("why").style.visibility = 'hidden';
 				                   	</td>	
                  </tr>
                   <tr class="row2">
-                 <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
-						         	 <td valign="top" align="left" class="input_txt" width="30%"><textarea  class="input_txtbx1"    name="team_members"  id="team_member" style="width: 202px; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
-                <td valign="top" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx1"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
+						         	 <td valign="middle" align="left" class="input_txt" width="30%"><textarea  class="input_txtbx1"    name="team_members"  id="team_member" style="width: 202px; height: 70px;">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
+                <td valign="middle" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
+                  <td valign="middle" align="left" class="input_txt" width="30%"><textarea class="input_txtbx1"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
                
               </tr>
                  <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.root_cause_analysis_file}"></c:out>' /><br/><span id="root1error" style="color: red;"></span><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></td>
-               <!-- <td valign="top" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${correctiveAndPreventiveActions.root_cause_analysis_file}"></c:out>' /><br/><span id="root1error" style="color: red;"></span><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></td>
+               <!-- <td valign="middle" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
-						 -->             	  <td valign="top" align="left" class="input_txt">Upload External Analysis (Y/N)<span>(*Optional)</span> :</td>
-				  <td> <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis =='upload_external_analysis'}"><c:out value="Checked=checked"/></c:if> />
+						 -->             	  <td valign="middle" align="left" class="input_txt" width="32%">Upload External Analysis (Y/N)<span>(*Optional)</span> :</td>
+				  <td valign="middle" align="left" class="input_txt" width="32%"> <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis =='upload_external_analysis'}"><c:out value="Checked=checked"/></c:if> />
 				  <td>
 				 
 				  	 </tr>
 				  	 
 			 <tr class="row1" id="id_file" style="display:none;" >
 			  
-			 <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
-			 <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
-             <td valign="top" align="left" class="input_txt" width="30%">Upload the File :</td>
-             <td valign="top" align="left" class="input_txt" width="30%"> <input name="attachments" id="attachments"   type="file"/><span style="color: red;" id="fileerror"></span><div  style="color:red; font-weight:bold;" > <c:out 
+			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
+			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
+             <td valign="middle" align="left" class="input_txt" width="30%">Upload the File :</td>
+             <td valign="middle" align="left" class="input_txt" width="30%"> <input name="attachments" id="attachments"   type="file"/><span style="color: red;" id="fileerror"></span><div  style="color:red; font-weight:bold;" > <c:out 
 
  value="${correctiveAndPreventiveActions.attachment_name}"  ></c:out></div></td>
                  
@@ -216,8 +216,8 @@ document.getElementById("why").style.visibility = 'hidden';
 						<!-- 
 							</tr>
 				
-				 <td valign="top" align="left" class="input_txt" width="30%" >Upload</td>
-                  <td valign="top" align="left" class="input_txt" width="30%">
+				 <td valign="middle" align="left" class="input_txt" width="30%" >Upload</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%">
                   
                   <input name="attachments"  id="id_file" type="file" /> 
                   </td>       	
@@ -230,19 +230,19 @@ document.getElementById("why").style.visibility = 'hidden';
                 <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
                  <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="middle" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="20%">Action :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" id="action" class="input_txtbx" onInput="return validatename(id);" value="<c:out value="${correctiveAndPreventiveActions.action}"/>"/><br/><span style="color: red;" id="actionerror"></span><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></td>
-                <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" class="input_txtbx" id="datepicker6" name="due_date" value="<c:out value="${correctiveAndPreventiveActions.due_date}"/>"/><br/><span style="color: red;" id="datepicker6err"></span><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></td>
-                <td valign="top" align="left" class="input_txt" width="20%">Verified By :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" class="input_txtbx" name="verified_by" id="verified_by" onInput="return validatename(id);" value="<c:out value="${correctiveAndPreventiveActions.verified_by}"/>"/><br/><span style="color: red;" id="verifiedbyerror"></span><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Action :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="action" id="action" class="input_txtbx" onInput="return validatename(id);" value="<c:out value="${correctiveAndPreventiveActions.action}"/>"/><br/><span style="color: red;" id="actionerror"></span><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" class="input_txtbx" id="datepicker6" name="due_date" value="<c:out value="${correctiveAndPreventiveActions.due_date}"/>"/><br/><span style="color: red;" id="datepicker6err"></span><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Verified By :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" class="input_txtbx" name="verified_by" id="verified_by" onInput="return validatename(id);" value="<c:out value="${correctiveAndPreventiveActions.verified_by}"/>"/><br/><span style="color: red;" id="verifiedbyerror"></span><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></td>
                </tr>
                     <tr class="row2">
-                     <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
-                     <td valign="top" align="left" class="input_txt"width="20%">
+                     <td valign="middle" align="left" class="input_txt" width="20%">Responsibity :</td>
+                     <td valign="middle" align="left" class="input_txt"width="20%">
 				                  		<select name="responsibility" class="dropdown" id="responsibility">
 				                  		<option value="">--Select--</option>
 <%-- 						        <!--         <option value="">--Select--</option>
@@ -259,10 +259,10 @@ document.getElementById("why").style.visibility = 'hidden';
 			                  </c:forEach></select><span style="color: red;" id="responsibilityerror"></span><form:errors path="CorrectiveAndPreventiveActions.responsibility"></form:errors>
 				                   	</td>	
                      
-                     <td valign="top" align="left" class="input_txt" width="20%">Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker4" class="input_txtbx" name="completion_date" value="<c:out value="${correctiveAndPreventiveActions.completion_date}"/>"/><br/><span style="color: red;" id="datepicker4err"></span><form:errors path="CorrectiveAndPreventiveActions.completion_date"></form:errors></td>
-                <td valign="top" align="left" class="input_txt" width="20%">Verification Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker5" class="input_txtbx" name="verification_date" value="<c:out value="${correctiveAndPreventiveActions.verification_date}"/>"/><br/><span style="color: red;" id="datepicker5err"></span><form:errors path="CorrectiveAndPreventiveActions.verification_date"></form:errors></td>
+                     <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" id="datepicker4" class="input_txtbx" name="completion_date" value="<c:out value="${correctiveAndPreventiveActions.completion_date}"/>"/><br/><span style="color: red;" id="datepicker4err"></span><form:errors path="CorrectiveAndPreventiveActions.completion_date"></form:errors></td>
+                <td valign="middle" align="left" class="input_txt" width="20%">Verification Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" id="datepicker5" class="input_txtbx" name="verification_date" value="<c:out value="${correctiveAndPreventiveActions.verification_date}"/>"/><br/><span style="color: red;" id="datepicker5err"></span><form:errors path="CorrectiveAndPreventiveActions.verification_date"></form:errors></td>
                  </tr>
                 </table>
                </td>
@@ -274,8 +274,8 @@ document.getElementById("why").style.visibility = 'hidden';
                  <table align="center" width="100%">
                   <tr >
                   
-                  <td valign="top" align="center"></td>
-				  <td valign="top" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
+                  <td valign="middle" align="center"></td>
+				  <td valign="middle" align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return validation();">
 				 </td>
                   </tr>
                   </table>

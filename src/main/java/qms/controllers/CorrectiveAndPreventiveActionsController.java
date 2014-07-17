@@ -426,6 +426,7 @@ public class CorrectiveAndPreventiveActionsController
 			}
 			else
 			{
+				 model.addAttribute("justcame",false);
 				return "correctiveactions_list";
 			}
 		}
@@ -451,6 +452,7 @@ public class CorrectiveAndPreventiveActionsController
 		//	correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
 		model.addAttribute("menu","corrective");
+		 model.addAttribute("justcame",false);
 		return "correctiveactions_list";
 	}
 	
@@ -595,7 +597,8 @@ public class CorrectiveAndPreventiveActionsController
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
 		//model.addAttribute("correctiveAndPreventiveActionsForm",correctiveAndPreventiveActionsForm);
-		model.addAttribute("menu","corrective");
+		model.addAttribute("menu","corrective"); model.addAttribute("justcame",false);
+		
 		return "correctiveactions_list";
 		}
 		else

@@ -87,7 +87,7 @@ public String insert_managementreview(HttpSession session,@ModelAttribute("Manag
 	managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
 	//model.addAttribute("managementreviewform", managementreviewform);
 	  model.addAttribute("success","true");
-
+	  model.addAttribute("justcame",false);
 	return "view_managementreview";
 }
 
@@ -124,6 +124,7 @@ public String view_review(HttpSession session,ModelMap model, Principal principa
 		session.removeAttribute("categoryvalue");
 		session.removeAttribute("reviewid");
 		session.removeAttribute("managementreviewdate");
+		model.addAttribute("justcame",false);
 	/*managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());*/	
 	model.addAttribute("menu","managementreview");
 //	model.addAttribute("noofrows",5);     
@@ -224,6 +225,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	//model.addAttribute("managementreviewform", managementreviewform);
 	 model.addAttribute("success","update");
 	model.addAttribute("menu","managementreview");
+	 model.addAttribute("justcame",false);
 	return "view_managementreview";
 }
 

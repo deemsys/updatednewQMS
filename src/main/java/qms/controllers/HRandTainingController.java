@@ -137,6 +137,7 @@ public class HRandTainingController {
 			hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
 			//model.addAttribute("hRandTrainingForm",hRandTrainingForm);		
 			model.addAttribute("menu","hr");
+			 model.addAttribute("justcame",false);
 	        return "view_hr";
 			}
 		//view records
@@ -156,7 +157,7 @@ public class HRandTainingController {
 		        model.addAttribute("success","false");
 		        model.addAttribute("currentpage",1);
 		    */  //  model.addAttribute("employeeForm",employeeForm);
-				
+				 model.addAttribute("justcame",false);
 				return "view_hr";
 			}
 				
@@ -459,6 +460,7 @@ public class HRandTainingController {
 							HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
 							hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
 							model.addAttribute("menu","hr");
+							 model.addAttribute("justcame",false);
 							return "view_hr";
 							}
 							else{

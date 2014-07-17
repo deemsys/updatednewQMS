@@ -97,7 +97,7 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="5%">Id :</td>
+							    <td align="left" valign="middle" width="5%">ID :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" placeholder="C1001"  onkeyup="ChangeCase(this);"   onInput="return validatename2(id);" value="${cust_id}">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
@@ -159,10 +159,11 @@
 							    	</c:if>
 							    	
 							    	<c:if test="${fn:length(customersForm.customers)== 0}">
+							    	<c:if test="${justcame ne false}">
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%"><center><b style="color:red">No Records Found!!!</b></center></td>
 							    	</tr>
-							    	</c:if>
+							    	</c:if></c:if>
 						    	
 						
 						

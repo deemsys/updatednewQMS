@@ -228,6 +228,8 @@ public class InternalAuditsController {
 
 		}
 		model.addAttribute("menu","audits");
+		 model.addAttribute("justcame",false);
+
 		return "view_internalaudits";
 	}
 	// Internal audits report list page	
@@ -295,7 +297,8 @@ public class InternalAuditsController {
 		internalAuditsForm.setInternalAudits(internalAuditsDAO.get_internalaudits());
 
 		//model.addAttribute("internalAuditsForm", internalAuditsForm);
-		
+		 model.addAttribute("justcame",false);
+
 		return "view_internalaudits";
 	}
 
@@ -324,6 +327,7 @@ public class InternalAuditsController {
      model.addAttribute("success","false");
      model.addAttribute("currentpage",1);*/
    //  model.addAttribute("internalAuditsForm", internalAuditsForm);
+	 model.addAttribute("justcame",false);
 
 		return "view_internalaudits";
 	}
@@ -436,6 +440,7 @@ public class InternalAuditsController {
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
     model.addAttribute("internalAuditsForm",internalAuditsForm);
+
     model.addAttribute("menu","audits");
     return "view_internalaudits";
 

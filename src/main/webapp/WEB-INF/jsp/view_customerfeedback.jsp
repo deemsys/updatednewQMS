@@ -171,9 +171,10 @@
 							    	</c:forEach>
 							    	</c:if>
 							    	<c:if test="${fn:length(customerFeedbackForm.customerFeedbacks)== 0}">
+							    	<c:if test="${justcame ne false}">
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%"><center><b style="color:red">No Records Found!!!</b></center></td>
-							    	</tr>
+							    	</tr></c:if>
 							    	</c:if>
 							    	
 							    		</table>
