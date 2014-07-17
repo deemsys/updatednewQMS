@@ -85,7 +85,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="document_type_table" >
-								<td valign="middle" align="right" class="input_txt" width="30%" style="padding-right:75px">
+								<td valign="middle" align="right" class="input_txt" width="30%" style="padding-right:63px">
 								Select NonConformance Type :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%" style="padding-left: 23px">
@@ -123,7 +123,7 @@
     						
 			
 								<tr class="row2">
-								<td valign="middle" align="right" style="padding-right:63px" class="input_txt" width="30%">
+								<td valign="middle" align="right" style="padding-right:55px" class="input_txt" width="30%">
 									Select Report Type :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td valign="top" align="left" class="input_txt" width="100%" style="padding-left: 23px">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
@@ -202,7 +202,7 @@
              <td  align="left" width="30%" align="left">
              <table><tr style="padding:10px;"><td style="padding:10px;" align="left"><input type="submit"  id="export"  name="export" value="Generate" class="submit_btn1" onclick="return checkboxvalid();">
              </td><td style="padding:10px;" align="left">
-            <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)" value="Reset" class="submit_btn1" ></td>
+            <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0);validation1();" value="Reset" class="submit_btn1" ></td>
             
              </tr></table></td>
             
