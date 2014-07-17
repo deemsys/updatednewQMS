@@ -174,11 +174,15 @@
                   </table>
                 
                   <table align="center" width="100%">
-                  <tr >
+                 <!--  <tr >
                   </br>
 				  <td valign="top" align="left"><input type="submit"  value="Update" onclick="return validate();" class="submit_btn1">
 				 </td>
-                  </tr>
+                  </tr> -->
+                    <tr class="row1">
+                  <td valign="bottom" colspan="2"align="right">&nbsp;<input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
+                  <td valign="top" align="left"></td>
+                </tr>
                   </table>
                   </table>
                   </div>
