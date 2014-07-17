@@ -400,6 +400,19 @@ function onsubmitvalidate()
 	var control = document.getElementById('documentcontrol').checked;
 	var management = document.getElementById('managementrep').checked;
 	var image = document.getElementById('image').value;
+	
+	 var name = document.getElementById('inp_name').value;
+	 var process = document.getElementById('inp_process').value;
+	  var fneeds = document.getElementById('inp_list_of_functions_needes').value;
+	   var doc = document.getElementById('documentedin').value;
+	    var job = document.getElementById('inp_job_title').value;
+	   
+	    var pname = document.getElementById('inp_process_name').value;
+	    
+	    var trainer = document.getElementById('trainer').value;
+	    
+	    
+	
 	 if(!owner && !control && !management)
 	 {
 	 document.getElementById("workingerror").innerHTML="Please select atleast one";
@@ -495,6 +508,12 @@ function onsubmitvalidate()
 		error="true";
 		
 	}
+	else if(name.charAt(0) ==" ") 
+	   {
+	   document.getElementById("nameerror").innerHTML="Required field should not accept initial space";
+	error="true";
+		}
+	
 	else if((document.getElementById("inp_name").value.length < 4) || (document.getElementById("inp_name").value.length > 45))
 		{
 		
@@ -518,6 +537,11 @@ function onsubmitvalidate()
 		document.getElementById("trainererror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
+	else if(trainer.charAt(0) ==" ") 
+	   {
+	   document.getElementById("trainererror").innerHTML="Required field should not accept initial space";
+	error="true";
+		}
 	else
 		{
 		document.getElementById("trainererror").innerHTML="";
@@ -529,6 +553,14 @@ function onsubmitvalidate()
 		error="true";
 		
 	}
+	
+	else if(job.charAt(0) ==" ") 
+	   {
+	   document.getElementById("inp_job_titleerror").innerHTML="Required field should not accept initial space";
+	error="true";
+		}
+	
+	
 	else if((document.getElementById("inp_job_title").value.length < 5) || (document.getElementById("inp_job_title").value.length > 500))
 		{
 		document.getElementById("inp_job_titleerror").innerHTML="Required field should  be of length 5 to 500";	
@@ -545,6 +577,14 @@ function onsubmitvalidate()
 								error="true";
 								
 							}
+						
+						 else if(process.charAt(0) ==" ") 
+						   {
+						   document.getElementById("processerror").innerHTML="Required field should not accept initial space";
+					    	error="true";
+							}
+						
+						
 							else if((document.getElementById("inp_process").value.length < 4) || (document.getElementById("inp_process").value.length > 45))
 								{
 								document.getElementById("processerror").innerHTML="Required field should  be of length 4 to 32";	
@@ -561,6 +601,14 @@ function onsubmitvalidate()
 								error="true";
 								
 							}
+							
+							 else if(pname.charAt(0) ==" ") 
+							   {
+							   document.getElementById("processnameerror").innerHTML="Required field should not accept initial space";
+						    	error="true";
+								}
+							
+							
 							else if((document.getElementById("inp_process_name").value.length < 4) || (document.getElementById("inp_process_name").value.length > 45))
 								{
 								document.getElementById("processnameerror").innerHTML="Required field should be of length 4 to 32";	
@@ -576,6 +624,14 @@ function onsubmitvalidate()
 								error="true";
 								
 							}
+							
+							else if(fneeds.charAt(0) ==" ") 
+							   {
+							   document.getElementById("functionneedserror").innerHTML="Required field should not accept initial space";
+						    	error="true";
+								}
+							
+							
 							else if((document.getElementById("inp_list_of_functions_needes").value.length < 4) || (document.getElementById("inp_list_of_functions_needes").value.length > 45))
 								{
 								document.getElementById("functionneedserror").innerHTML="Required field should  be of length 4 to 32";	
@@ -592,6 +648,11 @@ function onsubmitvalidate()
 										error="true";
 										
 									}
+							 else if(doc.charAt(0) ==" ") 
+							   {
+							   document.getElementById("documentedinerror").innerHTML="Required field should not accept initial space";
+						    	error="true";
+								}
 									else if((document.getElementById("documentedin").value.length < 4) || (document.getElementById("documentedin").value.length > 45))
 										{
 										document.getElementById("documentedinerror").innerHTML="Required field should  be of length 4 to 32";	
