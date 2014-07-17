@@ -288,11 +288,12 @@ $(function() {
 			   	                 <span style="color: red;"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
 				          </tr>
      
-                <tr class="row1">
-                  <td valign="top" align="center">&nbsp;</td>
-                  <td valign="top" align="left"></td>
-          <td><input type="submit" class="submit_btn1" value="Update" onclick="return validation();"></td>
-            </tr>
+               	 
+            
+              <tr class="row2">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+                  
+                </tr>
     </table>
     
    </div>
