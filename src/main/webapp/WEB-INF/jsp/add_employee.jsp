@@ -67,7 +67,30 @@ function doAjaxPost() {
         });
  
 </script>
-  <script>
+
+<!-- <script>
+
+$(function() {
+	var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' }).val();   
+        });
+ 
+
+ $(function() {
+	 var date = $('#datepicker1').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
+        });
+ 
+
+ $(function() {
+	 var date = $('#datepicker2').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
+         });
+ 
+ $(function() {
+	 var date = $('#datepicker3').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
+     
+         });
+ 
+</script> -->
+ <script>
  $(function() {
 	 $( "#datepicker1" ).datepicker();
         });
@@ -86,7 +109,7 @@ function doAjaxPost() {
      
          });
  
-</script>
+</script> 
 
 
 
@@ -415,6 +438,16 @@ function onsubmitvalidate()
 	var datepick1 = document.getElementById("datepicker1").value;
 	var datepick2 = document.getElementById("datepicker2").value;
 	var datepick3 = document.getElementById("datepicker3").value;
+	
+	 var name = document.getElementById('inp_name').value;
+	 var process = document.getElementById('inp_process').value;
+	  var fneeds = document.getElementById('inp_list_of_functions_needes').value;
+	   var doc = document.getElementById('documentedin').value;
+	    var job = document.getElementById('inp_job_title').value;
+	   
+	    var pname = document.getElementById('inp_process_name').value;
+	    
+	    var trainer = document.getElementById('trainer').value;
 	var owner = document.getElementById('processowner').checked;
 	var control = document.getElementById('documentcontrol').checked;
 	var management = document.getElementById('managementrep').checked;
@@ -442,7 +475,7 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepickererror").innerHTML="Invalid date";
+	 document.getElementById("datepickererror").innerHTML="Invalid date format";
 	 error="true";
 	 }
 
@@ -458,7 +491,7 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker1error").innerHTML="Invalid date";
+	 document.getElementById("datepicker1error").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 if(datepick2 == "")
@@ -473,7 +506,7 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker2error").innerHTML="Invalid date";
+	 document.getElementById("datepicker2error").innerHTML="Invalid date format";
 	 error="true";
 	 }
 
@@ -489,7 +522,7 @@ function onsubmitvalidate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker3error").innerHTML="Invalid date";
+	 document.getElementById("datepicker3error").innerHTML="Invalid date format";
 	 error="true";
 	 }
 
@@ -500,12 +533,19 @@ function onsubmitvalidate()
 		error="true";
 		
 	}
+	  else if(name.charAt(0) ==" ") 
+	   {
+	   document.getElementById("nameerror").innerHTML="Required field should not accept initial space";
+   	error="true";
+		}
+	
 	else if((document.getElementById("inp_name").value.length < 4) || (document.getElementById("inp_name").value.length > 45))
 		{
 		
 		document.getElementById("nameerror").innerHTML="Required field should be of length 4 to 32";	
 		error="true";
 		}
+	
 	else{
 		document.getElementById('nameerror').innerHTML="";
 	}
@@ -539,6 +579,11 @@ function onsubmitvalidate()
 		error="true";
 		
 	}
+	 else if(trainer.charAt(0) ==" ") 
+	   {
+	   document.getElementById("trainererror").innerHTML="Required field should not accept initial space";
+  	error="true";
+		}
 	else if((document.getElementById("trainer").value.length < 4) || (document.getElementById("trainer").value.length > 45))
 		{
 		
@@ -556,6 +601,11 @@ function onsubmitvalidate()
 		error="true";
 		
 	}
+	  else if(job.charAt(0) ==" ") 
+	   {
+	   document.getElementById("inp_job_titleerror").innerHTML="Required field should not accept initial space";
+   	error="true";
+		}
 	else if((document.getElementById("inp_job_title").value.length < 5) || (document.getElementById("inp_job_title").value.length > 500))
 		{
 		document.getElementById("inp_job_titleerror").innerHTML="Required field should be of length 5 to 500";	
@@ -580,6 +630,11 @@ function onsubmitvalidate()
 								error="true";
 								
 							}
+		  else if(process.charAt(0) ==" ") 
+		   {
+		   document.getElementById("processerror").innerHTML="Required field should not accept initial space";
+	    	error="true";
+			}
 							else if((document.getElementById("inp_process").value.length < 4) || (document.getElementById("inp_process").value.length > 45))
 								{
 								document.getElementById("processerror").innerHTML="Required field should be of length 4 to 32";	
@@ -596,6 +651,12 @@ function onsubmitvalidate()
 								error="true";
 								
 							}
+							
+							  else if(pname.charAt(0) ==" ") 
+							   {
+							   document.getElementById("processnameerror").innerHTML="Required field should not accept initial space";
+						    	error="true";
+								}
 							else if((document.getElementById("inp_process_name").value.length < 4) || (document.getElementById("inp_process_name").value.length > 45))
 								{
 								document.getElementById("processnameerror").innerHTML="Required field should be of length 4 to 32";	
@@ -611,6 +672,12 @@ function onsubmitvalidate()
 								error="true";
 								
 							}
+							 else if(fneeds.charAt(0) ==" ") 
+							   {
+							   document.getElementById("functionneedserror").innerHTML="Required field should not accept initial space";
+						    	error="true";
+								}
+						
 							else if((document.getElementById("inp_list_of_functions_needes").value.length < 4) || (document.getElementById("inp_list_of_functions_needes").value.length > 45))
 								{
 								document.getElementById("functionneedserror").innerHTML="Required field should be of length 4 to 32";	
@@ -627,6 +694,11 @@ function onsubmitvalidate()
 										error="true";
 										
 									}
+							 else if(doc.charAt(0) ==" ") 
+							   {
+							   document.getElementById("documentedinerror").innerHTML="Required field should not accept initial space";
+						    	error="true";
+								}
 									else if((document.getElementById("documentedin").value.length < 4) || (document.getElementById("documentedin").value.length > 45))
 										{
 										document.getElementById("documentedinerror").innerHTML="Required field should  be of length 4 to 32";	
