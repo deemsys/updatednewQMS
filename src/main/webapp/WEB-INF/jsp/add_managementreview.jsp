@@ -174,13 +174,17 @@
                   
                    </tr>
            
-                 <tr class="row2">
+                 <!-- <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="20%"></td>
                  <td colspan="1" align="left">
                   <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" class="submit_btn1" name="submit" id="id_submit" onclick="return validate();" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">
               <td valign="middle" align="left" class="input_txt" width="20%">
-               </tr>
+               </tr> -->
+                 <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+                  
+                </tr>
                                 
                               </table>
               
