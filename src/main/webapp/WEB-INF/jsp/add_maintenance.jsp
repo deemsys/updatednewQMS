@@ -105,7 +105,7 @@
                   
                   </tr>
                   <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" >Frequency of Maintenance  :</td>
+                 <td valign="top" align="left" class="input_txt" >Frequency of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt">
                   <select name="frequency_maintenance" class="dropdown"  style="height:80px;"id="frequency_maintenance" multiple>
                   
@@ -180,7 +180,7 @@
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt">Instructions(optional)  :</td>
+               <td valign="top" align="left" class="input_txt">Instructions(optional)  :</td>
                <td valign="top" align="left"  colspan="3"><div id="instruction"></div>
                <textarea class="input_txtbx"  name="instructions" id="instructions" style="height: 89px;" >${Maintenance.instructions}</textarea><br/>
                
@@ -223,7 +223,7 @@
                 </tr>
                 <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt"width="50%">Notes  :</td>
+               <td valign="top" align="left" class="input_txt"width="50%">Notes  :</td>
                <td valign="top" align="left"  class="input_txt"width="50%"><textarea class="input_txtbx"  name="notes" id="notes" style="height: 89px;" ></textarea><br/>
                <span id="notes1" style="color:red"></span>
                <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
@@ -236,9 +236,9 @@
                   <td valign="top" align="left">&nbsp;</td>
                    <td valign="top" align="left">&nbsp;</td>
                   </tr>
-            <tr class="row1">
-                  <td valign="top" align="left">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+            <tr class="row1" height="150px">
+                  <td valign="bottom" align="left">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+                  <td valign="top" align="left"></td>
                 </tr>
        </table>
        </td>

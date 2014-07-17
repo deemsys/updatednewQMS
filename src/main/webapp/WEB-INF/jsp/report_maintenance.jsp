@@ -161,7 +161,7 @@
              <td  colspan="2" align="left" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validate();"class="submit_btn1">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)"value="Reset" class="submit_btn1"></td>
+              <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0);toggle4(0);"value="Reset" class="submit_btn1"></td>
             
              </tr></table>
             
@@ -175,8 +175,9 @@
 				</td></tr>
 </table></td></tr></table>
 
-<table  width=300 height=200>
-			<tr height=30><td></td></tr></table>
+<table  width=300 style="height: 255px">
+			<tr height=30><td></td></tr><tr height="100"></tr></table>
+<jsp:include page="footer.jsp"></jsp:include>
 
  <script type="text/javascript">
  $(function() {
@@ -347,10 +348,8 @@ if(value==0)
   
 	}
 </script>
-  <jsp:include page="footer.jsp"></jsp:include>
   
   
-  
-  
+  </html>
   
   
