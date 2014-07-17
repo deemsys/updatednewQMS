@@ -696,7 +696,7 @@ function validation()
 	 
 	 if(completed_by == "")
 	 {
-	 document.getElementById("completed_by1").innerHTML="Please select";
+	 document.getElementById("completed_by1").innerHTML="Please select one";
 	 error="true";
 	 }
  	else
