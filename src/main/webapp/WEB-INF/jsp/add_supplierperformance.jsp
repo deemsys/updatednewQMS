@@ -65,7 +65,8 @@
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
                 
             	 <td valign="top" align="left" class="input_txt" width="30%">Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="website" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"><form:errors path="supplierperformance.website"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="website" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
+                  <span><form:errors path="supplierperformance.website"></form:errors></span></td>
                 </tr>
             
              
@@ -503,16 +504,14 @@ function validatename(id)
 	if(document.getElementById("inp_fax").value=="")
 	{
 	document.getElementById("faxerror").innerHTML="Required field should not be empty";
-	
-	return false;
+	error="true"
 	}
 	document.getElementById("faxerror").innerHTML=" ";
 	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
 	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	    {
 	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
-	    	
-	    	 return false;
+	    	error="true"
 	    }
 
 	    

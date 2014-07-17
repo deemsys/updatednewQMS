@@ -101,7 +101,7 @@
 							<tr class="title">
 								<!-- <td valign="center" align="left" width="5%"><input type="checkbox" onclick="selectall(this.form)" value="" name="checkall"></td> -->
          						<td valign="top" align="left" width="10%">&nbsp;Supplier ID</td>
-					         	<td valign="top" align="left" width="10%">Supplier Name</td>
+					         	<td valign="top" align="left" width="10%">Supplier name</td>
 					         	<td valign="top" align="left" width="10%">Address</td>
 					         	<td valign="top" align="left" width="10%">State</td>
           						<td valign="top" align="left" width="10%">Country</td>

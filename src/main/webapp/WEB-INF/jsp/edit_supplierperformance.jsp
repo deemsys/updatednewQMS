@@ -282,17 +282,18 @@ function validatename(id)
 			document.getElementById("nameerror").innerHTML="Required field should not be empty";
 			error="true";
 			}
+		else if(document.getElementById("inp_supplier_name").value.substring(0,1)==" ")
+		{
+		document.getElementById("nameerror").innerHTML="Should not accept initial space";
+		 error="true";
+		}
 		else if(document.getElementById("inp_supplier_name").value.length<4 || document.getElementById("inp_supplier_name").value.length>=32)
 	    {
 	    	
 	    	document.getElementById("nameerror").innerHTML="Field should be of length 4 to 32";
 			error="true";
 	    }
-		else if(document.getElementById("inp_supplier_name").value.substring(0,1)==" ")
-		{
-		document.getElementById("nameerror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
+		
 	    else
 	    	{
 	    	document.getElementById("nameerror").innerHTML="";
@@ -305,17 +306,18 @@ function validatename(id)
 			 error="true";
 		 } 
 			
+		else if(document.getElementById("inp_contact_name").value.substring(0,1)==" ")
+		{
+		document.getElementById("contacterror").innerHTML="Should not accept initial space";
+		 error="true";
+		}
+		
 		else if(document.getElementById("inp_contact_name").value.length<4 || document.getElementById("inp_contact_name").value.length>=32)
 		    {
 		    	
 		    	document.getElementById("contacterror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
-		else if(document.getElementById("inp_contact_name").value.substring(0,1)==" ")
-		{
-		document.getElementById("contacterror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
 		
 		    else
 		    	{
@@ -328,18 +330,18 @@ function validatename(id)
 			 document.getElementById("addresserror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
-			
+		else if(document.getElementById("inp_address").value.substring(0,1)==" ")
+		{
+		document.getElementById("addresserror").innerHTML="Should not accept initial space";
+		 error="true";
+		}	
 		else if(document.getElementById("inp_address").value.length<5 || document.getElementById("inp_address").value.length>=500)
 		    {
 		    	
 		    	document.getElementById("addresserror").innerHTML="Field should be of length 5 to 500";
 		    	 error="true";
 		    } 
-		else if(document.getElementById("inp_address").value.substring(0,1)==" ")
-		{
-		document.getElementById("addresserror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
+		
 		    else
 		    	{
 		    	document.getElementById("addresserror").innerHTML="";
@@ -490,17 +492,14 @@ function validatename(id)
 	   	if(document.getElementById("inp_fax").value=="")
 	   	{
 	   	document.getElementById("faxerror").innerHTML="Required field should not be empty";
-	   	
-	   	return false;
+	   	error="true"
 	   	}
 	   	document.getElementById("faxerror").innerHTML=" ";
 	   	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
 	   	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	   	    {
 	   	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
-	   	    	
-	   	    	 return false;
-	   	    }
+	   	     }
 
 	    
 

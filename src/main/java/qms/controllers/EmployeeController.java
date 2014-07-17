@@ -148,7 +148,7 @@ public class EmployeeController
 		EmployeeForm employeeForm=new EmployeeForm();
 		employeeForm.setEmployees(employeeDAO.getEmployees());
 		model.addAttribute("id",employeeDAO.getMax_employeeID());
-		model.addAttribute("employeeForm",employeeForm);		
+		//model.addAttribute("employeeForm",employeeForm);		
 		model.addAttribute("menu","employee");
 		 model.addAttribute("justcame",false);
 
