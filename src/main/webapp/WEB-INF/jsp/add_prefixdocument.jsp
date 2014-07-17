@@ -148,7 +148,7 @@
                  <tr class="row1">
                   <td valign="top" align="left" class="input_txt" style="padding-left: 55px">Description :</td>
                   <td valign="top" align="left" class="input_txt" >
-                  <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="document_id" id="document_id"></textarea>
+                  <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="400" name="document_id" id="document_id"></textarea>
              
                  <br>   <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>
@@ -301,7 +301,7 @@
 	 }
  else if(document_id.length<4)
  {
- document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 200";
+ document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 400";
  error="true";
  }
 	  

@@ -65,7 +65,7 @@
                 
                   <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 55px">Description :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
-                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="form_name" id="formname">${formprefix.form_name}</textarea>
+                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="400" name="form_name" id="formname">${formprefix.form_name}</textarea>
                
                  <br>  <span id="document_id1" style="color:red"></span>  <span id="formname1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span>
@@ -159,7 +159,7 @@
       	
        else if(formname.length<4)
       	 {
-      	 document.getElementById("document_id1").innerHTML="Required & must be of length 4 to 32.";
+      	 document.getElementById("document_id1").innerHTML="Required & must be of length 4 to 400.";
       	 error="true";
       	 }
       	 

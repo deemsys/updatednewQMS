@@ -149,7 +149,7 @@
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="50%" style="padding-left: 55px">Description :</td>
                   <td valign="top" align="left" class="input_txt" >
-                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="200" name="form_name" id="formname"></textarea>
+                   <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="400" name="form_name" id="formname"></textarea>
                  <%--  <input type="text" name="form_name" maxlength="200" class="input_txtbx" id="formname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_name}" onInput="validateAlpha1();"/> --%>
                   <br> <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_name"></form:errors></span></td>
@@ -239,7 +239,7 @@ function onlyAlphabets(e, t) {
 	
  else if(formname.length<4)
 	 {
-	 document.getElementById("document_id1").innerHTML="Required & must be of length 4 to 200.";
+	 document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 400.";
 	 error="true";
 	 }
 	 

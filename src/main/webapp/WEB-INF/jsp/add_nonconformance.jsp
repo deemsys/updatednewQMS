@@ -132,7 +132,7 @@
 
 																		<td valign="top" align="left" class="input_txt" width="30%">Quantity Suspect&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
-																			type="text" class="input_txtbx"
+																			type="text" class="input_txtbx" maxlength="32"
 																			id="quantity"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
@@ -149,7 +149,7 @@
 																	<tr class="row2">
 																		<td valign="top" align="left" class="input_txt" width="30%">Nature of NC&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%">
-																		<textarea class="input_txtbx" id="natureofnc"  maxlength="200" name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;" ></textarea>
+																		<textarea class="input_txtbx" id="natureofnc"  maxlength="400" name="nature_of_nonconformance" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;" ></textarea>
 																			<br/><span id="nature" style="color: red;"></span>
 																		<font color="Red" size="+1"></font> <span style="color: red;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors>
 																		</span>
@@ -192,7 +192,7 @@
 						                    							<td style="width=1px;"></td>
 						                    							<td align="left" style="padding:0px;">
 						                    						
-						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton1();" />
+						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event);" maxlength="32" onchange="showbutton1();" />
 						                    				</td>
 						                    					<td align="left">
 						                    					<label class="number_btn1"  id="button1"   style="display:none;" >No's</label>
@@ -213,7 +213,7 @@
 																		value="Keep as is">Keep as is</option>
 						                    						</select><br><span style="color: red;" id="disid2err"></span></td>
 						                    						<td width="1%"></td>
-						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" class="input_txtbx" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton2();" />
+						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" class="input_txtbx" maxlength="32" style="display:none; width:40px;" onkeypress="return validate(event);" onchange="showbutton2();" />
 						                    						</td>
 						                    						<td align="left">
 						                    						<label class="number_btn1"  id="button2"   style="display:none;">No's</label>
@@ -236,7 +236,7 @@
 						                    						
 						                    					</td>
 						                    					<td width="1%"></td>
-						                    					<td  align="left" style="padding:0px;"><input type="text" name="quality3" class="input_txtbx" id="quality3" style="display:none; width:40px;" onkeypress="return validate(event)";  onchange="showbutton3();"/>
+						                    					<td  align="left" style="padding:0px;"><input type="text" name="quality3" class="input_txtbx" id="quality3" maxlength="32" style="display:none; width:40px;" onkeypress="return validate(event)";  onchange="showbutton3();"/>
 						                    				 
 						                    					</td>
 						                    					<td  align="left">
@@ -271,7 +271,7 @@
 																	<tr class="row1">
 								
 																	<td valign="top" align="left" class="input_txt" width="30%"> Temporary Action&nbsp;: </td>
-               														<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction" maxlength="200"  name="temporary_action" style="height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
+               														<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction" maxlength="400"  name="temporary_action" style="height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;"></span>
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          
@@ -299,7 +299,7 @@
 																	
 																		<td valign="top" align="left" class="input_txt" width="30%">Cost of NC&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
-																			type="text" class="input_txtbx" id="costofnc"
+																			type="text" class="input_txtbx" id="costofnc" maxlength="32"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="cost_of_nonconformance"
@@ -572,7 +572,7 @@ error="true";
 		 error="true";
 	 } 
 		
-  	else if(document.getElementById("quantity").value.length<4 || document.getElementById("quantity").value.length>=32)
+  	else if(document.getElementById("quantity").value.length<4)
 	    {
 	    	
 	    	document.getElementById("quantitysuspect").innerHTML="Required and must be of length 4 to 32";
@@ -632,7 +632,7 @@ error="true";
 		 	else if(document.getElementById("natureofnc").value.length<4)
 			    {
 			    	
-			    	document.getElementById("nature").innerHTML="Required and must be of length 4 to 200";
+			    	document.getElementById("nature").innerHTML="Required and must be of length 4 to 400";
 			    	 error="true";
 			    } 
 		 	else{
@@ -650,7 +650,7 @@ error="true";
 					else if(document.getElementById("tempaction").value.length<4)
 				    {
 				    	
-				    	document.getElementById("temp").innerHTML="Required and must be of length 4 to 200";
+				    	document.getElementById("temp").innerHTML="Required and must be of length 4 to 400";
 				    	 error="true";
 				    } 
 				

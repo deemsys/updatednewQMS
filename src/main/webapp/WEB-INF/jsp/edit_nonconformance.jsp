@@ -79,7 +79,7 @@ $(function() {
 				                  </td>
 				                  
 				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID&nbsp;: </td>
-				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="external_id" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onblur="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onkeypress="return onlyAlphabets1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"   />
+				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text"  name="external_id" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onblur="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onkeypress="return onlyAlphabets1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"   />
 				                  	<span style="color:red;" id="externalerror"></span>
 				                  	</td>
 				                </tr>
@@ -126,7 +126,7 @@ $(function() {
 				                   	</td>
 				                 	<td valign="top" align="left" class="input_txt"> Quantity Suspect&nbsp;: </td>
 				                    <td valign="top" align="left" class="input_txt">
-				                    <input type="text" value="${nonconformance.quantity_suspect}" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
+				                    <input type="text" value="${nonconformance.quantity_suspect}" maxlength="32" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
 				                    <span id="quantitysuspect" style="color: red;"></span>
 				                    <span style="color: red;"><form:errors path="Nonconformance.quantity_suspect"></form:errors></span>
 				                    </td>
@@ -136,7 +136,7 @@ $(function() {
 									<td valign="top" align="left" class="input_txt" width="20%"> Nature Of NC&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
 				               
-				                <textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" maxlength="200" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;"  >${nonconformance.nature_of_nonconformance}</textarea>
+				                <textarea class="input_txtbx" id="natureofnc"  name="nature_of_nonconformance" maxlength="400" value="${nonconformance.nature_of_nonconformance}" style= "height: 55px;"  >${nonconformance.nature_of_nonconformance}</textarea>
 								<br>
 								<span id="nature" style="color: red;"></span>
 								<span style="color: red;"><form:errors path="Nonconformance.nature_of_nonconformance"></form:errors></span></td>
@@ -171,7 +171,7 @@ $(function() {
 						                    							<td width="1%"></td>
 						                    							<td align="left" style="padding:0px;">
 						                    						
-						                    				<input type="text" name="quality1" id="quality1" class="input_txtbx" style="display:block; width:40px;" onkeypress="return validate(event)"; value="${nonconformance.quality1}" onchange="showbutton1();" />
+						                    				<input type="text" name="quality1" id="quality1" maxlength="32" class="input_txtbx" style="display:block; width:40px;" onkeypress="return validate(event)"; value="${nonconformance.quality1}" onchange="showbutton1();" />
 						                    					</td><td align="left">
 						                    					<label class="number_btn1"  id="button1"   style="display:block;">No's</label>
 						                    					</td></tr>
@@ -191,7 +191,7 @@ $(function() {
 																		value="Keep as is">Keep as is</option>
 						                    						</select><br><span style="color: red;" id="disid2err"></span><span  id="qua2" style="color: red;"></span>
 						                    						<td width="1%"></td>
-						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event);"  value="${nonconformance.quality2}" onchange="showbutton2();" />
+						                    						<td align="left" style="padding:0px;"><input type="text" name="quality2" maxlength="32" id="quality2" style="display:block; width:40px;" class="input_txtbx"  onkeypress="return validate(event);"  value="${nonconformance.quality2}" onchange="showbutton2();" />
 						                    						
 						                    						</td>
 						                    						<td align="left">
@@ -213,7 +213,7 @@ $(function() {
 						                    						</select><br/><span style="color: red;" id="disid3err"></span><span id="qua3" style="color: red;"></span>
 						                    						</td>
 						                    						<td width="1%"></td>
-						                    					<td  align="left" style="padding:0px;"><input type="text" name="quality3" id="quality3" style="display:block; width:40px;" class="input_txtbx" value="${nonconformance.quality3}" onkeypress="return validate(event)"; onchange="showbutton3();"/>
+						                    					<td  align="left" style="padding:0px;"><input type="text" name="quality3" id="quality3" maxlength="32" style="display:block; width:40px;" class="input_txtbx" value="${nonconformance.quality3}" onkeypress="return validate(event)"; onchange="showbutton3();"/>
 						                    					</td><td  align="left">
 						                    					<label class="number_btn1"  id="button3"   style="display:block;">No's</label>
 						                    						</td>
@@ -258,7 +258,7 @@ $(function() {
 						                 
    						  		<tr class="row1">
 			   						<td valign="top" align="left" class="input_txt"> Temporary Action&nbsp;: </td>
-               						<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" maxlength="200" style= "height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
+               						<td valign="top" align="left"><textarea class="input_txtbx" id="tempaction"  name="temporary_action" maxlength="400" style= "height: 55px;" >${nonconformance.temporary_action}</textarea><br/>
                														<span id="temp" style="color: red;"></span>
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          </td>
@@ -283,7 +283,7 @@ $(function() {
                 			 
                 			 
 			    	                <td valign="top" align="left" class="input_txt"> Cost of NC&nbsp;: </td>
-			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}" onkeypress="return validate(event)";  class="input_txtbx" id="costofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="cost_of_nonconformance" /><br/>
+			   	                 	<td valign="top" align="left" class="input_txt"><input type="text" value="${nonconformance.cost_of_nonconformance}"  name="cost_of_nonconformance" onkeypress="return validate(event)";  class="input_txtbx" id="costofnc" onmouseover="showTooltip('tooltip_id','inp_id3');" maxlength="32" onmouseout="hideTooltip('tooltip_id');"   /><br/>
 			   	                 	<span id="cost" style="color: red;"></span>
 			   	                 <span style="color: red;"><form:errors path="Nonconformance.cost_of_nonconformance"></form:errors></span></td>
 				          </tr>
@@ -895,7 +895,7 @@ if(datefound == "")
 		 	else if(document.getElementById("natureofnc").value.length<4)
 			    {
 			    	
-			    	document.getElementById("nature").innerHTML="Required and must be of length 4 to 200";
+			    	document.getElementById("nature").innerHTML="Required and must be of length 4 to 400";
 			    	 error="true";
 			    } 
 
@@ -919,7 +919,7 @@ if(datefound == "")
 					else if(document.getElementById("tempaction").value.length<4)
 				    {
 				    	
-				    	document.getElementById("temp").innerHTML="Required and must be of length 4 to 200";
+				    	document.getElementById("temp").innerHTML="Required and must be of length 4 to 400";
 				    	 error="true";
 				    } 
 				
