@@ -314,10 +314,14 @@
 																				 <tr class="row1">
                <td></td><td></td>
                </tr>
-                 <tr class="row1">
+                <!--  <tr class="row1">
                   <td><br>
                <td></td>
                   <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Submit" onclick="return validation();"></td>
+                </tr> -->
+                  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+                  <td valign="top" align="left"></td>
                 </tr>
 												
 														<!-- <td><input type="submit" class="submit_btn1" value="submit" onclick="return validation();"></td> -->
