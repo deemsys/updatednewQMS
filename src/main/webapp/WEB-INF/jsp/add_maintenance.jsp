@@ -55,27 +55,27 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 35px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" onkeyup="ChangeCase(this);" onInput="return validatename2(id);"onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" style="padding-left:38px" class="input_txt" width="60%">Equipment ID  :</td>
+                  <td valign="top" align="left" class="input_txt" width="35%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" onkeyup="ChangeCase(this);" onInput="return validatename2(id);"onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br>
                   <span id="equipment_id1" style="color:red"></span>
                   <c:if test="${success=='exist'}"><span style="color:red">Equipment ID already Exist</span></c:if>
                   <span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Name  :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left:38px">Equipment Name  :</td>
                   <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Model  :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left:38px">Equipment Model  :</td>
                   <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onkeyup="ChangeCase(this);" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                  <br>  <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Serial Number  :</td>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left:38px">Serial Number  :</td>
                   <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onInput="return validatename3(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                    <br><span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
@@ -83,16 +83,16 @@
                 </table>
 						         </td>
 						         <td align="left" valign="top">
-						         <table cellpadding="0" cellspacing="0" border="0" width="100%">
+						         <table cellpadding="0" cellspacing="0" border="0" width="93%">
                 
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Date Acquired  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" style="padding-left: 15px">Date Acquired :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                    <br> <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="50%">Equipment Status  :</td>
+                 <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 15px">Equipment Status  :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
                   <select name="equipment_status" class="dropdown" id="equipment_status">
                   <option value="">--Select--</option>
@@ -105,7 +105,7 @@
                   
                   </tr>
                   <tr class="row2">
-                 <td valign="top" align="left" class="input_txt" >Frequency of Maintenance  :</td>
+                 <td valign="top" align="left" class="input_txt" style="padding-left: 15px">Frequency of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt">
                   <select name="frequency_maintenance" class="dropdown"  style="height:80px;"id="frequency_maintenance" multiple>
                   
@@ -120,7 +120,7 @@
                   <span class="err"></span></td>
                   </tr>
                    <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="50%">Calibration(Y/N)  :</td>
+               <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 15px">Calibration(Y/N)  :</td>
                <td valign="top" align="left" class="input_txt" width="50%">
                <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes" checked>Yes&nbsp;&nbsp;&nbsp;
                <input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);"  >No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
