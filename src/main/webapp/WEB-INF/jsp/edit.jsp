@@ -19,6 +19,50 @@
 }
 </style>
 <script>
+
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+
+
+</script>
+<script>
 function validation()
 {
 	
@@ -189,7 +233,7 @@ function validation()
 		       <b> <font color="#993300">&nbsp;&nbsp;Full Name:</font></b>
 		     </td>
 		     
-		      <td style="width: 512px; "><sf:input path="fullName" id="fullname" size="30" maxlength="32" onInput="validateAlpha()"/><br/>
+		      <td style="width: 512px; "><sf:input path="fullName" id="fullname" size="30" maxlength="32" onkeypress="return Alphabets(event,this);"/><br/>
      <span id="ferr" style="color: red;font-style:italic;"></span>
         </td>
 		      </table>
@@ -198,7 +242,7 @@ function validation()
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
 		      <td  style="width:70%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;UserName:</font></b></td>
-		       <td style="width: 512px; "> <sf:input path="username" id="username" size="30" maxlength="32" onInput="validateAlpha1()"/>
+		       <td style="width: 512px; "> <sf:input path="username" id="username" size="30" maxlength="32" onkeypress="return Alphabets(event,this);"/>
              <!--  <b><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</font></b> <small id="username_msg"></small><br/> -->
              <span id="uerr" style="color: red;font-style:italic;"></span>
 		        </table>
@@ -210,8 +254,7 @@ function validation()
 		      <td style="width:70%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;Password:</font></b></td>
 		      
-		      <td style="width: 512px; "><sf:password class="input_txt" path="password" id="password" size="30" maxlength="32"
-                            showPassword="true"/> 
+		      <td style="width: 512px; "><sf:password class="input_txt" path="password" id="password" size="30" onkeypress="return AlphabetsNumber(event,this);" maxlength="32" showPassword="true"/> 
              <!-- <small>6 characters or more (be tricky!)</small><br/> -->
               <span id="perr" style="color: red;font-style:italic;"></span>
 		      </td>
