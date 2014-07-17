@@ -127,10 +127,14 @@
                   <span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                 
                 </tr>
-                 <tr class="row1">
+                <!--  <tr class="row1">
                    <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
                <td></td>
-                  <td ><input type="submit" value="Update Customer" style="width:140px;"onclick="return validate();"class="submit_btn1"></td>
+                  <td ><input type="submit" value="Update" style="width:140px;"onclick="return validate();"class="submit_btn1"></td>
+                </tr> -->
+                  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
+                
                 </tr>
               </table>
               
