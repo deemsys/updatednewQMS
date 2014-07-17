@@ -372,6 +372,8 @@ public class CustomerFeedbackController
 			CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
 			customerFeedbackForm.setCustomerFeedbacks(customerFeedbackDAO.getCustomersfeedbacks());
 		    model.addAttribute("menu","admin");
+		    model.addAttribute("justcame",false);
+		    
 			return "customersfeedbackdelete";
 			
 		}

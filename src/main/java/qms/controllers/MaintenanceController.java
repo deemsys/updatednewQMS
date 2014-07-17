@@ -415,6 +415,7 @@ return "maintenance_list";
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
 		//model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","admin");
+		model.addAttribute("justcame",false);
 		return "maintenancedelete";
 		
 	}

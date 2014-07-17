@@ -680,6 +680,7 @@ public class CorrectiveAndPreventiveActionsController
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
+	    model.addAttribute("justcame",false);
 	    return "correctiveactionsdelete";
 	}
 

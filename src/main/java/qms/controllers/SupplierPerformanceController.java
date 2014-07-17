@@ -330,6 +330,7 @@ import qms.forms.SupplierPerformanceForm;;
 
 	    SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 	    model.addAttribute("menu","admin");
+	    model.addAttribute("justcame",false);
 	    //model.addAttribute("noofrows",5); 
 	    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
 	    //supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getlimitedsupplierreport(1));	    
