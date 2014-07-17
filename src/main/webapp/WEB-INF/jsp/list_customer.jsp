@@ -62,44 +62,44 @@
               <c:set value="${customersForm.customers[0]}" var="customers"></c:set>
                <tr class="row2">
 
-                  <td valign="middle" align="left" class="input_txt" width="20%">Customer Id: </td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Customer Id : </td>
 					<td valign="middle" align="left" class="input_txt" width="20%">${customers.customer_id}</br><span class="err"></span></td>
-					 <td valign="middle" align="left" class="input_txt" width="20%"> Website:</td>
+					 <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
                <td valign="middle" align="left" class="input_txt" width="20%">${customers.website}
                </td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Customer Name :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">${customers.customer_name}</br><span class="err"></span></td>
-                   <td valign="middle" align="left" class="input_txt" width="20%">Contact Name:</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%">Contact Name :</td>
                <td valign="middle" align="left" class="input_txt" width="20%">${customers.contact_name}
                </td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Address :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">${customers.address}</br><span class="err"></span></td>
-                   <td valign="middle" align="left" class="input_txt" width="20%"> Title Of Contact:</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%"> Title Of Contact :</td>
                <td valign="middle" align="left" class="input_txt" width="20%">${customers.title_of_contact}
                </td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">City :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">${customers.city}</br><span class="err"></span></td>
-                   <td valign="middle" align="left" class="input_txt" width="20%"> Telephone:</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%"> Telephone :</td>
                <td valign="middle" align="left" class="input_txt" width="20%">${customers.telephone}
                </td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%"> State :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">${customers.state}</br><span class="err"></span></td>
-                    <td valign="middle" align="left" class="input_txt" width="20%"> Fax:</td>
+                    <td valign="middle" align="left" class="input_txt" width="20%"> Fax :</td>
                <td valign="middle" align="left" class="input_txt" width="20%">${customers.fax}
                </td>
                 </tr>
                 <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="20%"> Country :</td>
                   <td valign="middle" align="left" class="input_txt" width="20%">${customers.country}<br/><span class="err"></span></td>
-                     <td valign="middle" align="left" class="input_txt" width="20%"> Email Address:</td>
+                     <td valign="middle" align="left" class="input_txt" width="20%"> Email Address :</td>
                <td valign="middle" align="left" class="input_txt" width="20%">${customers.email_address}
                </td>
                   </tr>
@@ -119,5 +119,8 @@
           </div>
           </form>
           
-           
+               <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <jsp:include page="footer.jsp"></jsp:include>
             
