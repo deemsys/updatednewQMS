@@ -62,7 +62,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">ID :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="customer_id" value="<c:out value="${customers.customer_id}"/>"/><c:out value="${customers.customer_id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="30%">Website :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.website}" onInput="return validatename1(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.website}" onInput="return validatename1(id);"/><br>
                    <span id="websiteerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.website"></form:errors></span></td>
                 
@@ -93,7 +93,7 @@
                    	<span id="cityerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.city"></form:errors></span></td>
                  <td valign="middle" align="left" class="input_txt" width="30%"> Telephone :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="telephone" class="input_txtbx" placeholder="9876543210"  id="inp_telephone" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.telephone}"  onInput="return validatename2(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="telephone" class="input_txtbx" placeholder="9876543210"  id="inp_telephone" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.telephone}" maxlength="10"  onInput="return validatename55(id);"/><br>
                     <span id="telephoneerror" style="color:red">
                   <span class="err"><form:errors path="Customers.telephone"></form:errors></span></td>
                  
@@ -104,7 +104,7 @@
                     <span id="stateerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="fax" class="input_txtbx" placeholder="+12345678901" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.fax}"  onInput="return validatename1(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="fax" class="input_txtbx" placeholder="6143229928" id="inp_fax" onInput="return validatename55(id);" maxlength="12" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.fax}"  /><br>
                    <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
                   
@@ -122,7 +122,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">ZipCode :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="10001" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.zipcode}"  onInput="return validatename2(id);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH43230" maxlength="8" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeyup="ChangeCase(this);" onmouseout="hideTooltip('tooltip_id');" value="${customers.zipcode}"  onInput="return validatename2(id);"/><br>
                    	<span id="zipcodeerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                 
@@ -231,6 +231,18 @@ $(function() {
 });
 
   </script>  
+  
+<script>
+i=0;
+$(document).ready(function(){
+  $("#inp_fax").keypress(function(){
+var phone=document.getElementById("inp_fax").value;
+phone = phone.replace(/(\d{3})(\d{2})(\d+)/,'$1-$2-$3');
+document.getElementById("inp_fax").value=phone;
+ });  
+
+});
+</script> 
      <script type="text/javascript">
 function validatename(id){
 	
@@ -247,29 +259,52 @@ function validatename1(id){
 function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^0-9 ]/g, "");
+    textInput = textInput.replace(/[^a-zA-Z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+
+
+function validatename55(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById(id).value = textInput;
 }  
 </script>
 
- <script>
+
+  <script>
 i=0;
 $(document).ready(function(){
-  $("#inp_fax").keypress(function(){
+$("#inp_fax").blur(function(){
 var phone=document.getElementById("inp_fax").value;
-phone = phone.replace(/(\d{3})(\d{3})(\d+)/,'$1-$2-$3');
+phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
 document.getElementById("inp_fax").value=phone;
  });  
-
+$("#inp_fax").focus(function(){
+	
+	var phone=document.getElementById("inp_fax").value;
+	phone = phone.replace("-","");
+	phone = phone.replace("-","");
+	document.getElementById("inp_fax").value=phone;
+	 }); 
 });
 </script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
+
       
       <script type="text/javascript">
       function validate()
       {
     	  var error="";
-    	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-    	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
+    	 // var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    	  var website= /^[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+    	 var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
     	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
     	  
     	  var faxreg = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
@@ -294,7 +329,7 @@ document.getElementById("inp_fax").value=phone;
     		  }
     	  else if(customername.charAt(0) == " ")
     		  {
-    		  document.getElementById("customernameerror").innerHTML="Initial spaces not allowed";
+    		  document.getElementById("customernameerror").innerHTML="Required field should not accept initial space";
   	    	  error="true";
     		  }
     	  else  if((customername.length < 4) ||(customername.length > 32))
@@ -315,7 +350,7 @@ document.getElementById("inp_fax").value=phone;
     		  }
     	  else if(inp_website.charAt(0) ==" ") 
 		   {
-		   document.getElementById("websiteerror").innerHTML="Initial spaces not allowed";
+		   document.getElementById("websiteerror").innerHTML="Required field should not accept initial space";
 	    	error="true";
 			}
     	  else  if(inp_website.match(website))
@@ -326,7 +361,7 @@ document.getElementById("inp_fax").value=phone;
     		   
     	   else
     		   {
-    		   document.getElementById("websiteerror").innerHTML="Invalid URL";
+    		   document.getElementById("websiteerror").innerHTML="Invalid URL Format";
 	   	    	error="true";
     		   }
     	   
@@ -449,15 +484,15 @@ document.getElementById("inp_fax").value=phone;
 		   document.getElementById("telephoneerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
-    	  
+    	 /*  
     	  else if (!(telephone.charAt(0)=="9" || telephone.charAt(0)=="8" || telephone.charAt(0)=="7"))
           {
                //alert("Mobile No. should start with 9 or 8 or 7");
                document.getElementById("telephoneerror").innerHTML="Telephone number should start with 9 or 8 or 7";
    	    	error="true";
-          }
+          } */
 	  else if(telephone.match(mobile)){  
-		  if((telephone == "0000000000") || (telephone == "1111111111"))
+		  if(telephone == "0000000000") 
 		   {
 		   document.getElementById("telephoneerror").innerHTML="Invalid number";
 	    	error="true";
@@ -529,9 +564,9 @@ document.getElementById("inp_fax").value=phone;
 	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
 	error="true";
 		}
-	  else  if(inpzipcode.length <8)
+	  else  if((inpzipcode.length < 4) ||(inpzipcode.length > 8))
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Required field should be length of 8";
+	   document.getElementById("zipcodeerror").innerHTML="Required field should be length of 4 to 8";
   	error="true";
 		}
  
