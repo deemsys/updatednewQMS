@@ -2,6 +2,23 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="/QMS_App/resources/js/jquery.js"></script>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<link rel="stylesheet" href="http://s.codepen.io/assets/reset/normalize.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>  	
+<script src="resources/js/jquery.min.js"></script>
+
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+
+<script src="resources/js/jquery-ui.js"></script>
+
+<script src="resources/js/modal.js"></script>
+
+<script src="resources/js/popover.js"></script>
+
+<script src="resources/js/transition.js"></script>
+
 <link rel="stylesheet" href="resources/css/jquery-ui.css"
 	type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
@@ -63,13 +80,13 @@
 					<h2 style="padding-left: 50px">Document Report</h2>
 				</div>
 				<div class="contentbox">
-					<form method="post" action="generate_doc_report">
-						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+					<form method="post" id="form"action="generate_doc_report">
+					<input type="hidden" id="errormsg">	<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="row2">
 								<td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 55px">
 									Select Report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									<select name="type_of_report" class="input_txtbx" id="reporttype"
+									<select name="type_of_report" class="dropdown" id="reporttype"
 									onchange="toggle2(this.value)">
 										<option value="document_list_by_type">Document List by type</option>
 										<option value="external_document">External Document</option>
@@ -99,6 +116,7 @@
         				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
 			                  </c:forEach> </select>
 			                  <br><span id="reporterror" style="color:red"></span>
+			                  <span id="report_error"style="color:red"></span>
                </td>
                
 							</tr>
@@ -178,7 +196,7 @@
 							<tr >
 				<td  align="left" width="10%" align="left"></td>
              <td align="left" width="30%">
-             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate"onclick="return validation();" class="submit_btn1">
+             <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return Ajaxreportcheck();" class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" onclick="toggle3(0)" name="reset_export" value="Reset" class="submit_btn1"></td>
             
@@ -196,6 +214,136 @@
 <table  width=300 height=140>
 			<tr height=30><td></td></tr></table>
 <script type="text/javascript">
+function Ajaxreportcheck(){
+	var reporttype = document.getElementById('reporttype').value;
+	if(reporttype == "external_document")
+	{
+		  document.forms[0].method = "POST";
+    	  document.forms[0].action = "generate_doc_report";
+    	  document.forms[0].submit();
+	}
+		
+	
+		  var reporttype = document.getElementById('reporttype').value;
+		  var documenttype = document.getElementById('documenttype').value;
+		  
+		  var error ="";
+		  var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
+		  var a1 = document.getElementById('1').checked;
+		  var a2 = document.getElementById('2').checked;
+		  var a3 = document.getElementById('3').checked;
+		  var a4 = document.getElementById('4').checked;
+		  var a5 = document.getElementById('5').checked;
+		  var a6 = document.getElementById('6').checked;
+		  var a7 = document.getElementById('7').checked;
+		  var a8 = document.getElementById('8').checked;
+		  var a9 = document.getElementById('9').checked;
+		  var a10 = document.getElementById('10').checked;
+		  var a11 = document.getElementById('11').checked;
+		  var a12 = document.getElementById('12').checked;
+		  var a13 = document.getElementById('13').checked;
+		  var a14 = document.getElementById('14').checked;
+		  var a15 = document.getElementById('15').checked;
+		  document.getElementById('reporterror').innerHTML = "";
+		  document.getElementById('checkerror').innerHTML = "";
+		  if(reporttype == "document_list_by_type")
+		  {
+		 	 if(documenttype == "")
+		 	{
+		 		 document.getElementById('reporterror').innerHTML ="Please Select One";
+		 		
+		 		error = "true";
+		 	}
+		 	 else
+		 		 {
+		 		 document.getElementById('reporterror').innerHTML = "";
+		 		 }
+		  }
+		  if(id_type_userdefined)
+		  {
+		 	 if(a1 || a2 || a3 || a4 || a5 || a6 || a7 || a8 || a9 || a10 || a11 || a12 || a13 || a14 || a15)
+		 		{
+		 		 document.getElementById('checkerror').innerHTML = "";
+		 		}
+		 	 else
+		 		  {
+		 		
+		 		 document.getElementById('checkerror').innerHTML = "Please Select Atleast One";
+		 		error = "true";
+		 		  }
+		  }
+		  
+		  if(error == "true")
+			  {
+			  return false;
+			  }
+		  var err;
+		  var name = $('#documenttype').val();
+		  document.getElementById("errormsg").value="";
+			 /*   var education = $('#education').val();	 */   
+			  $.ajax({  
+			    type: "POST",  
+			    url: "/QMS_App/ajaxreportpdferror",  
+			    data: "document_type=" + name,  
+			    success: function(response){  
+			      // we have the response  
+			    
+			    $('#report_error').html(response);
+			    document.getElementById("errormsg").value="";
+			    document.getElementById("errormsg").value=response; 
+			  
+			     
+			   err=response;
+			    
+			      if(response=='')
+			    	  {
+			    	 
+			    	
+			    	  document.forms[0].method = "POST";
+			    	  document.forms[0].action = "generate_doc_report";
+			    	  document.forms[0].submit();
+			    	
+			    	  return true;
+			    	 
+			    	  }
+			     
+			      /*     $('#education').val(''); */
+			    },  
+			    error: function(e){  
+			     /*  alert('Error: ' + e);   */
+			    }
+			   
+			  });  
+		 return false;
+	
+		 
+		 
+}
+jQuery("#button").click(function()
+		{   
+		    for(var i = 0;i < data.length; i++)
+		    {
+		        updateUser(data[i]).done(function(result) {
+		                    alert(result); //prints 'undefined'
+		        });
+
+		    }
+		});
+
+function validations()
+{ 
+	Ajaxreportcheck();
+	
+	
+	alert("asdas12");
+	if(response)
+		{
+		return false;
+		}
+	}
+
+
+
 function validation()
 {
  var reporttype = document.getElementById('reporttype').value;
@@ -315,7 +463,7 @@ $('#select_all').change(function() {
 });
 </script>
 
-<table  width=300 height=30>
+ <table  width=300 height=30>
 			<tr height=30><td></td></tr></table>
 			
 <jsp:include page="footer.jsp"></jsp:include>		

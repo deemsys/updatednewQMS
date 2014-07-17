@@ -36,7 +36,9 @@ import qms.dao.FileHandlingDAO;
 import qms.dao.FormLocationDAO;
 import qms.dao.RevisionDocumentDAO;
 import qms.model.DocumentMain;
+import qms.model.DocumentType;
 import qms.model.Form;
+import qms.model.Reportpdferror;
 import qms.model.RevisionDocument;
 import qms.model.RevisionForm;
 import qms.dao.ProcessDAO;
@@ -85,7 +87,24 @@ public class DocumentController {
 	@Autowired
 	DocumentRevisionLevelDAO documentRevisionLevelDAO;
 	
-		@RequestMapping(value = { "/documententry" }, method = RequestMethod.GET)
+	@RequestMapping(value="/ajaxreportpdferror",method=RequestMethod.POST)
+	public @ResponseBody String addUser(HttpSession session,HttpServletRequest request,@ModelAttribute(value="document_type")Reportpdferror reportpdferror, BindingResult result,ModelMap model ){
+		String resultHTML="";
+		System.out.println("sfsdfsdf"+reportpdferror.getDocument_type());
+		java.util.List<DocumentMain> documentMains=new ArrayList<DocumentMain>();
+		documentMains=documentControlDAO.getDocuments_bytype(reportpdferror.getDocument_type());
+			
+			int records_size = documentMains.size();
+			System.out.println("record size = "+records_size);
+			if(records_size == 0)
+			{
+				resultHTML="<p class='closestatus'>This Document Type("+reportpdferror.getDocument_type()+ ") doesn't have a record</p>";
+					
+			}
+		return resultHTML;	
+		}
+	
+	@RequestMapping(value = { "/documententry" }, method = RequestMethod.GET)
 	public String add_document1(HttpSession session, ModelMap model,
 			Principal principal) {
 			
@@ -667,8 +686,7 @@ public class DocumentController {
 	}
 	@RequestMapping(value = { "/ajax_getprocessowner" }, method = RequestMethod.POST)
 	public @ResponseBody
-	String processowner(HttpSession session,
-			HttpServletRequest request, @RequestParam("filter_val")String letter,ModelMap model, Principal principal) {
+	String processowner(HttpSession session,HttpServletRequest request, @RequestParam("filter_val")String letter,ModelMap model, Principal principal) {
 		String resultHTML="";
 		System.out.println(letter);
 		String albapate = letter.trim();
@@ -683,9 +701,7 @@ public class DocumentController {
 	}
 	//Post method for ajax get process 
 	@RequestMapping(value = { "/ajax_getprocess" }, method = RequestMethod.POST)
-	public @ResponseBody
-	String ajax_process_owner(HttpSession session,
-			HttpServletRequest request, ModelMap model, Principal principal) {
+	public @ResponseBody 	String ajax_process_owner(HttpSession session,	HttpServletRequest request, ModelMap model, Principal principal) {
 		String resultHTML="";
 	
 		String process_name=request.getParameter("process");
@@ -698,8 +714,31 @@ public class DocumentController {
 		
 		return resultHTML;
 	}
-
-	// Document Views
+	
+	//Post method for ajax get process 
+	/*@RequestMapping(value = "/ajaxreportpdferror", method = RequestMethod.POST)
+	public @ResponseBody String Ajax_errorreport(HttpSession session,HttpServletRequest request, @RequestParam("document_type")String documenttype, ModelMap model, Principal principal) {
+		String resultHTML="";
+		System.out.println("sddasd");
+	System.out.println("entered");
+	//	String doc_type=request.getParameter("document_type");
+	System.out.println("entered"+documenttype);
+		java.util.List<DocumentMain> documentMains=new ArrayList<DocumentMain>();
+		// System.out.println("document type = "+doc_type);
+		 documentMains=documentControlDAO.getDocuments_bytype(documenttype);
+		
+		int records_size = documentMains.size();
+		System.out.println("record size = "+records_size);
+		if(records_size == 0)
+		{
+			resultHTML="<p class='closestatus'>No Record Found to Generate Report<a title='Close' href='document_report'><img alt='Success' src='resources/images/icons/icon_square_close.png'></a></p>";
+				
+		}
+		
+		System.out.println(resultHTML);
+		return resultHTML;
+	}
+*/	// Document Views
 	@RequestMapping(value = "/viewdocuments", method = RequestMethod.GET)
 	public String login(ModelMap model,HttpSession session) {
 

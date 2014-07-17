@@ -64,7 +64,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="document_type_table">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="left" class="input_txt" width="30%">
 								Type Of Report :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%">
@@ -80,7 +80,7 @@
 							
 								
 							<tr class="row1" id="no_of_days" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="left" class="input_txt" width="30%">
 									Number Of Days :
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
@@ -91,7 +91,7 @@
 								
 							</tr>	
 							<tr class="row2">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="left" class="input_txt" width="30%">
 									Select Report Type :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
@@ -107,7 +107,7 @@
 						
 							
 							<tr class="row1" id="userdefined_name" style="display:none;">
-								<td valign="middle" align="right" class="input_txt" width="30%">
+								<td valign="middle" align="left" class="input_txt" width="30%">
 									Name to appear on the Report :</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
 									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx" id="report_title" value=""/>
@@ -115,7 +115,7 @@
 								
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
-								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
+								<td valign="top" align="left" style="margin-top:2px;" class="input_txt" width="30%">
 									Select Fields Required on the Report :
 									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
