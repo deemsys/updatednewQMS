@@ -67,7 +67,7 @@ $(function() {
             </div>
             <div class="contentbox">
             <c:set value="${hRandTrainingForm.hRandTrainings[0]}" var="hRandTrainings"/>
-                 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height:450px">
+                 <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height:475px">
 					<tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%"><label>ID :</label></td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="id" value="<c:out value="${hRandTrainings.id }"/>"/><c:out value="${hRandTrainings.id }"/><br/><span class="err"></span></td>
@@ -449,7 +449,7 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker00").innerHTML="Invalid date";
+	 document.getElementById("datepicker00").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
@@ -475,7 +475,7 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="Invalid date";
+	 document.getElementById("datepicker11").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
@@ -491,7 +491,7 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
@@ -507,7 +507,7 @@ else
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="Invalid date";
+	 document.getElementById("datepicker33").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 if(!disposition && !calibration && !responsibility)

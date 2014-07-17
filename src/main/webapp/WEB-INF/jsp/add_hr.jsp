@@ -173,7 +173,7 @@ function doAjaxPost() {
 
             <div class="contentbox">
 
-             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height:440px"">
+             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; height:475px"">
 
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
 
@@ -504,7 +504,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker00").innerHTML="Invalid date";
+	 document.getElementById("datepicker00").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
@@ -530,7 +530,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker11").innerHTML="Invalid date";
+	 document.getElementById("datepicker11").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
@@ -546,7 +546,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker22").innerHTML="Invalid date";
+	 document.getElementById("datepicker22").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 
@@ -562,7 +562,7 @@ function validate()
 	 }
 	 else
 	 {
-	 document.getElementById("datepicker33").innerHTML="Invalid date";
+	 document.getElementById("datepicker33").innerHTML="Invalid date format";
 	 error="true";
 	 }
 	 if(!disposition && !calibration && !responsibility)
