@@ -168,12 +168,16 @@
                   </table>
                 
                   <table align="center" width="100%">
-                  <tr >
+                 <!--  <tr >
                   
                   </br>
 				  <td><input type="submit"  value="Submit" onclick="return validate();" class="submit_btn1">
 				 </td>
-                  </tr>
+                  </tr> -->
+                    <tr class="row1">
+                  <td valign="bottom" colspan="2"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+                  <td valign="top" align="left"></td>
+                </tr>
                   </table>
                   </table>
                   </div>
