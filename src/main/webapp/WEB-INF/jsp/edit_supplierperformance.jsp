@@ -94,7 +94,7 @@
 															value="Non Critical">Non Critical</option>
 															</select>
 															<br/><span style="color: red;" id="categoryerror"></span><form:errors path="SupplierPerformance.category"></form:errors></td>
-                  <td valign="top" align="left" class="input_txt" width="30%">Contact Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Contact name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;" id="contacterror"><form:errors path="SupplierPerformance.contact_name"></form:errors></span></td>
                                   
                 </tr>
