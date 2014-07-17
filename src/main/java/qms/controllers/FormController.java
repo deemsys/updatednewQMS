@@ -595,11 +595,11 @@ public class FormController
 		model.addAttribute("processForm", processForm);
 	  	
 	    formForm.setForm(formDAO.getlimitedformreport(1));
-	    model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	 
+	    /*model.addAttribute("noofpages",(int) Math.ceil(formDAO.getnoofformreport() * 1.0 / 5));	 
         model.addAttribute("button","viewall");
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);
-	    
+	    */
 	  //  model.addAttribute("formForm",formForm);
 	    
 	    

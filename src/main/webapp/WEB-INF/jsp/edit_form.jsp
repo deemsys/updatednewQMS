@@ -817,7 +817,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 else if(title.charAt(0)==" ")
 	 {
 	 
-	 document.getElementById("title1").innerHTML="Initial space not allowed";	
+	 document.getElementById("title1").innerHTML="Should not accept initial spaces";	
 	 error="true";
 	 }
 	 else if((title.length < 4) || (title.length > 400) )
@@ -844,7 +844,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	 }
 	 else if(comments.charAt(0)==" ")
 	 {
-		 document.getElementById("comments1").innerHTML="Initial space not allowed";
+		 document.getElementById("comments1").innerHTML="Should not accept initial spaces";
 		 error="true";
 	 }
 
@@ -871,7 +871,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 }
 	    else if(responsibility.charAt(0)==" ")
 		 {
-			 document.getElementById("responsibility1").innerHTML="Initial space not allowed";
+			 document.getElementById("responsibility1").innerHTML="Should not accept initial spaces";
 			 error="true";
 		 }
 	    else if((responsibility.length < 4) || (responsibility.length > 400) )
