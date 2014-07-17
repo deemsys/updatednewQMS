@@ -129,7 +129,7 @@
 								<td valign="middle" align="left" class="input_txt" width="30%">
 									Enter the name to appear on the report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									&nbsp;&nbsp;&nbsp;<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)"; style="width:40%;" value=""/>
+									&nbsp;<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)";  value=""/>
 								</td>
 								
 							</tr>
