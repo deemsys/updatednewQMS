@@ -834,7 +834,8 @@ public class FormController
 			
 				
 				form=formDAO.gethuman_resources(request.getParameter("process"));
-				
+				int sizs = form.size();
+				System.out.println("form size = " +sizs); 
 			
 			
 			
