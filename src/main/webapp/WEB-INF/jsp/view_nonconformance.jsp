@@ -208,7 +208,7 @@
 
 <script>
 function confirmation() {
-	var answer = confirm("Are you Sure You Want to Delete NonConformance Form ?");
+	var answer = confirm("Are you sure want to remove NonConformance Form ?");
 	if (answer){
 		return true;
 	}

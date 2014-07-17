@@ -190,7 +190,7 @@
 										 </c:if>
 										  <c:if test="${fn:length(documentMainForm.documentMains) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Records Found!!!</b></span></center></td>
 							    		
 							    	</tr>
 							    	</c:if>		
