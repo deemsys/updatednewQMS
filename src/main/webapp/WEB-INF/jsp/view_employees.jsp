@@ -181,7 +181,10 @@
 							    	</tr></c:if>
 							    	<tr class="row1"></tr>
 							    	</c:if>
-										
+											</table>
+					</div>
+				</td>
+			</tr>
 										 <tr><td colspan="9" class="extrabottom">  
 	<!-- <div class="extrabottom"> -->
              <ul class="pagination">
