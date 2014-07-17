@@ -81,7 +81,7 @@
                 <tr class="row2">
 				  <td valign="middle" align="left" class="input_txt" width="30%"> External ID :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeyup="ChangeCase(this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
+                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();"  onblur=" ChangeCase(this)" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets(event,this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
@@ -146,7 +146,7 @@
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
-					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;" onInput="return validatealphanumeric2();"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
+					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;" onInput="return validatealphanumeric2();" onkeypress="return onlyAlphabets(event,this);"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
              </tr>	
              
             <tr class="row2">
@@ -170,15 +170,15 @@
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
-				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="height: 75px; width: 202px" onInput="return validatealphanumeric1();"></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
+				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="height: 75px; width: 202px" onInput="return validatealphanumeric1();" onkeypress="return onlyAlphabets(event,this);"></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;" onInput="return validatealphanumeric3();"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;" onInput="return validatealphanumeric3();" onkeypress="return onlyAlphabets(event,this);"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
                
               </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets1(event,this);"><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
                <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
@@ -201,11 +201,11 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Action :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx" onInput="return validatename(id);" id="action" value="<c:out value=""/>"/><br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx" onInput="return validatename(id);" id="action" value="<c:out value=""/>" onkeypress="return onlyAlphabets1(event,this);"/><br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker6" class="input_txtbx" name="due_date" value=""/><br/><span style="color: red;" id="datepicker6err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Verified By :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="verified_by" id="verified_by" class="input_txtbx" onInput="return validatename(id);" value="<c:out value=""/>"/><br/><span style="color: red;" id="verifiedbyerror"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="verified_by" id="verified_by" class="input_txtbx" onInput="return validatename(id);" value="<c:out value=""/>" onkeypress="return onlyAlphabets1(event,this);"/><br/><span style="color: red;" id="verifiedbyerror"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
                </tr>
                     <tr class="row2">
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
@@ -823,5 +823,46 @@ function validation()
 		}
 }
 	  </script>
-	  
+	  <script>
+	  function onlyAlphabets(e, t) {
+		    try {
+		        if (window.event) {
+		            var charCode = window.event.keyCode;
+		        }
+		        else if (e) {
+		            var charCode = e.which;
+		        }
+		        else { return true; }
+		        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32) || (charCode > 47 && charCode < 58))
+		            return true;
+		        else
+		            return false;
+		    }
+		    catch (err) {
+		        alert(err.Description);
+		    }
+		}
+	  	  
+	  </script>
+	  <script>
+	  function onlyAlphabets1(e, t) {
+		    try {
+		        if (window.event) {
+		            var charCode = window.event.keyCode;
+		        }
+		        else if (e) {
+		            var charCode = e.which;
+		        }
+		        else { return true; }
+		        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+		            return true;
+		        else
+		            return false;
+		    }
+		    catch (err) {
+		        alert(err.Description);
+		    }
+		}
+	  	  
+	  </script>
       <jsp:include page="footer.jsp"></jsp:include>
