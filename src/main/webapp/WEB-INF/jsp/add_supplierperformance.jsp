@@ -145,9 +145,13 @@
                <tr class="row1">
                <td></td><td></td>
                </tr>
-                 <tr class="row1">
+               <!--   <tr class="row1">
                   <td><br>
                   <td valign="top" align="center" colspan="2"><input type="submit" value="Submit" onclick="return checkSubmit();" class="submit_btn1"></td>
+                </tr> -->
+                  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return checkSubmit();"class="submit_btn1"></td>
+                  <td valign="top" align="left"></td>
                 </tr>
               </table>
 
