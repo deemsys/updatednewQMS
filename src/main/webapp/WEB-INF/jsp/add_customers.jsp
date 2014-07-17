@@ -105,7 +105,7 @@
                    	<span id="cityerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.city"></form:errors></span></td>
                       <td valign="middle" align="left" class="input_txt" width="20%">Telephone :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="telephone" class="input_txtbx" id="inp_telephone" placeholder="9876543210"  maxlength="10" onInput="return validatename2(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="telephone" class="input_txtbx" id="inp_telephone" placeholder="9876543210"  maxlength="10" onInput="return validatename55(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                    <span id="telephoneerror" style="color:red"></span><span class="err"><form:errors path="Customers.telephone"></form:errors></span></td>
      
                 </tr>
@@ -143,7 +143,7 @@
                  <tr class="row1">
                   <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
                   <td></td>
-                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" id="Submit" onclick="return validate();"class="submit_btn1"></td>
                 </tr>
               </table>
              
@@ -275,6 +275,13 @@ function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
     textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
+    document.getElementById(id).value = textInput;
+}  
+
+function validatename55(id){
+	
+    var textInput = document.getElementById(id).value;
+    textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById(id).value = textInput;
 }  
 </script>
@@ -574,7 +581,34 @@ document.getElementById("telephoneerror").innerHTML=" ";
       }
       
       </script>
-      
+      <script type="text/javascript">
+       function validate(event) {
+          
+           var regex = new RegExp("^[0-9]+$");
+           var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+           if (!regex.test(key)) {
+             // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+               event.preventDefault();
+               return false;
+           }
+       }       
+    </script>
+    
+ <!--    <script type="text/javascript">
+$(function() {
+$('#Submit').click(function() {
+var txt = $('#inp_website').val();
+var re = /(http(s)?:\\)?([\w-]+\.)+[\w-]+[.com|.in|.org]+(\[\?%&=]*)?/
+if (re.test(txt)) {
+alert('Valid URL');
+}
+else {
+alert('Please Enter Valid URL');
+return false;
+}
+});
+});
+</script> -->
       <script>
 i=0;
 $(document).ready(function(){
@@ -596,7 +630,9 @@ document.getElementById("inp_fax").value=phone;
     	    
     	    
     	  var error="";
-    	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    	 var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+    	 
+    	  /* var website = /w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; */
     	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
     	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
     	  

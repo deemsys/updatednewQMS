@@ -251,6 +251,19 @@ function validatename2(id){
     document.getElementById(id).value = textInput;
 }  
 </script>
+
+ <script>
+i=0;
+$(document).ready(function(){
+  $("#inp_fax").keypress(function(){
+var phone=document.getElementById("inp_fax").value;
+phone = phone.replace(/(\d{3})(\d{3})(\d+)/,'$1-$2-$3');
+document.getElementById("inp_fax").value=phone;
+ });  
+
+});
+</script>
+      
       <script type="text/javascript">
       function validate()
       {
@@ -258,8 +271,10 @@ function validatename2(id){
     	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
     	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
-    	  var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-    	  var zipcode =/^\d{5}$|^\d{5}-\d{4}$/;
+    	  
+    	  var faxreg = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+    	  //var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+    	/*   var zipcode =/^\d{5}$|^\d{5}-\d{4}$/; */
     	  var customername = document.getElementById('customername').value;
     	  var inp_website = document.getElementById('inp_website').value;
     	  var inp_contact_name = document.getElementById('inp_contact_name').value;
@@ -514,14 +529,17 @@ function validatename2(id){
 	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
 	error="true";
 		}
-  	else if(inpzipcode.match(zipcode)){  
-	  
-	   document.getElementById("zipcodeerror").innerHTML="";
-	   }
+	  else  if(inpzipcode.length <8)
+	   {
+	   document.getElementById("zipcodeerror").innerHTML="Required field should be length of 8";
+  	error="true";
+		}
+ 
+  	
   
   else{
-	  document.getElementById("zipcodeerror").innerHTML="Required field should contain 5 digits";
-    	error="true";
+	  document.getElementById("zipcodeerror").innerHTML="";
+    	
   }
 	  
 	  

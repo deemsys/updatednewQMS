@@ -107,7 +107,7 @@
 														
 															</select><span class="err"><form:errors path="HRandTraining.qualified_by"></form:errors></span></td>
                				<td align="right" valign="middle" width="12%"> Trainer :&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}" onInput="return  validatename(id);">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" maxlength="32" class="input_txtbx" id="trainer" value="${trainer}" onInput="return  validatename(id);">
 							     <br><span id="trainererror" style="color:red"></span>
 							    </td>
 							  

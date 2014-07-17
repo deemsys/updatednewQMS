@@ -117,7 +117,7 @@
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
 				 -->				<td align="right" valign="middle" width="12%"> Trainer :&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" maxlength="32" id="trainer" value="${trainer}"></td>
 							  
 							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search"></td>
 							  <!--    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
