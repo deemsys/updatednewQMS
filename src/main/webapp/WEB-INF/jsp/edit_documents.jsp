@@ -384,14 +384,15 @@ $(window).load(function(){
                <br/><span id="statuserror" style="color:red"></span><span class="err"style="color:red"><form:errors path="DocumentMain.status"></form:errors></span></td>
             <td valign="top" align="left" class="input_txt" width="20%"></td>
         </tr>
-             <tr class="row1" >
+            <!--  <tr class="row1" >
              <td colspan="2" align="center">
              <input type="submit" align="left" id="submit"  name="submit" value="Update" onclick="return validation();" class="submit_btn1" style="margin-left:105%;"></td>
-            <!--  <td colspan="3"> 
-            <input type="button" id="reset_export" name="reset_export" value="Reset" onclick="reset1();"class="submit_btn1"></td>
-                       --> 
-      
-        </tr>
+          
+        </tr> -->
+          <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+               
+                </tr>
         </table>
         </td>
         
