@@ -362,12 +362,14 @@
               
              
                    
-              <tr class="row1">
+             <!--  <tr class="row1">
               <td colspan="3" align="right">
              <input type="submit" id="export"  name="export" value="Update" onclick="return validation();"  class="submit_btn1"></td>
-            <!--  <td colspan="3">
-            <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
- --></tr>
+            </tr> -->
+   <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+                 
+                </tr>
      </table>
      </div>
      </div>
