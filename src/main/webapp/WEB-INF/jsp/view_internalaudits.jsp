@@ -113,7 +113,7 @@
 									<td valign="top" align="left" width="15%">Audit Due Date</td>
 									<td valign="top" align="left" width="15%">Audit Start Date</td>
 									<td valign="top" align="left" width="10%">Auditor</td>									
-									<td valign="top" align="left" width="15%">Finding</td>
+									<td valign="top" align="left" width="10%">Finding</td>
 									<td valign="top" align="left" width="15%">Completion Date</td>
 									<td valign="top" align="left" width="10%">Actions</td>
 									</tr>
@@ -133,7 +133,7 @@
 											<td valign="top" align="left" width="10%">${internalAudits.audit_due_date}</td>
 											<td valign="top" align="left" width="10%">${internalAudits.audit_start_date}</td>
 											<td valign="top" align="left" width="10%">${internalAudits.auditor}</td>
-											<td valign="top" align="left" width="15%">${internalAudits.finding}</td>
+											<td valign="top" align="left" width="10%">${internalAudits.finding}</td>
 											<td valign="top" align="left" width="15%">${internalAudits.completion_date}</td>
 											
 											
