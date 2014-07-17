@@ -157,7 +157,7 @@
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report&nbsp;:<br><span style="color: red;" id="error"></span></td>	
+									Enter the Fields Required on the Report&nbsp;:&nbsp;<br><span style="color: red;" id="error"></span></td>	
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								
