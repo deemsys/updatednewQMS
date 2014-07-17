@@ -140,10 +140,13 @@
                   <td valign="middle" align="left" class="input_txt" width="20%">
               <td valign="middle" align="left" class="input_txt" width="20%">
                </tr> -->
-                 <tr class="row1">
-                  <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
-                  <td></td>
+                <!--  <tr class="row1">
+                 
                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" id="Submit" onclick="return validate();"class="submit_btn1"></td>
+                </tr> -->
+                  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+                  
                 </tr>
               </table>
              
