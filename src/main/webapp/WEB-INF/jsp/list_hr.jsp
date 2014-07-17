@@ -40,7 +40,7 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <c:set value="${hRandTrainingForm.hRandTrainings[0]}" var="hRandTrainings"/>
               <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="20%"><label>HR ID:</label></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><label>ID :</label></td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.id }</td>
                  </tr>
                 <tr class="row1">
@@ -52,37 +52,37 @@
                   </td>
                  </tr>
 		<tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="20%">Job Title</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Job Title :</td>
                	<td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.job_title}
-            <td valign="top" align="left" class="input_txt" width="20%">Qualified By:</td>
+            <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.qualified_by}
 			   	</tr>
                	
                	<tr class="row1">
-                <td valign="top" align="left" class="input_txt" width="20%">Training Effectiveness Notes:</td>
+                <td valign="top" align="left" class="input_txt" width="20%">Training Effectiveness Notes :</td>
                  <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.training_effectiveness_notes}</td>
- 					<td valign="top" align="left" class="input_txt" width="20%">Type:</td>
+ 					<td valign="top" align="left" class="input_txt" width="20%">Type :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.type_of_training}
 															</td>
                 </tr>    
                	
                 
 				<tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="20%">Date Hired</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.date_hired}
                    </td>
-                <td valign="top" align="left" class="input_txt" width="20%">Due Date</td>
+                <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.training_due_date}
                 </tr>
                 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="20%">Attachments</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">Attachments :</td>
                   <td valign="top" align="left" class="input_txt" width="20%" >${hRandTrainings.attachment_name}
                   </td>
                   
 
                   
                   
-                   <td valign="top" align="left" class="input_txt" width="20%">Completion Date</td>
+                   <td valign="top" align="left" class="input_txt" width="20%">Completion Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.training_completion_date}
                    
                   </td>
@@ -90,20 +90,26 @@
                 
            
              <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="20%">Training Effective Review Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.training_effectiveness_review_due_date}
-                  </td>
-                  <td valign="top" align="left" class="input_txt" width="20%">Documented In:</td>
+              <td valign="top" align="left" class="input_txt" width="20%">Functions Needs :</td>
+                 <td valign="top" align="left" class="input_txt" width="20%">
+               
+<c:if test="${hRandTrainings.calibration!='null'}"><c:out value="${hRandTrainings.calibration}"></c:out></c:if><br/>   
+<c:if test="${hRandTrainings.responsibility!='null'}"><c:out value="${hRandTrainings.responsibility}"></c:out></c:if><br/>
+<c:if test="${hRandTrainings.disposition!='null'}"><c:out value="${hRandTrainings.disposition}"></c:out></c:if><br/> 
+               
+            <%--      Calibration:${hRandTrainings.calibration}            
+                 Responsibility:${hRandTrainings.responsibility}<br/>
+                 Disposition:${hRandTrainings.disposition} --%>
+                 </td>
+                  
+                  <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.documented_in}
                   </tr>
                 
                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="20%">Functions Needs:</td>
-                 <td valign="top" align="left" class="input_txt" width="20%">
-                 Calibration:${hRandTrainings.calibration}<br/>                
-                 Responsibility:${hRandTrainings.responsibility}<br/>
-                 Disposition:${hRandTrainings.disposition}
-                 </td>
+                 <td valign="top" align="left" class="input_txt" width="20%"> Review Due Date :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">${hRandTrainings.training_effectiveness_review_due_date}
+                  </td>
                   </tr>
                   
                 
