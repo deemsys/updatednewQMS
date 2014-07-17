@@ -327,7 +327,7 @@ function validatename2(id){
 		  }
     	  else if(address.charAt(0) ==" ") 
 		   {
-		   document.getElementById("addresserror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("addresserror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((address.length < 4) ||(address.length > 400))
@@ -348,7 +348,7 @@ function validatename2(id){
 		  }
     	  else if(inp_contact_name.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contactnameerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("contactnameerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	 	 else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
@@ -369,7 +369,7 @@ function validatename2(id){
 		  }
     	  else if(city.charAt(0) ==" ") 
 		   {
-		   document.getElementById("cityerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("cityerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((city.length < 4) ||(city.length > 32))
@@ -390,7 +390,7 @@ function validatename2(id){
 		  }
     	  else if(contact.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contacterror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("contacterror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((contact.length < 4) ||(contact.length > 32))
@@ -411,7 +411,7 @@ function validatename2(id){
 		  }
     	  else if(state.charAt(0) ==" ") 
 		   {
-		   document.getElementById("stateerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("stateerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((state.length < 4) ||(state.length > 32))
@@ -431,7 +431,7 @@ function validatename2(id){
 		  }
     	  else if(telephone.charAt(0) ==" ") 
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("telephoneerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
     	  
@@ -465,7 +465,7 @@ function validatename2(id){
 	  }
 	  else if(country.charAt(0) ==" ") 
 	   {
-	   document.getElementById("countryerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("countryerror").innerHTML="Required field Should not accept initial space";
   	error="true";
 		}
   	else  if((country.length < 4) ||(country.length > 32))
@@ -486,7 +486,7 @@ function validatename2(id){
 	  }
 	  else if(fax.charAt(0) ==" ") 
 	   {
-	   document.getElementById("faxerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("faxerror").innerHTML="Required field Should not accept initial space";
  	error="true";
 		}
   else if(fax.match(faxreg))
@@ -511,7 +511,7 @@ function validatename2(id){
 	  }
 	  else if(inpzipcode.charAt(0) ==" ") 
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
 	error="true";
 		}
   	else if(inpzipcode.match(zipcode)){  
@@ -532,7 +532,7 @@ function validatename2(id){
 	  }
 	  else if(emailaddress.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("emailerror").innerHTML="Required field Should not accept initial space";
 	error="true";
 		}
   else if(emailaddress.match(mail)){  

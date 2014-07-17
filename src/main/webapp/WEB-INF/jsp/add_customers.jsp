@@ -566,7 +566,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
     		  }
     	  else if(customername.charAt(0) ==" ") 
 		   {
-		   document.getElementById("customernameerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("customernameerror").innerHTML="Required field should not accept initial space";
 	    	error="true";
 			}
     	  else  if((customername.length < 4) ||(customername.length > 32))
@@ -587,7 +587,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
     		  }
     	  else if(inp_website.charAt(0) ==" ") 
 		   {
-		   document.getElementById("websiteerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("websiteerror").innerHTML="Required field should not accept initial space";
 	    	error="true";
 			}
     	  else  if(inp_website.match(website))
@@ -598,7 +598,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
     		   
     	   else
     		   {
-    		   document.getElementById("websiteerror").innerHTML="Invalid URL";
+    		   document.getElementById("websiteerror").innerHTML="Invalid URL Format";
 	   	    	error="true";
     		   }
     	   
@@ -613,7 +613,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(address.charAt(0) ==" ") 
 		   {
-		   document.getElementById("addresserror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("addresserror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((address.length < 4) ||(address.length > 400))
@@ -634,7 +634,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(inp_contact_name.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contactnameerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("contactnameerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
@@ -656,7 +656,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(city.charAt(0) ==" ") 
 		   {
-		   document.getElementById("cityerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("cityerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 		  else  if((city.length < 4) ||(city.length > 32))
@@ -677,7 +677,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(contact.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contacterror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("contacterror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((contact.length < 4) ||(contact.length > 32))
@@ -698,7 +698,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(state.charAt(0) ==" ") 
 		   {
-		   document.getElementById("stateerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("stateerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((state.length < 4) ||(state.length > 32))
@@ -718,7 +718,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 		  }
     	  else if(telephone.charAt(0) ==" ") 
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Requiired field Should not accept initial space";
+		   document.getElementById("telephoneerror").innerHTML="Required field Should not accept initial space";
 	    	error="true";
 			}
     	  
@@ -755,7 +755,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(country.charAt(0) ==" ") 
 	   {
-	   document.getElementById("countryerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("countryerror").innerHTML="Required field Should not accept initial space";
    	error="true";
 		}
   else  if((country.length < 4) ||(country.length > 32))
@@ -776,7 +776,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(fax.charAt(0) ==" ") 
 	   {
-	   document.getElementById("faxerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("faxerror").innerHTML="Required field Should not accept initial space";
   	error="true";
 		}
   else if(fax.match(faxreg))
@@ -801,7 +801,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(inpzipcode.charAt(0) ==" ") 
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
  	error="true";
 		}
   else if(inpzipcode.match(zipcode)){  
@@ -822,7 +822,7 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	  }
 	  else if(emailaddress.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerror").innerHTML="Requiired field Should not accept initial space";
+	   document.getElementById("emailerror").innerHTML="Required field Should not accept initial space";
 	error="true";
 		}
   else if(emailaddress.match(mail)){  
