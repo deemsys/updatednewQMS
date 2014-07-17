@@ -72,7 +72,7 @@
                   <td valign="middle" align="left" class="input_txt" width="20%">ID :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="customer_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" placeholder="http(s)://www.example.com"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" placeholder="www.example.com"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="return validatename1(id);"/><br>
                   <span id="websiteerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.website"></form:errors></span></td>
             
@@ -114,7 +114,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="state" class="input_txtbx" id="inp_state"  maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="stateerror" style="color:red"></span><span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" placeholder="614-322-9928"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="10" placeholder="6143229928"  onInput="return validatename55(id);"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
      
@@ -130,7 +130,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">ZipCode :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH 43230" maxlength="8" onkeyup="ChangeCase(this);" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH43230" maxlength="8" onkeyup="ChangeCase(this);" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="zipcodeerror" style="color:red"></span><span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                   </tr>
                 <!--   <tr class="row2">
@@ -307,7 +307,7 @@ function ChangeCase(elem)
 <script>
 function validatefax(){
     var textInput = document.getElementById("inp_fax").value;
-    textInput = textInput.replace(/[^0-9+]/g, "");
+    textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById("inp_fax").value = textInput;
 }
 
@@ -612,27 +612,56 @@ return false;
       <script>
 i=0;
 $(document).ready(function(){
-  $("#inp_fax").keypress(function(){
+$("#inp_fax").blur(function(){
 var phone=document.getElementById("inp_fax").value;
-phone = phone.replace(/(\d{3})(\d{3})(\d+)/,'$1-$2-$3');
+phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
 document.getElementById("inp_fax").value=phone;
  });  
-
+$("#inp_fax").focus(function(){
+	
+	var phone=document.getElementById("inp_fax").value;
+	phone = phone.replace("-","");
+	phone = phone.replace("-","");
+	document.getElementById("inp_fax").value=phone;
+	 }); 
 });
 </script>
+
+     <script>
+i=0;
+$(document).ready(function(){
+$("#inp_zipcode").keypress(function(){
+var zipcode=document.getElementById("inp_zipcode").value;
+zipcode = zipcode.replace(/(\d{2})(\d{1})(\d{5})/,'$1-$2-$3');
+document.getElementById("inp_fax").value=zipcode;
+ });  
+
+</script>
+
+<script type="text/javascript">
+       function validate(event) {
+          
+           var regex = new RegExp("^[0-9]+$");
+           var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+           if (!regex.test(key)) {
+             // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+               event.preventDefault();
+               return false;
+           }
+       }       
+    </script>
       
       <script type="text/javascript">
       function validate()
       {
     	  
-    	
-
-    	    
+    	 	    
     	    
     	  var error="";
-    	 var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-    	 
-    	  /* var website = /w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; */
+    	 /* var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; */
+    	 //var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+    	 var website= /^[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
+    	//  var website = /(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
     	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
     	  
@@ -900,9 +929,11 @@ document.getElementById("inp_fax").value=phone;
 	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
  	error="true";
 		}
-	  else  if(inpzipcode.length <8)
+	  
+	  else  if((inpzipcode.length < 4) ||(inpzipcode.length > 8))
+	  
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Required field should be length of 8";
+	   document.getElementById("zipcodeerror").innerHTML="Required field should be length of 4 to 8";
    	error="true";
 		}
   
