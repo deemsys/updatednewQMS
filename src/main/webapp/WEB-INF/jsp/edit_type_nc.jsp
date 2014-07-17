@@ -125,7 +125,7 @@
             		   }
             	   else if(typeofnc.length<4)
         		   {
-        		   document.getElementById("typeofnc1").innerHTML="Required and must be of length 4 to 32";
+        		   document.getElementById("typeofnc1").innerHTML="Required field should be of length 4 to 32";
       			 return false;
         		   }
             	   else if(typeofnc.match(chars))

@@ -45,7 +45,7 @@ if(document.getElementById("frequency_maintenance").value=="")
 	}
 else if(document.getElementById("frequency_maintenance").value.length<4)
 {
-document.getElementById("frequency_maintenanceerr").innerHTML="Required and must be of length 4 to 32";
+document.getElementById("frequency_maintenanceerr").innerHTML="Required field should be of length 4 to 32";
 error="true";
 }
 else if(document.getElementById("frequency_maintenance").value.substring(0,1)==' ')

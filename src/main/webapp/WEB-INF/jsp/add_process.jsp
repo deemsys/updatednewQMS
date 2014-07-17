@@ -255,7 +255,7 @@
 	 var space = "Should not accept initial space";
 	 var num = "Required field should be alphanumeric";
 	 var wds = "Required field should be alphabate";
-	 var ermsg="Required and must be of length 4 to 32";
+	 var ermsg="Required field should be of length 4 to 32";
 	var msg = errord.fontcolor("red");
 	var spmsg = space.fontcolor("red");
 	var nummsg = num.fontcolor("red");

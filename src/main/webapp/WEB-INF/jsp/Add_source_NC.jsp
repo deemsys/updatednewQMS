@@ -203,7 +203,7 @@
             		   }
             	   else if(sourceofnc.length<4)
         		   {
-        		   document.getElementById("sourceofnc1").innerHTML="Required and must be of length 4 to 32";
+        		   document.getElementById("sourceofnc1").innerHTML="Required field should be of length 4 to 32";
       			 return false;
         		   }
             	   else if(sourceofnc.match(chars))

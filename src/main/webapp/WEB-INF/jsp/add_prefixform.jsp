@@ -239,7 +239,7 @@ function onlyAlphabets(e, t) {
 	
  else if(formname.length<4)
 	 {
-	 document.getElementById("document_id1").innerHTML="Required and must be of length 4 to 400.";
+	 document.getElementById("document_id1").innerHTML="Required field should be of length 4 to 400.";
 	 error="true";
 	 }
 	 
@@ -262,7 +262,7 @@ function onlyAlphabets(e, t) {
 	 }
  else if(formprefix.length<4)
 	 {
-	 document.getElementById("docprefix1").innerHTML="Required & must be of length 4 to 32.";
+	 document.getElementById("docprefix1").innerHTML="Required field should be of length 4 to 32.";
 	 error="true";
 	 }
  else if(formprefix.match(cap))

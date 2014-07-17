@@ -125,7 +125,7 @@
 		 }
 	 else if(formlocation.length<4)
 	 {
-	 document.getElementById("formlocation1").innerHTML="Required & must be of length 4 to 32.";
+	 document.getElementById("formlocation1").innerHTML="Required field should be of length 4 to 32.";
 	 return false;
 	 }
 	 else if(formlocation.match(chars))

@@ -179,7 +179,7 @@
 	 }
 	 else if(processname.length<4)
 	 {
-		 document.getElementById("processname2").innerHTML="Required and must be of length 4 to 32";
+		 document.getElementById("processname2").innerHTML="Required field should be of length 4 to 32";
 		 error="true";
 	 }
 	 
@@ -195,7 +195,7 @@
 	 }
 	 else if(processowner.length<4)
 	 {
-		 document.getElementById("processowner2").innerHTML="Required and must be of length 4 to 32";
+		 document.getElementById("processowner2").innerHTML="Required field should be of length 4 to 32";
 		 error="true";
 	 }	
 	

@@ -132,7 +132,7 @@
             		   }
             	   else if(productidnc.length<4)
         		   {
-        		   document.getElementById("productidnc1").innerHTML="Required and must be of length 4 to 32";
+        		   document.getElementById("productidnc1").innerHTML="Required field should be of length 4 to 32";
         			 return false;
         		   }
             	   else if(productidnc.match(number))

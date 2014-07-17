@@ -194,12 +194,12 @@ function validation()
 	var error="";
   if((document.getElementById('decimalno').value =="")&&(document.getElementById('floorno').value ==""))
 	  {	  
-	  document.getElementById("nullvalue").innerHTML="Please select one";
+	  document.getElementById("nullvalue").innerHTML="Required field should not be empty";
 		error="true";
 	  }
 	else  if((document.getElementById('decimalno').value==""))
 	  {	  
-	  document.getElementById("nullvalue").innerHTML="Please select one";
+	  document.getElementById("nullvalue").innerHTML="Required field should not be empty";
 		error="true";
 	  }
 	  if(error=="true")

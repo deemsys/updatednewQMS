@@ -149,7 +149,7 @@
             		   }
             	   else if(groupperson.length<4)
           		   {
-          		   document.getElementById("groupperson1").innerHTML="Required and must be of length 4 to 32";
+          		   document.getElementById("groupperson1").innerHTML="Required field should be of length 4 to 32";
       			 	error="true";
           		   }
             	
