@@ -3,6 +3,10 @@
 
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
+
+
+
+
 <script src="resources/js/jquery-1.7.2.min.js"></script>
 <script src="resources/js/jquery-ui.js"></script>
 <script src="resources/js/modal.js"></script>
@@ -110,7 +114,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="state" class="input_txtbx" id="inp_state"  maxlength="32" onInput="return validatename(id);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="stateerror" style="color:red"></span><span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="20%">Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" placeholder="+12345678901" onInput="return validatefax();"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="fax" class="input_txtbx" id="inp_fax" maxlength="12" placeholder="614-322-9928"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
      
@@ -126,7 +130,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">ZipCode :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="10001" maxlength="5" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH 43230" maxlength="8" onkeyup="ChangeCase(this);" onInput="return validatename2(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="zipcodeerror" style="color:red"></span><span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                   </tr>
                 <!--   <tr class="row2">
@@ -241,6 +245,19 @@ $(function() {
 });
 
   </script>  
+  
+  <script type="text/javascript">
+       function validate(event) {
+          
+           var regex = new RegExp("^[0-9]+$");
+           var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+           if (!regex.test(key)) {
+             // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+               event.preventDefault();
+               return false;
+           }
+       }       
+    </script>
      <script type="text/javascript">
 function validatename(id){
 	
@@ -257,9 +274,28 @@ function validatename1(id){
 function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^0-9]/g, "");
+    textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
     document.getElementById(id).value = textInput;
 }  
+</script>
+
+<script type="text/javascript">
+       function validate(event) {
+          
+           var regex = new RegExp("^[0-9]+$");
+           var key = String.fromCharCode(event.charCode ? event.which : event.charCode);
+           if (!regex.test(key)) {
+             // document.getElementById("cmaerr").innerHTML="enter numerics or decimals only";
+               event.preventDefault();
+               return false;
+           }
+       }       
+    </script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
 </script>
 <script>
 function validatefax(){
@@ -538,15 +574,35 @@ document.getElementById("telephoneerror").innerHTML=" ";
       }
       
       </script>
+      
+      <script>
+i=0;
+$(document).ready(function(){
+  $("#inp_fax").keypress(function(){
+var phone=document.getElementById("inp_fax").value;
+phone = phone.replace(/(\d{3})(\d{3})(\d+)/,'$1-$2-$3');
+document.getElementById("inp_fax").value=phone;
+ });  
+
+});
+</script>
+      
       <script type="text/javascript">
       function validate()
       {
+    	  
+    	
+
+    	    
+    	    
     	  var error="";
     	  var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
     	  var mobile = /(\W|^)[(]{0,1}\d{3}[)]{0,1}[\s-]{0,1}\d{3}[\s-]{0,1}\d{4}(\W|$)/;
     	  var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
-    	  var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-    	  var zipcode =/^\d{5}$|^\d{5}-\d{4}$/;
+    	  
+    	  var faxreg = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;  
+    	 // var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+    	 // var zipcode =/^\d{5}$|^\d{5}-\d{4}$/;
     	  var customername = document.getElementById('customername').value;
     	  var inp_website = document.getElementById('inp_website').value;
     	  var inp_contact_name = document.getElementById('inp_contact_name').value;
@@ -722,7 +778,11 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	    	error="true";
 			}
     	  
-    	  
+    	  else  if(telephone.length <10)
+		   {
+		   document.getElementById("stateerror").innerHTML="Required field should be length of 4 to 32";
+	    	error="true";
+				}
     	/*   else if (!(telephone.charAt(0)=="9" || telephone.charAt(0)=="8" || telephone.charAt(0)=="7"))
           {
                //alert("Mobile No. should start with 9 or 8 or 7");
@@ -804,14 +864,15 @@ document.getElementById("telephoneerror").innerHTML=" ";
 	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
  	error="true";
 		}
-  else if(inpzipcode.match(zipcode)){  
-	  
-	   document.getElementById("zipcodeerror").innerHTML="";
-	   }
+	  else  if(inpzipcode.length <8)
+	   {
+	   document.getElementById("zipcodeerror").innerHTML="Required field should be length of 8";
+   	error="true";
+		}
   
   else{
-	  document.getElementById("zipcodeerror").innerHTML="Required field should contain 5 digits";
-    	error="true";
+	  document.getElementById("zipcodeerror").innerHTML="";
+    
   }
 	  
 	  
