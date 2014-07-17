@@ -83,7 +83,8 @@
                </c:forEach>
                 
                
-               </select>
+               </select><br><span id="id_inpprocesserror" style="color:red"></span>
+               <span id="report_error" style="color:red"></span>
 								</td>
 								
 							</tr>
@@ -191,7 +192,7 @@ function validate()
 	var error ="";
 	
 	var id_type_userdefined = document.getElementById('id_type_userdefined').checked;
-	
+	var id_inpprocess = document.getElementById('id_inpprocess').value
 	var a1 = document.getElementById('1').checked;
 	var a2 = document.getElementById('2').checked;
 	var a3 = document.getElementById('3').checked;
@@ -206,7 +207,15 @@ function validate()
 	var a12 = document.getElementById('12').checked;
 	var a13 = document.getElementById('13').checked;
 	var a14 = document.getElementById('14').checked;
-	
+	if(id_inpprocess == "")
+	{
+		document.getElementById("id_inpprocesserror").innerHTML="Please Select atleast One";
+		error = "true";
+	}
+	else
+		{
+		document.getElementById("id_inpprocesserror").innerHTML="";
+		}
 	if(id_type_userdefined)
 		{
 		if(a1 || a2|| a3|| a4|| a5|| a6|| a7|| a8|| a9|| a10|| a11|| a12|| a13|| a14)
@@ -227,6 +236,44 @@ function validate()
 		{
 		return false;
 		}
+	
+	
+	var name = $('#id_inpprocess').val();
+	
+		 /*   var education = $('#education').val();	 */   
+		  $.ajax({  
+		    type: "POST",  
+		    url: "/QMS_App/ajaxformreportpdferror",  
+		    data: "process=" + name,  
+		    success: function(response){  
+		      // we have the response  
+		    
+		    $('#report_error').html(response);
+		  
+		  
+		     
+		   err=response;
+		    
+		      if(response=='')
+		    	  {
+		    	 
+		    	
+		    	  document.forms[0].method = "POST";
+		    	  document.forms[0].action = "generate_doc_form";
+		    	  document.forms[0].submit();
+		    	
+		    	  return true;
+		    	 
+		    	  }
+		     
+		      /*     $('#education').val(''); */
+		    },  
+		    error: function(e){  
+		     /*  alert('Error: ' + e);   */
+		    }
+		   
+		  });  
+	 return false;
 }
 </script>
 						

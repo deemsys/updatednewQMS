@@ -35,11 +35,13 @@ import qms.dao.FormLocationDAO;
 import qms.dao.FormprefixDAO;
 import qms.dao.ProcessDAO;
 import qms.dao.RevisionFormDAO;
+import qms.model.DocumentMain;
 import qms.model.Employee;
 import qms.model.Form;
 import qms.model.FormLocation;
 import qms.model.FormPrefix;
 import qms.model.Maintenance;
+import qms.model.Reportpdferror;
 import qms.model.RevisionForm;
 import qms.model.Revision_No;
 import qms.forms.DocumentMainForm;
@@ -860,6 +862,26 @@ public class FormController
 			return modelAndView ;
 		}
 	
+	 
+	 @RequestMapping(value="/ajaxformreportpdferror",method=RequestMethod.POST)
+		public @ResponseBody String addUser(HttpSession session,HttpServletRequest request,@ModelAttribute(value="process")Form form, BindingResult result,ModelMap model ){
+			String resultHTML="";
+			System.out.println("sfsdfsdf"+form.getProcess());
+			java.util.List<Form> forms=new ArrayList<Form>();
+			
+			
+			
+			forms=formDAO.gethuman_resources(form.getProcess());
+				
+				int records_size = forms.size();
+				System.out.println("record size = "+records_size);
+				if(records_size == 0)
+				{
+					resultHTML="<p class='closestatus'> This Process Type ("+form.getProcess()+ ") doesn't have a record</p>";
+						
+				}
+			return resultHTML;	
+			}
 	//Post method for ajax get process 
 		@RequestMapping(value = { "/ajax_getrevision" }, method = RequestMethod.POST)
 		public @ResponseBody String ajax_revision(@RequestParam("auto_number")String auto_no, HttpSession session,
