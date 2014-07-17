@@ -288,24 +288,15 @@ function doAjaxPost() {
                   <br><span id="datepicker33" style="color:red"></span><span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
                                  </tr>      
  
-  <tr class="row1">
+ <!--  <tr class="row1">
                   <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
                   <td></td>
                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" onclick="return validate();" class="submit_btn1"></td>
-                </tr>
-  <!-- <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="20%"></td>
-                 <td colspan="1" align="left">
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" onclick="return validate();" class="submit_btn1"><br/></td>
-                  <td valign="middle" align="left" class="input_txt" width="20%">
-              <td valign="middle" align="left" class="input_txt" width="20%">
-               </tr> -->
-      <!--  <tr class="row1">
- <td valign="top" align="right">&nbsp;</td>
-                  <td></td>
-                  <td valign="top" align="center"><input type="submit" value="Add HR" onclick="return validate();" class="submit_btn1"></td>
-
                 </tr> -->
+    <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+                 
+                </tr>
 
               </table>
               </div>
