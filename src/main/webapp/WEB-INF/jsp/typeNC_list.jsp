@@ -166,7 +166,7 @@
         				       				 <td valign="top" align="left" width="15%">${types.type_of_nc}</td>
         				       				<td valign="top" align="left">
 												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_typenc?auto_id=${types.auto_id}"/>" style="padding-right:10px;">Edit</a>
-											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_source?auto_id=${types.auto_id}"/>" onclick="return confirmation()">Remove</a>
+											<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a href="<c:out value="delete_type?auto_id=${types.auto_id}"/>" onclick="return confirmation()">Remove</a>
 											</td>
         				       				 </tr>
         				       				 </c:forEach>

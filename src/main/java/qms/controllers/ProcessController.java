@@ -163,7 +163,7 @@ public class ProcessController
 		processForm.setProcesses(processDAO.getlimitedprocessreport(1));
 		model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
 		model.addAttribute("button","viewall");
-	    model.addAttribute("success","false");
+	    model.addAttribute("success","delete");
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("processForm",processForm);
 		model.addAttribute("menu","admin");
