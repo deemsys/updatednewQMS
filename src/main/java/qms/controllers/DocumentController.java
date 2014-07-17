@@ -764,7 +764,8 @@ public class DocumentController {
         model.addAttribute("success","false");
         model.addAttribute("currentpage",1);*/
       //  model.addAttribute("documentMainForm", documentMainForm);
-		return "view_documents";
+	model.addAttribute("justcame",false);
+	  	return "view_documents";
 
 	}
 	
