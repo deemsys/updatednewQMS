@@ -67,7 +67,7 @@ $(window).load(function(){
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-            <h1 style="color:#7A3A3A;font-size:20px;">Document Details</h1>
+            <h1 style="color:#7A3A3A;font-size:20px;">Edit Document Details</h1>
             </div>
             <div class="contentbox">
 			
@@ -92,7 +92,7 @@ $(window).load(function(){
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
                </select></td><td align="left">
-               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:60px;margin:0 0 0 -10px;"  onblur="change_to_label()" onInput="return validatename3(id);"/>
+               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:60px;margin:0 0 0 -10px;"  onblur="change_to_label()" onkeypress="return onlynumeric(event,this);"/>
                
                 <input type="hidden" name=document_id id="generated_id"  value="" /> </td></tr></table>
                
@@ -132,7 +132,7 @@ $(window).load(function(){
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="20%">Document Title:</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onInput="return validatename(id);"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
                <span id="documenttitle1" style="color:red"></span>
                </td>
               <c:choose>
@@ -250,7 +250,7 @@ $(window).load(function(){
          </div>
                  
                 <div class="contentbox">
-			 <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
+			 <h1 style="color:#7A3A3A;font-size:20px;">Edit Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
          
@@ -311,7 +311,7 @@ $(window).load(function(){
               
                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
-                <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}"/><br/>
+                <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}" onkeypress="onlyAlphabetsnumeric(event,this);"/><br/>
               <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;">
                            <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
         				       <option value="${revisionlevel.combined_output}"<c:if test="${revisionlevel.combined_output == documentMain.revision_level}"><c:out value="selected"/></c:if>>${revisionlevel.combined_output}</option>
@@ -449,6 +449,45 @@ function validatename3(id){
     document.getElementById(id).value = textInput;
 }
 
+function onlynumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+function onlyAlphabetsnumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58) || (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
 
 </script>
         
@@ -482,7 +521,7 @@ function validatename3(id){
         {
         	
         	var validate1 =/^[a-zA-Z]|[a-zA-Z0-9][\w\_]+[a-zA-Z0-9]$/;
-        	var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
+        	//var dotnumber = /^[a-zA-Z0-9]*$|[a-zA-Z0-9][\w\.]+[a-zA-Z0-9]$/;
         	 var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
         	 var documenttitle = document.getElementById('documenttitle').value;
         	var documenttype = document.getElementById('id_document_type').value;
@@ -649,7 +688,7 @@ function validatename3(id){
    			 document.getElementById("revisionlevel1").innerHTML="Should not accept initial space";
    			 error = "true";
    			 }
-   		 else if(revisionlevel.match(dotnumber))
+   		 /* else if(revisionlevel.match(dotnumber))
    		 { 
    			 if(revisionlevel.charAt(0) ==("@" ) || revisionlevel.charAt(0) ==("!")||  revisionlevel.charAt(0) ==("#")
    					 ||revisionlevel.charAt(0) ==("$")||revisionlevel.charAt(0) ==("%")||revisionlevel.charAt(0) ==("^")||revisionlevel.charAt(0) ==("&")
@@ -662,12 +701,12 @@ function validatename3(id){
    			 else{
    				 document.getElementById("revisionlevel1").innerHTML="";
    				 }
-   		 }
+   		 } 
    		 else{
    		
    			 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
    			 error = "true";
-    		}
+    		}*/
    	 
         	//eleven
         	

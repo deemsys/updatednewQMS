@@ -123,7 +123,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="form_or_rec_title"
-																			value="${docform.form_or_rec_title }" onInput="return validatename(id);" maxlength="32"/>
+																			value="${docform.form_or_rec_title }" onkeypress="return onlyAlphabetsnumeric(event, this);" maxlength="32"/>
 																			<br/>
 																			<span id="title1" style="color:red"></span><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
@@ -136,7 +136,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility"
-																			value="${docform.responsibility}" onInput="return validateresponsibility(id)" maxlength="32"/><br/>
+																			value="${docform.responsibility}" onkeypress="return onlyAlphabetsnumeric(event, this);" maxlength="32"/><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
@@ -412,6 +412,26 @@ function validatename(comments)
 	var textInput = document.getElementById(comments).value;
 	textInput = textInput.replace(/[^A-Za-z0-9, ]/g, "");
 	document.getElementById(comments).value = textInput;
+}
+
+
+function onlyAlphabetsnumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58) || (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
 }
 
 </script>

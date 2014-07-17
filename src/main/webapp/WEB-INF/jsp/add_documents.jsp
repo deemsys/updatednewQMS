@@ -60,7 +60,7 @@
               <h2>&nbsp;&nbsp;Document Details</h2> 
             </div> -->
             <div class="contentbox" >
-           <h1 style="color:#7A3A3A;font-size:20px;">Document Details</h1>
+           <h1 style="color:#7A3A3A;font-size:20px;">Add Document Details</h1>
                     
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <td colspan="3">
@@ -92,7 +92,7 @@
 			   </c:forEach>
                </select></td><td align="left">
               
-               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();"onInput="return validatename3(id);"/>
+               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();" onkeypress="return onlynumeric(event,this);"/>
                <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
                </td></tr>
                <!-- <tr><td colspan="2"><span id="documentiderror" style="color:red"></span></td></tr> --></table>
@@ -129,7 +129,7 @@
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" width="25%">Document Title :</td>
-               <td valign="middle" align="left" class="input_txt" width="15%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onInput="return validatename(id);"/><br/>
+               <td valign="middle" align="left" class="input_txt" width="15%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
                 <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
@@ -217,7 +217,7 @@
  <div class="headings altheading">
               <h2>&nbsp;&nbsp;Revision Details</h2> -->
                 <div class="contentbox">
-           <h1 style="color:#7A3A3A;font-size:20px;">Revision Details</h1>
+           <h1 style="color:#7A3A3A;font-size:20px;">Add Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               
               
@@ -351,7 +351,7 @@
                  <td valign="middle" align="left" class="input_txt" width="25%">Revision Level :</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
-               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onInput="validaterevision();"/><br/>
+               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
                <span id="revisionlevel1" style="color:red"></span>
         <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;height:18px;beckground:lightgrey;">
                				<option value="">--select--</option>
@@ -474,6 +474,7 @@ $(function() {
 	});
 	});
 	</script>
+	
   <script type="text/javascript">
 function validatename(id){
 	
@@ -481,15 +482,47 @@ function validatename(id){
     textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
     document.getElementById(id).value = textInput;
 }  
-function validatename3(id){
-	
-    var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^0-9]/g, "");
-    document.getElementById(id).value = textInput;
+
+function onlyAlphabetsnumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58) || (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
 }
 
+function onlynumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 
 </script>
+
 <script type="text/javascript">
 var ajax_issuer = "false";
 var issuerchange = "false";

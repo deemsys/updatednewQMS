@@ -521,6 +521,8 @@ public class DocumentController {
 			HttpServletRequest request, ModelMap model, Principal principal,
 			@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain,BindingResult result,@ModelAttribute("revisionDocument") @Valid RevisionDocument revisionDocument,BindingResult result1) throws IOException {
 		
+		model.addAttribute("justcame",false);
+		
 		int flag = 0;
 		//documentMain.setDocument_id(request.getParameter("document_id_hidden"));
 		
@@ -658,6 +660,8 @@ public class DocumentController {
 			  model.addAttribute("success","true");
 			  model.addAttribute("id",documentControlDAO.get_documentid());
 			 revisionDocumentDAO.insert_revision(revisionDocument,documentMain.getAuto_number());
+			 
+			 model.addAttribute("justcame",false);
 			
 			  return "view_documents";
 		}
@@ -748,6 +752,8 @@ public class DocumentController {
 		DocumentMainForm documentMainForm = new DocumentMainForm();
 		//documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 		load_document_page_dropdowns(model);
+		
+		model.addAttribute("justcame",false);
 		
 		model.addAttribute("menu","document");
 	  	/*model.addAttribute("noofrows",5);*/

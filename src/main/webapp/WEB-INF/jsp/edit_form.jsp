@@ -63,7 +63,7 @@
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
                </select>              
-                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none;" onblur="change_to_label();" maxlength="32" onInput="return validatename3(id);"/>
+                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none;" onblur="change_to_label();" maxlength="32" onkeypress="return onlynumeric(event,this);"/>
                <span id="changeafter"></span>  
                <span id="change" style="display: none;" ></span><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  
              </td>
@@ -154,7 +154,7 @@
 																			type="text" class="input_txtbx" id="form_or_rec_title"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title" onInput="return validatename(id);"
+																			name="form_or_rec_title" onkeypress="return onlyAlphabetsnumeric(event,this);"
 																			value="${form.form_or_rec_title}" /><br/>
 																			<span id="title1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
@@ -216,7 +216,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility" 
-																			value="${form.responsibility}" /><br/>
+																			value="${form.responsibility}" onkeypress="return onlyAlphabetsnumeric(event,this);" /><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
@@ -722,6 +722,43 @@ function validatename3(id){
 	    document.getElementById(id).value = textInput;
 }
 
+function onlyAlphabetsnumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58) || (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+function onlynumeric(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 
 </script>
 <script>
