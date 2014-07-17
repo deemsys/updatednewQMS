@@ -65,7 +65,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
                 
             	 <td valign="top" align="left" class="input_txt" width="30%">Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="website" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
                   <span><form:errors path="supplierperformance.website"></form:errors></span></td>
                 </tr>
             
@@ -119,19 +119,19 @@
 				  <td valign="top" align="left" class="input_txt" width="30%"> City :</td>
 				  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.city}" /><br/><span style="color: red;" id="cityerror"><form:errors path="supplierperformance.city"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Phone :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="phone" maxlength="10" class="input_txtbx" id="inp_phone" onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.phone}" /><br/><span style="color: red;" id="phoneerror"><form:errors path="supplierperformance.phone"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="phone" placeholder="9876543210" maxlength="10" class="input_txtbx" id="inp_phone" onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.phone}" /><br/><span style="color: red;" id="phoneerror"><form:errors path="supplierperformance.phone"></form:errors></span></td>
 
                 </tr>
               	<tr class="row1">
               	<td valign="top" align="left" class="input_txt" width="30%"> State :</td>
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="supplierperformance.state"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+1" name="fax" class="input_txtbx" id="inp_fax" maxlength="12"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+12345678901" name="fax"  class="input_txtbx" id="inp_fax" maxlength="12"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
 
               	</tr>
                 <tr class="row2">
 				<td valign="top" align="left" class="input_txt" width="30%">Postal code :</td>
-				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" maxlength="5" onkeypress="return validate(event)" class="input_txtbx" id="inp_postalcode" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="supplierperformance.postalcode"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" placeholder="10001" maxlength="5" onkeypress="return validate(event)" class="input_txtbx" id="inp_postalcode" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="supplierperformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="30%"> Email :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;" id="emailerror"><form:errors path="supplierperformance.email_address"></form:errors></span></td>
 
@@ -146,7 +146,7 @@
                </tr>
                  <tr class="row1">
                   <td><br>
-                  <td valign="top" align="center"><input type="submit" value="Submit" onclick="return checkSubmit();" class="submit_btn1"></td>
+                  <td valign="top" align="center" colspan="2"><input type="submit" value="Submit" onclick="return checkSubmit();" class="submit_btn1"></td>
                 </tr>
               </table>
 
