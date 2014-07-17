@@ -81,7 +81,7 @@
                 <tr class="row2">
 				  <td valign="middle" align="left" class="input_txt" width="30%"> External ID :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id" onInput="return validatealphanumeric();"  onblur=" ChangeCase(this)" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets(event,this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
+                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id"   onblur=" ChangeCase(this)" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return AlphabetsNumber(event,this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
@@ -178,7 +178,7 @@
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets1(event,this);"><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return Alphabets(event,this);"><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
                <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
@@ -201,11 +201,11 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Action :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx" onInput="return validatename(id);" id="action" value="<c:out value=""/>" onkeypress="return onlyAlphabets1(event,this);"/><br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx"  id="action" value="<c:out value=""/>" onkeypress="return Alphabets(event,this);"/><br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker6" class="input_txtbx" name="due_date" value=""/><br/><span style="color: red;" id="datepicker6err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Verified By :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="verified_by" id="verified_by" class="input_txtbx" onInput="return validatename(id);" value="<c:out value=""/>" onkeypress="return onlyAlphabets1(event,this);"/><br/><span style="color: red;" id="verifiedbyerror"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="verified_by" id="verified_by" class="input_txtbx"  value="<c:out value=""/>" onkeypress="return Alphabets(event,this);"/><br/><span style="color: red;" id="verifiedbyerror"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
                </tr>
                     <tr class="row2">
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
@@ -845,7 +845,7 @@ function validation()
 	  	  
 	  </script>
 	  <script>
-	  function onlyAlphabets1(e, t) {
+	  function AlphabetsNumber(e, t) {
 		    try {
 		        if (window.event) {
 		            var charCode = window.event.keyCode;
@@ -854,7 +854,7 @@ function validation()
 		            var charCode = e.which;
 		        }
 		        else { return true; }
-		        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+		        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
 		            return true;
 		        else
 		            return false;
@@ -863,6 +863,35 @@ function validation()
 		        alert(err.Description);
 		    }
 		}
+
 	  	  
+	  </script>
+	  <script>
+	  function Alphabets(e, t) {
+		    try {
+		        if (window.event) {
+		            var charCode = window.event.keyCode;
+		        }
+		        else if (e) {
+		            var charCode = e.which;
+		        }
+		        else { return true; }
+		        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+		            return true;
+		        else
+		            return false;
+		    }
+		    catch (err) {
+		        alert(err.Description);
+		    }
+		}
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  </script>
       <jsp:include page="footer.jsp"></jsp:include>
