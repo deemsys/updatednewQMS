@@ -193,7 +193,7 @@ public class DocumentController {
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm", processForm);
 		
-		
+		//model.addAttribute("justcame",false);
 	  	model.addAttribute("noofrows",5);    
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");

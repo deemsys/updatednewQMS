@@ -139,7 +139,7 @@
                 </tr>
 				<tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%">Country :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" onInput="return validatename(id);" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span style="color: red;" id="countryerror"><form:errors path="supplierperformance.country"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span style="color: red;" id="countryerror"><form:errors path="supplierperformance.country"></form:errors></span></td>
                 </tr>
                
                <tr class="row1">
