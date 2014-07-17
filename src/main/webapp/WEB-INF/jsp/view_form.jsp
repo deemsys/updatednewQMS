@@ -149,10 +149,7 @@
 											<td valign="top" align="left" width="10%">${form.approver1}</td>
 											<td valign="top" align="left" width="10%">${form.issuer}</td>
 											
-											
-									
-											
-											<td valign="top" align="left" width="15%">
+										<td valign="top" align="left" width="15%">
 											
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
 											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>

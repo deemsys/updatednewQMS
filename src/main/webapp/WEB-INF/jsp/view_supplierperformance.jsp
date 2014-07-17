@@ -79,7 +79,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle">Supplier name:</td>
-							    <td align="left" valign="middle"><input type="text" name="supplier_name" onInput="return validatename(id);" class="input_txtbx" id="name"  value="${suppliername}"></td>
+							    <td align="left" valign="middle"><input type="text" name="supplier_name" onkeypress="return onlyAlphabets(event,this);" class="input_txtbx" id="name"  value="${suppliername}"></td>
 							    <td align="left" valign="middle">&nbsp;&nbsp;Phone:</td>
 								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" onkeypress="return validate(event);" class="input_txtbx" value="${phone}"></td>							    
 							    <td align="left" valign="middle">&nbsp;&nbsp;Email:</td>
@@ -336,6 +336,28 @@ $(function() {
 		  }
   }
   </script>
- --><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  
+ -->
+ <script>
+ function onlyAlphabets(e, t) {
+	    try {
+	        if (window.event) {
+	            var charCode = window.event.keyCode;
+	        }
+	        else if (e) {
+	            var charCode = e.which;
+	        }
+	        else { return true; }
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+	            return true;
+	        else
+	            return false;
+	    }
+	    catch (err) {
+	        alert(err.Description);
+	    }
+	}
+ </script>
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="footer.jsp"></jsp:include>

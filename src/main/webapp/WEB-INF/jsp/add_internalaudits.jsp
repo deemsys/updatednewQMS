@@ -159,7 +159,7 @@
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Auditor's initials :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onInput="return validatename(id);"/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onkeypress="return onlyAlphabets(event,this);"/>
                   <br><span id="auditorsinitialserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditors_initials"></form:errors></span></td>
                 </tr>
@@ -407,6 +407,49 @@ else{
          });
  
 </script>
+
+ <script>
+ 
+    function onlyAlphabets(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+                return true;
+            else
+                return false;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+    
+    function onlyAlphabetsnumeric(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32) || (charCode > 47 && charCode < 58))
+                return true;
+            else
+                return false;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+    
+    </script>
+
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

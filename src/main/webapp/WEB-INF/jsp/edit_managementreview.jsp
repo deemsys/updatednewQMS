@@ -81,13 +81,13 @@
                   <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Attendee List With Titles :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  <input type="text" class="input_txtbx" name="attendee_list_with_titles" id="attendeelistwithtitles"  onInput="return validatename(id);" value="<c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out>" maxlength="32"/>          
+                  <input type="text" class="input_txtbx" name="attendee_list_with_titles" id="attendeelistwithtitles"  onkeypress="return onlyAlphabets(event,this);" value="<c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out>" maxlength="32"/>          
                    <br/>
                     <span id="attendeelistwithtitleserror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>
                  
                  <td valign="middle" align="left" class="input_txt" width="30%">Next Management Review By :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby"onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value='<c:out value="${managementReviewdetails.next_management_review_by}"></c:out>'>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby"onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value='<c:out value="${managementReviewdetails.next_management_review_by}"></c:out>'>
                   <br>   <span id="nextmanagementreviewbyerror" style="color:red"></span>
                    <span class="err"><form:errors path="ManagementReview.next_management_review_by"></form:errors></span></td>
                   </tr>
@@ -145,7 +145,7 @@
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Responsibility :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onInput="return validateres(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>' maxlength="32"> 
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>' maxlength="32"> 
                   <br> <span id="responsibilityerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>
                 
@@ -487,5 +487,25 @@ function validate()
      
          });
  
+</script>
+<script>
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 </script>
 <jsp:include page="footer.jsp"></jsp:include>

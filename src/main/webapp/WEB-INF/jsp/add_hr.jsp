@@ -184,10 +184,10 @@ function doAjaxPost() {
 
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"   id="name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"   id="name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br><span id="nameerror" style="color:red"></span>
                    <td valign="middle" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx"  id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx"  id="trainer" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/>
                   <span id="trainererror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.trainer"></form:errors></span></td>
                 </tr>
@@ -274,7 +274,7 @@ function doAjaxPost() {
 				
 				  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
 
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" onInput="return validatename(id);"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" onkeypress="return onlyAlphabets(event,this);"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   
                   <br><span id="documentedinerror" style="color:red"></span><span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
 
@@ -605,6 +605,30 @@ function validate()
 		 }
 }
     </script>        
+
+ <script>
+ 
+    function onlyAlphabets(e, t) {
+        try {
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            else { return true; }
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+                return true;
+            else
+                return false;
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
+    
+    
+    </script>
 
       <jsp:include page="footer.jsp"></jsp:include>
 

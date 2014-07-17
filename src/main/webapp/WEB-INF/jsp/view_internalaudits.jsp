@@ -73,7 +73,7 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="8%">Audit ID :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" onkeyup="ChangeCase(this);" onInput="return validatename2(id);" value="${id}">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" onblur="ChangeCase(this);" onkeypress="return onlyAlphabets(event,this);" value="${id}">
 							    <br><span id="iderror" style="color:red"></span>
 							    </td>
 							     <td align="left" valign="middle" width="10%">
@@ -283,6 +283,29 @@ function validation()
 }
 </script>
  -->
+ 
+ <script>
+ function onlyAlphabetsnumeric(e, t) {
+     try {
+         if (window.event) {
+             var charCode = window.event.keyCode;
+         }
+         else if (e) {
+             var charCode = e.which;
+         }
+         else { return true; }
+         if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32) || (charCode > 47 && charCode < 58))
+             return true;
+         else
+             return false;
+     }
+     catch (err) {
+         alert(err.Description);
+     }
+ }
+ 
+ </script>
+ 
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
