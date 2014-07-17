@@ -5,6 +5,25 @@
 	<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
+
+    <title>Expand table rows with jQuery - jExpand plugin - JankoAtWarpSpeed demos</title>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">  
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+            
+            $("#report tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
+        });
+    </script>        
+
+ 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">  
         $(document).ready(function(){
@@ -28,6 +47,9 @@
 <td>
 <div>
   <ul class="horizmenu">
+						
+	
+				             <li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 		
 				             <li  style=" float:left;margin-right:10px;text-transform:uppercase;">
 								<a href="addform" class="<c:choose>
@@ -128,6 +150,8 @@
 									<td valign="top" align="left" width="10%">Issuer</td>
 									<td valign="top" align="left" width="15%">Actions</td>
 									</tr>
+
+								
  						<c:if test="${fn:length(formForm.form) gt 0}">	
 								
 								<% int i=1; %>
@@ -154,14 +178,81 @@
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
 											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 											 -->
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>#current">View Revision History</a>
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="element_to_pop_up"  onclick="popupwindow()" href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>" >View Revision History</a>
 											</td>
 										</tr>
 									
 						    	
+										<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
+										<c:if test="${revision.auto_no == form.auto_number}">
+									<%-- 	<c:if test="${display == 'show'}">	
+									<script>
 									
+									document.getElementById('tabledisplay').style.display="block";
+									
+									
+									</script>
+									</c:if>
+									<tr class="header11" id="tabledisplay" style="display:none;">
+								
+									<td valign="top" align="center" width="10%">Form/Rec ID</td>
+									<td valign="top" align="center" width="10%">Effective Date</td>
+									<td valign="top" align="center" width="10%">Approver1</td>
+									<td valign="top" align="center" width="10%">Issuer</td>
+									<td valign="top" align="center" width="10%">Comments</td>
+									<td valign="top" align="center" width="10%">Revision No</td>
+									</tr>  --%>
+									
+										<tr class="row2" style="color:#0000A0; font-style: inherit;">
+										<a name="current">
+										 	 <td valign="top" align="left" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="left" width="10%">${revision.effective_date}</td>
+											<td valign="top" align="left" width="10%">${revision.approver1}</td>
+											<td valign="top" align="left" width="10%">${revision.issuer}</td>
+											<td valign="top" align="left" width="10%">${revision.comments}</td>
+											<td valign="top" align="left" width="10%">${revision.revision_id}</td>
+												</a>
+										</tr>
+									
+									</c:if>
+										</c:forEach>
+										
+										</table>
+										
+									
+						    	
+						    								    	</c:forEach>
+							    	
+						    	<%-- <table width="60%" align="right">
+						    	<tr class="header11">
+								
+									<td valign="top" align="center" width="10%">Form/Rec ID</td>
+									<td valign="top" align="center" width="10%">Effective Date</td>
+									<td valign="top" align="center" width="10%">Approver1</td>
+									<td valign="top" align="center" width="10%">Issuer</td>
+									<td valign="top" align="center" width="10%">Comments</td>
+									<td valign="top" align="center" width="10%">Revision No</td>
+									</tr>
+											<c:forEach items="${revisionForms.revisionForms}" var="revision" varStatus="status">
+										<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
+								           	
+									        <td valign="top" align="center" width="10%"> ${revision.document_id}</td>
+											<td valign="top" align="center" width="10%">${revision.effective_date}</td>
+											<td valign="top" align="center" width="10%">${revision.approver1}</td>
+											<td valign="top" align="center" width="10%">${revision.issuer}</td>
+											<td valign="top" align="center" width="10%">${revision.comments}</td>
+											<td valign="top" align="center" width="10%">${revision.revision_id}</td>
+									
+											
+											
+											
+										</tr>
 										</table>
 										</c:forEach>
+										</table>
+
+						 --%>
 										</c:if>
 						    			 <c:if test="${fn:length(formForm.form) == 0}">	
 							    	<c:if test="${justcame ne false}">
@@ -263,6 +354,8 @@
 							</div>	
 								</c:if>	
 	 
+	
+	 <!--  <script type="text/javascript">
 	<!--  <script type="text/javascript">
 	    
 	  $(function() {
@@ -475,32 +568,9 @@ return false;
 	 
 	 
 	 
-	 /* 
 	 
-     function show_more_views() {
-    	 alert("hi");
-    		var proceee_name = $('#autonumber').val();
-    		alert(proceee_name);
-    		   var education = $('#education').val();		
-    		$.ajax({
-    			
-    			type : "POST",
-    			url : "/QMS_App/ajax_getrevisions",
-    			data : "auto_number=" + proceee_name,
-    			success : function(response) {
-    	              
-    	              alert("response= "+response);
-    	              
-    		       $('#process_owner_id').html(response);
-    				
-    			},
-    			error : function(e) {
-    				alert('Error: ' + e);
-    			}
-    		});
-    	} */
      </script>
-						
+						 -->
 <script>
 
 function confirmation(val) {

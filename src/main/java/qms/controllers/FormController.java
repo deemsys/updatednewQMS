@@ -500,6 +500,18 @@ public class FormController
 		model.addAttribute("processForm", processForm);
 		
 		FormForm formForm=new FormForm();
+		formForm.setForm(formDAO.getform());
+		model.addAttribute("formForm",formForm);
+
+	  	model.addAttribute("noofrows",5);    
+	   //narrativereportForm.getNarrativereport().size()
+	    model.addAttribute("menu","maintenance");
+	    model.addAttribute("button","close");
+	      
+	    model.addAttribute("menu","document");
+	    model.addAttribute("success","false");
+	    model.addAttribute("button","close");
+	    model.addAttribute("display","show");
 		formForm.setForm(formDAO.getform(auto_no));
 		//formForm.setForm(formDAO.search_form(process));
 		model.addAttribute("formForm",formForm);
@@ -518,7 +530,7 @@ public class FormController
 			//String resultHTML="";
 			//List<RevisionForm> revisionForms = new ArrayList<RevisionForm>();
 		    RevisionFormForm revisionForms = new RevisionFormForm();
-		    revisionForms.setRevisionForms(revisionFormDAO.getRevision(number));
+		  revisionForms.setRevisionForms(revisionFormDAO.getRevision(number));
 			 model.addAttribute("revisionForms",revisionForms);
 			
 			
