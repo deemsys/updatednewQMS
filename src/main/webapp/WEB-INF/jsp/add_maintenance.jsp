@@ -237,7 +237,7 @@
                    <td valign="top" align="left">&nbsp;</td>
                   </tr>
             <tr class="row1" height="150px">
-                  <td valign="bottom" align="left">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="2"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                   <td valign="top" align="left"></td>
                 </tr>
        </table>
