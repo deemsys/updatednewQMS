@@ -123,7 +123,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2 style="padding-left: 55px">Add Type NC</h2>
+              <h2 style="padding-left: 55px">Add Report NC</h2>
             </div>
     <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -139,7 +139,7 @@
        --%>          <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 60px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;">
-                  <select name="type_of_nc"  class="input_txtbx" id="typeofNc" style="border:none;background-color:lightgrey;">
+                  <select name="type_of_nc"  class="input_txtbx" id="typeofNc" >
                                										<option value="">--Select--</option>
 						                    							<option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
 																		<option <c:if test="${reportedByNCs.type_of_nc eq 'Service Quality'}"><c:out value="Selected"/></c:if>value="Service Quality">Service Quality</option>

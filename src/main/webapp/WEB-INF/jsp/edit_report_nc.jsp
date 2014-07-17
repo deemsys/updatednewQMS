@@ -25,14 +25,14 @@
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addreportnc" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
-									Add Type of NC</span>
+									Add Report NC</span>
 									
 								</a>
 							</li>
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="reportNC_list" class="<c:choose>
 								<c:when test="${menu=='admin'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
-									View Type of NC</span>
+									View Report NC</span>
 								</a>
 							</li>
 				          
@@ -43,7 +43,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2 style="padding-left: 50px">Editing Type of NC</h2>
+              <h2 style="padding-left: 50px">Editing Report NC</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${reportedByNCForm.reportedByNCs[0]}" var="reportedByNCs"> </c:set>
@@ -57,7 +57,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%">
                      <input type="hidden" name="auto_id" value="${reportedByNCs.auto_id}"/>
                   
-				                  		<select name="type_of_nc" id="typeofNc" class="input_txtbx" style="border:none;background-color:lightgrey;">
+				                  		<select name="type_of_nc" id="typeofNc" class="dropdown">
 						                    <option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
 											<option <c:if test="${reportedByNCs.type_of_nc eq 'Service Quality'}"><c:out value="Selected"/></c:if>  value="Service Quality">Service Quality</option>
 											<option  <c:if test="${reportedByNCs.type_of_nc eq 'Late Delivery'}"><c:out value="Selected"/></c:if>  value="Late Delivery">Late Delivery</option>
