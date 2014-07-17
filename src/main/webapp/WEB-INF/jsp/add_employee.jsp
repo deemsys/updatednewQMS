@@ -90,26 +90,7 @@ $(function() {
          });
  
 </script> -->
- <script>
- $(function() {
-	 $( "#datepicker1" ).datepicker();
-        });
- 
-</script>
-   <script>
- $(function() {
-           $( "#datepicker2" ).datepicker();
-         });
- 
-</script>
 
-   <script>
- $(function() {
-	 $( "#datepicker3" ).datepicker();
-     
-         });
- 
-</script> 
 
 
 
@@ -329,27 +310,30 @@ $(function() {
    				</div>
    				   
 </form>
+
 <script>
-
 $(function() {
-	var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' }).val();   
-        });
- 
-
- $(function() {
-	 var date = $('#datepicker1').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
-        });
- 
-
- $(function() {
-	 var date = $('#datepicker2').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
-         });
- 
- $(function() {
-	 var date = $('#datepicker3').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
-     
-         });
- 
+		 $( "#datepicker1" ).datepicker({dateFormat: 'yy-mm-dd'});
+	        });
+	 
+	</script>
+	   <script>
+	 $(function() {
+	           $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+	         });
+	 
+	</script>
+	   <script>
+	 $(function() {
+		 $( "#datepicker2" ).datepicker({dateFormat: 'yy-mm-dd'});
+	     
+	         });
+</script>
+<script>
+$(function() {
+		 $( "#datepicker3" ).datepicker({dateFormat: 'yy-mm-dd'});
+	     
+	         });
 </script>
 <script language="javascript">
 function toggle1()
