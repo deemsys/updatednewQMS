@@ -117,7 +117,7 @@
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
 				 -->				<td align="right" valign="middle" width="12%"> Trainer :&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" maxlength="32" id="trainer" value="${trainer}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" maxlength="32"onkeypress="return Alphabets(event,this);" id="trainer" value="${trainer}"></td>
 							  
 							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search"></td>
 							  <!--    <td align="center" valign="middle"><input type="reset" class="submit_btn1" value="Clear"></td>
@@ -231,6 +231,27 @@
 						 
 <table ><tr><td   width="100%" height="520px;"></td></tr></table>
 <script>
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+
 function confirmation(val) {
 	var answer = confirm("Are you Sure You Want to Delete Participant ?")
 	if (answer){

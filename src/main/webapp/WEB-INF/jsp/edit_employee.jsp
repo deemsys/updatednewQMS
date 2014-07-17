@@ -96,7 +96,7 @@ $(function() {
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="inp_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.name }" /><br><span style="color: red;" id="nameerror"><form:errors path="Employee.name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="inp_name" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.name }" /><br><span style="color: red;" id="nameerror"><form:errors path="Employee.name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Type :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
                   <select	name="type_of_training" class="input_txtbx" id="type">
@@ -123,7 +123,7 @@ $(function() {
 			                 </select>
 			                 
                	<td valign="top" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.trainer }" /><br><span style="color: red;" id="trainererror" ><form:errors path="Employee.trainer"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.trainer }" /><br><span style="color: red;" id="trainererror" ><form:errors path="Employee.trainer"></form:errors></span></td>
                 </tr>
                 
 				<tr class="row1">
@@ -164,9 +164,9 @@ $(function() {
                 </tr>
                  <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Process :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process" class="input_txtbx" id="inp_process" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process}" /><br><span id="processerror" style="color: red;" ><form:errors path="Employee.process"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process" class="input_txtbx" id="inp_process" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process}" /><br><span id="processerror" style="color: red;" ><form:errors path="Employee.process"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process_name" class="input_txtbx" id="inp_process_name" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process_name}" /><br><span id="processnameerror" style="color: red;" ><form:errors path="Employee.process_name"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process_name" class="input_txtbx" id="inp_process_name" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.process_name}" /><br><span id="processnameerror" style="color: red;" ><form:errors path="Employee.process_name"></form:errors></span></td>
                 
                 </tr>
                 
@@ -188,14 +188,14 @@ $(function() {
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Functions Needs :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="list_of_functions_needes" class="input_txtbx" id="inp_list_of_functions_needes" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.list_of_functions_needes}" /><br><span id="functionneedserror" style="color: red;" ><form:errors path="Employee.list_of_functions_needes"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="list_of_functions_needes" class="input_txtbx" id="inp_list_of_functions_needes" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.list_of_functions_needes}" /><br><span id="functionneedserror" style="color: red;" ><form:errors path="Employee.list_of_functions_needes"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Review Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_review_due_date }" /><br><span id="datepicker3error" style="color: red;" ><form:errors path="Employee.training_effectiveness_review_due_date"></form:errors></span></td>
                   
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" onInput="return validatename(id);" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" onkeypress="return Alphabets(event,this);" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
                                 <%--  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_notes" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_notes }" /><br><span style="color: red;" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
                  --%>
                  
@@ -382,6 +382,27 @@ function validatename(id)
 	textInput = textInput.replace(/[^A-Za-z ]/g, "");
 	document.getElementById(id).value = textInput;
 }
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+
 </script>
 
 <script>

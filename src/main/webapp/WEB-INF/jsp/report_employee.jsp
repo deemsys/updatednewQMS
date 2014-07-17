@@ -129,7 +129,7 @@
 								<td valign="middle" align="left" class="input_txt" width="30%">
 									Enter the name to appear on the report :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									&nbsp;<input type="text" name="name" class="input_txtbx" id="report_title" onInput="return validatename(id)";  value=""/>
+									&nbsp;<input type="text" name="name" class="input_txtbx" id="report_title"  value=""/>
 								</td>
 								
 							</tr>
@@ -203,6 +203,24 @@
 </table></td></tr></table>
 
 <script type="text/javascript">
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 
 function validate()
 {
