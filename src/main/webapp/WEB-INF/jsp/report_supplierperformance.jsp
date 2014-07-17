@@ -124,7 +124,7 @@
 									Enter the fields required on the report :
 									<br/><span id="userdefineerror" style="color:red;"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-left:-10px;">
 								
 								<tr>
 								<td><input type="checkbox" id="select_all"/>Select all</td>

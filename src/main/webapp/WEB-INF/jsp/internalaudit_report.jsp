@@ -108,7 +108,7 @@
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
 									Select fields required on the report:</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-								<table cellpadding="0" cellspacing="0" border="0" width="100%">
+								<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-left:-10px;">
 								<tr>
 								
 								
