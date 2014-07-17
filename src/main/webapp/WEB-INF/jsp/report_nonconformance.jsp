@@ -85,7 +85,7 @@
 						<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							
 							<tr class="row1" id="document_type_table" >
-								<td valign="middle" align="right" class="input_txt" width="30%" style="padding-right:68px">
+								<td valign="middle" align="right" class="input_txt" width="30%" style="padding-right:75px">
 								Select NonConformance Type :
 								</td>
 								<td valign="middle" align="left" class="input_txt" width="100%" style="padding-left: 23px">
@@ -149,7 +149,7 @@
 							</tr> -->
 							<tr class="row1" id="userdefined_name" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="20%">
-									&nbsp;Enter the Name to appear on the Report :&nbsp;:</td>
+									Enter the Name to appear on the Report&nbsp;:</td>
 								<td valign="top" align="left" class="input_txt" width="50%" style="padding-left:22px">
 									<input type="text" name="name_of_disposition_responsibility"id="report_title" class="input_txtbx" value=""/>
 								</td>
@@ -157,7 +157,7 @@
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Enter the Fields Required on the Report :&nbsp;:&nbsp;<br><span style="color: red;" id="error"></span></td>	
+									Enter the Fields Required on the Report&nbsp;:<br><span style="color: red;" id="error"></span></td>	
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								
