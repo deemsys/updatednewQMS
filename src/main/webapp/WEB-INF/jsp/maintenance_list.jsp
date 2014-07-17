@@ -84,12 +84,12 @@
 							  <tr>
 							    
 							    <td align="left" valign="middle"width="3%">ID  :</td>
-							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" value="${equipid}"onInput="return validatename2(id);">
+							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" value="${equipid}" onblur="ChangeCase(this)"onkeypress="return AlphabetsNumber(event,this);">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
 							    <td align="center" valign="middle" width="12%">
 							    <td align="left" valign="middle" width="10%">Equipment Name  :</td>
-							    <td align="left" valign="middle"width="2%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onInput="return validatename(id);">
+							    <td align="left" valign="middle"width="2%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onkeypress="return Alphabets(event,this);"">
 							     <br><span id="searcherror2" style="color:red"></span>
 							
 							    </td>
@@ -223,9 +223,49 @@ function validatename(id){
 function validatename2(id){
 	
     var textInput = document.getElementById(id).value;
-    textInput = textInput.replace(/[^A-Z0-9 ]/g, "");
+    textInput = textInput.replace(/[^A-Za-z0-9 ]/g, "");
     document.getElementById(id).value = textInput;
 }  
+
+
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
 </script>
   <script type="text/javascript">
   function validatefind()
@@ -272,6 +312,11 @@ function validatename2(id){
 		  {
 		  return false;
 		  }
+  }
+  
+  function ChangeCase(elem)
+  {
+      elem.value = elem.value.toUpperCase();
   }
   </script>
 <script>

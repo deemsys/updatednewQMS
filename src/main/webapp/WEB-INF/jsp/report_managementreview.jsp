@@ -151,7 +151,7 @@
              <td  colspan="2" align="left" width="30%" style="padding-left:325px;">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validation();"class="submit_btn1">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" onclick="toggle3(0);" name="reset_export" value="Reset" class="submit_btn1"></td>
+              <input type="reset" id="reset_export" onclick="two_dates();toggle3(0);" name="reset_export" value="Reset" class="submit_btn1"></td>
             
              </tr></table>
            
@@ -313,9 +313,9 @@ if(value==0)
 	
 	e1.style.display="none";
 	e2.style.display="none";
-	if(document.getElementById('id_type_actionlistbetweendates').checked){
-	document.getElementById('twodates').style.display ='none';
-	}
+	/* if(document.getElementById('id_type_actionlistbetweendates').checked){
+	document.getElementById('twodates').style.display ='block';
+	} */
     }
     
 }

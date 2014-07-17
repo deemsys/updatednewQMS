@@ -85,7 +85,7 @@
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								
-									<input type="text" name="no_of_days" class="input_txtbx" id="noofdays" onInput="return validatename2(id);" value=""/>
+									<input type="text" name="no_of_days" class="input_txtbx" id="noofdays" onkeypress="return Number(event,this);" value=""/>
 									<br><span id="noofdayserror" style="color:red"></span>
 							</td>
 								
@@ -195,6 +195,25 @@ function validatename2(id){
     textInput = textInput.replace(/[^0-9]/g, "");
     document.getElementById(id).value = textInput;
 } 
+function Number(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
 
 $('#select_all').change(function() {
     var checkboxes = $(this).closest('form').find(':checkbox');
