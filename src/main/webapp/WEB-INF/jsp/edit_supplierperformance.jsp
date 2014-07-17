@@ -66,9 +66,9 @@
                 
                 </tr>                                                                                
                   <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">SupplierName :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Supplier name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="supplier_name" class="input_txtbx" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename(id);" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="SupplierPerformance.supplier_name"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" width="30%">Certified To :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Certified to :</td>
 				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx" id="certified">
                   										<option value="">--Select--</option>
                   										<option
