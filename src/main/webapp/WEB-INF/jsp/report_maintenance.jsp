@@ -81,7 +81,7 @@
 								
 							<tr class="row1" id="no_of_days" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-									Number Of Days:
+									Number Of Days :
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								
@@ -92,7 +92,7 @@
 							</tr>	
 							<tr class="row2">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-									Select Report Type:</td>
+									Select Report Type :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
 								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
@@ -108,7 +108,7 @@
 							
 							<tr class="row1" id="userdefined_name" style="display:none;">
 								<td valign="middle" align="right" class="input_txt" width="30%">
-									Name to appear on the Report:</td>
+									Name to appear on the Report :</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
 									<input type="text" name="name_of_disposition_responsibility" class="input_txtbx" id="report_title" value=""/>
 								</td>
@@ -116,7 +116,7 @@
 							</tr>
 							<tr class="row2" id="userdefined_fields" style="display:none;">
 								<td valign="top" align="right" style="margin-top:2px;" class="input_txt" width="30%">
-									Select Fields Required on the Report:
+									Select Fields Required on the Report :
 									<br> <span id="userdefineerror" style="color:red"></span></td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								<table cellpadding="0" cellspacing="0" border="0" width="100%">
@@ -157,7 +157,8 @@
 								
 							</tr>
 							<tr >
-             <td  colspan="2" align="center" width="30%">
+							<td  align="left" width="13%" align="left"></td>
+             <td  colspan="2" align="left" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" id="export"  name="export" value="Generate" onclick="return validate();"class="submit_btn1">
              </td><td style="padding:10px;">
               <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)"value="Reset" class="submit_btn1"></td>
