@@ -140,12 +140,15 @@
                 <td></td>
                 </tr>
                 
-                 			      <tr class="row1">
+                 			   <!--    <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                   <td valign="top" align="center" colspan="2"><input type="submit" value="Update" onclick="return checkSubmit();" class="submit_btn1"></td>
                 </tr>
-                 
-              
+                  -->
+                <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return checkSubmit();"class="submit_btn1"></td>
+                
+                </tr>
               </table>
               
             </div>
