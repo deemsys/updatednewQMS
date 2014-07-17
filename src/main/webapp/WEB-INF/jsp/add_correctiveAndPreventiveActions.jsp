@@ -146,7 +146,7 @@
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
-					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
+					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;" onInput="return validatealphanumeric2();"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
              </tr>	
              
             <tr class="row2">
@@ -170,16 +170,16 @@
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
-				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="height: 75px; width: 202px" ></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
+				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="height: 75px; width: 202px" onInput="return validatealphanumeric1();"></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;" onInput="return validatealphanumeric3();"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
                
               </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file" onInput="return validatename(id);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
-               <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>*Optional) :</span></td>
+               <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
 				<tr class="row2" id="upload" style="display:none;">
@@ -449,7 +449,24 @@ function validatealphanumeric(){
     textInput = textInput.replace(/[^a-zA-Z0-9]/g, "");
     document.getElementById("inp_external_id").value = textInput;
 }
+function validatealphanumeric1(){
 
+	var textInput = document.getElementById("team_member").value;
+    textInput = textInput.replace(/[^a-zA-Z0-9]/g, "");
+    document.getElementById("team_member").value = textInput;
+}
+function validatealphanumeric2(){
+
+	var textInput = document.getElementById("why").value;
+    textInput = textInput.replace(/[^a-zA-Z0-9]/g, "");
+    document.getElementById("why").value = textInput;
+}
+function validatealphanumeric3(){
+
+	var textInput = document.getElementById("root_cause_statement").value;
+    textInput = textInput.replace(/[^a-zA-Z0-9]/g, "");
+    document.getElementById("root_cause_statement").value = textInput;
+}
 </script>
 <script>
 function ChangeCase(elem)
