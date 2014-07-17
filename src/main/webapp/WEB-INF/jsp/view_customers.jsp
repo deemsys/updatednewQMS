@@ -98,18 +98,18 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="5%">ID :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" placeholder="C1001"  onkeyup="ChangeCase(this);"   onInput="return validatename2(id);" value="${cust_id}">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" placeholder="C1001"  maxlength="12" onkeyup="ChangeCase(this);"   onInput="return validatename2(id);" value="${cust_id}">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
 							  
 							     <td align="center" valign="middle" width="10%">
 							    <td align="left" valign="middle" width="6%">Name :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${name}" onInput="return validatename(id);">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${name}" maxlength="32" onInput="return validatename(id);">
 							     <br><span id="searcherror2" style="color:red"></span>
 							    </td>
 							     <td align="center" valign="middle" width="10%">
 							    <td align="left" valign="middle" width="8%">Address :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${address}">
+							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" maxlength="40" value="${address}">
 							     <br><span id="searcherror3" style="color:red"></span>
 							    </td>
 							  

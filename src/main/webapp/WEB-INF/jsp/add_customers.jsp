@@ -723,18 +723,18 @@ document.getElementById("telephoneerror").innerHTML=" ";
 			}
     	  
     	  
-    	  else if (!(telephone.charAt(0)=="9" || telephone.charAt(0)=="8" || telephone.charAt(0)=="7"))
+    	/*   else if (!(telephone.charAt(0)=="9" || telephone.charAt(0)=="8" || telephone.charAt(0)=="7"))
           {
                //alert("Mobile No. should start with 9 or 8 or 7");
                document.getElementById("telephoneerror").innerHTML="Telephone number should start with 9 or 8 or 7";
    	    	error="true";
-          }
+          } */
     
 
 	  else if(telephone.match(mobile)){  
-		  if((telephone == "0000000000") || (telephone == "1111111111"))
+		  if((telephone == "0000000000") )
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Invalid number";
+		   document.getElementById("telephoneerror").innerHTML="Invalid number format";
 	    	error="true";
 			}
 		  else
