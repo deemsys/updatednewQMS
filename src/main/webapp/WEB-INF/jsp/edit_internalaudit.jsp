@@ -137,7 +137,7 @@
                       <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Auditor notes :</td>
                                 
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="auditor_notes"  id="auditor_notes"style="height: 50px;">${internalaudits.auditor_notes}</textarea>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="auditor_notes"  id="auditor_notes"style="height: 70px;">${internalaudits.auditor_notes}</textarea>
                     <br> <span id="auditornoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditor_notes"></form:errors></span></td>
                 </tr>

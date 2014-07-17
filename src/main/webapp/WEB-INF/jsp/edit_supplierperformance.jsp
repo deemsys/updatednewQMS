@@ -102,7 +102,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%">Address :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                   <%-- <input type="text" name="address" class="input_txtbx" id="inp_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.address}" /><br/><span style="color: red;"><form:errors path="SupplierPerformance.address"></form:errors></span></td> --%>
-                   <textarea class="input_txtbx" id="inp_address" name="address"  style="height: 50px;">${supplierperformance.address}</textarea><br/>
+                   <textarea class="input_txtbx" id="inp_address" name="address"  style="height: 70px;">${supplierperformance.address}</textarea><br/>
 				<span style="color: red;" id="addresserror"><form:errors path="supplierperformance.address"></form:errors></span></td>
 			
                   <td valign="top" align="left" class="input_txt" width="30%">Title :</td>
@@ -335,10 +335,10 @@ function validatename(id)
 		document.getElementById("addresserror").innerHTML="Should not accept initial space";
 		 error="true";
 		}	
-		else if(document.getElementById("inp_address").value.length<5 || document.getElementById("inp_address").value.length>=500)
+		else if(document.getElementById("inp_address").value.length<4 || document.getElementById("inp_address").value.length>=500)
 		    {
 		    	
-		    	document.getElementById("addresserror").innerHTML="Field should be of length 5 to 500";
+		    	document.getElementById("addresserror").innerHTML="Field should be of length 4 to 500";
 		    	 error="true";
 		    } 
 		
@@ -352,18 +352,19 @@ function validatename(id)
 			 document.getElementById("titleerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
-			
+		
+		else if(document.getElementById("inp_contact_title").value.substring(0,1)==" ")
+		{
+		document.getElementById("titleerror").innerHTML="Should not accept initial space";
+		 error="true";
+		}
 		else if(document.getElementById("inp_contact_title").value.length<4 || document.getElementById("inp_contact_title").value.length>=32)
 		    {
 		    	
 		    	document.getElementById("titleerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
-		else if(document.getElementById("inp_contact_title").value.substring(0,1)==" ")
-		{
-		document.getElementById("titleerror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
+		
 		    else
 		    	{
 		    	document.getElementById("titleerror").innerHTML="";
@@ -374,18 +375,18 @@ function validatename(id)
 			 document.getElementById("cityerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
-			
+		else if(document.getElementById("inp_city").value.substring(0,1)==" ")
+		{
+		document.getElementById("cityerror").innerHTML="Should not accept initial space";
+		 error="true";
+		}	
 		else if(document.getElementById("inp_city").value.length<4 || document.getElementById("inp_city").value.length>=32)
 		    {
 		    	
 		    	document.getElementById("cityerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
-		else if(document.getElementById("inp_city").value.substring(0,1)==" ")
-		{
-		document.getElementById("cityerror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
+		
 		    else
 		    	{
 		    	document.getElementById("cityerror").innerHTML="";
@@ -398,17 +399,18 @@ function validatename(id)
 			 error="true";
 		 } 
 			
+		else if(document.getElementById("inp_state").value.substring(0,1)==" ")
+		{
+		document.getElementById("stateerror").innerHTML="Should not accept initial space";
+		 error="true";
+		}
 		else if(document.getElementById("inp_state").value.length<4 || document.getElementById("inp_state").value.length>=32)
 		    {
 		    	
 		    	document.getElementById("stateerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
-		else if(document.getElementById("inp_state").value.substring(0,1)==" ")
-		{
-		document.getElementById("stateerror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
+		
 		    else
 		    	{
 		    	document.getElementById("stateerror").innerHTML="";
@@ -419,18 +421,19 @@ function validatename(id)
 			 document.getElementById("countryerror").innerHTML="Required field should not be empty";
 			 error="true";
 		 } 
-			
+		
+		else if(document.getElementById("inp_country").value.substring(0,1)==" ")
+		{
+		document.getElementById("countryerror").innerHTML="Should not accept initial space";
+		 error="true";
+		}
 		else if(document.getElementById("inp_country").value.length<4 || document.getElementById("inp_country").value.length>=32)
 		    {
 		    	
 		    	document.getElementById("countryerror").innerHTML="Field should be of length 4 to 32";
 		    	 error="true";
 		    } 
-		else if(document.getElementById("inp_country").value.substring(0,1)==" ")
-		{
-		document.getElementById("countryerror").innerHTML="Should not accept initial space";
-		 error="true";
-		}
+		
 		    else
 		    	{
 		    	document.getElementById("countryerror").innerHTML="";
