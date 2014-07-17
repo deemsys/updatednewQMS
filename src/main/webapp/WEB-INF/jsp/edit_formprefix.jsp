@@ -57,7 +57,7 @@
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Form Prefix :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" 
-                	  onkeyup="ChangeCase(this);" maxlength="32" value="${formprefix.form_prefix}" onInput="validateAlpha();"/>
+                	  onblur="ChangeCase(this);" maxlength="32" value="${formprefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr><tr height="10"></tr>
@@ -115,6 +115,24 @@
     	function ChangeCase(elem)
     	{
     	    elem.value = elem.value.toUpperCase();
+    	}
+    	function onlyAlphabets(e, t) {
+    	    try {
+    	        if (window.event) {
+    	            var charCode = window.event.keyCode;
+    	        }
+    	        else if (e) {
+    	            var charCode = e.which;
+    	        }
+    	        else { return true; }
+    	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+    	            return true;
+    	        else
+    	            return false;
+    	    }
+    	    catch (err) {
+    	        alert(err.Description);
+    	    }
     	}
        function validation()
        {

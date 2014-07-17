@@ -56,7 +56,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 62px">Product ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${products.auto_id}"/>
-                  <input type="text" name="productid_nc" onkeyup="ChangeCase(this);" class="input_txtbx" maxlength="32" id="productidnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${products.productid_nc}" onInput="validateAlpha4()" />
+                  <input type="text" name="productid_nc"  class="input_txtbx" maxlength="32" id="productidnc" onblur="ChangeCase(this);toggle(this.value);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${products.productid_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
                    <span id="productidnc1" style="color:red"></span>
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span>
                   
@@ -96,6 +96,25 @@
             	    var textInput = document.getElementById("productidnc").value;
             	    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");
             	    document.getElementById("productidnc").value = textInput;
+            	}
+
+              function onlyAlphabets(e, t) {
+            	    try {
+            	        if (window.event) {
+            	            var charCode = window.event.keyCode;
+            	        }
+            	        else if (e) {
+            	            var charCode = e.which;
+            	        }
+            	        else { return true; }
+            	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58))
+            	            return true;
+            	        else
+            	            return false;
+            	    }
+            	    catch (err) {
+            	        alert(err.Description);
+            	    }
             	}
                function validation()
                {

@@ -139,7 +139,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onkeyup="ChangeCase(this);" value="${documentprefix.id}" onInput="validateAlpha();"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${documentprefix.id}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
@@ -170,6 +170,37 @@
  </table>
  </form>
  <script type="text/javascript">
+ function onlyAlphabets(e, t) {
+     try {
+         if (window.event) {
+             var charCode = window.event.keyCode;
+         }
+         else if (e) {
+             var charCode = e.which;
+         }
+         else { return true; }
+         if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+             return true;
+         else
+             return false;
+     }
+     catch (err) {
+         alert(err.Description);
+     }
+ }
+
+ function onlyNumbersandSpecialChar(evt) {
+	    var e = window.event || evt;
+	    var charCode = e.which || e.keyCode;
+	    if (charCode > 31 && (charCode < 48 || charCode > 57 || charCode > 107 || charCode > 219 ||charCode > 221) && charCode != 40 && charCode != 32 && charCode != 41 && (charCode < 43 || charCode > 46)) {
+	        if (window.event) //IE
+	            window.event.returnValue = false;
+	        else //Firefox
+	            e.preventDefault();
+	    }
+	    return true;
+
+	   }
  function ChangeCase(elem)
  {
      elem.value = elem.value.toUpperCase();
@@ -186,13 +217,31 @@
 		        e.preventDefault();
 		});
 		});
- 
- 
- function validateAlpha(){
+ /* $('docprefix').bind('keypress', function (event) {
+	    var regex = new RegExp("^[a-zA-Z]+$");
+	    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	    if (!regex.test(key)) {
+	       event.preventDefault();
+	       return false;
+	    }
+	   	    
+	});  */
+  $(document).ready(function () {
+	    $("#docprefix").keyup(function (event) {
+	 
+	    	if (event.keyCode == 13) {
+	          alert("asdas");
+	        }
+	    });
+
+	   
+	});
+  
+  function validateAlpha(){
 	    var textInput = document.getElementById("docprefix").value;
 	    textInput = textInput.replace(/[^A-Za-z]/g, "");
 	    document.getElementById("docprefix").value = textInput;
-	}
+	} 
  /* function validateAlpha1(){
 	    var textInput = document.getElementById("document_id").value;
 	    textInput = textInput.replace(/[^A-Za-z ]/g, "");

@@ -67,7 +67,7 @@
 							<input type="hidden" name="id" class="input_txtbx" value="<c:out value="${id }"/>" /><c:out value="${id}" /> <br/><font color="Red" size="+1"></font></td>
 							<td valign="top" align="left" class="input_txt" width="30%" id="external_label"  style="display:none;"> External ID </td>
 							<td valign="top" align="left" class="input_txt" width="30%">
-							<input type="text" class="input_txtbx" id="external_id" maxlength="32" onkeyup="ChangeCase(this);" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
+							<input type="text" class="input_txtbx" id="external_id" maxlength="32" onblur="ChangeCase(this);" onkeypress="return onlyAlphabets1(event,this);"	 onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
 						<br/><span style="color:red;" id="externalerror"></span></td>
 				 </tr>
 				   <tr class="row2">
@@ -137,7 +137,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="quantity_suspect"
-																			value="${nonconformance.quantity_suspect}" onInput="return validatename(id);"/><br/>
+																			value="${nonconformance.quantity_suspect}" onkeypress="return onlyAlphabets(event,this);"	/><br/>
 																			<span id="quantitysuspect" style="color: red;"></span>
 																		</font> <span style="color: red;"><form:errors	path="Nonconformance.quantity_suspect"></form:errors>
 																		</span>
@@ -386,6 +386,42 @@ function showDiv() {
 function ChangeCase(elem)
 {
     elem.value = elem.value.toUpperCase();
+}
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+function onlyAlphabets1(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
 }
 function validation()
 {

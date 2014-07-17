@@ -139,7 +139,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="50%" style="padding-left: 60px">Source of NC :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="validateAlpha4()" value="" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  onkeypress="return onlyAlphabets(event,this);" value="" />
                   <br><span id="sourceofnc1" style="color:red"></span>
                   <span class="err" style="color:red"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span></td>
                 </tr><tr height="10"></tr>
@@ -169,6 +169,24 @@
                	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
                	    document.getElementById("sourceofnc").value = textInput;
                	}
+                 function onlyAlphabets(e, t) {
+                	    try {
+                	        if (window.event) {
+                	            var charCode = window.event.keyCode;
+                	        }
+                	        else if (e) {
+                	            var charCode = e.which;
+                	        }
+                	        else { return true; }
+                	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+                	            return true;
+                	        else
+                	            return false;
+                	    }
+                	    catch (err) {
+                	        alert(err.Description);
+                	    }
+                	}
                function validation()
                {
             	   var chars = /[A-Za-z ]+$/;

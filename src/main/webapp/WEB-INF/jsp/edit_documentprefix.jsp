@@ -56,7 +56,7 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="left"  style="padding-left: 55px">Prefix :</td>
-                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onInput="validateAlpha()" onkeyup="ChangeCase(this);"/>
+                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="ChangeCase(this);toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onkeypress="return onlyAlphabets(event,this);"  />
                   <input type="hidden" name="id" id="id" value="${documentprefix.id}"/>
                  <br>   <span id="docprefix1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
@@ -115,6 +115,24 @@ $(function() {
 	 {
 	     elem.value = elem.value.toUpperCase();
 	 }
+	function onlyAlphabets(e, t) {
+	    try {
+	        if (window.event) {
+	            var charCode = window.event.keyCode;
+	        }
+	        else if (e) {
+	            var charCode = e.which;
+	        }
+	        else { return true; }
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+	            return true;
+	        else
+	            return false;
+	    }
+	    catch (err) {
+	        alert(err.Description);
+	    }
+	}
   function validation()
  {
 	

@@ -134,20 +134,20 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" onInput="validateAlpha()" onkeyup="ChangeCase(this);"/>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
                 <br>  <span id="processid1"></span>
                   <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
                   <tr height="10"></tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onInput="validateAlpha1()" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onkeypress="return onlyAlphabets(event,this);" />
                 <br>   <span id="processname1"></span>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>  <tr height="10"></tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px" >Process Owner :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" maxlength="32" class="input_txtbx" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onInput="validateAlpha2()" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" maxlength="32" class="input_txtbx" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onkeypress="return onlyAlphabets(event,this);" />
                  <br>  <span id="processowner1"></span>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>  <tr height="10"></tr>
@@ -185,6 +185,43 @@
 		        e.preventDefault();
 		});
 		});
+
+ function onlyAlphabets(e, t) {
+	    try {
+	        if (window.event) {
+	            var charCode = window.event.keyCode;
+	        }
+	        else if (e) {
+	            var charCode = e.which;
+	        }
+	        else { return true; }
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+	            return true;
+	        else
+	            return false;
+	    }
+	    catch (err) {
+	        alert(err.Description);
+	    }
+	}
+ function onlyAlphabets1(e, t) {
+	    try {
+	        if (window.event) {
+	            var charCode = window.event.keyCode;
+	        }
+	        else if (e) {
+	            var charCode = e.which;
+	        }
+	        else { return true; }
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58))
+	            return true;
+	        else
+	            return false;
+	    }
+	    catch (err) {
+	        alert(err.Description);
+	    }
+	}
  function validateAlpha(){
 	    var textInput = document.getElementById("processid").value;
 	    textInput = textInput.replace(/[^A-Za-z0-9]/g, "");

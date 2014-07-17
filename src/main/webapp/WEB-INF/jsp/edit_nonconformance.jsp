@@ -79,7 +79,7 @@ $(function() {
 				                  </td>
 				                  
 				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID&nbsp;: </td>
-				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onkeyup="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onInput="return validatealphanumeric()"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="external_id" />
+				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="external_id" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onblur="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onkeypress="return onlyAlphabets1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"   />
 				                  	<span style="color:red;" id="externalerror"></span>
 				                  	</td>
 				                </tr>
@@ -126,7 +126,7 @@ $(function() {
 				                   	</td>
 				                 	<td valign="top" align="left" class="input_txt"> Quantity Suspect&nbsp;: </td>
 				                    <td valign="top" align="left" class="input_txt">
-				                    <input type="text" value="${nonconformance.quantity_suspect}" class="input_txtbx" onInput="return validatename(id);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
+				                    <input type="text" value="${nonconformance.quantity_suspect}" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
 				                    <span id="quantitysuspect" style="color: red;"></span>
 				                    <span style="color: red;"><form:errors path="Nonconformance.quantity_suspect"></form:errors></span>
 				                    </td>
@@ -576,6 +576,42 @@ $(function() {
 function ChangeCase(elem)
 {
     elem.value = elem.value.toUpperCase();
+}
+function onlyAlphabets1(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode > 47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
 }
 function validation()
 {

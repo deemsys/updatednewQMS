@@ -135,7 +135,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 60px">Document Type :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"  onInput="validateAlpha4();"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"  onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="documenttype1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
                 </tr>
@@ -167,6 +167,25 @@
 		        e.preventDefault();
 		});
 		});
+ 
+ function onlyAlphabets(e, t) {
+	    try {
+	        if (window.event) {
+	            var charCode = window.event.keyCode;
+	        }
+	        else if (e) {
+	            var charCode = e.which;
+	        }
+	        else { return true; }
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+	            return true;
+	        else
+	            return false;
+	    }
+	    catch (err) {
+	        alert(err.Description);
+	    }
+	}
  function validation()
  {
 	 var  chars = /[A-Za-z ]+$/;

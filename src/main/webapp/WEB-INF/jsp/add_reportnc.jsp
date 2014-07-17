@@ -153,7 +153,7 @@
                <span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
                
                   <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 55px">Group Person :</td>
-                  <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4()"/>
+                  <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>  <span id="groupperson1" style="color:red"></span>
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
@@ -185,6 +185,42 @@
             	    var textInput = document.getElementById("groupperson").value;
             	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
             	    document.getElementById("groupperson").value = textInput;
+            	}
+               function onlyAlphabets(e, t) {
+            	    try {
+            	        if (window.event) {
+            	            var charCode = window.event.keyCode;
+            	        }
+            	        else if (e) {
+            	            var charCode = e.which;
+            	        }
+            	        else { return true; }
+            	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            	            return true;
+            	        else
+            	            return false;
+            	    }
+            	    catch (err) {
+            	        alert(err.Description);
+            	    }
+            	}
+               function onlyAlphabets(e, t) {
+            	    try {
+            	        if (window.event) {
+            	            var charCode = window.event.keyCode;
+            	        }
+            	        else if (e) {
+            	            var charCode = e.which;
+            	        }
+            	        else { return true; }
+            	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            	            return true;
+            	        else
+            	            return false;
+            	    }
+            	    catch (err) {
+            	        alert(err.Description);
+            	    }
             	}
                function validation()
                {

@@ -135,7 +135,7 @@
             
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Location Name :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onInput="validateAlpha4();"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="formlocation1" style="color:red"></span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
                 </tr>
@@ -167,6 +167,24 @@
 	    var textInput = document.getElementById("formlocation").value;
 	    textInput = textInput.replace(/[^A-Za-z ]/g, "");
 	    document.getElementById("formlocation").value = textInput;
+	}
+ function onlyAlphabets(e, t) {
+	    try {
+	        if (window.event) {
+	            var charCode = window.event.keyCode;
+	        }
+	        else if (e) {
+	            var charCode = e.which;
+	        }
+	        else { return true; }
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+	            return true;
+	        else
+	            return false;
+	    }
+	    catch (err) {
+	        alert(err.Description);
+	    }
 	}
  
  function validation()
