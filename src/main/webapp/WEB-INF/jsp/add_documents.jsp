@@ -424,20 +424,17 @@
              
              </table></div>
              </div>
-             <tr class="row1" >
+           <!--   <tr class="row1" >
              <td colspan="2" align="center">
              <input align="left" class="submit_btn1" type="submit" id="submit" onclick="return validation();" name="submit" value="Submit" style="margin-left:17%;"></td>
-             <!-- <td colspan="3">
-              <input align="middle" class="submit_btn1" type="reset" id="reset_export" name="reset_export" value="Reset" ></td> -->
-            <!-- <td><a href="#" class="button blue">
-  
-</a>
-
-<a href="#" class="button yellow">
-  Reset
-</a>        
-</td> -->
-</tr></table></div></form>
+          	
+          
+</tr> -->
+  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+                
+                </tr>
+</table></div></form>
 <script>
 $(function() {
 
