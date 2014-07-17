@@ -113,7 +113,7 @@
 							  
 				 	
 			  <td valign="middle" align="left" class="input_txt"> Use 5 Why's in system (Y/N)<span>&nbsp;(*Optional)</span> :</td>
-		      <td>${correctiveAndPreventiveActions.use_5_why_in_system}</td>					
+		      <td><c:if test="${correctiveAndPreventiveActions.use_5_why_in_system=='use_5_why_in_system'}"><c:out value="Yes"/></c:if></td>					
 		
 	</tr> 
 				
@@ -124,7 +124,9 @@
                   <td valign="middle" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;</td>
 				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why">
-					  ${correctiveAndPreventiveActions.why}</td>			
+					 Why's ?</td>
+					<td valign="middle" align="left" class="input_txt" width="70% " id="5why">
+					  ${correctiveAndPreventiveActions.why}</td>  			
              </tr>	
              
             <tr class="row2">
@@ -154,12 +156,12 @@
                <!-- <td valign="middle" align="left" class="input_txt" > Upload External Analysis(Y/N)<span>(*Optional)</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 						 -->             	  <td valign="middle" align="left" class="input_txt" width="32%">Upload External Analysis (Y/N)<span>(*Optional)</span> :</td>
-				  <td valign="middle" align="left" class="input_txt" width="32%">${correctiveAndPreventiveActions.upload_external_analysis}
+				  <td valign="middle" align="left" class="input_txt" width="32%"><c:if test="${ correctiveAndPreventiveActions.upload_external_analysis =='upload_external_analysis'}"><c:out value="Yes"/></c:if>
 				  </td>
 				 
 				  	 </tr>
 				  	 
-			 <tr class="row1" id="id_file" style="display:none;" >
+			 <tr class="row1" id="id_file">
 			  
 			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
 			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
