@@ -101,7 +101,8 @@
                    <tr class="row1">
                   <td valign="middle"  align="left" class="input_txt" width="20%">&nbsp;</td>
                 
-                 <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" ></td>
+                 <td valign="middle" align="left" class="input_txt" width="40%"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" >
+                 &nbsp; &nbsp; &nbsp; &nbsp;<input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
                 </tr>
                  <!--  <td  valign="top" align="right">&nbsp;</td>
                    <td valign="top" align="left"  colspan="3"><input type="submit" value="Generate" class="submit_btn1" onclick="return validation();"id="button" >

@@ -173,7 +173,7 @@
 								</td>
 								
 							</tr>
-							<tr class="row1">
+							<!-- <tr class="row1">
                   <td valign="middle"  align="left" class="input_txt" width="30%">&nbsp;</td>
                  
                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
@@ -182,17 +182,18 @@
 	            
 	              <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)" value="Reset" class="submit_btn1"></td>
 	             
-	                </tr>
-							<!-- <tr >
-             <td  colspan="2" align="center" width="30%">
+	                </tr> -->
+							<tr >
+             <td  align="left" width="13%" align="left"></td>
+             <td  align="left" width="30%">
              <table><tr style="padding:10px;"><td style="padding:10px;"><input type="submit" onclick="return validate();" id="export"  name="export" value="Generate" class="submit_btn1">
              </td><td style="padding:10px;">
-              <input type="reset" id="reset_export" name="reset_export" value="Reset" class="submit_btn1"></td>
+              <input type="reset" id="reset_export" name="reset_export" onclick="toggle3(0)" value="Reset" class="submit_btn1"></td>
             
              </tr></table>
             
            
-             </tr> -->
+             </tr> 
             
 							
 						</table>
