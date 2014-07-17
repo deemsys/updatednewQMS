@@ -56,6 +56,7 @@ public class ManagementReviewController
 	public String add_managementreview(ModelMap model, Principal principal)  {
 	
 	model.addAttribute("id", managementreviewDAO.getMax_reviewid());
+	model.addAttribute("menu","managementreview");
 	return "add_managementreview";
 
 }
@@ -73,6 +74,7 @@ public String insert_managementreview(HttpSession session,@ModelAttribute("Manag
 	{
 		System.out.println("Errors found");
 		model.addAttribute("id", managementreviewDAO.getMax_reviewid());
+		model.addAttribute("menu","managementreview");
 		return "add_managementreview";
 	}
 	else
@@ -88,6 +90,7 @@ public String insert_managementreview(HttpSession session,@ModelAttribute("Manag
 	//model.addAttribute("managementreviewform", managementreviewform);
 	  model.addAttribute("success","true");
 	  model.addAttribute("justcame",false);
+		model.addAttribute("menu","managementreview");
 	return "view_managementreview";
 }
 
