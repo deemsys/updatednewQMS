@@ -313,8 +313,9 @@ if(value==0)
 	
 	e1.style.display="none";
 	e2.style.display="none";
+	if(document.getElementById('id_type_actionlistbetweendates').checked){
 	document.getElementById('twodates').style.display ='none';
-  
+	}
     }
     
 }

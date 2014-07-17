@@ -275,7 +275,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		String start = null,end = null;
 		String option = "";
 		int i=0;
-		String[] fields={"management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
+		String[] fields={"review_id","management_review_date","attendee_list_with_titles","next_management_review_by","category","assessment","report_link","action_needed","action_detail","action_due_date","responsibility","completion_date","continuous_improvement_project"};
 		String[] option0 = {"management_review_date","attendee_list_with_titles"};
 		String[] option2 = {"responsibility","action_due_date","completion_date"};
 		System.out.println(request.getParameter("type_of_report"));
@@ -288,28 +288,39 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 			  {
 				  case 0:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("management_review_minutes");
+					  int len = managementReviews.size();
+					  System.out.println("length = "+len);
 					  option ="0";
 					  //title="management_review_minutes";
 					  break;
 				  case 1:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("upcoming_management_review_memo");
+					  int len1 = managementReviews.size();
+					  System.out.println("length = "+len1);
 					  //title="upcoming_management_review_memo";
 					  option ="1";
 					  break;
 				  case 2:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("action_list_beween_dates",startdate,enddate);
+					  int len2 = managementReviews.size();
+					  System.out.println("length = "+len2);
 					  //title="action_list_beween_dates";
 					  option ="2";
 					  break;
 				  case 3:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("past_due_action_list");
+					  int len3 = managementReviews.size();
+					  System.out.println("length = "+len3);
 					  //title="past_due_action_list";
 					  option ="3";
 					  break;
 				  case 4:
 					  managementReviews=managementreviewDAO.getmanagement_bytype("list_of_continuous_improv_projects");
+					  int len4 = managementReviews.size();
+					  System.out.println("length = "+len4);
 					  //title="list_of_continuous_improv_projects";
 					  option ="4";
+					  System.out.println("case :"+option);
 					  break;
 				  default:
 					  break;
@@ -341,14 +352,21 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		}
 		/*if(option == "1")
 		{
+			System.out.println("case1  :"+option);
 			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+			if(i == 1)
 			modelAndView.addObject("fields",fields);
+			else
+			{
+				session.setAttribute("option",option);
+				modelAndView.addObject("fields",option2);
+			}
 			return modelAndView ;
 		}*/
 		if(option == "2")
 		{
 			ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
-			
+			System.out.println("case2   :"+option);
 			if(i == 1)
 				modelAndView.addObject("fields",fields);
 			else{
@@ -359,6 +377,7 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 		}
 		else{
 		ModelAndView modelAndView=new ModelAndView("managementreviewDAO","managementReviews",managementReviews);
+		session.setAttribute("option",option);
 		modelAndView.addObject("fields",fields);
 		return modelAndView ;
 		}
