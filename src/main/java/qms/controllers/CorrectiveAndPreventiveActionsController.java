@@ -427,6 +427,9 @@ public class CorrectiveAndPreventiveActionsController
 			else
 			{
 				 model.addAttribute("justcame",false);
+				 model.addAttribute("success", "insert");
+					model.addAttribute("success_message", "Inserted Successfully");
+				
 				return "correctiveactions_list";
 			}
 		}
