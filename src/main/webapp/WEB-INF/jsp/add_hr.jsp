@@ -406,7 +406,7 @@ function validate()
 	}
 	else if(name.charAt(0) == " ")
 	{
-		document.getElementById("nameerror").innerHTML="Required field Should not accept initial space";
+		document.getElementById("nameerror").innerHTML="Required field should not accept initial space";
 		 error="true";
 	}
 	else if((name.length < 4) ||(name.length > 32))
@@ -428,7 +428,7 @@ function validate()
 	}
 	else if(trainer.charAt(0) == " ")
 	{
-		document.getElementById("trainererror").innerHTML="Required field Should not accept initial space";
+		document.getElementById("trainererror").innerHTML="Required field should not accept initial space";
 		 error="true";
 	}
 	else if((trainer.length < 4) ||(trainer.length > 32))
@@ -467,7 +467,7 @@ function validate()
 		}
 	 	else if(effectivenessnotes.charAt(0) == " ")
 		{
-			document.getElementById("effectivenessnoteserror").innerHTML="Required field Should not accept initial space";
+			document.getElementById("effectivenessnoteserror").innerHTML="Required field should not accept initial space";
 			 error="true";
 		}
 		else if((effectivenessnotes.length < 4) ||(effectivenessnotes.length > 400))
@@ -585,7 +585,7 @@ function validate()
 		}
 	 else if(documentedin.charAt(0) == " ")
 		{
-			document.getElementById("documentedinerror").innerHTML="Required field Should not accept initial space";
+			document.getElementById("documentedinerror").innerHTML="Required field should not accept initial space";
 			 error="true";
 		}
 	else if((documentedin.length < 4) ||(documentedin.length > 400))
