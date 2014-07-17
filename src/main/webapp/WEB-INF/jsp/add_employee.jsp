@@ -61,12 +61,6 @@ function doAjaxPost() {
 	<!-- End Ajax -->
 
 
-<script>
- $(function() {
-	 $( "#datepicker" ).datepicker();
-        });
- 
-</script>
 
 <!-- <script>
 
@@ -92,7 +86,28 @@ $(function() {
 </script> -->
 
 
+<script>
 
+$(function() {
+	var date = $('#datepicker').datepicker({ dateFormat: 'yy-mm-dd' }).val();   
+        });
+ 
+
+ $(function() {
+	 var date = $('#datepicker1').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
+        });
+ 
+
+ $(function() {
+	 var date = $('#datepicker2').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
+         });
+ 
+ $(function() {
+	 var date = $('#datepicker3').datepicker({ dateFormat: 'yy-mm-dd' }).val(); 
+     
+         });
+ 
+</script>
 
 
 
@@ -417,7 +432,8 @@ function toggle3()
 function onsubmitvalidate()
 {
 	var error="";
-	var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	//var date = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
 	var datepick = document.getElementById("datepicker").value;
 	var datepick1 = document.getElementById("datepicker1").value;
 	var datepick2 = document.getElementById("datepicker2").value;
@@ -537,7 +553,7 @@ function onsubmitvalidate()
 	  if(document.getElementById("type").value=="")
 	{
 		  
-		document.getElementById("typeerror").innerHTML="Required field should not be empty";	
+		document.getElementById("typeerror").innerHTML="Please select atleast one";	
 		error="true";
 		
 	}
@@ -549,7 +565,7 @@ function onsubmitvalidate()
 	if(document.getElementById("qualifiedby").value=="")
 	{
 		
-		document.getElementById("qualifiedbyerror").innerHTML="Required field should not be empty";	
+		document.getElementById("qualifiedbyerror").innerHTML="Please select atleast one";	
 		error="true";
 		
 	}
