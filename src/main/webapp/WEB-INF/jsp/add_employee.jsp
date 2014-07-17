@@ -279,10 +279,14 @@ $(function() {
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.documented_in}" /><br> <span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
                  </tr>      
                 
-                 <tr class="row1">
+                <!--  <tr class="row1">
                   <td valign="top" align="right">&nbsp;</td>
                   <td></td> 
                   <td valign="top" align="left">&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return onsubmitvalidate();"></td>
+                </tr> -->
+                  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return onsubmitvalidate();"class="submit_btn1"></td>
+                 
                 </tr>
               </table>
            
