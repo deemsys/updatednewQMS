@@ -43,6 +43,43 @@ public class Type_of_NC_DAO {
 	    return types;
 		
 	}
+	
+	public boolean NcExit(String nc,int id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit = false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		List<Type_of_NC> types = new ArrayList<Type_of_NC>();
+	    try{
+	    	String cmd_select = "select * from tbl_type_nc  where auto_id !='"+id+"' and type_of_nc='"+nc+"'";
+			resultSet = statement.executeQuery(cmd_select);
+			while(resultSet.next()){
+				
+				types.add(new Type_of_NC(resultSet.getInt("auto_id"),resultSet.getString("type_of_nc")));
+				exit = true;
+			}
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
+	}
 	public boolean insert_Type(Type_of_NC types) {
 		Connection con = null;
 		Statement statement = null;
