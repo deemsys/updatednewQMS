@@ -52,6 +52,12 @@ public String postType(HttpSession session,@ModelAttribute("Type_of_NC") @Valid 
 			model.addAttribute("Success","true");
 	        return "add_typenc";
 		}
+		if(typeNCDAO.NcExit(type_of_NC.getType_of_nc(),type_of_NC.getAuto_id()))
+		{
+			model.addAttribute("success","exist");
+			model.addAttribute("menu","admin");
+			return "add_typenc";
+		}
 		typeNCDAO.insert_Type(type_of_NC);
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
@@ -122,16 +128,27 @@ public String EditType_get(@RequestParam("auto_id") String auto_id,Type_of_NC ty
 @RequestMapping(value = "/update_type", method = RequestMethod.POST)
 public String Update_type(ModelMap model,@ModelAttribute("Type_of_NC") @Valid Type_of_NC types,BindingResult result) throws IOException {
 	String autoid = Integer.toString(types.getAuto_id());
+	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+
 	if (result.hasErrors())
 	{
 		
-		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.types(autoid));
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
         return "edit_sourcenc";
 	}
+	if(typeNCDAO.NcExit(types.getType_of_nc(),types.getAuto_id()))
+	{
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.types(autoid));
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+		model.addAttribute("menu","admin");
+		model.addAttribute("success","exist");
+		model.addAttribute("menu","admin");
+		 return "edit_type_nc";
+	}
 	typeNCDAO.update_Type(types);
-	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+	
 	type_of_NC_Form.setType_of_NCs(typeNCDAO.getlimitedtype(1));
 	model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
      model.addAttribute("currentpage",1);
