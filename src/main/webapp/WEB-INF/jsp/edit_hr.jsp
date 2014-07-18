@@ -525,9 +525,9 @@ else
 			document.getElementById("documentedinerror").innerHTML="Required field should not accept initial space";
 			 error="true";
 		}
-	else if((documentedin.length < 4) ||(documentedin.length > 400))
+	else if((documentedin.length < 4) ||(documentedin.length > 32))
 		{
-		document.getElementById("documentedinerror").innerHTML="Required field should be length of 4 to 400";
+		document.getElementById("documentedinerror").innerHTML="Required field should be length of 4 to 32";
 		error="true";
 		
 		}
