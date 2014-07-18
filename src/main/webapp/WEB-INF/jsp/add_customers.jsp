@@ -70,9 +70,9 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="customer_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><c:out value="${id }"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" placeholder="www.example.com"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="website" class="input_txtbx" id="inp_website" placeholder="www.example.com"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   <span id="websiteerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.website"></form:errors></span></td>
             
