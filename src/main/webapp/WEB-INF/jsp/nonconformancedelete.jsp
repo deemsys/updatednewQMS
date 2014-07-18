@@ -170,7 +170,7 @@ function ChangeCase(elem)
 		</c:if>			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete NonConformances </h2>
+							<h2>Delete Non Conformances </h2>
 						</div>
 	<div class="contentbox">
 							<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
@@ -219,7 +219,7 @@ function ChangeCase(elem)
 							<tr class="title">
 							<td valign="top" align="left" width="10%">Select</td>
 							<td valign="top" align="left" width="15%">ID</td>
-									 <td valign="top" align="left" width="20%">Source of NonConformance</td>
+									 <td valign="top" align="left" width="20%">Source of Non Conformance</td>
 									<!-- <td valign="top" align="left" width="10%">External ID</td>  -->
 									<td valign="top" align="left" width="20%">Type of Non Conformance</td>
 									<td valign="top" align="left" width="20%">Product ID</td>
