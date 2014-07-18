@@ -158,7 +158,7 @@ $(function() {
                   
                   <td valign="top" align="left" class="input_txt" width="20%" >
                    <input type="hidden" value="${hRandTrainings.attachment_name}" id="image"/><c:out value="${hRandTrainings.attachment_name}"></c:out>
-                  <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" style="color:red; font-weight:bold;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br>
+                  <input type="file" name="attachments" class="input_txtbx1" id="id_attachments" font-weight:bold;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" ><br>
                    <span id="imageerror" style="color:red"></span>
                   </td>
                   
@@ -201,7 +201,7 @@ $(function() {
                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
                 </tr> -->
                   <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:60px;">&nbsp;<input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
                  
                 </tr>
               </table>

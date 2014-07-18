@@ -293,8 +293,8 @@ function doAjaxPost() {
                   <td></td>
                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" onclick="return validate();" class="submit_btn1"></td>
                 </tr> -->
-    <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+   			 <tr class="row1">
+                  <td valign="bottom" colspan="4" align="right" style="padding-right:60px;">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
                  
                 </tr>
 

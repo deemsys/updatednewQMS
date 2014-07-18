@@ -311,7 +311,7 @@ $(function() {
                	<td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="job_description" id="add_job_desc" class="input_txtbx" id="inp_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.job_title}" /><br> <span style="color: red;"><form:errors path="Employee.job_title"></form:errors></span></td>
    
 									  </tr>
-                <tr class="row1">
+                <tr class="row1" style>
                   <td valign="top" align="right" class="input_txt" width="20%"></td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="button" class="submit_btn1" value="Submit" onclick="doAjaxPost();"  data-dismiss="modal" /><form:errors path="Employee.date_hired"></form:errors></td>
                 </tr>
