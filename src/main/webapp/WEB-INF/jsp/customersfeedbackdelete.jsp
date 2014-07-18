@@ -185,8 +185,8 @@ else
 									<td valign="top" align="left" width="10%">select</td>
 									<td valign="top" align="left" width="15%">Date of Feedback</td>
 					         	<td valign="top" align="left" width="15%">Type of Feedback</td>
-					           <td valign="top" align="left" width="20%">Feedback recorded by</td>
- 							 	<td valign="top" align="left" width="20%">Feedback details</td> 
+					           <td valign="top" align="left" width="20%">Feedback Recorded By</td>
+ 							 	<td valign="top" align="left" width="20%">Feedback Details</td> 
           						<td valign="top" align="left" width="15%">Attachments</td>
           							
 									</tr>

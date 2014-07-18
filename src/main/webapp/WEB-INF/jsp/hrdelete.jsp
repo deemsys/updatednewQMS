@@ -32,6 +32,29 @@ else
 	}
 }	
 </script>
+<script>
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+
+</script>
 </head>
 <div id="right_content">
 
@@ -148,7 +171,7 @@ else
 							<form action="findadminhr" method="get">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle"> Type:&nbsp;</td>
+							    <td align="left" valign="middle"> Type :&nbsp;</td>
 							     <td valign="middle" align="left" class="input_txt">
 							     <select	name="type_of_training" class="input_txtbx">
                  	<option value="">--Select--</option>
@@ -163,7 +186,7 @@ else
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="left" valign="middle">QualifiedBy:&nbsp; </td>
+							     <td align="left" valign="middle">QualifiedBy :&nbsp; </td>
 							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
@@ -181,8 +204,8 @@ else
 															value="Training">Training</option>
 														
 															</select><span class="err"><form:errors path="HRandTraining.qualified_by"></form:errors></span></td>
-                				<td align="right" valign="middle"> Trainer:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
+                				<td align="right" valign="middle"> Trainer :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							    <td align="left" valign="middle"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}" onkeypress="return Alphabets(event,this);"></td>
 							  
 			  
 							    <td align="center" valign="middle" width="10%"><input type="submit" class="submit_btn1" value="Search"></td>
@@ -195,7 +218,7 @@ else
 					<form action="deletehr" name="dashboard" onsubmit="return validate()" method="POST">
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
-									<td valign="top" align="left" width="10%">select</td>
+									<td valign="top" align="left" width="10%">Select</td>
 									<td valign="top" align="left" width="10%">&nbsp;ID</td>
 					         	<td valign="top" align="left" width="10%">Name</td>
 					         	<td valign="top" align="left" width="10%">Type</td>

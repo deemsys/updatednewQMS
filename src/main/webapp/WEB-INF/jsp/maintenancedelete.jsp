@@ -240,7 +240,7 @@ function Alphabets(e, t) {
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 							<td valign="top" align="left" width="20%">Select</td>
-							<td valign="top" align="left" width="20%">Equipment Id</td>
+							<td valign="top" align="left" width="20%">Equipment ID</td>
 							<td valign="top" align="left" width="20%">Equipment Name</td>
 							<td valign="top" align="left" width="20%">Equipment Model</td>
 							<td valign="top" align="left" width="20%">Acquired Date </td>
