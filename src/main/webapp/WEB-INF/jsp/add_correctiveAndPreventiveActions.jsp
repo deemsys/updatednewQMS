@@ -170,15 +170,15 @@
                  </tr>
                   <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
-				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="height: 75px; width: 202px" onInput="return validatealphanumeric1();" onkeypress="return onlyAlphabets(event,this);"></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
+				 <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx" name="team_members" id="team_member" style="height: 75px; width: 202px" ></textarea><br/><span style="color: red;" id="membererror"><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
-                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;" onInput="return validatealphanumeric3();" onkeypress="return onlyAlphabets(event,this);"></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement" id="root_cause_statement"  style="width:100%; height: 70px;" ></textarea><br/><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></span></td>
                
               </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return Alphabets(event,this);"><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" ><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
                <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
@@ -201,7 +201,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Action :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx"  id="action" value="<c:out value=""/>" onkeypress="return Alphabets(event,this);"/><br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx"  id="action" value="<c:out value=""/>" br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker6" class="input_txtbx" name="due_date" value=""/><br/><span style="color: red;" id="datepicker6err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Verified By :</td>
