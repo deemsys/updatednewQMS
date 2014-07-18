@@ -117,7 +117,7 @@
 							    <!-- <td align="left" valign="middle" width="10%">Feedback Details:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="feedback_details" class="input_txtbx1" id="details"></td>
 							     -->
-							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomerfeedback" onclick="return validation();">
+							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findcustomerfeedback">
 							    <br><span id="searcherror" style="color:red"></span>
 							    </td>
 <!-- 							  	<td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td>

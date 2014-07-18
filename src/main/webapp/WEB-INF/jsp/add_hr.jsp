@@ -274,7 +274,7 @@ function doAjaxPost() {
 				
 				  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
 
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
                   
                   <br><span id="documentedinerror" style="color:red"></span><span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
 

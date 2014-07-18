@@ -137,7 +137,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="quantity_suspect"
-																			value="${nonconformance.quantity_suspect}" onkeypress="return onlyAlphabets(event,this);"	/><br/>
+																			value="${nonconformance.quantity_suspect}" onkeypress="return onlyAlphabetsnew(event,this);"	/><br/>
 																			<span id="quantitysuspect" style="color: red;"></span>
 																		</font> <span style="color: red;"><form:errors	path="Nonconformance.quantity_suspect"></form:errors>
 																		</span>
@@ -320,7 +320,7 @@
                   <td valign="top" align="left"><input type="submit" class="submit_btn1" value="Submit" onclick="return validation();"></td>
                 </tr> -->
                   <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:50px;">&nbsp;<input type="submit" value="Submit" onclick="return validation();"class="submit_btn1"></td>
                   <td valign="top" align="left"></td>
                 </tr>
 												
@@ -401,6 +401,24 @@ function onlyAlphabets(e, t) {
         }
         else { return true; }
         if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+function onlyAlphabetsnew(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32)||(charCode > 47 && charCode < 58))
             return true;
         else
             return false;

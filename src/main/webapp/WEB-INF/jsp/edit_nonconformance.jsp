@@ -263,8 +263,8 @@ $(function() {
                														 <span style="color: red;"><form:errors path="Nonconformance.temporary_action"></form:errors></span></td>
          </td>
          							<td valign="top" align="left" class="input_txt"> Disposition Responsibility&nbsp;: </td>
-			                        <td valign="top" align="left" class="input_txt">
-																			  <select name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" class="input_txtbx" style="width:58%">
+			                        <td valign="top" align="left" >
+																			  <select class="input_txtbx" name="name_of_disposition_responsibility" id="name_of_disposition_responsibility" >
               																
 																			 <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="dispositionname" varStatus="status">
         				       												<option value="${dispositionname.name}"<c:if test="${dispositionname.name == nonconformance.name_of_disposition_responsibility}"><c:out value="selected"/></c:if>>${dispositionname.name}</option>
@@ -291,7 +291,7 @@ $(function() {
                	 
             
               <tr class="row2">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:133px;">&nbsp;<input type="submit" value="Update" onclick="return validation();" class="submit_btn1"></td>
                   
                 </tr>
     </table>

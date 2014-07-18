@@ -75,7 +75,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>Capa Report </h2>
+					<h2>Corrective and Preventive Actions Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="capas_report">

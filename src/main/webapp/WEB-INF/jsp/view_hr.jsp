@@ -113,7 +113,7 @@
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
 	 -->						  
-							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search" onclick="return validation();">
+							    <td align="center" valign="middle" width="38%"><input type="submit" class="submit_btn1" value="Search">
 							    <br><span id="searcherror" style="color:red"></span>
 							    
 							    </td>
