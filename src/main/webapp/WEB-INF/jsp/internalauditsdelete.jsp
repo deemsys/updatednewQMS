@@ -32,6 +32,35 @@ else
 	}
 }	
 </script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
+<script>
+
+
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+</script>
 </head>
 <div id="right_content">
 
@@ -149,9 +178,9 @@ else
 <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
- 								    <td align="left" valign="middle" width="10%">Audit ID:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" value="${id}"></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;Process:</td>
+ 								    <td align="left" valign="middle" width="10%">Audit ID :</td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" value="${id}" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"></td>
+							    <td align="left" valign="middle" width="10%">&nbsp;Process :</td>
 							    <td align="left" valign="middle" width="10%">
 							    <%-- <input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td> --%>
 							    <select name="process" id="search_process"  class="input_txtbx" >
@@ -161,7 +190,7 @@ else
              				  	</c:forEach>
              				  </select>
              				  	</td> 
-							    <td align="left" valign="middle" width="20%">&nbsp;Auditee name:</td>
+							    <td align="left" valign="middle" width="20%">&nbsp;Auditee Name :</td>
 							    <td align="left" valign="middle" width="10%">
 							    <select name="auditee_name" id="id_inpprocess"  class="input_txtbx">
                						<option value="">--Select--</option>
@@ -182,7 +211,7 @@ else
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 							<td valign="top" align="left" width="10%">Select</td>
-							<td valign="top" align="left" width="10%">Audit Id</td>
+							<td valign="top" align="left" width="10%">Audit ID</td>
 									<td valign="top" align="left" width="10%">Process</td>
 									<td valign="top" align="left" width="10%">Audit Due Date</td>
 									<td valign="top" align="left" width="10%">Audit Start Date</td>
