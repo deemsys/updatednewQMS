@@ -184,10 +184,10 @@ function doAjaxPost() {
 
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"   id="name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"   id="name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
                   <br><span id="nameerror" style="color:red"></span>
                    <td valign="middle" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx"  id="trainer" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx"  id="trainer" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/><br/>
                   <span id="trainererror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.trainer"></form:errors></span></td>
                 </tr>
@@ -228,7 +228,7 @@ function doAjaxPost() {
 
                  <td valign="middle" align="left" class="input_txt" width="20%"> Training Effectiveness Notes :</td>
 
-                  <td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" rows="3" cols="25"  id="effectivenessnotes" name="training_effectiveness_notes" style="height: 75px;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 177px; height: 89px;" name="note"></textarea><br>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><textarea class="input_txtbx" rows="3" cols="25"  id="effectivenessnotes" name="training_effectiveness_notes" style="height: 75px;" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 177px; height: 89px;" name="note" maxlength="400"></textarea><br>
                    <span id="effectivenessnoteserror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_notes"></form:errors></span></td>
                  <td valign="middle" align="left" class="input_txt" width="20%">Type :</td>
@@ -274,7 +274,7 @@ function doAjaxPost() {
 				
 				  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
 
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
                   
                   <br><span id="documentedinerror" style="color:red"></span><span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
 
