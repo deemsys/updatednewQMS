@@ -386,6 +386,14 @@ function AlphabetsNumber(e, t) {
 
 </script>
 
+      
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
+
       <script>
 i=0;
 $(document).ready(function(){
@@ -403,14 +411,6 @@ $("#inp_fax").focus(function(){
 	 }); 
 });
 </script>
-<script>
-function ChangeCase(elem)
-{
-    elem.value = elem.value.toUpperCase();
-}
-</script>
-
-      
       <script type="text/javascript">
       function validate()
       {
