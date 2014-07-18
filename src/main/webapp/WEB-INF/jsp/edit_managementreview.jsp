@@ -289,7 +289,7 @@ function validate()
 	}
 	else if((attendeelistwithtitles.length < 4) ||(attendeelistwithtitles.length > 32))
 		{
-		document.getElementById("attendeelistwithtitleserror").innerHTML="Required Field Should be length 4 to 32";
+		document.getElementById("attendeelistwithtitleserror").innerHTML="Required field Should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -311,7 +311,7 @@ function validate()
 	}
 	else if((nextmanagementreviewby.length < 4) ||(nextmanagementreviewby.length > 32))
 	{
-	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required Field Should be length 4 to 32";
+	document.getElementById("nextmanagementreviewbyerror").innerHTML="Required field Should be length of 4 to 32";
 	error="true";
 	
 	}
@@ -356,7 +356,7 @@ function validate()
 	}
 	else if((assessment.length < 4) ||(assessment.length > 32))
 		{
-		document.getElementById("assessmenterror").innerHTML="Required Field Should be length 4 to 32";
+		document.getElementById("assessmenterror").innerHTML="Required field Should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -402,7 +402,7 @@ function validate()
 		}
 	else if((actiondetail.length < 4) ||(actiondetail.length > 32))
 		{
-		document.getElementById("actiondetailerror").innerHTML="Required Field Should be length 4 to 32";
+		document.getElementById("actiondetailerror").innerHTML="Required field Should be length of 4 to 32";
 		error="true";
 		
 		}
@@ -440,7 +440,7 @@ function validate()
 		}
 	else if((responsibility.length < 4) ||(responsibility.length > 32))
 		{
-		document.getElementById("responsibilityerror").innerHTML="Required Field Should be length 4 to 32";
+		document.getElementById("responsibilityerror").innerHTML="Required field Should be length of 4 to 32";
 		error="true";
 		
 		}
