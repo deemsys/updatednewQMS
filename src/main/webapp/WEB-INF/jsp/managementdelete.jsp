@@ -42,6 +42,27 @@ else
 	}
 }	
 </script>
+<script>
+function Number(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+</script>
 </head>
 <div id="right_content">
 
@@ -160,7 +181,7 @@ else
 							  <tr>
 							     <td align="left" valign="middle" width="12%">Review ID:</td>
 							    <td align="left" valign="middle" width="10%">
-							    <input type="text" name="review_id" class="input_txtbx" id="id"  value="${reviewid}"> </td>
+							    <input type="text" name="review_id" class="input_txtbx" id="id" maxlength="10" onkeypress="return Number(event,this);" value="${reviewid}"> </td>
 							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;Management Review Date:</td>
 							    <td align="left" valign="middle" width="10%">
 							    
