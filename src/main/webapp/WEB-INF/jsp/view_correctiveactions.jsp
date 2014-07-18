@@ -48,7 +48,7 @@
         
         
             <div class="headings altheading">
-              <h2>Corrective And Preventive Actions Details</h2>
+              <h2> Search Corrective And Preventive Actions Details</h2>
             </div>
             <div class="contentbox">
               <c:set value="${correctiveAndPreventiveActionsForm.correctiveAndPreventiveActions[0]}" var="correctiveAndPreventiveActions"> </c:set>

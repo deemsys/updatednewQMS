@@ -71,7 +71,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Corrective and Preventive Actions List</h2>
+			          <h2>Corrective and Preventive Actions Reports</h2>
 			        </div>
 			        <div class="contentbox">
 
