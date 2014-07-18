@@ -94,7 +94,7 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Name to appear on the Report:</td>
 								<td valign="top" align="left" class="input_txt" width="50%">
-									<input type="text" name="report_title" class="input_txtbx1"  style="width:40%;" value=""/>
+									<input type="text" name="report_title" class="input_txtbx1"  style="width:40%;" maxlength="32" value=""/>
 								</td>
 								
 							</tr>

@@ -81,7 +81,7 @@
                   <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Attendee List With Titles :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  <input type="text" class="input_txtbx" name="attendee_list_with_titles" id="attendeelistwithtitles"  onkeypress="return onlyAlphabets(event,this);" value="<c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out>" maxlength="32"/>          
+                  <input type="text" class="input_txtbx" name="attendee_list_with_titles" id="attendeelistwithtitles"  onkeypress="return onlyAlphabets(event,this);" maxlength="32" value="<c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out>" maxlength="32"/>          
                    <br/>
                     <span id="attendeelistwithtitleserror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>
@@ -122,7 +122,7 @@
                   <span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>
                   
                  <td valign="middle" align="left" class="input_txt" width="30%">Report Link :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" value='<c:out value="${managementReviewdetails.report_link}"></c:out>'> 
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" value='<c:out value="${managementReviewdetails.report_link}"></c:out>'> 
                   <br> <span id="reportlinkerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>
                   </tr>

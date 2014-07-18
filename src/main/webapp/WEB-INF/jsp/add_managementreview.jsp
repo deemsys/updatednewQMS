@@ -115,7 +115,7 @@
 						           		<span class="err"><form:errors path="ManagementReview.category"></form:errors></span>
 				                   	</td>	
 				                   	 <td valign="middle" align="left" class="input_txt" width="20%">Report Link :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" /><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" maxlength="32"/><br/>
                   <span id="reportlinkerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
                   
