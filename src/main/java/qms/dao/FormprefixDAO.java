@@ -1,6 +1,7 @@
 package qms.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,9 +28,14 @@ public class FormprefixDAO {
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_insert = "insert into tb_formprefix(form_name,form_prefix)values('"+formPrefix.getForm_name()+"','"+formPrefix.getForm_prefix()+"')";
+			PreparedStatement preparedStatement=con.prepareStatement("insert into tb_formprefix(form_name,form_prefix)values(?,?)");
+			preparedStatement.setString(1,formPrefix.getForm_name());
+			preparedStatement.setString(2,formPrefix.getForm_prefix());
+			preparedStatement.execute();
+	
+			
 		
-			statement.execute(cmd_insert);
+			//statement.execute(cmd_insert);
 			
 		} catch (Exception e) {
 			System.out.println(e.toString());

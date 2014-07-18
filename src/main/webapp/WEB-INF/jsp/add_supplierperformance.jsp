@@ -61,19 +61,19 @@
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding-left: 30px; padding-right: 30px;">
    				 <tr class="row2">
-                  <td valign="top" align="left" class="input_txt" width="30%" >Supplier ID :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%" >Supplier ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
                 
-            	 <td valign="top" align="left" class="input_txt" width="30%">Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
+            	 <td valign="top" align="left" class="input_txt" width="20%">Website :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
                   <span><form:errors path="supplierperformance.website"></form:errors></span></td>
                 </tr>
             
              
                   <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Supplier name :</td>
+                  <td valign="top" align="left" class="input_txt" >Supplier name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="supplier_name" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);" id="inp_supplier_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.supplier_name}" /><br/><span style="color: red;" id="nameerror"><form:errors path="supplierperformance.supplier_name"></form:errors></span></td>
-           		  <td valign="top" align="left" class="input_txt" width="30%">Certified to :</td>
+           		  <td valign="top" align="left" class="input_txt" >Certified to :</td>
 				<td valign="top" align="left" class="input_txt"><select	name="certified_to" class="input_txtbx"  id="certified">
 															<option value="">--Select--</option>			
                   										<option
@@ -82,12 +82,12 @@
 														<option
 															<c:if test="${supplierperformance.certified_to eq 'ISO 9002'}"><c:out value="Selected"/></c:if>
 															value="ISO 9002">ISO 9002</option>
-															</select><span style="color: red;" id="certifiederror"><form:errors path="SupplierPerformance.certified_to"></form:errors></span></td>
+															</select><br><span style="color: red;" id="certifiederror"><form:errors path="SupplierPerformance.certified_to"></form:errors></span></td>
                                   
       
                 </tr>
 		        <tr class="row2">
-				  <td valign="top" align="left" class="input_txt" width="30%">Category :</td>
+				  <td valign="top" align="left" class="input_txt" >Category :</td>
 				<td valign="top" align="left" class="input_txt"><select	name="category" class="input_txtbx" id="category">
 					<option value="">--Select--</option>
 				                  									
@@ -100,45 +100,45 @@
 															</select>
 															<br/><span style="color: red;" id="categoryerror"><form:errors path="SupplierPerformance.category"></form:errors></span></td>
                                   
-                  <td valign="top" align="left" class="input_txt" width="30%">Contact name :</td>
+                  <td valign="top" align="left" class="input_txt" >Contact name :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_name}" /><br/><span style="color: red;" id="contacterror"><form:errors path="supplierperformance.contact_name"></form:errors></span></td>
                 
                 </tr>
                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%"> Address :</td>
+                  <td valign="top" align="left" class="input_txt" > Address :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
                 <%--   <input type="text" name="address" onInput="return validatename(id);" class="input_txtbx" id="inp_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.address}" /><br/><span style="color: red;" id="addresserror"><form:errors path="supplierperformance.address"></form:errors></span></td>
                  --%>  <textarea class="input_txtbx" id="inp_address" name="address"  style="height: 70px;" >${supplierperformance.address}</textarea><br/>
 				<span style="color: red;" id="addresserror"><form:errors path="supplierperformance.address"></form:errors></span></td>
 			
-                  <td valign="top" align="left" class="input_txt" width="30%"> Title :</td>
+                  <td valign="top" align="left" class="input_txt" > Title :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="contact_title" class="input_txtbx" onkeypress="return onlyAlphabetsnumeric(event,this);" id="inp_contact_title" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.contact_title}" /><br/><span style="color: red;" id="titleerror"><form:errors path="supplierperformance.contact_title"></form:errors></span></td>
 
                 </tr>
 				<tr class="row2">
-				  <td valign="top" align="left" class="input_txt" width="30%"> City :</td>
+				  <td valign="top" align="left" class="input_txt" > City :</td>
 				  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.city}" /><br/><span style="color: red;" id="cityerror"><form:errors path="supplierperformance.city"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" width="30%"> Phone :</td>
+                  <td valign="top" align="left" class="input_txt" > Phone :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="phone" placeholder="9876543210" maxlength="10" class="input_txtbx" id="inp_phone" onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.phone}" /><br/><span style="color: red;" id="phoneerror"><form:errors path="supplierperformance.phone"></form:errors></span></td>
 
                 </tr>
               	<tr class="row1">
-              	<td valign="top" align="left" class="input_txt" width="30%"> State :</td>
+              	<td valign="top" align="left" class="input_txt" > State :</td>
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="supplierperformance.state"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" width="30%"> Fax :</td>
+                  <td valign="top" align="left" class="input_txt" > Fax :</td>
                   
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+12345678901" name="fax"  class="input_txtbx" id="inp_fax" maxlength="12"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
 
               	</tr>
                 <tr class="row2">
-				<td valign="top" align="left" class="input_txt" width="30%">Postal code :</td>
+				<td valign="top" align="left" class="input_txt" >Postal code :</td>
 				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" placeholder="10001" maxlength="5" onkeypress="return validate(event)" class="input_txtbx" id="inp_postalcode" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="supplierperformance.postalcode"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" width="30%"> Email :</td>
+                  <td valign="top" align="left" class="input_txt" > Email :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;" id="emailerror"><form:errors path="supplierperformance.email_address"></form:errors></span></td>
 
                 </tr>
 				<tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="30%">Country :</td>
+                  <td valign="top" align="left" class="input_txt">Country :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.country}" /><br/><span style="color: red;" id="countryerror"><form:errors path="supplierperformance.country"></form:errors></span></td>
                 </tr>
                
@@ -277,7 +277,7 @@ function validatename(id)
 		if(certified=="")
 		{
 		
-		document.getElementById("certifiederror").innerHTML="Please select one";
+		document.getElementById("certifiederror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 		else{
@@ -286,7 +286,7 @@ function validatename(id)
 		if(category=="")
 		{
 		
-		document.getElementById("categoryerror").innerHTML="Please select one";
+		document.getElementById("categoryerror").innerHTML="Required field should not be empty";
 		error="true";
 		}
 		else{
@@ -307,7 +307,7 @@ function validatename(id)
 		else if(document.getElementById("inp_supplier_name").value.length<4 || document.getElementById("inp_supplier_name").value.length>=32)
 	    {
 	    	
-	    	document.getElementById("nameerror").innerHTML="Field should be of length 4 to 32";
+	    	document.getElementById("nameerror").innerHTML="Required field should be length of 4 to 32";
 			error="true";
 	    }
 
@@ -331,7 +331,7 @@ function validatename(id)
 		else if(document.getElementById("inp_contact_name").value.length<4 || document.getElementById("inp_contact_name").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("contacterror").innerHTML="Field should be of length 4 to 32";
+		    	document.getElementById("contacterror").innerHTML="Required field should be length of 4 to 32";
 		    	 error="true";
 		    } 
 		
@@ -355,7 +355,7 @@ function validatename(id)
 		else if(document.getElementById("inp_address").value.length<4 || document.getElementById("inp_address").value.length>=500)
 		    {
 		    	
-		    	document.getElementById("addresserror").innerHTML="Field should be of length 4 to 500";
+		    	document.getElementById("addresserror").innerHTML="Required field should be length of 4 to 500";
 		    	 error="true";
 		    } 
 		
@@ -379,7 +379,7 @@ function validatename(id)
 		else if(document.getElementById("inp_contact_title").value.length<4 || document.getElementById("inp_contact_title").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("titleerror").innerHTML="Field should be of length 4 to 32";
+		    	document.getElementById("titleerror").innerHTML="Required field should be length of 4 to 32";
 		    	 error="true";
 		    } 
 		
@@ -403,7 +403,7 @@ function validatename(id)
 		else if(document.getElementById("inp_city").value.length<4 || document.getElementById("inp_city").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("cityerror").innerHTML="Field should be of length 4 to 32";
+		    	document.getElementById("cityerror").innerHTML="Required field should be length of 4 to 32";
 		    	 error="true";
 		    } 
 		    else
@@ -426,7 +426,7 @@ function validatename(id)
 		else if(document.getElementById("inp_state").value.length<4 || document.getElementById("inp_state").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("stateerror").innerHTML="Field should be of length 4 to 32";
+		    	document.getElementById("stateerror").innerHTML="Required field should be length of 4 to 32";
 		    	 error="true";
 		    } 
 		    else
@@ -448,7 +448,7 @@ function validatename(id)
 		else if(document.getElementById("inp_country").value.length<4 || document.getElementById("inp_country").value.length>=32)
 		    {
 		    	
-		    	document.getElementById("countryerror").innerHTML="Field should be of length 4 to 32";
+		    	document.getElementById("countryerror").innerHTML="Required field should be length of 4 to 32";
 		    	 error="true";
 		    } 
 		
@@ -518,13 +518,15 @@ function validatename(id)
 	document.getElementById("faxerror").innerHTML="Required field should not be empty";
 	error="true"
 	}
-	document.getElementById("faxerror").innerHTML=" ";
+
 	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
-	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
+	 if(document.getElementById("inp_fax").value!="") 
+		 {
+	 if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	    {
 	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
 	    	error="true"
-	    }
+	    }}
 
 	    var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 		  

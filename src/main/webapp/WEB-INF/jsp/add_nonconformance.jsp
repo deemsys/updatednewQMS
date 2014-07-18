@@ -498,7 +498,7 @@ error="true";
 	}
 	else if(external.length<4)
 	{
-	document.getElementById("externalerror").innerHTML="Required and must be of length 4 to 32";
+	document.getElementById("externalerror").innerHTML="Required field should be length of 4to 32";
 	error="true";
 	}
 	else
@@ -579,7 +579,7 @@ error="true";
   	else if(document.getElementById("quantity").value.length<4)
 	    {
 	    	
-	    	document.getElementById("quantitysuspect").innerHTML="Required and must be of length 4 to 32";
+	    	document.getElementById("quantitysuspect").innerHTML="Required field should be length of 4to 32";
 	    	 error="true";
 	    } 
 	
@@ -636,7 +636,7 @@ error="true";
 		 	else if(document.getElementById("natureofnc").value.length<4)
 			    {
 			    	
-			    	document.getElementById("nature").innerHTML="Required and must be of length 4 to 400";
+			    	document.getElementById("nature").innerHTML="Required field should be length of 4to 400";
 			    	 error="true";
 			    } 
 		 	else{
@@ -654,7 +654,7 @@ error="true";
 					else if(document.getElementById("tempaction").value.length<4)
 				    {
 				    	
-				    	document.getElementById("temp").innerHTML="Required and must be of length 4 to 400";
+				    	document.getElementById("temp").innerHTML="Required field should be length of 4to 400";
 				    	 error="true";
 				    } 
 				
@@ -679,7 +679,7 @@ error="true";
 					else if(document.getElementById("name_of_disposition_responsibility").value.length<4 || document.getElementById("name_of_disposition_responsibility").value.length>=32)
 				    {
 				    	
-				    	document.getElementById("responsibilityerror").innerHTML="Required and must be of length 4 to 32";
+				    	document.getElementById("responsibilityerror").innerHTML="Required field should be length of 4to 32";
 				    	 error="true";
 				    } 
 				

@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 
 import qms.model.DocumentPrefix;
 import qms.model.FormPrefix;
-
+import java.sql.PreparedStatement;
 public class DocumentPrefixDAO {
 	private DataSource dataSource;
 	
@@ -29,9 +29,13 @@ public class DocumentPrefixDAO {
 		}
 		try {
 			System.out.println("before executing query");
-			String cmd_insert = "insert into tbl_documentprefix(doc_prefix,document_id)values('"+documentPrefix.getDoc_prefix()+"','"+documentPrefix.getDocument_id()+"')";
+			PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_documentprefix(doc_prefix,document_id)values(?,?)");
+			preparedStatement.setString(1,documentPrefix.getDoc_prefix());
+			preparedStatement.setString(2,documentPrefix.getDocument_id());
+			preparedStatement.execute();
+			/*String cmd_insert = "insert into tbl_documentprefix(doc_prefix,document_id)values('"+documentPrefix.getDoc_prefix()+"','"+documentPrefix.getDocument_id()+"')";
 		
-			statement.execute(cmd_insert);
+			statement.execute(cmd_insert);*/
 			System.out.println("query executed successfully");
 			
 		} catch (Exception e) {
