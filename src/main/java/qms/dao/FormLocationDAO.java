@@ -83,6 +83,42 @@ public class FormLocationDAO {
 		}
 		return locations;
 	}	
+	public boolean getlocationexit(String location,String id) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		List<FormLocation> locations = new ArrayList<FormLocation>();
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = "select * from tb_formlocation where location_id!='"+id+"' and form_location= '"+location+"'";
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				locations.add(new FormLocation(resultSet
+						.getString("location_id"), resultSet
+						.getString("form_location")
+						));
+				 status = true;
+			}	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return status;
+	}	
 	//Get request method
 	public List<FormLocation> getformLocations(String location_id){
 		Connection con = null;
