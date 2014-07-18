@@ -276,6 +276,30 @@ public class FormController
 		System.out.println("document id ****** "+form1.getDocument_id());
 		/*String attachments = request.getParameter("attachments");*/
 		/*System.out.println("attachments = "+form1.getAttachments()+request.getParameter("attachments"));*/
+		System.out.println("record Starus = "+formDAO.list_formExit(form1.getAuto_no(),form1.getDocument_id()));
+
+		
+		if(formDAO.list_formExit(form1.getAuto_no(),form1.getDocument_id()))
+		{
+			System.out.println("exit");
+			session.removeAttribute("docform");
+			load_document_page_dropdowns(model);
+			formDAO.change_RevisionFormat(form1,form1.getAuto_no());
+			RevisionFormForm revisionFormForm = new RevisionFormForm();
+			revisionFormForm.setRevisionForms(revisionFormDAO.getRevision(form1.getAuto_no()));
+			model.addAttribute("revisionFormForm", revisionFormForm);
+			
+			EmployeeForm employeeowner = new EmployeeForm();
+			employeeowner.setEmployees(employeeDAO.getEmployees_by_process_owner());
+			model.addAttribute("employeeowner", employeeowner); 
+			
+			FormForm formForm=new FormForm();
+			formForm.setForm(formDAO.getform(form1.getAuto_no()));
+			model.addAttribute("formForm",formForm);
+			  model.addAttribute("menu","document");
+			model.addAttribute("success","exist");
+			return "edit_form";
+		}
 		if(result.hasErrors())
 		{
 			String auto_no = form1.getAuto_no();
