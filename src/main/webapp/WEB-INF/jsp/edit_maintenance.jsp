@@ -68,29 +68,29 @@
          <c:set value="${maintenanceForm.maintenance[0]}" var="Maintenance"> </c:set>
              
               <tr>
-			<td align="left" valign="top" width="50%"  style="padding-right: 40px;padding-bottom:40px;">
+			<td align="left" valign="top"   style="padding-right: 20px;padding-bottom:40px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 			    <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="hidden" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_id}" />${Maintenance.equipment_id}
+                  <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="36%">Equipment ID  :</td>
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="hidden" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_id}" />${Maintenance.equipment_id}
                   <!--  <span id="equipment_id1" style="color:red"></span> -->
                   <span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Name  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return Alphabets(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
-                    <span id="equipment_name1" style="color:red"></span>
+                  <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Equipment Name  :</td>
+                  <td valign="top" align="left" class="input_txt" style="padding-left: 15px;"width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
+                   <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment Model  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
+                  <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Equipment Model  :</td>
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
                     <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Serial Number  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onkeypress="return Number(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
+                  <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Serial Number  :</td>
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
                    <span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
@@ -100,14 +100,14 @@
 						         <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Date Acquired  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.date_acquired}" />
+                  <td valign="middle" align="left" class="input_txt" width="30%">Date Acquired  :</td>
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 22px;" width="50%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.date_acquired}" />
                     <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="50%">Equipment Status  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
+                 <td valign="middle" align="left" class="input_txt" width="35%">Equipment Status  :</td>
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 22px;" width="50%">
                   <select name="equipment_status" id="equipment_status"class="dropdown">				  
                   <option value="">--Select--</option>
              	<option <c:if test="${Maintenance.equipment_status eq 'Active'}"><c:out value="Selected"/></c:if> value="Active" >Active</option>
@@ -120,8 +120,8 @@
                   <span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
+                 <td valign="middle" align="left" class="input_txt" width="30%">Frequency of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 22px;" width="50%">
               
                    <select name="frequency_maintenance" id="frequency_maintenance"class="dropdown" style="height:80px;" multiple>
                    <c:set var="theString" value="${Maintenance.frequency_maintenance}"/>
@@ -140,8 +140,8 @@
                   <span class="err"></span></td>
                   </tr>
                    <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="50%">Calibration(Y/N)  :</td>
-               <td valign="top" align="left" class="input_txt" width="50%">
+               <td valign="middle" align="left" class="input_txt" width="30%">Calibration(Y/N)  :</td>
+               <td valign="top" align="left" class="input_txt" style="padding-left: 22px;"width="50%">
                <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes"  <c:if test="${Maintenance.calibration=='Yes'}"><c:out value="Checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                <input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);" <c:if test="${Maintenance.calibration=='No'}"><c:out value="Checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </td>
@@ -156,10 +156,10 @@
          <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="top" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                 <td valign="middle" align="left" class="input_txt" width="50%">Type of Maintenance  :</td>
+                 <td valign="middle" align="left" class="input_txt" width="40%">Type of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
                   <select name="type_of_maintenance" class="dropdown">
                  
@@ -171,7 +171,7 @@
                 <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance  :</td>
+                  <td valign="middle" align="left" class="input_txt" width="40%">Frequency of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt" width="50%">
                   
                   <input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax()" <c:if test="${Maintenance.weekly=='weekly'}"><c:out value="checked=checked"/></c:if>/>&nbsp;Weekly  <br/>               
@@ -182,22 +182,18 @@
                    <span id="frequencyofmaintenance1" style="color:red"></span>
                 <%--   <input type="text" name="maintenance_frequency" class="input_txtbx" id="maintenance_frequency" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.maintenance_frequency}" /><span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span></td> --%>
                 </tr>
-                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="50%">Reference  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
-                  
-                  <%-- <input type="text" name="reference" class="input_txtbx" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.reference}" /> --%>
-                   <div id="reference1"></div><br>
-                  <div id="reference2"></div><br>
-                  <div id="reference3"></div><br>
-                  <div id="reference4"></div><br>
-                  <div id="reference5"></div>
-                 <%--  <span class="err"><form:errors path="Maintenance.reference"></form:errors></span></td>
-                --%> </tr>
+                  <tr class="row2">
+              
+               <td valign="middle" align="left" class="input_txt" width="40%">Notes  :</td>
+               <td valign="middle" align="left" width="70%"><textarea class="input_txtbx"  name="notes"  id="notes" style="height:89px;" >${Maintenance.notes}</textarea><br/>
+               <span id="notes1" style="color:red"></span>
+               <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
+            </tr>
+                
                 <tr class="row2">
               
                <td valign="top" align="left" class="input_txt">Instructions(optional)  :</td>
-               <td valign="top" align="left"  colspan="3">
+               <td valign="top" align="left" >
                <div id="instruction"></div>
                <textarea class="input_txtbx" id="instructions" name="instructions"  style="height: 89px;" >${Maintenance.instructions}</textarea><br/>
                <span id="instructions1" style="color:red"></span> 
@@ -205,7 +201,7 @@
             </tr>
         </table>
         </td> 
-            <td align="left" valign="top" width="50%" style="padding-right: 25px;">
+            <td align="left" valign="top" style="padding-right: 25px;">
           	<table cellpadding="0" cellspacing="0" border="0" width="100%">
             <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="50%">Due Date  :</td>
@@ -231,13 +227,18 @@
 			                 <span id="completed_by1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
                 </tr>
-                <tr class="row2">
-              
-               <td valign="middle" align="left" class="input_txt" width="50%">Notes  :</td>
-               <td valign="middle" align="left"  colspan="3" width="50%"><textarea class="input_txtbx"  name="notes"  id="notes" style="height:89px;" >${Maintenance.notes}</textarea><br/>
-               <span id="notes1" style="color:red"></span>
-               <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
-            </tr>
+               <tr class="row1">
+                  <td valign="top" align="left" class="input_txt" width="50%">Reference  :</td>
+                  <td valign="top" align="left" class="input_txt" width="50%">
+                  
+                  <%-- <input type="text" name="reference" class="input_txtbx" id="reference" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.reference}" /> --%>
+                   <div id="reference1"></div><br>
+                  <div id="reference2"></div><br>
+                  <div id="reference3"></div><br>
+                  <div id="reference4"></div><br>
+                  <div id="reference5"></div>
+                 <%--  <span class="err"><form:errors path="Maintenance.reference"></form:errors></span></td>
+                --%> </tr>
           
         
           
