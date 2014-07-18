@@ -55,28 +55,28 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 35px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
-                  <td valign="middle" align="left" style="padding-left:38px" class="input_txt" width="60%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="35%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" style="padding-left:38px" class="input_txt" width="45%">Equipment ID  :</td>
+                  <td valign="top" align="left" class="input_txt" width="60%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="ChangeCase(this);toggle(this.value);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br>
                   <span id="equipment_id1" style="color:red"></span>
                   <c:if test="${success=='exist'}"><span style="color:red">Equipment ID already Exist</span></c:if>
                   <span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left:38px">Equipment Name  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return Alphabets(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="45%" style="padding-left:38px">Equipment Name  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left:38px">Equipment Model  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="40%" style="padding-left:38px">Equipment Model  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                  <br>  <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left:38px">Serial Number  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onkeypress="return Number(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="40%" style="padding-left:38px">Serial Number  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                    <br><span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
@@ -86,14 +86,14 @@
 						         <table cellpadding="0" cellspacing="0" border="0" width="93%">
                 
                  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" style="padding-left: 15px">Date Acquired :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" style="padding-left: 85px">Date Acquired :</td>
+                  <td valign="top" align="left" class="input_txt" width="42%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                    <br> <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 15px">Equipment Status  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
+                 <td valign="middle" align="left" class="input_txt" width="42%" style="padding-left: 85px">Equipment Status  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%">
                   <select name="equipment_status" class="dropdown" id="equipment_status">
                   <option value="">--Select--</option>
                   <option value="Active">Active</option>
@@ -105,7 +105,7 @@
                   
                   </tr>
                   <tr class="row2">
-                 <td valign="top" align="left" class="input_txt" style="padding-left: 15px">Frequency of Maintenance  :</td>
+                 <td valign="top" align="left" class="input_txt" style="padding-left: 85px">Frequency of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt">
                   <select name="frequency_maintenance" class="dropdown"  style="height:80px;"id="frequency_maintenance" multiple>
                   
@@ -120,8 +120,8 @@
                   <span class="err"></span></td>
                   </tr>
                    <tr class="row1">
-               <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 15px">Calibration(Y/N)  :</td>
-               <td valign="top" align="left" class="input_txt" width="50%">
+               <td valign="middle" align="left" class="input_txt" width="42%" style="padding-left: 85px">Calibration(Y/N)  :</td>
+               <td valign="top" align="left" class="input_txt" width="40%">
                <input type="radio" name="calibration" value="Yes" onchange="toggle3(this.value);"  id="calibration_yes" checked>Yes&nbsp;&nbsp;&nbsp;
                <input type="radio" name="calibration" value="No" id="calibration_no" onchange="toggle3(this.value);"  >No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
                </td>
@@ -138,16 +138,16 @@
          <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px; margin-left:10px;">
           <table cellpadding="0" cellspacing="0" border="0" width="100%">
               <tr>
-			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
+			<td align="left" valign="top" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   
-                  <td valign="middle" align="left" class="input_txt" width="50%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid"readonly=readonly onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="15%">Equipment ID  :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid"readonly=readonly onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"></span></td>
                 </tr> 
                <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="50%"> Type of Maintenance  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
+                 <td valign="middle" align="left" class="input_txt" width="15%"> Type of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%">
                   <select name="type_of_maintenance"  class="dropdown" >
                  
                   <option value="Preventive">Preventive</option>
@@ -157,31 +157,28 @@
                 <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Frequency of Maintenance  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
+                  <td valign="middle" align="left" class="input_txt" width="15%">Frequency of Maintenance  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%">
                   <input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax()" />&nbsp;Weekly  <br/>               
-             	  <input type="checkbox" name="monthly" value="monthly" id="monthly"onclick="toggleAjax()" />&nbsp;Monthly<br/>
+             	 <input type="checkbox" name="monthly" value="monthly" id="monthly"onclick="toggleAjax()" />&nbsp;Monthly<br/>
                   <input type="checkbox" name="quarterly" value="quarterly" id="quarterly"onclick="toggleAjax()" />&nbsp;Quarterly<br/>
-                  <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually" onclick="toggleAjax()" />&nbsp;Semi-Annually<br/>
-                  <input type="checkbox" name="annually" value="annually" id="annually" onclick="toggleAjax()" />&nbsp;Annually<br/>
+                <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually" onclick="toggleAjax()" />&nbsp;Semi-Annually<br/>
+                <input type="checkbox" name="annually" value="annually" id="annually" onclick="toggleAjax()" />&nbsp;Annually<br/>
                   <span id="frequencyofmaintenance1" style="color:red"></span>
                  <%--  <span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span> --%></td>
                 </tr>
-                 <tr class="row1">
-                  <td valign="top" align="left" class="input_txt" width="50%">Reference  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
-                  <div id="reference1"></div><br>
-                  <div id="reference2"></div><br>
-                  <div id="reference3"></div><br>
-                  <div id="reference4"></div><br>
-                  <div id="reference5"></div>
-                  
-                  </td>
-                </tr>
+                 <tr class="row2">
+              
+               <td valign="top" align="left" class="input_txt"width="15%">Notes  :</td>
+               <td valign="top" align="left"  class="input_txt"width="40%"><textarea class="input_txtbx"  name="notes" id="notes" style="height: 89px;" ></textarea><br/>
+               <span id="notes1" style="color:red"></span>
+               <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
+            </tr>
+                
                 <tr class="row2">
               
-               <td valign="top" align="left" class="input_txt">Instructions(optional)  :</td>
-               <td valign="top" align="left"  colspan="3"><div id="instruction"></div>
+               <td valign="top" align="left" class="input_txt"width="10%">Instructions(optional)  :</td>
+               <td valign="top" align="left" width="20%"><div id="instruction"></div>
                <textarea class="input_txtbx"  name="instructions" id="instructions" style="height: 89px;" >${Maintenance.instructions}</textarea><br/>
                
               <span id="instructions1" style="color:red"></span> 
@@ -193,25 +190,25 @@
             </tr>
         </table>
         </td> 
-           <td align="left" valign="top" width="50%" style="padding-right: 25px;">
+           <td align="left" valign="top" width="43%" style="padding-right: 25px;">
           	<table cellpadding="0" cellspacing="0" border="0" width="100%">
            
            
             <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Due Date  :</td>
+                  <td valign="middle" align="left" class="input_txt" width="70%">Due Date  :</td>
                   <td valign="middle" align="left" class="input_txt" width="50%"><input type="text" name="due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br><span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Completion Date  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="40%">Completion Date  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                 <br>  <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt" width="50%">Completed By  :</td>
-                  <td valign="top" align="left" class="input_txt" width="50%">
+                  <td valign="middle" align="left" class="input_txt" width="40%">Completed By  :</td>
+                  <td valign="top" align="left" class="input_txt" width="40%">
                   
                    <select id="completed_by" name="completed_by" class="dropdown"  >
               <option value = "">--Select --</option>
@@ -221,13 +218,17 @@
 			                <br>  <span id="completed_by1" style="color:red"></span>
                  <!--  <input type="text" name="completed_by" class="input_txtbx" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /> --><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
                 </tr>
-                <tr class="row2">
-              
-               <td valign="top" align="left" class="input_txt"width="50%">Notes  :</td>
-               <td valign="top" align="left"  class="input_txt"width="50%"><textarea class="input_txtbx"  name="notes" id="notes" style="height: 89px;" ></textarea><br/>
-               <span id="notes1" style="color:red"></span>
-               <span class="err"><form:errors path="Maintenance.notes"></form:errors></span></td>
-            </tr>
+                <tr class="row1">
+                  <td valign="top" align="left" class="input_txt" width="10%">Reference  :</td>
+                  <td valign="top" align="left" class="input_txt" width="20%">
+                  <div id="reference1"></div><br>
+                  <div id="reference2"></div><br>
+                  <div id="reference3"></div><br>
+                  <div id="reference4"></div><br>
+                  <div id="reference5"></div>
+                  
+                  </td>
+                </tr>
           <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
                    <td valign="top" align="left">&nbsp;</td>
@@ -273,14 +274,7 @@
         });
  
 </script>
-            <script>
-            function toggle(value){
-            	
-            if(value!=null)
-            	equipmentid.value=value;
-            
-            }
-            </script>
+          
  <script>
 $(document).ready(function()
 {
@@ -559,7 +553,7 @@ function validation()
 		}
 	else if(equipment_id.length < 4 || equipment_id.length > 32)
 		{
-		document.getElementById("equipment_id1").innerHTML="Field should be length of 4 to 32";
+		document.getElementById("equipment_id1").innerHTML="Required field should be length of 4 to 32";
 		error="true";
 		}
 	else{
@@ -578,7 +572,7 @@ function validation()
 	}
 	else if(equipment_name.length < 4 || equipment_name.length > 32)
 	{
-	document.getElementById("equipment_name1").innerHTML="Field should be length of 4 to 32";
+	document.getElementById("equipment_name1").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -600,7 +594,7 @@ function validation()
 	}
 	else if(equipment_model.length < 4 || equipment_model.length > 32)
 	{
-	document.getElementById("equipment_model1").innerHTML="Field should be length of 4 to 32";
+	document.getElementById("equipment_model1").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -622,7 +616,7 @@ function validation()
 	}
 	else if(serial_number.length < 4 || serial_number.length > 32)
 	{
-	document.getElementById("serial_number1").innerHTML="Field should be length of 4 to 32";
+	document.getElementById("serial_number1").innerHTML="Required field should be length of 4 to 32";
 	error="true";
 	}
 	else{
@@ -659,7 +653,7 @@ function validation()
 	 
 	 if(frequency_maintenance == "")
 	 {
-	 document.getElementById("frequency_maintenance1").innerHTML="Select atleast one";
+	 document.getElementById("frequency_maintenance1").innerHTML="Required field should not be empty";
 	 error="true";
 	 }
  	else
@@ -672,7 +666,7 @@ function validation()
 		 document.getElementById("frequencyofmaintenance1").innerHTML="";
 		 }
 	 else{
-		 document.getElementById("frequencyofmaintenance1").innerHTML="Please check atleast one";
+		 document.getElementById("frequencyofmaintenance1").innerHTML="Please select atleast one";
 		 error="true";
 		 
 	 }
@@ -690,7 +684,7 @@ function validation()
 		}
 	  else if(instructions.length < 4 || instructions.length > 400 )
 			 {
-			 document.getElementById("instructions1").innerHTML="Field should be length of 4 to 400";
+			 document.getElementById("instructions1").innerHTML="Required field should be length of 4 to 400";
 			 error="true";
 			 }
 		 else{
@@ -737,7 +731,7 @@ function validation()
 	 
 	 if(completed_by == "")
 	 {
-	 document.getElementById("completed_by1").innerHTML="Please select one";
+	 document.getElementById("completed_by1").innerHTML="Required field should not be empty";
 	 error="true";
 	 }
  	else
@@ -759,7 +753,7 @@ function validation()
 		}
 		else if(notes.length < 4 || notes.length > 400 )
 			 {
-			 document.getElementById("notes1").innerHTML="Field should be length of 4 to 400";
+			 document.getElementById("notes1").innerHTML="Required field should be length of 4 to 400";
 			 error="true";
 			 }
 		 else{
@@ -779,6 +773,14 @@ function ChangeCase(elem)
 }
 
 </script> 
+  <script>
+            function toggle(value){
+            	
+            if(value!=null)
+            	equipmentid.value=value;
+            
+            }
+            </script>
 <script>
 	
 	window.onload = function(){
