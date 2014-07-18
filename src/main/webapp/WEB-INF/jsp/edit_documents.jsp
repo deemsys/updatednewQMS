@@ -389,14 +389,15 @@ $(window).load(function(){
              <input type="submit" align="left" id="submit"  name="submit" value="Update" onclick="return validation();" class="submit_btn1" style="margin-left:105%;"></td>
           
         </tr> -->
-          <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
-               
-                </tr>
+          
         </table>
         </td>
         
         </tr>
+        <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right" style="padding-right: 195px">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+               
+                </tr>
         </table>
         </div>
         </form>

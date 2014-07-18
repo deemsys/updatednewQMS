@@ -178,7 +178,7 @@
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_form?auto_no=${form.auto_no}"/>" style="padding-right:10px;">Edit</a>
 											<!-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="show_more_views" href="#" data-bind-action="toggle-content">View Revision History</a>
 											 -->
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>#current">View Revision History</a>
+											<%-- <a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>#current">View Revision History</a> --%>
 											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a id="element_to_pop_up"  onclick="popupwindow()" href="<c:out value="review_history_form?auto_no=${form.auto_no}"/>" >View Revision History</a>
 											</td>
 										</tr>

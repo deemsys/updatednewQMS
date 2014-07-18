@@ -366,15 +366,17 @@
               <td colspan="3" align="right">
              <input type="submit" id="export"  name="export" value="Update" onclick="return validation();"  class="submit_btn1"></td>
             </tr> -->
-   <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+  
+     </table>   
+       <tr class="row1"  align="right" >
+                  <td valign="bottom"  style="padding-right:105px" align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
                  
                 </tr>
-     </table>
      </div>
      </div>
      </td>
      </tr>
+    
      </table>
      </div>
      </form>

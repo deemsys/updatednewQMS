@@ -334,13 +334,14 @@
                    <input type="submit" id="export" onclick="return validation();"  name="export" value="Submit" class="submit_btn1"></td>
              
 					</tr> -->
-					  <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit"name="export" onclick="return validation();"class="submit_btn1"></td>
-                 
-                </tr>
+					
 					</table>
 					</div>
 					</td>
+					  <tr class="row1">
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:165px">&nbsp;<input type="submit" value="Submit"name="export" onclick="return validation();"class="submit_btn1"></td>
+                 
+                </tr>
 					</table>
 					
 				
