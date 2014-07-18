@@ -94,7 +94,8 @@
               
                <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();" onkeypress="return onlynumeric(event,this);"/>
                <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
-               </td></tr>
+               </td>
+               </tr>
                <!-- <tr><td colspan="2"><span id="documentiderror" style="color:red"></span></td></tr> --></table>
             
               <c:if test="${fail=='fail'}">
@@ -102,6 +103,8 @@
 						<span style="color:red">Required Field Should not be Blank</span>
 						</p>
               </c:if>
+              <br>
+                <c:if test="${success=='exist'}"><span style="color:red">Document ID already Exist</span></c:if>
               </td>
               
               
