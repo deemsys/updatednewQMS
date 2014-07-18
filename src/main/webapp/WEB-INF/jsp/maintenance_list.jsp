@@ -74,7 +74,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Maintenance List</h2>
+			          <h2>Search Maintenance and Calibration Details</h2>
 			        </div>
 			        <div class="contentbox">
 

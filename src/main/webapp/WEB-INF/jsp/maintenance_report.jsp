@@ -57,7 +57,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>Maintenance Report </h2>
+					<h2>Maintenance and Calibration Details Reports </h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="maintanence_report">

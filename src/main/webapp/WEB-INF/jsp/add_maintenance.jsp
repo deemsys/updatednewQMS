@@ -56,7 +56,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" style="padding-left:38px" class="input_txt" width="45%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="60%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="ChangeCase(this);toggle(this.value);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="60%"><input type="text" maxlength="32" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="ChangeCase(this);toggle(this.value);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br>
                   <span id="equipment_id1" style="color:red"></span>
                   <c:if test="${success=='exist'}"><span style="color:red">Equipment ID already Exist</span></c:if>
@@ -64,19 +64,19 @@
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="45%" style="padding-left:38px">Equipment Name  :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_name" maxlength="32" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                   <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="40%" style="padding-left:38px">Equipment Model  :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_model" maxlength="32" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                  <br>  <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="40%" style="padding-left:38px">Serial Number  :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="serial_number" maxlength="32" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
                    <br><span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>

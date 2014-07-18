@@ -59,7 +59,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2 style="padding-left:6px">Maintenance and Calibration Details</h2>
+              <h2 style="padding-left:6px">Update Maintenance and Calibration Details</h2>
             </div>  
             <div class="contentbox">
          <div style="border:#993300  2px solid; padding:25px; margin-bottom:15px; margin-left:10px;">
@@ -78,19 +78,19 @@
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Equipment Name  :</td>
-                  <td valign="top" align="left" class="input_txt" style="padding-left: 15px;"width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
+                  <td valign="top" align="left" class="input_txt" style="padding-left: 15px;"width="50%"><input type="text" name="equipment_name" maxlength="32" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
                    <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Equipment Model  :</td>
-                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="text" name="equipment_model" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="text" name="equipment_model" maxlength="32" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_model}" />
                     <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Serial Number  :</td>
-                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="text" name="serial_number" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
+                  <td valign="top" align="left" class="input_txt"style="padding-left: 15px;" width="50%"><input type="text" name="serial_number" maxlength="32" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.serial_number}" />
                    <span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
@@ -245,7 +245,7 @@
           </table>
             
                   <tr class="row1">
-                  <td valign="bottom" colspan="2"align="right">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="2"align="right" style="padding-right: 40px">&nbsp;<input type="submit" value="Update" onclick="return validation();"class="submit_btn1"></td>
                   <td valign="top" align="left"></td>
                 </tr>
           </td>
