@@ -32,6 +32,55 @@ else
 	}
 }	
 </script>
+
+<script>
+
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+
+</script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
 </head>
 <div id="right_content">
 
@@ -150,9 +199,9 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">ID&nbsp;:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" id="id" value="${cusid}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" placeholder="C1001" id="id" value="${cusid}" onblur="ChangeCase(this);"   onkeypress="return AlphabetsNumber(event,this);"></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Name&nbsp;:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" value="${cusname}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" maxlength="32" value="${cusname}" onkeypress="return Alphabets(event,this);" ></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Address&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${cusaddress}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
@@ -259,7 +308,12 @@ else
 		
 		</table></div>
 		<table height="2%"><tr><td></td></tr></table>
-								
+			<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>					
 <script  language="javascript">
 
 $(function () {

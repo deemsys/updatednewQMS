@@ -32,6 +32,76 @@ else
 	}
 }	
 </script>
+<script>
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+</script>
+
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
+<script>
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+</script>
+<script>
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+</script>
 </head>
 <div id="right_content">
 
@@ -149,12 +219,12 @@ else
 							  <tr>
 							    <td align="left" valign="middle" width="25%">ID&nbsp;:</td>
 							    <td align="left" valign="middle" width="5%">
-							    <input type="text" name="equipment_id" class="input_txtbx" id="equipment_id"  value="${equipid}">
+							    <input type="text" name="equipment_id" class="input_txtbx" id="equipment_id"  value="${equipid}" maxlength="10" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);">
 							    </td>
 							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name&nbsp;:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name"
+							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx" maxlength="32"  id="equipment_name"
 							    
-							     value="${equipname}">
+							     value="${equipname}" onkeypress="return Alphabets(event,this);">
 							    </td>
 							    
 							  	<td align="center" valign="middle" width="30%">
