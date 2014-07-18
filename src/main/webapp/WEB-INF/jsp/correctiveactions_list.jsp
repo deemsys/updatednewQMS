@@ -82,11 +82,11 @@
 							    <td align="left" valign="middle" width="10%">CAPA ID :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Request date :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"><span style="color: red;" id="datepickererr"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;Actions :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx" value="${action}"></td>
 							    <td align="center" valign="middle" width="38%">
-							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');" /></td>
+							  <input type="submit" class="submit_btn1" name="search" value="Search" id="id_submit" onmouseover="showTooltip('tooltip_id','inp_id3');"/></td>
 							  </tr>
 	</table></div></form>
 			      <form action="correctiveactions_list" method="POST"> 
@@ -198,7 +198,33 @@ function confirmation() {
            $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
          });
  
-</script>   
+</script>
+<!-- <script>
+function validation()
+{
+	var error="";
+	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
+	var datepicker = document.getElementById('datepicker').value;
+	if(datepicker == "")
+	 {
+		
+	 document.getElementById("datepickererr").innerHTML="Required field should not be empty";
+	 error="true";
+	 
+	 }
+	 
+	else if(datepicker.match(date))
+	 {
+	 document.getElementById("datepickererr").innerHTML="";
+	 }
+	 else
+	 {
+	 document.getElementById("datepickererr").innerHTML="Invalid Date";
+	 error="true";
+	 }
+
+}
+</script>  -->  
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

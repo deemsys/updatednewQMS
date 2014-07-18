@@ -195,7 +195,7 @@ $(function() {
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" onkeypress="return Alphabets(event,this);" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx"  id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.documented_in}" /><br><span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
                                 <%--  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_notes" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${employee.training_effectiveness_notes }" /><br><span style="color: red;" ><form:errors path="Employee.training_effectiveness_notes"></form:errors></span></td>
                  --%>
                  

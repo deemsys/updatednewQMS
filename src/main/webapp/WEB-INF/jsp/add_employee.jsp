@@ -276,7 +276,7 @@ $(function() {
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.documented_in}" /><br> <span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.documented_in}" /><br> <span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
                  </tr>      
                 
                 <!--  <tr class="row1">
