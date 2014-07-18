@@ -209,7 +209,7 @@ function validate()
 			document.getElementById("userdefineerror").innerHTML="";
 			}
 		else{
-			document.getElementById("userdefineerror").innerHTML="Please Select atleast One";
+			document.getElementById("userdefineerror").innerHTML="Please select atleast One";
 			error = "true";
 		}
 	}
