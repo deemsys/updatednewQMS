@@ -74,7 +74,7 @@
 								<td valign="middle" align="left" class="input_txt" width="100%">
 								<!-- <input type="radio" name="doc_type" value="0" id="id_type_manual" checked/><br/> -->
 								
-								<input type="radio" onchange="validation1()" name="doc_type" value="0" id="id_open_supplierperformance" checked/>Open SupplierPerformance<br/>
+								<input type="radio" onchange="validation1()" name="doc_type" value="0" id="id_open_supplierperformance" checked/>&nbsp;Open SupplierPerformance<br/>
 								<!-- <input type="radio"  onclick="validation1()"  name="doc_type" value="1" id="id_disposition"/>No Disposition Over 30 Days<br/>
 								 <input type="radio" onclick="validation()" name="doc_type" value="2" id="id_cost_of_nonconformance"/>Cost of Non-Conformance<br/> 
 								 -->
@@ -89,8 +89,8 @@
 								<td valign="middle" align="right" class="input_txt" width="30%">
 									Select report type :</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
-									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>Standard Report&nbsp;&nbsp;&nbsp;
-								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>User Defined Report<br/>
+									<input type="radio" onchange="toggle3(this.value)" name="report_type" value="0" id="id_type_standard" checked/>&nbsp;Standard Report&nbsp;&nbsp;&nbsp;
+								<input type="radio" onchange="toggle3(this.value)" name="report_type" value="1" id="id_type_userdefined"/>&nbsp;User Defined Report<br/>
 									
 								</td>
 								
@@ -127,35 +127,35 @@
 								<table cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-left:-10px;">
 								
 								<tr>
-								<td><input type="checkbox" id="select_all"/>Select all</td>
+								<td><input type="checkbox" id="select_all"/>&nbsp;Select all</td>
 								</tr>
 								
 								
 								<tr>
-								<td><input type="checkbox" name="report_field[]" value="supplier_id" id="1"/>ID</td>
-								<td><input type="checkbox" name="report_field[]" value="supplier_name" id="2"/>Name</td>
-								<td><input type="checkbox" name="report_field[]" value="category" id="3"/>category</td>
+								<td><input type="checkbox" name="report_field[]" value="supplier_id" id="1"/>&nbsp;ID</td>
+								<td><input type="checkbox" name="report_field[]" value="supplier_name" id="2"/>&nbsp;Name</td>
+								<td><input type="checkbox" name="report_field[]" value="category" id="3"/>&nbsp;category</td>
 					      		
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="city" id="4"/>city</td>
-								<td><input type="checkbox" name="report_field[]" value="state" id="5"/>state</td>
-								<td><input type="checkbox" name="report_field[]" value="postalcode" id="6"/>postalcode</td>
+								<td><input type="checkbox" name="report_field[]" value="city" id="4"/>&nbsp;city</td>
+								<td><input type="checkbox" name="report_field[]" value="state" id="5"/>&nbsp;state</td>
+								<td><input type="checkbox" name="report_field[]" value="postalcode" id="6"/>&nbsp;postalcode</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="country" id="7"/>Country</td>
-								<td><input type="checkbox" name="report_field[]" value="website" id="8"/>Website</td>
-								<td><input type="checkbox" name="report_field[]" value="certified_to" id="9"/>Certified To</td>
+								<td><input type="checkbox" name="report_field[]" value="country" id="7"/>&nbsp;Country</td>
+								<td><input type="checkbox" name="report_field[]" value="website" id="8"/>&nbsp;Website</td>
+								<td><input type="checkbox" name="report_field[]" value="certified_to" id="9"/>&nbsp;Certified To</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="contact_name" id="10"/>Contact Name</td>
-								<td><input type="checkbox" name="report_field[]" value="contact_title" id="11"/>Contact Title</td>
-								<td><input type="checkbox" name="report_field[]" value="phone" id="12"/>Phone</td>
+								<td><input type="checkbox" name="report_field[]" value="contact_name" id="10"/>&nbsp;Contact Name</td>
+								<td><input type="checkbox" name="report_field[]" value="contact_title" id="11"/>&nbsp;Contact Title</td>
+								<td><input type="checkbox" name="report_field[]" value="phone" id="12"/>&nbsp;Phone</td>
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="fax" id="13"/>Fax</td>
-								<td><input type="checkbox" name="report_field[]" value="email_address" id="14"/>Email Address</td>
-								<td><input type="checkbox" name="report_field[]" value="address" id="15"/>address</td>
+								<td><input type="checkbox" name="report_field[]" value="fax" id="13"/>&nbsp;Fax</td>
+								<td><input type="checkbox" name="report_field[]" value="email_address" id="14"/>&nbsp;Email Address</td>
+								<td><input type="checkbox" name="report_field[]" value="address" id="15"/>&nbsp;address</td>
 								</tr>
 								</table>
 								
