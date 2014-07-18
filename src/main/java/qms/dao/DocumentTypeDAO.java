@@ -86,6 +86,43 @@ public class DocumentTypeDAO {
 		}
 		return documentTypes;
 	}	
+	public boolean getdocumenttypeExit(String document,String id) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		List<DocumentType> documentTypes = new ArrayList<DocumentType>();
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = "select * from tbl_documenttype where id !='"+id+"' and document_type='"+document+"'";
+			System.out.println(cmd_select);
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				documentTypes.add(new DocumentType(resultSet
+						.getString("id"), resultSet
+						.getString("document_type")
+						));
+				status = true;
+			}	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return status;
+	}	
 	//Get request method
 	public List<DocumentType> getDocumentTypes(String id){
 		Connection con = null;
