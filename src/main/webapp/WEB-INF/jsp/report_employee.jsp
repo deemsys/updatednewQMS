@@ -74,7 +74,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>Employee Report</h2>
+					<h2>Employee Details Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_employee_report">

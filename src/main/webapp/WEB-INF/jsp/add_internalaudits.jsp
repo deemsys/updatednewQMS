@@ -255,7 +255,7 @@ else{
 	
 	if(id_inpprocess =="")
 		{
-		 document.getElementById("inprocesserror").innerHTML="Please select one";
+		 document.getElementById("inprocesserror").innerHTML="Required field should not be empty";
 			error="true";
 		}
 	else{
@@ -265,7 +265,7 @@ else{
 	
 	if(auditeename =="")
 	{
-	 document.getElementById("auditeenameerror").innerHTML="Please select one";
+	 document.getElementById("auditeenameerror").innerHTML="Required field should not be empty";
 		error="true";
 	}
 else{
@@ -322,7 +322,7 @@ else{
 	 }
 	 if(finding =="")
 		 {
-		 document.getElementById("findingerror").innerHTML="Please select one";
+		 document.getElementById("findingerror").innerHTML="Required field should not be empty";
 		 error="true";
 		 }
 	 else{
@@ -331,7 +331,7 @@ else{
 	 
 	 if(auditor =="")
 	 {
-	 document.getElementById("auditorerror").innerHTML="Please select one";
+	 document.getElementById("auditorerror").innerHTML="Required field should not be empty";
 	 error="true";
 	 }
  else{

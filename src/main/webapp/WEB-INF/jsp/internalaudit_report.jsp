@@ -59,7 +59,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>Internal Audit Report </h2>
+					<h2>Internal Audits Details Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="internal_audit_report">

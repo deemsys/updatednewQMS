@@ -65,7 +65,7 @@
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>View Internal Audits</h2>
+							<h2>Search Internal Audits Details</h2>
 						</div>
 						<div class="contentbox">
 						<form action="search_audits" name="dashboard" method="GET">

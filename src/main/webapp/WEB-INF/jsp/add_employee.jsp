@@ -176,7 +176,7 @@ $(function() {
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="inp_name" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.name}"  />
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" maxlength="32" id="inp_name" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.name}"  />
                   <br/><span style="color: red;" id="nameerror"><form:errors path="Employee.name"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Type :</td>
                <td valign="top" align="left" class="input_txt" width="20%"><select	name="type_of_training" class="dropdown" id="type">
@@ -197,7 +197,7 @@ $(function() {
                	<td valign="top" align="left" class="input_txt" width="20%"><span id="job_titles"></span>&nbsp;&nbsp;
                	<%-- <a href="newjob" data-toggle="modal">Add New Job</a><br/> <span style="color: red;"><form:errors path="Employee.job_title"></form:errors></span> --%></td>
    				  <td valign="top" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx" id="trainer" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.trainer}" /><br/> <span style="color: red;" id="trainererror"><form:errors path="Employee.trainer"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx" maxlength="32" id="trainer" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.trainer}" /><br/> <span style="color: red;" id="trainererror"><form:errors path="Employee.trainer"></form:errors></span></td>
                 </tr>
                 	
 				<tr class="row1">
@@ -223,7 +223,7 @@ $(function() {
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%"> Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.date_hired}" /><br> 
+                  <input type="text" name="date_hired" class="input_txtbx"  id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.date_hired}" /><br> 
                   <span style="color: red;" id="datepickererror"><form:errors path="Employee.date_hired"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_due_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.training_due_date}" /><br>
@@ -241,11 +241,11 @@ $(function() {
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Process :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process" class="input_txtbx" id="inp_process" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.process}" /><br> 
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="process" class="input_txtbx" maxlength="32" id="inp_process" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.process}" /><br> 
                   <span id="processerror" style="color: red;"><form:errors path="Employee.process"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="process_name" class="input_txtbx" id="inp_process_name" value="${Employee.process_name}" onkeypress="return Alphabets(event,this);"/><br> 
+                  <input type="text" name="process_name" class="input_txtbx" maxlength="32" id="inp_process_name" value="${Employee.process_name}" onkeypress="return Alphabets(event,this);"/><br> 
                   <span style="color: red;" id="processnameerror"><form:errors path="Employee.process_name"></form:errors></span></td>
                 
                 </tr>
@@ -267,7 +267,7 @@ $(function() {
                 </tr>
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="20%">Functions Needs :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="list_of_functions_needes" class="input_txtbx" onkeypress="return Alphabets(event,this);" id="inp_list_of_functions_needes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.list_of_functions_needes}" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" maxlength="32" name="list_of_functions_needes" class="input_txtbx" onkeypress="return Alphabets(event,this);" id="inp_list_of_functions_needes" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.list_of_functions_needes}" /><br>
                    <span style="color: red;" id="functionneedserror"><form:errors path="Employee.list_of_functions_needes"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Review Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.training_effectiveness_review_due_date}" /><br> 
@@ -276,7 +276,7 @@ $(function() {
                 </tr>
                 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.documented_in}" /><br> <span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" maxlength="32" class="input_txtbx" id="documentedin"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Employee.documented_in}" /><br> <span style="color: red;" id="documentedinerror"><form:errors path="Employee.documented_in"></form:errors></span></td>
                  </tr>      
                 
                 <!--  <tr class="row1">
@@ -557,7 +557,7 @@ function onsubmitvalidate()
 	  if(document.getElementById("type").value=="")
 	{
 		  
-		document.getElementById("typeerror").innerHTML="Please select atleast one";	
+		document.getElementById("typeerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}
@@ -569,7 +569,7 @@ function onsubmitvalidate()
 	if(document.getElementById("qualifiedby").value=="")
 	{
 		
-		document.getElementById("qualifiedbyerror").innerHTML="Please select atleast one";	
+		document.getElementById("qualifiedbyerror").innerHTML="Required field should not be empty";	
 		error="true";
 		
 	}

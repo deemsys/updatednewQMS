@@ -53,7 +53,7 @@
       <tr> 
         <td valign="top" align="left">
         	<div class="headings altheading">
-	              <h2>Internal Audits Details</h2>
+	              <h2>Update Internal Audits Details</h2>
 	            </div>
 	            <div class="contentbox">
                             <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
@@ -261,7 +261,7 @@ else{
 	
 	if(id_inpprocess =="")
 		{
-		 document.getElementById("inprocesserror").innerHTML="Please select one";
+		 document.getElementById("inprocesserror").innerHTML="Required field should not be empty";
 			error="true";
 		}
 	else{
@@ -271,7 +271,7 @@ else{
 	
 	if(auditeename =="")
 	{
-	 document.getElementById("auditeenameerror").innerHTML="Please select one";
+	 document.getElementById("auditeenameerror").innerHTML="Required field should not be empty";
 		error="true";
 	}
 else{
@@ -328,7 +328,7 @@ else{
 	 }
 	 if(finding =="")
 		 {
-		 document.getElementById("findingerror").innerHTML="Please select one";
+		 document.getElementById("findingerror").innerHTML="Required field should not be empty";
 		 error="true";
 		 }
 	 else{
@@ -337,7 +337,7 @@ else{
 	 
 	 if(auditor =="")
 	 {
-	 document.getElementById("auditorerror").innerHTML="Please select One";
+	 document.getElementById("auditorerror").innerHTML="Required field should not be empty";
 	 error="true";
 	 }
  else{
