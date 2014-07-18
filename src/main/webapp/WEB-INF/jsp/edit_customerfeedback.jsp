@@ -66,7 +66,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Customer Feedback Details</h2>
+              <h2>Update Customer Feedback Details</h2>
             </div>
             <div class="contentbox">
                            <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
