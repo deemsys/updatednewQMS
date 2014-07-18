@@ -57,7 +57,9 @@
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${products.auto_id}"/>
                   <input type="text" name="productid_nc"  class="input_txtbx" maxlength="32" id="productidnc" onblur="ChangeCase(this);toggle(this.value);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${products.productid_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
-                   <span id="productidnc1" style="color:red"></span>
+                  <br> <span id="productidnc1" style="color:red"></span>
+                  <c:if test="${success=='exist'}"><span id="alreadyerror"style="color:red">Product ID already exist</span></c:if>
+                   
                   <span class="err"><form:errors path="ProductIDNC.productid_nc"></form:errors></span>
                   
                   </td>
@@ -123,15 +125,19 @@
             	   if(productidnc == "")
             		   {
             		   document.getElementById("productidnc1").innerHTML="Required Field Should not be Empty";
+            		   document.getElementById("alreadyerror").innerHTML="";
             			 return false;
             		   }
             	   else if(productidnc.charAt(0)==" ")
             		   {
             		   document.getElementById("productidnc1").innerHTML="Should not accept initial space";
+            		   document.getElementById("alreadyerror").innerHTML="";
           			 return false;
             		   }
-            	   else if(productidnc.length<4)
+            	   else if((productidnc.length<4) || (productidnc.length > 15))
         		   {
+        		   document.getElementById("productidnc1").innerHTML="Required and must be of length 4 to 15";
+        		   document.getElementById("alreadyerror").innerHTML="";
         		   document.getElementById("productidnc1").innerHTML="Required field should be of length 4 to 32";
         			 return false;
         		   }
@@ -142,6 +148,7 @@
             	   else
             		   {
             		   document.getElementById("productidnc1").innerHTML="Required Field Should be Captial Alpha-Numeric";
+            		   document.getElementById("alreadyerror").innerHTML="";
             			 return false;
             		   
             		   }
