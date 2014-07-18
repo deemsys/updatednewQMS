@@ -121,7 +121,7 @@
                   <td valign="middle" align="left" class="input_txt" ><input type="submit" class="submit_btn1" value="Update" id="id_submit"style="width:170px;" onclick="return validate();"onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   </tr> -->
                     <tr class="row1">
-                  <td valign="bottom" colspan="2"align="right">&nbsp;<input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="2"align="right" style="padding-right:658px;">&nbsp;<input type="submit" value="Update" onclick="return validate();"class="submit_btn1"></td>
                   <td valign="top" align="left"></td>
                 </tr>
                   

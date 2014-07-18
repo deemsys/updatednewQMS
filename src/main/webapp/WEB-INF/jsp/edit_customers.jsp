@@ -53,7 +53,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Add Customer</h2>
+              <h2>Update Customer Details</h2>
             </div>
             <div class="contentbox">
             <c:set value="${customersForm.customers[0]}" var="customers"/>

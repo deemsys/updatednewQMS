@@ -61,7 +61,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Customers Details</h2>
+              <h2>Customer Details</h2>
             </div>
             <div class="contentbox">
             <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
@@ -145,7 +145,7 @@
                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="submit" value="Submit" id="Submit" onclick="return validate();"class="submit_btn1"></td>
                 </tr> -->
                   <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right" style="padding-right:60px;">&nbsp;<input type="submit" value="Submit" onclick="return validate();" class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:107.8px;">&nbsp;<input type="submit" value="Submit" onclick="return validate();" class="submit_btn1"></td>
                   
                 </tr>
               </table>
