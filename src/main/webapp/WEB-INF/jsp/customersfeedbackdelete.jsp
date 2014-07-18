@@ -1,6 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+ <script src="resources/js/jquery-ui.js"></script>
 <head>
 <script  language="javascript">
 function validate()
@@ -31,6 +34,13 @@ else
 	return false;
 	}
 }	</script>
+
+<script>
+ $(function() {
+           $( "#datepicker" ).datepicker();
+         })
+ 
+</script>
 </head>
 <div id="right_content">
 
@@ -149,9 +159,9 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker" class="input_txtbx" value="${date}" ></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="date_of_feedback" id="datepicker"  class="input_txtbx" value="${date}" ></td>
 							    <td width="10%"></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;Type of Feedback: </td>
+							    <td align="left" valign="middle" width="10%">&nbsp;Type of Feedback : </td>
 							    <td align="left" valign="middle" width="10%">
 							    <!-- <input type="text" name="type_of_feedback" id="type" class="input_txtbx"></td> -->
 							    
