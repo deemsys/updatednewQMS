@@ -127,6 +127,26 @@ public class FormController
 		String auto_number=request.getParameter("auto_no");
 		System.out.println("auto-number"+auto_number);
 		
+		
+		
+		System.out.println("record Starus = "+formDAO.list_formExit(auto_number,form_id));
+
+	
+		if(formDAO.list_formExit(auto_number,form_id))
+		{
+			System.out.println("exit");
+			load_document_page_dropdowns(model);
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+			
+			model.addAttribute("id", formDAO.get_formid());
+			  model.addAttribute("menu","document");
+			
+			
+			model.addAttribute("success","exist");
+			return "add_form";
+		}
 	//	form.setForm_or_rec_id(request.getParameter("document_type_id") + '-'	+ form.getForm_or_rec_id());
 		/*form.setAuto_no(request.getParameter("document_type_id1") + '-' + form.getAuto_no());*/
 		System.out.println("Started Inserting documents");
