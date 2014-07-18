@@ -83,13 +83,13 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    
-							    <td align="left" valign="middle"width="3%">ID  :</td>
+							    <td align="left" valign="middle"width="8%">Equipment ID  :</td>
 							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_id" class="input_txtbx" id="equipment_id" value="${equipid}" onblur="ChangeCase(this)"onkeypress="return AlphabetsNumber(event,this);">
 							     <br><span id="searcherror1" style="color:red"></span>
 							    </td>
 							    <td align="center" valign="middle" width="12%">
 							    <td align="left" valign="middle" width="10%">Equipment Name  :</td>
-							    <td align="left" valign="middle"width="2%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onkeypress="return Alphabets(event,this);"">
+							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onkeypress="return Alphabets(event,this);"">
 							     <br><span id="searcherror2" style="color:red"></span>
 							
 							    </td>
