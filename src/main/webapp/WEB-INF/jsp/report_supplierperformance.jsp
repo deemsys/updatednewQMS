@@ -134,13 +134,13 @@
 								<tr>
 								<td><input type="checkbox" name="report_field[]" value="supplier_id" id="1"/>&nbsp;ID</td>
 								<td><input type="checkbox" name="report_field[]" value="supplier_name" id="2"/>&nbsp;Name</td>
-								<td><input type="checkbox" name="report_field[]" value="category" id="3"/>&nbsp;category</td>
+								<td><input type="checkbox" name="report_field[]" value="category" id="3"/>&nbsp;Category</td>
 					      		
 					      		</tr>
 					      		<tr>
-								<td><input type="checkbox" name="report_field[]" value="city" id="4"/>&nbsp;city</td>
-								<td><input type="checkbox" name="report_field[]" value="state" id="5"/>&nbsp;state</td>
-								<td><input type="checkbox" name="report_field[]" value="postalcode" id="6"/>&nbsp;postalcode</td>
+								<td><input type="checkbox" name="report_field[]" value="city" id="4"/>&nbsp;City</td>
+								<td><input type="checkbox" name="report_field[]" value="state" id="5"/>&nbsp;State</td>
+								<td><input type="checkbox" name="report_field[]" value="postalcode" id="6"/>&nbsp;Postalcode</td>
 					      		</tr>
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="country" id="7"/>&nbsp;Country</td>
@@ -155,7 +155,7 @@
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="fax" id="13"/>&nbsp;Fax</td>
 								<td><input type="checkbox" name="report_field[]" value="email_address" id="14"/>&nbsp;Email Address</td>
-								<td><input type="checkbox" name="report_field[]" value="address" id="15"/>&nbsp;address</td>
+								<td><input type="checkbox" name="report_field[]" value="address" id="15"/>&nbsp;Address</td>
 								</tr>
 								</table>
 								
