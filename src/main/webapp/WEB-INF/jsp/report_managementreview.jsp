@@ -237,7 +237,7 @@ function validation()
  		}
  		else
  		{
- 			document.getElementById("reporterror").innerHTML= "Please Select Atleast one";
+ 			document.getElementById("reporterror").innerHTML= "Please select atleast one";
  			error = "true";	
  		}
  		
