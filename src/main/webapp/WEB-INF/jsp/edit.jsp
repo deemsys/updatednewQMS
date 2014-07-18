@@ -135,9 +135,9 @@ function validation()
 		document.getElementById("perr").innerHTML="Required field should not accept initial space";
 		 error="true";
 	}
-	else if((password.length < 4) ||(password.length > 32))
+	else if((password.length < 3) ||(password.length > 32))
 	{
-	document.getElementById("perr").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("perr").innerHTML="Required field should be length of 3 to 32";
 	error="true";
 	
 	}
@@ -175,6 +175,55 @@ else{
 		}
 	    
 }
+
+</script>
+<script>
+
+
+function usernamevalidation(e, t) {
+	
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode==64) || (charCode==46) || (charCode==95) || (charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+</script>
+<script>
+function usernamevalidation1(e, t) {
+	
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode==64) || (charCode > 32 && charCode < 48) || (charCode > 57 && charCode < 64) || (charCode > 90 && charCode < 97) || (charCode > 122 && charCode < 127) || (charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
 
 </script>
 <script>
@@ -219,7 +268,7 @@ function AlphabetsNumber(e, t) {
   		});
   		});
       $(function() {
-  		$("#email").on("keypress", function(e) {
+    	  $("#email").on("keypress", function(e) {
   			if (e.which === 32 && !this.value.length)
   		        e.preventDefault();
   		});
@@ -273,7 +322,7 @@ function AlphabetsNumber(e, t) {
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
 		      <td  style="width:70%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;UserName:</font></b></td>
-		       <td style="width: 512px; "> <sf:input path="username" id="username" onInput="return validateAlpha1();" size="30" maxlength="32" />
+		       <td style="width: 512px; "> <sf:input path="username" id="username" onkeypress="return usernamevalidation(event,this);" size="30" maxlength="32" />
              <!--  <b><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</font></b> <small id="username_msg"></small><br/> -->
              <span id="uerr" style="color: red;font-style:italic;"></span>
 		        </table>
@@ -285,7 +334,7 @@ function AlphabetsNumber(e, t) {
 		      <td style="width:70%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;Password:</font></b></td>
 		      
-		      <td style="width: 512px; "><sf:password class="input_txt" path="password" id="password" size="30"  maxlength="32" showPassword="true"/> 
+		      <td style="width: 512px; "><sf:password class="input_txt" path="password" id="password" size="30"  maxlength="32" showPassword="true" onkeypress="return usernamevalidation1(event,this);"/> 
              <!-- <small>6 characters or more (be tricky!)</small><br/> -->
               <span id="perr" style="color: red;font-style:italic;"></span>
 		      </td>
