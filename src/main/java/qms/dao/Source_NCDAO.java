@@ -188,6 +188,42 @@ public class Source_NCDAO {
 	    return sources;
 		
 	}
+	public boolean sourcesExit(String source,int id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit = false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		List<Non_Conformance_Source> sources = new ArrayList<Non_Conformance_Source>();
+	    try{
+	    	String cmd_select = "select * from tbl_source_nc  where auto_id !='"+id+"' and source_of_nc='"+source+"'";
+			resultSet = statement.executeQuery(cmd_select);
+			while(resultSet.next()){
+				
+				sources.add(new Non_Conformance_Source(resultSet.getInt("auto_id"),resultSet.getString("source_of_nc")));
+				exit = true;
+			}
+			
+			
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
+	}
 	//Update Operation
 	public boolean update_Source(Non_Conformance_Source sources) {
 		Connection con = null;
