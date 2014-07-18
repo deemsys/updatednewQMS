@@ -98,7 +98,7 @@
 							  <tr>
 							 <td align="center" valign="middle" width="5%">
 							    <td align="left" valign="middle" width="2%" style="width: 121px; ">Date of Feedback : </td>
-							    <td align="left" valign="middle" width="20%"><input type="text" name="date_of_feedback" id="datepicker"  value="${date}" class="input_txtbx" >
+							    <td align="left" valign="middle" width="20%"><input type="text" name="date_of_feedback" id="datepicker" readonly="readonly" value="${date}" class="input_txtbx" >
 							    <br><span id="datepicker11" style="color:red"></span>
 							    </td>
 							   

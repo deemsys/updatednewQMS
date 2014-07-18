@@ -130,7 +130,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">ZipCode :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH43230" maxlength="8" onkeyup="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br>
                   	<span id="zipcodeerror" style="color:red"></span><span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                   </tr>
                 <!--   <tr class="row2">
@@ -307,10 +307,54 @@ $(function() {
     }
 
 
+    function AlphabetsNumber1(e, t) {
+        try {
+        
+        	
+            if (window.event) {
+                var charCode = window.event.keyCode;
+            }
+            else if (e) {
+                var charCode = e.which;
+            }
+            
+            else { return true; }
+           /*  if(t.value.substring(0,1))
+            	{
+            	alert()
+            	alert(e.which);
+            	} */
+            if(t.value.length<2)
+            	{
+            if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+                return true;
+            else
+                return false;
+            	}
+            if(t.value.length==2)
+            	{
+            	
+            	t.value+=" ";
+            	}
+            
+            
+            if(t.value.length>=2)
+        	{
+            	
+        if ((charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+        	
+        	}
+        }
+        catch (err) {
+            alert(err.Description);
+        }
+    }
 
 
-
-    function AlphabetsNumber(e, t) {
+   function AlphabetsNumber(e, t) {
         try {
             if (window.event) {
                 var charCode = window.event.keyCode;
@@ -327,7 +371,7 @@ $(function() {
         catch (err) {
             alert(err.Description);
         }
-    }
+    } 
 
     </script>
      <script type="text/javascript">
