@@ -340,6 +340,59 @@ public class DocumentController {
 		session.setAttribute("documentMain",documentMain1);
 		//System.out.println("attachment name= "+documentMain.getAttachment_name());
 		//System.out.println("attachments = "+documentMain.getAttachments()+request.getParameter("attachments"));
+		DocumentMainForm documentMainForm2=new DocumentMainForm();
+		String doc = documentMain1.getDocument_id();
+		String[] indx = doc.split(",");
+		System.out.println("index0"+indx[0]+"index1"+indx[1]+"index2"+indx[2]);
+		System.out.println("docu id = "+documentMain1.getDocument_id());
+		System.out.println("Auto Number = =" +documentMain1.getAuto_number()) ;
+		int siz = documentControlDAO.getDocumentsexit(indx[2],documentMain1.getAuto_number());
+		if(siz > 0)
+		{
+			session.removeAttribute("documentMain");
+			String auto_number=documentMain1.getAuto_number();
+			System.out.println("auto number=" +auto_number);
+			documentControlDAO.changeRevisionFormat(auto_number);
+			DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+			documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getLevelFormat());
+			model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+			
+			load_document_page_dropdowns(model);
+			
+			DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+			documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype());
+			model.addAttribute("documentTypeForm",documentTypeForm);
+
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm", processForm);
+
+			
+			RevisionDocumentForm revisionDocumentForm = new RevisionDocumentForm();
+			revisionDocumentForm.setRevisionDocuments(revisionDocumentDAO.getRevision(auto_number));
+			model.addAttribute("revisionDocumentForm",revisionDocumentForm);
+			
+			DocumentMainForm documentMainForm=new DocumentMainForm();
+			documentMainForm.setDocumentMains(documentControlDAO.getDocument_byid(auto_number));
+			
+			
+			DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
+			documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+			model.addAttribute("documentPrefixForm",documentPrefixForm);
+			
+			FormLocationForm formLocationForm = new FormLocationForm();
+			formLocationForm.setFormLocations(formLocationDAO.getlocation());
+			model.addAttribute("formLocationForm",formLocationForm);
+			
+			
+			
+			
+			model.addAttribute("documentMainForm",documentMainForm);
+			
+			
+			model.addAttribute("success","exist");
+	        return "edit_documents";
+		}
 		if(result.hasErrors())
 		{
 			session.removeAttribute("documentMain");
