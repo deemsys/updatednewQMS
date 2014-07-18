@@ -78,11 +78,11 @@
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle">Supplier name:</td>
+							    <td align="left" valign="middle">Supplier Name :</td>
 							    <td align="left" valign="middle"><input type="text" name="supplier_name" onkeypress="return onlyAlphabets(event,this);" class="input_txtbx" id="name"  value="${suppliername}"></td>
-							    <td align="left" valign="middle">&nbsp;&nbsp;Phone:</td>
-								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" onkeypress="return validate(event);" class="input_txtbx" value="${phone}"></td>							    
-							    <td align="left" valign="middle">&nbsp;&nbsp;Email:</td>
+							    <td align="left" valign="middle">&nbsp;&nbsp;Phone :</td>
+								<td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="phone" id="phone" onkeypress="return validate(event);" maxlength="10" class="input_txtbx" value="${phone}"></td>							    
+							    <td align="left" valign="middle">&nbsp;&nbsp;Email :</td>
 							    <td align="left" valign="middle">&nbsp;&nbsp;<input type="text" name="email_address" id="mail" class="input_txtbx" value="${email}"></td>
 							    <td align="center" valign="middle"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformance" ></td>
 							  	
