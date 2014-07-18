@@ -536,7 +536,26 @@ public class DocumentController {
 		session.setAttribute("documentMain",documentMain);
 		// Started to handle upload document
 		System.out.println(documentMain.getAttachment_name());
-		
+	//	getDocuments
+		DocumentMainForm documentMainForm2=new DocumentMainForm();
+		System.out.println("record Status = "+documentControlDAO.getDocumentsExit(doc_id));
+		if(documentControlDAO.getDocumentsExit(doc_id))
+		{
+			load_document_page_dropdowns(model);
+			
+			DocumentRevisionLevelForm documentRevisionLevelForm = new DocumentRevisionLevelForm();
+			documentRevisionLevelForm.setDocumentRevisionLevels(documentRevisionLevelDAO.getLevelFormat());
+			model.addAttribute("documentRevisionLevelForm",documentRevisionLevelForm);
+			
+			FormLocationForm formLocationForm = new FormLocationForm();
+			formLocationForm.setFormLocations(formLocationDAO.getlocation());
+			model.addAttribute("formLocationForm",formLocationForm);
+			
+			documentMainForm2.setDocumentMains(documentControlDAO.getDocuments());
+			model.addAttribute("documentMainForm2",documentMainForm2);
+			model.addAttribute("success","exist");
+	        return "add_documents";
+		}
 		
 		if(result.hasErrors() || doc_id.equals(""))
 		{
