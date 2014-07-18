@@ -137,6 +137,7 @@
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 60px">Document Type :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="document_type" maxlength="32"  class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"  onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="documenttype1" style="color:red"></span>
+                <c:if test="${success=='exist'}"><br><span style="color:red">Document type already exist</span></c:if>
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span></td>
                 </tr>
                 <tr height="10"></tr>
