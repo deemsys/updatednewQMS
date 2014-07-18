@@ -62,7 +62,7 @@
                   <td valign="top" align="left" class="input_txt" width="20%">Supplier ID :</td>
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" id="inp_id"  value="<c:out value="${supplierperformance.supplier_id }"/>"/><c:out value="${supplierperformance.supplier_id }"/><br/><span style="color: red;"><form:errors path="SupplierPerformance.supplier_id"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" width="20%">Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"><form:errors path="SupplierPerformance.website"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="website" placeholder="www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"><form:errors path="SupplierPerformance.website"></form:errors></span></td>
                 
                 </tr>                                                                                
                   <tr class="row1">
@@ -120,12 +120,12 @@
               	<td valign="top" align="left" class="input_txt" >State :</td>
               	<td valign="top" align="left" class="input_txt" ><input type="text" name="state" onkeypress="return onlyAlphabets(event,this);" class="input_txtbx" id="inp_state" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="SupplierPerformance.state"></form:errors></span></td>
               	  <td valign="top" align="left" class="input_txt" >Fax :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="12" placeholder="+12345678901" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="10"  placeholder="6143229928" onkeypress="return Number(event,this);" name="fax" class="input_txtbx" id="inp_fax" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="SupplierPerformance.fax"></form:errors></span></td>
                 
               	</tr>
                 <tr class="row2">
 				<td valign="top" align="left" class="input_txt" >Postal code :</td>
-				<td valign="top" align="left" class="input_txt" ><input type="text" name="postalcode" placeholder="10001" maxlength="5" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" ><input type="text" name="postalcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt">Email :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;"id="emailerror"><form:errors path="SupplierPerformance.email_address"></form:errors></span></td>
                 
@@ -240,6 +240,97 @@ function validatename(id)
 	textInput = textInput.replace(/[^A-Za-z ]/g, "");
 	document.getElementById(id).value = textInput;
 }
+</script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
+<script>
+function AlphabetsNumber1(e, t) {
+    try {
+    
+    	
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        
+        else { return true; }
+       /*  if(t.value.substring(0,1))
+        	{
+        	alert()
+        	alert(e.which);
+        	} */
+        if(t.value.length<2)
+        	{
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+            return true;
+        else
+            return false;
+        	}
+        if(t.value.length==2)
+        	{
+        	
+        	t.value+=" ";
+        	}
+        
+        
+        if(t.value.length>=2)
+    	{
+        	
+    if ((charCode >47 && charCode < 58))
+        return true;
+    else
+        return false;
+    	
+    	}
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+function Number(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+</script>
+
+ <script>
+i=0;
+$(document).ready(function(){
+$("#inp_fax").blur(function(){
+var phone=document.getElementById("inp_fax").value;
+phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
+document.getElementById("inp_fax").value=phone;
+ });  
+$("#inp_fax").focus(function(){
+	
+	var phone=document.getElementById("inp_fax").value;
+	phone = phone.replace("-","");
+	phone = phone.replace("-","");
+	document.getElementById("inp_fax").value=phone;
+	 }); 
+});
 </script>
 <script>
 
@@ -472,17 +563,17 @@ function validatename(id)
 		{
 		document.getElementById("postalerror").innerHTML="Required field should not be empty";
 		error="true";
-		}else if(document.getElementById("inp_postalcode").value.length>5)
+		}else if(document.getElementById("inp_postalcode").value.length<4 || document.getElementById("inp_postalcode").value.length>=8)
 	    {
 	    
-	    	document.getElementById("postalerror").innerHTML="Field should be of length 5";
+	    	document.getElementById("postalerror").innerHTML="Field should be of length 4 to 8";
 	    	 error="true";
 	    } 
-		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
+		/* else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
 	    {
 	    	document.getElementById("postalerror").innerHTML="Invalid postalcode format";
 	    	error="true";
-	    }
+	    } */
 	    else if(document.getElementById("inp_postalcode").value.match(zero))
 	    	{
 	    	document.getElementById("postalerror").innerHTML="Invalid postalcode";
@@ -510,8 +601,8 @@ function validatename(id)
 
 	    
 
-	    var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-		  
+	   // var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+		  var website= /^[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
 	    if(document.getElementById("inp_website").value=="")	
 		{
 		document.getElementById("websiteerror").innerHTML="Required field should not be empty";
