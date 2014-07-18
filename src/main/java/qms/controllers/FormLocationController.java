@@ -56,7 +56,12 @@ public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @
 			model.addAttribute("Success","true");
 	        return "add_formlocation";
 		}
-	
+		if(formLocationDAO.getlocationexit(formLocation.getForm_location(),formLocation.getLocation_id()))
+		{
+			model.addAttribute("success","exist");
+			model.addAttribute("menu","admin");
+			return "add_formlocation";
+		}
 		//formprefixDAO.insert_PrefixForm(formPrefix);
 		formLocationDAO.insert_LocationForm(formLocation);
 		FormLocationForm formLocationForm = new FormLocationForm();
@@ -95,7 +100,15 @@ public String update_formlocation(ModelMap model,@ModelAttribute("FormLocation")
 		model.addAttribute("formLocationForm",formLocationForm);
         return "edit_formlocation";
 	}
-	
+	if(formLocationDAO.getlocationexit(formLocation.getForm_location(),formLocation.getLocation_id()))
+	{
+		FormLocationForm formLocationForm = new FormLocationForm();
+		model.addAttribute("success","exist");
+		formLocationForm.setFormLocations(formLocationDAO.getformLocations(formLocation.getLocation_id()));
+		model.addAttribute("formLocationForm",formLocationForm);
+		model.addAttribute("menu","admin");
+	    return "edit_formlocation";
+	}
 	
 	formLocationDAO.update_formlocation(formLocation);
 	FormLocationForm formLocationForm = new FormLocationForm();
