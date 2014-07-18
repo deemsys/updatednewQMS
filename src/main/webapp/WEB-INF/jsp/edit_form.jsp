@@ -45,7 +45,7 @@
               <h2>&nbsp;&nbsp;Update Form</h2>
             </div>
             <div class="contentbox">
-            <h1 style="color:#7A3A3A;font-size:20px;">Edit Form Details</h1>
+         <!--    <h1 style="color:#7A3A3A;font-size:20px;">Edit Form Details</h1> -->
     <c:set value="${formForm.form[0]}" var="form"/>        
 	<table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 	
@@ -65,7 +65,8 @@
                </select>              
                   <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none;" onblur="change_to_label();" maxlength="32" onkeypress="return onlynumeric(event,this);"/>
                <span id="changeafter"></span>  
-               <span id="change" style="display: none;" ></span><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  
+               <span id="change" style="display: none;" ></span><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>
+               <br><c:if test="${success=='exist'}"><span style="color:red">Form ID already Exist</span></c:if>   
              </td>
                
             <!--     <label id="changeafter" style="display:none;" ></label> 
