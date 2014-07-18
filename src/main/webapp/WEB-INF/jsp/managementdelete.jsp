@@ -179,14 +179,14 @@ function Number(e, t) {
 						<form action="search_reviews" name="dashboard" method="GET">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							     <td align="left" valign="middle" width="12%">Review ID:</td>
+							     <td align="left" valign="middle" width="12%">Review ID :</td>
 							    <td align="left" valign="middle" width="10%">
 							    <input type="text" name="review_id" class="input_txtbx" id="id" maxlength="10" onkeypress="return Number(event,this);" value="${reviewid}"> </td>
-							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;Management Review Date:</td>
+							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;Management Review Date :</td>
 							    <td align="left" valign="middle" width="10%">
 							    
 							    <input type="text" name="management_review_date" class="input_txtbx" id="datepicker" value="${managementreviewdate}"></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Category:</td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Category :</td>
 							    <td align="left" valign="middle" width="10%">
 				                  
 							    <select name="category" class="input_txtbx">
