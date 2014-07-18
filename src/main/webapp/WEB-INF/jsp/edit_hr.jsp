@@ -63,7 +63,7 @@ $(function() {
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Update HR & Training</h2>
+              <h2>Update HR and Training Details</h2>
             </div>
             <div class="contentbox">
             <c:set value="${hRandTrainingForm.hRandTrainings[0]}" var="hRandTrainings"/>
