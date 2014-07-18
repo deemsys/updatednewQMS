@@ -55,7 +55,13 @@ public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType
 			model.addAttribute("Success","true");
 	        return "add_documenttype";
 		}
-	
+		if(documentTypeDAO.getdocumenttypeExit(documentType.getDocument_type(),documentType.getId()))
+		{
+			model.addAttribute("success","exist");
+			model.addAttribute("menu","admin");
+			return "add_documenttype";
+			
+		}
 		//formprefixDAO.insert_PrefixForm(formPrefix);
 		documentTypeDAO.insert_DocumentType(documentType);
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
@@ -96,7 +102,15 @@ public String update_documenttype(ModelMap model,@ModelAttribute("DocumentType")
         return "edit_documenttype";
 	}
 	
-	
+	if(documentTypeDAO.getdocumenttypeExit(documentType.getDocument_type(),documentType.getId()))
+	{
+		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+		model.addAttribute("success","exist");
+		documentTypeForm.setDocumentTypes(documentTypeDAO.getDocumentTypes(documentType.getId()));
+		model.addAttribute("documentTypeForm",documentTypeForm);
+		model.addAttribute("menu","admin");
+		return "edit_documenttype";
+	}
 	documentTypeDAO.update_documenttype(documentType);
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 	documentTypeForm.setDocumentTypes(documentTypeDAO.getlimiteddocumenttypereport(1));
