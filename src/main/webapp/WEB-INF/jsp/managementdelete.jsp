@@ -223,12 +223,13 @@ else
 										</tr>
 							    	</c:forEach>
 							    	</c:if>
+							    	<c:if test="${justcame ne false}">
 							    	<c:if test="${fn:length(managementreviewform.managementreviewdetails) == 0}">	
 							    	<tr class="row1">
 							    	<td colspan="7" width="100%"><span style="color:red"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
-							    	</c:if>	
+							    	</c:if>	</c:if>
 						    				
 
 
