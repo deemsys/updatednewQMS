@@ -42,17 +42,26 @@ public class ProductId_NCController {
 public String postType(HttpSession session,@ModelAttribute("ProductIDNC") @Valid ProductIDNC productIDNC,BindingResult result, ModelMap model) {
 
 	session.setAttribute("productIDNC",productIDNC);
+	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+	
+	
 		if (result.hasErrors())
 		{
 		
-			ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+			
 			productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
 			model.addAttribute("productId_NC_Form",productId_NC_Form);
 			model.addAttribute("Success","true");
 	        return "add_productidnc";
 		}
+		if(productId_NCDAO.getProductIdExit(productIDNC.getProductid_nc(),productIDNC.getAuto_id()))
+		{
+			productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId());
+			model.addAttribute("productId_NC_Form",productId_NC_Form);
+			model.addAttribute("success","exist");
+			 return "add_productidnc";
+		}
 		productId_NCDAO.insert_Type(productIDNC);
-		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 		productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
 		model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
 		model.addAttribute("button","viewall");
@@ -128,6 +137,15 @@ public String Update_type(ModelMap model,@ModelAttribute("ProductIDNC") @Valid P
 		productId_NC_Form.setProductIDNCs(productId_NCDAO.products(autoid));
 		model.addAttribute("productId_NC_Form",productId_NC_Form);
         return "edit_productidnc";
+	}
+	if(productId_NCDAO.getProductIdExit(products.getProductid_nc(),products.getAuto_id()))
+	{
+		ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+		productId_NC_Form.setProductIDNCs(productId_NCDAO.products(autoid));
+		model.addAttribute("productId_NC_Form",productId_NC_Form);
+		model.addAttribute("menu","admin");
+		model.addAttribute("success","exist");
+		 return "edit_productidnc";
 	}
 	productId_NCDAO.update_ProductId(products);
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
