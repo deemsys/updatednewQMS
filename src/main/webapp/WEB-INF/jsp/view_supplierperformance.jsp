@@ -70,7 +70,7 @@
 			<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>View Supplier Performance</h2>
+			          <h2>Search Supplier Performance</h2>
 			        </div>
 			        <div class="contentbox">
  			        <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">

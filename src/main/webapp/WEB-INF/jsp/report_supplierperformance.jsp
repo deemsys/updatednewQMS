@@ -60,7 +60,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>SupplierPerformance Report</h2>
+					<h2>Supplier Performance Report</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_supplierperformance_report">
