@@ -98,7 +98,9 @@ $(window).load(function(){
                
                <label id="change" ><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>  </label>
             <label id="changeafter" style="display:none;" ></label> 
-             <br><span id="documentiderror" style="color:red"></span>
+             <br><span id="documentiderror" style="color:red"></span> <br>
+                <c:if test="${success=='exist'}"><span style="color:red">Document ID already Exist</span></c:if>
+              </td>
             
 <td valign="middle" align="left" class="input_txt" width="10%">Media Type:</td>
                <td valign="middle" align="left" class="input_txt" width="70%">
