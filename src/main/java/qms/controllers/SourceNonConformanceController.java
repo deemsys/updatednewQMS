@@ -45,19 +45,23 @@ public class SourceNonConformanceController {
 public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_Source") @Valid Non_Conformance_Source non_Conformance_Source,BindingResult result, ModelMap model) {
 
 	session.setAttribute("non_Conformance_Source",non_Conformance_Source);
+	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 		if (result.hasErrors())
 		{
-			
-			Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 			conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource());
 			model.addAttribute("conformance_SourceForm",conformance_SourceForm);
 			model.addAttribute("Success","true");
 	        return "Add_source_NC";
 		}
 	
-		
+		if(sourceNCDAO.sourcesExit(non_Conformance_Source.getSource_of_nc(),non_Conformance_Source.getAuto_id()))
+		{
+			model.addAttribute("success","exist");
+			model.addAttribute("menu","admin");
+			return "Add_source_NC";
+		}
 		sourceNCDAO.insert_Source(non_Conformance_Source);
-		Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+		
 		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
 		model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
 		model.addAttribute("button","viewall");
@@ -126,19 +130,28 @@ public String EditSource_get(@RequestParam("auto_id") String auto_id,Non_Conform
 @RequestMapping(value = "/update_source", method = RequestMethod.POST)
 public String Update_Process(ModelMap model,@ModelAttribute("Non_Conformance_Source") @Valid Non_Conformance_Source sources,BindingResult result) throws IOException {
 	String autoid = Integer.toString(sources.getAuto_id());
+	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 	if (result.hasErrors())
 	{
 		
-		Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+		
 		
 		conformance_SourceForm.setConformance_Sources(sourceNCDAO.sources(autoid));
 		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
         return "edit_sourcenc";
 	}
-	
+	if(sourceNCDAO.sourcesExit(sources.getSource_of_nc(),sources.getAuto_id()))
+	{
+		
+		model.addAttribute("success","exist");
+		conformance_SourceForm.setConformance_Sources(sourceNCDAO.sources(autoid));
+		model.addAttribute("conformance_SourceForm",conformance_SourceForm);
+		model.addAttribute("menu","admin");
+	    return "edit_source_nc";
+	}
 	//processDAO.update_Process(process);
 	sourceNCDAO.update_Source(sources);
-	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+	
 	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
 	model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
     model.addAttribute("currentpage",1);
