@@ -9,8 +9,12 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.tomcat.jni.Proc;
+
+import qms.model.DocumentMain;
 import qms.model.FormPrefix;
 import qms.model.ParticipantsDetails;
+import qms.model.ProductIDNC;
 
 import qms.model.Process;
 
@@ -73,10 +77,11 @@ public class ProcessDAO
 
 			resultSet = statement.executeQuery(cmd);
 			while(resultSet.next()){
-				processes.add(new Process(resultSet
-						.getString("process_id"), resultSet
-						.getString("process_name"), resultSet
-						.getString("process_owner")));
+					processes.add(new Process(resultSet.
+							getString("auto_id"),resultSet
+							.getString("process_id"), resultSet
+							.getString("process_name"), resultSet
+							.getString("process_owner")));
 			}
 			
 			} catch (Exception e) {
@@ -151,10 +156,12 @@ public class ProcessDAO
 	    	String cmd_select = "select * from tbl_process  where process_id='"+id+"'";
 			resultSet = statement.executeQuery(cmd_select);
 			while(resultSet.next()){
-				processes.add(new Process(resultSet
-						.getString("process_id"), resultSet
-						.getString("process_name"), resultSet
-						.getString("process_owner")));
+				
+						processes.add(new Process(resultSet.
+								getString("auto_id"),resultSet
+								.getString("process_id"), resultSet
+								.getString("process_name"), resultSet
+								.getString("process_owner")));
 			}
 			
 	    }catch(Exception e){
@@ -220,8 +227,11 @@ public class ProcessDAO
 	    try{
 			resultSet = statement.executeQuery("select * from tbl_process");
 			while(resultSet.next()){
-				processes.add(new Process(resultSet.getString("process_id"),resultSet.getString("process_name"),resultSet.getString("process_owner")));
-				
+				processes.add(new Process(resultSet.
+						getString("auto_id"),resultSet
+						.getString("process_id"), resultSet
+						.getString("process_name"), resultSet
+						.getString("process_owner")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());
@@ -236,6 +246,85 @@ public class ProcessDAO
 	    return processes;
 		
 	}
+	
+	public boolean getProcessIdExit(String id,String process){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit =false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Process> processes = new ArrayList<Process>();
+	    try{
+			resultSet = statement.executeQuery("select * from tbl_process where auto_id != '"+id+"' and process_id='"+process+"'");
+//			resultSet = statement.executeQuery("select * from tbl_process where auto_id !='"+id+"' and process_name='"+process_name+"'");
+			while(resultSet.next()){
+
+				processes.add(new Process(resultSet.
+						getString("auto_id"),resultSet
+						.getString("process_id"), resultSet
+						.getString("process_name"), resultSet
+						.getString("process_owner")));
+				exit = true;
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
+	}
+
+
+	public boolean getProcessnameExit(String id,String process_name){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit =false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Process> processes = new ArrayList<Process>();
+	    try{
+			resultSet = statement.executeQuery("select * from tbl_process where auto_id != '"+id+"' and process_name='"+process_name+"'");
+			
+			while(resultSet.next()){
+
+				processes.add(new Process(resultSet.
+						getString("auto_id"),resultSet
+						.getString("process_id"), resultSet
+						.getString("process_name"), resultSet
+						.getString("process_owner")));
+				exit = true;
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
+	}
+
+	
 	public List<Process> getProcess_owner(String process_name){
 		Connection con = null;
 		Statement statement = null;
@@ -250,8 +339,11 @@ public class ProcessDAO
 	    try{
 			resultSet = statement.executeQuery("select * from tbl_process where process_name='"+process_name+"'");
 			while(resultSet.next()){
-				processes.add(new Process(resultSet.getString("process_id"),resultSet.getString("process_name"),resultSet.getString("process_owner")));
-				
+				processes.add(new Process(resultSet.
+						getString("auto_id"),resultSet
+						.getString("process_id"), resultSet
+						.getString("process_name"), resultSet
+						.getString("process_owner")));
 			}
 	    }catch(Exception e){
 	    	System.out.println(e.toString());

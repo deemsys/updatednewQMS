@@ -23,6 +23,7 @@ import qms.dao.ProcessDAO;
 import qms.forms.EmployeeForm;
 import qms.forms.FormFormPrefix;
 import qms.forms.ProcessForm;
+import qms.forms.ProductId_NC_Form;
 import qms.model.FormPrefix;
 
 
@@ -51,12 +52,31 @@ public class ProcessController
 		//session.setAttribute("process",process);
 			if (result.hasErrors())
 			{
+				System.out.println("error");
 				ProcessForm processForm = new ProcessForm();
 				processForm.setProcesses(processDAO.getProcess());
 				model.addAttribute("processForm",processForm);
-				model.addAttribute("Success","true");
+				model.addAttribute("success","true");
 		        return "add_process";
 			}
+		
+		
+		if(processDAO.getProcessIdExit(process.getAuto_id(),process.getProcess_id()))
+		{
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm",processForm);
+			model.addAttribute("success","exist");
+			 return "add_process";
+		}
+		if(processDAO.getProcessnameExit(process.getAuto_id(),process.getProcess_name()))
+		{
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm",processForm);
+			model.addAttribute("success","exist");
+			 return "add_process";
+		}
 		
 			processDAO.insert_Process(process);
 			ProcessForm processForm = new ProcessForm();
@@ -140,7 +160,23 @@ public class ProcessController
 			model.addAttribute("processForm",processForm);
 	        return "edit_process";
 		}
-		
+
+		if(processDAO.getProcessIdExit(process.getAuto_id(),process.getProcess_id()))
+		{
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm",processForm);
+			model.addAttribute("success","exist");
+			 return "edit_process";
+		}
+		if(processDAO.getProcessnameExit(process.getAuto_id(),process.getProcess_name()))
+		{
+			ProcessForm processForm = new ProcessForm();
+			processForm.setProcesses(processDAO.getProcess());
+			model.addAttribute("processForm",processForm);
+			model.addAttribute("success","exist");
+			 return "edit_process";
+		}
 		processDAO.update_Process(process);
 		ProcessForm processForm = new ProcessForm();
 		processForm.setProcesses(processDAO.getlimitedprocessreport(1));

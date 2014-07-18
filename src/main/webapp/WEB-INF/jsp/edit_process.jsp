@@ -58,7 +58,7 @@
                 
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Process ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" />${process.process_id}<span class="err"><form:errors path="Process.process_id"></form:errors></span>
-                  
+                  <c:if test="${success=='exist'}"><span style="color:red">Process ID already Exist</span></c:if>
                   </td>
                 </tr>
                 <tr height="10"></tr>
@@ -66,6 +66,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="process_name" maxlength="32" class="input_txtbx" id="processname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onkeypress="return onlyAlphabets(event,this);"	 />
                   <br><FONT SIZE="+1" color="red"> <span id="processname2" class="err"></span></FONT> 
+                  <c:if test="${success=='exist'}"><span style="color:red">Process Name already Exist</span></c:if>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>
                  <tr height="10"></tr>
