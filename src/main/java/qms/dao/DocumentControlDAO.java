@@ -1015,6 +1015,41 @@ public class DocumentControlDAO extends AbstractITextPdfView
 	    return documentMains;
 		
 	}
+	public boolean getDocumentsExit(String id){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit = false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<DocumentMain> documentMains = new ArrayList<DocumentMain>();
+	    try{
+	    	String s = "select * from tbl_doccontrol_main where document_id='"+id+"'";
+	    	System.out.println(s);
+			resultSet = statement.executeQuery("select * from tbl_doccontrol_main where document_id='"+id+"'");
+			System.out.println("came");
+			while(resultSet.next()){
+				System.out.println("count");
+				documentMains.add(new DocumentMain(resultSet.getString("auto_number"),resultSet.getString("document_id"),resultSet.getString("document_title"),resultSet.getString("document_type"),resultSet.getString("media_type"),resultSet.getString("location"),resultSet.getString("process"),resultSet.getString("external"), resultSet.getString("attachment_name"),resultSet.getString("attachment_type"),resultSet.getString("attachment_referrence")));
+			exit = true;
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
+	}
 	public List<DocumentMain> getDocuments_bytype(String type){
 		Connection con = null;
 		Statement statement = null;
