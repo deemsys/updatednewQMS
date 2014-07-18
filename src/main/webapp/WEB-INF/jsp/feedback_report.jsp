@@ -59,7 +59,7 @@
 
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Customer Feedback Report</h2>
+              <h2>Customer Feedback Reports</h2>
             </div>
             
               <form method="post" action="feedbackreport">
