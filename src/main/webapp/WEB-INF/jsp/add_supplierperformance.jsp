@@ -54,7 +54,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2>Add Supplier Performance</h2>
+              <h2>Supplier Performance Details</h2>
               
             </div>
             <div class="contentbox">
