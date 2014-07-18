@@ -285,7 +285,7 @@ $(function() {
                   <td valign="top" align="left">&nbsp;&nbsp;<input type="submit" value="Submit" class="submit_btn1" onclick="return onsubmitvalidate();"></td>
                 </tr> -->
                   <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return onsubmitvalidate();"class="submit_btn1"></td>
+                  <td valign="bottom" style="padding-right: 55px" colspan="4"align="right">&nbsp;<input type="submit" value="Submit" onclick="return onsubmitvalidate();"class="submit_btn1" ></td>
                  
                 </tr>
               </table>
