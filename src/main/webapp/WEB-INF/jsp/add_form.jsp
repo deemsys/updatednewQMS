@@ -83,6 +83,7 @@
               <br><span id="formiderror" style="color:red"></span>
               <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
               <span id="quality3err" style="color:red;"></span>
+                 <c:if test="${success=='exist'}"><span style="color:red">Form ID already Exist</span></c:if>
               </td>
              
              <%-- <td valign="top" align="left" class="input_txt" ></span>Auto Number:</td>
