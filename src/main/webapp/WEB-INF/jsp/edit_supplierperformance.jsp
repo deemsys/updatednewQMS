@@ -125,7 +125,7 @@
               	</tr>
                 <tr class="row2">
 				<td valign="top" align="left" class="input_txt" >Postal code :</td>
-				<td valign="top" align="left" class="input_txt" ><input type="text" name="postalcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" class="input_txtbx" id="inp_postalcode"  onkeypress="return validate(event)"; onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" ><input type="text" name="postalcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" class="input_txtbx" id="inp_postalcode"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="SupplierPerformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt">Email :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;"id="emailerror"><form:errors path="SupplierPerformance.email_address"></form:errors></span></td>
                 
@@ -556,14 +556,15 @@ $("#inp_fax").focus(function(){
 			}
 
 
-		var zipcode =/^\d{5}$/;
+		//var zipcode =/^\d{5}$/;
 		var zero = 00000;
 	    
 	    if(postal=="")	
 		{
 		document.getElementById("postalerror").innerHTML="Required field should not be empty";
 		error="true";
-		}else if(document.getElementById("inp_postalcode").value.length<4 || document.getElementById("inp_postalcode").value.length>=8)
+		}
+	    else if(document.getElementById("inp_postalcode").value.length<4 || document.getElementById("inp_postalcode").value.length>8)
 	    {
 	    
 	    	document.getElementById("postalerror").innerHTML="Field should be of length 4 to 8";
@@ -593,7 +594,8 @@ $("#inp_fax").focus(function(){
 	   	error="true"
 	   	}}
 	   	document.getElementById("faxerror").innerHTML=" ";
-	   	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+	   	 //var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+	   	  var faxreg = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;  
 	   	    if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	   	    {
 	   	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";

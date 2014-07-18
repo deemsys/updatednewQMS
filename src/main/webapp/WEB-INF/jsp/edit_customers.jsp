@@ -104,7 +104,7 @@
                     <span id="stateerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="fax" class="input_txtbx" placeholder="6143229928" id="inp_fax" onkeypress="return Number(event,this);" maxlength="12" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.fax}"  /><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="fax" class="input_txtbx" placeholder="6143229928" id="inp_fax" onkeypress="return Number(event,this);" maxlength="10" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.fax}"  /><br>
                    <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
                   
@@ -122,7 +122,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">ZipCode :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH43230" maxlength="8" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeyup="ChangeCase(this);" onmouseout="hideTooltip('tooltip_id');" value="${customers.zipcode}"  onkeypress="return AlphabetsNumber(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeyup="ChangeCase(this);" onmouseout="hideTooltip('tooltip_id');" value="${customers.zipcode}"  onkeypress="return AlphabetsNumber(event,this);"/><br>
                    	<span id="zipcodeerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                 
@@ -235,8 +235,53 @@ $(function() {
 });
 
   </script>  
-  
-
+  <script>
+  function AlphabetsNumber1(e, t) {
+      try {
+      
+      	
+          if (window.event) {
+              var charCode = window.event.keyCode;
+          }
+          else if (e) {
+              var charCode = e.which;
+          }
+          
+          else { return true; }
+         /*  if(t.value.substring(0,1))
+          	{
+          	alert()
+          	alert(e.which);
+          	} */
+          if(t.value.length<2)
+          	{
+          if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+              return true;
+          else
+              return false;
+          	}
+          if(t.value.length==2)
+          	{
+          	
+          	t.value+=" ";
+          	}
+          
+          
+          if(t.value.length>=2)
+      	{
+          	
+      if ((charCode >47 && charCode < 58))
+          return true;
+      else
+          return false;
+      	
+      	}
+      }
+      catch (err) {
+          alert(err.Description);
+      }
+  }
+  </script>
      <script type="text/javascript">
 function validatename(id){
 	
@@ -266,24 +311,13 @@ function validatename55(id){
 }  
 </script>
 
-
-  <script>
-i=0;
-$(document).ready(function(){
-$("#inp_fax").blur(function(){
-var phone=document.getElementById("inp_fax").value;
-phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
-document.getElementById("inp_fax").value=phone;
- });  
-$("#inp_fax").focus(function(){
-	
-	var phone=document.getElementById("inp_fax").value;
-	phone = phone.replace("-","");
-	phone = phone.replace("-","");
-	document.getElementById("inp_fax").value=phone;
-	 }); 
-});
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
 </script>
+ 
 <script>
 
 function Alphabets(e, t) {
@@ -350,6 +384,24 @@ function AlphabetsNumber(e, t) {
     }
 }
 
+</script>
+
+      <script>
+i=0;
+$(document).ready(function(){
+$("#inp_fax").blur(function(){
+var phone=document.getElementById("inp_fax").value;
+phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
+document.getElementById("inp_fax").value=phone;
+ });  
+$("#inp_fax").focus(function(){
+	
+	var phone=document.getElementById("inp_fax").value;
+	phone = phone.replace("-","");
+	phone = phone.replace("-","");
+	document.getElementById("inp_fax").value=phone;
+	 }); 
+});
 </script>
 <script>
 function ChangeCase(elem)

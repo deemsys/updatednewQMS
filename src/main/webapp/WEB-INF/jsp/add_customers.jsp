@@ -743,7 +743,7 @@ $("#inp_fax").focus(function(){
 });
 </script>
 
-     <script>
+    <!--  <script>
 i=0;
 $(document).ready(function(){
 $("#inp_zipcode").keypress(function(){
@@ -752,7 +752,7 @@ zipcode = zipcode.replace(/(\d{2})(\d{1})(\d{5})/,'$1-$2-$3');
 document.getElementById("inp_fax").value=zipcode;
  });  
 
-</script>
+</script> -->
 
 <script type="text/javascript">
        function validate(event) {
