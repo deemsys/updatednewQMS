@@ -45,6 +45,37 @@ public class ProductId_NCDAO {
 		    return products;
 			
 		}
+		public boolean getProductIdExit(String product,int id){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			boolean exit =false;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<ProductIDNC> products = new ArrayList<ProductIDNC>();
+		    try{
+				resultSet = statement.executeQuery("select * from tbl_productid_nc where auto_id != '"+id+"' and productid_nc='"+product+"'");
+				while(resultSet.next()){
+					products.add(new ProductIDNC(resultSet.getInt("auto_id"),resultSet.getString("productid_nc")));
+					exit = true;
+				}
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return exit;
+			
+		}
 		public boolean insert_Type(ProductIDNC products) {
 			Connection con = null;
 			Statement statement = null;
