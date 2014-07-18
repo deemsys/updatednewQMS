@@ -143,7 +143,8 @@
                   <td valign="top" align="left" class="input_txt" width="50%" style="padding-left: 62px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" name="type_of_nc" maxlength="32" class="input_txtbx" id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onkeypress="return onlyAlphabets(event,this);"	 value="" />
                 <br>  <span id="typeofnc1" style="color:red"></span>
-                  <span class="err"><form:errors path="Type_of_NC.type_of_nc"></form:errors></span></td>
+                <c:if test="${success=='exist'}"><span  id="alreadyerror" style="color:red;display:block;">Type of NC already exist</span></c:if>
+                  <span style="color:red"><form:errors path="Type_of_NC.type_of_nc"></form:errors></span></td>
                 </tr><tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="left">&nbsp;</td>
@@ -195,18 +196,25 @@
                {
             	   var chars = /[A-Za-z ]+$/;
             	   var typeofnc = document.getElementById('typeofnc').value;
+            	  alert("dsfsd");
             	   if(typeofnc == "")
             		   {
             		   document.getElementById("typeofnc1").innerHTML="Required field should not be empty";
+            		   document.getElementById('alreadyerror').style.display='none';            		  
+            		   
             			 return false;
             		   }
             	   else if(typeofnc.charAt(0)==" ")
             		   {
             		   document.getElementById("typeofnc1").innerHTML="Should not accept initial space";
+            		   document.getElementById("alreadyerror").style.display='none';
           			 return false;
             		   }
-            	   else if(typeofnc.length<4)
+            	   else if((typeofnc.length<4) || (typeofnc.length > 15))
         		   {
+        		   document.getElementById("typeofnc1").innerHTML="Required and must be of length 4 to 15";
+        		   document.getElementById("alreadyerror").style.display='none';
+      				 return false;
         		   document.getElementById("typeofnc1").innerHTML="Required field should be of length 4 to 32";
       			 return false;
         		   }
@@ -217,6 +225,7 @@
             	   else
             		   {
             		   document.getElementById("typeofnc1").innerHTML="Required field should be alphabates";
+            		   document.getElementById("alreadyerror").style.display='none';
             			 return false;
             		   
             		   }
