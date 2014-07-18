@@ -73,7 +73,7 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2" valign="right">
                
-                  <td valign="middle" align="left" class="input_txt" width="20%">&nbsp;Review ID :</td>
+                  <td valign="middle" align="left" class="input_txt" width="20%">Review ID :</td>
 	                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="review_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/></td>
       
                   <td valign="middle" align="left" class="input_txt" width="20%">Review Date :</td>
