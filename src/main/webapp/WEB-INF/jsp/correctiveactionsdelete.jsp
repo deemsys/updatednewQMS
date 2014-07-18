@@ -1,6 +1,17 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:include page="header.jsp"></jsp:include>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
+<link rel="stylesheet" href="resources/css/jquery-ui.css" type="text/css" /> 	
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script> 
+
+
+<script type="text/javascript" src="js/ajaxpaging.js"></script>
+<script src="resources/js/jquery_checkbox.js" type="text/javascript"></script>
 <head>
 <script  language="javascript">
 function validate()
@@ -59,6 +70,12 @@ function Number(e, t) {
 
 
 </script>
+<script>
+ $(function() {
+           $( "#datepicker" ).datepicker({dateFormat: 'yy-mm-dd'});
+         });
+ 
+</script> 
 </head>
 <div id="right_content">
 

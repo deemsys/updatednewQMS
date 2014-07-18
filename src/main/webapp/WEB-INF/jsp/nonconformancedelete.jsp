@@ -222,7 +222,7 @@ function ChangeCase(elem)
 									 <td valign="top" align="left" width="20%">Source of NonConformance</td>
 									<!-- <td valign="top" align="left" width="10%">External ID</td>  -->
 									<td valign="top" align="left" width="20%">Type of Non Conformance</td>
-									<td valign="top" align="left" width="20%">Product Id</td>
+									<td valign="top" align="left" width="20%">Product ID</td>
 									<td valign="top" align="left" width="20%">Quantity Suspect</td>
 									
 									</tr>
