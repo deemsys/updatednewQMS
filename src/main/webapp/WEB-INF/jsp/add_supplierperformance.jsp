@@ -65,7 +65,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
                 
             	 <td valign="top" align="left" class="input_txt" width="20%">Website :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="website" placeholder="http(s)://www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="website" placeholder="www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
                   <span><form:errors path="supplierperformance.website"></form:errors></span></td>
                 </tr>
             
@@ -127,14 +127,14 @@
               	<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.state}" /><br/><span style="color: red;" id="stateerror"><form:errors path="supplierperformance.state"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" > Fax :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="+12345678901" name="fax"  class="input_txtbx" id="inp_fax" maxlength="12"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" placeholder="6143229928" name="fax"  class="input_txtbx" id="inp_fax" maxlength="10" onkeypress="return Alphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.fax}" /><br/><span style="color: red;" id="faxerror"><form:errors path="supplierperformance.fax"></form:errors></span></td>
 
               	</tr>
                 <tr class="row2">
 				<td valign="top" align="left" class="input_txt" >Postal code :</td>
-				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" placeholder="10001" maxlength="5" onkeypress="return validate(event)" class="input_txtbx" id="inp_postalcode" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="supplierperformance.postalcode"></form:errors></span></td>
+				<td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="postalcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" class="input_txtbx" id="inp_postalcode"  onkeypress="return AlphabetsNumber1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.postalcode}" /><br/><span style="color: red;" id="postalerror"><form:errors path="supplierperformance.postalcode"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" > Email :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;" id="emailerror"><form:errors path="supplierperformance.email_address"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="email_address" class="input_txtbx" id="inp_email_address" maxlength="40" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.email_address}" /><br/><span style="color: red;" id="emailerror"><form:errors path="supplierperformance.email_address"></form:errors></span></td>
 
                 </tr>
 				<tr class="row1">
@@ -254,6 +254,100 @@ function validatename(id)
 	var textInput = document.getElementById(id).value;
 	textInput = textInput.replace(/[^A-Za-z ]/g, "");
 	document.getElementById(id).value = textInput;
+}
+</script>
+
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+</script>
+<script>
+function AlphabetsNumber1(e, t) {
+    try {
+    
+    	
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        
+        else { return true; }
+       /*  if(t.value.substring(0,1))
+        	{
+        	alert()
+        	alert(e.which);
+        	} */
+        if(t.value.length<2)
+        	{
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+            return true;
+        else
+            return false;
+        	}
+        if(t.value.length==2)
+        	{
+        	
+        	t.value+=" ";
+        	}
+        
+        
+        if(t.value.length>=2)
+    	{
+        	
+    if ((charCode >47 && charCode < 58))
+        return true;
+    else
+        return false;
+    	
+    	}
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+</script>
+
+     <script>
+i=0;
+$(document).ready(function(){
+$("#inp_fax").blur(function(){
+var phone=document.getElementById("inp_fax").value;
+phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
+document.getElementById("inp_fax").value=phone;
+ });  
+$("#inp_fax").focus(function(){
+	
+	var phone=document.getElementById("inp_fax").value;
+	phone = phone.replace("-","");
+	phone = phone.replace("-","");
+	document.getElementById("inp_fax").value=phone;
+	 }); 
+});
+</script>
+<script>
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
 }
 </script>
 <script>
@@ -489,21 +583,23 @@ function validatename(id)
 		{
 		document.getElementById("postalerror").innerHTML="Required field should not be empty";
 		error="true";
-		}else if(document.getElementById("inp_postalcode").value.length>5)
+		}
+	    
+	    else if(document.getElementById("inp_postalcode").value.length<4 ||document.getElementById("inp_postalcode").value.length>8)
 	    {
 	    
 	    	document.getElementById("postalerror").innerHTML="Field should be of length 5";
 	    	 error="true";
 	    } 
 
-		else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
+		/* else if(document.getElementById("inp_postalcode").value.match(zipcode)==null)
 	    {
 	    	document.getElementById("postalerror").innerHTML="Invalid postalcode format";
 	    	error="true";
-	    }
+	    } */
 	    else if(document.getElementById("inp_postalcode").value.match(zero))
 	    	{
-	    	document.getElementById("postalerror").innerHTML="invalid postalCode";
+	    	document.getElementById("postalerror").innerHTML="invalid postalCode format";
 	    	}
 	    else
 	    	{
@@ -516,21 +612,21 @@ function validatename(id)
 	if(document.getElementById("inp_fax").value=="")
 	{
 	document.getElementById("faxerror").innerHTML="Required field should not be empty";
-	error="true"
+	error="true";
 	}
-
-	 var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
+	 var faxreg = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;  
+	 //var faxreg = /\+1(|\.|\-)[2-9][0-9]{2}(|\.|\-)[0-9]{3}(|\.|\-)[0-9]{4}/;
 	 if(document.getElementById("inp_fax").value!="") 
 		 {
 	 if(document.getElementById("inp_fax").value.match(faxreg)==null)
 	    {
 	    	document.getElementById("faxerror").innerHTML="Invalid fax number format";
-	    	error="true"
+	    	error="true";
 	    }}
 
-	    var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	   // var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
 		  
-	    
+	     var website= /^[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
 	    if(document.getElementById("inp_website").value=="")	
 		{
 		document.getElementById("websiteerror").innerHTML="Required field should not be empty";
