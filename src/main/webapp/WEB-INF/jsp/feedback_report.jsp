@@ -130,7 +130,7 @@ document.getElementById("dateerror").innerHTML="";
 
 	if(feedback == "")
 	{
-		 document.getElementById("generateerror").innerHTML="Please select one";
+		 document.getElementById("generateerror").innerHTML="Required field should not be empty";
 			error="true";
 	}
 	else 
@@ -146,13 +146,13 @@ document.getElementById("dateerror").innerHTML="";
 		{
 			if(!datepicker.match(date))
 			{
-				 document.getElementById("datepicker11").innerHTML="Invalid date";
+				 document.getElementById("datepicker11").innerHTML="Invalid date format";
 			 	error="true";
 		 	}
 		
 			if(!datepicker1.match(date))
 			{
-		 	document.getElementById("datepicker22").innerHTML="Invalid date";
+		 	document.getElementById("datepicker22").innerHTML="Invalid date format";
 		 	error="true";
 			}
 			
