@@ -32,6 +32,33 @@ else
 	}
 }	
 </script>
+
+<script>
+function Number(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+
+
+
+
+
+</script>
 </head>
 <div id="right_content">
 
@@ -148,7 +175,7 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">CAPA Id:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}" maxlength="5" onkeypress="return Number(event,this);"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Request date:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Actions:</td>
