@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.tomcat.jni.Proc;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,14 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 			model.addAttribute("documentPrefixForm",documentPrefixForm);
 			//model.addAttribute("Success","insert");
 	        return "add_prefixdocument";
+		}
+		if(documentPrefixDAO.getPrefixExit(documentPrefix.getId(),documentPrefix.getDoc_prefix()))
+		{
+			DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
+			documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+			model.addAttribute("documentPrefixForm",documentPrefixForm);
+			model.addAttribute("success","exist");
+			 return "add_prefixdocument";
 		}
 	
 		documentPrefixDAO.insert_PrefixDocument(documentPrefix);
@@ -146,7 +155,14 @@ public String update_documentprefix(ModelMap model,@ModelAttribute("DocumentPref
 		model.addAttribute("documentPrefixForm",documentPrefixForm);
         return "edit_documentprefix";
 	}
-	
+	if(documentPrefixDAO.getPrefixExit(documentPrefix.getId(),documentPrefix.getDoc_prefix()))
+	{
+		DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();
+		documentPrefixForm.setDocumentPrefixs(documentPrefixDAO.getprefix());
+		model.addAttribute("documentPrefixForm",documentPrefixForm);
+		model.addAttribute("success","exist");
+		 return "edit_documentprefix";
+	}
 	
 	documentPrefixDAO.update_documentprefix(documentPrefix);
 	DocumentPrefixForm documentPrefixForm = new DocumentPrefixForm();

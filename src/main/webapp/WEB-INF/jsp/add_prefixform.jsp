@@ -141,8 +141,9 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onblur="ChangeCase(this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);""/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="15" id="formprefix" onblur="ChangeCase(this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);""/>
                    <br> <span id="docprefix1" style="color:red"></span>
+                   <c:if test="${success=='exist'}"><span style="color:red">FormPrefix already Exists</span></c:if>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr>
                 <tr height="10"></tr>
@@ -262,7 +263,7 @@ function onlyAlphabets(e, t) {
 	 }
  else if(formprefix.length<4)
 	 {
-	 document.getElementById("docprefix1").innerHTML="Required field should be of length 4 to 32.";
+	 document.getElementById("docprefix1").innerHTML="Required field should be of length 4 to 15.";
 	 error="true";
 	 }
  else if(formprefix.match(cap))

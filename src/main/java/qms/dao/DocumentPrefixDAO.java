@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 
 import qms.model.DocumentPrefix;
 import qms.model.FormPrefix;
+import qms.model.ProductIDNC;
+
 import java.sql.PreparedStatement;
 public class DocumentPrefixDAO {
 	private DataSource dataSource;
@@ -238,6 +240,41 @@ public class DocumentPrefixDAO {
 		}
 		return status;
 
+	}
+	
+	public boolean getPrefixExit(String id,String doc_prefix){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit =false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<DocumentPrefix> documentPrefixs = new ArrayList<DocumentPrefix>();
+	    try{
+			resultSet = statement.executeQuery("select * from tbl_documentprefix where id != '"+id+"' and doc_prefix='"+doc_prefix+"'");
+			while(resultSet.next()){
+				documentPrefixs.add(new DocumentPrefix(resultSet
+						.getString("id"), resultSet
+						.getString("doc_prefix"), resultSet
+						.getString("document_id")));
+				exit = true;
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
 	}
 	//Delete Operation
 	public boolean delete_documentprefix(String id) {

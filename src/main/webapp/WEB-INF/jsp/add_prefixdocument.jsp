@@ -139,8 +139,9 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${documentprefix.id}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="15" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${documentprefix.id}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="docprefix1" style="color:red"></span>
+                <c:if test="${success=='exist'}"><span style="color:red">DocumentPrefix already Exists</span></c:if>
                   <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
                 </tr>
@@ -270,7 +271,7 @@
 		 }
 	 else if(docprefix.length<4)
 	 {
-	 document.getElementById("docprefix1").innerHTML="Required field should be of length 4 to 32.";
+	 document.getElementById("docprefix1").innerHTML="Required field should be of length 4 to 15.";
 	 error="true";
 	 }
 	 else if(docprefix.match(cap))

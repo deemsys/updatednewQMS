@@ -59,6 +59,7 @@
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" 
                 	  onblur="ChangeCase(this);" maxlength="32" value="${formprefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red"></span>
+                 <c:if test="${success=='exist'}"><span style="color:red">FormPrefix already Exists</span></c:if>
                   <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                 </tr><tr height="10"></tr>
                   <tr class="row2">

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import qms.model.DocumentPrefix;
 import qms.model.FormPrefix;
 
 public class FormprefixDAO {
@@ -239,6 +240,44 @@ public class FormprefixDAO {
 		return status;
 
 	}
+	
+	public boolean getPrefixExit(String id,String form_prefix){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean exit =false;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<FormPrefix> formPrefixs = new ArrayList<FormPrefix>();
+	    try{
+			resultSet = statement.executeQuery("select * from tb_formprefix where id != '"+id+"' and form_prefix='"+form_prefix+"'");
+			while(resultSet.next()){
+				formPrefixs.add(new FormPrefix(resultSet
+					.getString("id"), resultSet
+					.getString("form_name"), resultSet
+					.getString("form_prefix")));
+				exit = true;
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return exit;
+		
+	}
+	
+	
+	
 	//Delete Operation
 	public boolean delete_formprefix(String id) {
 		Connection con = null;

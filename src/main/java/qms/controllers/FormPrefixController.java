@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import qms.dao.FormprefixDAO;
+import qms.forms.DocumentPrefixForm;
 import qms.forms.FormFormPrefix;
 import qms.forms.MaintenanceForm;
 import qms.model.FormPrefix;
@@ -56,6 +57,14 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 	        return "add_prefixform";
 		}
 	
+		if(formprefixDAO.getPrefixExit(formPrefix.getId(),formPrefix.getForm_prefix()))
+		{
+			FormFormPrefix formFormPrefix = new FormFormPrefix();
+			formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
+			model.addAttribute("formFormPrefix",formFormPrefix);
+			model.addAttribute("success","exist");
+			 return "add_prefixform";
+		}
 		formprefixDAO.insert_PrefixForm(formPrefix);
 		FormFormPrefix formFormPrefix = new FormFormPrefix();
 		formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(1));
@@ -142,6 +151,16 @@ public String update_formprefix(ModelMap model,@ModelAttribute("FormPrefix") @Va
 	//	model.addAttribute("formFormPrefix",formFormPrefix);
         return "edit_formprefix";
 	}
+	
+	if(formprefixDAO.getPrefixExit(formPrefix.getId(),formPrefix.getForm_prefix()))
+	{
+		FormFormPrefix formFormPrefix = new FormFormPrefix();
+		formFormPrefix.setFormPrefixs(formprefixDAO.getprefix());
+		model.addAttribute("formFormPrefix",formFormPrefix);
+		model.addAttribute("success","exist");
+		 return "edit_formprefix";
+	}
+	
 	model.addAttribute("noofrows",5);
 	
 	
