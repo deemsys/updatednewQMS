@@ -127,6 +127,7 @@
                   <input type="hidden" name="auto_id" value="${sources.auto_id}"/>
                   <input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
                    <br> <span id="sourceofnc1" style="color:red"></span>
+                   <c:if test="${success=='exist'}"><span  id="alreadyerror" style="color:red;display:block;">Source of NC already exist</span></c:if>
                   <span class="err"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span>
                   
                   </td>
