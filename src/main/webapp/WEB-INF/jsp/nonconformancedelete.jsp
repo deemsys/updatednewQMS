@@ -32,6 +32,37 @@ else
 	}
 }	
 </script>
+<script>
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+
+
+</script>
+<script>
+	  function AlphabetsNumber(e, t) {
+		    try {
+		        if (window.event) {
+		            var charCode = window.event.keyCode;
+		        }
+		        else if (e) {
+		            var charCode = e.which;
+		        }
+		        else { return true; }
+		        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+		            return true;
+		        else
+		            return false;
+		    }
+		    catch (err) {
+		        alert(err.Description);
+		    }
+		}
+
+	  	  
+	  </script>
+</script>
 </head>
 <div id="right_content">
 
@@ -147,7 +178,7 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    	    <td align="left" valign="middle" width="10%"> NC ID&nbsp;: </td>
-							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" value="${id}"></td>
+							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" onblur="ChangeCase(this)" value="${id}" onkeypress="return AlphabetsNumber(event,this);" maxlength="15"></td>
 							    <td align="left" valign="middle">Type of Non Conformance&nbsp;:</td>
 							    <td valign="top" align="left" class="input_txt">
 				                  									<select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
