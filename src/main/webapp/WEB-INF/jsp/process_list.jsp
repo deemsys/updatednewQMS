@@ -169,10 +169,7 @@
         				       				
         				       				 </table>
         				       				</form>
-        				       				<br><br><br><br><br>         
 
-
- 
         				       				</div>
         				       				</td>
         				       				</tr>

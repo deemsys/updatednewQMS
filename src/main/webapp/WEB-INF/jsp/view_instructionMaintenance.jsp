@@ -185,7 +185,7 @@
         				       				 </c:if>
         				       				   <c:if test="${fn:length(instructionMaintenanceForm.instructionMaintenances) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Records Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><span style="color:red;"><center><b>No Records Found!!!</b></center></span></td>
 							    		
 							    	</tr>
 							    	</c:if>

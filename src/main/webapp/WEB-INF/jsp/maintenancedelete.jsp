@@ -140,7 +140,7 @@ else
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete Maintenance & Calibration Records</h2>
+							<h2>Delete Maintenance & Calibrations </h2>
 						</div>
 						 <div class="contentbox">
 						<form action="search_maintenances" name="dashboard" method="GET">

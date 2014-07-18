@@ -140,7 +140,7 @@ else
 		</c:if>			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete SupplierPerformance Records</h2>
+							<h2>Delete SupplierPerformances</h2>
 						</div>
 						 <div class="contentbox">
 						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">

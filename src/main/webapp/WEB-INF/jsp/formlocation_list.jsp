@@ -137,7 +137,7 @@
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>Location List</h2>
+			          <h2>Locations List</h2>
 			        </div>
 			        <div class="contentbox">
 	<!-- 	<form action="search_prefix" name="dashboard" method="GET">
@@ -186,7 +186,7 @@
 							    	</c:if> --%>
         				       				 </table>
         				       				</form>
-        				       				<br><br><br><br><br><br>
+        				    
         				       				</div>
         				       				</td>
         				       				</tr>

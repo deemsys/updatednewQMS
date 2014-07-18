@@ -141,7 +141,7 @@ else
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete Documents</h2>
+							<h2>Delete HR & Trainings</h2>
 						</div>
 						 <div class="contentbox">
 				<div style="border:#ccc 2px solid; padding:8px; margin-bottom:8px;">
