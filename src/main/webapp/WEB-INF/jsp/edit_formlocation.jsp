@@ -58,6 +58,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 50px">Location Name :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_location" maxlength="32"  class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formlocation.form_location}" onkeypress="return onlyAlphabets(event,this);" />
                 <br> <span id="formlocation1" style="color:red">   </span>
+                <c:if test="${success=='exist'}"><span style="color:red">Location already exist</span></c:if>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span>
                   <input type="hidden" name="location_id" id="locationid" value="${formlocation.location_id}"/>
                   </td>
