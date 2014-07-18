@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+import java.sql.PreparedStatement;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
@@ -323,10 +323,70 @@ public class MaintenanceDAO extends AbstractITextPdfView
 			e1.printStackTrace();
 		}
 		try {
-			String cmd_insert = "insert into tbl_maintenance(equipment_id,equipment_name,equipment_model,serial_number,date_acquired,equipment_status,frequency_maintenance,calibration)values('"+maintenance.getEquipment_id()+"','"+maintenance.getEquipment_name()+"','"+maintenance.getEquipment_model()+"','"+maintenance.getSerial_number()+"','"+maintenance.getDate_acquired()+"','"+maintenance.getEquipment_status()+"','"+maintenance.getFrequency_maintenance()+"','"+maintenance.getCalibration()+"')";
-			String cmd_insert1 = "insert into tbl_maintenancechild(equipmentid,type_of_maintenance,weekly,monthly,quarterly,semiannually,annually,reference1,reference2,reference3,reference4,reference5,instructions,instructionattach,due_date,completion_date,completed_by,notes)values('"+maintenance.getEquipmentid()+"','"+maintenance.getType_of_maintenance()+"','"+maintenance.getWeekly()+"','"+maintenance.getMonthly()+"','"+maintenance.getQuarterly()+"','"+maintenance.getSemiannually()+"','"+maintenance.getAnnually()+"','"+maintenance.getReference1()+"','"+maintenance.getReference2()+"','"+maintenance.getReference3()+"','"+maintenance.getReference4()+"','"+maintenance.getReference5()+"','"+maintenance.getInstructions()+"','"+maintenance.getInstructionattach()+"','"+maintenance.getDue_date()+"','"+maintenance.getCompletion_date()+"','"+maintenance.getCompleted_by()+"','"+maintenance.getNotes()+"')";
-			statement.execute(cmd_insert);
-			statement.execute(cmd_insert1);
+			/*String cmd_insert = "insert into tbl_maintenance(equipment_id,equipment_name,equipment_model,serial_number,date_acquired,equipment_status,frequency_maintenance,calibration)values" +
+					"('"+maintenance.getEquipment_id()+"'," +
+					"'"+maintenance.getEquipment_name()+"',"+
+					"'"+maintenance.getEquipment_model()+"',"+
+					"'"+maintenance.getSerial_number()+"',"+
+					"'"+maintenance.getDate_acquired()+"',"+
+					"'"+maintenance.getEquipment_status()+"',"+
+					"'"+maintenance.getFrequency_maintenance()+"',"+
+					"'"+maintenance.getCalibration()+"')";
+			String cmd_insert1 = "insert into tbl_maintenancechild(equipmentid,type_of_maintenance,weekly,monthly,quarterly,semiannually,annually,reference1,reference2,reference3,reference4,reference5,instructions,instructionattach,due_date,completion_date,completed_by,notes)values" +
+					"('"+maintenance.getEquipmentid()+"'," +
+					"'"+maintenance.getType_of_maintenance()+"'," +
+					"'"+maintenance.getWeekly()+"'," +
+					"'"+maintenance.getMonthly()+"'," +
+					"'"+maintenance.getQuarterly()+"'," +
+					"'"+maintenance.getSemiannually()+"'," +
+					"'"+maintenance.getAnnually()+"'," +
+					"'"+maintenance.getReference1()+"'," +
+					"'"+maintenance.getReference2()+"'," +
+					"'"+maintenance.getReference3()+"'," +
+					"'"+maintenance.getReference4()+"'," +
+					"'"+maintenance.getReference5()+"'," +
+					"'"+maintenance.getInstructions()+"'," +
+					"'"+maintenance.getInstructionattach()+"'," +
+					"'"+maintenance.getDue_date()+"'," +
+					"'"+maintenance.getCompletion_date()+"'," +
+					"'"+maintenance.getCompleted_by()+"'," +
+					"'"+maintenance.getNotes()+"')";
+			*/
+
+			PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_maintenance(equipment_id,equipment_name,equipment_model,serial_number,date_acquired,equipment_status,frequency_maintenance,calibration)values(?,?,?,?,?,?,?,?)");
+						preparedStatement.setString(1,maintenance.getEquipment_id());
+						preparedStatement.setString(2,maintenance.getEquipment_name());
+						preparedStatement.setString(3,maintenance.getEquipment_model());
+						preparedStatement.setString(4,maintenance.getSerial_number());
+						preparedStatement.setString(5,maintenance.getDate_acquired());
+						preparedStatement.setString(6,maintenance.getEquipment_status());
+						preparedStatement.setString(7,maintenance.getFrequency_maintenance());
+						preparedStatement.setString(8,maintenance.getCalibration());
+						preparedStatement.execute();
+						PreparedStatement preparedStatement1=con.prepareStatement("insert into tbl_maintenancechild(equipmentid,type_of_maintenance,weekly,monthly,quarterly,semiannually,annually,reference1,reference2,reference3,reference4,reference5,instructions,instructionattach,due_date,completion_date,completed_by,notes)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			
+						preparedStatement1.setString(1,maintenance.getEquipmentid());
+						preparedStatement1.setString(2,maintenance.getType_of_maintenance());
+						preparedStatement1.setString(3,maintenance.getWeekly());
+						preparedStatement1.setString(4,maintenance.getMonthly());
+						preparedStatement1.setString(5,maintenance.getQuarterly());
+						preparedStatement1.setString(6,maintenance.getSemiannually());
+						preparedStatement1.setString(7,maintenance.getAnnually());
+						preparedStatement1.setString(8,maintenance.getReference1());
+						preparedStatement1.setString(9,maintenance.getReference2());
+						preparedStatement1.setString(10,maintenance.getReference3());
+						preparedStatement1.setString(11,maintenance.getReference4());
+						preparedStatement1.setString(12,maintenance.getReference5());
+						preparedStatement1.setString(13,maintenance.getInstructions());
+						preparedStatement1.setString(14,maintenance.getInstructionattach());
+						preparedStatement1.setString(15,maintenance.getDue_date());
+						preparedStatement1.setString(16,maintenance.getCompletion_date());
+						preparedStatement1.setString(17,maintenance.getCompleted_by());
+						preparedStatement1.setString(18,maintenance.getNotes());
+						preparedStatement1.execute();
+						System.out.println("inserted");
+			/*statement.execute(cmd_insert);
+			statement.execute(cmd_insert1);*/
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			releaseResultSet(resultSet);
