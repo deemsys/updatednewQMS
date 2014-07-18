@@ -186,7 +186,7 @@ function Alphabets(e, t) {
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="left" valign="middle">QualifiedBy :&nbsp; </td>
+							     <td align="left" valign="middle">Qualified By :&nbsp; </td>
 							    <td valign=" middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
