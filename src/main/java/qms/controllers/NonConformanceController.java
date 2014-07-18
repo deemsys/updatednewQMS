@@ -228,8 +228,7 @@ public class NonConformanceController {
 	    model.addAttribute("menu","nonconformance");
 	    model.addAttribute("success","true");
 	    model.addAttribute("justcame",false);
-	    
-		return "view_nonconformance";
+	   return "view_nonconformance";
 	}
 
 	//Delete operation
@@ -500,8 +499,7 @@ public class NonConformanceController {
 		@RequestMapping(value={"/nonconformancedelete"}, method = RequestMethod.GET)
 		public String delete_nonconformance(ModelMap model, Principal principal,HttpSession session )
 		{
-			session.removeAttribute("id");
-			session.removeAttribute("type");
+			
 
 		    Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
@@ -515,7 +513,8 @@ public class NonConformanceController {
 		    model.addAttribute("menu","admin");
 		    model.addAttribute("button","close");
 		    model.addAttribute("justcame",false);
-		    
+		    session.removeAttribute("id");
+			session.removeAttribute("type");
 		    return "nonconformancedelete";
 		}
 
