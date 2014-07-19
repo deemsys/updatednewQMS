@@ -139,7 +139,7 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Document Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="15"   value="${documentPrefix.doc_prefix}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="15"   value="${documentPrefix.doc_prefix}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="docprefix1" style="color:red">
                 <c:if test="${success=='exist'}">Document Prefix already exists</c:if>
                  <form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
@@ -171,6 +171,7 @@
  </table>
  </form>
  <script type="text/javascript">
+
  function onlyAlphabets(e, t) {
      try {
          if (window.event) {
