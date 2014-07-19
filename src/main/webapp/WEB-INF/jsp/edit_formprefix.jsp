@@ -56,7 +56,7 @@
               
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Form Prefix :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" 
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="form_prefix" class="input_txtbx" id="formprefix"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" 
                 	  onblur="ChangeCase(this);" maxlength="32" value="${formprefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>    <span id="formprefix1" style="color:red"></span> <span id="docprefix1" style="color:red">
                  <c:if test="${success=='exist'}">FormPrefix already exists</c:if>
