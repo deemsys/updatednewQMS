@@ -262,7 +262,7 @@
             		   document.getElementById("groupperson1").innerHTML="Required field should not be empty";
             		   error="true";
             		   }
-            	 else if(groupperson.length<4)
+            	 else if((groupperson.length<4) || (groupperson.length>32))
       		   {
       		   document.getElementById("groupperson1").innerHTML="Required field should be of length 4 to 32";
       		 error="true";
