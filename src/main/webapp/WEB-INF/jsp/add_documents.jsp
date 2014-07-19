@@ -92,7 +92,7 @@
 			   </c:forEach>
                </select></td><td align="left" width="10%">
               
-               <input type="text" value="" class="input_txtbx" id="document_id" style="width:75px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();" onkeypress="return onlynumeric(event,this);"/>
+               <input type="text" value="" class="input_txtbx" id="document_id" style="width:75px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlynumeric(event,this);"/>
                <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
                  
                </td>
@@ -134,7 +134,7 @@
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" >Document Title :</td>
-               <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
+               <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
                 <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
@@ -356,7 +356,7 @@
                  <td valign="middle" align="left" class="input_txt">Revision Level :</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
-               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
+               <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
                <span id="revisionlevel1" style="color:red"></span>
         <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;height:18px;beckground:lightgrey;">
                				<option value="">--select--</option>

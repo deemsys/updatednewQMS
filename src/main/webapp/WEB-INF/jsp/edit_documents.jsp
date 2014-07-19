@@ -92,7 +92,7 @@ $(window).load(function(){
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
                </select></td><td align="left" width="10">
-               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:77px;margin:0 0 0 -10px;"  onblur="change_to_label()" onkeypress="return onlynumeric(event,this);"/>
+               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:77px;margin:0 0 0 -10px;"  onblur="change_to_label()"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onkeypress="return onlynumeric(event,this);"/>
                
                 <input type="hidden" name=document_id id="generated_id"  value="" /> </td></tr></table>
                
@@ -134,7 +134,7 @@ $(window).load(function(){
               <tr class="row2">
               
                <td valign="middle" align="left" class="input_txt" >Document Title:</td>
-               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
+               <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
                <span id="documenttitle1" style="color:red"></span>
                </td>
               <c:choose>
@@ -313,7 +313,7 @@ $(window).load(function(){
               
                 <td valign="middle" align="left" class="input_txt">Revision Level:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
-                <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}" onkeypress="onlyAlphabetsnumeric(event,this);"/><br/>
+                <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onkeypress="onlyAlphabetsnumeric(event,this);"/><br/>
               <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;">
                            <c:forEach items="${documentRevisionLevelForm.documentRevisionLevels}" var="revisionlevel" varStatus="status">
         				       <option value="${revisionlevel.combined_output}"<c:if test="${revisionlevel.combined_output == documentMain.revision_level}"><c:out value="selected"/></c:if>>${revisionlevel.combined_output}</option>
