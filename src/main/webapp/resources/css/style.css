@@ -29,7 +29,7 @@ ul, li {
 	list-style:none;
 }
 #login_div {
-	width:300px;
+	width:500px;
 	margin:100px auto auto auto;
 }
 .login-top {
@@ -41,14 +41,14 @@ ul, li {
 .login-center {
 	/*background:#000 url(../images/login-c.gif) repeat-x;*/
 	background-color:#FFFFD6;
-	width:300px;
-	padding:20px;
+	width:500px;
+	padding:30px;
 	color:#fff;
 }
 ul.login-list {
 }
 ul.login-list li {
-	font-size:12px;
+	font-size:14px;
 	text-align:left;
 	color:#fff;
 	padding-bottom:10px;
@@ -658,12 +658,15 @@ ul.pagination li.page a:hover {
 	line-height:30px;
 	text-align:center;
 /* 	color:#d8ebff;
- */	 color:brown;
+ */	 
+ 	color:green;
 	font-weight:bold;
 	font-size:14px;
 	cursor:pointer;
 	display:block;
 	border:solid 1px brown;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
 	outline:none;
 }
 .submit_btn2:hover {

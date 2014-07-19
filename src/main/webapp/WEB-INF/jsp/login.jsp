@@ -58,7 +58,7 @@ function validation()
 		  </div>
 		  <div class="login-center">
 		  <ul class="login-list">
-		  <li  style="background-color:#FFFFD6;"><h3 style="font-family:verdana;background-color:gainsboro;padding:10px;font-weight:bolder;text-align:center;border:solid 1px brown;"><font color="#993300">QMS LOGIN</font></h3>
+		  <li  style="background-color:#FFFFD6;"><h3 style="font-family:verdana;background-color:gainsboro;padding:10px;font-weight:bolder;text-align:center;border:solid 1px brown;"><font color="#993300">Quality Management System LOGIN</font></h3>
 		  </li>
 		  </ul>
 		   <c:if test="${not empty error}">
@@ -119,10 +119,13 @@ function validation()
 		    <li>
 		    	
 		      <li>
-		      <table cellpadding="0" cellspacing="1" width="100%" border="0">
-		      
-		      <td valign="top" align="center">
-		      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="createuser"><font color="#993300" size="+3">Register</font></a></td><td width="20%"></td></table></li>
+		      <table cellpadding="0" border="0" cellspacing="1" width="100%" border="0">
+		     <tr>
+		     <td align="right"><a style="color:brown;text-align:right;">New User Click Here For Register&nbsp;&nbsp;</a></td>
+		      <td valign="top" align="left">
+		    <input type="button" value="Register" style="width:70px;height:30px;" name="submit" class="submit_btn1" onclick="window.location.href='createuser'"></td><td width="20%"></td>
+		    </tr>
+		    </table></li>
 		      
 		    </ul>
 		  </div>
