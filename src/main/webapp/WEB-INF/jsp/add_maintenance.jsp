@@ -570,9 +570,9 @@ function validation()
 		document.getElementById("equipment_id1").innerHTML="Should not accept initial space";
 		error="true";
 		}
-	else if(equipment_id.length < 4 || equipment_id.length > 32)
+	else if(equipment_id.length < 4 || equipment_id.length > 15)
 		{
-		document.getElementById("equipment_id1").innerHTML="Required field should be length of 4 to 32";
+		document.getElementById("equipment_id1").innerHTML="Required field should be length of 4 to 15";
 		error="true";
 		}
 	else{
