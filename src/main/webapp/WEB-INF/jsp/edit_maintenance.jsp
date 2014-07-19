@@ -79,7 +79,6 @@
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"style="padding-left: 39px;" width="20%">Equipment Name  :</td>
                   <td valign="top" align="left" class="input_txt" style="padding-left: 15px;"width="50%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumberSpace(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
-                  <td valign="top" align="left" class="input_txt" style="padding-left: 15px;"width="50%"><input type="text" name="equipment_name" maxlength="32" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${Maintenance.equipment_name}" />
                    <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
