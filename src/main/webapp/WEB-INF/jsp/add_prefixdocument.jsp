@@ -138,7 +138,7 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Prefix :</td>
+                  <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Document Prefix :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="15"   value="${documentPrefix.doc_prefix}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="docprefix1" style="color:red">
                 <c:if test="${success=='exist'}">Document Prefix already exists</c:if>
