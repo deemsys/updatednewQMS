@@ -37,6 +37,8 @@ public class DocumentTypeController {
 	
 	public String addFormPrefix(HttpSession session,ModelMap model, Principal principal) {
 		session.removeAttribute("documenttype");
+		session.removeAttribute("documenttypes");
+		
 		model.addAttribute("menu","admin");
 		return "add_documenttype";
 	}
@@ -46,6 +48,7 @@ public class DocumentTypeController {
 public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType") @Valid DocumentType documentType,BindingResult result, ModelMap model) {
 
 	session.setAttribute("documentType",documentType);
+	session.setAttribute("documenttypes",documentType.getDocument_type());
 		if (result.hasErrors())
 		{
 			DocumentTypeForm documentTypeForm = new DocumentTypeForm();
@@ -64,6 +67,7 @@ public String postDocumenttype(HttpSession session,@ModelAttribute("DocumentType
 		}
 		//formprefixDAO.insert_PrefixForm(formPrefix);
 		documentTypeDAO.insert_DocumentType(documentType);
+		session.removeAttribute("documenttypes");
 		DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 		documentTypeForm.setDocumentTypes(documentTypeDAO.getlimiteddocumenttypereport(1));
 		model.addAttribute("noofpages",(int) Math.ceil(documentTypeDAO.getnoofdocumenttypereport() * 1.0 / 5));	 
