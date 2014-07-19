@@ -139,6 +139,8 @@
        --%>          <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 60px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" style="width:15%;height:3%;">
+                    <c:choose>
+               	<c:when test="${empty typenc}">
                   <select name="type_of_nc"  class="input_txtbx" id="typeofNc" >
                                										<option value="">--Select--</option>
 						                    							<option <c:if test="${reportedByNCs.type_of_nc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
@@ -149,19 +151,41 @@
         				       <option value="<c:out value="${type_of_NCs.type_of_nc}"/>"><c:out value="${type_of_NCs.type_of_nc}"/></option>
 			                  </c:forEach>
                </select>
+               </c:when>
+               <c:otherwise>
+                 <select name="type_of_nc"  class="input_txtbx" id="typeofNc" >
+                               										<option value="">--Select--</option>
+						                    							<option <c:if test="${typenc eq 'Product Quality'}"><c:out value="Selected"/></c:if> value="Product Quality" >Product Quality</option>
+																		<option <c:if test="${typenc eq 'Service Quality'}"><c:out value="Selected"/></c:if>value="Service Quality">Service Quality</option>
+																		<option <c:if test="${typenc eq 'Late Delivery'}"><c:out value="Selected"/></c:if> value="Late Delivery">Late Delivery</option>
+																		<option <c:if test="${typenc eq 'Early Delivery'}"><c:out value="Selected"/></c:if>value="Early Delivery">Early Delivery</option>
+               <c:forEach items="${type_of_NC_Form.type_of_NCs}" var="type_of_NCs" varStatus="true">
+        				       <option <c:if test="${reportedByNCs.type_of_nc eq typenc}"><c:out value="selected"/></c:if>value="<c:out value="${type_of_NCs.type_of_nc}"/>"><c:out value="${type_of_NCs.type_of_nc}"/></option>
+			                  </c:forEach>
+               </select>
+               
+               
+               </c:otherwise>
+               </c:choose>
              <br>  <span id="typeofNc1" style="color:red"></span>
                <span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
                
                   <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 55px">Group Person :</td>
+<<<<<<< .mine
+                  <td valign="top" align="left" class="input_txt" width ="40%"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${person}" onkeypress="return onlyAlphabets(event,this);"	/>
+                 <br>  <span id="groupperson1" style="color:red">
+ 				 <c:if test="${success=='exist'}">Group person already exist</c:if></span>
+=======
                   <td valign="top" align="left" class="input_txt" style="width:25%;height:3%;"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>  <span id="groupperson1" style="color:red"></span>
+>>>>>>> .r606
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
                 <tr height="10"></tr>
                  <tr class="row1">
-                  <td valign="top" align="left" width="20%">&nbsp;</td>
-                  <td valign="top" align="left"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
-              <td></td><td></td> <td width="40%"></td>
+                 
+                  <td valign="top" colspan="3"align="center"><input type="submit" value="Submit" onclick="return validation();" class="submit_btn1"></td>
+             
                 </tr>
                <tr style="height: 250%"><td ></td></tr>
                </table>
