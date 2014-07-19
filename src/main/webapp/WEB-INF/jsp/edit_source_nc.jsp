@@ -125,7 +125,7 @@
                   <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 60px">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${sources.auto_id}"/>
-                  <input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
+                  <input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlyAlphabets(event,this);"	 />
                    <br> <span id="sourceofnc1" style="color:red">
                    <c:if test="${success=='exist'}">Source of NC already exist</c:if></span>
                   <span class="err"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span>
