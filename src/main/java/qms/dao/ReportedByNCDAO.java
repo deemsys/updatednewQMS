@@ -128,7 +128,37 @@ public List<ReportedByNC> getReportedByNCs(){
     return reportedByNCs;
 	
 }
-
+public boolean getReportedByNCsexit(String typenc,String person,int auto_id){
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	boolean exit = false;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ReportedByNC> reportedByNCs = new ArrayList<ReportedByNC>();
+    try{
+		resultSet = statement.executeQuery("select * from tbl_reportedby_nc where auto_id !='"+auto_id+"' and type_of_nc ='"+typenc+"' and group_person='"+person+"'");
+		while(resultSet.next()){
+			reportedByNCs.add(new ReportedByNC(resultSet.getInt("auto_id"),resultSet.getString("type_of_nc"),resultSet.getString("group_person")));
+			exit = true;
+		}
+    }catch(Exception e){
+    	System.out.println(e.toString());
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);
+    }finally{
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);	    	
+    }
+    return exit;
+	
+}
 
 public  List<ReportedByNC> getlimitedNC(int page) {
 	Connection con = null;
