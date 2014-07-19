@@ -45,7 +45,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2 style="padding-left: 50px">Editing Document Prefix</h2>
+              <h2 style="padding-left: 50px">Update Document Prefix</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${documentPrefixForm.documentPrefixs[0]}" var="documentprefix"> </c:set>
@@ -58,9 +58,9 @@
                   <td valign="middle" align="left"  style="padding-left: 55px">Prefix :</td>
                   <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="ChangeCase(this);toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onkeypress="return onlyAlphabets(event,this);"  />
                   <input type="hidden" name="id" id="id" value="${documentprefix.id}"/>
-                 <br>   <span id="docprefix1" style="color:red"></span>
-                 <c:if test="${success=='exist'}"><span style="color:red">Document Prefix already Exists</span></c:if>
-                  <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
+                 <br>   <span id="docprefix1" style="color:red">
+                 <c:if test="${success=='exist'}">Document Prefix already exists</c:if>
+                 <form:errors path="DocumentPrefix.doc_prefix"></form:errors></span>
                   
                   </td>
                 </tr>

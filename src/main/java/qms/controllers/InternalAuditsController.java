@@ -201,7 +201,7 @@ public class InternalAuditsController {
 			BindingResult result, ModelMap model, Principal principal) {
 
 		session.setAttribute("internalaudits", internalAudits);
-
+System.out.println("id"+internalAudits.getId());
 		if (result.hasErrors()) {
 			// session.removeAttribute("audit_start_date");
 			System.out.println(internalAudits.getProcess());
@@ -385,7 +385,9 @@ public class InternalAuditsController {
 	public String delete_internalaudits(@RequestParam("id") String id,
 			ModelMap model, Principal principal) {
 
+		model.addAttribute("justcame","false");
 		internalAuditsDAO.delete_internalAudits(id);
+		model.addAttribute("justcame","false");
 		return "view_internalaudits";
 	}
 
@@ -450,6 +452,7 @@ public class InternalAuditsController {
 	@RequestMapping(value={"/internalauditsdelete"}, method = RequestMethod.GET)
 	public String delete_internalaudits(ModelMap model, Principal principal,HttpSession session )
 	{
+		model.addAttribute("justcame","false");
 		session.removeAttribute("id");
 		session.removeAttribute("process");
 		session.removeAttribute("name");
@@ -549,7 +552,8 @@ public class InternalAuditsController {
 		@RequestMapping(value={"/deleteinternalaudits"}, method = RequestMethod.POST)
 	public String deleteSelectedinternalaudits(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
-		
+			model.addAttribute("justcame","false");
+			model.addAttribute("justcame","false");
 			ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm", processForm);

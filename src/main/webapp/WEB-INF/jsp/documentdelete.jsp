@@ -3,6 +3,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
+
 function validate()
 {
 //alert("Are sure you wants to delete this record");
@@ -22,7 +23,7 @@ alert("Please select at least one.");
 return false;
 }
 //var result=confirm("Are you sure.You want to delete the User(s)?");
-var result = confirm("Are sure you wants to delete this record(s)?");
+var result = confirm("Are you sure want to remove this record?");
 if(result)
 	{
 return true;
@@ -234,8 +235,8 @@ else
 							    	</c:if>	
 									</c:if>
 								</table>
-								
-								<li class="page">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
+								<br>
+								<li class="page">&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Remove" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

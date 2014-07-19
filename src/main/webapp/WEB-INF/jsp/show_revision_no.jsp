@@ -122,7 +122,7 @@
 		</c:if>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2 style="padding-left: 55px">Add Revision Format</h2>
+              <h2 style="padding-left: 55px">Set Revision Format</h2>
               
              
               

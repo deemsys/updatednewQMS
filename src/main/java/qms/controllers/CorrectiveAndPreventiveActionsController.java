@@ -629,6 +629,7 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value = { "delete_correctiveAndPreventiveActions" }, method = RequestMethod.GET)
 	public String delete_capa(@RequestParam("capa_id") String capa_id,
 			ModelMap model, Principal principal) {
+		model.addAttribute("justcame","false");
 		correctiveAndPreventiveActionsDAO.delete_correctiveAndPreventiveActions(capa_id);
 		CorrectiveAndPreventiveActionsForm correctiveAndPreventiveActionsForm = new CorrectiveAndPreventiveActionsForm();
 		correctiveAndPreventiveActionsForm.setCorrectiveAndPreventiveActions(correctiveAndPreventiveActionsDAO.getCorrectiveAndPreventiveActions());
@@ -669,6 +670,7 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value={"/correctiveactionsdelete"}, method = RequestMethod.GET)
 	public String delete_correctiveactions(ModelMap model, Principal principal,HttpSession session )
 	{
+		model.addAttribute("justcame","false");
 		session.removeAttribute("capa");
 		session.removeAttribute("date");
 		session.removeAttribute("action");
@@ -761,6 +763,7 @@ public class CorrectiveAndPreventiveActionsController
 	public String deleteSelectedcorrectiveactions(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
 
+			model.addAttribute("justcame","false");
 			session.removeAttribute("capa");
 			session.removeAttribute("date");
 			session.removeAttribute("action");

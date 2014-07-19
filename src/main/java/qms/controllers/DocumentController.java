@@ -168,6 +168,7 @@ public class DocumentController {
 		documentMainForm.setDocumentMains(documentControlDAO.getDocuments());
 		model.addAttribute("documentMainForm", documentMainForm);
 		  model.addAttribute("menu","admin");
+		  
 		return "view_documents";
 		
 	}
@@ -198,6 +199,7 @@ public class DocumentController {
 	   //narrativereportForm.getNarrativereport().size()
 	    model.addAttribute("menu","admin");
 	    model.addAttribute("button","close");
+	    model.addAttribute("justcame",false);
 	    return "documentdelete";
 		
 		
@@ -232,7 +234,7 @@ public class DocumentController {
 		processForm.setProcesses(processDAO.getProcess());
 		model.addAttribute("processForm", processForm);
 		
-		
+		model.addAttribute("justcame","false");
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","delete");
 		return "documentdelete";

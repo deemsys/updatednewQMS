@@ -184,7 +184,7 @@ import qms.forms.SupplierPerformanceForm;;
 		@RequestMapping(value={"/deletesupplierperformance"}, method = RequestMethod.GET)
 		public String delete_supplierperformance(@RequestParam("sid") String supplier_id,ModelMap model, Principal principal )
 		{
-			
+			model.addAttribute("justcame","false");
 			supplierPerformanceDAO.delete_supplierperformance(supplier_id);
 			SupplierPerformanceForm supplierPerformanceForm=new SupplierPerformanceForm();
 		    supplierPerformanceForm.setSupplierperformance(supplierPerformanceDAO.getsupplierperformance());
@@ -324,6 +324,7 @@ import qms.forms.SupplierPerformanceForm;;
 	@RequestMapping(value={"/supplierperformancedelete"}, method = RequestMethod.GET)
 	public String delete_supplierperformance(HttpSession session, ModelMap model, Principal principal)
 	{
+		model.addAttribute("justcame","false");
 		session.removeAttribute("suppliername");
 		session.removeAttribute("phone");
 		session.removeAttribute("email");
@@ -410,6 +411,7 @@ import qms.forms.SupplierPerformanceForm;;
 		@RequestMapping(value={"/deletesupplier"}, method = RequestMethod.POST)
 	public String deletesupplierperformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
+			model.addAttribute("justcame","false");
 			session.removeAttribute("suppliername");
 			session.removeAttribute("phone");
 			session.removeAttribute("email");

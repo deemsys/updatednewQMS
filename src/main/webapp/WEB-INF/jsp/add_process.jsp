@@ -136,17 +136,17 @@
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="15"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
                 <br> 
-                 <span id="processid1"></span>
-                   <c:if test="${success=='exist'}"><span style="color:red">Process ID already Exist</span></c:if>
+                 <span id="processid1" style="color:red">
+                   <c:if test="${success=='exist'}">Process ID already Exist</c:if>
                   <%--    <c:if test="${success=='exist'}"><span style="color:red">Process name already Exist</span></c:if>
-                   --%><span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
+                   --%><form:errors path="Process.process_id"></form:errors></span></td>
                 </tr>
                   <tr height="10"></tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Process Name :</td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onkeypress="return onlyAlphabets(event,this);" />
                 <br>   <span id="processname1"></span>
-                <c:if test="${success=='exist'}"><span style="color:red">Process name already exists</span></c:if>
+                <c:if test="${success=='exists'}"><span style="color:red">Process name already exists</span></c:if>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>  <tr height="10"></tr>
                  <tr class="row2">

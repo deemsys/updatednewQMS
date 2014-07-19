@@ -137,7 +137,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility"
-																			value="${docform.responsibility}" onkeypress="return onlyAlphabetsnumeric(event, this);" maxlength="32"/><br/>
+																			value="${docform.responsibility}"  maxlength="32"/><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
@@ -613,11 +613,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 			 document.getElementById("responsibility1").innerHTML="Required field should be length 4 to 32";
 			 error="true";
 			 }
-	    else if(!responsibility.match(spl))
- 		 {
- 		 document.getElementById("responsibility1").innerHTML="Special characters are not allowed";
- 		error="true";
- 		 }
+	  
  	 else
  		 {
  		document.getElementById("responsibility1").innerHTML="";
@@ -746,7 +742,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		if(id_inpprocess == "")
 		{
 			 
-			 document.getElementById("inprocesserror").innerHTML="Please select one";
+			 document.getElementById("inprocesserror").innerHTML="Required field should not be empty";
 			 error ="true";
 		}
 		else
@@ -1048,9 +1044,9 @@ document.getElementById("filter_value1").style.display="block";
 	
 	else if(doc_id.value.match(numbers))
 	{
-		if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+		if((doc_id.value.length < 4) || (doc_id.value.length > 15))
 			{
-			var color = "Required field should be a length of 4 to 32";
+			var color = "Required field should be a length of 4 to 15";
 			var result = color.fontcolor("red");
 			document.getElementById("document_id_full_lbl").innerHTML=result;
 			}

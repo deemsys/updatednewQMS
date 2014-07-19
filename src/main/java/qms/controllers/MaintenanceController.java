@@ -401,6 +401,7 @@ return "maintenance_list";
 		maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
 		model.addAttribute("maintenanceForm",maintenanceForm);
 		model.addAttribute("menu","maintenance");
+		model.addAttribute("justcame","false");
 		return "/maintenance_list";
 	}
 	
@@ -424,7 +425,7 @@ return "maintenance_list";
 	public String deleteSelectedmaintenance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
 
-	
+		model.addAttribute("justcame",false);
 		session.removeAttribute("equipid");
 		session.removeAttribute("equipname");
 		

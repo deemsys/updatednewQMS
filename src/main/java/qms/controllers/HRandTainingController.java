@@ -312,6 +312,7 @@ public class HRandTainingController {
 				public String delete_hr(@RequestParam("id") String id,ModelMap model, Principal principal )
 				{
 			    
+					model.addAttribute("justcame","false");
 					hRandTrainingDAO.delete_hr(id);
 					HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
 					hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getHRandTrainings());
@@ -323,6 +324,7 @@ public class HRandTainingController {
 				@RequestMapping(value={"/hrdelete"}, method = RequestMethod.GET)
 				public String delete_adminhr(ModelMap model, Principal principal,HttpSession session )
 				{
+					model.addAttribute("justcame","false");
 					session.removeAttribute("trainer");
 					session.removeAttribute("type");
 					session.removeAttribute("qualifiedby");
@@ -345,7 +347,7 @@ public class HRandTainingController {
 				public String deleteSelectedhr(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 				{	
 
-					
+					model.addAttribute("justcame","false");
 					session.removeAttribute("trainer");
 					session.removeAttribute("type");
 					session.removeAttribute("qualifiedby");

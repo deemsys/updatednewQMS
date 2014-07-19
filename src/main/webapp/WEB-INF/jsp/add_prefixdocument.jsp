@@ -139,17 +139,17 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" width="50%" class="input_txt" style="padding-left: 55px" >Prefix :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="15" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${documentprefix.id}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
-                <br>  <span id="docprefix1" style="color:red"></span>
-                <c:if test="${success=='exist'}"><span style="color:red">DocumentPrefix already Exists</span></c:if>
-                  <span class="err"><form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="doc_prefix" class="input_txtbx3" id="docprefix" maxlength="15"   value="${documentPrefix.doc_prefix}" onblur="ChangeCase(this)"  onkeypress="return onlyAlphabets(event,this);"/>
+                <br>  <span id="docprefix1" style="color:red">
+                <c:if test="${success=='exist'}">Document Prefix already exists</c:if>
+                 <form:errors path="DocumentPrefix.doc_prefix"></form:errors></span></td>
                 
                 </tr>
                 <tr height="10"></tr>
                  <tr class="row1">
                   <td valign="top" align="left" class="input_txt" style="padding-left: 55px">Description :</td>
                   <td valign="top" align="left" class="input_txt" >
-                  <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="400" name="document_id" id="document_id"></textarea>
+                  <textarea   cols="27" rows="5" class="input_txtarea"  maxlength="400" name="document_id" id="document_id" >${documentPrefix.document_id}</textarea>
              
                  <br>   <span id="document_id1" style="color:red"></span>
                   <span class="err"><form:errors path="DocumentPrefix.document_id"></form:errors></span></td>

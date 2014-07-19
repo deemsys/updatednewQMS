@@ -78,7 +78,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>NonConformance Report</h2>
+					<h2>Non Conformance Details Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_nonconformance_report">

@@ -44,7 +44,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2 style="padding-left: 55px">Editing Instruction List</h2>
+              <h2 style="padding-left: 55px">Update Instruction Attachment</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${instructionMaintenanceForm.instructionMaintenances[0]}" var="reference"> </c:set>

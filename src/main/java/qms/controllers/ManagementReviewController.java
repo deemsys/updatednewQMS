@@ -237,6 +237,8 @@ public String update_review(HttpSession session,@ModelAttribute("ManagementRevie
 	public String delete_review(@RequestParam("review_id") String review_id,ModelMap model, Principal principal )
 	{
     
+		
+		model.addAttribute("justcame","false");
 		managementreviewDAO.delete_managementreview(review_id);
 		ManagementReviewForm managementreviewform= new ManagementReviewForm();
 		managementreviewform.setManagementreviewdetails(managementreviewDAO.get_managementreview());
@@ -412,6 +414,7 @@ public String searchmanagementreviews(HttpSession session,@RequestParam("review_
 @RequestMapping(value={"/managementdelete"}, method = RequestMethod.GET)
 public String delete_management(ModelMap model, Principal principal,HttpSession session )
 {
+	model.addAttribute("justcame","false");
 	session.removeAttribute("reviewid");
 	session.removeAttribute("categoryvalue");
 	session.removeAttribute("managementreviewdate");
@@ -499,6 +502,7 @@ public String viewalldeletemanagementreport(HttpSession session,HttpServletReque
 	@RequestMapping(value={"/deletemanagement"}, method = RequestMethod.POST)
 public String deleteSelectedmanagement(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 {	
+		model.addAttribute("justcame","false");
 		session.removeAttribute("reviewid");
 		session.removeAttribute("categoryvalue");
 		session.removeAttribute("managementreviewdate");

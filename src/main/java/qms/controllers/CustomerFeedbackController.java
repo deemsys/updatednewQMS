@@ -244,7 +244,7 @@ public class CustomerFeedbackController
 	//delete a record
 	@RequestMapping(value={"/deletefeedback"}, method = RequestMethod.GET)
 	public String delete_customerfeedback(@RequestParam("fid") String fid,ModelMap model, Principal principal ) {
-		
+		model.addAttribute("justcame","false");
 		
 		customerFeedbackDAO.delete_customerfeedback(fid);
 		CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
@@ -367,6 +367,7 @@ public class CustomerFeedbackController
 		@RequestMapping(value = { "/customersfeedbackdelete" }, method = RequestMethod.GET)
 		public String delete_maintenance(ModelMap model, Principal principal, HttpSession session) {
 		
+			model.addAttribute("justcame","false");
 			session.removeAttribute("date");
 			session.removeAttribute("type");
 			CustomerFeedbackForm customerFeedbackForm= new CustomerFeedbackForm();
@@ -381,6 +382,7 @@ public class CustomerFeedbackController
 		@RequestMapping(value={"/deletecustomersfeedback"}, method = RequestMethod.POST)
 		public String deleteSelectedcustomersfeedback(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
+			model.addAttribute("justcame","false");
 			session.removeAttribute("date");
 			session.removeAttribute("type");
 			

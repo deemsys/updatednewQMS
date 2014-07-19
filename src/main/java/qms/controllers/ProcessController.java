@@ -49,7 +49,7 @@ public class ProcessController
 	@RequestMapping(value = "/add_process", method = RequestMethod.POST)
 	public String postProcess(HttpSession session,@ModelAttribute("Process") @Valid Process process,BindingResult result, ModelMap model) {
 
-		//session.setAttribute("process",process);
+		session.setAttribute("process",process);
 			if (result.hasErrors())
 			{
 				System.out.println("error");
@@ -60,21 +60,27 @@ public class ProcessController
 		        return "add_process";
 			}
 		
-		
+		String exist="";
 		if(processDAO.getProcessIdExit(process.getAuto_id(),process.getProcess_id()))
 		{
 			ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("success","exist");
-			 return "add_process";
+			exist="true";
+			
 		}
 		if(processDAO.getProcessnameExit(process.getAuto_id(),process.getProcess_name()))
 		{
 			ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
-			model.addAttribute("success","exist");
+			model.addAttribute("success","exists");
+			exist="true";
+			
+		}
+		if(exist.equals("true"))
+		{
 			 return "add_process";
 		}
 		
@@ -88,6 +94,7 @@ public class ProcessController
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("menu","admin");
 			model.addAttribute("success","insert");
+			session.removeAttribute("process");
 		return "add_process";
 	}
 
@@ -174,7 +181,7 @@ public class ProcessController
 			ProcessForm processForm = new ProcessForm();
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
-			model.addAttribute("success","exist");
+			model.addAttribute("success","exists");
 			 return "edit_process";
 		}
 		processDAO.update_Process(process);

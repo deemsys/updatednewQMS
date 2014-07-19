@@ -179,11 +179,13 @@ public class CustomersController
 	public String delete_customer(@RequestParam("cid") String customer_id,ModelMap model, Principal principal )
 	{
     
+		model.addAttribute("justcame","false");
 		customersDAO.delete_customer(customer_id);
 		CustomersForm customersForm = new CustomersForm();
 	    customersForm.setCustomers(customersDAO.getCustomers());
 	    model.addAttribute("customersForm",customersForm);
 		model.addAttribute("menu","customer");
+		model.addAttribute("justcame","false");
 		return "view_customers";
  	}
 	
@@ -241,6 +243,7 @@ public class CustomersController
 		@RequestMapping(value={"/customersdelete"}, method = RequestMethod.GET)
 		public String delete_customers(ModelMap model, Principal principal,HttpSession session )
 		{
+			model.addAttribute("justcame","false");
 			session.removeAttribute("cusid");
 			session.removeAttribute("cusname");
 			session.removeAttribute("cusaddress");
@@ -329,6 +332,7 @@ public class CustomersController
 			@RequestMapping(value={"/deletecustomers"}, method = RequestMethod.POST)
 		public String deleteSelectedcustomers(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
+				model.addAttribute("justcame","false");
 				session.removeAttribute("cusid");
 				session.removeAttribute("cusname");
 				session.removeAttribute("cusaddress");

@@ -235,12 +235,13 @@ public class NonConformanceController {
 	@RequestMapping(value = "/delete_nonconformance", method = RequestMethod.GET)
 	public String deleteNonconformance_get(@RequestParam("id") String id,
 			NonConformance nonConformance,ModelMap model) {
-
+		model.addAttribute("justcame","false");
 		nonConformanceDAO.delete_nonconformance(id);
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
 		model.addAttribute("nonConformanceForm",nonConformanceForm);
 		model.addAttribute("menu","nonconformance");
+		model.addAttribute("justcame","false");
 		return "view_nonconformance";
 	}
 	
@@ -500,7 +501,7 @@ public class NonConformanceController {
 		public String delete_nonconformance(ModelMap model, Principal principal,HttpSession session )
 		{
 			
-
+			model.addAttribute("justcame","false");
 		    Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 			model.addAttribute("type_of_NC_Form",type_of_NC_Form);
@@ -611,6 +612,7 @@ public class NonConformanceController {
 			@RequestMapping(value={"/deletenonconformance"}, method = RequestMethod.POST)
 		public String deleteSelectednonconformance(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 		{	
+				model.addAttribute("justcame","false");
 				session.removeAttribute("id");
 				session.removeAttribute("type");
 				

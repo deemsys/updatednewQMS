@@ -260,6 +260,7 @@ public class ProcessDAO
 		}
 		List<Process> processes = new ArrayList<Process>();
 	    try{
+	    	System.out.println("select * from tbl_process where auto_id != '"+id+"' and process_id='"+process+"'");
 			resultSet = statement.executeQuery("select * from tbl_process where auto_id != '"+id+"' and process_id='"+process+"'");
 //			resultSet = statement.executeQuery("select * from tbl_process where auto_id !='"+id+"' and process_name='"+process_name+"'");
 			while(resultSet.next()){

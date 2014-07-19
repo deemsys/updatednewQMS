@@ -3,6 +3,42 @@
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
+function onlyAlphabets1(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 function validate()
 {
 
@@ -140,7 +176,7 @@ else
 		</c:if>			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete SupplierPerformances</h2>
+							<h2>Delete Supplier Performances</h2>
 						</div>
 						 <div class="contentbox">
 						<div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
@@ -149,9 +185,9 @@ else
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="15%">Supplier Name : </td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbx" id="suppliername" value="${suppliername}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbx" id="suppliername" value="${suppliername}" onkeypress="return onlyAlphabets(event,this);"	></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Phone :</td>
-								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
+								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}" maxlength="10" onkeypress="return onlyAlphabets1(event,this);"></td>							    
 							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbx" value="${email}"></td>
 							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformances" ></td>
@@ -212,6 +248,7 @@ else
 
 
 								</table>
+								
 								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>

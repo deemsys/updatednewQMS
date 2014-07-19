@@ -234,7 +234,7 @@ public class EmployeeController
 	//delete a record
 	@RequestMapping(value={"/deleteemployee"}, method = RequestMethod.GET)
 	public String delete_employee(@RequestParam("empid") String employee_id,ModelMap model, Principal principal )
-	{
+	{model.addAttribute("justcame","false");
     
 		employeeDAO.delete_employee(employee_id);
 		EmployeeForm employeeForm = new EmployeeForm();
@@ -500,6 +500,7 @@ public class EmployeeController
 	@RequestMapping(value={"/employeesdelete"}, method = RequestMethod.GET)
 	public String delete_employees(ModelMap model, Principal principal,HttpSession session )
 	{
+		model.addAttribute("justcame","false");
 		session.removeAttribute("trainer");
 		session.removeAttribute("type");
 		session.removeAttribute("qualifiedby");
@@ -593,6 +594,8 @@ public class EmployeeController
 		@RequestMapping(value={"/deleteemployees"}, method = RequestMethod.POST)
 	public String deleteSelectedemployees(HttpServletRequest request,ModelMap model,Principal principal,HttpSession session) 
 	{	
+			
+			model.addAttribute("justcame","false");
 			session.removeAttribute("trainer");
 			session.removeAttribute("type");
 			session.removeAttribute("qualifiedby");

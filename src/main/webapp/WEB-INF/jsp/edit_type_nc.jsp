@@ -43,7 +43,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2 style="padding-left: 55px">Editing Type of NC</h2>
+              <h2 style="padding-left: 55px">Update Type of NC</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${type_of_NC_Form.type_of_NCs[0]}" var="types"> </c:set>

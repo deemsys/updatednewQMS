@@ -217,7 +217,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="responsibility" 
-																			value="${form.responsibility}" onkeypress="return onlyAlphabetsnumeric(event,this);" /><br/>
+																			value="${form.responsibility}"  /><br/>
 																			<span id="responsibility1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.responsibility"></form:errors></span>
 																		
@@ -922,11 +922,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 error ="true";
 		 }
 	    
-	    else if(!responsibility.match(spl))
- 		 {
- 		 document.getElementById("responsibility").innerHTML="Special characters are not allowed";
- 		error="true";
- 		 }
+	   
  	 else
  		 {
  		document.getElementById("responsibility1").innerHTML="";

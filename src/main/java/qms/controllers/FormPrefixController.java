@@ -74,6 +74,7 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("formFormPrefix",formFormPrefix);
 		model.addAttribute("menu","admin");
+		session.removeAttribute("formPrefix");
 		model.addAttribute("success","insert");
 	return "add_prefixform";
 }

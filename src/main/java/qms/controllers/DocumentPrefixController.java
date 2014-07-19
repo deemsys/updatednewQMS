@@ -77,6 +77,7 @@ public String postPrefix(HttpSession session,@ModelAttribute("DocumentPrefix") @
 		model.addAttribute("documentPrefixForm",documentPrefixForm);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","insert");
+		session.removeAttribute("documentPrefix");
 	return "add_prefixdocument";
 }
 	

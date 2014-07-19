@@ -508,6 +508,7 @@ public class FormController
 	//	model.addAttribute("formForm",formForm);
         model.addAttribute("menu","admin");
         model.addAttribute("success","delete");
+        model.addAttribute("justcame","false");
 		return "formdelete";
 		
 	}	

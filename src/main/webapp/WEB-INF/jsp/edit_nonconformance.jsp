@@ -62,7 +62,7 @@ $(function() {
         <td valign="top" align="left">
         	
 	            <div class="headings altheading">
-	              <h2>Non Conformance Details</h2>
+	              <h2>Update Non Conformance Details</h2>
 	            </div>
             <div class="contentbox">
             <c:set value="${nonConformanceForm.nonconformance[0]}" var="nonconformance"></c:set>
@@ -291,7 +291,7 @@ $(function() {
                	 
             
               <tr class="row2">
-                  <td valign="bottom" colspan="4"align="right" style="padding-right:133px;">&nbsp;<input type="submit" value="Update" onclick="return validation();" class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:150px;">&nbsp;<input type="submit" value="Update" onclick="return validation();" class="submit_btn1"></td>
                   
                 </tr>
     </table>
