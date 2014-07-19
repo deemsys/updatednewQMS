@@ -181,7 +181,7 @@ function Number(e, t) {
 							  <tr>
 							     <td align="left" valign="middle" width="12%">Review ID :</td>
 							    <td align="left" valign="middle" width="10%">
-							    <input type="text" name="review_id" class="input_txtbx" id="id" maxlength="10" onkeypress="return Number(event,this);" value="${reviewid}"> </td>
+							    <input type="text" name="review_id" class="input_txtbx" id="id" maxlength="10" placeholder="1" onkeypress="return Number(event,this);" value="${reviewid}"> </td>
 							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;Management Review Date :</td>
 							    <td align="left" valign="middle" width="10%">
 							    

@@ -192,7 +192,7 @@ function Number(e, t) {
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">CAPA ID :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}" maxlength="10" onkeypress="return Number(event,this);"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" placeholder="1" value="${capa}" maxlength="10" onkeypress="return Number(event,this);"></td>
 							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Request Date :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Actions :</td>

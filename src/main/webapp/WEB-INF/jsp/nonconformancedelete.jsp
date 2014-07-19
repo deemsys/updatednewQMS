@@ -178,7 +178,7 @@ function ChangeCase(elem)
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    	    <td align="left" valign="middle" width="10%"> NC ID&nbsp;: </td>
-							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" onblur="ChangeCase(this)" value="" onkeypress="return AlphabetsNumber(event,this);" maxlength="15"></td>
+							    <td align="left" valign="middle"><input type="text" name="id" class="input_txtbx" id="id" placeholder="NC1001" onblur="ChangeCase(this)" value="" onkeypress="return AlphabetsNumber(event,this);" maxlength="15"></td>
 							    <td align="left" valign="middle">Type of Non Conformance&nbsp;:</td>
 							    <td valign="top" align="left" class="input_txt">
 				                  									<select name="type_of_nonconformance" id="type_of_nonconformance" class="input_txtbx">
