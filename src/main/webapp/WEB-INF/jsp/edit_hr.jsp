@@ -74,11 +74,11 @@ $(function() {
                  </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.name }" maxlength="32"/><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx" id="name" onkeypress="return onlyAlphabets(event,this);" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.name }" maxlength="32"/><br>
                		<span id="nameerror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.name"></form:errors></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer"onkeypress="return onlyAlphabets(event,this);"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.trainer }" maxlength="32"/><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="trainer" class="input_txtbx" id="trainer"onkeypress="return onlyAlphabets(event,this);"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.trainer }" maxlength="32"/><br>
                   <span id="trainererror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.trainer"></form:errors></span></td>
                 
@@ -144,12 +144,12 @@ $(function() {
 				<tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Date Hired :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.date_hired }" /><br>
+                  <input type="text" name="date_hired" class="input_txtbx" id="datepicker"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"   value="${hRandTrainings.date_hired }" /><br>
                    <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.date_hired"></form:errors></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%">Due Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_due_date }" /><br>
+                  <input type="text" name="training_due_date" class="input_txtbx" id="datepicker1"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_due_date }" /><br>
                   <br> <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_due_date"></form:errors></span></td>
                 </tr>
@@ -167,7 +167,7 @@ $(function() {
                   
                    <td valign="middle" align="left" class="input_txt" width="20%">Completion Date :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_completion_date }" /><br>
+                  <input type="text" name="training_completion_date" class="input_txtbx" id="datepicker2"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_completion_date }" /><br>
                    <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_completion_date"></form:errors></span>
                   </td>
@@ -183,14 +183,14 @@ $(function() {
                  <br> <span id="functionsneedserror" style="color:red"></span>
                   </td>
                    <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" maxlength="32"/><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" class="input_txtbx" id="documentedin" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.documented_in}" maxlength="32"/><br>
                    <span id="documentedinerror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
                   </tr>
                   
                   <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="20%">Review Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_effectiveness_review_due_date }" /><br>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${hRandTrainings.training_effectiveness_review_due_date }" /><br>
                   <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
                  

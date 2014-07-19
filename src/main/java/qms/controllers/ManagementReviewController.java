@@ -67,7 +67,9 @@ public class ManagementReviewController
 @RequestMapping(value="/addmanagementreview", method = RequestMethod.POST)
 public String insert_managementreview(HttpSession session,@ModelAttribute("ManagementReview") @Valid ManagementReview managementReview, BindingResult result,ModelMap model, Principal principal)
 {
-
+	session.removeAttribute("categoryvalue");
+	session.removeAttribute("reviewid");
+	session.removeAttribute("managementreviewdate");
 	
 	session.setAttribute("managementreview",managementReview);
 	if(result.hasErrors())
@@ -194,6 +196,9 @@ public String viewallmanagementreport(HttpSession session,HttpServletRequest req
 @RequestMapping(value = "/updatemanagementreview", method = RequestMethod.POST)
 public String update_review(HttpSession session,@ModelAttribute("ManagementReview") @Valid ManagementReview managementreview,BindingResult result,ModelMap model,Principal principal) {
 	
+	session.removeAttribute("categoryvalue");
+	session.removeAttribute("reviewid");
+	session.removeAttribute("managementreviewdate");
 	System.out.println(managementreview.review_id);
 	session.setAttribute("managementreview",managementreview);
 	session.removeAttribute("categoryvalue");

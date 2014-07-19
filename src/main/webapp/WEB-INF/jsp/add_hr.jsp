@@ -184,10 +184,10 @@ function doAjaxPost() {
 
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="20%">Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"   id="name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="name" class="input_txtbx"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"   id="name" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
                   <br><span id="nameerror" style="color:red"></span>
                    <td valign="middle" align="left" class="input_txt" width="20%"> Trainer :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx"  id="trainer" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input  type="text" name="trainer" class="input_txtbx" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"   id="trainer" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/><br/>
                   <span id="trainererror" style="color:red"></span>
                   <span class="err"><form:errors path="HRandTraining.trainer"></form:errors></span></td>
                 </tr>
@@ -274,7 +274,7 @@ function doAjaxPost() {
 				
 				  <td valign="middle" align="left" class="input_txt" width="20%">Documented In :</td>
 
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="documented_in" id="documentedin" class="input_txtbx" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" maxlength="32"/>
                   
                   <br><span id="documentedinerror" style="color:red"></span><span class="err"><form:errors path="HRandTraining.documented_in"></form:errors></span></td>
 

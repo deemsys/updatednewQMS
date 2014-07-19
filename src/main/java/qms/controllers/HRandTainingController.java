@@ -59,6 +59,9 @@ public class HRandTainingController {
 		//insert operation
 		@RequestMapping(value={"/addhr"}, method = RequestMethod.POST)
 		public String insert_hr(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("HRandTraining") @Valid HRandTraining hRandTraining,BindingResult result ) throws IOException {
+			session.removeAttribute("type");
+			session.removeAttribute("qualifiedby");
+			session.removeAttribute("trainer");
 			System.err.println("-------------------------------------------");
 			byte[] buffer=null;// = new byte[10000];
 			try {
@@ -392,7 +395,10 @@ public class HRandTainingController {
 
 					public String update_hr(HttpServletRequest request,@ModelAttribute("HRandTraining") @Valid HRandTraining hRandTraining,BindingResult result,HttpSession session, ModelMap model,Principal principal) {
 
-							byte[] buffer=null;
+					session.removeAttribute("type");
+					session.removeAttribute("qualifiedby");
+					session.removeAttribute("trainer");
+					byte[] buffer=null;
 							int status =0;
 							try {
 								MultipartFile file = hRandTraining.getAttachments();

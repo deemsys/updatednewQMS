@@ -57,9 +57,7 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 55px">Process ID :</td>
-<<<<<<< .mine
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" />${process.process_id}<span class="err"><form:errors path="Process.process_id"></form:errors></span>
-                  
+               
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="auto_id" class="input_txtbx" id="auto_id" value="${process.auto_id}"><input type="text" name="process_id" class="input_txtbx" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_id}" readonly="readonly" /><span class="err"><form:errors path="Process.process_id"></form:errors></span>
                   <c:if test="${success=='exist'}"><span style="color:red">Process ID already Exist</span></c:if>
                   </td>

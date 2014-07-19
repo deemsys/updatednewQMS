@@ -60,7 +60,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
 	                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="id" id="auditid" class="input_txtbx"  value="<c:out value="${id}" />"/ ><br/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="id" id="auditid" class="input_txtbx"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  value="<c:out value="${id}" />"/ ><br/>
                   <span id="auditiderror" style="color:red"class="err"></span></td>
                 </tr>
                 <tr class="row1">
@@ -97,7 +97,7 @@
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit start date :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_start_date" class="input_txtbx" id="datepicker1" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${internalaudits.audit_start_date}"></c:out>' /><br/>
                   <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_start_date"></form:errors></span></td>
                
@@ -105,7 +105,7 @@
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit due date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="audit_due_date" class="input_txtbx" id="datepicker"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.audit_due_date}" /><br/>
                    <span id="datepicker00" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.audit_due_date"></form:errors></span></td>
                 </tr>
@@ -153,13 +153,13 @@
 				
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Completion date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker2" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.completion_date}" />
                   <br> <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.completion_date"></form:errors></span></td>
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Auditor's initials :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onkeypress="return onlyAlphabets(event,this);"/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="auditors_initials" class="input_txtbx" id="inp_auditors_initials" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseout="hideTooltip('tooltip_id');" value="${internalaudits.auditors_initials}" onkeypress="return onlyAlphabets(event,this);"/>
                   <br><span id="auditorsinitialserror" style="color:red"></span>
                   <span class="err"><form:errors path="InternalAudits.auditors_initials"></form:errors></span></td>
                 </tr>

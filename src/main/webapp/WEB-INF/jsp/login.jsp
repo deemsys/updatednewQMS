@@ -58,7 +58,7 @@ function validation()
 		  </div>
 		  <div class="login-center">
 		  <ul class="login-list">
-		  <li  style="background-color:#FFFFD6;"><h3 style="font-family:verdana;background-color:gainsboro;padding:10px;font-weight:bolder;text-align:center;border:solid 1px brown;"><font color="#993300">Quality Management System LOGIN</font></h3>
+		  <li  style="background-color:#FFFFD6;"><h3 style="font-family:verdana;background-color:gainsboro;padding:10px;font-weight:bolder;text-align:center;border:solid 1px brown;"><font color="#993300">QUALITY MANAGEMENT SYSTEM LOGIN</font></h3>
 		  </li>
 		  </ul>
 		   <c:if test="${not empty error}">
@@ -72,10 +72,10 @@ function validation()
 		    <ul class="login-list">
 		   <li>
 <BR/>
-	 <table cellpadding="0" cellspacing="0" border="0" width="300">
-	 <td style="width:35%" valign="top">
+	 <table cellpadding="0" cellspacing="0" border="0" width="500" >
+	 <td style="width:40%" valign="top" align="right">
 	
-		       <b> <font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName&nbsp;:</font></b>
+		       <b> <font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName&nbsp;:&nbsp;&nbsp;</font></b>
 		     </td>
 		     
 		       <td valign="top" align="left"><input type="text" maxlength="32" class="inputbx1" id="username" style="border:solid 1px brown;" name="j_username" value=''>
@@ -84,9 +84,9 @@ function validation()
 		      </table>
 		      </li>
 		      <li>
-		      <table cellpadding="0" cellspacing="0" border="0" width="300">
-		      <td style="width:35%" valign="top">
-		        <b><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password&nbsp;:</font></b>
+		      <table cellpadding="0" cellspacing="0" border="0" width="500">
+		      <td style="width:40%;padding-right:5px;" valign="top" align="right">
+		        <b><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password&nbsp;&nbsp;&nbsp;:</font></b>
 		        </td>
 		      
 		      
@@ -98,12 +98,12 @@ function validation()
 		      <li>
 		      </li>
 		      <li><br>
-		      <table cellpadding="0" cellspacing="0" border="0" width="300">
+		      <table cellpadding="0" cellspacing="0" border="0" width="500">
 		      <td valign="top" align="right">
 		      <a href="#">
 		        <input type="submit" value="Submit" style="width:70px;height:30px;" name="submit" class="submit_btn1" onclick="return validation()">
 		        </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		          <input type="reset" value="Reset" onclick="clear123()" class="submit_btn1" style="width:70px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;
+		          <input type="reset" value="Reset" onclick="clear123()" class="submit_btn1" style="width:70px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		  </td><Td width="20%"> </td></table></li>
 		      
 		      
@@ -123,7 +123,7 @@ function validation()
 		     <tr>
 		     <td align="right"><a style="color:brown;text-align:right;">New User Click Here For Register&nbsp;&nbsp;</a></td>
 		      <td valign="top" align="left">
-		    <input type="button" value="Register" style="width:70px;height:30px;" name="submit" class="submit_btn1" onclick="window.location.href='createuser'"></td><td width="20%"></td>
+		    <input type="button" value="Register" style="width:70px;height:30px;" name="submit" class="submit_btn1" onclick="window.location.href='createuser'">&nbsp;&nbsp;</td><td width="20%"></td>
 		    </tr>
 		    </table></li>
 		      

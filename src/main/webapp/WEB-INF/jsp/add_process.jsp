@@ -133,11 +133,9 @@
 			<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
-                <br>  <span id="processid1"></span>
+                  <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>                
                   <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="15"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="15"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
                 <br> 
                  <span id="processid1" style="color:red">
                    <c:if test="${success=='exist'}">Process ID already Exist</c:if>

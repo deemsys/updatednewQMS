@@ -72,7 +72,7 @@
 				                  </td>
 				                   
                  <td valign="middle" align="left" class="input_txt" width="30%">Management Review Date :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.management_review_date}"></c:out>'>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="management_review_date" class="input_txtbx" id="datepicker3" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.management_review_date}"></c:out>'>
                   <br>  <span id="datepicker33" style="color:red"></span>
                   
                    <span class="err"><form:errors path="ManagementReview.management_review_date"></form:errors></span></td>
@@ -81,13 +81,13 @@
                   <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Attendee List With Titles :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  <input type="text" class="input_txtbx" name="attendee_list_with_titles" id="attendeelistwithtitles"  onkeypress="return onlyAlphabets(event,this);" maxlength="32" value="<c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out>" maxlength="32"/>          
+                  <input type="text" class="input_txtbx" name="attendee_list_with_titles" id="attendeelistwithtitles"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onkeypress="return onlyAlphabets(event,this);" maxlength="32" value="<c:out value="${managementReviewdetails.attendee_list_with_titles}"></c:out>" maxlength="32"/>          
                    <br/>
                     <span id="attendeelistwithtitleserror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.attendee_list_with_titles"></form:errors></span></td>
                  
                  <td valign="middle" align="left" class="input_txt" width="30%">Next Management Review By :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby"onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value='<c:out value="${managementReviewdetails.next_management_review_by}"></c:out>'>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="next_management_review_by" class="input_txtbx" id="nextmanagementreviewby"onkeypress="return onlyAlphabets(event,this);" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" maxlength="32" value='<c:out value="${managementReviewdetails.next_management_review_by}"></c:out>'>
                   <br>   <span id="nextmanagementreviewbyerror" style="color:red"></span>
                    <span class="err"><form:errors path="ManagementReview.next_management_review_by"></form:errors></span></td>
                   </tr>
@@ -124,7 +124,7 @@
                   
                  <td valign="middle" align="left" class="input_txt" width="30%">Action Due Date :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%"> 
-                 <input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_due_date}"></c:out>'>
+                 <input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_due_date}"></c:out>'>
                   <br>  <span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>
                   </tr>
@@ -133,13 +133,13 @@
                   <td valign="middle" align="left" class="input_txt" width="30%">
                    <input type="radio" name="action_needed" value="Yes"  id="action_needed_yes" <c:if test="${managementReviewdetails.action_needed=='Yes'}"><c:out value="checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                    <input type="radio" name="action_needed" value="No" id="action_needed_no" <c:if test="${managementReviewdetails.action_needed=='No'}"><c:out value="checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
-              <td>Completion Date :</td><td><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.completion_date}"></c:out>'>
+              <td>Completion Date :</td><td><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.completion_date}"></c:out>'>
                 <br><span id="datepicker11" style="color:red"></span>  
 				 <span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>
                </tr>
                    <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Action Detail :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="action_detail" class="input_txtbx" id="actiondetail" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1();" maxlength="32" value='<c:out value="${managementReviewdetails.action_detail}" ></c:out>'> 
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="action_detail" class="input_txtbx" id="actiondetail" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" onInput="return validatename1();" maxlength="32" value='<c:out value="${managementReviewdetails.action_detail}" ></c:out>'> 
                   <br>   <span id="actiondetailerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>
                 
@@ -148,7 +148,7 @@
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Responsibility :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility" onkeypress="return onlyAlphabets(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>' maxlength="32"> 
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="responsibility" class="input_txtbx" id="responsibility"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.responsibility}"></c:out>' maxlength="32"> 
                   <br> <span id="responsibilityerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>
                 

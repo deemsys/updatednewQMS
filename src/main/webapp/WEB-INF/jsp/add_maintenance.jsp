@@ -15,7 +15,7 @@
       <tr>
       <td>
       <div id="right_content">
-  <ul class="horizmenu" style=" float:left;margin-left:205px; margin-top:8px;">
+  <ul class="horizmenu" >
 						
 							<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_maintenance" class="<c:choose>

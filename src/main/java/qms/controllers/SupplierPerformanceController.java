@@ -134,6 +134,9 @@ import qms.forms.SupplierPerformanceForm;;
 
 		{	
 			
+			session.removeAttribute("phone");
+			session.removeAttribute("email");
+			session.removeAttribute("suppliername");
 			System.out.println("came");
 			session.setAttribute("supplier",supplierPerformance);
 			if(result.hasErrors())
@@ -160,6 +163,9 @@ import qms.forms.SupplierPerformanceForm;;
 		@RequestMapping(value={"/updatesupplierperformance"}, method = RequestMethod.POST)
 		public String update_supplierperformance(HttpSession session,@ModelAttribute("supplierperformance") @Valid SupplierPerformance supplierPerformance,BindingResult result,ModelMap model, Principal principal)
 		{
+			session.removeAttribute("phone");
+			session.removeAttribute("email");
+			session.removeAttribute("suppliername");
 			session.setAttribute("supplier",supplierPerformance);
 			if(result.hasErrors())
 			{

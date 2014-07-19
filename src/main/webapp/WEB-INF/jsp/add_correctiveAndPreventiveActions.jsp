@@ -81,7 +81,7 @@
                 <tr class="row2">
 				  <td valign="middle" align="left" class="input_txt" width="30%"> External ID :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
-                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id"   onblur=" ChangeCase(this)" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return AlphabetsNumber(event,this);"/><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
+                  		<input type="text" name="external_id" class="input_txtbx" id="inp_external_id"   onblur=" ChangeCase(this)" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return AlphabetsNumber(event,this);" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" /><br/><span style="color: red;" id="externalerror"><form:errors path="CorrectiveAndPreventiveActions.external_id"></form:errors></span></td>  
                   
                   <td valign="top" align="left" class="input_txt" width="30%">Source of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="30%">
@@ -141,7 +141,7 @@
 				
             <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="30%"> Request Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span style="color: red;" id="datepicker2err"><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="request_date" class="input_txtbx" id="datepicker2" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span style="color: red;" id="datepicker2err"><form:errors path="CorrectiveAndPreventiveActions.request_date"></form:errors></span></td>
                   
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
@@ -151,7 +151,7 @@
              
             <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="30%"> CAPA Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span style="color: red;" id="datepicker3err"><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="capa_due_date" class="input_txtbx" id="datepicker3" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span style="color: red;" id="datepicker3err"><form:errors path="CorrectiveAndPreventiveActions.capa_due_date"></form:errors></span></td>
                  
               
                 </tr>
@@ -178,7 +178,7 @@
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Root-Cause Analysis File :</td>
                   
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" ><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  value="" ><br/><span id="root1error" style="color: red;"><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></span></td>
                <td valign="middle" align="left" class="input_txt" > Upload External Analysis (Y/N)<span>(*Optional) :</span></td>
 				                   	<td><input type="checkbox" name="upload_external_analysis" id="externalfile" value="upload_external_analysis" id="0"/></td>
 							</tr>
@@ -203,9 +203,9 @@
                   <td valign="top" align="left" class="input_txt" width="20%">Action :</td>
                   <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="action" class="input_txtbx"  id="action" value="<c:out value=""/>" br/><span style="color: red;" id="actionerror"><form:errors path="CorrectiveAndPreventiveActions.action"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Due Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker6" class="input_txtbx" name="due_date" value=""/><br/><span style="color: red;" id="datepicker6err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker6" class="input_txtbx" name="due_date" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  value=""/><br/><span style="color: red;" id="datepicker6err"><form:errors path="CorrectiveAndPreventiveActions.due_date"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Verified By :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="verified_by" id="verified_by" class="input_txtbx"  value="<c:out value=""/>" onkeypress="return Alphabets(event,this);"/><br/><span style="color: red;" id="verifiedbyerror"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="verified_by" id="verified_by" class="input_txtbx"  value="<c:out value=""/>" onkeypress="return Alphabets(event,this);" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" /><br/><span style="color: red;" id="verifiedbyerror"><form:errors path="CorrectiveAndPreventiveActions.verified_by"></form:errors></span></td>
                </tr>
                     <tr class="row2">
                      <td valign="top" align="left" class="input_txt" width="20%">Responsibity :</td>
@@ -220,9 +220,9 @@
 				                   	</td>	
                      
                      <td valign="top" align="left" class="input_txt" width="20%">Completion Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker4" class="input_txtbx" name="completion_date" value=""/><br/><span style="color: red;" id="datepicker4err"><form:errors path="CorrectiveAndPreventiveActions.completion_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker4" class="input_txtbx" name="completion_date" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  value=""/><br/><span style="color: red;" id="datepicker4err"><form:errors path="CorrectiveAndPreventiveActions.completion_date"></form:errors></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Verification Date :</td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker5" name="verification_date" class="input_txtbx" value=""/><br/><span style="color: red;" id="datepicker5err"><form:errors path="CorrectiveAndPreventiveActions.verification_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker5" name="verification_date" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  class="input_txtbx" value=""/><br/><span style="color: red;" id="datepicker5err"><form:errors path="CorrectiveAndPreventiveActions.verification_date"></form:errors></span></td>
                  </tr>
                 </table>
                </td>
