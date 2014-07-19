@@ -56,7 +56,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 62px">Product ID :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${products.auto_id}"/>
-                  <input type="text" name="productid_nc"  class="input_txtbx" maxlength="32" id="productidnc" onblur="ChangeCase(this);toggle(this.value);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${products.productid_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
+                  <input type="text" name="productid_nc"  class="input_txtbx" maxlength="32" id="productidnc" onblur="ChangeCase(this);toggle(this.value);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${products.productid_nc}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlyAlphabets(event,this);"	 />
                   <br> <span id="productidnc1" style="color:red">
                   <c:if test="${success=='exist'}">Product ID already exist</c:if></span>
                    
