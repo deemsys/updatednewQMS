@@ -45,7 +45,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2 style="padding-left: 65px">Editing Document Type</h2>
+              <h2 style="padding-left: 65px">Update Document Type</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${documentTypeForm.documentTypes[0]}" var="documenttype"> </c:set>
@@ -57,8 +57,8 @@
                 
                   <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 70px">Document Type&nbsp;:</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" onkeypress="return onlyAlphabets(event,this);"	/>
-                  <br>  <span id="documenttype1" style="color:red"></span>
-                   <c:if test="${success=='exist'}"><br><span style="color:red">Document type already exist</span></c:if>
+                  <br>  <span id="documenttype1" style="color:red">
+                   <c:if test="${success=='exist'}">Document type already exist</c:if></span>
                   
                   <span class="err"><form:errors path="DocumentType.document_type"></form:errors></span>
                   <input type="hidden" name="id" id="id" value="${documenttype.id}"/>
