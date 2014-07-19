@@ -169,7 +169,7 @@ function validateAlpha4(){
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                 	 <td valign="middle" align="left" class="input_txt" width="25%" style="padding-left: 65px"><span class="err">Type of NC :</td>
-               		<td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="frequency_maintenance" id="frequency_maintenance" class="input_txtbx"  maxlength="32" style="width:200px;" value="" 
+               		<td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="frequency_maintenance" id="frequency_maintenance" class="input_txtbx"  maxlength="32" style="width:200px;" value="" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"
 onkeypress="return onlyAlphabets(event,this);"/><br/><font size="+1" color="red"><span  id="frequency_maintenanceerr"></font><form:errors path="Reference.frequency_maintenance"></form:errors></span></td>
               		<td></td>
               		<td></td>
