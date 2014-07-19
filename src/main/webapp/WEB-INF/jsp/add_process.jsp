@@ -134,6 +134,9 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Process ID :</td>
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
+                <br>  <span id="processid1"></span>
+                  <span class="err"><form:errors path="Process.process_id"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="15"  name="process_id" class="input_txtbx"  onblur="ChangeCase(this);" id="processid" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value="${process.process_id}" onkeypress="return onlyAlphabets1(event,this);"	/>
                 <br> 
                  <span id="processid1" style="color:red">
@@ -144,14 +147,14 @@
                   <tr height="10"></tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Process Name :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onkeypress="return onlyAlphabets(event,this);" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" maxlength="32" name="process_name" class="input_txtbx" id="processname"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_name}" onkeypress="return onlyAlphabets(event,this);" />
                 <br>   <span id="processname1"></span>
                 <c:if test="${success=='exists'}"><span style="color:red">Process name already exists</span></c:if>
                   <span class="err"><form:errors path="Process.process_name"></form:errors></span></td>
                 </tr>  <tr height="10"></tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px" >Process Owner :</td>
-                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" maxlength="32" class="input_txtbx" id="processowner" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onkeypress="return onlyAlphabets(event,this);" />
+                  <td valign="top" align="left" class="input_txt" ><input type="text" name="process_owner" maxlength="32" class="input_txtbx" id="processowner" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${process.process_owner}" onkeypress="return onlyAlphabets(event,this);" />
                  <br>  <span id="processowner1"></span>
                   <span class="err"><form:errors path="Process.process_owner"></form:errors></span></td>
                 </tr>  <tr height="10"></tr>
