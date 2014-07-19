@@ -56,7 +56,7 @@
                 <tr class="row2">
                 
                   <td valign="top" align="left" class="input_txt" width="30%" style="padding-left: 70px">Document Type&nbsp;:</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}" onkeypress="return onlyAlphabets(event,this);"	/>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" maxlength="32" name="document_type" class="input_txtbx" id="documenttype" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documenttype.document_type}"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onkeypress="return onlyAlphabets(event,this);"	/>
                   <br>  <span id="documenttype1" style="color:red">
                    <c:if test="${success=='exist'}">Document type already exist</c:if></span>
                   
