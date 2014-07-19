@@ -135,7 +135,7 @@
             
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="50%" style="padding-left: 55px">Location Name :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${location}" onkeypress="return onlyAlphabets(event,this);"/>
+                  <td valign="top" align="left" class="input_txt"><input type="text"  maxlength="32"  name="form_location" class="input_txtbx" id="formlocation"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${location}" onkeypress="return onlyAlphabets(event,this);"/>
                 <br>  <span id="formlocation1" style="color:red">
                 <c:if test="${success=='exist'}">Location already exist</c:if></span>
                   <span class="err"><form:errors path="FormLocation.form_location"></form:errors></span></td>
