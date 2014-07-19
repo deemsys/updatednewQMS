@@ -57,13 +57,13 @@
 			<input type="hidden" id="formid" onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');" name="form_or_rec_id" />${form.form_or_rec_id}</a>
 		       <input type="hidden" name="form_or_rec_id" id="generated_id" value=""/> 
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:50px;display:none;">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:115px;display:none;">
       
 			                <c:forEach items="${formFormPrefix.formPrefixs}" var="formprefix" varStatus="status">
         				       <option value="${formprefix.form_prefix}">${formprefix.form_prefix}</option>
 			                  </c:forEach>
                </select>              
-                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:100px;display:none;" onblur="change_to_label();" maxlength="32" onkeypress="return onlynumeric(event,this);"/>
+                  <input type="text" value="" class="input_txtbx" id="form_or_rec_id"  style="height:22px;width:79px;display:none;" onblur="change_to_label();" maxlength="32"onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onkeypress="return onlynumeric(event,this);"/>
                <span id="changeafter"></span>  
                <span id="change" style="display: none;" ></span><a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>
                <br><c:if test="${success=='exist'}"><span style="color:red">Form ID already Exist</span></c:if>   
@@ -155,7 +155,7 @@
 																			type="text" class="input_txtbx" id="form_or_rec_title"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
-																			name="form_or_rec_title" onkeypress="return onlyAlphabetsnumeric(event,this);"
+																			name="form_or_rec_title" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlyAlphabetsnumeric(event,this);"
 																			value="${form.form_or_rec_title}" /><br/>
 																			<span id="title1" style="color:red"></span>
 																			<span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>

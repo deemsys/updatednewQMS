@@ -79,7 +79,7 @@
                
               <input type="hidden" value="${docform.form_or_rec_id}" id="generated_id90" /> 
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx" style="width:100px;" value="" /> 
-              <input type="text" value="" id="form_or_rec_id" class="input_txtbx" onkeypress="return validate(event);" style="height:22px;width:100px;" name="form_or_rec_id" onblur="change_to_label();" maxlength="32"/>
+              <input type="text" value="" id="form_or_rec_id" class="input_txtbx" onkeypress="return validate(event);" style="height:22px;width:100px;" name="form_or_rec_id" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="change_to_label();" maxlength="32"/>
               <br><span id="formiderror" style="color:red"></span>
               <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
               <span id="quality3err" style="color:red;"></span>
@@ -124,7 +124,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="form_or_rec_title"
-																			value="${docform.form_or_rec_title }" onkeypress="return onlyAlphabetsnumeric(event, this);" maxlength="32"/>
+																			value="${docform.form_or_rec_title }" onkeypress="return onlyAlphabetsnumeric(event, this);" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"maxlength="32"/>
 																			<br/>
 																			<span id="title1" style="color:red"></span><span style="color:red;"><form:errors path="Form.form_or_rec_title"></form:errors></span>
 																		
