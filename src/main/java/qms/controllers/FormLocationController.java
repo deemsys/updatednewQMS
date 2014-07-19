@@ -39,6 +39,7 @@ public class FormLocationController {
 	
 	public String addFormPrefix(HttpSession session,ModelMap model, Principal principal) {
 		session.removeAttribute("formlocation");
+		session.removeAttribute("location");
 		model.addAttribute("menu","admin");
 		return "add_formlocation";
 	}
@@ -48,6 +49,7 @@ public class FormLocationController {
 public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @Valid FormLocation formLocation,BindingResult result, ModelMap model) {
 
 	session.setAttribute("formLocation",formLocation);
+	session.setAttribute("location",formLocation.getForm_location());
 		if (result.hasErrors())
 		{
 			FormLocationForm formLocationForm = new FormLocationForm();
@@ -64,6 +66,7 @@ public String postLocation(HttpSession session,@ModelAttribute("FormLocation") @
 		}
 		//formprefixDAO.insert_PrefixForm(formPrefix);
 		formLocationDAO.insert_LocationForm(formLocation);
+		session.removeAttribute("location");
 		FormLocationForm formLocationForm = new FormLocationForm();
 	  	formLocationForm.setFormLocations(formLocationDAO.getlimitedlocationreport(1));
 		model.addAttribute("noofpages",(int) Math.ceil(formLocationDAO.getnooflocationreport() * 1.0 / 5));	 

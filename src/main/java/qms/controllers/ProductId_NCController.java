@@ -34,6 +34,7 @@ public class ProductId_NCController {
 	
 	public String addTypeNC(HttpSession session,ModelMap model, Principal principal) {
 		//session.removeAttribute("formlocation");
+	session.removeAttribute("productnc");
 		model.addAttribute("menu","admin");
 		return "add_productidnc";
 	}
@@ -42,6 +43,7 @@ public class ProductId_NCController {
 public String postType(HttpSession session,@ModelAttribute("ProductIDNC") @Valid ProductIDNC productIDNC,BindingResult result, ModelMap model) {
 
 	session.setAttribute("productIDNC",productIDNC);
+	session.setAttribute("productnc",productIDNC.getProductid_nc());
 	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
 	
 	
@@ -61,6 +63,7 @@ public String postType(HttpSession session,@ModelAttribute("ProductIDNC") @Valid
 			model.addAttribute("success","exist");
 			 return "add_productidnc";
 		}
+		session.removeAttribute("productnc");
 		productId_NCDAO.insert_Type(productIDNC);
 		productId_NC_Form.setProductIDNCs(productId_NCDAO.getlimitedproductid(1));
 		model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));

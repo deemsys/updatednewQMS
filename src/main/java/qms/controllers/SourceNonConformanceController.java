@@ -37,6 +37,7 @@ public class SourceNonConformanceController {
 	
 	public String addSourceNC(HttpSession session,ModelMap model, Principal principal) {
 		//session.removeAttribute("formlocation");
+	session.removeAttribute("sourcenc");
 		model.addAttribute("menu","admin");
 		return "Add_source_NC";
 	}
@@ -45,6 +46,7 @@ public class SourceNonConformanceController {
 public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_Source") @Valid Non_Conformance_Source non_Conformance_Source,BindingResult result, ModelMap model) {
 
 	session.setAttribute("non_Conformance_Source",non_Conformance_Source);
+	session.setAttribute("sourcenc",non_Conformance_Source.getSource_of_nc());
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 		if (result.hasErrors())
 		{
@@ -61,7 +63,7 @@ public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_S
 			return "Add_source_NC";
 		}
 		sourceNCDAO.insert_Source(non_Conformance_Source);
-		
+		session.removeAttribute("sourcenc");
 		conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
 		model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0/5));
 		model.addAttribute("button","viewall");

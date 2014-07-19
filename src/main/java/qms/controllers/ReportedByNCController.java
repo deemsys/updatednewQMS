@@ -47,15 +47,15 @@ public class ReportedByNCController {
 	
 	public String addReportNC(HttpSession session,ModelMap model, Principal principal) {
 	
-
+		session.removeAttribute("person");
+		session.removeAttribute("typenc");
 
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
-		
-		//session.removeAttribute("formlocation");
 		ReportedByNCForm reportByNCForm =  new ReportedByNCForm();
 		model.addAttribute("menu","admin");
+		
 		return "add_reportnc";
 	}
 //Insert a record created on 19-jun-14.
@@ -63,6 +63,8 @@ public class ReportedByNCController {
 public String postreportnc(HttpSession session,@ModelAttribute("ReportedByNC") @Valid ReportedByNC reportedByNC,BindingResult result, ModelMap model) {
 
 	session.setAttribute("reportnc",reportedByNC);
+	session.setAttribute("person",reportedByNC.getGroup_person());
+	session.setAttribute("typenc",reportedByNC.getType_of_nc());
 		if (result.hasErrors())
 		{
 		
@@ -74,7 +76,17 @@ public String postreportnc(HttpSession session,@ModelAttribute("ReportedByNC") @
 			model.addAttribute("Success","true");
 	        return "add_reportnc";
 		}
-		
+		if(reportedByNCDAO.getReportedByNCsexit(reportedByNC.getType_of_nc(), reportedByNC.getGroup_person(),reportedByNC.getAuto_id()))
+		{
+			Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+			type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+			model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+			model.addAttribute("success","exist");
+			model.addAttribute("menu","admin");
+			return "add_reportnc";
+		}
+		session.removeAttribute("person");
+		session.removeAttribute("typenc");
 		reportedByNCDAO.insert_nc(reportedByNC);
 		ReportedByNCForm reportedByNCForm = new ReportedByNCForm();
 		reportedByNCForm.setReportedByNCs(reportedByNCDAO.getlimitedNC(1));
@@ -83,7 +95,11 @@ public String postreportnc(HttpSession session,@ModelAttribute("ReportedByNC") @
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
 		model.addAttribute("reportedByNCForm",reportedByNCForm);
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 		model.addAttribute("menu","admin");
+		
 		model.addAttribute("success","insert");
 	return "add_reportnc";
 }
@@ -165,6 +181,22 @@ public String Update_reportnc(HttpServletRequest request,ModelMap model,@ModelAt
 		reportedByNCForm.setReportedByNCs(reportedByNCDAO.reportedByNCs(auto_id));
 		model.addAttribute("reportedByNCForm",reportedByNCForm);
         return "edit_reportnc";
+	}
+	if(reportedByNCDAO.getReportedByNCsexit(reportedByNC.getType_of_nc(), reportedByNC.getGroup_person(),reportedByNC.getAuto_id()))
+	{
+		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
+		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+
+		
+		ReportedByNCForm reportedByNCForm = new ReportedByNCForm();
+		reportedByNCForm.setReportedByNCs(reportedByNCDAO.reportedByNCs(auto_id));
+		model.addAttribute("reportedByNCForm",reportedByNCForm);
+		model.addAttribute("success","exist");
+		model.addAttribute("menu","admin");
+	    return "edit_report_nc";
+		
+	
 	}
 	reportedByNCDAO.update_nc(reportedByNC);
 	ReportedByNCForm reportedByNCForm = new ReportedByNCForm();
