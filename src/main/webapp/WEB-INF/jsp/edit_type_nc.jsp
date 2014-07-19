@@ -56,7 +56,7 @@
                   <td valign="middle" align="left" class="input_txt" width="30%" style="padding-left: 60px">Type of NC :</td>
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${types.auto_id}"/>
-                  <input type="text" name="type_of_nc"  maxlength="32" class="input_txtbx"  id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${types.type_of_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
+                  <input type="text" name="type_of_nc"  maxlength="32" class="input_txtbx"  id="typeofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${types.type_of_nc}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onkeypress="return onlyAlphabets(event,this);"	 />
                  <br> <span id="typeofnc1" style="color:red">
                  <c:if test="${success=='exist'}">Type of NC already exist</c:if></span>
                   <span class="err"><form:errors path="Type_of_NC.type_of_nc"></form:errors></span>
