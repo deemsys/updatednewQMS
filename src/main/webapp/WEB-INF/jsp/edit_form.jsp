@@ -493,7 +493,7 @@ var start = "false";
 		
 		else if((doc_id.value.length < 4) || (doc_id.value.length > 32))
 			{
-			var color = "Required field should be a length of 4 to 32";
+			var color = "Required field should be length of 4 to 32";
 			var result = color.fontcolor("red");
 			document.getElementById("changeafter").innerHTML=result;
 			}

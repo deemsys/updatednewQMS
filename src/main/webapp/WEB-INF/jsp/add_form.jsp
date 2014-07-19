@@ -623,7 +623,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 	     if(datepicker123 == "")
 		 {
 			
-		 document.getElementById("datepicker1234").innerHTML="";
+		 document.getElementById("datepicker1234").innerHTML="Required field should not be empty";
 		 error ="true";
 		 
 		 }
@@ -654,8 +654,8 @@ var spl =  /^[A-Za-z0-9]*$/;
 		}
 	  if(!(document.getElementById('id_hardcopy').checked) &&  !(document.getElementById('id_electronic').checked) && !(document.getElementById('id_both').checked) )
 	{
-		alert("media type");
-		 document.getElementById("mediatypeerror").innerHTML="Select atleast one";
+		
+		 document.getElementById("mediatypeerror").innerHTML="Required field should not be empty";
 			error ="true";
 	}
 	 else
@@ -686,7 +686,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 if(e3=="")
 			 {
 			
-			 document.getElementById("attach").innerHTML="No file uploaded";
+			 document.getElementById("attach").innerHTML="Please uploaded a file";
 			 error ="true";
 			 }
 		 else{
@@ -711,7 +711,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 if(e3=="")
 		 {
 			 
-		 document.getElementById("attach").innerHTML="No file uploaded";
+		 document.getElementById("attach").innerHTML="Please uploaded a file";
 		 error ="true";
 		 }
 		 else{
@@ -733,7 +733,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 			}
 			else
 				{
-				 document.getElementById("filtererror").innerHTML="Select Issuer";
+				 document.getElementById("filtererror").innerHTML="Required field should not be empty";
 					error ="true";
 				}
 			
@@ -786,7 +786,7 @@ var spl =  /^[A-Za-z0-9]*$/;
 			}
 			else
 				{
-				 document.getElementById("filter1error").innerHTML="Select approver";
+				 document.getElementById("filter1error").innerHTML="Required field should not be empty";
 					error ="true";
 				}
 			

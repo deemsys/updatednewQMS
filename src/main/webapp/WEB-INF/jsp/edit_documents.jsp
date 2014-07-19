@@ -84,15 +84,15 @@ $(window).load(function(){
 					<input type="hidden" id="documentid1"class="input_txtbx"  onmouseover="showTooltip('tooltip_id','inp_id3');" 
 					onmouseout="hideTooltip('tooltip_id');"
 					name="document_id" />${documentMain.document_id}</a>
-					<table style="width:100%;" class="simple_table" border="0">
-                    <tr ><td align="left">
-					<select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;width:130px; margin:0 0 0 -15px;margin-right:-1px;">
+					<table  class="simple_table" border="0">
+                    <tr ><td align="left" width="10">
+					<select name="document_type_id" id="document_type_id" class="input_txtbx" style="display:none;width:110px; margin:0 0 0 -15px;margin-right:-1px;">
                
 			                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         				       <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			                  </c:forEach>
-               </select></td><td align="left">
-               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:60px;margin:0 0 0 -10px;"  onblur="change_to_label()" onkeypress="return onlynumeric(event,this);"/>
+               </select></td><td align="left" width="10">
+               <input type="text" value="" id="document_id" class="input_txtbx" style="display:none;width:77px;margin:0 0 0 -10px;"  onblur="change_to_label()" onkeypress="return onlynumeric(event,this);"/>
                
                 <input type="hidden" name=document_id id="generated_id"  value="" /> </td></tr></table>
                
@@ -133,7 +133,7 @@ $(window).load(function(){
              </tr>  
               <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="20%">Document Title:</td>
+               <td valign="middle" align="left" class="input_txt" >Document Title:</td>
                <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/><span class="err"style="color:red"><form:errors path="DocumentMain.document_title"></form:errors></span>
                <span id="documenttitle1" style="color:red"></span>
                </td>
@@ -204,8 +204,8 @@ $(window).load(function(){
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="left" class="input_txt" width="20%">Document Type:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">
+               <td valign="middle" align="left" class="input_txt" width="18%">Document Type:</td>
+               <td valign="top" align="left" class="input_txt" width="30%">
            
                 <select name="document_type" id="id_document_type"  class="input_txtbx">
 							  <option value="">--Select--</option> 
@@ -232,7 +232,7 @@ $(window).load(function(){
             <td valign="top" align="left" class="input_txt" width="20%"></td>
              </tr> 
              <tr class="row2">
-               <td valign="middle" align="left" class="input_txt" width="25%">
+               <td valign="middle" align="left" class="input_txt" width="15%">
                <td valign="top" align="left" class="input_txt" width="20%">
                <td valign="middle" align="left" class="input_txt" width="20%">External Document ?(Y/N):</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -280,8 +280,8 @@ $(window).load(function(){
 		 
 		  
 		       <tr class="row1" style="border:none;">
-            <td valign="middle" align="left" class="input_txt" width="20%">Issuer:</td>
-               <td valign="top" align="left" class="input_txt" width="20%">
+            <td valign="middle" align="left" class="input_txt" width="18%">Issuer:</td>
+               <td valign="top" align="left" class="input_txt" width="30%">
                
                <select name="issuer" id="issuer" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option> 
@@ -293,7 +293,7 @@ $(window).load(function(){
                
                <br/><span id="filtererror" style="color:red"></span><span class="err"style="color:red"><form:errors path="DocumentMain.issuer"></form:errors></span></td>
             
-                <td valign="middle" align="left" class="input_txt" width="20%">Approver 1(Process Owner):</td>
+                <td valign="middle" align="left" class="input_txt" width="15%">Approver 1(Process Owner):</td>
                <td valign="top" align="left" class="input_txt" width="40%" >
               
                
@@ -311,7 +311,7 @@ $(window).load(function(){
                  </tr>  
               <tr class="row2" style="border:none;">
               
-                <td valign="middle" align="left" class="input_txt" width="25%">Revision Level:</td>
+                <td valign="middle" align="left" class="input_txt">Revision Level:</td>
                <td valign="top" align="left" class="input_txt" width="20%">
                 <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel" style="width:200px;" value="${documentMain.revision_level}" onkeypress="onlyAlphabetsnumeric(event,this);"/><br/>
               <%--  <select name="revision_level" id="revisionlevel" class="input_cmbbx1" style="width:100%;">
@@ -343,14 +343,14 @@ $(window).load(function(){
              </tr>
              <tr class="row1" style="border:none;">
               
-               <td valign="middle" align="left" class="input_txt" width="20%">Date:</td>
+               <td valign="middle" align="left" class="input_txt">Date:</td>
                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" id="datepicker" name="date" class="input_txtbx"  value="${documentMain.date}"/><br/>
                <span id="datepicker1" style="color:red"></span>
                <span class="err"style="color:red"><form:errors path="DocumentMain.date"></form:errors></span></td>
               
         
                <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report):</td>
-               <td valign="top" align="left" class="input_txt" width="35%">
+               <td valign="top" align="left" class="input_txt" width="30%">
                
                <select name="approver3" id="approver3" class="input_txtbx" style="width:200px;">
                <option value="">--Select--</option>
@@ -369,7 +369,7 @@ $(window).load(function(){
              </tr>  
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments:</td>
-               <td valign="top" align="left"><textarea class="input_txtbx" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
+               <td valign="top" align="left"><textarea class="input_txtbx" id="comments"  name="comments"  style="height: 89px;" >${documentMain.comments}</textarea><br/>
                 <span id="comments1" style="color:red"></span>
                <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
@@ -548,7 +548,7 @@ function onlyAlphabetsnumeric(e, t) {
         	var doc_id	= document.getElementById('document_id').value;
         		if(doc_id == "")
         		{
-        			document.getElementById('documentiderror').innerHTML = "Required Field Should not be Empty";
+        			document.getElementById('documentiderror').innerHTML = "Required field should not be empty";
         			error = "true";
         		}
         		else
@@ -561,7 +561,7 @@ function onlyAlphabetsnumeric(e, t) {
         	 if(approver2 == "")
      		{
      		 
-     			 document.getElementById("approver2error").innerHTML="Required Field Should not be Empty";
+     			 document.getElementById("approver2error").innerHTML="Required field should not be empty";
      				error ="true";
      		}
      		 else
@@ -574,7 +574,7 @@ function onlyAlphabetsnumeric(e, t) {
      		 if(approver3 == "")
      			{
      			 
-     				 document.getElementById("approver3error").innerHTML="Required Field Should not be Empty";
+     				 document.getElementById("approver3error").innerHTML="Required field should not be empty";
      					error ="true";
      			}
      		else
@@ -587,7 +587,7 @@ function onlyAlphabetsnumeric(e, t) {
      		 if(documenttitle =="")
      		 {
      			 
-     			 document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
+     			 document.getElementById("documenttitle1").innerHTML="Required field should not be empty";
      			 error ="true";
      		 }
      		 else if(documenttitle.charAt(0) == " ")
@@ -599,7 +599,7 @@ function onlyAlphabetsnumeric(e, t) {
      		 {
      			 if((documenttitle.length < 4) ||(documenttitle.length > 32))
      		 	{
-     				 document.getElementById("documenttitle1").innerHTML="Required Field Should be length 4 to 32";
+     				 document.getElementById("documenttitle1").innerHTML="Required field should be length 4 to 32";
      				   	error ="true";
      	 		 }
      			 else
@@ -612,7 +612,7 @@ function onlyAlphabetsnumeric(e, t) {
      		 if(id_inpprocess == "")
      		{
      			 
-     			 document.getElementById("inprocesserror").innerHTML="Please Select One";
+     			 document.getElementById("inprocesserror").innerHTML="Required field should not be empty";
      			 error ="true";
      		}
      		else
@@ -625,7 +625,7 @@ function onlyAlphabetsnumeric(e, t) {
      		  if(issuer == "")
      				{
      				
-     					 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+     					 document.getElementById("filtererror").innerHTML="Required field should not be empty";
      						error ="true";
      				}
      		  else
@@ -639,7 +639,7 @@ function onlyAlphabetsnumeric(e, t) {
      				 if(approver == "")
      					{
      					 
-     						 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+     						 document.getElementById("filter1error").innerHTML="Required field should not be empty";
      							error ="true";
      					}
      				 else
@@ -652,7 +652,7 @@ function onlyAlphabetsnumeric(e, t) {
         	 {
         		if(e2=="")
         			{
-        			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+        			document.getElementById("hard").innerHTML="Required field should not be empty";
         			error = "true";
         			}
         	 }
@@ -663,7 +663,7 @@ function onlyAlphabetsnumeric(e, t) {
         		 if(e3=="")
         			 {
         			
-        			 document.getElementById("attach").innerHTML="Required Field Should not be Empty";
+        			 document.getElementById("attach").innerHTML="Required field should not be empty";
         			 error = "true";
         			 }
         		}
@@ -675,7 +675,7 @@ function onlyAlphabetsnumeric(e, t) {
         		if(e2=="")
         		{
         			
-        		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+        		document.getElementById("hard").innerHTML="Required field should not be empty";
         		error = "true";
         		}
         	}
@@ -684,7 +684,7 @@ function onlyAlphabetsnumeric(e, t) {
         	 
         	if(revisionlevel == "")
         		{
-        		document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
+        		document.getElementById("revisionlevel1").innerHTML="Required field should not be empty";
       			 error = "true";
         		}
         	else if(revisionlevel.charAt(0) ==" ")
@@ -717,17 +717,17 @@ function onlyAlphabetsnumeric(e, t) {
         	 if(comments =="")
     		 {
     		
-    		 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+    		 document.getElementById("comments1").innerHTML="Required field should not be empty";
     		 error ="true";
     		 }
     	 else if(comments.charAt(0) ==" ")
     	 {
-    		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+    		 document.getElementById("comments1").innerHTML="Should not accept initial space";
     		 error ="true";
     	 }
     	 else if((comments.length < 4) || (comments.length > 400) )
     		 {
-    		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
+    		 document.getElementById("comments1").innerHTML="Required field should be length 4 to 400";
     		 error ="true";
     		 }
     	 	else{
@@ -739,7 +739,7 @@ function onlyAlphabetsnumeric(e, t) {
    		
    		 if(datepicker == "")
 		 {
-		 document.getElementById("datepicker1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("datepicker1").innerHTML="Required field should not be empty";
 		 error = "true";
 		 
 		 }
@@ -749,14 +749,14 @@ function onlyAlphabetsnumeric(e, t) {
 		 }
 		 else
 		 {
-		 document.getElementById("datepicker1").innerHTML="Invalid Date";
+		 document.getElementById("datepicker1").innerHTML="Invalid date";
 		 error = "true";
 		 }
    		
    		if(documenttype == "")
    		{
    			
-   			 document.getElementById("documenttypeerror").innerHTML="Please Select One";
+   			 document.getElementById("documenttypeerror").innerHTML="Required field should not be empty";
    			 error ="true";
    		}
    		else
@@ -767,7 +767,7 @@ function onlyAlphabetsnumeric(e, t) {
    	 if(status == "")
 		{
 		
-			 document.getElementById("statuserror").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("statuserror").innerHTML="Required field should not be empty";
 				error ="true";
 		}
 		 else
@@ -866,9 +866,9 @@ function Approver1(){
 		document.getElementById("changeafter").style.display="block";
 		if(doc_id.value.match(numbers))
 		{
-			if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+			if((doc_id.value.length < 4) || (doc_id.value.length > 15))
 			{
-			var color = "Required field should be a length of 4 to 32";
+			var color = "Required field should be length of 4 to 15";
 			var result = color.fontcolor("red");
 			document.getElementById("changeafter").innerHTML=result;
 			}
