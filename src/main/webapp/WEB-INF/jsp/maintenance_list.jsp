@@ -89,7 +89,7 @@
 							    </td>
 							    <td align="center" valign="middle" width="12%">
 							    <td align="left" valign="middle" width="10%">Equipment Name  :</td>
-							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onkeypress="return AlphabetsNumber(event,this);"">
+							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onkeypress="return AlphabetsNumberSpace(event,this);"">
 							     <br><span id="searcherror2" style="color:red"></span>
 							
 							    </td>
@@ -265,7 +265,24 @@ function AlphabetsNumber(e, t) {
         alert(err.Description);
     }
 }
-
+function AlphabetsNumberSpace(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58) ||(charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 </script>
   <script type="text/javascript">
   function validatefind()
