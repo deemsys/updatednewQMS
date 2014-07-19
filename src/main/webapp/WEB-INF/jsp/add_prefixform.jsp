@@ -141,6 +141,9 @@
 			<table cellpadding="0" cellspacing="0" border="0">
                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 55px">Form Prefix :</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="32" id="formprefix" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="ChangeCase(this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formprefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);""/>
+                   <br> <span id="docprefix1" style="color:red"></span>
+                  <span class="err"><form:errors path="FormPrefix.form_prefix"></form:errors></span></td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="form_prefix" class="input_txtbx" maxlength="15" id="formprefix" onblur="ChangeCase(this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${formPrefix.form_prefix}" onkeypress="return onlyAlphabets(event,this);""/>
                    <br> <span id="docprefix1" style="color:red">
                    <c:if test="${success=='exist'}">Form Prefix already exists</c:if>
