@@ -32,6 +32,27 @@ else
 	}
 }	
 </script>
+<script>
+function Alphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+</script>
 </head>
 <div id="right_content">
 
@@ -164,7 +185,7 @@ else
 															value="Hands on">Hands on</option>
 														</select></td>
                 
-							     <td align="right" valign="middle" width="12%">QualifiedBy :&nbsp;&nbsp;&nbsp; </td>
+							     <td align="right" valign="middle" width="12%">Qualified By :&nbsp;&nbsp;&nbsp; </td>
 							    <td valign="middle" align="left" class="input_txt"><select	name="qualified_by" class="input_txtbx">
                   											<option value="">--Select--</option>
 				                  									
@@ -185,7 +206,7 @@ else
                 <!-- 
 							    <td align="left" valign="middle" width="10%"><input type="text" name="qualified_by" id="qualifiedby" class="input_txtbx2"></td>
 				 -->				<td align="right" valign="middle" width="12%"> Trainer :&nbsp;&nbsp;&nbsp;</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" value="${trainer}"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="trainer" class="input_txtbx" id="trainer" onkeypress="return Alphabets(event,this);" maxlength="32" value="${trainer}"></td>
 							  
 	<!-- 						    <td align="center" valign="middle"><input type="submit" class="submit_btn" value="Find"></td>
 	 -->						  
@@ -321,4 +342,6 @@ $(function () {
 	});
 </script>
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+ <br><br><br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include> 

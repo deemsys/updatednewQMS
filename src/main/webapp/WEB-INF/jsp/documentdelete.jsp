@@ -175,7 +175,7 @@ else
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 								<tr class="title">
 									<td valign="top" align="left" width="10%">Select</td>
-									<td valign="top" align="left" width="10%">Document Id</td>
+									<td valign="top" align="left" width="10%">Document ID</td>
 									<td valign="top" align="left" width="10%">Document Type</td>
 									<td valign="top" align="left" width="10%">Process Area</td>
 									<td valign="top" align="left" width="10%">Media Type</td>		

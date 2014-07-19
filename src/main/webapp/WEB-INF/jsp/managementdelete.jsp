@@ -218,11 +218,11 @@ function Number(e, t) {
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 							<td valign="top" align="left" width="8%">Select</td>
-							<td valign="top" align="left" width="8%">Review id</td>
+							<td valign="top" align="left" width="8%">Review ID</td>
 									<td valign="top" align="left" width="15%">Management Review Date</td>
 									<td valign="top" align="left" width="10%">Category</td>
-									<td valign="top" align="left" width="10%">Action Due date</td>
-									<td valign="top" align="left" width="10%">Completion date</td>	
+									<td valign="top" align="left" width="10%">Action Due Date</td>
+									<td valign="top" align="left" width="10%">Completion Date</td>	
 							</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -337,4 +337,6 @@ $(function () {
 </script>   
 
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+ <br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include> 

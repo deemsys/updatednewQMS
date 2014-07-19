@@ -191,9 +191,9 @@ function Number(e, t) {
 			     <div style="border:#ccc 2px solid; padding:15px; margin-bottom:15px;">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="10%">CAPA Id :</td>
+							    <td align="left" valign="middle" width="10%">CAPA ID :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="capa_id" class="input_txtbx" id="capa_id" value="${capa}" maxlength="10" onkeypress="return Number(event,this);"></td>
-							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Request date :</td>
+							    <td align="left" valign="middle" width="15%">&nbsp;&nbsp;&nbsp;Request Date :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="request_date" class="input_txtbx" id="datepicker" value="${date}"></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;&nbsp;Actions :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="action" id="action" class="input_txtbx" value="${action}"></td>
@@ -331,4 +331,6 @@ $(function () {
 	});
 </script>
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+ <br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include> 

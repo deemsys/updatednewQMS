@@ -148,11 +148,11 @@ else
 							
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
-							    <td align="left" valign="middle" width="15%">Supplier Name:</td>
+							    <td align="left" valign="middle" width="15%">Supplier Name : </td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="supplier_name" class="input_txtbx" id="suppliername" value="${suppliername}"></td>
-							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Phone:</td>
+							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Phone :</td>
 								<td align="left" valign="middle" width="10%"><input type="text" name="phone" id="phone" class="input_txtbx" value="${phone}"></td>							    
-							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email:</td>
+							    <td align="left" valign="middle" width="8%">&nbsp;&nbsp;Email :</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="email_address" id="email" class="input_txtbx" value="${email}"></td>
 							    <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Search" name="findsupplierperformances" ></td>
 							  	<!-- <td align="center" valign="middle" width="20%"><input type="submit" class="submit_btn1" value="Clear" name="welcome" ></td> -->
@@ -174,7 +174,7 @@ else
           						<td valign="top" align="left" width="10%">State</td>
           						<td valign="top" align="left" width="10%">Country</td>
           						<td valign="top" align="left" width="10%">Phone</td>
-          						<td valign="top" align="left" width="10%">e_mail address</td>
+          						<td valign="top" align="left" width="10%">Email Address</td>
           				</tr>
 
 								<!-- Display Admin Userd here  Suresh--> 
@@ -288,4 +288,6 @@ $(function () {
 	});
 </script>
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ 
+ <br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include> 

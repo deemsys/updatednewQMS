@@ -291,5 +291,6 @@ $(function () {
 </script>
   <table  width=300 height=40>
 			<tr height=120px;><td></td></tr></table>
+			<br><br><br><br><br><br>
 			<jsp:include page="footer.jsp"></jsp:include>
 </html>
