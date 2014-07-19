@@ -18,7 +18,7 @@
 			<tr>
 				<td border="0">
 					<div>
-						<ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
+						<ul class="horizmenu">
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="add_nonconformance" class="<c:choose>
 								<c:when test="${menu=='nonconformance'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">

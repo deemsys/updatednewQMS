@@ -290,6 +290,14 @@ $(function () {
 </script>
 
 <script>
+$(function() {
+
+	$("#equipment_name").on("keypress", function(e) {
+		
+		if (e.which === 32 && !this.value.length)
+	        e.preventDefault();
+	});
+	});
 function onlyAlphabets(e, t) {
     try {
         if (window.event) {

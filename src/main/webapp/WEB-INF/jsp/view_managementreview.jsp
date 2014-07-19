@@ -12,8 +12,8 @@
  -->    	<table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
       		<tr>
       		<td>
-      		 <div><ul class="horizmenu" style=" float:left;margin-left:192px; margin-top:8px;">
-<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
+      		 <div><ul class="horizmenu" style=" float:left;margin-left:205px; margin-top:8px;">
+<li  style="float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addmanagementreview" class="<c:choose>
 								<c:when test="${menu==''}">menubuttonsub blue</c:when><c:otherwise>menubuttonsub blue</c:otherwise></c:choose>">
 									<span>Add Management Review</span>

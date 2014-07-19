@@ -16,7 +16,7 @@
       <tr>
         <td>
          <div>
-  <ul class="horizmenu" style=" float:left;margin-left:190px; margin-top:8px;">
+  <ul class="horizmenu">
 						<li  style=" float:left;margin-right:8px;text-transform:uppercase;">
 								<a href="addcustomer" class="<c:choose>
 								<c:when test="${menu=='customer'}">menubuttonsub blueactive</c:when><c:otherwise>menubuttonsub blueactive</c:otherwise></c:choose>">
