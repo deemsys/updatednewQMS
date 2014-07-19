@@ -71,7 +71,7 @@
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
     		
                 <tr class="row1">
-                 <td valign="middle" align="left" class="input_txt" width="15%">Document ID :
+                 <td valign="middle" align="left" class="input_txt" width="20%">Document ID :
                <input type="hidden" name="document_id_hidden" id="generated_id" class="input_txtbx"  value=""/>
                <input type="hidden" name="auto_number" value="<c:out value="${id }"/>"/> 
              
@@ -84,19 +84,21 @@
                </td>          
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
-               <table style="width:100%;" class="simple_table" border="0">
-               <tr ><td align="left">
-               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:130px; margin:0 0 0 -10px;margin-right:-1px;">
+               <table style="" class="simple_table" border="0">
+               <tr ><td align="left" width="10%">
+               <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:110px; margin:0 0 0 -10px;margin-right:-1px;">
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         	   <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
 			   </c:forEach>
-               </select></td><td align="left">
+               </select></td><td align="left" width="10%">
               
-               <input type="text" value="" class="input_txtbx" id="document_id" style="width:60px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();" onkeypress="return onlynumeric(event,this);"/>
+               <input type="text" value="" class="input_txtbx" id="document_id" style="width:75px;margin:0 0 0 -10px;" min="4" maxlength="32" name="document_id" onblur="change_to_label();" onkeypress="return onlynumeric(event,this);"/>
                <input type="hidden"value="${documentMain.document_id}" id="document_id11" />
+                 
                </td>
+            
                </tr>
-               <!-- <tr><td colspan="2"><span id="documentiderror" style="color:red"></span></td></tr> --></table>
+                <tr><td colspan="2"width="25%"><span id="documentiderror" style="color:red"></span></td></tr></table>
             
               <c:if test="${fail=='fail'}">
               <p class="closestatus">
@@ -131,13 +133,13 @@
               
               <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Document Title :</td>
-               <td valign="middle" align="left" class="input_txt" width="15%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
+               <td valign="middle" align="left" class="input_txt" >Document Title :</td>
+               <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="document_title" class="input_txtbx" id="documenttitle"  value="${documentMain.document_title}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
                 <span id="documenttitle1" style="color:red"></span>
                 <span class="err"style="color:red" ><form:errors path="DocumentMain.document_title"></form:errors></span></td>
               
                <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="25%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"> Upload File:</label></td>
-               <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
+               <td valign="middle" align="left" id="id_location_txt" class="input_txt" >
                
                <select id="location_text" name="location" class="input_txtbx">
               <option value = "">--Select Location--</option>
@@ -160,7 +162,7 @@
              </tr> 
              <tr class="row1">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">Document Type :</td>
+               <td valign="middle" align="left" class="input_txt">Document Type :</td>
               <td valign="top" align="left" class="input_txt" width="15%">
               <select name="document_type" id="documenttype" class="input_txtbx">
               <option value="">--Select--</option>
@@ -189,7 +191,7 @@
              </tr> 
              <tr class="row2">
               
-               <td valign="middle" align="left" class="input_txt" width="25%">
+               <td valign="middle" align="left" class="input_txt">
                <td valign="top" align="left" class="input_txt" width="20%"><br/>
                <td valign="middle" align="left" class="input_txt" width="20%"><span class="err">External Document ?(Y/N) :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -245,8 +247,8 @@
 </tr>             
              <tr class="row1" style="border:none;">
            
-            <td valign="middle" align="left" class="input_txt" width="25%">Issuer :</td>
-               <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="20%">
+            <td valign="middle" align="left" class="input_txt" width="20%">Issuer :</td>
+               <td valign="top" align="left" id="edit_td_issuer" class="input_txt" width="30%">
                 <input type="hidden" value="${documentMain.issuer}" id="issu"/>
                <select name="filter" id="filter_value" class="input_txtbx" onchange="doAjaxPost(this.value);" onblur="change_to_label_issuer();" >
                <option value="-">--Select--</option>
@@ -351,7 +353,7 @@
              <br/>
              <span class="err"><form:errors path="DocumentMain.revision_level"></form:errors></span></td>--%>
              
-                 <td valign="middle" align="left" class="input_txt" width="25%">Revision Level :</td>
+                 <td valign="middle" align="left" class="input_txt">Revision Level :</td>
            
                <td valign="top" align="left" class="input_txt1" width="20%">
                <input type="text" name="revision_level" class="input_txtbx" id="revisionlevel"  value="${documentMain.revision_level}" onkeypress="return onlyAlphabetsnumeric(event,this);"/><br/>
@@ -385,7 +387,7 @@
             <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
              </tr>
              <tr class="row1" style="border:none;">
-               <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
+               <td valign="top" align="left" class="input_txt" ><span class="err"></span></td>
               <td valign="top" align="left" class="input_txt" width="20%"><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="20%">Approver 3(Mgmt Report) :</td>
                <td valign="top" align="left" class="input_txt" width="25%">
@@ -403,7 +405,7 @@
              </tr>  
               <tr class="row2" style="border:none;">
                  <td valign="middle" align="left" class="input_txt">Comments :</td>
-               <td valign="top" align="left"><textarea class="input_txtbx" id="comments"  name="comments"  style="width:100%; height: 89px;" >${documentMain.comments}</textarea><br/>
+               <td valign="top" align="left"><textarea class="input_txtbx" id="comments"  name="comments"  style="height: 89px;" >${documentMain.comments}</textarea><br/>
               <span id="comments1" style="color:red"></span>
                 <span class="err"style="color:red"><form:errors path="DocumentMain.comments"></form:errors></span></td>
          
@@ -640,11 +642,13 @@ function validation()
 	 var id_inpapprover2 = document.getElementById('id_inpapprover2').value;
 	 var id_inpapprover3 = document.getElementById('id_inpapprover3').value;
 	var status = document.getElementById('status').value;
-	
+	document.getElementById("hard").innerHTML="";
+	 document.getElementById("mediatypeerror").innerHTML= "";
+	 document.getElementById("attach").innerHTML="";
 	 if(id_inpapprover2 == "")
 		{
 		 
-			 document.getElementById("approver2error").innerHTML="Required Field Should not be Empty";
+			 document.getElementById("approver2error").innerHTML="Required field should not be empty";
 				error ="true";
 		}
 		 else
@@ -654,7 +658,7 @@ function validation()
 		 if(id_inpapprover3 == "")
 			{
 			 
-				 document.getElementById("approver3error").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("approver3error").innerHTML="Required field should not be empty";
 					error ="true";
 			}
 			 else
@@ -665,49 +669,52 @@ function validation()
 		 if(status == "")
 			{
 			
-				 document.getElementById("statuserror").innerHTML="Required Field Should not be Empty";
+				 document.getElementById("statuserror").innerHTML="Required field should not be empty";
 					error ="true";
 			}
 			 else
 				 {
 				 document.getElementById("statuserror").innerHTML="";
 				 }
+		
 	 if(document_id == "")
 		 {
 		
-		 document.getElementById("documentiderror").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("documentiderror").innerHTML="Required field should not be empty";
 			error ="true";
 		 }
 	 else
 		{
 		 document.getElementById("documentiderror").innerHTML= "";
 		}
+	
 	 if(document_id!=""){
-		 if(document.getElementById("document_id").value.length<4 || document.getElementById("document_id").value.length>32 ){
-			 document.getElementById("documentiderror").innerHTML="Required field should between 4 to 32 characters";
+		 if(document.getElementById("document_id").value.length<4 || document.getElementById("document_id").value.length>15 ){
+			 document.getElementById("documentiderror").innerHTML="Required field should be length 4 to 15";
 				error ="true";
 			 } 
 		 }
-	 
+	
 	 if(!(document.getElementById('id_hardcopy').checked) &&  !(document.getElementById('id_electronic').checked) && !(document.getElementById('id_both').checked) )
 	{
 		
-		 document.getElementById("mediatypeerror").innerHTML="Select Atleast One";
+		 document.getElementById("mediatypeerror").innerHTML="Required field should not be empty";
 			error ="true";
 	}
 	 else
 		 {
 		 document.getElementById("mediatypeerror").innerHTML= "";
 		 }
-		 
+	
 	if(document.getElementById('id_hardcopy').checked)
 	 {
 		if(e2=="")
 			{
 			
-			document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+			document.getElementById("hard").innerHTML="Required field should not be empty";
 			error ="true";
 			}
+		
 	 }
 	 
 	 
@@ -719,7 +726,7 @@ function validation()
 		 if(e3=="")
 			 {
 			
-			 document.getElementById("attach").innerHTML="No File Uploaded";
+			 document.getElementById("attach").innerHTML="No file uploaded";
 			 error ="true";
 			 }
 		
@@ -733,14 +740,14 @@ function validation()
 		if(e2=="")
 		{
 			 
-		document.getElementById("hard").innerHTML="Required Field Should not be Empty";
+		document.getElementById("hard").innerHTML="Required field should not be empty";
 		error ="true";
 		}
 	
 		 if(e3=="")
 		 {
 			 
-		 document.getElementById("attach").innerHTML="File No Uploaded";
+		 document.getElementById("attach").innerHTML="No file uploaded";
 		 error ="true";
 		 }
 	
@@ -753,7 +760,7 @@ function validation()
 	 if(documenttitle =="")
 	 {
 		 
-		 document.getElementById("documenttitle1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("documenttitle1").innerHTML="Required field should not be empty";
 		 error ="true";
 	 }
 	 else if(documenttitle.charAt(0) == " ")
@@ -765,7 +772,7 @@ function validation()
 	 {
 		 if((documenttitle.length < 4) ||(documenttitle.length > 32))
 	 	{
-			 document.getElementById("documenttitle1").innerHTML="Required Field Should be length 4 to 32";
+			 document.getElementById("documenttitle1").innerHTML="Required field should be length 4 to 32";
 			   	error ="true";
  		 }
 		 else
@@ -773,42 +780,43 @@ function validation()
 			 document.getElementById("documenttitle1").innerHTML= "";
 		 }
 	}
-	 
+	
 	if(documenttype == "")
 	{
 		
-		 document.getElementById("documenttypeerror").innerHTML="Please Select One";
+		 document.getElementById("documenttypeerror").innerHTML="Required field should not be empty";
 		 error ="true";
 	}
 	else
 	{
 		 document.getElementById("documenttypeerror").innerHTML="";
 	}
+	
 	 if(id_inpprocess == "")
 	{
 		 
-		 document.getElementById("inprocesserror").innerHTML="Please Select One";
+		 document.getElementById("inprocesserror").innerHTML="Required field should not be empty";
 		 error ="true";
 	}
 	else
 	{
 		 document.getElementById("inprocesserror").innerHTML="";
 	}
-	 
+	
 	 if(revisionlevel == "")
 		 {
 		
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("revisionlevel1").innerHTML="Required field should not be empty";
 		 error ="true";
 		 }
 	 else if(revisionlevel.charAt(0) ==" ")
 	 {
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should not be spaces";
+		 document.getElementById("revisionlevel1").innerHTML="Required field should not be spaces";
 		 error ="true";
 	 }	 
 	 else if(revisionlevel.length > 10)
 		{
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Length Should not be Greater than 10";
+		 document.getElementById("revisionlevel1").innerHTML="Required field should be length 1 to 10";
 		 error ="true";
 		}
 	 else if(revisionlevel.match(dotnumber))
@@ -818,7 +826,7 @@ function validation()
 				 ||revisionlevel.charAt(0) ==("*")||revisionlevel.charAt(0) ==(")")||revisionlevel.charAt(0) ==("(")||revisionlevel.charAt(0) ==("'")||revisionlevel.charAt(0) ==(":")
 						 ||revisionlevel.charAt(0) ==(";") || revisionlevel.charAt(0) ==('"'))
 			 {
-			 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
+			 document.getElementById("revisionlevel1").innerHTML="Required field should be alpha-numeric";
 			 error ="true";
 			 }
 		 else{
@@ -828,7 +836,7 @@ function validation()
 	 
 		 
 	 else{
-		 document.getElementById("revisionlevel1").innerHTML="Required Field Should be Alpha-Numeric";
+		 document.getElementById("revisionlevel1").innerHTML="Required field should be alpha-numeric";
 		 error ="true";
 	 }
 
@@ -840,17 +848,17 @@ function validation()
 	 if(comments =="")
 		 {
 		
-		 document.getElementById("comments1").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("comments1").innerHTML="Required field should not be empty";
 		 error ="true";
 		 }
 	 else if(comments.charAt(0) ==" ")
 	 {
-		 document.getElementById("comments1").innerHTML="Required Field Should not be space";
+		 document.getElementById("comments1").innerHTML="Required field should not be space";
 		 error ="true";
 	 }
 	 else if((comments.length < 4) || (comments.length > 400) )
 		 {
-		 document.getElementById("comments1").innerHTML="Required Field Should be Length 4 to 400";
+		 document.getElementById("comments1").innerHTML="Required field should be length 4 to 400";
 		 error ="true";
 		 }
 	 	else{
@@ -863,7 +871,7 @@ function validation()
 		 if(datepicker123 == "")
 		 {
 			
-		 document.getElementById("datepicker1234").innerHTML="Required Field Should not be Empty";
+		 document.getElementById("datepicker1234").innerHTML="Required field should not be empty";
 		 error ="true";
 		 
 		 }
@@ -873,7 +881,7 @@ function validation()
 		 }
 		 else
 		 {
-		 document.getElementById("datepicker1234").innerHTML="Invalid Date";
+		 document.getElementById("datepicker1234").innerHTML="Invalid date";
 		 error ="true";
 		 }
 		
@@ -886,12 +894,12 @@ function validation()
 				if(filter_value == "-")
 				{
 					
-					 document.getElementById("filtererror").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("filtererror").innerHTML="Required field should not be empty";
 						error ="true";
 				}
 				else
 					{
-					 document.getElementById("filtererror").innerHTML="Select Issuer";
+					 document.getElementById("filtererror").innerHTML="Required field should not be empty";
 						error ="true";
 					}
 				
@@ -908,11 +916,11 @@ function validation()
 			}	
 			
 			else if(issuer1.length < 2){
-				 document.getElementById("filtererror").innerHTML="Issuer Doesn't exit";
+				 document.getElementById("filtererror").innerHTML="Issuer doesn't exit";
 					error ="true";
 			 }
 			 else if(filter_value.length == 1){
-				 document.getElementById("filtererror").innerHTML="Please Select Issuer";
+				 document.getElementById("filtererror").innerHTML="Please select one";
 					error ="true";
 			 }
 			 else{
@@ -961,12 +969,12 @@ function validation()
 				if(filter_value1 == "-")
 				{
 					
-					 document.getElementById("filter1error").innerHTML="Required Field Should not be Empty";
+					 document.getElementById("filter1error").innerHTML="Required field should not be empty";
 						error ="true";
 				}
 				else
 					{
-					 document.getElementById("filter1error").innerHTML="Select Issuer";
+					 document.getElementById("filter1error").innerHTML="Required field should not be empty";
 						error ="true";
 					}
 				
@@ -983,11 +991,11 @@ function validation()
 			}	
 			
 			else if(issuer1.length < 2){
-				 document.getElementById("filter1error").innerHTML="Issuer Doesn't exit";
+				 document.getElementById("filter1error").innerHTML="Process owner doesn't exit";
 					error ="true";
 			 }
 			 else if(filter_value1.length == 1){
-				 document.getElementById("filter1error").innerHTML="Please Select Issuer";
+				 document.getElementById("filter1error").innerHTML="Please Select one";
 					error ="true";
 			 }
 			 else{
@@ -1084,9 +1092,9 @@ function change_to_label()
 	document.getElementById("edit_td").style.display="none";
 	if(doc_id.value.match(numbers))
 	{
-		if((doc_id.value.length < 4) || (doc_id.value.length > 32))
+		if((doc_id.value.length < 4) || (doc_id.value.length > 15))
 			{
-			var color = "Required field should be a length of 4 to 32";
+			var color = "Required field should be a length of 4 to 15";
 			var result = color.fontcolor("red");
 			document.getElementById("document_id_full_lbl").innerHTML=result;
 			}
@@ -1095,7 +1103,7 @@ function change_to_label()
 			}
 	}
 	else{
-		var color = "Please Enter numeric values";
+		var color = "Please enter numeric values";
 		var result = color.fontcolor("red");
 		document.getElementById("document_id_full_lbl").innerHTML=result;
 	}
