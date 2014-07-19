@@ -171,14 +171,11 @@
                <span class="err"><form:errors path="ReportedByNC.type_of_nc"></form:errors></span></td>
                
                   <td valign="top" align="left" class="input_txt" width="20%" style="padding-left: 55px">Group Person :</td>
-<<<<<<< .mine
                   <td valign="top" align="left" class="input_txt" width ="40%"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${person}" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>  <span id="groupperson1" style="color:red">
  				 <c:if test="${success=='exist'}">Group person already exist</c:if></span>
-=======
                   <td valign="top" align="left" class="input_txt" style="width:25%;height:3%;"><input type="text"  maxlength="32"  name="group_person" class="input_txtbx" id="groupperson" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" onkeypress="return onlyAlphabets(event,this);"	/>
                  <br>  <span id="groupperson1" style="color:red"></span>
->>>>>>> .r606
                   <span class="err"><form:errors path="ReportedByNC.group_person"></form:errors></span></td>
                 </tr>
                 <tr height="10"></tr>
