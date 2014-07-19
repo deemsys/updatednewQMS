@@ -43,7 +43,7 @@ public class Type_of_NC_Controller {
 @RequestMapping(value = "/addtypenc", method = RequestMethod.POST)
 public String postType(HttpSession session,@ModelAttribute("Type_of_NC") @Valid Type_of_NC type_of_NC,BindingResult result, ModelMap model) {
 
-	session.setAttribute("type_of_NC",type_of_NC);
+	session.setAttribute("type_of_NC",type_of_NC.getType_of_nc());
 		if (result.hasErrors())
 		{
 			Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
@@ -68,6 +68,7 @@ public String postType(HttpSession session,@ModelAttribute("Type_of_NC") @Valid 
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 		model.addAttribute("menu","admin");
 		model.addAttribute("success","insert");
+		session.removeAttribute("type_of_NC");
 	return "add_typenc";
 }
 @RequestMapping(value="/typeNC_list", method=RequestMethod.GET)
