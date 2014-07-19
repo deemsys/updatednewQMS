@@ -171,7 +171,7 @@ function AlphabetsNumber(e, t) {
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>Delete Internalaudits</h2>
+							<h2>Delete Internal Audits</h2>
 						</div>
 						 <div class="contentbox">
 						<form action="search_audit" name="dashboard" method="GET">
