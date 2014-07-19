@@ -112,7 +112,7 @@
       <tr>
         <td valign="top" align="left"><div>
             <div class="headings altheading">
-              <h2 style="padding-left: 55px">Editing Source of NC</h2>
+              <h2 style="padding-left: 55px">Update Source of NC</h2>
             </div>  <div class="contentbox">
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                <c:set value="${conformance_SourceForm.conformance_Sources[0]}" var="sources"> </c:set>
@@ -126,8 +126,8 @@
                   <td valign="top" align="left" class="input_txt" width="70%">
                   <input type="hidden" name="auto_id" value="${sources.auto_id}"/>
                   <input type="text" maxlength="32" name="source_of_nc" class="input_txtbx" id="sourceofnc" onblur="toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${sources.source_of_nc}" onkeypress="return onlyAlphabets(event,this);"	 />
-                   <br> <span id="sourceofnc1" style="color:red"></span>
-                   <c:if test="${success=='exist'}"><span  id="alreadyerror" style="color:red;display:block;">Source of NC already exist</span></c:if>
+                   <br> <span id="sourceofnc1" style="color:red">
+                   <c:if test="${success=='exist'}">Source of NC already exist</c:if></span>
                   <span class="err"><form:errors path="Non_Conformance_Source.source_of_nc"></form:errors></span>
                   
                   </td>
