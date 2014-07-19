@@ -55,7 +55,7 @@
       <tr> -->
 				<td valign="top" align="left">
 						<div class="headings altheading">
-							<h2>Non Conformance Details</h2>
+							<h2>Add Non Conformance Details</h2>
 						</div>
 			<div class="contentbox">
 			  <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">

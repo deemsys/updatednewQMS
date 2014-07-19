@@ -68,7 +68,7 @@
 			<tr>
 				<td valign="top" align="left">
 						<div class="headings altheading">
-							<h2>Search Non Conformance Details</h2>
+							<h2>Search Non Conformance</h2>
 						</div>
 						
 						<div class="contentbox">

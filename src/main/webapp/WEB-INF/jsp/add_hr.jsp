@@ -167,7 +167,7 @@ function doAjaxPost() {
 
             <div class="headings altheading">
 
-              <h2>HR and Training Details</h2><div id="info"></div>
+              <h2>Add HR and Training Details</h2><div id="info"></div>
 
             </div>
 

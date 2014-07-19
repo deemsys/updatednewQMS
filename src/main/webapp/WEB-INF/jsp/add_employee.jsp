@@ -156,7 +156,7 @@ $(function() {
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2>Employee Details</h2><div id="info"></div>
+              <h2>Add Employee Details</h2><div id="info"></div>
             </div>
             <div class="contentbox">
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">

@@ -21,7 +21,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are you sure want to remove this record?");
+var result=confirm("Are sure you wants to delete this record(s)?");
 if(result)
 	{
 return true;
@@ -31,76 +31,6 @@ else
 	return false;
 	}
 }	
-</script>
-<script>
-function Alphabets(e, t) {
-    try {
-        if (window.event) {
-            var charCode = window.event.keyCode;
-        }
-        else if (e) {
-            var charCode = e.which;
-        }
-        else { return true; }
-        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
-            return true;
-        else
-            return false;
-    }
-    catch (err) {
-        alert(err.Description);
-    }
-}
-
-
-</script>
-
-<script>
-function ChangeCase(elem)
-{
-    elem.value = elem.value.toUpperCase();
-}
-</script>
-<script>
-function AlphabetsNumber(e, t) {
-    try {
-        if (window.event) {
-            var charCode = window.event.keyCode;
-        }
-        else if (e) {
-            var charCode = e.which;
-        }
-        else { return true; }
-        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
-            return true;
-        else
-            return false;
-    }
-    catch (err) {
-        alert(err.Description);
-    }
-}
-</script>
-<script>
-function Alphabets(e, t) {
-    try {
-        if (window.event) {
-            var charCode = window.event.keyCode;
-        }
-        else if (e) {
-            var charCode = e.which;
-        }
-        else { return true; }
-        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode == 32))
-            return true;
-        else
-            return false;
-    }
-    catch (err) {
-        alert(err.Description);
-    }
-}
-
 </script>
 </head>
 <div id="right_content">
@@ -219,12 +149,12 @@ function Alphabets(e, t) {
 							  <tr>
 							    <td align="left" valign="middle" width="25%">ID&nbsp;:</td>
 							    <td align="left" valign="middle" width="5%">
-							    <input type="text" name="equipment_id" class="input_txtbx" id="equipment_id"  value="${equipid}" maxlength="10" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);">
+							    <input type="text" name="equipment_id" class="input_txtbx" id="equipment_id"  value="${equipid}">
 							    </td>
 							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name&nbsp;:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx" maxlength="32"  id="equipment_name"
+							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name"
 							    
-							     value="${equipname}" onkeypress="return Alphabets(event,this);">
+							     value="${equipname}" onkeypress="return onlyAlphabets(event,this);">
 							    </td>
 							    
 							  	<td align="center" valign="middle" width="30%">
@@ -240,7 +170,7 @@ function Alphabets(e, t) {
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 							<tr class="title">
 							<td valign="top" align="left" width="20%">Select</td>
-							<td valign="top" align="left" width="20%">Equipment ID</td>
+							<td valign="top" align="left" width="20%">Equipment Id</td>
 							<td valign="top" align="left" width="20%">Equipment Name</td>
 							<td valign="top" align="left" width="20%">Equipment Model</td>
 							<td valign="top" align="left" width="20%">Acquired Date </td>
@@ -285,8 +215,8 @@ function Alphabets(e, t) {
 
 
 								</table>
-								<br>
-								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Remove" class="submit_btn1"></li>
+								
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>
@@ -358,6 +288,30 @@ $(function () {
 	});
 	});
 </script>
+
+<script>
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
+
+</script>
+
+
+
  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
- <br><br><br><br><br><br>
  <jsp:include page="footer.jsp"></jsp:include> 

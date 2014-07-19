@@ -44,7 +44,7 @@
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-              <h2 style="padding-left:30px">Maintenance and Calibration Details</h2>
+              <h2 style="padding-left:30px">Add Maintenance and Calibration Details</h2>
             </div>
             
     <div style="padding-left:34px"class="contentbox">

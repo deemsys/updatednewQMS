@@ -91,7 +91,7 @@
 			<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
-			          <h2>View Documents</h2>
+			          <h2>Search Documents Details</h2>
 			        </div>
 			        <div class="contentbox">
 						<form action="findDocument" method="get">

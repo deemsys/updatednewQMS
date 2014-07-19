@@ -107,7 +107,7 @@
 			<tr>
 				<td valign="top" align="left"><div>
 						<div class="headings altheading">
-							<h2>View Forms</h2>
+							<h2>Search Forms Details</h2>
 						</div>
 						 <div class="contentbox">
 						<form action="search_form" name="dashboard" method="GET">

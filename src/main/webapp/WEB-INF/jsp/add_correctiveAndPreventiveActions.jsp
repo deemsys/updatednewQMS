@@ -51,7 +51,7 @@
         
         
             <div class="headings altheading">
-              <h2>Corrective and Preventive Actions Details</h2>
+              <h2>Add Corrective and Preventive Actions Details</h2>
             </div>
             <div class="contentbox">
               <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
