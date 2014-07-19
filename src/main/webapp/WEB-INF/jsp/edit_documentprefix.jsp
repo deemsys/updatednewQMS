@@ -56,7 +56,7 @@
                 <tr class="row2">
                 
                   <td valign="middle" align="left"  style="padding-left: 55px">Prefix :</td>
-                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onblur="ChangeCase(this);toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onkeypress="return onlyAlphabets(event,this);"  />
+                  <td valign="top" align="left" width="70%"><input type="text" name="doc_prefix" class="input_txtbx" maxlength="32" id="docprefix" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="ChangeCase(this);toggle(this.value)"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${documentprefix.doc_prefix}" onkeypress="return onlyAlphabets(event,this);"  />
                   <input type="hidden" name="id" id="id" value="${documentprefix.id}"/>
                  <br>   <span id="docprefix1" style="color:red">
                  <c:if test="${success=='exist'}">Document Prefix already exists</c:if>
