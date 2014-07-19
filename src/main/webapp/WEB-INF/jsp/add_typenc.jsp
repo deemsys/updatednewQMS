@@ -214,9 +214,7 @@
         		   {
         		   document.getElementById("typeofnc1").innerHTML="Required and must be of length 4 to 15";
         		/*    document.getElementById("alreadyerror").style.display='none'; */
-      				 return false;
-        		   document.getElementById("typeofnc1").innerHTML="Required field should be of length 4 to 32";
-      			 return false;
+      		    	 return false;
         		   }
             	   else if(typeofnc.match(chars))
             		   {
