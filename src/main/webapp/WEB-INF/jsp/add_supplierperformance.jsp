@@ -150,7 +150,7 @@
                   <td valign="top" align="center" colspan="2"><input type="submit" value="Submit" onclick="return checkSubmit();" class="submit_btn1"></td>
                 </tr> -->
                   <tr class="row1">
-                  <td valign="bottom" colspan="4" style="padding-right:146px;"align="right">&nbsp;<input type="submit" value="Submit"  onclick="return checkSubmit();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4" style="padding-right:125px;"align="right">&nbsp;<input type="submit" value="Submit"  onclick="return checkSubmit();"class="submit_btn1"></td>
                   <td valign="top" align="left"></td>
                 </tr>
               </table>

@@ -22,7 +22,7 @@ alert("Please select at least one.");
 return false;
 }
 //var result=confirm("Are sure you wants to delete this record(s)?");
-if(confirm("Are sure you wants to delete this record(s)?"))
+if(confirm("Are you sure want to remove this record?"))
 	{
 return true;
 	}
@@ -266,7 +266,8 @@ function Alphabets(e, t) {
 							    	</c:if>
 
 								</table>
-								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
+								<br>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Remove" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>

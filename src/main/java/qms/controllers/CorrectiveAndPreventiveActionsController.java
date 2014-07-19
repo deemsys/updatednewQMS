@@ -74,7 +74,8 @@ public class CorrectiveAndPreventiveActionsController
 	@RequestMapping(value = "/capas_report", method = RequestMethod.POST)
 	public ModelAndView generateActions_Report(HttpServletRequest request,ModelMap model,HttpSession session,HttpServletResponse response) {
 		
-	String[] fields={"capa_id","nc_id","source_of_nonconformance","external_id",
+	session.removeAttribute("capa");
+		String[] fields={"capa_id","nc_id","source_of_nonconformance","external_id",
 			"type_of_nonconformance","date_found",
 			"temporary_action","nature_of_nc",
 			"capa_requestor","request_date","capa_due_date",
@@ -487,10 +488,10 @@ public class CorrectiveAndPreventiveActionsController
 	//update a record
 	@RequestMapping(value = "/updatecorrectiveAndPreventiveActions", method = RequestMethod.POST)
 	public String update_correctiveAndPreventiveActions(HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,
-			BindingResult result) {
+			BindingResult result,HttpSession session) {
 		//NEW LINES
 		
-		
+		session.removeAttribute("capa");
 		//END NEW LINE
 		String action_field = request.getParameter("action");
 		System.out.println("action value::::" + action_field);

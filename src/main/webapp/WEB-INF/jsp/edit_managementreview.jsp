@@ -114,23 +114,28 @@
                   
                   
                   <td valign="middle" align="left" class="input_txt" width="30%">
-             	  <td valign="middle" align="left" class="input_txt" width="30%"> </tr>
+             	  Report Link :<td valign="middle" align="left" class="input_txt" width="30%"> <input type="text" name="report_link" class="input_txtbx" id="reportlink" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" value='<c:out value="${managementReviewdetails.report_link}"></c:out>'> <br> <span id="reportlinkerror" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></tr>
                    <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Assessment :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="assessment" class="input_txtbx"  id="assessment"  onmouseover="showTooltip('tooltip_id','inp_id3');" maxlength="32" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename3();" value='<c:out value="${managementReviewdetails.assessment}"></c:out>'> 
                   <br>  <span id="assessmenterror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.assessment"></form:errors></span></td>
                   
-                 <td valign="middle" align="left" class="input_txt" width="30%">Report Link :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" value='<c:out value="${managementReviewdetails.report_link}"></c:out>'> 
-                  <br> <span id="reportlinkerror" style="color:red"></span>
-                  <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%">Action Due Date :</td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"> 
+                 <input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_due_date}"></c:out>'>
+                  <br>  <span id="datepicker22" style="color:red"></span>
+                  <span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%">Action Needed(Y/N) :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%">
                    <input type="radio" name="action_needed" value="Yes"  id="action_needed_yes" <c:if test="${managementReviewdetails.action_needed=='Yes'}"><c:out value="checked=checked"/></c:if>>Yes&nbsp;&nbsp;&nbsp;
                    <input type="radio" name="action_needed" value="No" id="action_needed_no" <c:if test="${managementReviewdetails.action_needed=='No'}"><c:out value="checked=checked"/></c:if>>No&nbsp;&nbsp;&nbsp;<br/><span class="err"></span>
+              <td>Completion Date :</td><td><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.completion_date}"></c:out>'>
+                <br><span id="datepicker11" style="color:red"></span>  
+				 <span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>
                </tr>
                    <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%">Action Detail :</td>
@@ -138,10 +143,8 @@
                   <br>   <span id="actiondetailerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.action_detail"></form:errors></span></td>
                 
-                 <td valign="middle" align="left" class="input_txt" width="30%">Action Due Date :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="action_due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.action_due_date}"></c:out>'>
-                  <br>  <span id="datepicker22" style="color:red"></span>
-                  <span class="err"><form:errors path="ManagementReview.action_due_date"></form:errors></span></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"></td>
                   </tr>
                    <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Responsibility :</td>
@@ -149,10 +152,8 @@
                   <br> <span id="responsibilityerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.responsibility"></form:errors></span></td>
                 
-                 <td valign="middle" align="left" class="input_txt" width="30%"> Completion Date :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value='<c:out value="${managementReviewdetails.completion_date}"></c:out>'>
-                <br><span id="datepicker11" style="color:red"></span>  
-				 <span class="err"><form:errors path="ManagementReview.completion_date"></form:errors></span></td>
+                 <td valign="middle" align="left" class="input_txt" width="30%"> </td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"></td>
                   </tr>
                    <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Continuous Improvement Project (Y/N) :</td>

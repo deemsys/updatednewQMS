@@ -88,11 +88,11 @@
 				                  									
                   										<option
                   											<c:if test="${'Classroom' eq type}"><c:out value="Selected"/></c:if>
-															<c:if test="${Employee.type_of_training eq 'Classroom'}"><c:out value="Selected"/></c:if>
+															<%-- <c:if test="${Employee.type_of_training eq 'Classroom'}"><c:out value="Selected"/></c:if> --%>
 															value="Classroom">Classroom</option>
 														<option
 														<c:if test="${'Hands on' eq type}"><c:out value="Selected"/></c:if>
-															<c:if test="${Employee.type_of_training eq 'Hands on'}"><c:out value="Selected"/></c:if>
+															<%-- <c:if test="${Employee.type_of_training eq 'Hands on'}"><c:out value="Selected"/></c:if> --%>
 															value="Hands on">Hands on</option>
 														</select></td>
                 
@@ -102,15 +102,15 @@
 				                  									
                   										<option
                   											<c:if test="${'Education' eq qualifiedby}"><c:out value="Selected"/></c:if>
-															<c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if>
+															<%-- <c:if test="${Employee.qualified_by eq 'Education'}"><c:out value="Selected"/></c:if> --%>
 															value="Education">Education</option>
 														<option
 															<c:if test="${'Experience' eq qualifiedby}"><c:out value="Selected"/></c:if>
-															<c:if test="${Employee.qualified_by eq 'Experience'}"><c:out value="Selected"/></c:if>
+														<%-- 	<c:if test="${Employee.qualified_by eq 'Experience'}"><c:out value="Selected"/></c:if> --%>
 															value="Experience">Experience</option>
 														<option
 															<c:if test="${'Training' eq qualifiedby}"><c:out value="Selected"/></c:if>
-															<c:if test="${Employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if>
+															<%-- <c:if test="${Employee.qualified_by eq 'Training'}"><c:out value="Selected"/></c:if> --%>
 															value="Training">Training</option>
 														
 															</select><span class="err"><form:errors path="Employee.qualified_by"></form:errors></span></td>

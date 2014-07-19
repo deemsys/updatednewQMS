@@ -44,8 +44,8 @@ public class InternalAuditsController {
 	
 	//Internal Audit Report generation
 	@RequestMapping(value = "/internal_audit_report", method = RequestMethod.POST)
-	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model,HttpServletResponse response) {
-		
+	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model,HttpServletResponse response,HttpSession session) {
+		session.removeAttribute("name");
 	String[] fields={"report_id","process","auditee_name","audit_start_date","audit_due_date","auditor","audit_notes","finding","completion_date","auditors_initial"};	
 		//String title= "internal_audit";
 	String title="";
@@ -272,8 +272,9 @@ System.out.println("id"+internalAudits.getId());
 	//update record
 	@RequestMapping(value = "/updateinternalaudits", method = RequestMethod.POST)
 	public String update_internalaudits(ModelMap model, Principal principal,@ModelAttribute("InternalAudits") @Valid InternalAudits internalAudits,
-			BindingResult result) {
+			BindingResult result,HttpSession session) {
 		
+		session.removeAttribute("name");
 		if (result.hasErrors())
 		{
 			

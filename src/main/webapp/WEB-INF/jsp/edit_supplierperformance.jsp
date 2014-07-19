@@ -146,7 +146,7 @@
                 </tr>
                   -->
                 <tr class="row1">
-                  <td valign="bottom" colspan="4"align="right" style="padding-right:150px;">&nbsp;<input type="submit" value="Update" onclick="return checkSubmit();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="4"align="right" style="padding-right:125px;">&nbsp;<input type="submit" value="Update" onclick="return checkSubmit();"class="submit_btn1"></td>
                 
                 </tr>
               </table>

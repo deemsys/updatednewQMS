@@ -60,6 +60,7 @@ public class CustomerFeedbackController
 	//insert operation
 		@RequestMapping(value={"/insertfeedback"}, method = RequestMethod.POST)
 		public String insert_customerfeedback(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result ) throws IOException {
+			session.removeAttribute("type");
 			System.err.println("-------------------------------------------");
 			byte[] buffer=null;// = new byte[10000];
 			try {
@@ -149,7 +150,7 @@ public class CustomerFeedbackController
 	
 	//update a record
 	@RequestMapping(value={"/updatefeedback"}, method = RequestMethod.POST)
-	public String update_customerfeedback(ModelMap model,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result ) throws IOException
+	public String update_customerfeedback(ModelMap model,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result,HttpSession session) throws IOException
 	{
 		byte[] buffer=null;// = new byte[10000];
 		int flag = 0;
@@ -223,6 +224,7 @@ public class CustomerFeedbackController
 		        return "edit_customerfeedback";
 		}*/
 		/*customerFeedbackDAO.update_customerfeedback(customerFeedback);*/
+	session.removeAttribute("type");
 		if (flag == 1)
 		{
 		

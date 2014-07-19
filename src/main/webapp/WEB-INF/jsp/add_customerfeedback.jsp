@@ -119,7 +119,7 @@
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="submit" class="submit_btn1" name="submit" id="id_submit"onclick="return validate();" onmouseover="showTooltip('tooltip_id','inp_id3');" /><br/></td>
                   </tr> -->
                     <tr class="row1">
-                  <td valign="bottom" colspan="2"align="right" style="padding-right:658px;">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
+                  <td valign="bottom" colspan="2"align="right" style="padding-right:605px;">&nbsp;<input type="submit" value="Submit" onclick="return validate();"class="submit_btn1"></td>
                   <td valign="top" align="left"></td>
                 </tr>
                   

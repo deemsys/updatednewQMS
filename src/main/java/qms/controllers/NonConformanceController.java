@@ -228,6 +228,7 @@ public class NonConformanceController {
 	    model.addAttribute("menu","nonconformance");
 	    model.addAttribute("success","true");
 	    model.addAttribute("justcame",false);
+		session.removeAttribute("typenc");
 	   return "view_nonconformance";
 	}
 
@@ -313,6 +314,7 @@ public class NonConformanceController {
 		//model.addAttribute("nonConformanceForm",nonConformanceForm);
 		model.addAttribute("menu","nonconformance");
 		model.addAttribute("success","update");
+		session.removeAttribute("typenc");
 		return "view_nonconformance";
 	}
 

@@ -354,6 +354,9 @@ public class EmployeeController
 				//model.addAttribute("employeeForm", employeeForm);
 				model.addAttribute("menu","employee");
 				 model.addAttribute("justcame",false);
+session.removeAttribute("Employee");
+session.removeAttribute("type");
+session.removeAttribute("qualifiedby");
 
 				return "view_employees";
 				}

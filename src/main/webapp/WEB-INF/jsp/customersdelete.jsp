@@ -21,7 +21,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are sure you wants to delete this record(s)?");
+var result=confirm("Are you sure want to remove this record");
 if(result)
 	{
 return true;
@@ -256,7 +256,8 @@ function ChangeCase(elem)
 
 
 								</table>
-								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete"  class="submit_btn1"></li>
+								<br>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Remove"  class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>
