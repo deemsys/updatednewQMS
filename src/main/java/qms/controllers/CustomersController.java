@@ -117,6 +117,9 @@ public class CustomersController
 	@RequestMapping(value={"/addcustomer"}, method = RequestMethod.POST)
 	public String insert_customer(HttpSession session,@ModelAttribute("Customers") @Valid Customers customers,BindingResult result,ModelMap model)
 	{
+		session.removeAttribute("cust_id");
+		session.removeAttribute("name");
+		session.removeAttribute("address");
 		session.setAttribute("customer",customers);
 			if (result.hasErrors())
 			{
@@ -144,8 +147,11 @@ public class CustomersController
 	//Update a record
 	@RequestMapping(value={"/updatecustomer"}, method = RequestMethod.POST)
 
-	public String update_customer(ModelMap model,@ModelAttribute("Customers") @Valid Customers customers,BindingResult result) throws IOException{
+	public String update_customer(ModelMap model,@ModelAttribute("Customers") @Valid Customers customers,BindingResult result,HttpSession session) throws IOException{
 
+		session.removeAttribute("cust_id");
+		session.removeAttribute("name");
+		session.removeAttribute("address");
 		if (result.hasErrors())
 		{
 			
@@ -265,6 +271,7 @@ public class CustomersController
 		{
 		
 			System.out.println("find");
+			
 			session.setAttribute("cusid", id);
 			session.setAttribute("cusname", name);
 			session.setAttribute("cusaddress", address);

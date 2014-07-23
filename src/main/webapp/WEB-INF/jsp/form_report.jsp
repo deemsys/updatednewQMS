@@ -59,7 +59,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2>Form Report</h2>
+					<h2>Form Details Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_doc_form">
@@ -138,7 +138,7 @@
 					      		</tr>
 					      		<tr>
 								<td><input type="checkbox" name="report_field[]" value="responsibility" id="3"/>Responsibility</td>
-								<td><input type="checkbox" name="report_field[]" value="form_or_rec_titlelocation" id="4"/>Form/Rec Title</td>
+								<td><input type="checkbox" name="report_field[]" value="form_or_rec_title" id="4"/>Form/Rec Title</td>
 								<td><input type="checkbox" name="report_field[]" value="process" id="5"/>Process</td>
 					      		</tr>
 					      		<tr>
@@ -209,7 +209,7 @@ function validate()
 	var a14 = document.getElementById('14').checked;
 	if(id_inpprocess == "")
 	{
-		document.getElementById("id_inpprocesserror").innerHTML="Please Select atleast One";
+		document.getElementById("id_inpprocesserror").innerHTML="Required field should not be empty";
 		error = "true";
 	}
 	else

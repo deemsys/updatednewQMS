@@ -38,6 +38,7 @@ import qms.dao.RevisionDocumentDAO;
 import qms.model.DocumentMain;
 import qms.model.DocumentType;
 import qms.model.Form;
+import qms.model.Maintenance;
 import qms.model.Reportpdferror;
 import qms.model.RevisionDocument;
 import qms.model.RevisionForm;
@@ -115,6 +116,21 @@ public class DocumentController {
 		return "documententry";
 	}
 
+	@RequestMapping(value = { "/ajax_documentcorrerror" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactionserrorsss(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request,@RequestParam("document_id_hidden") String document_id,ModelMap model, Principal principal) 
+			{	
+		String returntext="";
+		System.out.println("document id ="+document_id);
+		if(documentControlDAO.getDocumentsExit(document_id))
+		{	
+			
+			returntext="Document ID already exist";			
+	        return returntext;
+		}
+		
+		return "";
+			}
 		@RequestMapping(value ={ "/adddocument"}, method = RequestMethod.GET)
 		public String adddocumt(HttpSession session ,ModelMap model, Principal principal) 
 		{
@@ -334,6 +350,8 @@ public class DocumentController {
 	@RequestMapping(value = { "/update_documents" }, method = RequestMethod.POST)
 	public String update_document(HttpServletRequest request,@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain1,BindingResult result,@ModelAttribute("RevisionDocument")@Valid RevisionDocument revisionDocument,BindingResult result1,HttpSession session, ModelMap model,@RequestParam("document_type") String search_document_type,@RequestParam("process") String search_process,Principal principal) {
 
+		session.removeAttribute("documentMain");
+		session.removeAttribute("documentMain1");
 		int flag = 0;
 		
 		request.getAttribute("revision_id");
@@ -469,12 +487,12 @@ public class DocumentController {
 							System.out.println("File Size:::" + file.getSize());
 							return "/add_documents";
 						}
-						orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename();
+						orginal_fileName = "/qms_upload/"+ file.getOriginalFilename();
 						duplicate_fileName = orginal_fileName;
 						File create_file = new File(orginal_fileName);
 						int i = 1;
 						while (create_file.exists()) {
-							duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename().substring(
+							duplicate_fileName = "/qms_upload/"+ file.getOriginalFilename().substring(
 											0,file.getOriginalFilename().lastIndexOf(
 													'.'))+ i
 													+ file.getOriginalFilename().substring(
@@ -576,6 +594,8 @@ public class DocumentController {
 			HttpServletRequest request, ModelMap model, Principal principal,
 			@ModelAttribute("DocumentMain") @Valid DocumentMain documentMain,BindingResult result,@ModelAttribute("revisionDocument") @Valid RevisionDocument revisionDocument,BindingResult result1) throws IOException {
 		
+		session.removeAttribute("documentMain");
+		session.removeAttribute("documentMain1");
 		model.addAttribute("justcame",false);
 		
 		int flag = 0;
@@ -661,13 +681,13 @@ public class DocumentController {
 						System.out.println("File Size:::" + file.getSize());
 						return "/add_documents";
 					}
-					orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename();
+					orginal_fileName = "/qms_upload/"+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
 
-						duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename().substring(
+						duplicate_fileName = "/qms_upload/"+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
 												'.'))

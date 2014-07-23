@@ -26,7 +26,7 @@ import qms.forms.Non_Conformance_SourceForm;
 import qms.forms.ProcessForm;
 
 @Controller
-@SessionAttributes({"sourcenc"})
+@SessionAttributes({"sourcenc","source"})
 public class SourceNonConformanceController {
 
 	@Autowired
@@ -75,9 +75,9 @@ public String postProcess(HttpSession session,@ModelAttribute("Non_Conformance_S
 	return "Add_source_NC";
 }
 @RequestMapping(value="/sourceNC_list", method=RequestMethod.GET)
-public String Sourcelist(HttpServletRequest request,ModelMap model, Principal principal) {
+public String Sourcelist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
 	
-	
+	session.removeAttribute("source");
 	model.addAttribute("menu","admin");
 	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
 	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getlimitedsource(1));
@@ -87,6 +87,24 @@ public String Sourcelist(HttpServletRequest request,ModelMap model, Principal pr
 	model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
+	model.addAttribute("conformance_SourceForm",conformance_SourceForm);
+	model.addAttribute("justcame","false");
+	return "sourceNC_list";
+}
+@RequestMapping(value="/sourceNC_list_search", method=RequestMethod.GET)
+public String Sourcelist(@RequestParam("source") String source, HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	
+	session.setAttribute("source",source);
+	model.addAttribute("menu","admin");
+	Non_Conformance_SourceForm conformance_SourceForm = new Non_Conformance_SourceForm();
+	conformance_SourceForm.setConformance_Sources(sourceNCDAO.getSource(source));
+	model.addAttribute("justcame","false");
+	/*model.addAttribute("noofpages",(int) Math.ceil(sourceNCDAO.getnoofsourcereport() * 1.0 / 5));
+	
+  	model.addAttribute("noofrows",5);
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
 	model.addAttribute("conformance_SourceForm",conformance_SourceForm);
 	
 	return "sourceNC_list";

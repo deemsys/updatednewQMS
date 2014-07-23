@@ -200,7 +200,7 @@ else
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${customerFeedbacks.date_of_feedback}"/></td>
+							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${customerFeedbacks.feedback_id}"/></td>
 					<%-- 			           	<td valign="top" align="left"  width="10%">${documentMains.document_id}</td> --%>
 									       <td valign="top" align="left"  width="15%">${customerFeedbacks.date_of_feedback}</td>
 											<td valign="top" align="left" width="15%">${customerFeedbacks.type_of_feedback}</td>

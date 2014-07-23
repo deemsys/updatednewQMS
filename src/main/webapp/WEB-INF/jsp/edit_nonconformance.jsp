@@ -74,12 +74,12 @@ $(function() {
 				                  <td valign="top" align="left" class="input_txt" width="20%" style="height:50px"> Non-Conformance(ID)&nbsp;:</td>
 				                  <td valign="top" align="left" class="input_txt" width="20%" height="20%">
 				                 
-				                 <input type="hidden" name="id" value="<c:out value="${nonconformance.id}"/>"/><c:out value="${nonconformance.id}"/>
+				                 <input type="text" name="id" readonly="readonly" class="input_txtbx" value="<c:out value="${nonconformance.id}"/>"/>
 				                   	<br><font color="Red" size="+1"></font>
 				                  </td>
 				                  
 				                	<td valign="top" align="left" class="input_txt" id="external_label" style="display:block;" width="20%"> External ID&nbsp;: </td>
-				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text"  name="external_id" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onblur="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onkeypress="return onlyAlphabets1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"   />
+				                  	<td valign="top" align="left" class="input_txt" width="20%"><input type="text"  name="external_id"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="<c:out value="${nonconformance.external_id}"/>"  maxlength="32" onblur="ChangeCase(this);" class="input_txtbx" style="display:block;" id="external_id" onkeypress="return onlyAlphabets1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"   />
 				                  	<span style="color:red;" id="externalerror"></span>
 				                  	</td>
 				                </tr>
@@ -126,7 +126,7 @@ $(function() {
 				                   	</td>
 				                 	<td valign="top" align="left" class="input_txt"> Quantity Suspect&nbsp;: </td>
 				                    <td valign="top" align="left" class="input_txt">
-				                    <input type="text" value="${nonconformance.quantity_suspect}" maxlength="32" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
+				                    <input type="text" value="${nonconformance.quantity_suspect}" maxlength="32" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);"  id="quantity" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="quantity_suspect" /><br>
 				                    <span id="quantitysuspect" style="color: red;"></span>
 				                    <span style="color: red;"><form:errors path="Nonconformance.quantity_suspect"></form:errors></span>
 				                    </td>
@@ -150,7 +150,7 @@ $(function() {
 								 <tr class="row1">
 				                 	<td valign="top" align="left" class="input_txt" width="20%"> Date Found&nbsp;: </td>
 				                  	<td valign="top" align="left" class="input_txt" width="20%">
-				                  	<input type="text" value="${nonconformance.date_found}" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br>
+				                  	<input type="text" value="${nonconformance.date_found}"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  name="date_found" /><br>
 				                  	<span id="datepicker2" style="color: red;"></span>
 				                  <span style="color: red;"><form:errors path="Nonconformance.date_found"></form:errors></span></td>
 				  

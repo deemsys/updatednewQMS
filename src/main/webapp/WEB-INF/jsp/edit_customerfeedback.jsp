@@ -178,7 +178,7 @@ function validate()
 		 }
 	 else if(feedbackdetails.charAt(0) == " ")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Required field Should not accept initial space";
+		 document.getElementById("feedbackdetailserror").innerHTML="Should not accept initial space";
 			error="true";
 		 }
 	 else  if((feedbackdetails.length < 4) ||(feedbackdetails.length > 400))

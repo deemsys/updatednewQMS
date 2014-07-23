@@ -97,13 +97,13 @@ public class ReferenceMaintenanceController {
 						System.out.println("File Size:::" + file.getSize());
 						return "/add_referenceMaintenance";
 					}*/
-					orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename();
+					orginal_fileName = "/qms_upload/"+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
 
-						duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename().substring(
+						duplicate_fileName = "/qms_upload/"+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
 												'.'))
@@ -232,12 +232,12 @@ System.out.println("ajax attachement comes here");
 							System.out.println("File Size:::" + file.getSize());
 							return "/add_documents";
 						}*/
-						orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename();
+						orginal_fileName = "/qms_upload/"+ file.getOriginalFilename();
 						duplicate_fileName = orginal_fileName;
 						File create_file = new File(orginal_fileName);
 						int i = 1;
 						while (create_file.exists()) {
-							duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"+ file.getOriginalFilename().substring(
+							duplicate_fileName = "/qms_upload/"+ file.getOriginalFilename().substring(
 											0,file.getOriginalFilename().lastIndexOf(
 													'.'))+ i
 													+ file.getOriginalFilename().substring(

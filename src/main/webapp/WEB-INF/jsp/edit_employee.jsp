@@ -76,7 +76,7 @@ $(function() {
                  <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 					<tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%"><label>ID :</label></td>
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${employee.employee_id }"/>"/><c:out value="${employee.employee_id }"/><br/><span style="color: red;" ></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" class="input_txtbx" name="employee_id" readonly="readonly" value="<c:out value="${employee.employee_id }"/>"/><%-- <c:out value="${employee.employee_id }"/> --%><br/><span style="color: red;" ></span></td>
                 <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
                   <select	name="qualified_by" class="input_txtbx">
@@ -535,7 +535,7 @@ function onsubmitvalidate()
 	}
 	else if(name.charAt(0) ==" ") 
 	   {
-	   document.getElementById("nameerror").innerHTML="Required field should not accept initial space";
+	   document.getElementById("nameerror").innerHTML="Should not accept initial space";
 	error="true";
 		}
 	
@@ -564,7 +564,7 @@ function onsubmitvalidate()
 		}
 	else if(trainer.charAt(0) ==" ") 
 	   {
-	   document.getElementById("trainererror").innerHTML="Required field should not accept initial space";
+	   document.getElementById("trainererror").innerHTML="Should not accept initial space";
 	error="true";
 		}
 	else
@@ -581,7 +581,7 @@ function onsubmitvalidate()
 	
 	else if(job.charAt(0) ==" ") 
 	   {
-	   document.getElementById("inp_job_titleerror").innerHTML="Required field should not accept initial space";
+	   document.getElementById("inp_job_titleerror").innerHTML="Should not accept initial space";
 	error="true";
 		}
 	
@@ -605,7 +605,7 @@ function onsubmitvalidate()
 						
 						 else if(process.charAt(0) ==" ") 
 						   {
-						   document.getElementById("processerror").innerHTML="Required field should not accept initial space";
+						   document.getElementById("processerror").innerHTML="Should not accept initial space";
 					    	error="true";
 							}
 						
@@ -629,7 +629,7 @@ function onsubmitvalidate()
 							
 							 else if(pname.charAt(0) ==" ") 
 							   {
-							   document.getElementById("processnameerror").innerHTML="Required field should not accept initial space";
+							   document.getElementById("processnameerror").innerHTML="Should not accept initial space";
 						    	error="true";
 								}
 							
@@ -652,7 +652,7 @@ function onsubmitvalidate()
 							
 							else if(fneeds.charAt(0) ==" ") 
 							   {
-							   document.getElementById("functionneedserror").innerHTML="Required field should not accept initial space";
+							   document.getElementById("functionneedserror").innerHTML="Should not accept initial space";
 						    	error="true";
 								}
 							
@@ -675,7 +675,7 @@ function onsubmitvalidate()
 									}
 							 else if(doc.charAt(0) ==" ") 
 							   {
-							   document.getElementById("documentedinerror").innerHTML="Required field should not accept initial space";
+							   document.getElementById("documentedinerror").innerHTML="Should not accept initial space";
 						    	error="true";
 								}
 									else if((document.getElementById("documentedin").value.length < 4) || (document.getElementById("documentedin").value.length > 45))

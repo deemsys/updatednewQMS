@@ -28,7 +28,7 @@ import qms.model.Maintenance;
 
 
 @Controller
-@SessionAttributes({"formprefix"})
+@SessionAttributes({"formprefix","fprefix"})
 public class FormPrefixController {
 	
 	@Autowired
@@ -80,11 +80,12 @@ public String postPrefix(HttpSession session,@ModelAttribute("FormPrefix") @Vali
 }
 	
 @RequestMapping(value="/formprefix_list", method=RequestMethod.GET)
-public String Formprefixlist(HttpServletRequest request,ModelMap model, Principal principal) {
+public String Formprefixlist(HttpSession session, HttpServletRequest request,ModelMap model, Principal principal) {
+session.removeAttribute("fprefix");
 	FormFormPrefix formFormPrefix = new FormFormPrefix();
 	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
-	
+  	model.addAttribute("justcame","false");
 	
   	formFormPrefix.setFormPrefixs(formprefixDAO.getlimitedprefixreport(1));
 	model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));	 
@@ -92,6 +93,24 @@ public String Formprefixlist(HttpServletRequest request,ModelMap model, Principa
 	model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
+	model.addAttribute("formFormPrefix",formFormPrefix);
+	
+	return "formprefix_list";
+}
+@RequestMapping(value="/formprefix_list_search", method=RequestMethod.GET)
+public String Formprefixlistsearch(HttpSession session,@RequestParam("dprefix")String prefix, HttpServletRequest request,ModelMap model, Principal principal) {
+	session.setAttribute("fprefix",prefix);
+	FormFormPrefix formFormPrefix = new FormFormPrefix();
+	model.addAttribute("menu","admin");
+  	model.addAttribute("noofrows",5);
+  	model.addAttribute("justcame","false");
+	
+  	formFormPrefix.setFormPrefixs(formprefixDAO.getprefix(prefix));
+	//model.addAttribute("noofpages",(int) Math.ceil(formprefixDAO.getnoofprefixreport() * 1.0 / 5));	 
+	   
+	/*model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
 	model.addAttribute("formFormPrefix",formFormPrefix);
 	
 	return "formprefix_list";

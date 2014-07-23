@@ -163,7 +163,7 @@ $(function() {
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                  <td valign="top" align="left" class="input_txt" width="20%">ID :</td>
-                <td valign="top" align="left" class="input_txt" width="20%"><input type="hidden" name="employee_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="Employee.employee_id"></form:errors></td>
+                <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="employee_id" class="input_txtbx" readonly="readonly" value="<c:out value="${id}"/>"/><br/><span style="color: red;"></span><form:errors path="Employee.employee_id"></form:errors></td>
                  <td valign="top" align="left" class="input_txt" width="20%">Qualified By :</td>
                  <td valign="top" align="left" class="input_txt" width="20%">
                  <select name="qualified_by" class="dropdown" id="qualifiedby">
@@ -539,7 +539,7 @@ function onsubmitvalidate()
 	}
 	  else if(name.charAt(0) ==" ") 
 	   {
-	   document.getElementById("nameerror").innerHTML="Required field should not accept initial space";
+	   document.getElementById("nameerror").innerHTML="Should not accept initial space";
    	error="true";
 		}
 	
@@ -585,7 +585,7 @@ function onsubmitvalidate()
 	}
 	 else if(trainer.charAt(0) ==" ") 
 	   {
-	   document.getElementById("trainererror").innerHTML="Required field should not accept initial space";
+	   document.getElementById("trainererror").innerHTML="Should not accept initial space";
   	error="true";
 		}
 	else if((document.getElementById("trainer").value.length < 4) || (document.getElementById("trainer").value.length > 45))
@@ -607,7 +607,7 @@ function onsubmitvalidate()
 	}
 	  else if(job.charAt(0) ==" ") 
 	   {
-	   document.getElementById("inp_job_titleerror").innerHTML="Required field should not accept initial space";
+	   document.getElementById("inp_job_titleerror").innerHTML="Should not accept initial space";
    	error="true";
 		}
 	else if((document.getElementById("inp_job_title").value.length < 5) || (document.getElementById("inp_job_title").value.length > 500))
@@ -636,7 +636,7 @@ function onsubmitvalidate()
 							}
 		  else if(process.charAt(0) ==" ") 
 		   {
-		   document.getElementById("processerror").innerHTML="Required field should not accept initial space";
+		   document.getElementById("processerror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
 							else if((document.getElementById("inp_process").value.length < 4) || (document.getElementById("inp_process").value.length > 45))
@@ -658,7 +658,7 @@ function onsubmitvalidate()
 							
 							  else if(pname.charAt(0) ==" ") 
 							   {
-							   document.getElementById("processnameerror").innerHTML="Required field should not accept initial space";
+							   document.getElementById("processnameerror").innerHTML="Should not accept initial space";
 						    	error="true";
 								}
 							else if((document.getElementById("inp_process_name").value.length < 4) || (document.getElementById("inp_process_name").value.length > 45))
@@ -678,7 +678,7 @@ function onsubmitvalidate()
 							}
 							 else if(fneeds.charAt(0) ==" ") 
 							   {
-							   document.getElementById("functionneedserror").innerHTML="Required field should not accept initial space";
+							   document.getElementById("functionneedserror").innerHTML="Should not accept initial space";
 						    	error="true";
 								}
 						
@@ -700,7 +700,7 @@ function onsubmitvalidate()
 									}
 							 else if(doc.charAt(0) ==" ") 
 							   {
-							   document.getElementById("documentedinerror").innerHTML="Required field should not accept initial space";
+							   document.getElementById("documentedinerror").innerHTML="Should not accept initial space";
 						    	error="true";
 								}
 									else if((document.getElementById("documentedin").value.length < 4) || (document.getElementById("documentedin").value.length > 45))

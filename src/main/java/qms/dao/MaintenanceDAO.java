@@ -352,6 +352,7 @@ public class MaintenanceDAO extends AbstractITextPdfView
 					"'"+maintenance.getCompleted_by()+"'," +
 					"'"+maintenance.getNotes()+"')";
 			*/
+			
 
 			PreparedStatement preparedStatement=con.prepareStatement("insert into tbl_maintenance(equipment_id,equipment_name,equipment_model,serial_number,date_acquired,equipment_status,frequency_maintenance,calibration)values(?,?,?,?,?,?,?,?)");
 						preparedStatement.setString(1,maintenance.getEquipment_id());

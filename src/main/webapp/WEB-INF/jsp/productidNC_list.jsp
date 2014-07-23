@@ -141,6 +141,12 @@
 					</div></td>
 			</tr>
 		</c:if>
+		<tr><td>
+		<form method="get" action="productidNC_list_search">
+		<table>
+		<tr><td width="1160" align="right" valign="middle">Product ID&nbsp;:&nbsp;&nbsp;&nbsp;<input type="text" value="${pid}" class="input_txtbx" onkeypress="return onlyAlphabets(event,this);" name="pid">&nbsp;&nbsp;&nbsp;</td>
+		<td><input type="submit" class="submit_btn1" value="search"></td></tr></table></td></tr></form>
+      	
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
@@ -173,7 +179,14 @@
         				       				 </c:if>
         				       				  </table>
         				       				</form>
-      <!--   				       				<br><br><br><br><br>         
+       <c:if test="${fn:length(productId_NC_Form.productIDNCs) == 0}">	
+							    	<c:if test="${justcame=='false'}">
+							    	<tr class="row1">
+							    	<td colspan="7" width="100%"><center><b style="color:red">No Records Found!!!</b></center></td>
+							    	</tr>
+							    	</c:if>
+							    	</c:if> <!--   				       				
+      <br><br><br><br><br>         
  -->
 
  
@@ -221,6 +234,28 @@
         				       				</div>
 <jsp:include page="footer.jsp"></jsp:include>     
 <script language="javascript">
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+function onlyAlphabets(e, t) {
+   try {
+       if (window.event) {
+           var charCode = window.event.keyCode;
+       }
+       else if (e) {
+           var charCode = e.which;
+       }
+       else { return true; }
+       if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+           return true
+       else
+           return false;
+   }
+   catch (err) {
+       alert(err.Description);
+   }
+}
 
 function confirmation() {
 	var answer = confirm("Are you sure want to remove product id?")

@@ -62,7 +62,7 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%" style="padding-left: 30px; padding-right: 30px;">
    				 <tr class="row2">
                   <td valign="top" align="left" class="input_txt" width="20%" >Supplier ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="supplier_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" class="input_txtbx" name="supplier_id" readonly="readonly" value="<c:out value="${id}"/>"/><br/><span style="color: red;"></span><form:errors path="supplierperformance.supplier_id"></form:errors></td>
                 
             	 <td valign="top" align="left" class="input_txt" width="20%">Website :</td>
                   <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="website" placeholder="www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${supplierperformance.website}" /><br/><span style="color: red;" id="websiteerror"></span>
@@ -348,7 +348,21 @@ $("#inp_fax").focus(function(){
 	phone = phone.replace("-","");
 	phone = phone.replace("-","");
 	document.getElementById("inp_fax").value=phone;
-	 }); 
+	 });
+	 
+$("#inp_phone").blur(function(){
+var phone=document.getElementById("inp_phone").value;
+phone = phone.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
+document.getElementById("inp_phone").value=phone;
+ });  
+$("#inp_phone").focus(function(){
+	
+	var phone=document.getElementById("inp_phone").value;
+	phone = phone.replace("-","");
+	phone = phone.replace("-","");
+	document.getElementById("inp_phone").value=phone;
+	 });	 
+	 
 });
 </script>
 <script>

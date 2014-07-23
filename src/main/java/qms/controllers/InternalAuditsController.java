@@ -45,6 +45,8 @@ public class InternalAuditsController {
 	//Internal Audit Report generation
 	@RequestMapping(value = "/internal_audit_report", method = RequestMethod.POST)
 	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model,HttpServletResponse response,HttpSession session) {
+		session.removeAttribute("id");
+		session.removeAttribute("process");
 		session.removeAttribute("name");
 	String[] fields={"report_id","process","auditee_name","audit_start_date","audit_due_date","auditor","audit_notes","finding","completion_date","auditors_initial"};	
 		//String title= "internal_audit";
@@ -199,7 +201,9 @@ public class InternalAuditsController {
 	public String insert_internalaudits(HttpSession session,
 			@ModelAttribute("InternalAudits") @Valid InternalAudits internalAudits,
 			BindingResult result, ModelMap model, Principal principal) {
-
+		session.removeAttribute("id");
+		session.removeAttribute("process");
+		session.removeAttribute("name");
 		session.setAttribute("internalaudits", internalAudits);
 System.out.println("id"+internalAudits.getId());
 		if (result.hasErrors()) {
@@ -229,7 +233,8 @@ System.out.println("id"+internalAudits.getId());
 		}
 		model.addAttribute("menu","audits");
 		 model.addAttribute("justcame",false);
-
+		
+			model.remove("id");
 		return "view_internalaudits";
 	}
 	// Internal audits report list page	
@@ -274,7 +279,10 @@ System.out.println("id"+internalAudits.getId());
 	public String update_internalaudits(ModelMap model, Principal principal,@ModelAttribute("InternalAudits") @Valid InternalAudits internalAudits,
 			BindingResult result,HttpSession session) {
 		
+		session.removeAttribute("id");
+		session.removeAttribute("process");
 		session.removeAttribute("name");
+		
 		if (result.hasErrors())
 		{
 			
@@ -329,7 +337,7 @@ System.out.println("id"+internalAudits.getId());
      model.addAttribute("currentpage",1);*/
    //  model.addAttribute("internalAuditsForm", internalAuditsForm);
 	 model.addAttribute("justcame",false);
-
+model.remove("id");
 		return "view_internalaudits";
 	}
 

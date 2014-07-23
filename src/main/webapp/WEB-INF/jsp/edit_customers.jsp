@@ -1,7 +1,9 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <jsp:include page="header.jsp"></jsp:include>
-
+<script src="resources/js/jquery-1.7.2.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/modal.js"></script>
 <form method="post" action="updatecustomer">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -60,7 +62,7 @@
              <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
 				 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">ID :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="customer_id" value="<c:out value="${customers.customer_id}"/>"/><c:out value="${customers.customer_id }"/><br/><span class="err"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" class="input_txtbx" name="customer_id" readonly="readonly" value="<c:out value="${customers.customer_id}"/>"/><br/><span class="err"></span></td>
                 <td valign="middle" align="left" class="input_txt" width="30%">Website :</td>
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="website" placeholder="www.example.com" class="input_txtbx" id="inp_website" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.website}" /><br>
                    <span id="websiteerror" style="color:red"></span>
@@ -69,11 +71,11 @@
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Customer Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="customer_name" class="input_txtbx" id="customername"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.customer_name}" onkeypress="return Alphabets(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="customer_name"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="customername"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.customer_name}" onkeypress="return Alphabets(event,this);"/><br>
                    <span id="customernameerror"style="color:red"></span>
                   <span class="err"><form:errors path="Customers.customer_name"></form:errors></span></td>
                   <td valign="middle" align="left" class="input_txt" width="30%">Contact Name :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx" id="inp_contact_name"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.contact_name}" onkeypress="return Alphabets(event,this);" /><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="contact_name" class="input_txtbx"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" id="inp_contact_name"   onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.contact_name}" onkeypress="return Alphabets(event,this);" /><br>
                    <span id="contactnameerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.contact_name"></form:errors></span></td>
                 </tr>
@@ -83,35 +85,35 @@
                		<span id="addresserror" style="color:red"></span>
                		<span class="err"><form:errors path="Customers.address"></form:errors></span></td>
                		 <td valign="middle" align="left" class="input_txt" width="30%">Contact Title :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="title_of_contact" class="input_txtbx" id="inp_title_of_contact" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.title_of_contact}" onkeypress="return Alphabets(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="title_of_contact" class="input_txtbx" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  id="inp_title_of_contact" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.title_of_contact}" onkeypress="return Alphabets(event,this);"/><br>
                   <span id="contacterror" style="color:red"></span><span class="err"><form:errors path="Customers.title_of_contact"></form:errors></span></td>
                 
                	</tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">City :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.city}"  onkeypress="return Alphabets(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="city" class="input_txtbx" id="inp_city" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.city}"  onkeypress="return Alphabets(event,this);"/><br>
                    	<span id="cityerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.city"></form:errors></span></td>
                  <td valign="middle" align="left" class="input_txt" width="30%"> Telephone :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="telephone" class="input_txtbx" placeholder="9876543210"  id="inp_telephone" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.telephone}" maxlength="10"  onkeypress="return Number(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="telephone" class="input_txtbx" placeholder="9876543210"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  id="inp_telephone" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.telephone}" maxlength="10"  onkeypress="return Number(event,this);"/><br>
                     <span id="telephoneerror" style="color:red">
                   <span class="err"><form:errors path="Customers.telephone"></form:errors></span></td>
                  
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">State :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.state}"  onkeypress="return Alphabets(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="state" class="input_txtbx" id="inp_state"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.state}"  onkeypress="return Alphabets(event,this);"/><br>
                     <span id="stateerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.state"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="30%"> Fax :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="fax" class="input_txtbx" placeholder="6143229928" id="inp_fax" onkeypress="return Number(event,this);" maxlength="10" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.fax}"  /><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="fax" class="input_txtbx" placeholder="6143229928" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  id="inp_fax" onkeypress="return Number(event,this);" maxlength="10" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.fax}"  /><br>
                    <span id="faxerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.fax"></form:errors></span></td>
                   
                 </tr>
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="30%">Country :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="country" class="input_txtbx" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.country}"  onkeypress="return Alphabets(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="country" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  class="input_txtbx" id="inp_country" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${customers.country}"  onkeypress="return Alphabets(event,this);"/><br>
                   <span id="countryerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.country"></form:errors></span></td>
                    <td valign="middle" align="left" class="input_txt" width="30%">Email :</td>
@@ -122,7 +124,7 @@
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">ZipCode :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeyup="ChangeCase(this);" onmouseout="hideTooltip('tooltip_id');" value="${customers.zipcode}"  onkeypress="return AlphabetsNumber(event,this);"/><br>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="zipcode" class="input_txtbx" id="inp_zipcode" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  placeholder="OH 43230" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber1(event,this);" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeyup="ChangeCase(this);" onmouseout="hideTooltip('tooltip_id');" value="${customers.zipcode}"  onkeypress="return AlphabetsNumber(event,this);"/><br>
                    	<span id="zipcodeerror" style="color:red"></span>
                   <span class="err"><form:errors path="Customers.zipcode"></form:errors></span></td>
                 
@@ -405,11 +407,25 @@ document.getElementById("inp_fax").value=phone;
 $("#inp_fax").focus(function(){
 	
 	var phone=document.getElementById("inp_fax").value;
+	
 	phone = phone.replace("-","");
 	phone = phone.replace("-","");
 	document.getElementById("inp_fax").value=phone;
 	 }); 
+	 $("#inp_telephone").blur(function(){
+var mobile=document.getElementById("inp_telephone").value;
+mobile = mobile.replace(/(\d{3})(\d{3})(\d{4})/,'$1-$2-$3');
+document.getElementById("inp_telephone").value=mobile;
+ });  
+$("#inp_telephone").focus(function(){
+	
+	var mobile=document.getElementById("inp_telephone").value;
+ mobile = mobile.replace("-","");
+	mobile = mobile.replace("-","");
+	document.getElementById("inp_telephone").value=mobile;
+	 }); 
 });
+
 </script>
       <script type="text/javascript">
       function validate()
@@ -442,7 +458,7 @@ $("#inp_fax").focus(function(){
     		  }
     	  else if(customername.charAt(0) == " ")
     		  {
-    		  document.getElementById("customernameerror").innerHTML="Required field should not accept initial space";
+    		  document.getElementById("customernameerror").innerHTML="Should not accept initial space";
   	    	  error="true";
     		  }
     	  else  if((customername.length < 4) ||(customername.length > 32))
@@ -463,7 +479,7 @@ $("#inp_fax").focus(function(){
     		  }
     	  else if(inp_website.charAt(0) ==" ") 
 		   {
-		   document.getElementById("websiteerror").innerHTML="Required field should not accept initial space";
+		   document.getElementById("websiteerror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
     	  else  if(inp_website.match(website))
@@ -490,7 +506,7 @@ $("#inp_fax").focus(function(){
 		  }
     	  else if(address.charAt(0) ==" ") 
 		   {
-		   document.getElementById("addresserror").innerHTML="Required field Should not accept initial space";
+		   document.getElementById("addresserror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((address.length < 4) ||(address.length > 400))
@@ -511,7 +527,7 @@ $("#inp_fax").focus(function(){
 		  }
     	  else if(inp_contact_name.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contactnameerror").innerHTML="Required field Should not accept initial space";
+		   document.getElementById("contactnameerror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
 	 	 else  if((inp_contact_name.length < 4) ||(inp_contact_name.length > 32))
@@ -532,7 +548,7 @@ $("#inp_fax").focus(function(){
 		  }
     	  else if(city.charAt(0) ==" ") 
 		   {
-		   document.getElementById("cityerror").innerHTML="Required field Should not accept initial space";
+		   document.getElementById("cityerror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((city.length < 4) ||(city.length > 32))
@@ -553,7 +569,7 @@ $("#inp_fax").focus(function(){
 		  }
     	  else if(contact.charAt(0) ==" ") 
 		   {
-		   document.getElementById("contacterror").innerHTML="Required field Should not accept initial space";
+		   document.getElementById("contacterror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((contact.length < 4) ||(contact.length > 32))
@@ -574,7 +590,7 @@ $("#inp_fax").focus(function(){
 		  }
     	  else if(state.charAt(0) ==" ") 
 		   {
-		   document.getElementById("stateerror").innerHTML="Required field Should not accept initial space";
+		   document.getElementById("stateerror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
 	  else  if((state.length < 4) ||(state.length > 32))
@@ -594,7 +610,7 @@ $("#inp_fax").focus(function(){
 		  }
     	  else if(telephone.charAt(0) ==" ") 
 		   {
-		   document.getElementById("telephoneerror").innerHTML="Required field Should not accept initial space";
+		   document.getElementById("telephoneerror").innerHTML="Should not accept initial space";
 	    	error="true";
 			}
     	 /*  
@@ -628,7 +644,7 @@ $("#inp_fax").focus(function(){
 	  }
 	  else if(country.charAt(0) ==" ") 
 	   {
-	   document.getElementById("countryerror").innerHTML="Required field Should not accept initial space";
+	   document.getElementById("countryerror").innerHTML="Should not accept initial space";
   	error="true";
 		}
   	else  if((country.length < 4) ||(country.length > 32))
@@ -649,7 +665,7 @@ $("#inp_fax").focus(function(){
 	  }
 	  else if(fax.charAt(0) ==" ") 
 	   {
-	   document.getElementById("faxerror").innerHTML="Required field Should not accept initial space";
+	   document.getElementById("faxerror").innerHTML="Should not accept initial space";
  	error="true";
 		}
   else if(fax.match(faxreg))
@@ -674,7 +690,7 @@ $("#inp_fax").focus(function(){
 	  }
 	  else if(inpzipcode.charAt(0) ==" ") 
 	   {
-	   document.getElementById("zipcodeerror").innerHTML="Required field Should not accept initial space";
+	   document.getElementById("zipcodeerror").innerHTML="Should not accept initial space";
 	error="true";
 		}
 	  else  if((inpzipcode.length < 4) ||(inpzipcode.length > 8))
@@ -698,7 +714,7 @@ $("#inp_fax").focus(function(){
 	  }
 	  else if(emailaddress.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerror").innerHTML="Required field Should not accept initial space";
+	   document.getElementById("emailerror").innerHTML="Should not accept initial space";
 	error="true";
 		}
   else if(emailaddress.match(mail)){  

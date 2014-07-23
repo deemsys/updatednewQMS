@@ -64,10 +64,10 @@
 					<tr class="row1">
 							<td valign="top" align="left" class="input_txt" width="30%" width="25%" style="height: 50px">Non-Conformance (NC)ID&nbsp;:</td>
 							<td valign="top" align="left" class="input_txt" width="30%" width="25%">
-							<input type="hidden" name="id" class="input_txtbx" value="<c:out value="${id }"/>" /><c:out value="${id}" /> <br/><font color="Red" size="+1"></font></td>
+							<input type="text" name="id" readonly="readonly" class="input_txtbx" value="<c:out value="${id }"/>" /> <br/><font color="Red" size="+1"></font></td>
 							<td valign="top" align="left" class="input_txt" width="30%" id="external_label"  style="display:none;"> External ID </td>
 							<td valign="top" align="left" class="input_txt" width="30%">
-							<input type="text" class="input_txtbx" id="external_id" maxlength="32" onblur="ChangeCase(this);" onkeypress="return onlyAlphabets1(event,this);"	 onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
+							<input type="text" class="input_txtbx" id="external_id" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" maxlength="32" onblur="ChangeCase(this);" onkeypress="return onlyAlphabets1(event,this);"	 onmouseover="showTooltip('tooltip_id','inp_id3');"onmouseout="hideTooltip('tooltip_id');" name="external_id" style="display: none;"/>
 						<br/><span style="color:red;" id="externalerror"></span></td>
 				 </tr>
 				   <tr class="row2">
@@ -137,7 +137,7 @@
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="quantity_suspect"
-																			value="${nonconformance.quantity_suspect}" onkeypress="return onlyAlphabetsnew(event,this);"	/><br/>
+																			value="${nonconformance.quantity_suspect}" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onkeypress="return onlyAlphabetsnew(event,this);"	/><br/>
 																			<span id="quantitysuspect" style="color: red;"></span>
 																		</font> <span style="color: red;"><form:errors	path="Nonconformance.quantity_suspect"></form:errors>
 																		</span>
@@ -170,7 +170,7 @@
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
 																			type="text" class="input_txtbx" id="datepicker"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
-																			onmouseout="hideTooltip('tooltip_id');"
+																			onmouseout="hideTooltip('tooltip_id');" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"
 																			name="date_found" value="${nonconformance.date_found}" /><br/>
 																		<span style="color: red;" id="datepicker2"></span>
 																		<span style="color: red;"><form:errors path="Nonconformance.date_found"></form:errors>
@@ -257,7 +257,7 @@
  														  
 																		<td valign="top" align="left" class="input_txt" width="30%">Disposition Complete Date&nbsp;:</td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
-																			type="text" class="input_txtbx" id="datepicker1"
+																			type="text" class="input_txtbx" id="datepicker1" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="disposition_complete_date"
@@ -299,7 +299,7 @@
 																	
 																		<td valign="top" align="left" class="input_txt" width="30%">Cost of NC&nbsp;: </td>
 																		<td valign="top" align="left" class="input_txt" width="30%"><input
-																			type="text" class="input_txtbx" id="costofnc" maxlength="32"
+																			type="text" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="costofnc" maxlength="32"
 																			onmouseover="showTooltip('tooltip_id','inp_id3');"
 																			onmouseout="hideTooltip('tooltip_id');"
 																			name="cost_of_nonconformance"

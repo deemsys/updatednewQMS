@@ -58,14 +58,7 @@ public class FormDAO extends AbstractITextPdfView{
 		 width[0] = 1.0f;
 		for (String field : fields) {
 			
-			if(field.equals("auto_number"))
-			{
-				width[i] = 1.0f;
-				 i++;
-				 table.addCell(createLabelCell("Auto Number"));
-				
-			}
-			else if(field.equals("location"))
+			if(field.equals("location"))
 			{
 				width[i] = 1.0f;
 				 i++;
@@ -163,12 +156,7 @@ public class FormDAO extends AbstractITextPdfView{
 				j++;
 				for (String field : fields) {
 					
-					if(field.equals("auto_number"))
-					{
-						table.addCell(createValueCell(forms.getAuto_number()));
-							
-					}
-					else if(field.equals("location"))
+					 if(field.equals("location"))
 					{
 						table.addCell(createValueCell(
 								forms.getLocation()));

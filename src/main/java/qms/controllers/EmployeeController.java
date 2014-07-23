@@ -72,6 +72,7 @@ public class EmployeeController
 	@RequestMapping(value={"/addemployee"}, method = RequestMethod.POST)
 	public String insert_employee(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("Employee") @Valid Employee employee,BindingResult result ) throws IOException {
 		System.err.println("-------------------------------------------");
+		session.removeAttribute("trainer");
 		byte[] buffer=null;// = new byte[10000];
 		try {
 			MultipartFile file = employee.getAttachments();
@@ -88,13 +89,13 @@ public class EmployeeController
 					System.out.println("File Size:::" + file.getSize());
 					return "/add_employee";
 				}				
-			    orginal_fileName ="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename();
+			    orginal_fileName ="/qms_upload/"+file.getOriginalFilename();
 			    duplicate_fileName=orginal_fileName;
 			    File create_file=new File(orginal_fileName);
 			    int i=1;			    
 			    while(create_file.exists())
 			    {
-			    	duplicate_fileName="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+			    	duplicate_fileName="/qms_upload/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
 			    	create_file=new File(duplicate_fileName);
 			    	i++;
 			    }
@@ -282,7 +283,8 @@ public class EmployeeController
  	}*/
 		public String update_employee(@ModelAttribute("Employee") @Valid Employee employee,BindingResult result,HttpSession session, ModelMap model,Principal principal) {
 
-				byte[] buffer=null;
+		session.removeAttribute("trainer");		
+		byte[] buffer=null;
 				int status =0;
 				try {
 					MultipartFile file = employee.getAttachments();
@@ -296,13 +298,13 @@ public class EmployeeController
 								System.out.println("File Size:::" + file.getSize());
 								return "/add_employee";
 							}
-							orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+							orginal_fileName = "/qms_upload/"
 									+ file.getOriginalFilename();
 							duplicate_fileName = orginal_fileName;
 							File create_file = new File(orginal_fileName);
 							int i = 1;
 							while (create_file.exists()) {
-								duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+								duplicate_fileName = "/qms_upload/"
 										+ file.getOriginalFilename().substring(
 												0,
 												file.getOriginalFilename().lastIndexOf(

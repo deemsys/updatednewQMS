@@ -135,6 +135,12 @@
 			</tr>
 		</c:if>
       		<tr>
+      		<tr><td>
+		<form method="get" action="formprefix_list_search">
+		<table>
+		<tr><td width="1160" align="right" valign="middle">Form Prefix&nbsp;:&nbsp;&nbsp;&nbsp;<input type="text" value="${fprefix}" onkeypress="return onlyAlphabets(event,this);" onblur="ChangeCase(this)"  class="input_txtbx" name="dprefix">&nbsp;&nbsp;&nbsp;</td>
+		<td><input type="submit" class="submit_btn1" value="search"></td></tr></table></td></tr></form>
+      		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
 			          <h2>Form Prefix List</h2>
@@ -182,12 +188,13 @@
         				       				 </c:forEach>
         				       				 </c:if>
         				       				
-        				       				<%--   <c:if test="${fn:length(formFormPrefix.formPrefixs) == 0}">	
+        				       				  <c:if test="${fn:length(formFormPrefix.formPrefixs) == 0}">	
+							    	 <c:if test="${justcame=='false'}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="7" width="100%"><center><span style="color:red;"><b>No Records Found!!!</b></span></center></td>
 							    		
-							    	</tr>
-							    	</c:if> --%>
+							    	</tr></c:if>
+							    	</c:if> 
         				       				 </table>
         				       				
         				       				</form>
@@ -235,6 +242,28 @@
         				       				</table>
         				       				</div>
 <script language="javascript">
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+function onlyAlphabets(e, t) {
+   try {
+       if (window.event) {
+           var charCode = window.event.keyCode;
+       }
+       else if (e) {
+           var charCode = e.which;
+       }
+       else { return true; }
+       if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+           return true
+       else
+           return false;
+   }
+   catch (err) {
+       alert(err.Description);
+   }
+}
 
 function confirmation() {
 	var answer = confirm("Are you sure want to remove form prefix?")

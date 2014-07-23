@@ -25,7 +25,7 @@ import qms.model.Non_Conformance_Source;
 import qms.model.Type_of_NC;
 
 @Controller
-@SessionAttributes({"typenc"})
+@SessionAttributes({"typenc","type"})
 public class Type_of_NC_Controller {
 
 	@Autowired
@@ -72,8 +72,8 @@ public String postType(HttpSession session,@ModelAttribute("Type_of_NC") @Valid 
 	return "add_typenc";
 }
 @RequestMapping(value="/typeNC_list", method=RequestMethod.GET)
-public String Typelist(HttpServletRequest request,ModelMap model, Principal principal) {
-	
+public String Typelist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.removeAttribute("type");
 	
 	model.addAttribute("menu","admin");
 	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
@@ -84,6 +84,24 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
 	model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
+	model.addAttribute("type_of_NC_Form",type_of_NC_Form);
+	model.addAttribute("justcame","false");
+	return "typeNC_list";
+}
+@RequestMapping(value="/typeNC_list_search", method=RequestMethod.GET)
+public String Typelistsearch(@RequestParam("type") String type, HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	
+	session.setAttribute("type",type);
+	model.addAttribute("justcame","false");
+	model.addAttribute("menu","admin");
+	Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
+	type_of_NC_Form.setType_of_NCs(typeNCDAO.getType(type));
+	/*model.addAttribute("noofpages",(int) Math.ceil(typeNCDAO.getnooftypereport() * 1.0/5));
+	model.addAttribute("menu","admin");
+  	model.addAttribute("noofrows",5);
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
 	model.addAttribute("type_of_NC_Form",type_of_NC_Form);
 	
 	return "typeNC_list";

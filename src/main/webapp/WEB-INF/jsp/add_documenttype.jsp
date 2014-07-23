@@ -178,7 +178,7 @@
 	            var charCode = e.which;
 	        }
 	        else { return true; }
-	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+	        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32)|| (charCode > 47 && charCode < 58))
 	            return true;
 	        else
 	            return false;
@@ -210,11 +210,7 @@
 		 {
 		 document.getElementById("documenttype1").innerHTML="";
 		 }
-	 else
-		 {
-		 document.getElementById("documenttype1").innerHTML="Required field should be alphabates";
-		 return false;
-		 }
+
  }
  
  </script>

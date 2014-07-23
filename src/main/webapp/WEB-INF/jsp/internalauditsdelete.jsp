@@ -179,7 +179,7 @@ function AlphabetsNumber(e, t) {
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
  								    <td align="left" valign="middle" width="10%">Audit ID :</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" value="${id}" maxlength="8" onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="id" class="input_txtbx" id="id" placeholder="IA1001" value="${id}"  onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;Process :</td>
 							    <td align="left" valign="middle" width="10%">
 							    <%-- <input type="text" name="process" class="input_txtbx1" id="process" value="${process}"></td> --%>

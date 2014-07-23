@@ -156,6 +156,7 @@ public class CustomerFeedbackDAO extends AbstractITextPdfView
 		}
 		try {
 			String cmd_delete = "delete from tbl_customerfeedback where feedback_id='"+feedback_id+"'";
+			System.out.println(cmd_delete);
 			status = statement.execute(cmd_delete);
 		} catch (Exception e) {
 			System.out.println(e.toString());

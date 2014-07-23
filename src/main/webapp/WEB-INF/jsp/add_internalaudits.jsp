@@ -60,7 +60,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
 	                  <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="id" id="auditid" class="input_txtbx"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  value="<c:out value="${id}" />"/ ><br/>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="id" readonly="readonly" id="auditid" class="input_txtbx"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  value="<c:out value="${id}" />"/ ><br/>
                   <span id="auditiderror" style="color:red"class="err"></span></td>
                 </tr>
                 <tr class="row1">
@@ -129,7 +129,7 @@
  <table cellpadding="0" cellspacing="0" border="0" width="100%">
 								
                       <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Auditor notes :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Auditor notes :</td>
                                 
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="auditor_notes" id="auditor_notes" style="height: 70px;">${internalaudits.auditor_notes}</textarea>
                  <br> <span id="auditornoteserror" style="color:red"></span>

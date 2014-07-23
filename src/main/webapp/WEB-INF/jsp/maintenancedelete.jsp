@@ -3,6 +3,28 @@
 <jsp:include page="header.jsp"></jsp:include>
 <head>
 <script  language="javascript">
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+function AlphabetsNumber(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode >47 && charCode < 58))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 function validate()
 {
 //alert("Are sure you wants to delete this record");
@@ -21,7 +43,7 @@ if (hasChecked == false)
 alert("Please select at least one.");
 return false;
 }
-var result=confirm("Are sure you wants to delete this record(s)?");
+var result=confirm("Are you sure want to remove this record?");
 if(result)
 	{
 return true;
@@ -149,12 +171,12 @@ else
 							  <tr>
 							    <td align="left" valign="middle" width="25%">ID&nbsp;:</td>
 							    <td align="left" valign="middle" width="5%">
-							    <input type="text" name="equipment_id" class="input_txtbx" id="equipment_id"  value="${equipid}">
+							    <input type="text" name="equipment_id" onkeypress="return AlphabetsNumber(event,this);" onblur="ChangeCase(this)" class="input_txtbx" id="equipment_id"  value="${equipid}">
 							    </td>
 							    <td align="left" valign="middle" width="30%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Equipment Name&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name"
 							    
-							     value="${equipname}" onkeypress="return onlyAlphabets(event,this);">
+							     value="${equipname}"  >
 							    </td>
 							    
 							  	<td align="center" valign="middle" width="30%">
@@ -215,8 +237,8 @@ else
 
 
 								</table>
-								
-								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Delete" class="submit_btn1"></li>
+								<br>
+								<li>&nbsp;&nbsp;&nbsp;<input type="submit" value="Remove" class="submit_btn1"></li>
 </form>
 								<div style="clear: both;"></div>
 								</div>
@@ -266,6 +288,24 @@ else
 		<table height="2%"><tr><td></td></tr></table>
 								
 <script  language="javascript">
+function onlyAlphabets(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 
 $(function () {
 	$('input[name="chkUser"]').click(function () {

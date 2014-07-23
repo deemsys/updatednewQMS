@@ -89,7 +89,7 @@
 							    </td>
 							    <td align="center" valign="middle" width="12%">
 							    <td align="left" valign="middle" width="10%">Equipment Name  :</td>
-							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}"onkeypress="return AlphabetsNumberSpace(event,this);"">
+							    <td align="left" valign="middle"width="10%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" value="${equipname}">
 							     <br><span id="searcherror2" style="color:red"></span>
 							
 							    </td>

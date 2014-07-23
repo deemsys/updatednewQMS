@@ -32,7 +32,7 @@ import qms.model.ReportedByNC;
 import qms.model.Type_of_NC;
 
 @Controller
-@SessionAttributes({"reportnc"})
+@SessionAttributes({"reportnc","report"})
 public class ReportedByNCController {
 
 	@Autowired
@@ -106,9 +106,9 @@ public String postreportnc(HttpSession session,@ModelAttribute("ReportedByNC") @
 
 // Getting the List of records created on 19-jun-14.
 @RequestMapping(value="/reportNC_list", method=RequestMethod.GET)
-public String reportlist(HttpServletRequest request,ModelMap model, Principal principal) {
-	
-	
+public String reportlist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.removeAttribute("report");
+	model.addAttribute("justcame","false");
 	model.addAttribute("menu","admin");
 	ReportedByNCForm reportedByNCForm = new ReportedByNCForm();
 	reportedByNCForm.setReportedByNCs(reportedByNCDAO.getlimitedNC(1));
@@ -122,6 +122,26 @@ public String reportlist(HttpServletRequest request,ModelMap model, Principal pr
 	
 	return "reportNC_list";
 }
+
+@RequestMapping(value="/reportNC_list_search", method=RequestMethod.GET)
+public String reportlist_search(@RequestParam("report")String report, HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.setAttribute("report",report);
+	model.addAttribute("justcame","false");
+	model.addAttribute("menu","admin");
+	ReportedByNCForm reportedByNCForm = new ReportedByNCForm();
+	reportedByNCForm.setReportedByNCs(reportedByNCDAO.getReportedByNCs(report));
+	//model.addAttribute("noofpages",(int) Math.ceil(reportedByNCDAO.getnoofncreport() * 1.0/5));
+	model.addAttribute("menu","admin");
+  	/*model.addAttribute("noofrows",5);
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
+	model.addAttribute("reportedByNCForm",reportedByNCForm);
+	
+	return "reportNC_list";
+}
+
+
 
 //Getting view all page created on 19-jun-14.
 @RequestMapping(value="/viewreport_page", method=RequestMethod.GET)

@@ -133,6 +133,11 @@
 					</div></td>
 			</tr>
 		</c:if>
+		<tr><td>
+		<form method="get" action="documentprefix_search">
+		<table>
+		<tr><td width="1160" align="right" valign="middle">Prefix&nbsp;:&nbsp;&nbsp;&nbsp;<input type="text" value="${prefixdocument}" class="input_txtbx" onblur="ChangeCase(this)" onkeypress="return onlyAlphabets(event,this);" name="dprefix">&nbsp;&nbsp;&nbsp;</td>
+		<td><input type="submit" class="submit_btn1" value="search"></td></tr></table></td></tr></form>
       		<tr>
         		<td valign="top" align="left">
 			        <div class="headings altheading">
@@ -162,12 +167,13 @@
         				       				 </tr>
         				       				 </c:forEach>
         				       				 </c:if>
-        				       				<%--   <c:if test="${fn:length(formFormPrefix.formPrefixs) == 0}">	
+        				       				 <c:if test="${fn:length(documentPrefixForm.documentPrefixs) == 0}">	
+							    	<c:if test="${justcame=='false'}">
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
-							    		
+							    	<td colspan="7" width="100%"><center><b style="color:red">No Records Found!!!</b></center></td>
 							    	</tr>
-							    	</c:if> --%>
+							    	</c:if>
+							    	</c:if> 
         				       				 </table>
         				       				</form>
         				       				</div>
@@ -217,6 +223,29 @@
 
   <jsp:include page="footer.jsp"></jsp:include>         				       				
 <script language="javascript">
+function ChangeCase(elem)
+{
+    elem.value = elem.value.toUpperCase();
+}
+function onlyAlphabets(e, t) {
+   try {
+       if (window.event) {
+           var charCode = window.event.keyCode;
+       }
+       else if (e) {
+           var charCode = e.which;
+       }
+       else { return true; }
+       if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123))
+           return true
+       else
+           return false;
+   }
+   catch (err) {
+       alert(err.Description);
+   }
+}
+
 
 function confirmation() {
 	var answer = confirm("Are you sure want to remove document prefix?")

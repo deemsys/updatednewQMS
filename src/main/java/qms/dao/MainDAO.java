@@ -119,6 +119,89 @@ public class MainDAO {
     		return 4;
 	
 	}
+	public String getusername(String username)
+	{
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet=null;
+		int flag=0;
+	 String role="";
+	
+				
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		//List<ParticipantsDetails> participants = new ArrayList<ParticipantsDetails>();
+	    try{
+	    	String cmd_role="select count(username) as count from login where username='"+username+"'";
+	    	System.out.println(cmd_role);
+	    	resultSet=statement.executeQuery(cmd_role);
+	    	while(resultSet.next())
+	    	{
+	    	role=resultSet.getString("count");	    	
+	    	}
+	    	System.out.println(role);
+	    	 
+	 }
+	    catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    	flag=0;
+	    	//return 0;
+	    }finally{
+	     	releaseStatement(statement);
+	    	releaseConnection(con);	    
+	    	
+	    }
+	   return role;
+	
+	}
+	
+	public String getemail(String username,String email)
+	{
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet=null;
+		int flag=0;
+		String role="";
+		
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		//List<ParticipantsDetails> participants = new ArrayList<ParticipantsDetails>();
+	    try{
+	    	String cmd_role="select count(email_id) as email from login where email_id='"+email+"'";
+	    	resultSet=statement.executeQuery(cmd_role);
+	    	resultSet.next();
+	    	role=resultSet.getString("email");
+	    	
+	    	
+	    	System.out.println(role);
+	    	 
+	 }
+	    catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    	flag=0;
+	    	//return 0;
+	    }finally{
+	     	releaseStatement(statement);
+	    	releaseConnection(con);	    
+	    	
+	    }
+	   return role;
+	
+	}
 	
 	public List<UserProfile> getSignup(){
 		Connection con = null;

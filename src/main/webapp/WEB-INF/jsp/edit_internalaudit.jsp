@@ -64,7 +64,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">Audit ID :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="hidden" name="id"value="<c:out value="${internalaudits.id}"/>"/><c:out value="${internalaudits.id}"/><br/><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="id" readonly="readonly" class="input_txtbx" value="<c:out value="${internalaudits.id}"/>"/><br/><span class="err"></span></td>
                 </tr>
                 <tr class="row1">
 						         	<td valign="top" align="left" class="input_txt">Process :</td>
@@ -135,7 +135,7 @@
  <table cellpadding="0" cellspacing="0" border="0" width="100%">
 								
                       <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt" width="30%">Auditor notes :</td>
+                  <td valign="top" align="left" class="input_txt" width="30%">Auditor notes :</td>
                                 
                   <td valign="top" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="auditor_notes"  id="auditor_notes"style="height: 70px;">${internalaudits.auditor_notes}</textarea>
                     <br> <span id="auditornoteserror" style="color:red"></span>

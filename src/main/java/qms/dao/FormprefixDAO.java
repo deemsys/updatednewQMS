@@ -92,6 +92,50 @@ public class FormprefixDAO {
 		}
 		return prefix;
 	}	
+	public List<FormPrefix> getprefix(String prefix1) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		List<FormPrefix> prefix = new ArrayList<FormPrefix>();
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select = "";
+			if(prefix1.equals(""))
+			{
+				cmd_select = "select * from tb_formprefix";
+			}
+			else
+			{
+				cmd_select = "select * from tb_formprefix where form_prefix='"+prefix1+"'";
+			}
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				prefix.add(new FormPrefix(resultSet
+						.getString("id"), resultSet
+						.getString("form_name"), resultSet
+						.getString("form_prefix")
+						));
+			}	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return prefix;
+	}	
 	
 	public  List<FormPrefix> getlimitedprefixreport(int page) {
 		Connection con = null;

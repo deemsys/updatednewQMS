@@ -148,7 +148,8 @@ public String deletelocation(@RequestParam("location_id") String location_id,For
 
 
 @RequestMapping(value="/formlocation_list", method=RequestMethod.GET)
-public String Formlocationlist(HttpServletRequest request,ModelMap model, Principal principal) {
+public String Formlocationlist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.removeAttribute("location");
 	FormLocationForm formLocationForm = new FormLocationForm();
 	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
@@ -160,6 +161,24 @@ public String Formlocationlist(HttpServletRequest request,ModelMap model, Princi
 	model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
+	model.addAttribute("formLocationForm",formLocationForm);
+	model.addAttribute("justcame","false");
+	return "formlocation_list";
+}
+@RequestMapping(value="/formlocation_list_search", method=RequestMethod.GET)
+public String Formlocationlist(@RequestParam("location")String location, HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.setAttribute("location",location);
+	FormLocationForm formLocationForm = new FormLocationForm();
+	model.addAttribute("menu","admin");
+  	model.addAttribute("noofrows",5);
+	model.addAttribute("justcame","false");
+	
+  	formLocationForm.setFormLocations(formLocationDAO.getlocation(location));
+	/*model.addAttribute("noofpages",(int) Math.ceil(formLocationDAO.getnooflocationreport() * 1.0 / 5));	 
+	   
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
 	model.addAttribute("formLocationForm",formLocationForm);
 	
 	return "formlocation_list";

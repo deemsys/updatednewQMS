@@ -74,7 +74,7 @@
                 <tr class="row2" valign="right">
                
                   <td valign="middle" align="left" class="input_txt" width="20%">Review ID :</td>
-	                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="review_id" value="<c:out value="${id}"/>"/><c:out value="${id}"/><br/></td>
+	                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" class="input_txtbx" name="review_id" value="<c:out value="${id}"/>"/><br/></td>
       
                   <td valign="middle" align="left" class="input_txt" width="20%">Review Date :</td>
                   <td valign="top" align="left" class="input_txt1" width="10%"><input type="text" name="management_review_date" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onmouseout="hideTooltip('tooltip_id');"/><br/>
@@ -115,7 +115,7 @@
 						           		<span class="err"><form:errors path="ManagementReview.category"></form:errors></span>
 				                   	</td>	
 				                   	 <td valign="middle" align="left" class="input_txt" width="20%">Report Link :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" maxlength="32"/><br/>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="report_link" placeholder="www.example.com" class="input_txtbx" id="reportlink" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"onInput="return validatename1();" maxlength="32"/><br/>
                   <span id="reportlinkerror" style="color:red"></span>
                   <span class="err"><form:errors path="ManagementReview.report_link"></form:errors></span></td>                
                   
@@ -271,7 +271,8 @@ function validatename3(id){
 function validate()
 {
 	var error = "";
-	var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+	/* var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; */
+	 var website= /^[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
 	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
 	
 	var attendeelistwithtitles = document.getElementById('attendeelistwithtitles').value;
@@ -373,6 +374,12 @@ function validate()
 		}
 	
 	
+	  if(document.getElementById("reportlink").value.match(website)==null)
+  	    {
+  	    	document.getElementById("reportlinkerror").innerHTML="Invalid URL format";
+  	    	
+  	    	 return false;
+  	    }
 	  if(reportlink == "")
 	  {
 	  document.getElementById("reportlinkerror").innerHTML="Required field should not be empty";
@@ -383,7 +390,7 @@ function validate()
 			 document.getElementById("reportlinkerror").innerHTML="Initial spaces not allowed";
 			 error="true";
 		}
-  		else  if(reportlink.match(website))
+  	/* 	else  if(reportlink.match(website))
 	   {
 	  
 		   document.getElementById("reportlinkerror").innerHTML="";
@@ -393,7 +400,7 @@ function validate()
 	   {
 	   document.getElementById("reportlinkerror").innerHTML="Invalid URL";
 	    	error="true";
-	   }
+	   } */
    
 	if(actiondetail == "")
 		{

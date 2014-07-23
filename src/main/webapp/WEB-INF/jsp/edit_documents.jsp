@@ -67,7 +67,7 @@ $(window).load(function(){
       <tr>
         <td valign="top" align="left">
             <div class="headings altheading">
-            <h1 style="color:#7A3A3A;font-size:20px;">Edit Document Details</h1>
+            <h1 style="color:#7A3A3A;font-size:20px;">Update Document Details</h1>
             </div>
             <div class="contentbox">
 			
@@ -139,7 +139,7 @@ $(window).load(function(){
                </td>
               <c:choose>
                 <c:when test="${documentMain.media_type=='hardcopy'}">
-               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err">*</span> Upload File:</label></td>
+               <td valign="middle" id="id_location_lbl" align="left" class="input_txt" width="20%"><label id="location_label" >Location:</label><br><label id="file_upload_label" style="display:none;"><span class="err"></span> Upload File:</label></td>
                <td valign="middle" align="left" id="id_location_txt" class="input_txt" width="25%">
               <select id="location_text" name="location" class="input_txtbx">
               <option value="">--Select--</option>
@@ -252,7 +252,7 @@ $(window).load(function(){
          </div>
                  
                 <div class="contentbox">
-			 <h1 style="color:#7A3A3A;font-size:20px;">Edit Revision Details</h1>
+			 <h1 style="color:#7A3A3A;font-size:20px;">Update Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" >
          

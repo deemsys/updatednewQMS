@@ -25,7 +25,7 @@ import qms.forms.DocumentTypeForm;
 import qms.model.DocumentType;
 
 @Controller
-@SessionAttributes({"documenttype"})
+@SessionAttributes({"documenttype","dtype"})
 public class DocumentTypeController {
 	
 	
@@ -154,7 +154,8 @@ public String deletedocumenttype(@RequestParam("id") String id,DocumentType docu
 
 
 @RequestMapping(value="/documenttype_list", method=RequestMethod.GET)
-public String Documenttypelist(HttpServletRequest request,ModelMap model, Principal principal) {
+public String Documenttypelist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.removeAttribute("dtype");
 	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
 	model.addAttribute("menu","admin");
   	model.addAttribute("noofrows",5);
@@ -165,6 +166,23 @@ public String Documenttypelist(HttpServletRequest request,ModelMap model, Princi
 	model.addAttribute("button","viewall");
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
+	model.addAttribute("documentTypeForm",documentTypeForm);
+	model.addAttribute("justcame","false");
+	return "documenttype_list";
+}
+@RequestMapping(value="/documenttype_list_search", method=RequestMethod.GET)
+public String Documenttypelistsearch(@RequestParam("dtype")String doctype, HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.setAttribute("dtype", doctype);
+	DocumentTypeForm documentTypeForm = new DocumentTypeForm();
+	model.addAttribute("menu","admin");
+  	model.addAttribute("noofrows",5);
+	model.addAttribute("justcame","false");
+	documentTypeForm.setDocumentTypes(documentTypeDAO.getdocumenttype(doctype));
+	/*model.addAttribute("noofpages",(int) Math.ceil(documentTypeDAO.getnoofdocumenttypereport() * 1.0 / 5));	 
+	   
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
 	model.addAttribute("documentTypeForm",documentTypeForm);
 	
 	return "documenttype_list";

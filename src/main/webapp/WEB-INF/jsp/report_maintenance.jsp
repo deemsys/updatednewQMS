@@ -85,7 +85,7 @@
 									</td>
 								<td valign="top" align="left" class="input_txt" width="100%">
 								
-									<input type="text" name="no_of_days" class="input_txtbx" id="noofdays" onkeypress="return Number(event,this);" value=""/>
+									<input type="text" name="no_of_days" maxlength="3" class="input_txtbx" id="noofdays" onkeypress="return Number(event,this);" value=""/>
 									<br><span id="noofdayserror" style="color:red"></span>
 							</td>
 								

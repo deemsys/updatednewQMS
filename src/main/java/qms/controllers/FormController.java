@@ -112,6 +112,7 @@ public class FormController
 	public String insert_form(HttpSession session,HttpServletRequest request,ModelMap model, @ModelAttribute("Form") @Valid Form form,BindingResult result,@ModelAttribute("RevisionForm") @Valid RevisionForm revisionForm,BindingResult result2, Principal principal)
 
 	{	
+		session.removeAttribute("processarea");
 		int flag = 0;
 		
 		
@@ -179,13 +180,13 @@ public class FormController
 						System.out.println("File Size:::" + file.getSize());
 						return "/addform";
 					}
-					orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+					orginal_fileName = "/qms_upload/"
 							+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
-						duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+						duplicate_fileName = "/qms_upload/"
 								+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
@@ -262,12 +263,27 @@ public class FormController
 		return "add_form";*/
  	}
 	
+	@RequestMapping(value = { "/ajax_formexisterror" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactionserror(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("auto_no") String auto_number,@RequestParam("document_id_hidden") String form_id,ModelMap model, Principal principal,Maintenance maintenance) 
+			{
+		System.out.println("entered");
+		String returntext="";
+		if(formDAO.list_formExit(auto_number,form_id))
+		{
+			returntext="Form ID already exist";			
+	        return returntext;
+		}
+				
+		return "";
+			}
+	
 	//Update a record
 	@RequestMapping(value={"/updateform"}, method = RequestMethod.POST)
 	public String update_form(HttpServletRequest request,HttpSession session,@ModelAttribute("Form") @Valid Form form1,BindingResult result,@ModelAttribute("RevisionForm")@Valid RevisionForm revisionForm,BindingResult result2,ModelMap model,@RequestParam("process") String process, Principal principal)
 	{
 		load_document_page_dropdowns(model);
-		
+		session.removeAttribute("processarea");
 		int flag = 0;
 		model.addAttribute("justcame",false);
 		request.getAttribute("revision_id");
@@ -345,13 +361,13 @@ public class FormController
 						System.out.println("File Size:::" + file.getSize());
 						return "/addform";
 					}
-					orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+					orginal_fileName = "/qms_upload/"
 							+ file.getOriginalFilename();
 					duplicate_fileName = orginal_fileName;
 					File create_file = new File(orginal_fileName);
 					int i = 1;
 					while (create_file.exists()) {
-						duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+						duplicate_fileName = "/qms_upload/"
 								+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(
@@ -1073,8 +1089,9 @@ public class FormController
 			return "show_revision_no";
 		}	
 		@RequestMapping(value = "/update_revisionformat", method = RequestMethod.POST)
-		public String update_revisionformat(ModelMap model,@ModelAttribute("Revision_No") @Valid Revision_No revision_No,BindingResult result) throws IOException {
+		public String update_revisionformat(HttpSession session, ModelMap model,@ModelAttribute("Revision_No") @Valid Revision_No revision_No,BindingResult result) throws IOException {
 
+			session.removeAttribute("processarea");
 			if (result.hasErrors())
 			{
 				

@@ -79,14 +79,14 @@ public class HRandTainingController {
 						System.out.println("File Size:::" + file.getSize());
 						return "/add_hr";
 					}				
-				    orginal_fileName ="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename();
+				    orginal_fileName ="/qms_upload/"+file.getOriginalFilename();
 				    System.out.println("filename is::::"+orginal_fileName);
 				    duplicate_fileName=orginal_fileName;
 				    File create_file=new File(orginal_fileName);
 				    int i=1;			    
 				    while(create_file.exists())
 				    {
-				    	duplicate_fileName="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+				    	duplicate_fileName="/qms_upload/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
 				   System.out.println("duplicate name is::::"+duplicate_fileName);
 				    	create_file=new File(duplicate_fileName);
 				    	i++;
@@ -412,13 +412,13 @@ public class HRandTainingController {
 											System.out.println("File Size:::" + file.getSize());
 											return "/add_hr";
 										}
-										orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+										orginal_fileName = "/qms_upload/"
 												+ file.getOriginalFilename();
 										duplicate_fileName = orginal_fileName;
 										File create_file = new File(orginal_fileName);
 										int i = 1;
 										while (create_file.exists()) {
-											duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+											duplicate_fileName = "/qms_upload/"
 													+ file.getOriginalFilename().substring(
 															0,
 															file.getOriginalFilename().lastIndexOf(

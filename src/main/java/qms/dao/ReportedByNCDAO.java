@@ -128,6 +128,46 @@ public List<ReportedByNC> getReportedByNCs(){
     return reportedByNCs;
 	
 }
+public List<ReportedByNC> getReportedByNCs(String report){
+	Connection con = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	try {
+		con = dataSource.getConnection();
+		statement = con.createStatement();
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
+	List<ReportedByNC> reportedByNCs = new ArrayList<ReportedByNC>();
+    try{
+    	String query="";
+    	if(report.equals(""))
+    	{
+    		
+    		query="select * from tbl_reportedby_nc";
+    	}
+    	else
+    	{
+    		query="select * from tbl_reportedby_nc where group_person='"+report+"'";
+    	}
+		resultSet = statement.executeQuery(query);
+		while(resultSet.next()){
+			reportedByNCs.add(new ReportedByNC(resultSet.getInt("auto_id"),resultSet.getString("type_of_nc"),resultSet.getString("group_person")));
+			
+		}
+    }catch(Exception e){
+    	System.out.println(e.toString());
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);
+    }finally{
+    	releaseResultSet(resultSet);
+    	releaseStatement(statement);
+    	releaseConnection(con);	    	
+    }
+    return reportedByNCs;
+	
+}
 public boolean getReportedByNCsexit(String typenc,String person,int auto_id){
 	Connection con = null;
 	Statement statement = null;

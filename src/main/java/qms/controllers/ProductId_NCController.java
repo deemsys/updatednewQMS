@@ -25,7 +25,7 @@ import qms.model.ProductIDNC;
 import qms.model.Type_of_NC;
 
 @Controller
-@SessionAttributes({"productidnc"})
+@SessionAttributes({"productidnc","pid"})
 public class ProductId_NCController {
 	@Autowired
 	ProductId_NCDAO productId_NCDAO;
@@ -76,7 +76,7 @@ public String postType(HttpSession session,@ModelAttribute("ProductIDNC") @Valid
 	return "add_productidnc";
 }
 @RequestMapping(value="/productidNC_list", method=RequestMethod.GET)
-public String Typelist(HttpServletRequest request,ModelMap model, Principal principal) {
+public String Typelist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
 	
 	
 	model.addAttribute("menu","admin");
@@ -89,7 +89,25 @@ public String Typelist(HttpServletRequest request,ModelMap model, Principal prin
     model.addAttribute("success","false");
     model.addAttribute("currentpage",1);
 	model.addAttribute("productId_NC_Form",productId_NC_Form);
+	model.addAttribute("justcame","false");
+	session.removeAttribute("pid");
+	return "productidNC_list";
+}
+@RequestMapping(value="/productidNC_list_search", method=RequestMethod.GET)
+public String Typelist(@RequestParam("pid")String pid, HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
+	session.setAttribute("pid",pid);
 	
+	model.addAttribute("menu","admin");
+	ProductId_NC_Form productId_NC_Form = new ProductId_NC_Form();
+	productId_NC_Form.setProductIDNCs(productId_NCDAO.getProductId(pid));
+	//model.addAttribute("noofpages",(int) Math.ceil(productId_NCDAO.getnoofproductidreport() * 1.0/5));
+	model.addAttribute("menu","admin");
+  /*	model.addAttribute("noofrows",5);
+	model.addAttribute("button","viewall");
+    model.addAttribute("success","false");
+    model.addAttribute("currentpage",1);*/
+	model.addAttribute("productId_NC_Form",productId_NC_Form);
+	model.addAttribute("justcame","false");
 	return "productidNC_list";
 }
 @RequestMapping(value="/viewproductidreport_page", method=RequestMethod.GET)

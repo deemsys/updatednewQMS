@@ -4,6 +4,8 @@
 <title>Login Page</title> 
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"  type="text/css" />
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet"  type="text/css" />
+<script src="resources/js/jquery.min.js"></script>
+<script src="resources/js/jquery-1.7.2.min.js"></script>
 <style>
 .errorblock {
 	color: #eaeaea; 
@@ -21,6 +23,9 @@ function clear123()
 {
 	document.getElementById("usernameerr").innerHTML="";
 	document.getElementById("passworderr").innerHTML="";
+	document.getElementById("exerr").innerHTML="";
+	document.getElementById("suerr").innerHTML="";
+	
 	}
 function validation()
 {
@@ -62,13 +67,16 @@ function validation()
 		  </li>
 		  </ul>
 		   <c:if test="${not empty error}">
-		<div style="color:red;text-align:center;">
-			Your login attempt was not successful, try again.<br /> Caused :
+		<div id="exerr"  style="color:red;text-align:center;">
+		 Your login attempt was not successful, try again.<br /> Caused :
 			${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 			${blank.message}
+			
 		</div><br/>
 		
 	</c:if>
+	<c:if test="${success=='true'}"> <div id="suerr" style="color:green;text-align:center;"><b><font size="+1">Successfully Completed User Registration</b></div></c:if> 
+		  
 		    <ul class="login-list">
 		   <li>
 <BR/>
@@ -78,7 +86,7 @@ function validation()
 		       <b> <font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName&nbsp;:&nbsp;&nbsp;</font></b>
 		     </td>
 		     
-		       <td valign="top" align="left"><input type="text" maxlength="32" class="inputbx1" id="username" style="border:solid 1px brown;" name="j_username" value=''>
+		       <td valign="top" align="left"><input type="text" maxlength="32" class="inputbx1" id="username" style="border:solid 1px brown;" name="j_username" value='' onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" >
 		       <br><font size="+1" color="red"><span id="usernameerr"></span></font>
 				<p><font color="#993300"></font></p></td>
 		      </table>
@@ -90,7 +98,7 @@ function validation()
 		        </td>
 		      
 		      
-		      <td valign="top" align="left"><input type="password" id="password" maxlength="32" class="inputbx1" style="border:solid 1px brown;" name="j_password">
+		      <td valign="top" align="left"><input type="password" id="password" maxlength="32" class="inputbx1" style="border:solid 1px brown;" name="j_password" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" >
 				<br><font size="+1" color="red"><span id="passworderr"></span></font>	
 		      </td>
 		      </table>
@@ -103,7 +111,7 @@ function validation()
 		      <a href="#">
 		        <input type="submit" value="Submit" style="width:70px;height:30px;" name="submit" class="submit_btn1" onclick="return validation()">
 		        </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		          <input type="reset" value="Reset" onclick="clear123()" class="submit_btn1" style="width:70px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		          <input type="reset" value="Reset" onclick="window.location.href='login'"  class="submit_btn1" style="width:70px;height:30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		  </td><Td width="20%"> </td></table></li>
 		      
 		      

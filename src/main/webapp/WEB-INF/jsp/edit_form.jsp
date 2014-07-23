@@ -254,7 +254,7 @@
          </table>
          </div>
                 <div class="contentbox">
-           <h1 style="color:#7A3A3A;font-size:20px;">Edit Revision Details</h1>
+           <h1 style="color:#7A3A3A;font-size:20px;">Update Revision Details</h1>
              <div style="border:#993300  2px solid; padding:15px; margin-bottom:15px;">
              <table cellpadding="0" cellspacing="0" border="0" width="100%" id="displayold">
              <tr class="row2">

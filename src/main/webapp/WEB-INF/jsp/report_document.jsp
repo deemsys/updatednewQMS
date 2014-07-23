@@ -77,7 +77,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2 style="padding-left: 50px">Document Report</h2>
+					<h2 style="padding-left: 50px">Document Details Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" id="form"action="generate_doc_report">
@@ -115,8 +115,8 @@
                 <c:forEach items="${documentTypeForm.documentTypes}" var="documenttype" varStatus="status">
         				       <option value="${documenttype.document_type}">${documenttype.document_type}</option>
 			                  </c:forEach> </select>
-			                  <br><span id="reporterror" style="color:red"></span>
-			                  <span id="report_error"style="color:red"></span>
+			                  <br><span id="report_error"style="color:red"><span id="reporterror" style="color:red"></span>
+			                  </span>
                </td>
                
 							</tr>
@@ -187,6 +187,7 @@
 								<td><input type="checkbox" name="report_field[]" value="approver3" id="13"/>Approver 3</td>
 								<td><input type="checkbox" name="report_field[]" value="status" id="14"/>Status</td>
 								<td><input type="checkbox" name="report_field[]" value="comments" id="15"/>Comment/Changes</td>
+								<td><input type="checkbox" name="report_field[]" value="revision_id" id="15"/>Revision ID</td>
 					      		</tr>
 								</table>
 								
@@ -250,7 +251,7 @@ function Ajaxreportcheck(){
 		  {
 		 	 if(documenttype == "")
 		 	{
-		 		 document.getElementById('reporterror').innerHTML ="Please Select One";
+		 		 document.getElementById('reporterror').innerHTML ="Required field should not be empty";
 		 		
 		 		error = "true";
 		 	}

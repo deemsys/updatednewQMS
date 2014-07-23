@@ -199,9 +199,9 @@ function ChangeCase(elem)
 							<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							  <tr>
 							    <td align="left" valign="middle" width="10%">ID&nbsp;:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" placeholder="C1001" id="id" maxlength="8" value="${cusid}" onblur="ChangeCase(this);"   onkeypress="return AlphabetsNumber(event,this);"></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_id" class="input_txtbx" placeholder="C1001" id="id"  value="${cusid}" onblur="ChangeCase(this);"   onkeypress="return AlphabetsNumber(event,this);"></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Name&nbsp;:</td>
-							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name" maxlength="32" value="${cusname}" onkeypress="return Alphabets(event,this);" ></td>
+							    <td align="left" valign="middle" width="10%"><input type="text" name="customer_name" class="input_txtbx" id="name"  value="${cusname}" onkeypress="return Alphabets(event,this);" ></td>
 							    <td align="left" valign="middle" width="10%">&nbsp;&nbsp;Address&nbsp;:</td>
 							    <td align="left" valign="middle" width="10%"><input type="text" name="address" id="address" class="input_txtbx" value="${cusaddress}"></td>
 							    <!-- <td align="center" valign="middle" width="38%"><input type="button" class="submit_btn" value="Find" name="find" onclick="findpart()"></td>
@@ -235,8 +235,8 @@ function ChangeCase(elem)
 							       			else
 							       			i=1;%>
 							       		<tr class="row<%=i%>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${customerFeedbacks.date_of_feedback}"/></td>
-								           	<td valign="top" align="left"  width="10%">${customerFeedbacks.date_of_feedback}</td>
+							       		<td valign="top" align="left" width="10%"><input type="checkbox" name="chkUser" value="${customers.customer_id}"/></td>
+								           	<td valign="top" align="left"  width="10%">${customers.customer_id}</td>
 									      <td valign="top" align="left" width="10%">${customers.customer_name}</td>
 											<td valign="top" align="left" width="10%">${customers.address}</td>
 											<td valign="top" align="left" width="10%">${customers.city}</td>

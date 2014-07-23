@@ -60,7 +60,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">CAPA ID :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${correctiveAndPreventiveActions.capa_id}"/>"/>${correctiveAndPreventiveActions.capa_id}<br/><span style="color: red;"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="capa_id" readonly="readonly" class="input_txtbx" value="<c:out value="${correctiveAndPreventiveActions.capa_id}"/>"/><br/><span style="color: red;"></span></td>
               	   <td valign="middle" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="middle" align="left" class="input_txt">
 				   <select name="nc_id" id="nc_id" class="dropdown" onchange="doAjaxPost();">
@@ -162,7 +162,7 @@ document.getElementById("why").style.visibility = 'hidden';
                   <td valign="middle" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why">
-					  <textarea class="input_txtbx1"  name="why" id="why"  style="width:98%; height: 70px;" onInput="return validatename(id);" onInput="return validatealphanumeric2();">${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
+					  <textarea class="input_txtbx"  name="why" id="why"  style="width:98%; height: 70px;" >${correctiveAndPreventiveActions.why}</textarea><br/><span style="color: red;" id="whyerr"></span><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></td>			
              </tr>	
              
             <tr class="row2">
@@ -187,9 +187,9 @@ document.getElementById("why").style.visibility = 'hidden';
                   <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="30%">Team Member (s) :</td>      
 
-						         	 <td valign="middle" align="left" class="input_txt" width="30%"><textarea  class="input_txtbx" name="team_members"  id="team_member" style="width: 202px; height: 70px;" onInput="return validatealphanumeric1();">${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
+						         	 <td valign="middle" align="left" class="input_txt" width="30%"><textarea  class="input_txtbx" name="team_members"  id="team_member" style="width: 202px; height: 70px;" >${correctiveAndPreventiveActions.team_members}</textarea><br><span style="color: red;" id="membererror"></span><form:errors path="CorrectiveAndPreventiveActions.team_members"></form:errors></td>
                 <td valign="middle" align="left" class="input_txt" width="30%">Root Cause Statement :</td>               
-                  <td valign="middle" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;" onInput="return validatealphanumeric3();">${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><textarea class="input_txtbx"  name="root_cause_statement"  id="root_cause_statement" style="width:100%; height: 70px;" >${correctiveAndPreventiveActions.root_cause_statement}</textarea><span style="color: red;" id="rooterror"><form:errors path="CorrectiveAndPreventiveActions.root_cause_statement"></form:errors></td>
                
               </tr>
                  <tr class="row1">
@@ -197,7 +197,7 @@ document.getElementById("why").style.visibility = 'hidden';
                   
                   <td valign="middle" align="left" class="input_txt" width="30%"><input type="text" name="root_cause_analysis_file" class="input_txtbx" id="root_cause_analysis_file"  onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  value='<c:out value="${correctiveAndPreventiveActions.root_cause_analysis_file}"></c:out>' /><br/><span id="root1error" style="color: red;"></span><form:errors path="CorrectiveAndPreventiveActions.root_cause_analysis_file"></form:errors></td>
                          	  <td valign="middle" align="left" class="input_txt" width="32%">Upload External Analysis (Y/N)<span>(*Optional)</span> :</td>
-				  <td valign="middle" align="left" class="input_txt" width="32%"> <input type="checkbox" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis =='upload_external_analysis'}"><c:out value="Checked=checked"/></c:if> />
+				  <td valign="middle" align="left" class="input_txt" width="32%"> <input type="checkbox" class="externalfile" name="upload_external_analysis" value="upload_external_analysis" id="externalfile" <c:if test="${ correctiveAndPreventiveActions.upload_external_analysis =='upload_external_analysis'}"><c:out value="Checked=checked"/></c:if> />
 				  <td>
 				 
 				  	 </tr>
@@ -207,9 +207,9 @@ document.getElementById("why").style.visibility = 'hidden';
 			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
 			 <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden"/></td>
              <td valign="middle" align="left" class="input_txt" width="30%">Upload the File :</td>
-             <td valign="middle" align="left" class="input_txt" width="30%"> <input name="attachments" id="attachments"   type="file"/><span style="color: red;" id="fileerror"></span><div  style="color:red; font-weight:bold;" > <c:out 
+             <td valign="middle" align="left" class="input_txt" width="30%"> <div   ><c:if test="${correctiveAndPreventiveActions.attachment_name ne 'null'}"> <c:out 
 
- value="${correctiveAndPreventiveActions.attachment_name}"  ></c:out></div></td>
+ value="${correctiveAndPreventiveActions.attachment_name}"  ></c:out></c:if></div><input name="attachments" id="attachments"   type="file"/><span style="color: red;" id="fileerror"></span></td>
                  
                    </tr>
 						<!-- 
@@ -329,6 +329,7 @@ document.getElementById("why").style.visibility = 'hidden';
 </script>     
    -->
    <script>
+  
    function doAjaxPost() {
 	 
 	document.getElementById('nc_id').style.display="block";
@@ -364,6 +365,8 @@ $('#externalfile').change(function() {
 	   
 	 if($(this).is(':checked')) {
 		 e1.style.display="table-row";
+		 document.getElementById("fileerror").style.display="none";
+		 
 			
      
      } else {
@@ -561,10 +564,10 @@ function validation()
 		error="true";
 		}
 		
-	else if((why.length < 4) || (why.length > 32))
+	else if((why.length < 4) || (why.length > 400))
 {
 
-document.getElementById('whyerr').innerHTML="Required should be of length 4 to 32";	
+document.getElementById('whyerr').innerHTML="Required should be of length 4 to 400";	
 error="true";
 }
 	else if((why.charAt(0)== " "))
@@ -755,10 +758,10 @@ error="true";
 			error="true";
 			
 		}
-		else if((team_member.length < 4) || (team_member.length > 45))
+		else if((team_member.length < 4) || (team_member.length > 400))
 			{
 			
-			document.getElementById("membererror").innerHTML="Required field should be of length 4 to 32";	
+			document.getElementById("membererror").innerHTML="Required field should be of length 4 to 400";	
 			error="true";
 			}
 		else if((team_member.charAt(0)== " "))
@@ -777,10 +780,10 @@ error="true";
 		error="true";
 		
 	}
-	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 45))
+	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 400))
 		{
 		
-		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 400";	
 		error="true";
 		}
 	else if((root_cause_statement.charAt(0)== " "))
@@ -963,8 +966,8 @@ window.onload = function() {
 	  
 	  
 	  
-	  
-	  
+	
+	
 	  
 	  </script>
 <jsp:include page="footer.jsp"></jsp:include>

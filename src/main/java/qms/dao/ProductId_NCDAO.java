@@ -45,6 +45,45 @@ public class ProductId_NCDAO {
 		    return products;
 			
 		}
+		public List<ProductIDNC> getProductId(String productid){
+			Connection con = null;
+			Statement statement = null;
+			ResultSet resultSet = null;
+			try {
+				con = dataSource.getConnection();
+				statement = con.createStatement();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			List<ProductIDNC> products = new ArrayList<ProductIDNC>();
+		    try{
+		    	String query="";
+		    	if(productid.equals(""))
+		    	{
+		    		query="select * from tbl_productid_nc";
+		    	}
+		    	else
+		    	{
+		    		query="select * from tbl_productid_nc where productid_nc='"+productid+"'";
+		    	}
+				resultSet = statement.executeQuery(query);
+				while(resultSet.next()){
+					products.add(new ProductIDNC(resultSet.getInt("auto_id"),resultSet.getString("productid_nc")));
+					
+				}
+		    }catch(Exception e){
+		    	System.out.println(e.toString());
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);
+		    }finally{
+		    	releaseResultSet(resultSet);
+		    	releaseStatement(statement);
+		    	releaseConnection(con);	    	
+		    }
+		    return products;
+			
+		}
 		public boolean getProductIdExit(String product,int id){
 			Connection con = null;
 			Statement statement = null;

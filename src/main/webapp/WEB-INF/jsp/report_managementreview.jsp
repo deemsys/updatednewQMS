@@ -59,7 +59,7 @@
 	<tr>
 		<td valign="top" align="left">
 				<div class="headings altheading">
-					<h2 style="padding-left: 50px">Management Review Reports</h2>
+					<h2 style="padding-left: 50px">Management Review Details Reports</h2>
 				</div>
 				<div class="contentbox">
 					<form method="post" action="generate_managementreview_report">

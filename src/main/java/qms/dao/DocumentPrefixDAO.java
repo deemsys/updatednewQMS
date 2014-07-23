@@ -94,6 +94,51 @@ public class DocumentPrefixDAO {
 		return documentPrefixs;
 	}	
 	
+	public List<DocumentPrefix> getprefix(String prefix) {
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		boolean status = false;
+		List<DocumentPrefix> documentPrefixs = new ArrayList<DocumentPrefix>();
+
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			String cmd_select="";
+			if(prefix.equals(""))
+			{
+				cmd_select = "select * from tbl_documentprefix";	
+			}
+			else
+			{
+				cmd_select = "select * from tbl_documentprefix where doc_prefix='"+prefix+"'";	
+			}
+		
+			resultSet = statement.executeQuery(cmd_select);
+			while (resultSet.next()) {
+				
+				documentPrefixs.add(new DocumentPrefix(resultSet
+						.getString("id"), resultSet
+						.getString("doc_prefix"), resultSet
+						.getString("document_id")));
+			}	
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		} finally {
+			releaseResultSet(resultSet);
+			releaseStatement(statement);
+			releaseConnection(con);
+		}
+		return documentPrefixs;
+	}	
+	
 	public  List<DocumentPrefix> getlimitedprefixreport(int page) {
 		Connection con = null;
 		Statement statement = null;

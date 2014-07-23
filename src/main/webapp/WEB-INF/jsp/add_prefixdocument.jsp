@@ -316,6 +316,37 @@
 		 {
 		 return false;
 		 }
+	 var docprefix=document.getElementById("docprefix").value;
+	 var documentid=document.getElementById("document_id").value;
+		
+	 $.ajax({
+			type : "POST",
+			url : "/QMS_App/ajax_documenterror",
+			data : "doc_prefix="+ docprefix+"&document_id="+ documentid,
+			success : function(response) {
+			//	alert("response"+response);	
+			
+	    	
+	    		//	alert("if loop 0");
+	    		
+	    			document.getElementById("docprefix1").innerHTML=response;
+	    		if(response=='')
+	    			{
+	    			document.forms[0].method = "POST";
+	    			document.forms[0].action = "add_documentprefix";
+	    			document.forms[0].submit();
+	    			}
+	    		
+	    		
+	    		
+	    		  
+			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	 return false;
+
  }
  
  </script>

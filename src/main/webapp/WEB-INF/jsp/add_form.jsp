@@ -82,8 +82,8 @@
               <input type="text" value="" id="form_or_rec_id" class="input_txtbx" onkeypress="return validate(event);" style="height:22px;width:100px;" name="form_or_rec_id" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"onblur="change_to_label();" maxlength="32"/>
               <br><span id="formiderror" style="color:red"></span>
               <span style="color:red;"><form:errors path="Form.form_or_rec_id"></form:errors></span>
-              <span id="quality3err" style="color:red;"></span>
-                 <c:if test="${success=='exist'}"><span style="color:red">Form ID already Exist</span></c:if>
+              <span id="quality3err" style="color:red;">
+                 <c:if test="${success=='exist'}"><span style="color:red">Form ID already Exist</span></c:if></span>
               </td>
              
              <%-- <td valign="top" align="left" class="input_txt" ></span>Auto Number:</td>
@@ -272,7 +272,7 @@
     			<tr class="row1">			             
 				<td valign="top" align="left" class="input_txt" >Effective Date :</td>
 				<td valign="top" align="left" class="input_txt" width="30%">
-				<input type="hidden" name="auto_no" value="${id }"/>
+				<input type="hidden" id="auto_no" name="auto_no" value="${id }"/>
 				<input type="text" class="input_txtbx" id="datepicker123" name="effective_date" value="${docform.effective_date}" />
 				<br/>
 				<span id="datepicker1234" style="color:red"></span>
@@ -820,6 +820,41 @@ var spl =  /^[A-Za-z0-9]*$/;
 		 
 	 return false;
 		 }
+		 var docprefix=document.getElementById("generated_id").value;
+		 var auto_no=document.getElementById("auto_no").value;
+		
+		 $.ajax({
+				type : "POST",
+				url : "/QMS_App/ajax_formexisterror",
+				data : "auto_no="+auto_no+"&document_id_hidden="+ docprefix,
+				success : function(response) {
+				//	alert("response"+response);	
+				
+		    	
+		    		//	alert("if loop 0");
+		    		if(response!=''){
+		    		
+		    		alert(response);}
+		    		
+		    		if(response=='')
+		    			{
+		    			document.forms[0].method = "POST";
+		    			document.forms[0].action = "addform";
+		    			document.forms[0].submit();
+		    			}
+		    		
+		    		
+		    		
+		    		  
+				},
+				error : function(e) {
+					alert('Error: ' + e);
+				}
+			});
+		 return false;
+		 
+		 
+		 
 
 	
 		

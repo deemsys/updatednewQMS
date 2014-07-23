@@ -28,7 +28,7 @@ import qms.model.FormPrefix;
 
 
 @Controller
-@SessionAttributes({"controlprocess"})
+@SessionAttributes({"controlprocess","processname"})
 public class ProcessController
 {
 	@Autowired
@@ -67,7 +67,7 @@ public class ProcessController
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("success","exist");
-			exist="true";
+			return "add_process";
 			
 		}
 		if(processDAO.getProcessnameExit(process.getAuto_id(),process.getProcess_name()))
@@ -76,7 +76,7 @@ public class ProcessController
 			processForm.setProcesses(processDAO.getProcess());
 			model.addAttribute("processForm",processForm);
 			model.addAttribute("success","exists");
-			exist="true";
+			return "add_process";
 			
 		}
 		if(exist.equals("true"))
@@ -100,10 +100,11 @@ public class ProcessController
 
 	
 	@RequestMapping(value="/process_list", method=RequestMethod.GET)
-	public String Processlist(HttpServletRequest request,ModelMap model, Principal principal) {
+	public String Processlist(HttpServletRequest request,ModelMap model, Principal principal,HttpSession session) {
 		
+	session.removeAttribute("processname");
 		ProcessForm processForm = new ProcessForm();
-		
+		model.addAttribute("justcame","false");
 	  	processForm.setProcesses(processDAO.getlimitedprocessreport(1));
 		model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
 		model.addAttribute("menu","admin");
@@ -111,6 +112,23 @@ public class ProcessController
 		model.addAttribute("button","viewall");
 	    model.addAttribute("success","false");
 	    model.addAttribute("currentpage",1);
+		model.addAttribute("processForm",processForm);
+		
+		return "process_list";
+	}
+	@RequestMapping(value="/process_list_search", method=RequestMethod.GET)
+	public String Processlistsearch(HttpSession session,@RequestParam("processname")String pname, HttpServletRequest request,ModelMap model, Principal principal) {
+		session.setAttribute("processname",pname);
+		ProcessForm processForm = new ProcessForm();
+		model.addAttribute("justcame","false");
+		model.addAttribute("menu","admin");
+	  	processForm.setProcesses(processDAO.getProcess(pname));
+	/*	model.addAttribute("noofpages",(int) Math.ceil(processDAO.getnoofprocessreport() * 1.0 / 5));	 
+		model.addAttribute("menu","admin");
+	  	model.addAttribute("noofrows",5);
+		model.addAttribute("button","viewall");
+	    model.addAttribute("success","false");
+	    model.addAttribute("currentpage",1);*/
 		model.addAttribute("processForm",processForm);
 		
 		return "process_list";

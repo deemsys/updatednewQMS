@@ -187,7 +187,8 @@ public class NonConformanceController {
 	@RequestMapping(value = "/add_nonconformance", method = RequestMethod.POST)
 	public String addNonconformance_post(HttpSession session,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result,@ModelAttribute("CorrectiveAndPreventiveActions") @Valid CorrectiveAndPreventiveActions correctiveAndPreventiveActions,BindingResult result2,ModelMap model) {
 		
-		
+		session.removeAttribute("nc");
+		session.removeAttribute("typenc");
 		model.addAttribute("justcame",false);
 		
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
@@ -281,6 +282,8 @@ public class NonConformanceController {
 	@RequestMapping(value = "/update_nonconformance", method = RequestMethod.POST)
 	public String editNonconformance_post(ModelMap model,@ModelAttribute("Nonconformance") @Valid NonConformance nonConformance,BindingResult result,HttpSession session) {
 
+		session.removeAttribute("nc");
+		session.removeAttribute("typenc");
 		Type_of_NC_Form type_of_NC_Form= new Type_of_NC_Form();
 		type_of_NC_Form.setType_of_NCs(typeNCDAO.getType());
 		model.addAttribute("type_of_NC_Form",type_of_NC_Form);

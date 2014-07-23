@@ -54,8 +54,9 @@ public class MaintenanceController {
 	
 	@RequestMapping(value = { "/add_maintenance" }, method = RequestMethod.GET)
 	
-	public String addMaintenance(HttpSession session,ModelMap model, Principal principal) {
+	public String addMaintenance(HttpSession session,ModelMap model,Maintenance maintenance, Principal principal) {
 		
+		session.setAttribute("maintenances", maintenance);
 		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
 		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getNameCalibration());
 		model.addAttribute("hRandTrainingForm",hRandTrainingForm);
@@ -152,7 +153,20 @@ return "maintenance_list";
 	        return "maintenancedelete";
 
 	}
-
+	@RequestMapping(value = { "/ajax_existerror" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactionserror(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("equipment_id") String equipmentid,ModelMap model, Principal principal,Maintenance maintenance) 
+			{
+		String returntext="";
+		if(maintenanceDAO.edit_maintenance(maintenance.getEquipment_id()))
+		{		
+			
+			returntext="Equipment ID already exist";			
+	        return returntext;
+		}
+		
+		return "";
+			}
 	
 	
 	//Insert a record
@@ -160,7 +174,16 @@ return "maintenance_list";
 	public String postMaintenance(HttpSession session,@ModelAttribute("Maintenance") @Valid Maintenance maintenance,BindingResult result, ModelMap model) {
 
 		session.setAttribute("maintenances",maintenance);
-			if (result.hasErrors())
+		HRandTrainingForm hRandTrainingForm = new HRandTrainingForm();
+		hRandTrainingForm.sethRandTrainings(hRandTrainingDAO.getNameCalibration());
+		model.addAttribute("hRandTrainingForm",hRandTrainingForm);
+		System.out.println(maintenance.getWeekly());
+		String weekly="",monthly="",quarterly,semiannualy,annualy;
+		if(weekly!="")
+		{
+			System.out.println("asdas");
+		}
+		if (result.hasErrors())
 			{
 				MaintenanceForm maintenanceForm= new MaintenanceForm();
 				maintenanceForm.setMaintenance(maintenanceDAO.getmaintenance());
@@ -187,7 +210,8 @@ return "maintenance_list";
 		model.addAttribute("menu","maintenance");
 		model.addAttribute("success","true");
 		model.addAttribute("justcame",false);
-		
+		session.removeAttribute("equipid");
+		session.removeAttribute("equipname");
 		return "maintenance_list";
 	}
 	
@@ -286,8 +310,10 @@ return "maintenance_list";
 	
 	//Update a record
 	@RequestMapping(value = "/update_maintenance", method = RequestMethod.POST)
-	public String update_maintenance(ModelMap model,HttpServletRequest request,@ModelAttribute("Maintenance") @Valid Maintenance maintenance,BindingResult result,@RequestParam("equipment_id") String equipment_id) throws IOException {
+	public String update_maintenance(HttpSession session,ModelMap model,HttpServletRequest request,@ModelAttribute("Maintenance") @Valid Maintenance maintenance,BindingResult result,@RequestParam("equipment_id") String equipment_id) throws IOException {
 
+		session.removeAttribute("equipid");
+		session.removeAttribute("equipname");
 		if (result.hasErrors())
 		{
 			
@@ -471,7 +497,7 @@ if(weekly !="")
 			for(String weeklyinstr:referencemain)
 			{
 				System.out.println("frequency maintenane = "+weekly);
-				returnText=returnText+"<a  href='downloadFrequencyFile?id=weekly''><input type='hidden' class='input_txtbx' id='reference' name='reference1' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+				returnText=returnText+"<a  href='downloadFrequencyFile?id=weekly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference1' value='"+weeklyinstr+"'>";
 
 			}			
 			System.out.println(" source of nc:::: "+returnText);
@@ -483,7 +509,7 @@ List <String> referencemain=new ArrayList<String>();
 referencemain=referenceMaintenanceDAO.filterReference(monthly);
 for(String weeklyinstr:referencemain)
 {
-	returnText=returnText+"<a  href='downloadFrequencyFile?id=monthly''><input type='hidden' class='input_txtbx' id='reference' name='reference2' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=monthly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference2' value='"+weeklyinstr+"'>";
 
 }			
 System.out.println(" source of nc:::: "+returnText);
@@ -495,7 +521,7 @@ List <String> referencemain=new ArrayList<String>();
 referencemain=referenceMaintenanceDAO.filterReference(quarterly);
 for(String weeklyinstr:referencemain)
 {
-	returnText=returnText+"<a  href='downloadFrequencyFile?id=quarterly''><input type='hidden' class='input_txtbx' id='reference' name='reference3' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=quarterly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference3' value='"+weeklyinstr+"'>";
 
 }			
 System.out.println(" source of nc:::: "+returnText);
@@ -507,7 +533,7 @@ List <String> referencemain=new ArrayList<String>();
 referencemain=referenceMaintenanceDAO.filterReference(semiannually);
 for(String weeklyinstr:referencemain)
 {
-	returnText=returnText+"<a  href='downloadFrequencyFile?id=semi-annually''><input type='hidden' class='input_txtbx' id='reference' name='reference4' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=semi-annually''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference4' value='"+weeklyinstr+"'>";
 
 }			
 System.out.println(" source of nc:::: "+returnText);
@@ -519,7 +545,7 @@ List <String> referencemain=new ArrayList<String>();
 referencemain=referenceMaintenanceDAO.filterReference(annually);
 for(String weeklyinstr:referencemain)
 {
-	returnText=returnText+"<a  href='downloadFrequencyFile?id=annually''><input type='hidden' class='input_txtbx' id='reference' name='reference5' value='"+weeklyinstr+"'>"+weeklyinstr+"</input></a>";
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=annually''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference5' value='"+weeklyinstr+"'>";
 
 }			
 System.out.println(" source of nc:::: "+returnText);
@@ -528,6 +554,180 @@ returnText=returnText+"<split>";
 System.out.println("Result string = "+returnText);
 return returnText;
 			}	
+	
+	@RequestMapping(value = { "/ajax_getAttach1" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactions(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("weekly") String weekly,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		
+if(weekly !="")
+{
+			List <String> referencemain=new ArrayList<String>();
+			referencemain=referenceMaintenanceDAO.filterReference(weekly);
+			/*referenceMaintenance_Form.setReferences(referenceMaintenanceDAO.getReference(weekly));
+			try {
+				FileHandlingDAO.filedownload(response, referenceMaintenance_Form.getReferences()
+						.get(0).getAttachment_referrence(),  referenceMaintenance_Form.getReferences().get(0).getAttachment_name());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+*/
+			for(String weeklyinstr:referencemain)
+			{
+				System.out.println("frequency maintenane = "+weekly);
+				returnText=returnText+"<a  href='downloadFrequencyFile?id=weekly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference1' value='"+weeklyinstr+"'>";
+
+			}			
+}
+return returnText;
+			}
+	@RequestMapping(value = { "/ajax_getAttach2" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactions2(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("monthly") String monthly,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		if(monthly !="")
+		{
+		List <String> referencemain=new ArrayList<String>();
+		referencemain=referenceMaintenanceDAO.filterReference(monthly);
+		for(String weeklyinstr:referencemain)
+		{
+			returnText=returnText+"<a  href='downloadFrequencyFile?id=monthly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference2' value='"+weeklyinstr+"'>";
+
+		}			
+		
+		
+		}
+
+return returnText;
+			}
+	
+	
+	@RequestMapping(value = { "/ajax_getAttach3" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactions3(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("quarterly") String quarterly,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		if(quarterly !="")
+		{
+		List <String> referencemain=new ArrayList<String>();
+		referencemain=referenceMaintenanceDAO.filterReference(quarterly);
+		for(String weeklyinstr:referencemain)
+		{
+			returnText=returnText+"<a  href='downloadFrequencyFile?id=quarterly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference3' value='"+weeklyinstr+"'>";
+
+		}			
+		
+		
+		}
+
+return returnText;
+			}
+	
+	
+	@RequestMapping(value = { "/ajax_getAttach4" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactions4(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("semiannually") String semiannually,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		if(semiannually !="")
+		{
+		List <String> referencemain=new ArrayList<String>();
+		referencemain=referenceMaintenanceDAO.filterReference(semiannually);
+		for(String weeklyinstr:referencemain)
+		{
+			returnText=returnText+"<a  href='downloadFrequencyFile?id=semi-annually''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference4' value='"+weeklyinstr+"'>";
+
+		}	
+		}
+
+return returnText;
+			}
+	
+	@RequestMapping(value = { "/ajax_getAttach5" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactions5(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("annually") String annually,ModelMap model, Principal principal,Reference reference) 
+			{
+		String returnText="";
+		ReferenceMaintenance_Form referenceMaintenance_Form = new ReferenceMaintenance_Form();
+		if(annually !="")
+		{
+		List <String> referencemain=new ArrayList<String>();
+		referencemain=referenceMaintenanceDAO.filterReference(annually);
+		for(String weeklyinstr:referencemain)
+		{
+			returnText=returnText+"<a  href='downloadFrequencyFile?id=annually''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference5' value='"+weeklyinstr+"'>";
+
+		}		
+		}
+
+return returnText;
+			}
+			/*System.out.println(" source of nc:::: "+returnText);
+			returnText=returnText+"<split>";
+}
+			/*
+}
+if(monthly !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(monthly);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=monthly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference2' value='"+weeklyinstr+"'>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+
+if(quarterly !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(quarterly);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=quarterly''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference3' value='"+weeklyinstr+"'>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+if(semiannually !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(semiannually);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=semi-annually''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference4' value='"+weeklyinstr+"'>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+if(annually !="")
+{
+List <String> referencemain=new ArrayList<String>();
+referencemain=referenceMaintenanceDAO.filterReference(annually);
+for(String weeklyinstr:referencemain)
+{
+	returnText=returnText+"<a  href='downloadFrequencyFile?id=annually''>"+weeklyinstr+"</a><input type='hidden' class='input_txtbx' id='reference' name='reference5' value='"+weeklyinstr+"'>";
+
+}			
+System.out.println(" source of nc:::: "+returnText);
+returnText=returnText+"<split>";
+}
+System.out.println("Result string = "+returnText);
+*/
+
+
+	
 	
 	
 	//download the Instruction file 19-JUNE-2014 

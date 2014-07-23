@@ -5,6 +5,7 @@ package qms.controllers;
 import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -12,6 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -99,9 +102,45 @@ public class MainController {
 	}*/
 	
 	
+	@RequestMapping(value = { "/ajax_createuserexisterror" }, method = RequestMethod.POST)
+	public @ResponseBody String insert_external_correctiveactionserror(HttpSession session,HttpServletResponse response,
+			HttpServletRequest request, @RequestParam("username") String username,@RequestParam("email") String email,ModelMap model, Principal principal,UserProfile signup) 
+			{
+		String returntext="";
+		String count=mainDAO.getusername(signup.getUsername());
+		int ucount=Integer.parseInt(count);
+		String emilcount=mainDAO.getemail(signup.getUsername(),signup.getEmail());
+		int ecount=Integer.parseInt(emilcount);
+		if(ucount>0)
+		{
+			model.addAttribute("username","exist");
+			return "username";
+		}
+		if(ecount>0)
+		{
+			model.addAttribute("email","exist");
+			return "email";
+		}
+		
+		return "";
+			}
 	@RequestMapping(value="/submituser", method = RequestMethod.POST)
 	public String insert_signup(HttpSession session,@ModelAttribute("UserProfile")  @Valid UserProfile signup,BindingResult result,ModelMap model) {
 		session.setAttribute("signup",signup);
+		String count=mainDAO.getusername(signup.getUsername());
+		int ucount=Integer.parseInt(count);
+		String emilcount=mainDAO.getemail(signup.getUsername(),signup.getEmail());
+		int ecount=Integer.parseInt(emilcount);
+		if(ucount>0)
+		{
+			model.addAttribute("username","exist");
+			return "edit";
+		}
+		if(ecount>0)
+		{
+			model.addAttribute("email","exist");
+			return "edit";
+		}
 		if(result.hasErrors())
 		{
 			//SignupForm signupForm= new SignupForm();
@@ -118,7 +157,7 @@ public class MainController {
 		int h = mainDAO.setSignup(signup);
 		UserProfileForm userProfileForm = new UserProfileForm();
 		userProfileForm.setUserProfiles(mainDAO.getSignup());
-    	
+    	model.addAttribute("success","true");
 		model.addAttribute("userProfileForm",userProfileForm);
 
 		

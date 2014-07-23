@@ -75,7 +75,7 @@
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                  <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="30%"> Date of Feedback :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="date_of_feedback" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="datepicker" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br>
                   <span id="datepicker1" style="color:red"></span>
                   <span class="err"><form:errors path="CustomerFeedback.date_of_feedback"></form:errors></span></td>
                   </tr>
@@ -192,7 +192,7 @@ function validate()
 		 }
 	 else if(feedbackdetails.charAt(0) == " ")
 		 {
-		 document.getElementById("feedbackdetailserror").innerHTML="Required field Should not accept initial space";
+		 document.getElementById("feedbackdetailserror").innerHTML="Should not accept initial space";
 			error="true";
 		 }
 	 

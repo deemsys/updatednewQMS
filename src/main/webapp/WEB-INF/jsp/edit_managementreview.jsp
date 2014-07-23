@@ -66,7 +66,7 @@
              <tr class="row2">
 				                  <td valign="middle" align="left" class="input_txt" width="30%">Review ID :</td>
 				                  <td valign="middle" align="left" class="input_txt" width="30%">
-                                  <input type="hidden" name="review_id" value="<c:out value="${managementReviewdetails.review_id}"/>"/><c:out value="${managementReviewdetails.review_id}"/>
+                                  <input type="text" name="review_id" class="input_txtbx" readonly="readonly" value="<c:out value="${managementReviewdetails.review_id}"/>"/>
 				                  	<font color="Red" size="+1"></font>
 				                  	
 				                  </td>
@@ -265,7 +265,8 @@ function validateres(id){
 function validate()
 {
 	var error = "";
-	var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+/* 	var website = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/; */
+ var website= /^[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
 	var date = /^\d{4}-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
 	
 	var attendeelistwithtitles = document.getElementById('attendeelistwithtitles').value;

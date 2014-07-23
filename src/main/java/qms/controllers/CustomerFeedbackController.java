@@ -61,6 +61,8 @@ public class CustomerFeedbackController
 		@RequestMapping(value={"/insertfeedback"}, method = RequestMethod.POST)
 		public String insert_customerfeedback(HttpSession session,HttpServletRequest request,ModelMap model, Principal principal,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result ) throws IOException {
 			session.removeAttribute("type");
+			
+			session.removeAttribute("date");
 			System.err.println("-------------------------------------------");
 			byte[] buffer=null;// = new byte[10000];
 			try {
@@ -77,14 +79,14 @@ public class CustomerFeedbackController
 						return "/login";
 					}				
 
-				    orginal_fileName ="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename();
+				    orginal_fileName ="/qms_upload/"+file.getOriginalFilename();
 				    duplicate_fileName=orginal_fileName;
 				    File create_file=new File(orginal_fileName);
 				    int i=1;			    
 				    while(create_file.exists())
 				    {
 
-				    	duplicate_fileName="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+				    	duplicate_fileName="/qms_upload/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
 				    	create_file=new File(duplicate_fileName);
 				    	i++;
 				    }
@@ -152,6 +154,8 @@ public class CustomerFeedbackController
 	@RequestMapping(value={"/updatefeedback"}, method = RequestMethod.POST)
 	public String update_customerfeedback(ModelMap model,@ModelAttribute("CustomerFeedback") @Valid CustomerFeedback customerFeedback,BindingResult result,HttpSession session) throws IOException
 	{
+		session.removeAttribute("type");
+		session.removeAttribute("date");
 		byte[] buffer=null;// = new byte[10000];
 		int flag = 0;
 		try {
@@ -170,13 +174,13 @@ public class CustomerFeedbackController
 					System.out.println("File Size:::" + file.getSize());
 					return "/login";
 				}				
-			    orginal_fileName ="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename();
+			    orginal_fileName ="/qms_upload/"+file.getOriginalFilename();
 			    duplicate_fileName=orginal_fileName;
 			    File create_file=new File(orginal_fileName);
 			    int i=1;			    
 			    while(create_file.exists())
 			    {
-			    	duplicate_fileName="C:/usr/share/tomcat6/webapps/projects/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+			    	duplicate_fileName="/qms_upload/"+file.getOriginalFilename().substring(0,file.getOriginalFilename().lastIndexOf('.'))+i+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
 			    	create_file=new File(duplicate_fileName);
 			    	i++;
 			    }

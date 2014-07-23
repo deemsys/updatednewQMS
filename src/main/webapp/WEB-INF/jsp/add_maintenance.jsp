@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="header.jsp"></jsp:include>
 <script src="resources/js/jquery.min.js"></script>
  <script src="resources/js/jquery-ui.js"></script>
@@ -56,28 +57,28 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" style="padding-left:38px" class="input_txt" width="45%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="60%"><input type="text" maxlength="32" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="ChangeCase(this);toggle(this.value);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="60%"><input type="text" maxlength="32" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="" name="equipment_id" class="input_txtbx" id="equipment_id" onblur="ChangeCase(this);toggle(this.value);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" />
                   <br>
-                  <span id="equipment_id1" style="color:red"></span>
-                  <c:if test="${success=='exist'}"><span style="color:red">Equipment ID already Exist</span></c:if>
+                  <span id="equipment_id1" style="color:red">
+                  <c:if test="${success=='exist'}">Equipment ID already Exist</c:if></span>
                   <span class="err"><form:errors path="Maintenance.equipment_id"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="45%" style="padding-left:38px">Equipment Name  :</td>
                  <!--  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_name" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumberSpace(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /> -->
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_name" maxlength="32" class="input_txtbx" id="equipment_name" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_name"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="" maxlength="32" class="input_txtbx" id="equipment_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                   <br> <span id="equipment_name1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_name"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="40%" style="padding-left:38px">Equipment Model  :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="equipment_model" maxlength="32" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" value="" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" name="equipment_model" maxlength="32" class="input_txtbx" id="equipment_model"onblur="ChangeCase(this);" onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                  <br>  <span id="equipment_model1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.equipment_model"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="40%" style="padding-left:38px">Serial Number  :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="serial_number" maxlength="32" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="serial_number" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="" maxlength="32" class="input_txtbx" id="serial_number" onblur="ChangeCase(this);"onkeypress="return AlphabetsNumber(event,this);"onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                    <br><span id="serial_number1" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.serial_number"></form:errors></span></td>
                 </tr>
@@ -88,7 +89,7 @@
                 
                  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" style="padding-left: 85px">Date Acquired :</td>
-                  <td valign="top" align="left" class="input_txt" width="42%"><input type="text" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="42%"><input type="text" value="" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" name="date_acquired" class="input_txtbx" id="datepicker1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                    <br> <span id="datepicker11" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.date_acquired"></form:errors></span></td>
                 </tr>
@@ -97,8 +98,8 @@
                   <td valign="top" align="left" class="input_txt" width="40%">
                   <select name="equipment_status" class="dropdown" id="equipment_status">
                   <option value="">--Select--</option>
-                  <option value="Active">Active</option>
-                  <option value="Not Active">Not Active</option>
+                  <option  value="Active">Active</option>
+                  <option  value="Not Active">Not Active</option>
                   </select>
                   <br/>
                    <span id="equipment_status1" style="color:red"></span>
@@ -109,8 +110,8 @@
                  <td valign="top" align="left" class="input_txt" style="padding-left: 85px">Frequency of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt">
                   <select name="frequency_maintenance" class="dropdown"  style="height:80px;"id="frequency_maintenance" multiple>
-                  
-                  <option value="Weekly">Weekly</option>
+                 <%--  <c:if test="${fn:contains(groupnames,participantGroups.group_name)}"><c:out value="selected"/></c:if> --%>
+                  <option  value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>
                    <option value="Quarterly">Quarterly</option>
                    <option value="Semi-Annually">Semi-Annually</option>
@@ -144,27 +145,27 @@
                 <tr class="row2">
                   
                   <td valign="middle" align="left" class="input_txt" width="15%">Equipment ID  :</td>
-                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid"readonly=readonly onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><span class="err"></span></td>
+                  <td valign="top" align="left" class="input_txt" width="30%"><input type="text" name="equipmentid" class="input_txtbx" id="equipmentid"readonly=readonly onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value=""/><span class="err"></span></td>
                 </tr> 
                <tr class="row1">
                  <td valign="middle" align="left" class="input_txt" width="15%"> Type of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt" width="40%">
                   <select name="type_of_maintenance"  class="dropdown" >
                  
-                  <option value="Preventive">Preventive</option>
-                  <option value="Corrective">Corrective</option>
-                   <option value="Predictive">Predictive</option>
+                  <option  value="Preventive">Preventive</option>
+                  <option  value="Corrective">Corrective</option>
+                   <option  value="Predictive">Predictive</option>
                </select>
                 <br/><span class="err"></span></td>
                   </tr>
                    <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="15%">Frequency of Maintenance  :</td>
                   <td valign="top" align="left" class="input_txt" width="40%">
-                  <input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax()" />&nbsp;Weekly  <br/>               
-             	 <input type="checkbox" name="monthly" value="monthly" id="monthly"onclick="toggleAjax()" />&nbsp;Monthly<br/>
-                  <input type="checkbox" name="quarterly" value="quarterly" id="quarterly"onclick="toggleAjax()" />&nbsp;Quarterly<br/>
-                <input type="checkbox" name="semiannually" value="semi-annually" id="semiannually" onclick="toggleAjax()" />&nbsp;Semi-Annually<br/>
-                <input type="checkbox" name="annually" value="annually" id="annually" onclick="toggleAjax()" />&nbsp;Annually<br/>
+                <span id="wee"> <input type="checkbox"   value="weekly" id="weekly" onclick="toggleAjax1()" /><input type="hidden" name="weekly"></span>&nbsp;Weekly   <br/>               
+             	<span id="mon"> <input type="checkbox"  value="monthly" id="monthly"onclick="toggleAjax2()" /><input type="hidden" name="monthly"></span>&nbsp;Monthly<br/>
+                <span id="qua">   <input type="checkbox"  value="quarterly" id="quarterly"onclick="toggleAjax3()" /><input type="hidden" name="quarterly"></span>&nbsp;Quarterly<br/>
+                <span id="semi">  <input type="checkbox"  value="semi-annually" id="semiannually" onclick="toggleAjax4()" /><input type="hidden" name="semiannually"></span>&nbsp;Semi-Annually<br/>
+              <span id="annu"> <input type="checkbox" value="annually" id="annually" onclick="toggleAjax5()" /><input type="hidden" name="annually" ></span>&nbsp;Annually <br/>
                   <span id="frequencyofmaintenance1" style="color:red"></span>
                  <%--  <span class="err"><form:errors path="Maintenance.maintenance_frequency"></form:errors></span> --%></td>
                 </tr>
@@ -180,7 +181,7 @@
               
                <td valign="top" align="left" class="input_txt"width="10%">Instructions(optional)  :</td>
                <td valign="top" align="left" width="20%"><div id="instruction"></div>
-               <textarea class="input_txtbx"  name="instructions" id="instructions" style="height: 89px;" >${Maintenance.instructions}</textarea><br/>
+               <textarea class="input_txtbx"  name="instructions" id="instructions" style="height: 89px;" ></textarea><br/>
                
               <span id="instructions1" style="color:red"></span> 
                <span class="err"><form:errors path="Maintenance.instructions"></form:errors></span>
@@ -197,13 +198,13 @@
            
             <tr class="row1">
                   <td valign="middle" align="left" class="input_txt" width="70%">Due Date  :</td>
-                  <td valign="middle" align="left" class="input_txt" width="50%"><input type="text" name="due_date" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="middle" align="left" class="input_txt" width="50%"><input type="text"  name="due_date" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="" class="input_txtbx" id="datepicker2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  />
                   <br><span id="datepicker22" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.due_date"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="40%">Completion Date  :</td>
-                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="completion_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <td valign="top" align="left" class="input_txt" width="40%"><input type="text" name="completion_date"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" />
                 <br>  <span id="datepicker33" style="color:red"></span>
                   <span class="err"><form:errors path="Maintenance.completion_date"></form:errors></span></td>
                 </tr>
@@ -214,7 +215,7 @@
                    <select id="completed_by" name="completed_by" class="dropdown"  >
               <option value = "">--Select --</option>
 			                <c:forEach items="${hRandTrainingForm.hRandTrainings}" var="calibrationname" varStatus="status">
-        				       <option value="${calibrationname.name}">${calibrationname.name}</option>
+        				       <option  value="${calibrationname.name}">${calibrationname.name}</option>
 			                  </c:forEach> </select>
 			                <br>  <span id="completed_by1" style="color:red"></span>
                  <!--  <input type="text" name="completed_by" class="input_txtbx" id="completed_by" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /> --><span class="err"><form:errors path="Maintenance.completed_by"></form:errors></span></td>
@@ -222,11 +223,11 @@
                 <tr class="row1">
                   <td valign="top" align="left" class="input_txt" width="10%">Reference  :</td>
                   <td valign="top" align="left" class="input_txt" width="20%">
-                  <div id="reference1"></div><br>
-                  <div id="reference2"></div><br>
-                  <div id="reference3"></div><br>
-                  <div id="reference4"></div><br>
-                  <div id="reference5"></div>
+                  <div id="reference1"><input type="hidden" name="reference1" value="null"></div>
+                  <div id="reference2"><input type="hidden" name="reference2" value="null"></div>
+                  <div id="reference3"><input type="hidden" name="reference3" value="null"></div>
+                  <div id="reference4"><input type="hidden" name="reference4" value="null"></div>
+                  <div id="reference5"><input type="hidden" name="reference5" value="null"></div>
                   
                   </td>
                 </tr>
@@ -299,84 +300,208 @@ $("#suggestion_box").html(html);
 </script>
   
   <script>
-   function toggleAjax() {
+   function toggleAjax1() {
 	 
 	   var weekly_main = document.getElementById('weekly').checked;
-	   var monthly_main = document.getElementById('monthly').checked;
-	   var quarterly_main = document.getElementById('quarterly').checked;
-	   var semiannually_main = document.getElementById('semiannually').checked;
-	   var annually_main = document.getElementById('annually').checked;
-	   var weekly ='',monthly='', quarterly='',semiannually='',annually='';
+	   //alert("value");
 	   		if(weekly_main)
 		   {
 			 weekly = $('#weekly').val();
-		   }
-		   if(monthly_main)
-		   {
-			 monthly = $('#monthly').val();
-		   }
-		   if(quarterly_main)
-			{
-	               quarterly = $('#quarterly').val();
-			}
-	        if(semiannually_main)
-	        {
-				 semiannually = $('#semiannually').val();
-	        }
-		    if(annually_main)
-			{
-				 annually = $('#annually').val();
-	        }
-	            	 
-	
+		  document.getElementById("wee").innerHTML='<input type="checkbox" name="weekly" value="weekly" id="weekly" onclick="toggleAjax1()" checked/>';
 	$.ajax({
 		type : "POST",
-		url : "/QMS_App/ajax_getAttach",
-		data : "weekly="+weekly+"&monthly="+monthly+"&quarterly="+quarterly+"&semiannually="+semiannually+"&annually="+annually,
+		url : "/QMS_App/ajax_getAttach1",
+		data : "weekly="+weekly,
 		success : function(response) {
-		//	alert("response"+response);
-		var two_drop=response.split("<split>");
+		//	alert("response"+response);	
 		
-		
-    	 var size = two_drop.length-1;
-    	//alert("size = "+size);
-    	for(var i=0; i<= size; i++)
-    		{
-    		//alert("for loop");
-    		if(i == 0)
-    			{ 
+    	
     		//	alert("if loop 0");
-    			$('#reference1').html(two_drop[i]).value=response;
-    			
-    			}
+    		//alert(response);
+    			document.getElementById("reference1").innerHTML=response;
     		
-    		if(i = 1){
-    	//		alert("if loop1");
-    		$('#reference2').html(two_drop[i]).value=response;
-    		}
-    		 if(i = 2){
-    	//		alert("if loop2");
-    			$('#reference3').html(two_drop[i]).value=response;
-    		}
-			if(i = 3){
-		//		alert("if loop3");
-    			$('#reference4').html(two_drop[i]).value=response;
-    		}
-			if(i = 4){
-		//		alert("if loop4");
-    			$('#reference5').html(two_drop[i]).value=response;
-    		} 
-			if(i = 5)
-				{
-				
-				}
-    		} 
+    		
+    		
+    		
+    		  
 		},
 		error : function(e) {
 			alert('Error: ' + e);
 		}
 	});
+
+		   }
+		   else
+		   {
+		   document.getElementById("wee").innerHTML='<input type="checkbox"  value="weekly" id="weekly" onclick="toggleAjax1()" /><input type="hidden" name="weekly" />';
+		  document.getElementById("reference1").innerHTML='<input type="hidden" class="input_txtbx" id="reference" name="reference1">';
+		   }
+		                 	 
+	
 }
+
+function toggleAjax2() {
+	 
+	var monthly_main = document.getElementById('monthly').checked;
+	   var weekly ='',monthly='', quarterly='',semiannually='',annually='';
+	   //alert("value");
+	   		if(monthly_main)
+		   {
+			  monthly  = $('#monthly').val();
+		  document.getElementById("mon").innerHTML='<input type="checkbox" name="monthly" value="monthly" id="monthly" onclick="toggleAjax2()" checked/>';
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getAttach2",
+		data : "monthly="+monthly,
+		success : function(response) {
+		//	alert("response"+response);	
+		
+    	
+    		//	alert("if loop 0");
+    		//alert(response);
+    			document.getElementById("reference2").innerHTML=response;
+    		
+    		
+    		
+    		
+    		  
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+
+		   }
+		   else
+		   {
+		   document.getElementById("mon").innerHTML='<input type="checkbox"  value="monthly" id="monthly" onclick="toggleAjax2()" /><input type="hidden" name="monthly" />';
+		  document.getElementById("reference2").innerHTML='<input type="hidden" class="input_txtbx" id="reference" name="reference2">';
+		   }
+		                 	 
+	
+}
+function toggleAjax3() {
+	 
+	    var weekly ='',monthly='', quarterly='',semiannually='',annually='';
+	      var quarterly_main = document.getElementById('quarterly').checked;
+	   //alert("value");
+	   		if(quarterly_main)
+		   {
+			 quarterly = $('#quarterly').val();
+		  document.getElementById("qua").innerHTML='<input type="checkbox" name="quarterly" value="quarterly" id="quarterly" onclick="toggleAjax3()" checked/>';
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getAttach3",
+		data : "quarterly="+quarterly,
+		success : function(response) {
+		//	alert("response"+response);	
+		
+    	
+    		//	alert("if loop 0");
+    		//alert(response);
+    			document.getElementById("reference3").innerHTML=response;
+    		
+    		
+    		
+    		
+    		  
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+
+		   }
+		   else
+		   {
+		   document.getElementById("qua").innerHTML='<input type="checkbox"  value="quarterly" id="quarterly" onclick="toggleAjax3()" /><input type="hidden" name="weekly" />';
+		  document.getElementById("reference3").innerHTML='<input type="hidden" class="input_txtbx" id="reference" name="reference3">';
+		   }
+		                 	 
+	
+}
+function toggleAjax4() {
+	 
+	    var semiannually;
+	    var semiannually_main = document.getElementById('semiannually').checked;
+	   //alert("value");
+	   		if(semiannually_main)
+		   {
+			 semiannually = $('#semiannually').val();
+		  document.getElementById("semi").innerHTML='<input type="checkbox" name="semiannually" value="semi-annually" id="semiannually" onclick="toggleAjax4()" checked/>';
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getAttach4",
+		data : "semiannually="+semiannually,
+		success : function(response) {
+		//	alert("response"+response);	
+		
+    	
+    		//	alert("if loop 0");
+    		//alert(response);
+    			document.getElementById("reference4").innerHTML=response;
+    		
+    		
+    		
+    		
+    		  
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+
+		   }
+		   else
+		   {
+		   document.getElementById("semi").innerHTML='<input type="checkbox"  value="semi-annually" id="semiannually" onclick="toggleAjax4()" /><input type="hidden" name="semiannually" />';
+		  document.getElementById("reference4").innerHTML='<input type="hidden" class="input_txtbx" id="reference" name="reference4">';
+		   }
+		                 	 
+	
+}
+function toggleAjax5() {
+	 
+	    var annually ;
+	     var annually_main = document.getElementById('annually').checked;
+	 
+	   		if(annually_main)
+		   {
+			 annually = $('#annually').val();
+		  document.getElementById("annu").innerHTML='<input type="checkbox" name="annually" value="annually" id="annually" onclick="toggleAjax5()" checked/>';
+	$.ajax({
+		type : "POST",
+		url : "/QMS_App/ajax_getAttach5",
+		data : "annually="+annually,
+		success : function(response) {
+		//	alert("response"+response);	
+		
+    	
+    		//	alert("if loop 0");
+    		//alert(response);
+    			document.getElementById("reference5").innerHTML=response;
+    		
+    		
+    		
+    		
+    		  
+		},
+		error : function(e) {
+			alert('Error: ' + e);
+		}
+	});
+
+		   }
+		   else
+		   {
+		   document.getElementById("annu").innerHTML='<input type="checkbox"  value="annually" id="annually" onclick="toggleAjax5()" /><input type="hidden" name="annually" />';
+		  document.getElementById("reference5").innerHTML='<input type="hidden" class="input_txtbx" id="reference" name="reference5">';
+		   }
+		                 	 
+	
+}
+
+
  
    function instructionAjax() {
 		 
@@ -496,6 +621,24 @@ function Number(e, t) {
     }
 }
 
+function AlphabetsName(e, t) {
+    try {
+        if (window.event) {
+            var charCode = window.event.keyCode;
+        }
+        else if (e) {
+            var charCode = e.which;
+        }
+        else { return true; }
+        if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123)|| (charCode ==32))
+            return true;
+        else
+            return false;
+    }
+    catch (err) {
+        alert(err.Description);
+    }
+}
 function AlphabetsNumber(e, t) {
     try {
         if (window.event) {
@@ -536,6 +679,7 @@ function AlphabetsNumberSpace(e, t) {
 <script type="text/javascript">
 function validation()
 {
+	 
 	var chars =  /^[A-Z0-9]+$/;
 	var numbers =  /^[0-9]+$/;
 	var letters =  /^[A-Za-z]+$/;
@@ -779,11 +923,44 @@ function validation()
 		     document.getElementById("notes1").innerHTML="";
 		     }
 	 	
+	
+	
 		
 	 if(error=="true")
 		 {
 		 return false;
-		 }
+		 } 
+	 var equipment_id=document.getElementById("equipment_id").value;
+	
+	 $.ajax({
+			type : "POST",
+			url : "/QMS_App/ajax_existerror",
+			data : "equipment_id="+ equipment_id,
+			success : function(response) {
+			//	alert("response"+response);	
+			
+	    	
+	    		//	alert("if loop 0");
+	    		
+	    			document.getElementById("equipment_id1").innerHTML=response;
+	    		if(response=='')
+	    			{
+	    			document.forms[0].method = "POST";
+	    			document.forms[0].action = "add_maintenance";
+	    			document.forms[0].submit();
+	    			}
+	    		
+	    		
+	    		
+	    		  
+			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	 return false;
+	 
+	 
 }
 
 function ChangeCase(elem)

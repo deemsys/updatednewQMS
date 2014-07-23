@@ -312,7 +312,9 @@ public class CorrectiveAndPreventiveActionsController
 			BindingResult result, ModelMap model, Principal principal) 
 	{
 				session.setAttribute("correctiveAndPreventiveActions",correctiveAndPreventiveActions);
-
+				session.removeAttribute("capa");
+				session.removeAttribute("date");
+				session.removeAttribute("action");
 		NonConformanceForm nonConformanceForm = new NonConformanceForm();
 		nonConformanceForm.setNonconformance(nonConformanceDAO.get_nonconformance());
 		model.addAttribute("nonConformanceForm", nonConformanceForm);
@@ -353,14 +355,14 @@ public class CorrectiveAndPreventiveActionsController
 								System.out.println("File Size:::" + file.getSize());
 								return "/add_correctiveAndPreventiveActions";
 							}
-							orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+							orginal_fileName = "/qms_upload/"
 								+ file.getOriginalFilename();
 							duplicate_fileName = orginal_fileName;
 							File create_file = new File(orginal_fileName);
 							int i = 1;
 							while (create_file.exists())
 								{System.out.println("create");
-									duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+									duplicate_fileName = "/qms_upload/"
 									+ file.getOriginalFilename().substring(
 											0,
 											file.getOriginalFilename().lastIndexOf(
@@ -492,6 +494,8 @@ public class CorrectiveAndPreventiveActionsController
 		//NEW LINES
 		
 		session.removeAttribute("capa");
+		session.removeAttribute("date");
+		session.removeAttribute("action");
 		//END NEW LINE
 		String action_field = request.getParameter("action");
 		System.out.println("action value::::" + action_field);
@@ -533,7 +537,7 @@ public class CorrectiveAndPreventiveActionsController
 							System.out.println("File Size:::" + file.getSize());
 							return "/add_correctiveAndPreventiveActions";
 						}
-						orginal_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+						orginal_fileName = "/qms_upload/"
 							+ file.getOriginalFilename();
 						duplicate_fileName = orginal_fileName;
 						File create_file = new File(orginal_fileName);
@@ -541,7 +545,7 @@ public class CorrectiveAndPreventiveActionsController
 						while (create_file.exists())
 							{
 							System.out.println("create");
-								duplicate_fileName = "C:/usr/share/tomcat6/webapps/projects/"
+								duplicate_fileName = "/qms_upload/"
 								+ file.getOriginalFilename().substring(
 										0,
 										file.getOriginalFilename().lastIndexOf(

@@ -5,9 +5,9 @@
 <title>Signup Page</title> 
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"  type="text/css" />
 <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet"  type="text/css" />
-<!-- <script src="/QMS_App/resources/js/jquery.js"></script>
+ <script src="/QMS_App/resources/js/jquery.js"></script>
 <script src="resources/js/jquery-1.7.2.min.js"></script>
-<script src="resources/js/jquery-ui.js"></script> -->
+<script src="resources/js/jquery-ui.js"></script> 
 <script src="resources/js/modal.js"></script>
 <style>
 .errorblock {
@@ -69,9 +69,10 @@ function validation()
 	var fullname = document.getElementById('fullname').value;
 	var username = document.getElementById('username').value;
 	var password = document.getElementById('password').value;
+	var cpassword=document.getElementById('cpassword').value;
 	var email = document.getElementById('email').value;
 	var mail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$/;
-	  
+	document.getElementById("cperr").innerHTML="";
 	
 	
 	if(fullname == "")
@@ -84,7 +85,7 @@ function validation()
 	
 	else if(fullname.charAt(0) == " ")
 	{
-		document.getElementById("ferr").innerHTML="Required field should not accept initial space";
+		document.getElementById("ferr").innerHTML="Should not accept initial space";
 		 error="true";
 	}
 	else if((fullname.length < 4) ||(fullname.length > 32))
@@ -108,12 +109,12 @@ function validation()
 	
 	else if(username.charAt(0) == " ")
 	{
-		document.getElementById("uerr").innerHTML="Required field should not accept initial space";
+		document.getElementById("uerr").innerHTML="Should not accept initial space";
 		 error="true";
 	}
-	else if((username.length < 4) ||(username.length > 32))
+	else if(username.length < 4)
 	{
-	document.getElementById("uerr").innerHTML="Required field should be length of 4 to 32";
+	document.getElementById("uerr").innerHTML="Required field should be length of 4 to 15";
 	error="true";
 	
 	}
@@ -132,7 +133,7 @@ function validation()
 	
 	else if(password.charAt(0) == " ")
 	{
-		document.getElementById("perr").innerHTML="Required field should not accept initial space";
+		document.getElementById("perr").innerHTML="Should not accept initial space";
 		 error="true";
 	}
 	else if((password.length < 3) ||(password.length > 32))
@@ -145,6 +146,38 @@ function validation()
 	{
 	document.getElementById("perr").innerHTML="";
 	}
+	
+	if(cpassword == "")
+	{
+		
+	 document.getElementById("cperr").innerHTML="Required field should not be empty";
+	 error="true";
+	
+	}
+	
+	else if(cpassword.charAt(0) == " ")
+	{
+		document.getElementById("cperr").innerHTML="Should not accept initial space";
+		 error="true";
+	}
+	else if((cpassword.length < 3) ||(cpassword.length > 32))
+	{
+	document.getElementById("cperr").innerHTML="Required field should be length of 3 to 32";
+	error="true";
+	
+	}
+	else if(cpassword!="")
+	{
+		if(password!=cpassword)
+			{
+			document.getElementById("cperr").innerHTML="Password and confirm password should be same";
+			 error="true";
+			}}
+	else
+	{
+	document.getElementById("cperr").innerHTML="";
+	}
+	 
 	 
 	  if(email =="")
 	  {
@@ -153,7 +186,7 @@ function validation()
 	  }
 	  else if(email.charAt(0) ==" ") 
 	   {
-	   document.getElementById("emailerr").innerHTML="Required field Should not accept initial space";
+	   document.getElementById("emailerr").innerHTML="Should not accept initial space";
 	error="true";
 		}
 else if(email.match(mail)){  
@@ -173,6 +206,43 @@ else{
 	    	//alert("er");
 		return false;
 		}
+	    $.ajax({
+			type : "POST",
+			url : "/QMS_App/ajax_createuserexisterror",
+			data : "username="+ document.getElementById("username").value+"&email="+ document.getElementById("email").value,
+			success : function(response) {
+			//	alert("response"+response);	
+			
+	    	
+	    		//	alert("if loop 0");
+	    		
+	    	if(response=='username')
+	    		{
+	    		document.getElementById("uerr").innerHTML="UserName already exists";
+	    		}
+	    	if(response=='email')
+    		{
+	    		document.getElementById("emailerr").innerHTML="Email Address already exists";
+    		}	
+	    	if(response=='')
+	    			{
+	    			document.forms[0].method = "POST";
+	    			document.forms[0].action = "submituser";
+	    			document.forms[0].submit();
+	    			}
+	    		
+	    		
+	    		
+	    		  
+			},
+			error : function(e) {
+				alert('Error: ' + e);
+			}
+		});
+	 return false;
+	 
+	    
+	    
 	    
 }
 
@@ -313,7 +383,7 @@ function AlphabetsNumber(e, t) {
 		       <b> <font color="#993300">&nbsp;&nbsp;Full Name:</font></b>
 		     </td>
 		     
-		      <td style="width: 512px; "><sf:input path="fullName" id="fullname" size="30" maxlength="32" onkeypress="return Alphabets(event,this);"/><br/>
+		      <td style="width: 512px; "><sf:input path="fullName" id="fullname" class="input_txtbx" size="30" maxlength="32" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onkeypress="return Alphabets(event,this);"/><br/>
      <span id="ferr" style="color: red;font-style:italic;"></span>
         </td>
 		      </table>
@@ -322,9 +392,9 @@ function AlphabetsNumber(e, t) {
 		      <table cellpadding="0" cellspacing="0" border="0" width="300">
 		      <td  style="width:70%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;UserName:</font></b></td>
-		       <td style="width: 512px; "> <sf:input path="username" id="username" onkeypress="return usernamevalidation(event,this);" size="30" maxlength="32" />
+		       <td style="width: 512px; "> <sf:input path="username" id="username" class="input_txtbx" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  onkeypress="return usernamevalidation(event,this);" size="30" maxlength="15" />
              <!--  <b><font color="#993300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</font></b> <small id="username_msg"></small><br/> -->
-             <span id="uerr" style="color: red;font-style:italic;"></span>
+             <span id="uerr" style="color: red;font-style:italic;"><c:if test="${username=='exist'}">UserName already exists</c:if></span>
 		        </table>
   
    
@@ -334,9 +404,19 @@ function AlphabetsNumber(e, t) {
 		      <td style="width:70%" valign="top">
 		        <b><font color="#993300">&nbsp;&nbsp;Password:</font></b></td>
 		      
-		      <td style="width: 512px; "><sf:password class="input_txt" path="password" id="password" size="30"  maxlength="32" showPassword="true" onkeypress="return usernamevalidation1(event,this);"/> 
+		      <td style="width: 512px; "><sf:password class="input_txtbx" path="password" id="password" size="30" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"   maxlength="32" showPassword="true" onkeypress="return usernamevalidation1(event,this);"/> 
              <!-- <small>6 characters or more (be tricky!)</small><br/> -->
               <span id="perr" style="color: red;font-style:italic;"></span>
+		      </td>
+		      </table>
+		        <li>
+		      <table cellpadding="0" cellspacing="0" border="0" width="300">
+		      <td style="width:70%" valign="top">
+		        <b><font color="#993300">&nbsp;&nbsp;Confirm Password:</font></b></td>
+		      
+		      <td style="width: 512px; "><input class="input_txtbx" name="cpassword" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" id="cpassword" type="password" onkeypress="return usernamevalidation1(event,this);"> 
+             <!-- <small>6 characters or more (be tricky!)</small><br/> -->
+              <span id="cperr" style="color: red;font-style:italic;"></span>
 		      </td>
 		      </table>
 	
@@ -347,9 +427,9 @@ function AlphabetsNumber(e, t) {
 		        </td>
 		      
 		      
-		      <td style="width: 512px; "><sf:input path="email" id="email" size="30"/> 
+		      <td style="width: 512px; "><sf:input class="input_txtbx" path="email" id="email" size="30" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" /> 
          
-             <span id="emailerr" style="color: red;font-style:italic;"></span>
+             <span id="emailerr" style="color: red;font-style:italic;"><c:if test="${email=='exist'}">Email Address already exists</c:if></span>
 		      </td>
 		      </table>
 		      </li>

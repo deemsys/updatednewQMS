@@ -80,12 +80,12 @@
                <label id="document_id_full_lbl"></label>
               
                <a href="#" style="text-decoration: none;" onclick="show_edit()">&nbsp;&nbsp;Change</a>            
-               <br/>
+               <br/><span id="documentidexit" style="color:red"></span>
                </td>          
               
                <td valign="top" align="left" id="edit_td" class="input_txt1" width="15%">
                <table style="" class="simple_table" border="0">
-               <tr ><td align="left" width="10%">
+               <tr ><td align="left" height="10px" width="10%" valign="bottom">
                <select name="document_type_id" id="document_type_id" class="input_txtbx" style="width:110px; margin:0 0 0 -10px;margin-right:-1px;">
                <c:forEach items="${documentPrefixForm.documentPrefixs}" var="prefix" varStatus="status">
         	   <option value="${prefix.doc_prefix}">${prefix.doc_prefix}</option>
@@ -106,7 +106,7 @@
 						</p>
               </c:if>
               <br>
-                <c:if test="${success=='exist'}"><span style="color:red">Document ID already Exist</span></c:if>
+              <%--   <c:if test="${success=='exist'}"><span style="color:red">Document ID already Exist</span></c:if> --%>
               </td>
               
               
@@ -1009,6 +1009,39 @@ function validation()
 			 
 		 return false;
 			 }
+		 var document_id = document.getElementById('generated_id').value;
+		 //var equipment_id=document.getElementById("equipment_id").value;
+		
+		 $.ajax({
+				type : "POST",
+				url : "/QMS_App/ajax_documentcorrerror",
+				data : "document_id_hidden="+document_id,
+				success : function(response) {
+				//	alert("response"+response);	
+				
+		    	
+		    		//	alert("if loop 0");
+		    	if(response!='')
+		    		{
+		    		alert(response);
+		    		}
+		    		if(response=='')
+		    			{
+		    			document.forms[0].method = "POST";
+		    			document.forms[0].action = "insert_documents";
+		    			document.forms[0].submit();
+		    			}
+		    		
+		    		
+		    		
+		    		  
+				},
+				error : function(e) {
+					alert('Error: ' + e);
+				}
+			});
+		 return false;
+	
 	}
 	
 	

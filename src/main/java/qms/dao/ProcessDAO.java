@@ -246,6 +246,48 @@ public class ProcessDAO
 	    return processes;
 		
 	}
+	public List<Process> getProcess(String process){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Process> processes = new ArrayList<Process>();
+	    try{
+	    	String query="";
+	    	if(process.equals(""))
+	    	{
+	    		query="select * from tbl_process";
+	    	}
+	    	else
+	    	{
+	    		query="select * from tbl_process where process_name='"+process+"'";
+	    	}
+			resultSet = statement.executeQuery(query);
+			while(resultSet.next()){
+				processes.add(new Process(resultSet.
+						getString("auto_id"),resultSet
+						.getString("process_id"), resultSet
+						.getString("process_name"), resultSet
+						.getString("process_owner")));
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return processes;
+		
+	}
 	
 	public boolean getProcessIdExit(String id,String process){
 		Connection con = null;

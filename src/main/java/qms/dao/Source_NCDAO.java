@@ -44,6 +44,45 @@ public class Source_NCDAO {
 	    return sources;
 		
 	}
+	public List<Non_Conformance_Source> getSource(String source){
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = dataSource.getConnection();
+			statement = con.createStatement();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		List<Non_Conformance_Source> sources = new ArrayList<Non_Conformance_Source>();
+	    try{
+	    	String query="";
+			if(source.equals(""))
+			{
+				query="select * from tbl_source_nc";
+			}
+			else
+			{
+				query="select * from tbl_source_nc where source_of_nc='"+source+"'";
+			}
+	    	resultSet = statement.executeQuery(query);
+			while(resultSet.next()){
+				sources.add(new Non_Conformance_Source(resultSet.getInt("auto_id"),resultSet.getString("source_of_nc")));
+				
+			}
+	    }catch(Exception e){
+	    	System.out.println(e.toString());
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);
+	    }finally{
+	    	releaseResultSet(resultSet);
+	    	releaseStatement(statement);
+	    	releaseConnection(con);	    	
+	    }
+	    return sources;
+		
+	}
 	
 	public boolean insert_Source(Non_Conformance_Source source) {
 		Connection con = null;

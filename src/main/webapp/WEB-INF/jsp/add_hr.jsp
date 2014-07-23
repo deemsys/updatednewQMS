@@ -179,7 +179,9 @@ function doAjaxPost() {
 
                 <tr class="row2">
                  <td valign="middle" align="left" class="input_txt" width="20%">ID :</td>
-                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="hidden" name="id" id="inp_id" value="<c:out value="${id }"/>"/><c:out value="${id }"/><br/><font color="Red" size="+1"></font></td>
+                  <td valign="middle" align="left" class="input_txt" width="20%"><input type="text" name="id" id="inp_id" readonly="readonly" class="input_txtbx" value="<c:out value="${id }"/>"/><br/><font color="Red" size="+1"></font></td>
+               <td>Review Due Date :</td><td><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
+                  <br><span id="datepicker33" style="color:red"></span><span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
                 </tr>
 
                 <tr class="row1">
@@ -282,10 +284,9 @@ function doAjaxPost() {
                  </tr>
 
                  <tr class="row1">
-                   <td valign="middle" align="left" class="input_txt" width="20%">Review Due Date :</td>
+                   <td valign="middle" align="left" class="input_txt" width="20%"></td>
 
-                  <td valign="top" align="left" class="input_txt" width="20%"><input type="text" name="training_effectiveness_review_due_date" class="input_txtbx" id="datepicker3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" />
-                  <br><span id="datepicker33" style="color:red"></span><span class="err"><form:errors path="HRandTraining.training_effectiveness_review_due_date"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="20%"></td>
                                  </tr>      
  
  <!--  <tr class="row1">

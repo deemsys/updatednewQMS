@@ -61,7 +61,7 @@
 			<table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt" width="30%">CAPA ID :</td>
-                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="hidden" name="capa_id" class="input_txtbx" value="<c:out value="${capa_id}"/>" />${capa_id}<br/><span style="color: red;"></span></td>
+                  <td valign="middle" align="left" class="input_txt" width="30%"><input type="text"  name="capa_id"  readonly="readonly" class="input_txtbx" value="<c:out value="${capa_id}"/>" /><br/><span style="color: red;"></span></td>
               	   <td valign="top" align="left" class="input_txt"> NC ID :</td>
 				  <td valign="top" align="left" class="input_txt">
 				   <select name="nc_id" id="nc_id" class="dropdown" onchange="doAjaxPost();">
@@ -146,7 +146,7 @@
                   <td valign="top" align="left" class="input_txt" id="why?" width="20" style="display:none;">Why's ?
 				   	 &nbsp;<input type="checkbox" name="why1" value="why1" id="0"/></td>
 				  <td valign="middle" align="left" class="input_txt" width="70% " id="5why" style="display:none;">
-					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;" onInput="return validatealphanumeric2();" onkeypress="return onlyAlphabets(event,this);"></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
+					  <textarea class="input_txtbx"  name="why" id="why" style="width:99 %; height: 70px;"  ></textarea><br/><span style="color: red;" id="whyerr"><form:errors path="CorrectiveAndPreventiveActions.why"></form:errors></span></td>			
              </tr>	
              
             <tr class="row2">
@@ -318,6 +318,8 @@
 </script>     
       
 <script>
+ 
+
 $('#externalfile').change(function() {
 	 var e1=document.getElementById("upload");
 	   
@@ -518,16 +520,16 @@ function validation()
  		error="true";
  		}
  		
- 	else if((why.length < 4) || (why.length > 32))
+ 	else if((why.length < 4) || (why.length > 400))
 	{
 	
-	document.getElementById('whyerr').innerHTML="Required field should be of length 4 to 32";	
+	document.getElementById('whyerr').innerHTML="Required field should be of length 4 to 400";	
 	error="true";
 	}
  	else if((why.charAt(0)== " "))
 	{
 	
-	document.getElementById("whyerr").innerHTML="Require field should not accept initial space";	
+	document.getElementById("whyerr").innerHTML="Should not accept initial space";	
 	error="true";
 	}
  	else
@@ -712,16 +714,16 @@ function validation()
 		error="true";
 		
 	}
-	else if((team_member.length < 4) || (team_member.length > 45))
+	else if((team_member.length < 4) || (team_member.length > 400))
 		{
 		
-		document.getElementById("membererror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("membererror").innerHTML="Required field should be of length 4 to 400";	
 		error="true";
 		}
 	else if((team_member.charAt(0)== " "))
 	{
 	
-	document.getElementById("membererror").innerHTML="Require field should not accept initial space";	
+	document.getElementById("membererror").innerHTML="Should not accept initial space";	
 	error="true";
 	}
 	else{
@@ -734,16 +736,16 @@ function validation()
 		error="true";
 		
 	}
-	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 45))
+	else if((root_cause_statement.length < 4) || (root_cause_statement.length > 400))
 		{
 		
-		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 32";	
+		document.getElementById("rooterror").innerHTML="Required field should be of length 4 to 400";	
 		error="true";
 		}
 	else if((root_cause_statement.charAt(0)== " "))
 	{
 	
-	document.getElementById("rooterror").innerHTML="Require field should not accept initial space";	
+	document.getElementById("rooterror").innerHTML="Should not accept initial space";	
 	error="true";
 	}
 	else{
@@ -764,7 +766,7 @@ function validation()
 	else if((root_cause_analysis_file.charAt(0)== " "))
 	{
 	
-	document.getElementById("root1error").innerHTML="Require field should not accept initial space";	
+	document.getElementById("root1error").innerHTML="Should not accept initial space";	
 	error="true";
 	}
 	else{
@@ -784,7 +786,7 @@ function validation()
 	else if((action.charAt(0)== " "))
 	{
 	
-	document.getElementById("actionerror").innerHTML="Require field should not accept initial space";	
+	document.getElementById("actionerror").innerHTML="Should not accept initial space";	
 	error="true";
 	}
 	else{
@@ -805,7 +807,7 @@ function validation()
 	else if((verified_by.charAt(0)== " "))
 	{
 	
-	document.getElementById("verifiedbyerror").innerHTML="Require field should not accept initial space";	
+	document.getElementById("verifiedbyerror").innerHTML="Should not accept initial space";	
 	error="true";
 	}   
 	else{
